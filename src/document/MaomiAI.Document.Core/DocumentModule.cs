@@ -11,8 +11,7 @@ namespace MaomiAI.Infra;
 /// <summary>
 /// InfraCoreModule.
 /// </summary>
-[InjectModule<InfraConfigurationModule>]
-public class InfraCoreModule : IModule
+public class DocumentModule : IModule
 {
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)

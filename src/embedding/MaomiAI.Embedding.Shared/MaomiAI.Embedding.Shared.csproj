@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\infra\MaomAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

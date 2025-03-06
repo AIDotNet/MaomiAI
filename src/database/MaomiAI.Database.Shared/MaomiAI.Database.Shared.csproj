@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>MaomiAI.Database</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Maomi.I18n" Version="2.2.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\infra\MaomAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+	</ItemGroup>
 
 </Project>

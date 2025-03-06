@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MaomiAI.Embedding.Shared\MaomiAI.Embedding.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

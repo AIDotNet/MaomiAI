@@ -9,6 +9,17 @@
   <ItemGroup>
     <PackageReference Include="Maomi.Web.Core" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
   </ItemGroup>
 
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\stylecop.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj" />
+	  <ProjectReference Include="..\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj" />
+	  <ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj" />
+	  <ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
+	</ItemGroup>
 </Project>
