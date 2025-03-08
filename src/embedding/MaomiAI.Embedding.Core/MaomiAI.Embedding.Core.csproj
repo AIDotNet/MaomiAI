@@ -10,4 +10,7 @@
     <ProjectReference Include="..\MaomiAI.Embedding.Shared\MaomiAI.Embedding.Shared.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+	</ItemGroup>
 </Project>

@@ -11,4 +11,7 @@
 		<ProjectReference Include="..\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+	</ItemGroup>
 </Project>

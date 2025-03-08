@@ -22,4 +22,5 @@
 	  <ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj" />
 	  <ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
 	</ItemGroup>
+
 </Project>

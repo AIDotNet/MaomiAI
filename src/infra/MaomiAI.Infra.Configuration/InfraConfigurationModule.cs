@@ -38,10 +38,14 @@ public class InfraConfigurationModule : IModule
         CheckConfigsDirectory(context);
 
         var ioc = context.Services.BuildServiceProvider();
+
         var configurationBuilder = ioc.GetRequiredService<IConfigurationManager>();
 
         ImportSystemConfiguration(context, configurationBuilder);
         ImportLoggerConfiguration(context, configurationBuilder);
+
+        var systemOptions = configurationBuilder.Get<SystemOptions>() ?? throw new FormatException("The system configuration cannot be loaded.");
+        context.Services.AddSingleton(systemOptions);
     }
 
     // 检查配置目录是否存在.
@@ -64,11 +68,11 @@ public class InfraConfigurationModule : IModule
         }
 
         var fileType = Path.GetExtension(configurationFilePath);
-        if ("json".Equals(fileType, StringComparison.OrdinalIgnoreCase))
+        if (".json".Equals(fileType, StringComparison.OrdinalIgnoreCase))
         {
             configurationBuilder.AddJsonFile(configurationFilePath);
         }
-        else if ("yaml".Equals(fileType, StringComparison.OrdinalIgnoreCase))
+        else if (".yaml".Equals(fileType, StringComparison.OrdinalIgnoreCase))
         {
             configurationBuilder.AddYamlFile(configurationFilePath);
         }
@@ -76,8 +80,11 @@ public class InfraConfigurationModule : IModule
         {
             configurationBuilder.AddIniFile(configurationFilePath);
         }
-
-        _logger.LogWarning("The current file type cannot be imported,`MAI_CONFIG={File}`.", configurationFilePath);
+        else
+        {
+            _logger.LogWarning("The current file type cannot be imported,`MAI_CONFIG={File}`.", configurationFilePath);
+            throw new ArgumentException($"The current file type cannot be imported,`MAI_CONFIG={configurationFilePath}`.");
+        }
     }
 
     // 导入日志配置文件.
@@ -85,9 +92,15 @@ public class InfraConfigurationModule : IModule
     {
         if (!File.Exists("configs/logger.json"))
         {
-            File.Copy("default_configs/logger.json", "configs/logger.json");
+            if (Directory.Exists("default_configs"))
+            {
+                File.Copy("default_configs/logger.json", "configs/logger.json");
+            }
         }
 
-        configurationBuilder.AddJsonFile("configs/logger.json");
+        if (File.Exists("configs/logger.json"))
+        {
+            configurationBuilder.AddJsonFile("configs/logger.json");
+        }
     }
 }

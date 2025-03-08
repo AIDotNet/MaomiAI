@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Infra.Configuration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI", "src\MaomiAI\MaomiAI.csproj", "{98011941-1099-479F-A268-6BEC17D1AC5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Database.Postgres", "src\database\MaomiAI.Database.Postgres\MaomiAI.Database.Postgres.csproj", "{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreScaffold", "tool\PostgreScaffold\PostgreScaffold.csproj", "{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,14 @@ Global
 		{98011941-1099-479F-A268-6BEC17D1AC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98011941-1099-479F-A268-6BEC17D1AC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98011941-1099-479F-A268-6BEC17D1AC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +111,8 @@ Global
 		{DBFC941D-06ED-4C42-8D41-18874E445BE0} = {705133D9-C430-41F9-A514-D339D69A4D62}
 		{F458D1FB-0040-4C3E-99C9-0BCF5D3E285B} = {705133D9-C430-41F9-A514-D339D69A4D62}
 		{AEDD876B-9286-4DBC-9F86-05D4E251B5DB} = {06B016BC-C266-46F7-AF17-943C742A33EE}
+		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8} = {99D16F7C-6DBA-4B1B-952A-54BA68B15069}
+		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0} = {99D16F7C-6DBA-4B1B-952A-54BA68B15069}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C80D339-A994-4A10-9BA6-14675A711655}

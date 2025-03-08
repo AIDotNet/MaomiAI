@@ -11,6 +11,16 @@
 	<ItemGroup>
 		<PackageReference Include="Maomi.Core" Version="2.2.0" />
 		<PackageReference Include="Maomi.I18n" Version="2.2.1" />
+
+		<PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
+
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Defaults\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+	</ItemGroup>
 </Project>

@@ -8,7 +8,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\infra\MaomAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+  </ItemGroup>
 </Project>

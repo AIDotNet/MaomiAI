@@ -5,6 +5,9 @@
 // </copyright>
 
 using Maomi;
+using Maomi.MQ;
+using MaomiAI.Infra.Defaults;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MaomiAI.Infra;
 
@@ -17,5 +20,6 @@ public class InfraCoreModule : IModule
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
+        context.Services.AddSingleton<IIdProvider>(new DefaultIdProvider(0));
     }
 }

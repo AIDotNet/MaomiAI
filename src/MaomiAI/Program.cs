@@ -4,14 +4,19 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using Maomi;
+using MaomiAI;
 using Serilog;
+uint Maomi;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Host.UseSerilog();
+builder.Services.AddModule<MainModule>();
 
 var app = builder.Build();
 
