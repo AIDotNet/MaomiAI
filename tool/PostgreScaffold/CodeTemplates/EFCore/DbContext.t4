@@ -52,7 +52,8 @@ namespace <#= NamespaceHint #>;
 /// </summary>
 public partial class <#= Options.ContextName #> : DbContext
 {
-    private readonly Assembly _dbModuleAssembly;
+    private readonly IServiceProvider _serviceProvider;
+    private readonly DBContextOptions _contextOptions;
 
 <#
     if (!Options.SuppressOnConfiguring)

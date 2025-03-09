@@ -10,7 +10,6 @@ using Serilog;
 uint Maomi;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -61,7 +60,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     
-    // 启用Swagger
+    // ����Swagger
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
@@ -73,7 +72,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseHttpLogging();
 
-// 启用认证和授权中间件
+// ������֤����Ȩ�м��
 app.UseAuthentication();
 app.UseAuthorization();
 

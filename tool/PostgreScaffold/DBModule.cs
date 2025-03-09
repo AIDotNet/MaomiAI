@@ -1,7 +1,7 @@
 ﻿using Maomi;
 using MaomiAI.Infra;
 
-namespace PostgreScaffold;
+namespace MaomiAI;
 
 [InjectModule<InfraCoreModule>]
 public class DBModule : IModule

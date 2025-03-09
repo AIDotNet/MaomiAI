@@ -57,9 +57,19 @@ public partial class MaomiaiContext : DbContext
     public virtual DbSet<TeamEntity> Teams { get; set; }
 
     /// <summary>
+    /// ai模型.
+    /// </summary>
+    public virtual DbSet<TeamAiModelEntity> TeamAiModels { get; set; }
+
+    /// <summary>
     /// 团队成员.
     /// </summary>
     public virtual DbSet<TeamMemberEntity> TeamMembers { get; set; }
+
+    /// <summary>
+    /// 知识库.
+    /// </summary>
+    public virtual DbSet<TeamWikiEntity> TeamWikis { get; set; }
 
     /// <summary>
     /// 用户表.

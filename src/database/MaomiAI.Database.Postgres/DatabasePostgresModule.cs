@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace MaomiAI.Database.Postgres;
 
+/// <summary>
+/// DatabasePostgresModule.
+/// </summary>
 public class DatabasePostgresModule : IModule
 {
     private readonly IConfiguration _configuration;
@@ -26,6 +27,7 @@ public class DatabasePostgresModule : IModule
         _loggerFactory = loggerFactory;
     }
 
+    /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
         using var ioc = context.Services.BuildServiceProvider();
@@ -36,7 +38,16 @@ public class DatabasePostgresModule : IModule
             return;
         }
 
+        var dbContextOptions = new DBContextOptions
+        {
+            ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
+            EntityAssembly = typeof(MaomiAI.Database.MaomiaiContext).Assembly
+        };
+
+        context.Services.AddSingleton(dbContextOptions);
+
         // 配置兼容 Datetime
+        // todo: 应该可以去掉
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
 
@@ -79,15 +90,9 @@ public class DatabasePostgresModule : IModule
         DbContextOptionsBuilder<MaomiaiContext> options = new();
         contextOptionsBuilder.Invoke(options);
 
-        using var dbContext = new MaomiaiContext(options.Options, ioc, new DBContextOptions
-        {
-            ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
-            EntityAssembly = typeof(MaomiAI.Database.MaomiaiContext).Assembly
-        });
+        using var dbContext = new MaomiaiContext(options.Options, ioc, dbContextOptions);
 
         // 如果数据库不存在，则会创建数据库及其所有表。
         dbContext.Database.EnsureCreated();
-
-
     }
 }
