@@ -20,17 +20,17 @@ public interface IFullAudited : ICreationAudited, IModificationAudited, IDeleteA
 public class FullAudited : IFullAudited
 {
     /// <inheritdoc/>
-    public virtual int CreatorUserId { get; set; }
-
-    /// <inheritdoc/>
-    public virtual DateTimeOffset CreationTime { get; set; }
-
-    /// <inheritdoc/>
     public virtual bool IsDeleted { get; set; }
 
     /// <inheritdoc/>
-    public virtual int LastModifierUserId { get; set; }
+    public virtual DateTimeOffset CreateTime { get; set; }
 
     /// <inheritdoc/>
-    public virtual DateTimeOffset LastModificationTime { get; set; }
+    public virtual DateTimeOffset UpdateTime { get; set; }
+
+    /// <inheritdoc/>
+    public virtual Guid CreateUserId { get; set; }
+
+    /// <inheritdoc/>
+    public virtual Guid UpdateUserId { get; set; }
 }

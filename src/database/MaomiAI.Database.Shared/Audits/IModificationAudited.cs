@@ -12,12 +12,12 @@ namespace MaomiAI.Database.Audits;
 public interface IModificationAudited
 {
     /// <summary>
-    /// 最后修改人的用户名.
+    /// 修改人.
     /// </summary>
-    int LastModifierUserId { get; set; }
+    Guid UpdateUserId { get; set; }
 
     /// <summary>
-    /// 最后修改时间.
+    /// 修改时间.
     /// </summary>
-    DateTimeOffset LastModificationTime { get; set; }
+    DateTimeOffset UpdateTime { get; set; }
 }

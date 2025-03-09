@@ -14,10 +14,10 @@ public interface ICreationAudited
     /// <summary>
     /// 创建人的用户名.
     /// </summary>
-    int CreatorUserId { get; set; }
+    Guid CreateUserId { get; set; }
 
     /// <summary>
     /// 创建时间.
     /// </summary>
-    DateTimeOffset CreationTime { get; set; }
+    DateTimeOffset CreateTime { get; set; }
 }

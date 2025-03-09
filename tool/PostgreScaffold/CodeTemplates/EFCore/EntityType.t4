@@ -27,7 +27,8 @@
     var usings = new List<string>
     {
         "System",
-        "System.Collections.Generic"
+        "System.Collections.Generic",
+        "MaomiAI.Database.Audits"
     };
 
     if (Options.UseDataAnnotations)
@@ -49,7 +50,7 @@ namespace <#= NamespaceHint #>;
     {
 #>
 /// <summary>
-/// <#= code.XmlComment(EntityType.GetComment()) #>
+/// <#= code.XmlComment(EntityType.GetComment()) #>.
 /// </summary>
 <#
     }
@@ -64,7 +65,7 @@ namespace <#= NamespaceHint #>;
         }
     }
 #>
-public partial class <#= EntityType.Name #>
+public partial class <#= EntityType.Name #>Entity : IFullAudited
 {
 <#
     var firstProperty = true;
@@ -79,7 +80,7 @@ public partial class <#= EntityType.Name #>
         {
 #>
     /// <summary>
-    /// <#= code.XmlComment(property.GetComment(), indent: 1) #>
+    /// <#= code.XmlComment(property.GetComment(), indent: 1) #>.
     /// </summary>
 <#
         }
@@ -100,8 +101,13 @@ public partial class <#= EntityType.Name #>
 
         var needsNullable = Options.UseNullableReferenceTypes && property.IsNullable && !property.ClrType.IsValueType;
         var needsInitializer = Options.UseNullableReferenceTypes && !property.IsNullable && !property.ClrType.IsValueType;
+        var targetTypeName = code.Reference(property.ClrType);
+        if(targetTypeName == "DateTime")
+        {
+            targetTypeName = "DateTimeOffset";
+        }
 #>
-    public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
+    public <#= targetTypeName #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
 <#
         firstProperty = false;
     }

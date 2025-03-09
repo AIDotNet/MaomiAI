@@ -16,13 +16,10 @@ public class Program
     static async Task Main()
     {
         Console.OutputEncoding = Encoding.UTF8;
+        Console.WriteLine("当前工作目录: " + Directory.GetCurrentDirectory());
 
-        var builder = WebApplication.CreateBuilder();
-        builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
-        builder.Services.AddLogging();
-        builder.Services.AddModule<DBModule>();
-        var ioc = builder.Services.BuildServiceProvider();
-        var systemOptions = ioc.GetRequiredService<SystemOptions>();
+        Console.WriteLine("请在目录下执行 dotnet run，请勿直接启动该项目");
+        Console.WriteLine("使用前先删除 Data、Entities 两个目录，用完后也要删除");
 
         var assemblyDirectory = Directory.GetParent(typeof(Program).Assembly.Location);
         if (assemblyDirectory.FullName.Contains("bin"))
@@ -33,6 +30,13 @@ public class Program
         string projectDirectory = assemblyDirectory.FullName;
         Directory.SetCurrentDirectory(projectDirectory);
         Console.WriteLine("当前工作目录: " + projectDirectory);
+
+        var builder = WebApplication.CreateBuilder();
+        builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
+        builder.Services.AddLogging();
+        builder.Services.AddModule<DBModule>();
+        var ioc = builder.Services.BuildServiceProvider();
+        var systemOptions = ioc.GetRequiredService<SystemOptions>();
 
         // 本机已经安装需先安装 dotnet-ef
         // dotnet tool install -g dotnet-ef
@@ -59,8 +63,12 @@ public class Program
         processStartInfo.ArgumentList.Add("MaomiAI.Database.Entities");
         processStartInfo.ArgumentList.Add("--context-namespace");
         processStartInfo.ArgumentList.Add("MaomiAI.Database");
+        processStartInfo.ArgumentList.Add("--no-onconfiguring");
+        processStartInfo.ArgumentList.Add("-f");
 
-        var command = $"{processStartInfo.FileName} {string.Join(" ", processStartInfo.ArgumentList)}";
+        processStartInfo.Arguments = string.Join(" ", processStartInfo.ArgumentList);
+        processStartInfo.ArgumentList.Clear();
+        var command = $"{processStartInfo.FileName} {processStartInfo.Arguments}";
         Console.WriteLine($"启动命令: {command}");
 
         using (var process = new Process { StartInfo = processStartInfo })
@@ -69,7 +77,7 @@ public class Program
             {
                 if (!string.IsNullOrEmpty(e.Data))
                 {
-                    Console.WriteLine("Output: " + e.Data);
+                    Console.WriteLine(e.Data);
                 }
             };
 
@@ -78,7 +86,7 @@ public class Program
                 if (!string.IsNullOrEmpty(e.Data))
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error: " + e.Data);
+                    Console.WriteLine(e.Data);
                     Console.ResetColor();
                 }
             };
