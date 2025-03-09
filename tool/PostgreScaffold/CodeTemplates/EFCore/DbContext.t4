@@ -69,11 +69,13 @@ public partial class <#= Options.ContextName #> : DbContext
     /// Initializes a new instance of the <see cref="MaomiaiContext"/> class.
     /// </summary>
     /// <param name="options"></param>
-    /// <param name="dbModuleAssembly">指定初始化配置的模块程序集.</param>
-    public <#= Options.ContextName #>(DbContextOptions<<#= Options.ContextName #>> options, Assembly? dbModuleAssembly = null)
+    /// <param name="serviceProvider"></param>
+    /// <param name="contextOptions"></param>
+    public <#= Options.ContextName #>(DbContextOptions<<#= Options.ContextName #>> options, IServiceProvider serviceProvider, DBContextOptions contextOptions)
         : base(options)
     {
-            _dbModuleAssembly = dbModuleAssembly ?? typeof(<#= Options.ContextName #>).Assembly;
+        _serviceProvider = serviceProvider;
+        _contextOptions = contextOptions;
     }
 
 <#
@@ -112,7 +114,9 @@ public partial class <#= Options.ContextName #> : DbContext
     /// <inheritdoc/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(_dbModuleAssembly);
+        modelBuilder
+            .ApplyConfigurationsFromAssembly(_contextOptions.ConfigurationAssembly)
+            .ApplyConfigurationsFromAssembly(_contextOptions.EntityAssembly);
         OnModelCreatingPartial(modelBuilder);
 <#
     var anyConfiguration = false;
