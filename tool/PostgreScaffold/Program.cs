@@ -7,7 +7,7 @@ using MaomiAI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PostgreScaffold;
+using MaomiAI;
 using System.Diagnostics;
 using System.Text;
 
