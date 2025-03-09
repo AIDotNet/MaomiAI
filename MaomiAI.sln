@@ -13,37 +13,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{06B016BC-C266-46F7-AF17-943C742A33EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Infra.Shared", "src\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj", "{59F2C08C-E01B-457B-AD85-FF40DB4303DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Infra.Shared", "src\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj", "{59F2C08C-E01B-457B-AD85-FF40DB4303DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Infra.Core", "src\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj", "{0B6EACF0-3826-435F-B867-A9358B1AF888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Infra.Core", "src\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj", "{0B6EACF0-3826-435F-B867-A9358B1AF888}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{99D16F7C-6DBA-4B1B-952A-54BA68B15069}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Database.Shared", "src\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj", "{AF3EDDFC-046A-4F9A-8C37-5B024193460C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Database.Shared", "src\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj", "{AF3EDDFC-046A-4F9A-8C37-5B024193460C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Database.Core", "src\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj", "{C9063599-D8BC-41DC-97F5-2190482146D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Database.Core", "src\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj", "{C9063599-D8BC-41DC-97F5-2190482146D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "document", "document", "{4D062625-E1A3-4608-ACFE-3C065306732F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Document.Shared", "src\document\MaomiAI.Document.Shared\MaomiAI.Document.Shared.csproj", "{5DB86C95-9C5F-4C70-A337-522CB575E070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Document.Shared", "src\document\MaomiAI.Document.Shared\MaomiAI.Document.Shared.csproj", "{5DB86C95-9C5F-4C70-A337-522CB575E070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Document.Core", "src\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj", "{BA8B4374-0ED4-4C77-BEBF-3EB462F0169B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Document.Core", "src\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj", "{BA8B4374-0ED4-4C77-BEBF-3EB462F0169B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Embedding", "Embedding", "{705133D9-C430-41F9-A514-D339D69A4D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Embedding.Shared", "src\embedding\MaomiAI.Embedding.Shared\MaomiAI.Embedding.Shared.csproj", "{DBFC941D-06ED-4C42-8D41-18874E445BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Embedding.Shared", "src\embedding\MaomiAI.Embedding.Shared\MaomiAI.Embedding.Shared.csproj", "{DBFC941D-06ED-4C42-8D41-18874E445BE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Embedding.Core", "src\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj", "{F458D1FB-0040-4C3E-99C9-0BCF5D3E285B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Embedding.Core", "src\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj", "{F458D1FB-0040-4C3E-99C9-0BCF5D3E285B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Infra.Configuration", "src\infra\MaomiAI.Infra.Configuration\MaomiAI.Infra.Configuration.csproj", "{AEDD876B-9286-4DBC-9F86-05D4E251B5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Infra.Configuration", "src\infra\MaomiAI.Infra.Configuration\MaomiAI.Infra.Configuration.csproj", "{AEDD876B-9286-4DBC-9F86-05D4E251B5DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI", "src\MaomiAI\MaomiAI.csproj", "{98011941-1099-479F-A268-6BEC17D1AC5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI", "src\MaomiAI\MaomiAI.csproj", "{98011941-1099-479F-A268-6BEC17D1AC5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaomiAI.Database.Postgres", "src\database\MaomiAI.Database.Postgres\MaomiAI.Database.Postgres.csproj", "{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.Database.Postgres", "src\database\MaomiAI.Database.Postgres\MaomiAI.Database.Postgres.csproj", "{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreScaffold", "tool\PostgreScaffold\PostgreScaffold.csproj", "{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgreScaffold", "tool\PostgreScaffold\PostgreScaffold.csproj", "{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tool", "tool", "{5345C984-F81E-4354-BEEC-1C96CC5A6BD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{0BC5E6FA-D23D-4F9D-9473-7AC08083F867}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.User.Shared", "src\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj", "{3CAA147A-4E33-416E-9122-E2B298185187}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaomiAI.User.Core", "src\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj", "{C66325AB-B11B-4B7A-B624-5BF5C416B279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +105,14 @@ Global
 		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CAA147A-4E33-416E-9122-E2B298185187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CAA147A-4E33-416E-9122-E2B298185187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CAA147A-4E33-416E-9122-E2B298185187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CAA147A-4E33-416E-9122-E2B298185187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C66325AB-B11B-4B7A-B624-5BF5C416B279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66325AB-B11B-4B7A-B624-5BF5C416B279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66325AB-B11B-4B7A-B624-5BF5C416B279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66325AB-B11B-4B7A-B624-5BF5C416B279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +129,8 @@ Global
 		{AEDD876B-9286-4DBC-9F86-05D4E251B5DB} = {06B016BC-C266-46F7-AF17-943C742A33EE}
 		{AEF2CF1C-C909-4A1A-884E-4AE2B5F723A8} = {99D16F7C-6DBA-4B1B-952A-54BA68B15069}
 		{DDE70FDD-8D52-4A49-8B5E-AE1B216A4FE0} = {5345C984-F81E-4354-BEEC-1C96CC5A6BD6}
+		{3CAA147A-4E33-416E-9122-E2B298185187} = {0BC5E6FA-D23D-4F9D-9473-7AC08083F867}
+		{C66325AB-B11B-4B7A-B624-5BF5C416B279} = {0BC5E6FA-D23D-4F9D-9473-7AC08083F867}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C80D339-A994-4A10-9BA6-14675A711655}

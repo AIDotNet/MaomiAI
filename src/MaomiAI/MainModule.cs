@@ -7,6 +7,7 @@
 using Maomi;
 using MaomiAI.Database;
 using MaomiAI.Infra;
+using MaomiAI.User.Core;
 using Microsoft.AspNetCore.HttpLogging;
 
 namespace MaomiAI;
@@ -18,6 +19,7 @@ namespace MaomiAI;
 [InjectModule<DatabaseCoreModule>]
 [InjectModule<EmbeddingCoreModule>]
 [InjectModule<DocumentModule>]
+[InjectModule<UserCoreModule>]
 public class MainModule : IModule
 {
     /// <inheritdoc/>
