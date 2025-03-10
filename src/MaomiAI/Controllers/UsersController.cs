@@ -8,6 +8,9 @@ using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
 using MaomiAI.User.Shared.Queries;
+
+using MediatR;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
