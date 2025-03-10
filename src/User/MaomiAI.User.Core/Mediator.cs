@@ -4,6 +4,10 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MediatR;
+
+using Microsoft.Extensions.DependencyInjection;
+
 namespace MaomiAI.User.Core;
 
 /// <summary>

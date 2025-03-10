@@ -4,6 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MediatR;
+
 namespace MaomiAI.User.Shared.Commands;
 
 /// <summary>

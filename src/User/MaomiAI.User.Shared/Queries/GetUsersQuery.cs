@@ -6,6 +6,8 @@
 
 using MaomiAI.User.Shared.Models;
 
+using MediatR;
+
 namespace MaomiAI.User.Shared.Queries;
 
 /// <summary>

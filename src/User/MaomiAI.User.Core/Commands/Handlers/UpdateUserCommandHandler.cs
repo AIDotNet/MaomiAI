@@ -8,6 +8,9 @@ using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
+
+using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.User.Core.Commands.Handlers;

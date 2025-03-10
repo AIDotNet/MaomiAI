@@ -9,6 +9,9 @@ using MaomiAI.User.Core.Services;
 using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
+
+using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

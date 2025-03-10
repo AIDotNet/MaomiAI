@@ -6,6 +6,8 @@
 
 using System.ComponentModel.DataAnnotations;
 
+using MediatR;
+
 namespace MaomiAI.User.Shared.Commands;
 
 /// <summary>

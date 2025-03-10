@@ -8,10 +8,12 @@ using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Models;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -21,7 +23,7 @@ namespace MaomiAI.User.Core.Services;
 /// <summary>
 /// 用户服务实现.
 /// </summary>
-public class UserService : IUserService
+public class UserService
 {
     private readonly MaomiaiContext _dbContext;
     private readonly IConfiguration _configuration;
@@ -319,4 +321,4 @@ public class UserService : IUserService
 
         return computedHash == hash;
     }
-} 
+}
