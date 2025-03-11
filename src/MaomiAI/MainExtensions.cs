@@ -9,8 +9,6 @@ public static class MainExtensions
     {
         builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
 
-        builder.Services.AddModule<MainModule>();
-
         builder.Services.AddSerilog((services, configuration) =>
         {
             configuration.ReadFrom.Services(services);

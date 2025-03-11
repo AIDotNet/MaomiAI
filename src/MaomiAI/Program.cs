@@ -9,8 +9,6 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-
 builder.UseMaomiAI();
 
 var app = builder.Build();
@@ -21,11 +19,12 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
-app.UseHttpLogging();
-
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseRouting();
+
+app.UseHttpLogging();
 
 app.MapControllers();
 

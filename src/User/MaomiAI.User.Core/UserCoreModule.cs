@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 
 using Maomi;
-
+using MaomiAI.User.Api;
 using MediatR;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,13 +21,11 @@ namespace MaomiAI.User.Core;
 /// <summary>
 /// 用户模块.
 /// </summary>
+[InjectModule<UserApiModule>]
 public class UserCoreModule : IModule
 {
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
-        // 注册中介者
-        context.Services.AddScoped<IMediator, Mediator>();
     }
-
-} 
+}

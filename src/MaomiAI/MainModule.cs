@@ -8,6 +8,7 @@ using Maomi;
 using MaomiAI.Database;
 using MaomiAI.Infra;
 using MaomiAI.Infra.Service;
+using MaomiAI.User.Api;
 using MaomiAI.User.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
@@ -45,9 +46,18 @@ public partial class MainModule : IModule
     {
         ConfigureHttpLogging(context);
 
-        ConfigureOpeiApi(context);
+        context.Services.AddControllers(options =>
+        {
+        }).AddApplicationPart(typeof(UserApiModule).Assembly);
 
         ConfigureAuthentication(context);
+
+        ConfigureOpeiApi(context);
+
+        context.Services.AddMediatR(options =>
+        {
+            options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).ToArray());
+        });
     }
 
     // 配置 http 请求日志.
@@ -115,7 +125,5 @@ public partial class MainModule : IModule
                 IssuerSigningKey = new RsaSecurityKey(rsa)
             };
         });
-
-        context.Services.AddAuthorization();
     }
 }
