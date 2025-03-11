@@ -4,17 +4,17 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
 using MaomiAI.User.Shared.Queries;
-
 using MediatR;
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaomiAI.Controllers;
+
+// todo：api 描述改成 openapi
+// todo：请求响应参数要模型化
 
 /// <summary>
 /// 用户管理控制器.

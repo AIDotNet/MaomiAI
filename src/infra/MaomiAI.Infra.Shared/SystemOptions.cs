@@ -12,6 +12,16 @@ namespace MaomiAI.Infra;
 public class SystemOptions
 {
     /// <summary>
+    /// 服务访问地址.
+    /// </summary>
+    public string Server { get; init; } = string.Empty;
+
+    /// <summary>
+    /// RSA 私钥路径.
+    /// </summary>
+    public string RsaPath { get; init; } = string.Empty;
+
+    /// <summary>
     /// 系统数据库类型.
     /// </summary>
     public string DBType { get; init; } = string.Empty;

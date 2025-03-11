@@ -5,9 +5,12 @@
 // </copyright>
 
 using Maomi;
+using MaomiAI.Infra.Helpers;
+using MaomiAI.Infra.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
 
 namespace MaomiAI.Infra;
 
@@ -43,9 +46,11 @@ public class InfraConfigurationModule : IModule
 
         ImportSystemConfiguration(context, configurationBuilder);
         ImportLoggerConfiguration(context, configurationBuilder);
+        ConfigureRsaPrivate(context, configurationBuilder);
 
         var systemOptions = configurationBuilder.Get<SystemOptions>() ?? throw new FormatException("The system configuration cannot be loaded.");
         context.Services.AddSingleton(systemOptions);
+
     }
 
     // 检查配置目录是否存在.
@@ -101,6 +106,28 @@ public class InfraConfigurationModule : IModule
         if (File.Exists("configs/logger.json"))
         {
             configurationBuilder.AddJsonFile("configs/logger.json");
+        }
+    }
+
+    private void ConfigureRsaPrivate(ServiceContext context, IConfigurationBuilder configurationBuilder)
+    {
+        if (!File.Exists("configs/rsa_private.key"))
+        {
+            using var rsa = RSA.Create();
+            string rsaPrivate = rsa.ExportPkcs8PrivateKeyPem();
+            File.WriteAllText("configs/rsa_private.key", rsaPrivate);
+            context.Services.AddSingleton<IRsaProvider>(s =>
+            {
+                return new RsaProvider(rsaPrivate);
+            });
+        }
+        else
+        {
+            var rsaPrivate = File.ReadAllText("configs/rsa_private.key");
+            context.Services.AddSingleton<IRsaProvider>(s =>
+            {
+                return new RsaProvider(rsaPrivate);
+            });
         }
     }
 }
