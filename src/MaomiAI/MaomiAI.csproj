@@ -13,6 +13,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Controllers\**" />
+	  <Content Remove="Controllers\**" />
+	  <EmbeddedResource Remove="Controllers\**" />
+	  <None Remove="Controllers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
 		<PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.2">
@@ -36,10 +43,6 @@
 		<ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj" />
 		<ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
 		<ProjectReference Include="..\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
 	</ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ namespace MaomiAI.Database;
 public partial class MaomiaiContext : DbContext
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly DBContextOptions _contextOptions;
+    private readonly DatabaseOptions _contextOptions;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MaomiaiContext"/> class.
@@ -28,7 +28,7 @@ public partial class MaomiaiContext : DbContext
     /// <param name="options"></param>
     /// <param name="serviceProvider"></param>
     /// <param name="contextOptions"></param>
-    public MaomiaiContext(DbContextOptions options, IServiceProvider serviceProvider, DBContextOptions contextOptions)
+    public MaomiaiContext(DbContextOptions options, IServiceProvider serviceProvider, DatabaseOptions contextOptions)
         : base(options)
     {
         _serviceProvider = serviceProvider;

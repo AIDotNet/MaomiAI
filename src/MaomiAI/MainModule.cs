@@ -7,19 +7,14 @@
 using Maomi;
 using MaomiAI.Database;
 using MaomiAI.Infra;
-using MaomiAI.Infra.Service;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
-using System.Reflection.Metadata;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace MaomiAI;
 
@@ -50,7 +45,10 @@ public partial class MainModule : IModule
         context.Services.AddControllers(options =>
         {
         })
-        .ConfigureApplicationPartManager(apm => apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly)));
+        .ConfigureApplicationPartManager(apm =>
+        {
+            apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
+        });
 
         ConfigureAuthentication(context);
 

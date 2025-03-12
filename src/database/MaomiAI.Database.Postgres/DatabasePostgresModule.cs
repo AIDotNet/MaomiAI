@@ -38,7 +38,7 @@ public class DatabasePostgresModule : IModule
             return;
         }
 
-        var dbContextOptions = new DBContextOptions
+        var dbContextOptions = new DatabaseOptions
         {
             ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
             EntityAssembly = typeof(MaomiAI.Database.MaomiaiContext).Assembly

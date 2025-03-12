@@ -2,7 +2,7 @@
 
 namespace MaomiAI.Database;
 
-public class DBContextOptions
+public class DatabaseOptions
 {
     /// <summary>
     /// 配置类程序集位置.
