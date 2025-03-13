@@ -19,4 +19,4 @@ public class GetUserByIdQuery : IRequest<UserDto?>
     /// 用户ID.
     /// </summary>
     public Guid Id { get; set; }
-} 
+}

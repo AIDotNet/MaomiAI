@@ -13,6 +13,7 @@ namespace MaomiAI.User.Shared.Models;
 public class PagedResult<T>
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="PagedResult{T}"/> class.
     /// 初始化一个新的<see cref="PagedResult{T}"/>实例.
     /// </summary>
     /// <param name="items">项目集合.</param>
@@ -62,4 +63,4 @@ public class PagedResult<T>
     /// 是否有下一页.
     /// </summary>
     public bool HasNext => Page < TotalPages;
-} 
+}

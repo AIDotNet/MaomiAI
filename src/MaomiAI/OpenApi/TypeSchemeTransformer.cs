@@ -6,6 +6,7 @@
 
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
+
 using System;
 
 namespace MaomiAI;
@@ -14,7 +15,6 @@ public partial class MainModule
 {
     internal sealed class TypeSchemeTransformer : IOpenApiSchemaTransformer
     {
-
         public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
         {
             // 后续支持其它类型转换文档
@@ -28,7 +28,6 @@ public partial class MainModule
             }
 
             return Task.CompletedTask;
-
         }
     }
 }

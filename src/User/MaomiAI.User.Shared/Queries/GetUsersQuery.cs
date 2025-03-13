@@ -34,4 +34,4 @@ public class GetUsersQuery : IRequest<PagedResult<UserDto>>
     /// 状态过滤.
     /// </summary>
     public bool? Status { get; set; }
-} 
+}

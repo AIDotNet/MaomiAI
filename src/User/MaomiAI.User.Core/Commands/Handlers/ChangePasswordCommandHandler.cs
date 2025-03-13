@@ -6,12 +6,12 @@
 
 using MaomiAI.Database;
 using MaomiAI.User.Core.Services;
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Commands.Handlers;
 
@@ -21,14 +21,17 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand>
 {
     private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<ChangePasswordCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ChangePasswordCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
-    public ChangePasswordCommandHandler(MaomiaiContext dbContext)
+    /// <param name="logger">日志记录器.</param>
+    public ChangePasswordCommandHandler(MaomiaiContext dbContext, ILogger<ChangePasswordCommandHandler> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     /// <summary>
@@ -39,57 +42,32 @@ public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordComman
     /// <returns>Task.</returns>
     public async Task Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.User
-                              .Where(u => u.Id == request.UserId && !u.IsDeleted)
-                              .FirstOrDefaultAsync(cancellationToken);
-
-        if (user == null)
-        {
-            throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
-        }
+        var user = await _dbContext.User.Where(u => u.Id == request.UserId && !u.IsDeleted)
+                              .FirstOrDefaultAsync(cancellationToken)
+                              ?? throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
 
         // 验证旧密码
-        if (!VerifyPassword(request.OldPassword, user.Password))
+        if (!PasswordService.VerifyPassword(request.OldPassword, user.Password))
         {
+            _logger.LogWarning("修改密码失败，旧密码不正确: {UserId}", request.UserId);
             throw new InvalidOperationException("旧密码不正确");
         }
 
         // 新密码不能与旧密码相同
         if (request.OldPassword == request.NewPassword)
         {
+            _logger.LogWarning("修改密码失败，新密码与旧密码相同: {UserId}", request.UserId);
             throw new InvalidOperationException("新密码不能与旧密码相同");
         }
 
-        // 更新密码
-        user.Password = HashPassword(request.NewPassword);
-        user.UpdateTime = DateTimeOffset.UtcNow;
+        // 使用PasswordService对新密码进行哈希处理
+        string newHashedPassword = PasswordService.HashPassword(request.NewPassword);
+
+        // 使用实体的ChangePassword方法更新密码
+        user.ChangePassword(newHashedPassword);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
+
+        _logger.LogInformation("用户密码修改成功: {UserId}", request.UserId);
     }
-
-    // 哈希密码
-    private static string HashPassword(string password)
-    {
-        // 在实际应用中，应该使用更安全的密码哈希算法，例如BCrypt或Argon2
-        // 这里为了简化，使用简单的SHA256+Salt
-        var salt = Guid.NewGuid().ToString("N");
-        var hash = HashHelper.ComputeSha256Hash(password + salt);
-        return $"{hash}:{salt}";
-    }
-
-    // 验证密码
-    private static bool VerifyPassword(string password, string hashedPassword)
-    {
-        var parts = hashedPassword.Split(':');
-        if (parts.Length != 2)
-        {
-            return false;
-        }
-
-        var hash = parts[0];
-        var salt = parts[1];
-        var computedHash = HashHelper.ComputeSha256Hash(password + salt);
-
-        return computedHash == hash;
-    }
-} 
+}

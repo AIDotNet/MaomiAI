@@ -88,6 +88,10 @@ dotnet_diagnostic.CA2007.severity = none
 csharp_prefer_system_threading_lock = true:suggestion
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
 dotnet_diagnostic.CA1515.severity = silent
+dotnet_diagnostic.SA1629.severity = silent
+dotnet_diagnostic.CA2016.severity = silent
+dotnet_diagnostic.SA1311.severity = silent
+dotnet_diagnostic.CA1311.severity = silent
 
 [*.vb]
 #### 命名样式 ####
@@ -148,3 +152,6 @@ dotnet_diagnostic.CA1848.severity = none
 dotnet_diagnostic.CA1062.severity = silent
 dotnet_diagnostic.CA1511.severity = warning
 dotnet_diagnostic.CA1303.severity = silent
+
+# Default severity for analyzer diagnostics with category 'Globalization'
+dotnet_analyzer_diagnostic.category-Globalization.severity = silent

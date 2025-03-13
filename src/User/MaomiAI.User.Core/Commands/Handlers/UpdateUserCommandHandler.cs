@@ -12,6 +12,7 @@ using MaomiAI.User.Shared.Commands;
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Commands.Handlers;
 
@@ -21,14 +22,17 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
 {
     private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<UpdateUserCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UpdateUserCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
-    public UpdateUserCommandHandler(MaomiaiContext dbContext)
+    /// <param name="logger">日志记录器.</param>
+    public UpdateUserCommandHandler(MaomiaiContext dbContext, ILogger<UpdateUserCommandHandler> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     /// <summary>
@@ -39,45 +43,43 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     /// <returns>Task.</returns>
     public async Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.User
-                               .Where(u => u.Id == request.Id && !u.IsDeleted)
-                               .FirstOrDefaultAsync(cancellationToken);
-
-        if (user == null)
+        try
         {
-            throw new InvalidOperationException($"用户 {request.Id} 不存在或已被删除");
-        }
+            var user = await _dbContext.User
+                                   .Where(u => u.Id == request.Id && !u.IsDeleted)
+                                   .FirstOrDefaultAsync(cancellationToken);
 
-        // 检查邮箱是否已被其他用户使用
-        if (!string.IsNullOrEmpty(request.Email) && request.Email != user.Email)
-        {
-            var emailExists = await _dbContext.User
-                                        .AnyAsync(u => u.Email == request.Email && u.Id != request.Id && !u.IsDeleted, cancellationToken);
-            if (emailExists)
+            if (user == null)
             {
-                throw new InvalidOperationException($"邮箱 '{request.Email}' 已被其他用户使用");
+                throw new InvalidOperationException($"用户 {request.Id} 不存在或已被删除");
             }
 
-            user.Email = request.Email;
-        }
+            // 检查邮箱是否已被其他用户使用
+            if (!string.IsNullOrEmpty(request.Email) && request.Email != user.Email)
+            {
+                var emailExists = await _dbContext.User
+                                            .AnyAsync(u => u.Email == request.Email && u.Id != request.Id && !u.IsDeleted, cancellationToken);
+                if (emailExists)
+                {
+                    throw new InvalidOperationException($"邮箱 '{request.Email}' 已被其他用户使用");
+                }
+            }
 
-        if (!string.IsNullOrEmpty(request.NickName))
+            // 使用实体的Update方法更新用户信息
+            user.Update(
+                email: request.Email,
+                nickName: request.NickName,
+                avatarUrl: request.AvatarUrl,
+                phone: request.Phone);
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            _logger.LogInformation("用户更新成功: ID: {UserId}", request.Id);
+        }
+        catch (Exception ex)
         {
-            user.NickName = request.NickName;
+            _logger.LogError(ex, "更新用户失败: ID: {UserId}, {Message}", request.Id, ex.Message);
+            throw;
         }
-
-        if (!string.IsNullOrEmpty(request.AvatarUrl))
-        {
-            user.AvatarUrl = request.AvatarUrl;
-        }
-
-        if (!string.IsNullOrEmpty(request.Phone))
-        {
-            user.Phone = request.Phone;
-        }
-
-        user.UpdateTime = DateTimeOffset.UtcNow;
-
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
-} 
+}

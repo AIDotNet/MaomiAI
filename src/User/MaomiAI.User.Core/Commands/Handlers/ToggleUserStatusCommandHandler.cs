@@ -11,6 +11,7 @@ using MaomiAI.User.Shared.Commands;
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Commands.Handlers;
 
@@ -20,14 +21,17 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCommand>
 {
     private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<ToggleUserStatusCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ToggleUserStatusCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
-    public ToggleUserStatusCommandHandler(MaomiaiContext dbContext)
+    /// <param name="logger">日志记录器.</param>
+    public ToggleUserStatusCommandHandler(MaomiaiContext dbContext, ILogger<ToggleUserStatusCommandHandler> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     /// <summary>
@@ -38,18 +42,35 @@ public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCo
     /// <returns>Task.</returns>
     public async Task Handle(ToggleUserStatusCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.User
-                              .Where(u => u.Id == request.UserId && !u.IsDeleted)
-                              .FirstOrDefaultAsync(cancellationToken);
+        // 查询所有需要更新状态的用户
+        var users = await _dbContext.User
+            .Where(u => request.UserIds.Contains(u.Id))
+            .ToListAsync(cancellationToken);
 
-        if (user == null)
+        if (users.Count == 0)
         {
-            throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
+            _logger.LogWarning("切换用户状态失败：未找到指定的用户，UserIds: {UserIds}", string.Join(", ", request.UserIds));
+            throw new InvalidOperationException("未找到指定的用户");
         }
 
-        user.Status = request.Status;
-        user.UpdateTime = DateTimeOffset.UtcNow;
+        // 记录找到的用户数量和未找到的用户ID
+        var foundUserIds = users.Select(u => u.Id).ToList();
+        var notFoundUserIds = request.UserIds.Except(foundUserIds).ToList();
 
+        if (notFoundUserIds.Count > 0)
+        {
+            _logger.LogWarning("部分用户未找到: {NotFoundUserIds}", string.Join(", ", notFoundUserIds));
+        }
+
+        // 批量更新用户状态
+        foreach (var user in users)
+        {
+            user.ChangeStatus(request.Status);
+        }
+
+        // 保存更改
         await _dbContext.SaveChangesAsync(cancellationToken);
+
+        _logger.LogInformation("成功切换用户状态: 状态={Status}, 用户数量={Count}, UserIds={UserIds}", request.Status, users.Count, string.Join(", ", foundUserIds));
     }
-} 
+}

@@ -7,12 +7,12 @@
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.User.Core.Services;
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Commands.Handlers;
 
@@ -22,14 +22,17 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
 {
     private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<CreateUserCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CreateUserCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
-    public CreateUserCommandHandler(MaomiaiContext dbContext)
+    /// <param name="logger">日志记录器.</param>
+    public CreateUserCommandHandler(MaomiaiContext dbContext, ILogger<CreateUserCommandHandler> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     /// <summary>
@@ -40,50 +43,52 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     /// <returns>新用户ID.</returns>
     public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        // 检查用户名是否已存在
-        var usernameExists = await _dbContext.User
-                                       .AnyAsync(u => u.UserName == request.UserName && !u.IsDeleted, cancellationToken);
-        if (usernameExists)
+        try
         {
-            throw new InvalidOperationException($"用户名 '{request.UserName}' 已被使用");
+            var existingUser = await _dbContext.User
+                .Where(u => u.UserName == request.UserName || u.Email == request.Email || u.Phone == request.Phone)
+                .Select(u => new { u.UserName, u.Email, u.Phone })
+                .FirstOrDefaultAsync();
+
+            if (existingUser != null)
+            {
+                if (existingUser.UserName == request.UserName)
+                {
+                    throw new InvalidOperationException($"用户名 '{request.UserName}' 已被使用");
+                }
+
+                if (existingUser.Email == request.Email)
+                {
+                    throw new InvalidOperationException($"邮箱 '{request.Email}' 已被使用");
+                }
+
+                if (existingUser.Phone == request.Phone)
+                {
+                    throw new InvalidOperationException($"手机号 '{request.Phone}' 已被使用");
+                }
+            }
+
+            string hashedPassword = PasswordService.HashPassword(request.Password);
+
+            var user = UserEntity.Create(
+                userName: request.UserName,
+                email: request.Email,
+                password: hashedPassword,
+                nickName: request.NickName,
+                avatarUrl: request.AvatarUrl,
+                phone: request.Phone);
+
+            _dbContext.User.Add(user);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            _logger.LogInformation("用户创建成功: {UserName}, ID: {UserId}", request.UserName, user.Id);
+
+            return user.Id;
         }
-
-        // 检查邮箱是否已存在
-        var emailExists = await _dbContext.User
-                                    .AnyAsync(u => u.Email == request.Email && !u.IsDeleted, cancellationToken);
-        if (emailExists)
+        catch (Exception ex)
         {
-            throw new InvalidOperationException($"邮箱 '{request.Email}' 已被使用");
+            _logger.LogError(ex, "创建用户失败: {UserName}, {Message}", request.UserName, ex.Message);
+            throw;
         }
-
-        var user = new UserEntity
-        {
-            Id = Guid.NewGuid(),
-            UserName = request.UserName,
-            Email = request.Email,
-            Password = HashPassword(request.Password),
-            NickName = request.NickName,
-            AvatarUrl = request.AvatarUrl ?? string.Empty,
-            Phone = request.Phone ?? string.Empty,
-            Status = request.Status,
-            CreateTime = DateTimeOffset.UtcNow,
-            UpdateTime = DateTimeOffset.UtcNow,
-            Extensions = "{}"
-        };
-
-        _dbContext.User.Add(user);
-        await _dbContext.SaveChangesAsync(cancellationToken);
-
-        return user.Id;
     }
-
-    // 哈希密码
-    private static string HashPassword(string password)
-    {
-        // 在实际应用中，应该使用更安全的密码哈希算法，例如BCrypt或Argon2
-        // 这里为了简化，使用简单的SHA256+Salt
-        var salt = Guid.NewGuid().ToString("N");
-        var hash = HashHelper.ComputeSha256Hash(password + salt);
-        return $"{hash}:{salt}";
-    }
-} 
+}

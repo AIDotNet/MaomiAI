@@ -4,9 +4,12 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
 using MaomiAI.Database;
 using MaomiAI.User.Core.Services;
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
 
@@ -14,10 +17,8 @@ using MediatR;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace MaomiAI.User.Core.Commands.Handlers;
 
@@ -28,16 +29,19 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
 {
     private readonly MaomiaiContext _dbContext;
     private readonly IConfiguration _configuration;
+    private readonly ILogger<LoginCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LoginCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
     /// <param name="configuration">配置.</param>
-    public LoginCommandHandler(MaomiaiContext dbContext, IConfiguration configuration)
+    /// <param name="logger">日志记录器.</param>
+    public LoginCommandHandler(MaomiaiContext dbContext, IConfiguration configuration, ILogger<LoginCommandHandler> logger)
     {
         _dbContext = dbContext;
         _configuration = configuration;
+        _logger = logger;
     }
 
     /// <summary>
@@ -48,45 +52,35 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
     /// <returns>登录结果.</returns>
     public async Task<LoginResult> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.User
-                                .Where(u => !u.IsDeleted && 
-                                           (u.UserName == request.Username || u.Email == request.Username))
-                                .FirstOrDefaultAsync(cancellationToken);
-
-        if (user == null)
+        try
         {
-            throw new InvalidOperationException("用户名或密码错误");
-        }
+            var user = await _dbContext.User
+                .Where(u => u.UserName == request.Username || u.Phone == request.Username || u.Email == request.Username)
+                .FirstOrDefaultAsync(cancellationToken)
+                ?? throw new InvalidOperationException("用户名或密码错误");
 
-        // 验证密码
-        if (!VerifyPassword(request.Password, user.Password))
+            if (!PasswordService.VerifyPassword(request.Password, user.Password))
+            {
+                _logger.LogWarning("密码验证失败: {Username}", request.Username);
+                throw new InvalidOperationException("用户名或密码错误");
+            }
+
+            if (!user.Status)
+            {
+                _logger.LogWarning("禁用用户尝试登录: {Username}", request.Username);
+                throw new InvalidOperationException("用户已被禁用");
+            }
+
+            var result = GenerateAccessToken(user);
+            _logger.LogInformation("用户登录成功: {Username}, ID: {UserId}", user.UserName, user.Id);
+
+            return result;
+        }
+        catch (Exception ex)
         {
-            throw new InvalidOperationException("用户名或密码错误");
+            _logger.LogError(ex, "用户登录失败: {Username}, {Message}", request.Username, ex.Message);
+            throw;
         }
-
-        // 检查用户状态
-        if (!user.Status)
-        {
-            throw new InvalidOperationException("用户已被禁用");
-        }
-
-        return GenerateAccessToken(user);
-    }
-
-    // 验证密码
-    private static bool VerifyPassword(string password, string hashedPassword)
-    {
-        var parts = hashedPassword.Split(':');
-        if (parts.Length != 2)
-        {
-            return false;
-        }
-
-        var hash = parts[0];
-        var salt = parts[1];
-        var computedHash = HashHelper.ComputeSha256Hash(password + salt);
-
-        return computedHash == hash;
     }
 
     // 生成访问令牌
@@ -110,12 +104,14 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
             new Claim("username", user.UserName),
         };
 
+        var expirationTime = DateTimeOffset.UtcNow.AddMinutes(expirationInMinutes).ToUnixTimeMilliseconds();
+
         var token = new JwtSecurityToken(
             issuer: issuer,
-            audience: audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(expirationInMinutes),
-            signingCredentials: credentials);
+            audience: audience,
+            signingCredentials: credentials,
+            expires: DateTimeOffset.FromUnixTimeMilliseconds(expirationTime).UtcDateTime);
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var tokenString = tokenHandler.WriteToken(token);
@@ -125,7 +121,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
             UserId = user.Id,
             UserName = user.UserName,
             AccessToken = tokenString,
-            ExpiresIn = expirationInMinutes * 60
+            ExpiresIn = expirationTime
         };
     }
-} 
+}

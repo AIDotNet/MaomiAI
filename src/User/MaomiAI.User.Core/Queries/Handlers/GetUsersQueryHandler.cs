@@ -5,13 +5,13 @@
 // </copyright>
 
 using MaomiAI.Database;
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Models;
 using MaomiAI.User.Shared.Queries;
 
 using MediatR;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Queries.Handlers;
 
@@ -21,14 +21,17 @@ namespace MaomiAI.User.Core.Queries.Handlers;
 public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, PagedResult<UserDto>>
 {
     private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<GetUsersQueryHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GetUsersQueryHandler"/> class.
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
-    public GetUsersQueryHandler(MaomiaiContext dbContext)
+    /// <param name="logger">日志记录器.</param>
+    public GetUsersQueryHandler(MaomiaiContext dbContext, ILogger<GetUsersQueryHandler> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     /// <summary>
@@ -39,39 +42,64 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, PagedResult<U
     /// <returns>用户列表.</returns>
     public async Task<PagedResult<UserDto>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        IQueryable<Database.Entities.UserEntity> query = _dbContext.User.Where(u => !u.IsDeleted);
+        IQueryable<Database.Entities.UserEntity> query = _dbContext.User;
 
-        if (!string.IsNullOrWhiteSpace(request.Keyword))
+        query = ApplyFilters(query, request);
+
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        if (totalCount == 0)
         {
-            var keyword = request.Keyword.Trim().ToLower();
-            query = query.Where(u => u.UserName.ToLower().Contains(keyword) ||
-                                    u.Email.ToLower().Contains(keyword) ||
-                                    u.NickName.ToLower().Contains(keyword));
+            return new PagedResult<UserDto>(new List<UserDto>(), 0, request.Page, request.PageSize);
         }
 
+        // 应用排序和分页，并映射到DTO
+        var items = await query
+            .OrderByDescending(u => u.CreateTime)
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize)
+            .Select(u => new UserDto
+            {
+                Id = u.Id,
+                UserName = u.UserName,
+                Email = u.Email,
+                NickName = u.NickName,
+                AvatarUrl = u.AvatarUrl,
+                Phone = u.Phone,
+                Status = u.Status,
+                CreateTime = u.CreateTime,
+                UpdateTime = u.UpdateTime
+            })
+            .ToListAsync(cancellationToken);
+
+        return new PagedResult<UserDto>(items, totalCount, request.Page, request.PageSize);
+    }
+
+    /// <summary>
+    /// 应用筛选条件
+    /// </summary>
+    /// <param name="query">基础查询</param>
+    /// <param name="request">查询请求</param>
+    /// <returns>应用筛选条件后的查询</returns>
+    private static IQueryable<Database.Entities.UserEntity> ApplyFilters(IQueryable<Database.Entities.UserEntity> query, GetUsersQuery request)
+    {
+        if (!string.IsNullOrWhiteSpace(request.Keyword))
+        {
+            string keyword = "%" + request.Keyword.ToUpperInvariant() + "%";
+
+            query = query.Where(u =>
+                EF.Functions.ILike(u.UserName, keyword) ||
+                EF.Functions.ILike(u.NickName, keyword) ||
+                EF.Functions.ILike(u.Email, keyword) ||
+                EF.Functions.ILike(u.Phone, keyword));
+        }
+
+        // 状态筛选
         if (request.Status.HasValue)
         {
             query = query.Where(u => u.Status == request.Status.Value);
         }
 
-        var totalCount = await query.LongCountAsync(cancellationToken);
-        var items = await query.OrderByDescending(u => u.CreateTime)
-                              .Skip((request.Page - 1) * request.PageSize)
-                              .Take(request.PageSize)
-                              .Select(u => new UserDto
-                              {
-                                  Id = u.Id,
-                                  UserName = u.UserName,
-                                  Email = u.Email,
-                                  NickName = u.NickName,
-                                  AvatarUrl = u.AvatarUrl,
-                                  Phone = u.Phone,
-                                  Status = u.Status,
-                                  CreateTime = u.CreateTime,
-                                  UpdateTime = u.UpdateTime
-                              })
-                              .ToListAsync(cancellationToken);
-
-        return new PagedResult<UserDto>(items, totalCount, request.Page, request.PageSize);
+        return query;
     }
-} 
+}

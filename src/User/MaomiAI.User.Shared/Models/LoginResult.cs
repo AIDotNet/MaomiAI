@@ -34,5 +34,5 @@ public class LoginResult
     /// <summary>
     /// 过期时间（秒）.
     /// </summary>
-    public int ExpiresIn { get; set; }
-} 
+    public long ExpiresIn { get; set; }
+}

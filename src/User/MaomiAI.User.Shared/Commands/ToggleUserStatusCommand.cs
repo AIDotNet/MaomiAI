@@ -19,11 +19,11 @@ public class ToggleUserStatusCommand : IRequest
     /// 用户ID.
     /// </summary>
     [Required]
-    public Guid UserId { get; set; }
+    public List<Guid> UserIds { get; set; } = new List<Guid>();
 
     /// <summary>
     /// 状态: true-启用, false-禁用.
     /// </summary>
     [Required]
     public bool Status { get; set; }
-} 
+}

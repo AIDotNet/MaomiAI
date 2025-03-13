@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI;
+
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
