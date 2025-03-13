@@ -7,6 +7,7 @@
 using Maomi;
 using MaomiAI.Database;
 using MaomiAI.Infra;
+using MaomiAI.Store;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,6 +26,7 @@ namespace MaomiAI;
 [InjectModule<DatabaseCoreModule>]
 [InjectModule<EmbeddingCoreModule>]
 [InjectModule<DocumentModule>]
+[InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
 public partial class MainModule : IModule
 {
@@ -34,7 +36,7 @@ public partial class MainModule : IModule
     public MainModule(IConfiguration configuration)
     {
         _configuration = configuration;
-        _systemOptions = configuration.Get<SystemOptions>();
+        _systemOptions = configuration.Get<SystemOptions>()!;
     }
 
     /// <inheritdoc/>

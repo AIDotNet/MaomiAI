@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "MaomAI.Infra.Shared": {
+    "MaomiAI.Infra.Shared": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://0.0.0.0:5000"
+      "applicationUrl": "https://localhost:60222;http://localhost:60223"
     }
   }
 }

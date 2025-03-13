@@ -35,4 +35,31 @@ public class SystemOptions
 
     // s3 静态资源存储
     // s3 文档存储
+
+    /// <summary>
+    /// 静态资源存储类型，将会公开全部访问，可选：S3、Local.
+    /// </summary>
+    public string PublicStoreType { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 静态资源存储配置.
+    /// </summary>
+    public StoreOption PublicStoreS3 { get; init; }
+    public string PublicStoreLocal { get; init; }
+
+    /// <summary>
+    /// 私有资源存储类型，可选：S3、Local.
+    /// </summary>
+    public string PrivateStoreType { get; init; } = string.Empty;
+
+    public StoreOption PrivateStoreS3 { get; init; }
+    public string PrivateStoreLocal { get; init; }
+
+    public class StoreOption
+    {
+        public string Endpoint { get; init; } = string.Empty;
+        public string Bucket { get; init; } = string.Empty;
+        public string AccessKeyId { get; init; } = string.Empty;
+        public string AccessKeySecret { get; init; } = string.Empty;
+    }
 }

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>MaomiAI.Store</RootNamespace>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
+	</ItemGroup>
+</Project>

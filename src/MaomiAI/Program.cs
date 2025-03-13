@@ -17,7 +17,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapScalarApiReference(); // scalar/v1
-    app.MapOpenApi();
+    app.MapOpenApi();            // /openapi/v1.json
 }
 
 app.UseAuthentication();
