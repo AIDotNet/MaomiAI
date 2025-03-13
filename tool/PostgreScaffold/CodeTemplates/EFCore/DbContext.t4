@@ -53,7 +53,7 @@ namespace <#= NamespaceHint #>;
 public partial class <#= Options.ContextName #> : DbContext
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly DBContextOptions _contextOptions;
+    private readonly DatabaseOptions _contextOptions;
 
 <#
     if (!Options.SuppressOnConfiguring)
@@ -72,7 +72,7 @@ public partial class <#= Options.ContextName #> : DbContext
     /// <param name="options"></param>
     /// <param name="serviceProvider"></param>
     /// <param name="contextOptions"></param>
-    public <#= Options.ContextName #>(DbContextOptions<<#= Options.ContextName #>> options, IServiceProvider serviceProvider, DBContextOptions contextOptions)
+    public <#= Options.ContextName #>(DbContextOptions<<#= Options.ContextName #>> options, IServiceProvider serviceProvider, DatabaseOptions contextOptions)
         : base(options)
     {
         _serviceProvider = serviceProvider;
