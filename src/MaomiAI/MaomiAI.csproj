@@ -32,6 +32,7 @@
 		<ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
 		<ProjectReference Include="..\store\MaomiAI.Store.Core\MaomiAI.Store.Core.csproj" />
 		<ProjectReference Include="..\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj" />
+		<ProjectReference Include="..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

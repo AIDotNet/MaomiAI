@@ -10,6 +10,7 @@ using MaomiAI.User.Shared.Queries;
 
 using MediatR;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaomiAI.Controllers;
@@ -125,6 +126,7 @@ public class UsersController : ControllerBase
     /// <param name="command">登录命令.</param>
     /// <returns>登录结果.</returns>
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<ActionResult<LoginResult>> Login(LoginCommand command)
     {
         return await _mediator.Send(command);

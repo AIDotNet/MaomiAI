@@ -16,9 +16,12 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapScalarApiReference(); // scalar/v1
-    app.MapOpenApi();            // /openapi/v1.json
+    app.MapScalarApiReference().AllowAnonymous(); // scalar/v1
+    app.MapOpenApi().AllowAnonymous();            // /openapi/v1.json
 }
+
+// 使用JWT中间件
+app.UseMaomiAIMiddleware();
 
 app.UseAuthentication();
 app.UseAuthorization();

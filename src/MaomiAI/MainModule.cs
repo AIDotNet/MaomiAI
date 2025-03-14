@@ -52,8 +52,6 @@ public partial class MainModule : IModule
             apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
         });
 
-        ConfigureAuthentication(context);
-
         ConfigureOpeiApi(context);
 
         context.Services.AddMediatR(options =>
@@ -101,31 +99,6 @@ public partial class MainModule : IModule
 
             options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
             options.AddSchemaTransformer<TypeSchemeTransformer>();
-        });
-    }
-
-    private void ConfigureAuthentication(ServiceContext context)
-    {
-        context.Services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        })
-        .AddJwtBearer(options =>
-        {
-            var rsa = new RSACryptoServiceProvider();
-            rsa.ImportFromPem(File.ReadAllText("configs/rsa_private.key"));
-
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = _systemOptions.Server,
-                ValidAudience = "client",
-                IssuerSigningKey = new RsaSecurityKey(rsa)
-            };
         });
     }
 }

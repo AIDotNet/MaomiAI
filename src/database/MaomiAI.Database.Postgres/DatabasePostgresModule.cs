@@ -87,12 +87,21 @@ public class DatabasePostgresModule : IModule
 
         context.Services.AddDbContext<MaomiaiContext>(contextOptionsBuilder);
 
-        DbContextOptionsBuilder<MaomiaiContext> options = new();
-        contextOptionsBuilder.Invoke(options);
+        try
+        {
+            DbContextOptionsBuilder<MaomiaiContext> options = new();
+            contextOptionsBuilder.Invoke(options);
 
-        using var dbContext = new MaomiaiContext(options.Options, ioc, dbContextOptions);
+            using var dbContext = new MaomiaiContext(options.Options, ioc, dbContextOptions);
 
-        // 如果数据库不存在，则会创建数据库及其所有表。
-        dbContext.Database.EnsureCreated();
+            // 如果数据库不存在，则会创建数据库及其所有表。
+            dbContext.Database.EnsureCreated();
+        }
+        catch (Exception ex)
+        {
+            var logger = _loggerFactory.CreateLogger<DatabasePostgresModule>();
+            logger.LogError(ex, "创建PostgreSQL数据库时出错");
+            // 不抛出异常，允许应用程序继续运行
+        }
     }
 }

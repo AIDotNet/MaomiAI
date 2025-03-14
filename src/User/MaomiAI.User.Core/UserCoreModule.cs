@@ -1,4 +1,4 @@
-// <copyright file="UserModule.cs" company="MaomiAI">
+// <copyright file="UserCoreModule.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -9,6 +9,7 @@ using System.Text;
 
 using Maomi;
 using MaomiAI.User.Api;
+using MaomiAI.User.Core.Services;
 using MediatR;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -27,5 +28,7 @@ public class UserCoreModule : IModule
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
+        // 注册认证中间件
+        context.Services.AddScoped<AuthMiddleware>();
     }
 }
