@@ -1,76 +1,95 @@
-﻿using Amazon;
-using Amazon.S3;
+﻿using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
-using Amazon.SecurityToken;
-using Amazon.SecurityToken.Model;
-using MaomiAI.Infra;
+using System.Net;
 using static MaomiAI.Infra.SystemOptions;
 
 namespace MaomiAI.Store.Services;
 
-public abstract class S3Store
+public class S3Store: IFileStore
 {
     protected readonly IAmazonS3 _s3Client;
     protected readonly StoreOption _storeOption;
 
-    public S3Store(SystemOptions systemOptions)
+    public S3Store(StoreOption storeOption)
     {
-        var endpoint = systemOptions.PublicStoreS3.Endpoint;
-        endpoint = endpoint.EndsWith('/') ? endpoint[0..(endpoint.Length - 1)] : endpoint;
-        _storeOption = new StoreOption
-        {
-            AccessKeyId = systemOptions.PublicStoreS3.AccessKeyId,
-            AccessKeySecret = systemOptions.PublicStoreS3.AccessKeySecret,
-            Bucket = systemOptions.PublicStoreS3.Bucket,
-            Endpoint = endpoint
-        };
+        _storeOption = storeOption;
 
         _s3Client = new AmazonS3Client(_storeOption.AccessKeyId, _storeOption.AccessKeySecret, new AmazonS3Config
         {
-            RegionEndpoint = RegionEndpoint.USEast1,
             ServiceURL = _storeOption.Endpoint,
-            ForcePathStyle = true
+            ForcePathStyle = true,
+            UseHttp = true
         });
     }
 
-    public async Task<string> UploadFileAsync(Stream inputStream, string key)
+    public async Task<Uri> UploadFileAsync(Stream inputStream, string objectKey)
     {
         using var fileTransferUtility = new TransferUtility(_s3Client);
-        await fileTransferUtility.UploadAsync(inputStream, _storeOption.Bucket, key);
-        return $"{_storeOption.Endpoint}/{key}";
+        await fileTransferUtility.UploadAsync(inputStream, _storeOption.Bucket, objectKey);
+        return new Uri($"{_storeOption.Endpoint}/{objectKey}");
     }
 
-
-    public async Task DeleteFileAsync(string key)
+    public async Task<IReadOnlyDictionary<string, Uri>> GetFileUrlAsync(IEnumerable<string> objectKeys, TimeSpan expiryDuration)
     {
-        var deleteObjectRequest = new DeleteObjectRequest
+        var tasks = objectKeys.Select(async key =>
+        {
+            var request = new GetPreSignedUrlRequest
+            {
+                BucketName = _storeOption.Bucket,
+                Key = key,
+                Expires = DateTime.UtcNow.Add(expiryDuration)
+            };
+            var url = await _s3Client.GetPreSignedURLAsync(request);
+            return new KeyValuePair<string, Uri>(key, new Uri(url));
+        });
+
+        var urls = await Task.WhenAll(tasks);
+
+        return urls.ToDictionary();
+    }
+
+    public async Task<bool> FileExistsAsync(string objectKey)
+    {
+        var request = new GetObjectMetadataRequest
         {
             BucketName = _storeOption.Bucket,
-            Key = key
+            Key = objectKey
         };
-        await _s3Client.DeleteObjectAsync(deleteObjectRequest);
+        try
+        {
+            await _s3Client.GetObjectMetadataAsync(request);
+            return true;
+        }
+        catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
+        {
+            return false;
+        }
     }
 
-    public string GetFileUrl(string key, TimeSpan expiryDuration)
+    public async Task<IReadOnlyDictionary<string, long>> GetFileSizeAsync(IEnumerable<string> objectKeys)
     {
-        var request = new GetPreSignedUrlRequest
+        var tasks = objectKeys.Select(async key =>
+        {
+            var request = new GetObjectMetadataRequest
+            {
+                BucketName = _storeOption.Bucket,
+                Key = key
+            };
+            var response = await _s3Client.GetObjectMetadataAsync(request);
+            return new KeyValuePair<string, long>(key, response.ContentLength);
+        });
+        var sizes = await Task.WhenAll(tasks);
+        return sizes.ToDictionary();
+    }
+
+    public async Task DeleteFilesAsync(IEnumerable<string> objectKeys)
+    {
+        var deleteObjectsRequest = new DeleteObjectsRequest
         {
             BucketName = _storeOption.Bucket,
-            Key = key,
-            Expires = DateTime.UtcNow.Add(expiryDuration)
+            Objects = objectKeys.Select(key => new KeyVersion { Key = key }).ToList()
         };
-        return _s3Client.GetPreSignedURL(request);
-    }
-
-    public async Task<Credentials> GetTemporarySessionAsync(int durationSeconds)
-    {
-        using var stsClient = new AmazonSecurityTokenServiceClient();
-        var sessionTokenRequest = new GetSessionTokenRequest
-        {
-            DurationSeconds = durationSeconds
-        };
-        var sessionTokenResponse = await stsClient.GetSessionTokenAsync(sessionTokenRequest);
-        return sessionTokenResponse.Credentials;
+        await _s3Client.DeleteObjectsAsync(deleteObjectsRequest);
     }
 }

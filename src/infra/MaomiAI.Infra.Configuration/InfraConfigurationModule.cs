@@ -65,6 +65,7 @@ public class InfraConfigurationModule : IModule
     // 导入系统配置.
     private void ImportSystemConfiguration(ServiceContext context, IConfigurationBuilder configurationBuilder)
     {
+        // todo: 将 MAI_CONFIG 改成指定目录，而不是指定配置文件.
         // 指定环境变量从文件导入配置
         var configurationFilePath = Environment.GetEnvironmentVariable("MAI_CONFIG");
         if (string.IsNullOrWhiteSpace(configurationFilePath))

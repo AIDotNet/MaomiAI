@@ -33,27 +33,26 @@ public class SystemOptions
 
     // 向量数据库
 
-    // s3 静态资源存储
-    // s3 文档存储
+    public ObjectStore PublicStore { get; init; }
+    public ObjectStore PrivateStore { get; init; }
 
-    /// <summary>
-    /// 静态资源存储类型，将会公开全部访问，可选：S3、Local.
-    /// </summary>
-    public string PublicStoreType { get; init; } = string.Empty;
+    public class ObjectStore
+    {
+        /// <summary>
+        /// 静态资源存储类型，将会公开全部访问，可选：S3、Local.
+        /// </summary>
+        public string Type { get; init; } = string.Empty;
 
-    /// <summary>
-    /// 静态资源存储配置.
-    /// </summary>
-    public StoreOption PublicStoreS3 { get; init; }
-    public string PublicStoreLocal { get; init; }
+        /// <summary>
+        /// Type = "S3" 时填写，静态资源存储配置.
+        /// </summary>
+        public StoreOption Options { get; init; }
 
-    /// <summary>
-    /// 私有资源存储类型，可选：S3、Local.
-    /// </summary>
-    public string PrivateStoreType { get; init; } = string.Empty;
-
-    public StoreOption PrivateStoreS3 { get; init; }
-    public string PrivateStoreLocal { get; init; }
+        /// <summary>
+        /// Type = "Local" 时填写，静态资源存储路径.
+        /// </summary>
+        public string Path { get; init; } = string.Empty;
+    }
 
     public class StoreOption
     {
