@@ -6,7 +6,6 @@
 
 using MaomiAI.Infra.Helpers;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace MaomiAI.Infra.Service;
 

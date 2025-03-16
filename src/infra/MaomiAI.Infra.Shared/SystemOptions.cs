@@ -16,10 +16,7 @@ public class SystemOptions
     /// </summary>
     public string Server { get; init; } = string.Empty;
 
-    /// <summary>
-    /// RSA 私钥路径.
-    /// </summary>
-    public string RsaPath { get; init; } = string.Empty;
+    public string AES { get; init; } = string.Empty;
 
     /// <summary>
     /// 系统数据库类型.

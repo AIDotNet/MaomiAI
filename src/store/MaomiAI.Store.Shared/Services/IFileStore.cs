@@ -1,8 +1,4 @@
-﻿using Maomi;
-using MaomiAI.Store.Enums;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace MaomiAI.Store.Services;
+﻿namespace MaomiAI.Store.Services;
 
 public interface IFileStore
 {
@@ -42,20 +38,4 @@ public interface IFileStore
     /// <param name="objectKeys"></param>
     /// <returns></returns>
     Task DeleteFilesAsync(IEnumerable<string> objectKeys);
-}
-
-public interface IFileFactory
-{
-    IFileStore Create(FileStoreType type);
-}
-
-[InjectOnScoped]
-public class DefaultFileFactory : IFileFactory
-{
-    private readonly IServiceProvider _serviceProvider;
-    public DefaultFileFactory(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
-    public IFileStore Create(FileStoreType type) => _serviceProvider.GetRequiredKeyedService<IFileStore>(type);
 }

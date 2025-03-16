@@ -10,6 +10,9 @@ using MaomiAI.Store.Enums;
 using MaomiAI.Store.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
+using MaomiAI.Infra.Service;
+using System.IO;
 
 namespace MaomiAI.Store;
 
@@ -23,17 +26,31 @@ public class StoreLocalFileSystemModule : IModule
 
         if (systemOptions.PublicStore.Type == "Local")
         {
-            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public, (s, _) =>
-            {
-                return new LocalStore(systemOptions.Server, systemOptions.PublicStore.Path);
-            });
+            var localStore = new LocalStore(
+                context.Services.GetRequiredService<IAESProvider>(),
+                systemOptions.Server,
+                systemOptions.PublicStore.Path
+            );
+            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public, (s, _) => localStore);
+
+            // Register SecurePhysicalFileProvider
+            var storePath = Path.Combine(Directory.GetCurrentDirectory(), "files");
+            context.Services.AddSingleton(sp => new SecurePhysicalFileProvider(
+                storePath,
+                localStore,
+                sp.GetRequiredService<IHttpContextAccessor>()
+            ));
         }
 
         if (systemOptions.PrivateStore.Type == "Local")
         {
             context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private, (s, _) =>
             {
-                return new LocalStore(systemOptions.Server, systemOptions.PrivateStore.Path);
+                return new LocalStore(
+                    s.GetRequiredService<IAESProvider>(),
+                    systemOptions.Server,
+                    systemOptions.PrivateStore.Path
+                );
             });
         }
     }

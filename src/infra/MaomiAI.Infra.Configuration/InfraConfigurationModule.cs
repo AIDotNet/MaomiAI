@@ -51,6 +51,10 @@ public class InfraConfigurationModule : IModule
         var systemOptions = configurationBuilder.Get<SystemOptions>() ?? throw new FormatException("The system configuration cannot be loaded.");
         context.Services.AddSingleton(systemOptions);
 
+        context.Services.AddSingleton<IAESProvider>(s =>
+        {
+            return new AESProvider(systemOptions.AES);
+        });
     }
 
     // 检查配置目录是否存在.
