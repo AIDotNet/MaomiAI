@@ -5,14 +5,15 @@
 // </copyright>
 
 using Maomi;
+
 using MaomiAI.Infra;
+using MaomiAI.Infra.Service;
 using MaomiAI.Store.Enums;
 using MaomiAI.Store.Services;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Http;
-using MaomiAI.Infra.Service;
-using System.IO;
 
 namespace MaomiAI.Store;
 
@@ -20,38 +21,38 @@ public class StoreLocalFileSystemModule : IModule
 {
     public void ConfigureServices(ServiceContext context)
     {
-        var systemOptions = context.Configuration.Get<SystemOptions>();
+        //var systemOptions = context.Configuration.Get<SystemOptions>();
 
-        ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
+        //ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
 
-        if (systemOptions.PublicStore.Type == "Local")
-        {
-            var localStore = new LocalStore(
-                context.Services.GetRequiredService<IAESProvider>(),
-                systemOptions.Server,
-                systemOptions.PublicStore.Path
-            );
-            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public, (s, _) => localStore);
+        //if (systemOptions.PublicStore.Type == "Local")
+        //{
+        //    var localStore = new LocalStore(
+        //        context.Services.GetRequiredService<IAESProvider>(),
+        //        systemOptions.Server,
+        //        systemOptions.PublicStore.Path
+        //    );
+        //    context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public, (s, _) => localStore);
 
-            // Register SecurePhysicalFileProvider
-            var storePath = Path.Combine(Directory.GetCurrentDirectory(), "files");
-            context.Services.AddSingleton(sp => new SecurePhysicalFileProvider(
-                storePath,
-                localStore,
-                sp.GetRequiredService<IHttpContextAccessor>()
-            ));
-        }
+        //    // Register SecurePhysicalFileProvider
+        //    var storePath = Path.Combine(Directory.GetCurrentDirectory(), "files");
+        //    context.Services.AddSingleton(sp => new LocalPhysicalFileProvider(
+        //        storePath,
+        //        localStore,
+        //        sp.GetRequiredService<IHttpContextAccessor>()
+        //    ));
+        //}
 
-        if (systemOptions.PrivateStore.Type == "Local")
-        {
-            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private, (s, _) =>
-            {
-                return new LocalStore(
-                    s.GetRequiredService<IAESProvider>(),
-                    systemOptions.Server,
-                    systemOptions.PrivateStore.Path
-                );
-            });
-        }
+        //if (systemOptions.PrivateStore.Type == "Local")
+        //{
+        //    context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private, (s, _) =>
+        //    {
+        //        return new LocalStore(
+        //            s.GetRequiredService<IAESProvider>(),
+        //            systemOptions.Server,
+        //            systemOptions.PrivateStore.Path
+        //        );
+        //    });
+        //}
     }
 }

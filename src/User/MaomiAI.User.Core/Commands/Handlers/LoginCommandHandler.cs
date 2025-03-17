@@ -52,35 +52,27 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
     /// <returns>登录结果.</returns>
     public async Task<LoginResult> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        try
+        var user = await _dbContext.User
+            .Where(u => u.UserName == request.Username || u.Phone == request.Username || u.Email == request.Username)
+            .FirstOrDefaultAsync(cancellationToken)
+            ?? throw new InvalidOperationException("用户名或密码错误");
+
+        if (!PasswordService.VerifyPassword(request.Password, user.Password))
         {
-            var user = await _dbContext.User
-                .Where(u => u.UserName == request.Username || u.Phone == request.Username || u.Email == request.Username)
-                .FirstOrDefaultAsync(cancellationToken)
-                ?? throw new InvalidOperationException("用户名或密码错误");
-
-            if (!PasswordService.VerifyPassword(request.Password, user.Password))
-            {
-                _logger.LogWarning("密码验证失败: {Username}", request.Username);
-                throw new InvalidOperationException("用户名或密码错误");
-            }
-
-            if (!user.Status)
-            {
-                _logger.LogWarning("禁用用户尝试登录: {Username}", request.Username);
-                throw new InvalidOperationException("用户已被禁用");
-            }
-
-            var result = GenerateAccessToken(user);
-            _logger.LogInformation("用户登录成功: {Username}, ID: {UserId}", user.UserName, user.Id);
-
-            return result;
+            _logger.LogWarning("密码验证失败: {Username}", request.Username);
+            throw new InvalidOperationException("用户名或密码错误");
         }
-        catch (Exception ex)
+
+        if (!user.Status)
         {
-            _logger.LogError(ex, "用户登录失败: {Username}, {Message}", request.Username, ex.Message);
-            throw;
+            _logger.LogWarning("禁用用户尝试登录: {Username}", request.Username);
+            throw new InvalidOperationException("用户已被禁用");
         }
+
+        var result = GenerateAccessToken(user);
+        _logger.LogInformation("用户登录成功: {Username}, ID: {UserId}", user.UserName, user.Id);
+
+        return result;
     }
 
     // 生成访问令牌
