@@ -5,7 +5,7 @@
 // </copyright>
 
 using MaomiAI.Infra.Models;
-using MaomiAI.User.Shared.Attributes;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,7 +39,6 @@ public class TestController : ControllerBase
     /// </summary>
     /// <returns>公开信息.</returns>
     [HttpGet("public")]
-    [AllowAnonymous]
     public IActionResult GetPublicInfo()
     {
         return Ok(new { message = "这是公开信息，无需认证即可访问" });
@@ -84,7 +83,6 @@ public class TestController : ControllerBase
     /// </summary>
     /// <returns>管理员信息.</returns>
     [HttpGet("admin")]
-    [RequireRoles("Admin")]
     public IActionResult GetAdminInfo()
     {
         _logger.LogInformation("管理员 {UserName} ({UserId}) 访问了管理员信息", _userContext.UserName, _userContext.UserId);
@@ -103,7 +101,6 @@ public class TestController : ControllerBase
     /// </summary>
     /// <returns>超级管理员信息.</returns>
     [HttpGet("super-admin")]
-    [RequireRoles(RequireRolesAttribute.RoleCheckMode.All, "Admin", "SuperAdmin")]
     public IActionResult GetSuperAdminInfo()
     {
         _logger.LogInformation("超级管理员 {UserName} ({UserId}) 访问了超级管理员信息", _userContext.UserName, _userContext.UserId);

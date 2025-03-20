@@ -120,4 +120,41 @@ public class TeamsController : ControllerBase
         await _mediator.Send(command);
         return NoContent();
     }
+
+    /// <summary>
+    /// 邀请用户加入团队.
+    /// </summary>
+    /// <param name="command">邀请用户加入团队命令.</param>
+    /// <returns>新创建的团队成员ID.</returns>
+    [HttpPost("invite-user")]
+    public async Task<ActionResult<int>> InviteUser([FromBody] InviteUserToTeamCommand command)
+    {
+        var memberId = await _mediator.Send(command);
+        return Ok(memberId);
+    }
+
+    /// <summary>
+    /// 撤销用户的管理员权限.
+    /// </summary>
+    /// <param name="command">撤销管理员权限命令.</param>
+    /// <returns>操作结果.</returns>
+    [HttpPost("revoke-admin")]
+    public async Task<IActionResult> RevokeAdminPermission([FromBody] RevokeAdminPermissionCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// 获取团队成员列表.
+    /// </summary>
+    /// <param name="teamId">团队ID.</param>
+    /// <param name="query">查询参数.</param>
+    /// <returns>团队成员列表.</returns>
+    [HttpGet("get-team-members/{teamId}")]
+    public async Task<ActionResult<PagedResult<TeamMemberDto>>> GetTeamMembers(Guid teamId, [FromQuery] GetTeamMembersQuery query)
+    {
+        query.TeamId = teamId;
+        return await _mediator.Send(query);
+    }
 }

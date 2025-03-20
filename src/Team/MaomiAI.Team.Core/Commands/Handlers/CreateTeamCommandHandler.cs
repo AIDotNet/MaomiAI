@@ -48,31 +48,20 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, Guid>
     /// <returns>新创建的团队ID.</returns>
     public async Task<Guid> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
     {
-        try
-        {
-            // 获取当前用户ID
-            var currentUserId = _userContext.UserId;
+        var currentUserId = _userContext.UserId;
 
-            // 使用领域模型的工厂方法创建团队实体
-            var team = TeamEntity.Create(
-                request.Name,
-                request.Description,
-                request.Avatar,
-                currentUserId);
+        // 使用领域模型的工厂方法创建团队实体
+        var team = TeamEntity.Create(
+            request.Name,
+            request.Description,
+            request.Avatar,
+            currentUserId);
 
-            // 添加到数据库
-            await _dbContext.Teams.AddAsync(team, cancellationToken);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+        // 添加到数据库
+        await _dbContext.Teams.AddAsync(team, cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
-            _logger.LogInformation("成功创建团队: {TeamId}, 名称: {Name}, 创建者: {CreateUserId}",
-                team.Uuid, team.Name, currentUserId);
-
-            return team.Uuid;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "创建团队失败: {Message}", ex.Message);
-            throw;
-        }
+        _logger.LogInformation("成功创建团队: {TeamId}, 名称: {Name}, 创建者: {CreateUserId}", team.Uuid, team.Name, currentUserId);
+        return team.Uuid;
     }
 }

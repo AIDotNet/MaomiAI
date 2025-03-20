@@ -8,6 +8,7 @@ using Maomi;
 using MaomiAI.Database;
 using MaomiAI.Infra;
 using MaomiAI.Store;
+using MaomiAI.Team.Core;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,6 +29,7 @@ namespace MaomiAI;
 [InjectModule<DocumentModule>]
 [InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
+[InjectModule<TeamCoreModule>]
 public partial class MainModule : IModule
 {
     private readonly IConfiguration _configuration;

@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-using Maomi;
+﻿using Maomi;
 
 using MaomiAI.Middlewares;
 using MaomiAI.Services;
@@ -11,6 +9,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 using Serilog;
+
+using System.Text;
 
 namespace MaomiAI;
 
