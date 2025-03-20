@@ -5,30 +5,30 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 更新团队成员角色命令.
-/// </summary>
-public class UpdateTeamMemberRoleCommand : IRequest
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 团队ID.
+    /// 更新团队成员角色命令.
     /// </summary>
-    [Required]
-    public Guid TeamId { get; set; }
+    public class UpdateTeamMemberRoleCommand : IRequest
+    {
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid TeamId { get; set; }
 
-    /// <summary>
-    /// 成员用户ID.
-    /// </summary>
-    [Required]
-    public Guid MemberUserId { get; set; }
+        /// <summary>
+        /// 成员用户ID.
+        /// </summary>
+        [Required]
+        public Guid MemberUserId { get; set; }
 
-    /// <summary>
-    /// 是否设置为管理员.
-    /// </summary>
-    public bool IsAdmin { get; set; }
+        /// <summary>
+        /// 是否设置为管理员.
+        /// </summary>
+        public bool IsAdmin { get; set; }
+    }
 }

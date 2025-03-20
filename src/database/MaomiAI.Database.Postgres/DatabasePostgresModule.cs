@@ -6,102 +6,103 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace MaomiAI.Database.Postgres;
-
-/// <summary>
-/// DatabasePostgresModule.
-/// </summary>
-public class DatabasePostgresModule : IModule
+namespace MaomiAI.Database.Postgres
 {
-    private readonly IConfiguration _configuration;
-    private readonly ILoggerFactory _loggerFactory;
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="DatabasePostgresModule"/> class.
+    /// DatabasePostgresModule.
     /// </summary>
-    /// <param name="configuration"></param>
-    /// <param name="loggerFactory"></param>
-    public DatabasePostgresModule(IConfiguration configuration, ILoggerFactory loggerFactory)
+    public class DatabasePostgresModule : IModule
     {
-        _configuration = configuration;
-        _loggerFactory = loggerFactory;
-    }
+        private readonly IConfiguration _configuration;
+        private readonly ILoggerFactory _loggerFactory;
 
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
-    {
-        using var ioc = context.Services.BuildServiceProvider();
-        var systemOptions = ioc.GetRequiredService<SystemOptions>();
-
-        if (!"postgres".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabasePostgresModule"/> class.
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <param name="loggerFactory"></param>
+        public DatabasePostgresModule(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
-            return;
+            _configuration = configuration;
+            _loggerFactory = loggerFactory;
         }
 
-        var dbContextOptions = new DatabaseOptions
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
         {
-            ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
-            EntityAssembly = typeof(MaomiAI.Database.MaomiaiContext).Assembly
-        };
+            using ServiceProvider? ioc = context.Services.BuildServiceProvider();
+            SystemOptions? systemOptions = ioc.GetRequiredService<SystemOptions>();
 
-        context.Services.AddSingleton(dbContextOptions);
+            if (!"postgres".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
 
-        // 配置兼容 Datetime
-        // todo: 应该可以去掉
-        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-        AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+            DatabaseOptions? dbContextOptions = new()
+            {
+                ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
+                EntityAssembly = typeof(MaomiaiContext).Assembly
+            };
 
-        Action<DbContextOptionsBuilder> contextOptionsBuilder = o =>
-        {
-            o.UseNpgsql(systemOptions.Database)
-            .ConfigureWarnings(
-                b => b.Ignore([
-                    CoreEventId.ServiceProviderCreated,
-                        CoreEventId.ContextInitialized,
-                        CoreEventId.ContextDisposed,
-                        CoreEventId.LazyLoadOnDisposedContextWarning,
-                        CoreEventId.QueryCompilationStarting,
-                        CoreEventId.StateChanged,
-                        CoreEventId.SaveChangesCanceled,
-                        CoreEventId.SaveChangesCompleted,
-                        CoreEventId.SensitiveDataLoggingEnabledWarning,
-                        CoreEventId.QueryExecutionPlanned,
-                        CoreEventId.StartedTracking,
-                        RelationalEventId.ConnectionOpening,
-                        RelationalEventId.ConnectionCreating,
-                        RelationalEventId.ConnectionCreated,
-                        RelationalEventId.ConnectionClosing,
-                        RelationalEventId.ConnectionClosed,
-                        RelationalEventId.DataReaderClosing,
-                        RelationalEventId.DataReaderDisposing,
-                        RelationalEventId.CommandCanceled,
-                        RelationalEventId.CommandCreated,
-                        RelationalEventId.CommandCreating,
-                        RelationalEventId.CommandInitialized,
-                        RelationalEventId.BoolWithDefaultWarning,
-                        RelationalEventId.ModelValidationKeyDefaultValueWarning,
-                ]))
-            .EnableSensitiveDataLogging()
-            .EnableDetailedErrors();
-        };
+            context.Services.AddSingleton(dbContextOptions);
 
-        context.Services.AddDbContext<MaomiaiContext>(contextOptionsBuilder);
+            // 配置兼容 Datetime
+            // todo: 应该可以去掉
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
 
-        try
-        {
-            DbContextOptionsBuilder<MaomiaiContext> options = new();
-            contextOptionsBuilder.Invoke(options);
+            Action<DbContextOptionsBuilder> contextOptionsBuilder = o =>
+            {
+                o.UseNpgsql(systemOptions.Database)
+                    .ConfigureWarnings(
+                        b => b.Ignore([
+                            CoreEventId.ServiceProviderCreated,
+                            CoreEventId.ContextInitialized,
+                            CoreEventId.ContextDisposed,
+                            CoreEventId.LazyLoadOnDisposedContextWarning,
+                            CoreEventId.QueryCompilationStarting,
+                            CoreEventId.StateChanged,
+                            CoreEventId.SaveChangesCanceled,
+                            CoreEventId.SaveChangesCompleted,
+                            CoreEventId.SensitiveDataLoggingEnabledWarning,
+                            CoreEventId.QueryExecutionPlanned,
+                            CoreEventId.StartedTracking,
+                            RelationalEventId.ConnectionOpening,
+                            RelationalEventId.ConnectionCreating,
+                            RelationalEventId.ConnectionCreated,
+                            RelationalEventId.ConnectionClosing,
+                            RelationalEventId.ConnectionClosed,
+                            RelationalEventId.DataReaderClosing,
+                            RelationalEventId.DataReaderDisposing,
+                            RelationalEventId.CommandCanceled,
+                            RelationalEventId.CommandCreated,
+                            RelationalEventId.CommandCreating,
+                            RelationalEventId.CommandInitialized,
+                            RelationalEventId.BoolWithDefaultWarning,
+                            RelationalEventId.ModelValidationKeyDefaultValueWarning
+                        ]))
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors();
+            };
 
-            using var dbContext = new MaomiaiContext(options.Options, ioc, dbContextOptions);
+            context.Services.AddDbContext<MaomiaiContext>(contextOptionsBuilder);
 
-            // 如果数据库不存在，则会创建数据库及其所有表。
-            dbContext.Database.EnsureCreated();
-        }
-        catch (Exception ex)
-        {
-            var logger = _loggerFactory.CreateLogger<DatabasePostgresModule>();
-            logger.LogError(ex, "创建PostgreSQL数据库时出错");
-            // 不抛出异常，允许应用程序继续运行
+            try
+            {
+                DbContextOptionsBuilder<MaomiaiContext> options = new();
+                contextOptionsBuilder.Invoke(options);
+
+                using MaomiaiContext? dbContext = new(options.Options, ioc, dbContextOptions);
+
+                // 如果数据库不存在，则会创建数据库及其所有表。
+                dbContext.Database.EnsureCreated();
+            }
+            catch (Exception ex)
+            {
+                ILogger<DatabasePostgresModule>? logger = _loggerFactory.CreateLogger<DatabasePostgresModule>();
+                logger.LogError(ex, "创建PostgreSQL数据库时出错");
+                // 不抛出异常，允许应用程序继续运行
+            }
         }
     }
 }

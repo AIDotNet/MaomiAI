@@ -5,27 +5,27 @@
 // </copyright>
 
 using MaomiAI.Team.Shared.Models;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Queries;
-
-/// <summary>
-/// 根据ID获取团队查询.
-/// </summary>
-public class GetTeamByIdQuery : IRequest<TeamDto?>
+namespace MaomiAI.Team.Shared.Queries
 {
     /// <summary>
-    /// 团队ID.
+    /// 根据ID获取团队查询.
     /// </summary>
-    public Guid Id { get; set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="GetTeamByIdQuery"/> class.
-    /// </summary>
-    /// <param name="id">团队ID.</param>
-    public GetTeamByIdQuery(Guid id)
+    public class GetTeamByIdQuery : IRequest<TeamDto?>
     {
-        Id = id;
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetTeamByIdQuery"/> class.
+        /// </summary>
+        /// <param name="id">团队ID.</param>
+        public GetTeamByIdQuery(Guid id)
+        {
+            Id = id;
+        }
     }
 }

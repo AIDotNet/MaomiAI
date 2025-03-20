@@ -5,25 +5,25 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 撤销团队成员管理员权限命令.
-/// </summary>
-public class RevokeAdminPermissionCommand : IRequest<bool>
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 团队ID.
+    /// 撤销团队成员管理员权限命令.
     /// </summary>
-    [Required]
-    public Guid TeamId { get; set; }
+    public class RevokeAdminPermissionCommand : IRequest<bool>
+    {
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid TeamId { get; set; }
 
-    /// <summary>
-    /// 用户ID.
-    /// </summary>
-    [Required]
-    public Guid UserId { get; set; }
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        [Required]
+        public Guid UserId { get; set; }
+    }
 }

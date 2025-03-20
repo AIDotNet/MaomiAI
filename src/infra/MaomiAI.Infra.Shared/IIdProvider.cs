@@ -4,31 +4,32 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace Maomi.MQ;
-
-/// <summary>
-/// Snowflake id generator.<br />
-/// 雪花 id 生成器.
-/// </summary>
-public interface IIdProvider
+namespace Maomi.MQ
 {
     /// <summary>
-    /// 生成雪花 id.
+    /// Snowflake id generator.<br />
+    /// 雪花 id 生成器.
     /// </summary>
-    /// <param name="value">雪花 id 字符串.</param>
-    /// <returns>雪花 id.</returns>
-    long GeneratorId(out string value);
+    public interface IIdProvider
+    {
+        /// <summary>
+        /// 生成雪花 id.
+        /// </summary>
+        /// <param name="value">雪花 id 字符串.</param>
+        /// <returns>雪花 id.</returns>
+        long GeneratorId(out string value);
 
-    /// <summary>
-    /// 生成一个字符串 key.
-    /// </summary>
-    /// <returns>key.</returns>
-    string GeneratorKey();
+        /// <summary>
+        /// 生成一个字符串 key.
+        /// </summary>
+        /// <returns>key.</returns>
+        string GeneratorKey();
 
-    /// <summary>
-    /// Get snowflake id.<br />
-    /// 获取雪花 id.
-    /// </summary>
-    /// <returns>id.</returns>
-    long NextId();
+        /// <summary>
+        /// Get snowflake id.<br />
+        /// 获取雪花 id.
+        /// </summary>
+        /// <returns>id.</returns>
+        long NextId();
+    }
 }

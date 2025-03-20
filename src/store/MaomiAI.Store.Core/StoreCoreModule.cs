@@ -6,13 +6,14 @@
 
 using Maomi;
 
-namespace MaomiAI.Store;
-
-[InjectModule<StoreLocalFileSystemModule>]
-[InjectModule<StoreS3Module>]
-public class StoreCoreModule : IModule
+namespace MaomiAI.Store
 {
-    public void ConfigureServices(ServiceContext context)
+    [InjectModule<StoreLocalFileSystemModule>]
+    [InjectModule<StoreS3Module>]
+    public class StoreCoreModule : IModule
     {
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }

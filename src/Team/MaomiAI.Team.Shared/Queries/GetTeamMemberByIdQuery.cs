@@ -5,38 +5,37 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MaomiAI.Team.Shared.Models;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Queries;
-
-/// <summary>
-/// 根据ID获取团队成员查询.
-/// </summary>
-public class GetTeamMemberByIdQuery : IRequest<TeamMemberDto?>
+namespace MaomiAI.Team.Shared.Queries
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetTeamMemberByIdQuery"/> class.
+    /// 根据ID获取团队成员查询.
     /// </summary>
-    /// <param name="teamId">团队ID.</param>
-    /// <param name="userId">用户ID.</param>
-    public GetTeamMemberByIdQuery(Guid teamId, Guid userId)
+    public class GetTeamMemberByIdQuery : IRequest<TeamMemberDto?>
     {
-        TeamId = teamId;
-        UserId = userId;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetTeamMemberByIdQuery"/> class.
+        /// </summary>
+        /// <param name="teamId">团队ID.</param>
+        /// <param name="userId">用户ID.</param>
+        public GetTeamMemberByIdQuery(Guid teamId, Guid userId)
+        {
+            TeamId = teamId;
+            UserId = userId;
+        }
+
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid TeamId { get; }
+
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        [Required]
+        public Guid UserId { get; }
     }
-
-    /// <summary>
-    /// 团队ID.
-    /// </summary>
-    [Required]
-    public Guid TeamId { get; }
-
-    /// <summary>
-    /// 用户ID.
-    /// </summary>
-    [Required]
-    public Guid UserId { get; }
 }

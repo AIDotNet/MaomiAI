@@ -18,89 +18,88 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using System.Security.Cryptography;
 
-namespace MaomiAI;
-
-/// <summary>
-/// MainModule.
-/// </summary>
-[InjectModule<InfraCoreModule>]
-[InjectModule<DatabaseCoreModule>]
-[InjectModule<EmbeddingCoreModule>]
-[InjectModule<DocumentModule>]
-[InjectModule<StoreCoreModule>]
-[InjectModule<UserCoreModule>]
-[InjectModule<TeamCoreModule>]
-public partial class MainModule : IModule
+namespace MaomiAI
 {
-    private readonly IConfiguration _configuration;
-    private readonly SystemOptions _systemOptions;
-
-    public MainModule(IConfiguration configuration)
+    /// <summary>
+    /// MainModule.
+    /// </summary>
+    [InjectModule<InfraCoreModule>]
+    [InjectModule<DatabaseCoreModule>]
+    [InjectModule<EmbeddingCoreModule>]
+    [InjectModule<DocumentModule>]
+    [InjectModule<StoreCoreModule>]
+    [InjectModule<UserCoreModule>]
+    [InjectModule<TeamCoreModule>]
+    public partial class MainModule : IModule
     {
-        _configuration = configuration;
-        _systemOptions = configuration.Get<SystemOptions>()!;
-    }
+        private readonly IConfiguration _configuration;
+        private readonly SystemOptions _systemOptions;
 
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
-    {
-        ConfigureHttpLogging(context);
-
-        context.Services.AddControllers(options =>
+        public MainModule(IConfiguration configuration)
         {
-        })
-        .ConfigureApplicationPartManager(apm =>
-        {
-            apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
-        });
+            _configuration = configuration;
+            _systemOptions = configuration.Get<SystemOptions>()!;
+        }
 
-        ConfigureOpeiApi(context);
-
-        context.Services.AddMediatR(options =>
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
         {
-            options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).ToArray());
-        });
-    }
+            ConfigureHttpLogging(context);
 
-    // 配置 http 请求日志.
-    private void ConfigureHttpLogging(ServiceContext context)
-    {
-        // todo: 后续是否允许在配置文件指定 LoggingFields 参数
-        context.Services.AddHttpLogging(logging =>
-        {
-            //logging.LoggingFields = HttpLoggingFields.All;
-            logging.CombineLogs = true;
-        });
-    }
+            context.Services.AddControllers(options => { })
+                .ConfigureApplicationPartManager(apm =>
+                {
+                    apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
+                });
 
-    private void ConfigureOpeiApi(ServiceContext context)
-    {
-        context.Services.AddOpenApi(options =>
-        {
-            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
-            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            ConfigureOpeiApi(context);
+
+            context.Services.AddMediatR(options =>
             {
-                document.Info = new()
-                {
-                    Title = "Maomi API",
-                    Version = "v1",
-                    Description = "MaomiAI openapi document."
-                };
-
-                document.Servers = new List<OpenApiServer>
-                {
-                    new OpenApiServer
-                    {
-                        Url = _systemOptions.Server,
-                        Description = "User-defined service address"
-                    }
-                };
-
-                return Task.CompletedTask;
+                options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).ToArray());
             });
+        }
 
-            options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-            options.AddSchemaTransformer<TypeSchemeTransformer>();
-        });
+        // 配置 http 请求日志.
+        private void ConfigureHttpLogging(ServiceContext context)
+        {
+            // todo: 后续是否允许在配置文件指定 LoggingFields 参数
+            context.Services.AddHttpLogging(logging =>
+            {
+                //logging.LoggingFields = HttpLoggingFields.All;
+                logging.CombineLogs = true;
+            });
+        }
+
+        private void ConfigureOpeiApi(ServiceContext context)
+        {
+            context.Services.AddOpenApi(options =>
+            {
+                options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+                options.AddDocumentTransformer((document, context, cancellationToken) =>
+                {
+                    document.Info = new OpenApiInfo
+                    {
+                        Title = "Maomi API",
+                        Version = "v1",
+                        Description = "MaomiAI openapi document."
+                    };
+
+                    document.Servers = new List<OpenApiServer>
+                    {
+                        new()
+                        {
+                            Url = _systemOptions.Server,
+                            Description = "User-defined service address"
+                        }
+                    };
+
+                    return Task.CompletedTask;
+                });
+
+                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+                options.AddSchemaTransformer<TypeSchemeTransformer>();
+            });
+        }
     }
 }

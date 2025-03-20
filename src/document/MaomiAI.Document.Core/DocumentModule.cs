@@ -6,15 +6,16 @@
 
 using Maomi;
 
-namespace MaomiAI.Infra;
-
-/// <summary>
-/// InfraCoreModule.
-/// </summary>
-public class DocumentModule : IModule
+namespace MaomiAI.Infra
 {
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
+    /// <summary>
+    /// InfraCoreModule.
+    /// </summary>
+    public class DocumentModule : IModule
     {
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }

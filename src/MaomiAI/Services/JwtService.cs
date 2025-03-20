@@ -9,143 +9,144 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace MaomiAI.Services;
-
-/// <summary>
-/// JWT服务接口.
-/// </summary>
-public interface IJwtService
+namespace MaomiAI.Services
 {
     /// <summary>
-    /// 生成JWT令牌.
+    /// JWT服务接口.
     /// </summary>
-    /// <param name="userId">用户ID.</param>
-    /// <param name="userName">用户名.</param>
-    /// <param name="roles">角色列表.</param>
-    /// <returns>JWT令牌.</returns>
-    string GenerateToken(Guid userId, string userName, IEnumerable<string>? roles = null);
-
-    /// <summary>
-    /// 验证JWT令牌.
-    /// </summary>
-    /// <param name="token">JWT令牌.</param>
-    /// <returns>如果令牌有效则返回true，否则返回false.</returns>
-    bool ValidateToken(string token);
-
-    /// <summary>
-    /// 从JWT令牌中获取用户ID.
-    /// </summary>
-    /// <param name="token">JWT令牌.</param>
-    /// <returns>用户ID.</returns>
-    Guid? GetUserIdFromToken(string token);
-}
-
-/// <summary>
-/// JWT服务实现.
-/// </summary>
-public class JwtService : IJwtService
-{
-    private readonly JwtOptions _jwtOptions;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="JwtService"/> class.
-    /// </summary>
-    /// <param name="jwtOptions">JWT配置选项.</param>
-    public JwtService(JwtOptions jwtOptions)
+    public interface IJwtService
     {
-        _jwtOptions = jwtOptions;
+        /// <summary>
+        /// 生成JWT令牌.
+        /// </summary>
+        /// <param name="userId">用户ID.</param>
+        /// <param name="userName">用户名.</param>
+        /// <param name="roles">角色列表.</param>
+        /// <returns>JWT令牌.</returns>
+        string GenerateToken(Guid userId, string userName, IEnumerable<string>? roles = null);
+
+        /// <summary>
+        /// 验证JWT令牌.
+        /// </summary>
+        /// <param name="token">JWT令牌.</param>
+        /// <returns>如果令牌有效则返回true，否则返回false.</returns>
+        bool ValidateToken(string token);
+
+        /// <summary>
+        /// 从JWT令牌中获取用户ID.
+        /// </summary>
+        /// <param name="token">JWT令牌.</param>
+        /// <returns>用户ID.</returns>
+        Guid? GetUserIdFromToken(string token);
     }
 
-    /// <inheritdoc/>
-    public string GenerateToken(Guid userId, string userName, IEnumerable<string>? roles = null)
+    /// <summary>
+    /// JWT服务实现.
+    /// </summary>
+    public class JwtService : IJwtService
     {
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-            new Claim(ClaimTypes.Name, userName)
-        };
+        private readonly JwtOptions _jwtOptions;
 
-        // 添加角色声明
-        if (roles != null)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JwtService"/> class.
+        /// </summary>
+        /// <param name="jwtOptions">JWT配置选项.</param>
+        public JwtService(JwtOptions jwtOptions)
         {
-            foreach (var role in roles)
+            _jwtOptions = jwtOptions;
+        }
+
+        /// <inheritdoc/>
+        public string GenerateToken(Guid userId, string userName, IEnumerable<string>? roles = null)
+        {
+            List<Claim>? claims = new()
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
+                new Claim(ClaimTypes.Name, userName)
+            };
+
+            // 添加角色声明
+            if (roles != null)
+            {
+                foreach (string? role in roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role));
+                }
+            }
+
+            SymmetricSecurityKey? key = new(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey));
+            SigningCredentials? creds = new(key, SecurityAlgorithms.HmacSha256);
+
+            JwtSecurityToken? token = new(
+                _jwtOptions.Issuer,
+                _jwtOptions.Audience,
+                claims,
+                expires: DateTime.UtcNow.AddMinutes(_jwtOptions.ExpirationMinutes),
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        /// <inheritdoc/>
+        public bool ValidateToken(string token)
+        {
+            JwtSecurityTokenHandler? tokenHandler = new();
+            byte[]? key = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey);
+
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = _jwtOptions.Issuer,
+                    ValidateAudience = true,
+                    ValidAudience = _jwtOptions.Audience,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                }, out _);
+
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: _jwtOptions.Issuer,
-            audience: _jwtOptions.Audience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(_jwtOptions.ExpirationMinutes),
-            signingCredentials: creds);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
-
-    /// <inheritdoc/>
-    public bool ValidateToken(string token)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey);
-
-        try
+        /// <inheritdoc/>
+        public Guid? GetUserIdFromToken(string token)
         {
-            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            JwtSecurityTokenHandler? tokenHandler = new();
+            byte[]? key = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey);
+
+            try
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = true,
-                ValidIssuer = _jwtOptions.Issuer,
-                ValidateAudience = true,
-                ValidAudience = _jwtOptions.Audience,
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero
-            }, out _);
+                ClaimsPrincipal? principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = _jwtOptions.Issuer,
+                    ValidateAudience = true,
+                    ValidAudience = _jwtOptions.Audience,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                }, out _);
 
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
+                Claim? userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim != null && Guid.TryParse(userIdClaim.Value, out Guid userId))
+                {
+                    return userId;
+                }
 
-    /// <inheritdoc/>
-    public Guid? GetUserIdFromToken(string token)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey);
-
-        try
-        {
-            var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = true,
-                ValidIssuer = _jwtOptions.Issuer,
-                ValidateAudience = true,
-                ValidAudience = _jwtOptions.Audience,
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero
-            }, out _);
-
-            var userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim != null && Guid.TryParse(userIdClaim.Value, out var userId))
-            {
-                return userId;
+                return null;
             }
-
-            return null;
-        }
-        catch
-        {
-            return null;
+            catch
+            {
+                return null;
+            }
         }
     }
 }

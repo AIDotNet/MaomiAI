@@ -5,4 +5,6 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Design", "CA1031:不捕获常规异常类型", Justification = "<挂起>", Scope = "member", Target = "~M:MaomiAI.Store.Services.LocalStore.ValidateToken(System.String,System.String)~System.Boolean")]
+[assembly:
+    SuppressMessage("Design", "CA1031:不捕获常规异常类型", Justification = "<挂起>", Scope = "member",
+        Target = "~M:MaomiAI.Store.Services.LocalStore.ValidateToken(System.String,System.String)~System.Boolean")]

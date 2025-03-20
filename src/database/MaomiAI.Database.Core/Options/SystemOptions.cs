@@ -4,25 +4,26 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI;
-
-/// <summary>
-/// 系统配置选项.
-/// </summary>
-public class SystemOptions
+namespace MaomiAI
 {
     /// <summary>
-    /// 服务器地址.
+    /// 系统配置选项.
     /// </summary>
-    public string Server { get; set; } = string.Empty;
+    public class SystemOptions
+    {
+        /// <summary>
+        /// 服务器地址.
+        /// </summary>
+        public string Server { get; set; } = string.Empty;
 
-    /// <summary>
-    /// 数据库类型.
-    /// </summary>
-    public string DBType { get; set; } = "postgres";
+        /// <summary>
+        /// 数据库类型.
+        /// </summary>
+        public string DBType { get; set; } = "postgres";
 
-    /// <summary>
-    /// 数据库连接字符串.
-    /// </summary>
-    public string Database { get; set; } = string.Empty;
+        /// <summary>
+        /// 数据库连接字符串.
+        /// </summary>
+        public string Database { get; set; } = string.Empty;
+    }
 }

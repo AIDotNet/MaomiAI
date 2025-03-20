@@ -8,44 +8,49 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace MaomiAI;
-
-public partial class MainModule
+namespace MaomiAI
 {
-    internal sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvider authenticationSchemeProvider) : IOpenApiDocumentTransformer
+    public partial class MainModule
     {
-        public async Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
+        internal sealed class BearerSecuritySchemeTransformer(
+            IAuthenticationSchemeProvider authenticationSchemeProvider) : IOpenApiDocumentTransformer
         {
-            var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
-            if (authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
+            public async Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context,
+                CancellationToken cancellationToken)
             {
-                var requirements = new Dictionary<string, OpenApiSecurityScheme>
+                IEnumerable<AuthenticationScheme>? authenticationSchemes =
+                    await authenticationSchemeProvider.GetAllSchemesAsync();
+                if (authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
                 {
-                    ["Bearer"] = new OpenApiSecurityScheme
+                    Dictionary<string, OpenApiSecurityScheme>? requirements = new()
                     {
-                        Type = SecuritySchemeType.Http,
-                        Scheme = "bearer", // "bearer" refers to the header name here
-                        In = ParameterLocation.Header,
-                        BearerFormat = "Json Web Token"
-                    }
-                };
-                document.Components ??= new OpenApiComponents();
-                document.Components.SecuritySchemes = requirements;
-
-                foreach (var operation in document.Paths.Values.SelectMany(path => path.Operations))
-                {
-                    operation.Value.Security.Add(new OpenApiSecurityRequirement
-                    {
-                        [new OpenApiSecurityScheme
+                        ["Bearer"] = new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
-                            {
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme
-                            }
+                            Type = SecuritySchemeType.Http,
+                            Scheme = "bearer", // "bearer" refers to the header name here
+                            In = ParameterLocation.Header,
+                            BearerFormat = "Json Web Token"
                         }
-                        ] = Array.Empty<string>()
-                    });
+                    };
+                    document.Components ??= new OpenApiComponents();
+                    document.Components.SecuritySchemes = requirements;
+
+                    foreach (KeyValuePair<OperationType, OpenApiOperation> operation in
+                             document.Paths.Values.SelectMany(path => path.Operations))
+                    {
+                        operation.Value.Security.Add(new OpenApiSecurityRequirement
+                        {
+                            [new OpenApiSecurityScheme
+                                {
+                                    Reference = new OpenApiReference
+                                    {
+                                        Id = "Bearer",
+                                        Type = ReferenceType.SecurityScheme
+                                    }
+                                }
+                            ] = Array.Empty<string>()
+                        });
+                    }
                 }
             }
         }

@@ -9,59 +9,61 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace MaomiAI.Filters;
-
-/// <summary>
-/// 全局授权过滤器.
-/// </summary>
-public class AuthorizationFilter : IAuthorizationFilter
+namespace MaomiAI.Filters
 {
-    private readonly ILogger<AuthorizationFilter> _logger;
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="AuthorizationFilter"/> class.
+    /// 全局授权过滤器.
     /// </summary>
-    /// <param name="logger">日志记录器.</param>
-    public AuthorizationFilter(ILogger<AuthorizationFilter> logger)
+    public class AuthorizationFilter : IAuthorizationFilter
     {
-        _logger = logger;
-    }
+        private readonly ILogger<AuthorizationFilter> _logger;
 
-    /// <inheritdoc/>
-    public void OnAuthorization(AuthorizationFilterContext context)
-    {
-        // 检查是否有AllowAnonymous特性
-        if (HasAllowAnonymousAttribute(context))
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthorizationFilter"/> class.
+        /// </summary>
+        /// <param name="logger">日志记录器.</param>
+        public AuthorizationFilter(ILogger<AuthorizationFilter> logger)
         {
-            return;
+            _logger = logger;
         }
 
-        // 检查用户是否已认证
-        if (!context.HttpContext.User.Identity?.IsAuthenticated ?? true)
+        /// <inheritdoc/>
+        public void OnAuthorization(AuthorizationFilterContext context)
         {
-            _logger.LogWarning("未授权访问: {Path}", context.HttpContext.Request.Path);
-            context.Result = new UnauthorizedResult();
-        }
-    }
-
-    private static bool HasAllowAnonymousAttribute(AuthorizationFilterContext context)
-    {
-        // 检查控制器或操作是否有AllowAnonymous特性
-        if (context.ActionDescriptor is ControllerActionDescriptor actionDescriptor)
-        {
-            // 检查操作是否有AllowAnonymous特性
-            if (actionDescriptor.MethodInfo.GetCustomAttributes(typeof(AllowAnonymousAttribute), true).Any())
+            // 检查是否有AllowAnonymous特性
+            if (HasAllowAnonymousAttribute(context))
             {
-                return true;
+                return;
             }
 
-            // 检查控制器是否有AllowAnonymous特性
-            if (actionDescriptor.ControllerTypeInfo.GetCustomAttributes(typeof(AllowAnonymousAttribute), true).Any())
+            // 检查用户是否已认证
+            if (!context.HttpContext.User.Identity?.IsAuthenticated ?? true)
             {
-                return true;
+                _logger.LogWarning("未授权访问: {Path}", context.HttpContext.Request.Path);
+                context.Result = new UnauthorizedResult();
             }
         }
 
-        return false;
+        private static bool HasAllowAnonymousAttribute(AuthorizationFilterContext context)
+        {
+            // 检查控制器或操作是否有AllowAnonymous特性
+            if (context.ActionDescriptor is ControllerActionDescriptor actionDescriptor)
+            {
+                // 检查操作是否有AllowAnonymous特性
+                if (actionDescriptor.MethodInfo.GetCustomAttributes(typeof(AllowAnonymousAttribute), true).Any())
+                {
+                    return true;
+                }
+
+                // 检查控制器是否有AllowAnonymous特性
+                if (actionDescriptor.ControllerTypeInfo.GetCustomAttributes(typeof(AllowAnonymousAttribute), true)
+                    .Any())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

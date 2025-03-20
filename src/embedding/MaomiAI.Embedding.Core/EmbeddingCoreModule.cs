@@ -9,26 +9,27 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace MaomiAI.Infra;
-
-/// <summary>
-/// InfraConfigurationModule.
-/// </summary>
-public class EmbeddingCoreModule : IModule
+namespace MaomiAI.Infra
 {
-    private readonly ILogger _logger;
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="InfraConfigurationModule"/> class.
+    /// InfraConfigurationModule.
     /// </summary>
-    /// <param name="loggerFactory"></param>
-    public EmbeddingCoreModule(ILoggerFactory loggerFactory)
+    public class EmbeddingCoreModule : IModule
     {
-        _logger = loggerFactory.CreateLogger(Constant.BaseLoggerName);
-    }
+        private readonly ILogger _logger;
 
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
-    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InfraConfigurationModule"/> class.
+        /// </summary>
+        /// <param name="loggerFactory"></param>
+        public EmbeddingCoreModule(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger(Constant.BaseLoggerName);
+        }
+
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }

@@ -12,56 +12,57 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace MaomiAI.Database;
-
-/// <summary>
-/// DatabaseCoreModule.
-/// </summary>
-[InjectModule<DatabasePostgresModule>]
-public class DatabaseCoreModule : IModule
+namespace MaomiAI.Database
 {
-    private readonly IConfiguration _configuration;
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="DatabaseCoreModule"/> class.
+    /// DatabaseCoreModule.
     /// </summary>
-    /// <param name="configuration">配置.</param>
-    public DatabaseCoreModule(IConfiguration configuration)
+    [InjectModule<DatabasePostgresModule>]
+    public class DatabaseCoreModule : IModule
     {
-        _configuration = configuration;
-    }
+        private readonly IConfiguration _configuration;
 
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
-    {
-        var systemOptions = _configuration.Get<SystemOptions>();
-        if (systemOptions == null)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabaseCoreModule"/> class.
+        /// </summary>
+        /// <param name="configuration">配置.</param>
+        public DatabaseCoreModule(IConfiguration configuration)
         {
-            return;
+            _configuration = configuration;
         }
 
-        // 如果使用内存数据库
-        if ("inmemory".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
         {
-            var dbContextOptions = new DatabaseOptions
+            SystemOptions? systemOptions = _configuration.Get<SystemOptions>();
+            if (systemOptions == null)
             {
-                ConfigurationAssembly = typeof(DatabaseCoreModule).Assembly,
-                EntityAssembly = typeof(MaomiaiContext).Assembly
-            };
+                return;
+            }
 
-            context.Services.AddSingleton(dbContextOptions);
-
-            // 注册内存数据库
-            context.Services.AddDbContext<MaomiaiContext>(options =>
+            // 如果使用内存数据库
+            if ("inmemory".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
             {
-                options.UseInMemoryDatabase(systemOptions.Database);
-            });
+                DatabaseOptions? dbContextOptions = new()
+                {
+                    ConfigurationAssembly = typeof(DatabaseCoreModule).Assembly,
+                    EntityAssembly = typeof(MaomiaiContext).Assembly
+                };
 
-            // 创建数据库
-            using var serviceProvider = context.Services.BuildServiceProvider();
-            using var scope = serviceProvider.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<MaomiaiContext>();
-            dbContext.Database.EnsureCreated();
+                context.Services.AddSingleton(dbContextOptions);
+
+                // 注册内存数据库
+                context.Services.AddDbContext<MaomiaiContext>(options =>
+                {
+                    options.UseInMemoryDatabase(systemOptions.Database);
+                });
+
+                // 创建数据库
+                using ServiceProvider? serviceProvider = context.Services.BuildServiceProvider();
+                using IServiceScope? scope = serviceProvider.CreateScope();
+                MaomiaiContext? dbContext = scope.ServiceProvider.GetRequiredService<MaomiaiContext>();
+                dbContext.Database.EnsureCreated();
+            }
         }
     }
 }

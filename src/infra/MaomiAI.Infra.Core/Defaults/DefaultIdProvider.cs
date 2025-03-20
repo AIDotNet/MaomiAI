@@ -1,38 +1,42 @@
 ﻿using Maomi.MQ;
 using Yitter.IdGenerator;
 
-namespace MaomiAI.Infra.Defaults;
-
-/// <summary>
-/// Id 提供器.
-/// </summary>
-public class DefaultIdProvider : IIdProvider
+namespace MaomiAI.Infra.Defaults
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DefaultIdProvider"/> class.
+    /// Id 提供器.
     /// </summary>
-    /// <param name="workId"></param>
-    public DefaultIdProvider(ushort workId)
+    public class DefaultIdProvider : IIdProvider
     {
-        var options = new IdGeneratorOptions(workId) { SeqBitLength = 10 };
-        YitIdHelper.SetIdGenerator(options);
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultIdProvider"/> class.
+        /// </summary>
+        /// <param name="workId"></param>
+        public DefaultIdProvider(ushort workId)
+        {
+            IdGeneratorOptions? options = new(workId) { SeqBitLength = 10 };
+            YitIdHelper.SetIdGenerator(options);
+        }
 
-    /// <inheritdoc />
-    public long NextId() => YitIdHelper.NextId();
+        /// <inheritdoc />
+        public long NextId()
+        {
+            return YitIdHelper.NextId();
+        }
 
-    /// <inheritdoc />
-    public long GeneratorId(out string value)
-    {
-        var id = YitIdHelper.NextId();
-        value = id.ToString("x16");
-        return id;
-    }
+        /// <inheritdoc />
+        public long GeneratorId(out string value)
+        {
+            long id = YitIdHelper.NextId();
+            value = id.ToString("x16");
+            return id;
+        }
 
-    /// <inheritdoc />
-    public string GeneratorKey()
-    {
-        var id = YitIdHelper.NextId();
-        return id.ToString("x16");
+        /// <inheritdoc />
+        public string GeneratorKey()
+        {
+            long id = YitIdHelper.NextId();
+            return id.ToString("x16");
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using MaomiAI.Store.Enums;
 
-namespace MaomiAI.Store.Services;
-
-public interface IFileFactory
+namespace MaomiAI.Store.Services
 {
-    IFileStore Create(FileStoreType type);
+    public interface IFileFactory
+    {
+        IFileStore Create(FileStoreType type);
+    }
 }

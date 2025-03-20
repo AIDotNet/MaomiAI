@@ -5,7 +5,6 @@
 // </copyright>
 
 using Maomi;
-
 using MaomiAI.Infra.Models;
 
 namespace MaomiAI.User.Core.Services
@@ -83,7 +82,8 @@ namespace MaomiAI.User.Core.Services
         /// <param name="email">邮箱.</param>
         /// <param name="avatarUrl">头像URL.</param>
         /// <returns>当前用户上下文实例，支持链式调用.</returns>
-        internal DefaultUserContext SetUserInfo(Guid userId, string userName, string nickName, string email, string avatarUrl)
+        internal DefaultUserContext SetUserInfo(Guid userId, string userName, string nickName, string email,
+            string avatarUrl)
         {
             _userId = userId;
             _userName = userName ?? string.Empty;
@@ -115,6 +115,7 @@ namespace MaomiAI.User.Core.Services
             {
                 _roles.Add(role);
             }
+
             return this;
         }
 
@@ -130,10 +131,11 @@ namespace MaomiAI.User.Core.Services
                 return this;
             }
 
-            foreach (var role in roles)
+            foreach (string? role in roles)
             {
                 AddRole(role);
             }
+
             return this;
         }
 
@@ -157,14 +159,20 @@ namespace MaomiAI.User.Core.Services
         /// 检查当前用户是否已认证.
         /// </summary>
         /// <returns>如果用户已认证则返回true，否则返回false.</returns>
-        public bool IsAuthenticated() => _isAuthenticated;
+        public bool IsAuthenticated()
+        {
+            return _isAuthenticated;
+        }
 
         /// <summary>
         /// 检查当前用户是否具有指定角色.
         /// </summary>
         /// <param name="role">角色名称.</param>
         /// <returns>如果用户具有指定角色则返回true，否则返回false.</returns>
-        public bool HasRole(string role) => !string.IsNullOrEmpty(role) && _roles.Contains(role);
+        public bool HasRole(string role)
+        {
+            return !string.IsNullOrEmpty(role) && _roles.Contains(role);
+        }
 
         /// <summary>
         /// 检查当前用户是否具有指定角色之一.

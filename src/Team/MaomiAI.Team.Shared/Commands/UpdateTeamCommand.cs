@@ -5,37 +5,37 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 更新团队命令.
-/// </summary>
-public class UpdateTeamCommand : IRequest
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 团队ID.
+    /// 更新团队命令.
     /// </summary>
-    [Required]
-    public Guid Id { get; set; }
+    public class UpdateTeamCommand : IRequest
+    {
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid Id { get; set; }
 
-    /// <summary>
-    /// 团队名称.
-    /// </summary>
-    [StringLength(50, MinimumLength = 2)]
-    public string? Name { get; set; }
+        /// <summary>
+        /// 团队名称.
+        /// </summary>
+        [StringLength(50, MinimumLength = 2)]
+        public string? Name { get; set; }
 
-    /// <summary>
-    /// 团队描述.
-    /// </summary>
-    [StringLength(500)]
-    public string? Description { get; set; }
+        /// <summary>
+        /// 团队描述.
+        /// </summary>
+        [StringLength(500)]
+        public string? Description { get; set; }
 
-    /// <summary>
-    /// 团队头像URL.
-    /// </summary>
-    [StringLength(500)]
-    public string? Avatar { get; set; }
+        /// <summary>
+        /// 团队头像URL.
+        /// </summary>
+        [StringLength(500)]
+        public string? Avatar { get; set; }
+    }
 }

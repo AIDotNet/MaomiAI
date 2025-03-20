@@ -7,79 +7,80 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace MaomiAI.Infra.Service;
-
-public class AESProvider : IAESProvider
+namespace MaomiAI.Infra.Service
 {
-    private readonly string _key;
-    private readonly byte[] _keyBytes;
-
-    public AESProvider(string key)
+    public class AESProvider : IAESProvider
     {
-        _key = key;
-        _keyBytes = Encoding.UTF8.GetBytes(_key);
-    }
+        private readonly string _key;
+        private readonly byte[] _keyBytes;
 
-    public string Encrypt(string plainText)
-    {
-        if (string.IsNullOrEmpty(plainText))
+        public AESProvider(string key)
         {
-            throw new ArgumentNullException(nameof(plainText));
+            _key = key;
+            _keyBytes = Encoding.UTF8.GetBytes(_key);
         }
 
-        using (var aesAlg = Aes.Create())
+        public string Encrypt(string plainText)
         {
-            aesAlg.Key = _keyBytes;
-            aesAlg.GenerateIV();
-            var iv = aesAlg.IV;
-
-            var encryptor = aesAlg.CreateEncryptor();
-
-            using (var msEncrypt = new MemoryStream())
+            if (string.IsNullOrEmpty(plainText))
             {
-                // 先写入 IV
-                msEncrypt.Write(iv, 0, iv.Length);
+                throw new ArgumentNullException(nameof(plainText));
+            }
 
-                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                using (var swEncrypt = new StreamWriter(csEncrypt))
+            using (Aes? aesAlg = Aes.Create())
+            {
+                aesAlg.Key = _keyBytes;
+                aesAlg.GenerateIV();
+                byte[]? iv = aesAlg.IV;
+
+                ICryptoTransform? encryptor = aesAlg.CreateEncryptor();
+
+                using (MemoryStream? msEncrypt = new())
                 {
-                    swEncrypt.Write(plainText);
-                }
+                    // 先写入 IV
+                    msEncrypt.Write(iv, 0, iv.Length);
 
-                return Convert.ToBase64String(msEncrypt.ToArray());
+                    using (CryptoStream? csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (StreamWriter? swEncrypt = new(csEncrypt))
+                    {
+                        swEncrypt.Write(plainText);
+                    }
+
+                    return Convert.ToBase64String(msEncrypt.ToArray());
+                }
             }
         }
-    }
 
-    public string Decrypt(string cipherText)
-    {
-        if (string.IsNullOrEmpty(cipherText))
+        public string Decrypt(string cipherText)
         {
-            throw new ArgumentNullException(nameof(cipherText));
-        }
-
-        byte[] fullCipherBytes = Convert.FromBase64String(cipherText);
-
-        using (var aesAlg = Aes.Create())
-        {
-            aesAlg.Key = _keyBytes;
-
-            // 从密文中提取 IV（前16字节）
-            byte[] iv = new byte[16];
-            byte[] actualCipherText = new byte[fullCipherBytes.Length - 16];
-
-            Buffer.BlockCopy(fullCipherBytes, 0, iv, 0, 16);
-            Buffer.BlockCopy(fullCipherBytes, 16, actualCipherText, 0, actualCipherText.Length);
-
-            aesAlg.IV = iv;
-
-            var decryptor = aesAlg.CreateDecryptor();
-
-            using (var msDecrypt = new MemoryStream(actualCipherText))
-            using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-            using (var srDecrypt = new StreamReader(csDecrypt))
+            if (string.IsNullOrEmpty(cipherText))
             {
-                return srDecrypt.ReadToEnd();
+                throw new ArgumentNullException(nameof(cipherText));
+            }
+
+            byte[] fullCipherBytes = Convert.FromBase64String(cipherText);
+
+            using (Aes? aesAlg = Aes.Create())
+            {
+                aesAlg.Key = _keyBytes;
+
+                // 从密文中提取 IV（前16字节）
+                byte[] iv = new byte[16];
+                byte[] actualCipherText = new byte[fullCipherBytes.Length - 16];
+
+                Buffer.BlockCopy(fullCipherBytes, 0, iv, 0, 16);
+                Buffer.BlockCopy(fullCipherBytes, 16, actualCipherText, 0, actualCipherText.Length);
+
+                aesAlg.IV = iv;
+
+                ICryptoTransform? decryptor = aesAlg.CreateDecryptor();
+
+                using (MemoryStream? msDecrypt = new(actualCipherText))
+                using (CryptoStream? csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (StreamReader? srDecrypt = new(csDecrypt))
+                {
+                    return srDecrypt.ReadToEnd();
+                }
             }
         }
     }

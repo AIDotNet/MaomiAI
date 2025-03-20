@@ -5,36 +5,36 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Queries;
-
-/// <summary>
-/// 检查用户是否是团队成员的查询.
-/// </summary>
-public class CheckTeamMembershipQuery : IRequest<bool>
+namespace MaomiAI.Team.Shared.Queries
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CheckTeamMembershipQuery"/> class.
+    /// 检查用户是否是团队成员的查询.
     /// </summary>
-    /// <param name="teamId">团队ID.</param>
-    /// <param name="userId">用户ID.</param>
-    public CheckTeamMembershipQuery(Guid teamId, Guid userId)
+    public class CheckTeamMembershipQuery : IRequest<bool>
     {
-        TeamId = teamId;
-        UserId = userId;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckTeamMembershipQuery"/> class.
+        /// </summary>
+        /// <param name="teamId">团队ID.</param>
+        /// <param name="userId">用户ID.</param>
+        public CheckTeamMembershipQuery(Guid teamId, Guid userId)
+        {
+            TeamId = teamId;
+            UserId = userId;
+        }
+
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid TeamId { get; }
+
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        [Required]
+        public Guid UserId { get; }
     }
-
-    /// <summary>
-    /// 团队ID.
-    /// </summary>
-    [Required]
-    public Guid TeamId { get; }
-
-    /// <summary>
-    /// 用户ID.
-    /// </summary>
-    [Required]
-    public Guid UserId { get; }
 }

@@ -5,19 +5,19 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 移除团队成员命令.
-/// </summary>
-public class RemoveTeamMemberCommand : IRequest
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 要移除的团队成员ID.
+    /// 移除团队成员命令.
     /// </summary>
-    [Required]
-    public int MemberId { get; set; }
+    public class RemoveTeamMemberCommand : IRequest
+    {
+        /// <summary>
+        /// 要移除的团队成员ID.
+        /// </summary>
+        [Required]
+        public int MemberId { get; set; }
+    }
 }

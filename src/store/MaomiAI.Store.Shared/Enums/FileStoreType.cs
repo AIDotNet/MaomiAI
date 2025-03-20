@@ -4,20 +4,21 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.Store.Enums;
-
-/// <summary>
-/// 存储类型.
-/// </summary>
-public enum FileStoreType
+namespace MaomiAI.Store.Enums
 {
     /// <summary>
-    /// 公共存储.
+    /// 存储类型.
     /// </summary>
-    Public = 0,
+    public enum FileStoreType
+    {
+        /// <summary>
+        /// 公共存储.
+        /// </summary>
+        Public = 0,
 
-    /// <summary>
-    /// 私有存储.
-    /// </summary>
-    Private = 1,
+        /// <summary>
+        /// 私有存储.
+        /// </summary>
+        Private = 1
+    }
 }

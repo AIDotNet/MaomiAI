@@ -4,20 +4,21 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.Database.Audits;
-
-/// <summary>
-/// 创建审计属性.
-/// </summary>
-public interface ICreationAudited
+namespace MaomiAI.Database.Audits
 {
     /// <summary>
-    /// 创建人的用户名.
+    /// 创建审计属性.
     /// </summary>
-    Guid CreateUserId { get; set; }
+    public interface ICreationAudited
+    {
+        /// <summary>
+        /// 创建人的用户名.
+        /// </summary>
+        Guid CreateUserId { get; set; }
 
-    /// <summary>
-    /// 创建时间.
-    /// </summary>
-    DateTimeOffset CreateTime { get; set; }
+        /// <summary>
+        /// 创建时间.
+        /// </summary>
+        DateTimeOffset CreateTime { get; set; }
+    }
 }

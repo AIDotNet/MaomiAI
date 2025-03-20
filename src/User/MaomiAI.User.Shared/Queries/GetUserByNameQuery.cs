@@ -5,27 +5,27 @@
 // </copyright>
 
 using MaomiAI.User.Shared.Models;
-
 using MediatR;
 
-namespace MaomiAI.User.Shared.Queries;
-
-/// <summary>
-/// 通过用户名获取用户查询.
-/// </summary>
-public class GetUserByNameQuery : IRequest<UserDto?>
+namespace MaomiAI.User.Shared.Queries
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetUserByNameQuery"/> class.
+    /// 通过用户名获取用户查询.
     /// </summary>
-    /// <param name="userName">用户名.</param>
-    public GetUserByNameQuery(string userName)
+    public class GetUserByNameQuery : IRequest<UserDto?>
     {
-        UserName = userName;
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetUserByNameQuery"/> class.
+        /// </summary>
+        /// <param name="userName">用户名.</param>
+        public GetUserByNameQuery(string userName)
+        {
+            UserName = userName;
+        }
 
-    /// <summary>
-    /// 用户名.
-    /// </summary>
-    public string UserName { get; }
+        /// <summary>
+        /// 用户名.
+        /// </summary>
+        public string UserName { get; }
+    }
 }

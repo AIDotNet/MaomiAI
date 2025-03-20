@@ -2,15 +2,21 @@
 using MaomiAI.Store.Enums;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MaomiAI.Store.Services;
-
-[InjectOnScoped]
-public class DefaultFileFactory : IFileFactory
+namespace MaomiAI.Store.Services
 {
-    private readonly IServiceProvider _serviceProvider;
-    public DefaultFileFactory(IServiceProvider serviceProvider)
+    [InjectOnScoped]
+    public class DefaultFileFactory : IFileFactory
     {
-        _serviceProvider = serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
+
+        public DefaultFileFactory(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
+        public IFileStore Create(FileStoreType type)
+        {
+            return _serviceProvider.GetRequiredKeyedService<IFileStore>(type);
+        }
     }
-    public IFileStore Create(FileStoreType type) => _serviceProvider.GetRequiredKeyedService<IFileStore>(type);
 }

@@ -6,29 +6,28 @@
 
 using System.Reflection;
 using System.Text;
-
 using Maomi;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core.Services;
 using MediatR;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace MaomiAI.User.Core;
-
-/// <summary>
-/// 用户模块.
-/// </summary>
-[InjectModule<UserApiModule>]
-public class UserCoreModule : IModule
+namespace MaomiAI.User.Core
 {
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
+    /// <summary>
+    /// 用户模块.
+    /// </summary>
+    [InjectModule<UserApiModule>]
+    public class UserCoreModule : IModule
     {
-        // 注册认证中间件
-        context.Services.AddScoped<AuthMiddleware>();
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
+        {
+            // 注册认证中间件
+            context.Services.AddScoped<AuthMiddleware>();
+        }
     }
 }

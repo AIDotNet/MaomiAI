@@ -5,25 +5,25 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 转移团队所有权命令.
-/// </summary>
-public class TransferTeamOwnershipCommand : IRequest
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 团队ID.
+    /// 转移团队所有权命令.
     /// </summary>
-    [Required]
-    public Guid TeamId { get; set; }
+    public class TransferTeamOwnershipCommand : IRequest
+    {
+        /// <summary>
+        /// 团队ID.
+        /// </summary>
+        [Required]
+        public Guid TeamId { get; set; }
 
-    /// <summary>
-    /// 新所有者用户ID.
-    /// </summary>
-    [Required]
-    public Guid NewOwnerUserId { get; set; }
+        /// <summary>
+        /// 新所有者用户ID.
+        /// </summary>
+        [Required]
+        public Guid NewOwnerUserId { get; set; }
+    }
 }

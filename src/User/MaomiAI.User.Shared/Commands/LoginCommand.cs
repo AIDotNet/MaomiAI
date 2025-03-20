@@ -6,25 +6,25 @@
 
 using System.ComponentModel.DataAnnotations;
 using MaomiAI.User.Shared.Models;
-
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands;
-
-/// <summary>
-/// 登录命令.
-/// </summary>
-public class LoginCommand : IRequest<LoginResult>
+namespace MaomiAI.User.Shared.Commands
 {
     /// <summary>
-    /// 用户名或邮箱.
+    /// 登录命令.
     /// </summary>
-    [Required]
-    public string Username { get; set; } = null!;
+    public class LoginCommand : IRequest<LoginResult>
+    {
+        /// <summary>
+        /// 用户名或邮箱.
+        /// </summary>
+        [Required]
+        public string Username { get; set; } = null!;
 
-    /// <summary>
-    /// 密码.
-    /// </summary>
-    [Required]
-    public string Password { get; set; } = null!;
-} 
+        /// <summary>
+        /// 密码.
+        /// </summary>
+        [Required]
+        public string Password { get; set; } = null!;
+    }
+}

@@ -6,15 +6,16 @@
 
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands;
-
-/// <summary>
-/// 删除用户命令.
-/// </summary>
-public class DeleteUserCommand : IRequest
+namespace MaomiAI.User.Shared.Commands
 {
     /// <summary>
-    /// 用户ID.
+    /// 删除用户命令.
     /// </summary>
-    public Guid Id { get; set; }
-} 
+    public class DeleteUserCommand : IRequest
+    {
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        public Guid Id { get; set; }
+    }
+}

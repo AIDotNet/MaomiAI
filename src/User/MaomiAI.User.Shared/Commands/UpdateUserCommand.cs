@@ -5,45 +5,45 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands;
-
-/// <summary>
-/// 更新用户命令.
-/// </summary>
-public class UpdateUserCommand : IRequest
+namespace MaomiAI.User.Shared.Commands
 {
     /// <summary>
-    /// 用户ID.
+    /// 更新用户命令.
     /// </summary>
-    [Required]
-    public Guid Id { get; set; }
+    public class UpdateUserCommand : IRequest
+    {
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        [Required]
+        public Guid Id { get; set; }
 
-    /// <summary>
-    /// 邮箱.
-    /// </summary>
-    [EmailAddress]
-    [StringLength(100)]
-    public string? Email { get; set; }
+        /// <summary>
+        /// 邮箱.
+        /// </summary>
+        [EmailAddress]
+        [StringLength(100)]
+        public string? Email { get; set; }
 
-    /// <summary>
-    /// 昵称.
-    /// </summary>
-    [StringLength(50)]
-    public string? NickName { get; set; }
+        /// <summary>
+        /// 昵称.
+        /// </summary>
+        [StringLength(50)]
+        public string? NickName { get; set; }
 
-    /// <summary>
-    /// 头像URL.
-    /// </summary>
-    [StringLength(500)]
-    public string? AvatarUrl { get; set; }
+        /// <summary>
+        /// 头像URL.
+        /// </summary>
+        [StringLength(500)]
+        public string? AvatarUrl { get; set; }
 
-    /// <summary>
-    /// 手机号.
-    /// </summary>
-    [Phone]
-    [StringLength(20)]
-    public string? Phone { get; set; }
-} 
+        /// <summary>
+        /// 手机号.
+        /// </summary>
+        [Phone]
+        [StringLength(20)]
+        public string? Phone { get; set; }
+    }
+}

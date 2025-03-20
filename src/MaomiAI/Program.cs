@@ -5,19 +5,18 @@
 // </copyright>
 
 using MaomiAI;
-
 using Scalar.AspNetCore;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.UseMaomiAI();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapScalarApiReference(); // scalar/v1
-    app.MapOpenApi();            // /openapi/v1.json
+    app.MapOpenApi(); // /openapi/v1.json
 }
 
 //app.UseStaticFiles(new StaticFileOptions
@@ -26,8 +25,7 @@ if (app.Environment.IsDevelopment())
 //    FileProvider = new LocalPhysicalFileProvider(),
 //});
 
-//app.UseMaomiAIMiddleware();
-
+app.UseMaomiAIMiddleware();
 app.UseAuthentication();
 app.UseAuthorization();
 

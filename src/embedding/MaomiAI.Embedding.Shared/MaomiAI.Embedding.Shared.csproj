@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>12.0</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>12.0</LangVersion>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
-    <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj"/>
+        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<AdditionalFiles Include="..\..\..\stylecop.json" />
-	</ItemGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="..\..\..\stylecop.json"/>
+    </ItemGroup>
 </Project>

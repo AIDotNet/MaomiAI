@@ -6,28 +6,29 @@
 
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
-
 using System;
 
-namespace MaomiAI;
-
-public partial class MainModule
+namespace MaomiAI
 {
-    internal sealed class TypeSchemeTransformer : IOpenApiSchemaTransformer
+    public partial class MainModule
     {
-        public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
+        internal sealed class TypeSchemeTransformer : IOpenApiSchemaTransformer
         {
-            // 后续支持其它类型转换文档
-            if (context.JsonTypeInfo.Type == typeof(decimal))
+            public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context,
+                CancellationToken cancellationToken)
             {
-                schema.Format = "decimal";
-            }
-            else if (context.JsonTypeInfo.Type == typeof(DateTimeOffset))
-            {
-                schema.Format = "string";
-            }
+                // 后续支持其它类型转换文档
+                if (context.JsonTypeInfo.Type == typeof(decimal))
+                {
+                    schema.Format = "decimal";
+                }
+                else if (context.JsonTypeInfo.Type == typeof(DateTimeOffset))
+                {
+                    schema.Format = "string";
+                }
 
-            return Task.CompletedTask;
+                return Task.CompletedTask;
+            }
         }
     }
 }

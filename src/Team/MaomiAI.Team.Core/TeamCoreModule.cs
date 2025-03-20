@@ -5,22 +5,22 @@
 // </copyright>
 
 using Maomi;
-
 using MaomiAI.Team.Api;
 
-namespace MaomiAI.Team.Core;
-
-/// <summary>
-/// 团队API模块.
-/// </summary>
-[InjectModule<TeamApiModule>]
-public class TeamCoreModule : IModule
+namespace MaomiAI.Team.Core
 {
     /// <summary>
-    /// 配置服务.
+    /// 团队API模块.
     /// </summary>
-    /// <param name="context">服务上下文.</param>
-    public void ConfigureServices(ServiceContext context)
+    [InjectModule<TeamApiModule>]
+    public class TeamCoreModule : IModule
     {
+        /// <summary>
+        /// 配置服务.
+        /// </summary>
+        /// <param name="context">服务上下文.</param>
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }

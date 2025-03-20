@@ -7,45 +7,46 @@
 using MaomiAI.Infra.Helpers;
 using System.Security.Cryptography;
 
-namespace MaomiAI.Infra.Service;
-
-public class RsaProvider : IRsaProvider, IDisposable
+namespace MaomiAI.Infra.Service
 {
-    private readonly RSA _rsaPrivate;
-
-    public RsaProvider(string rsaPem)
+    public class RsaProvider : IRsaProvider, IDisposable
     {
-        _rsaPrivate = RSA.Create();
-        _rsaPrivate.ImportFromPem(rsaPem);
-    }
+        private readonly RSA _rsaPrivate;
 
-    public string ExportPublichKeyPck8()
-    {
-        return RsaHelper.ExportPublichKeyPck8(_rsaPrivate);
-    }
-
-    public string Encrypt(string message, RSAEncryptionPadding? padding = null)
-    {
-        if(padding == null)
+        public RsaProvider(string rsaPem)
         {
-            padding = RSAEncryptionPadding.OaepSHA256;
+            _rsaPrivate = RSA.Create();
+            _rsaPrivate.ImportFromPem(rsaPem);
         }
 
-        return RsaHelper.Encrypt(_rsaPrivate, message, padding);
-    }
-
-    public string Decrypt(string message, RSAEncryptionPadding? padding = null)
-    {
-        if (padding == null)
+        public string ExportPublichKeyPck8()
         {
-            padding = RSAEncryptionPadding.OaepSHA256;
+            return RsaHelper.ExportPublichKeyPck8(_rsaPrivate);
         }
 
-        return RsaHelper.Decrypt(_rsaPrivate, message, padding);
-    }
+        public string Encrypt(string message, RSAEncryptionPadding? padding = null)
+        {
+            if (padding == null)
+            {
+                padding = RSAEncryptionPadding.OaepSHA256;
+            }
 
-    public void Dispose()
-    {
-        ((IDisposable)_rsaPrivate).Dispose();
+            return RsaHelper.Encrypt(_rsaPrivate, message, padding);
+        }
+
+        public string Decrypt(string message, RSAEncryptionPadding? padding = null)
+        {
+            if (padding == null)
+            {
+                padding = RSAEncryptionPadding.OaepSHA256;
+            }
+
+            return RsaHelper.Decrypt(_rsaPrivate, message, padding);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)_rsaPrivate).Dispose();
+        }
     }
 }

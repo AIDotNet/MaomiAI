@@ -9,17 +9,18 @@ using Maomi.MQ;
 using MaomiAI.Infra.Defaults;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MaomiAI.Infra;
-
-/// <summary>
-/// InfraCoreModule.
-/// </summary>
-[InjectModule<InfraConfigurationModule>]
-public class InfraCoreModule : IModule
+namespace MaomiAI.Infra
 {
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
+    /// <summary>
+    /// InfraCoreModule.
+    /// </summary>
+    [InjectModule<InfraConfigurationModule>]
+    public class InfraCoreModule : IModule
     {
-        context.Services.AddSingleton<IIdProvider>(new DefaultIdProvider(0));
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
+        {
+            context.Services.AddSingleton<IIdProvider>(new DefaultIdProvider(0));
+        }
     }
 }

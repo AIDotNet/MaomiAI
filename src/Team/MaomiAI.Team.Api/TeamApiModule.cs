@@ -6,18 +6,19 @@
 
 using Maomi;
 
-namespace MaomiAI.Team.Api;
-
-/// <summary>
-/// 团队API模块.
-/// </summary>
-public class TeamApiModule : IModule
+namespace MaomiAI.Team.Api
 {
     /// <summary>
-    /// 配置服务.
+    /// 团队API模块.
     /// </summary>
-    /// <param name="context">服务上下文.</param>
-    public void ConfigureServices(ServiceContext context)
+    public class TeamApiModule : IModule
     {
+        /// <summary>
+        /// 配置服务.
+        /// </summary>
+        /// <param name="context">服务上下文.</param>
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }

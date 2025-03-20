@@ -5,24 +5,24 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
-
-/// <summary>
-/// 切换团队状态命令.
-/// </summary>
-public class ToggleTeamStatusCommand : IRequest
+namespace MaomiAI.Team.Shared.Commands
 {
     /// <summary>
-    /// 团队ID列表.
+    /// 切换团队状态命令.
     /// </summary>
-    [Required]
-    public List<Guid> TeamIds { get; set; } = new();
+    public class ToggleTeamStatusCommand : IRequest
+    {
+        /// <summary>
+        /// 团队ID列表.
+        /// </summary>
+        [Required]
+        public List<Guid> TeamIds { get; set; } = new();
 
-    /// <summary>
-    /// 状态：true-正常，false-禁用.
-    /// </summary>
-    public bool Status { get; set; }
+        /// <summary>
+        /// 状态：true-正常，false-禁用.
+        /// </summary>
+        public bool Status { get; set; }
+    }
 }

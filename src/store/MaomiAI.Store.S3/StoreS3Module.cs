@@ -11,31 +11,28 @@ using MaomiAI.Store.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MaomiAI.Store;
-
-public class StoreS3Module : IModule
+namespace MaomiAI.Store
 {
-    /// <inheritdoc/>
-    public void ConfigureServices(ServiceContext context)
+    public class StoreS3Module : IModule
     {
-        var systemOptions = context.Configuration.Get<SystemOptions>();
-
-        ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
-
-        if (systemOptions.PublicStore.Type == "S3")
+        /// <inheritdoc/>
+        public void ConfigureServices(ServiceContext context)
         {
-            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public, (s, _) =>
-            {
-                return new S3Store(systemOptions.PublicStore.Options);
-            });
-        }
+            SystemOptions? systemOptions = context.Configuration.Get<SystemOptions>();
 
-        if (systemOptions.PrivateStore.Type == "S3")
-        {
-            context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private, (s, _) =>
+            ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
+
+            if (systemOptions.PublicStore.Type == "S3")
             {
-                return new S3Store(systemOptions.PrivateStore.Options);
-            });
+                context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public,
+                    (s, _) => { return new S3Store(systemOptions.PublicStore.Options); });
+            }
+
+            if (systemOptions.PrivateStore.Type == "S3")
+            {
+                context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private,
+                    (s, _) => { return new S3Store(systemOptions.PrivateStore.Options); });
+            }
         }
     }
 }

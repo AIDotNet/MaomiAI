@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<LangVersion>12.0</LangVersion>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>12.0</LangVersion>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
-		<PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.2">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Scalar.AspNetCore" Version="2.0.29" />
-		<PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
-		<PackageReference Include="Serilog.Formatting.Compact" Version="3.0.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2"/>
+        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Scalar.AspNetCore" Version="2.0.29"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Formatting.Compact" Version="3.0.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<AdditionalFiles Include="..\..\stylecop.json" />
-	</ItemGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="..\..\stylecop.json"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj" />
-		<ProjectReference Include="..\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj" />
-		<ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj" />
-		<ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
-		<ProjectReference Include="..\store\MaomiAI.Store.Core\MaomiAI.Store.Core.csproj" />
-		<ProjectReference Include="..\Team\MaomiAI.Team.Core\MaomiAI.Team.Core.csproj" />
-		<ProjectReference Include="..\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj" />
-		<ProjectReference Include="..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj"/>
+        <ProjectReference Include="..\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj"/>
+        <ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj"/>
+        <ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj"/>
+        <ProjectReference Include="..\store\MaomiAI.Store.Core\MaomiAI.Store.Core.csproj"/>
+        <ProjectReference Include="..\Team\MaomiAI.Team.Core\MaomiAI.Team.Core.csproj"/>
+        <ProjectReference Include="..\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj"/>
+        <ProjectReference Include="..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj"/>
+    </ItemGroup>
 
 </Project>

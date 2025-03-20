@@ -5,18 +5,18 @@
 // </copyright>
 
 using MaomiAI.User.Shared.Models;
-
 using MediatR;
 
-namespace MaomiAI.User.Shared.Queries;
-
-/// <summary>
-/// 通过ID获取用户查询.
-/// </summary>
-public class GetUserByIdQuery : IRequest<UserDto?>
+namespace MaomiAI.User.Shared.Queries
 {
     /// <summary>
-    /// 用户ID.
+    /// 通过ID获取用户查询.
     /// </summary>
-    public Guid Id { get; set; }
+    public class GetUserByIdQuery : IRequest<UserDto?>
+    {
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        public Guid Id { get; set; }
+    }
 }

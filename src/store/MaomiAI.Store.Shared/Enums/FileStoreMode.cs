@@ -4,20 +4,21 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.Store.Enums;
-
-/// <summary>
-/// 文件存储模式.
-/// </summary>
-public enum FileStoreMode
+namespace MaomiAI.Store.Enums
 {
     /// <summary>
-    /// 本地存储.
+    /// 文件存储模式.
     /// </summary>
-    Local = 0,
+    public enum FileStoreMode
+    {
+        /// <summary>
+        /// 本地存储.
+        /// </summary>
+        Local = 0,
 
-    /// <summary>
-    /// S3 存储.
-    /// </summary>
-    S3 = 1,
+        /// <summary>
+        /// S3 存储.
+        /// </summary>
+        S3 = 1
+    }
 }

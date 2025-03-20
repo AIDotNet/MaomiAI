@@ -5,25 +5,25 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands;
-
-/// <summary>
-/// 切换用户状态命令.
-/// </summary>
-public class ToggleUserStatusCommand : IRequest
+namespace MaomiAI.User.Shared.Commands
 {
     /// <summary>
-    /// 用户ID.
+    /// 切换用户状态命令.
     /// </summary>
-    [Required]
-    public List<Guid> UserIds { get; set; } = new List<Guid>();
+    public class ToggleUserStatusCommand : IRequest
+    {
+        /// <summary>
+        /// 用户ID.
+        /// </summary>
+        [Required]
+        public List<Guid> UserIds { get; set; } = new();
 
-    /// <summary>
-    /// 状态: true-启用, false-禁用.
-    /// </summary>
-    [Required]
-    public bool Status { get; set; }
+        /// <summary>
+        /// 状态: true-启用, false-禁用.
+        /// </summary>
+        [Required]
+        public bool Status { get; set; }
+    }
 }

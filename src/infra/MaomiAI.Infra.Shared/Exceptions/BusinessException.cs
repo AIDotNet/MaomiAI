@@ -6,92 +6,93 @@
 
 using System.Runtime.Serialization;
 
-namespace Maomi.AI.Exceptions;
-
-/// <summary>
-/// 业务异常.
-/// </summary>
-public class BusinessException : Exception
+namespace Maomi.AI.Exceptions
 {
     /// <summary>
-    /// 构建消息.
+    /// 业务异常.
     /// </summary>
-    /// <param name="code"></param>
-    /// <param name="message"></param>
-    /// <returns>错误消息.</returns>
-    public static string CreateMessage(int code, string message)
+    public class BusinessException : Exception
     {
-        return $"code: {code},message: {message}";
-    }
-
-    /// <summary>
-    /// 错误代码.
-    /// </summary>
-    public int ErrorCode { get; private set; } = 500;
-
-    /// <summary>
-    /// 错误信息参数.
-    /// </summary>
-    public IReadOnlyList<object>? Argments { get; private set; } = new List<object>();
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessException"/> class.
-    /// </summary>
-    public BusinessException()
-    {
-        if (Argments == null)
+        /// <summary>
+        /// 构建消息.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <returns>错误消息.</returns>
+        public static string CreateMessage(int code, string message)
         {
-            Argments = new List<object>();
+            return $"code: {code},message: {message}";
         }
-    }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessException"/> class.
-    /// </summary>
-    /// <param name="errorCode"></param>
-    /// <param name="message"></param>
-    public BusinessException(int errorCode, string message)
-        : base(message)
-    {
-        ErrorCode = errorCode;
-    }
+        /// <summary>
+        /// 错误代码.
+        /// </summary>
+        public int ErrorCode { get; private set; } = 500;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessException"/> class.
-    /// </summary>
-    /// <param name="errorCode"></param>
-    /// <param name="message"></param>
-    /// <param name="argments"></param>
-    public BusinessException(int errorCode, string message, params object[] argments)
-        : base(message)
-    {
-        ErrorCode = errorCode;
+        /// <summary>
+        /// 错误信息参数.
+        /// </summary>
+        public IReadOnlyList<object>? Argments { get; private set; } = new List<object>();
 
-        Argments = argments;
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        public BusinessException()
+        {
+            if (Argments == null)
+            {
+                Argments = new List<object>();
+            }
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessException"/> class.
-    /// </summary>
-    /// <param name="message"></param>
-    public BusinessException(string message)
-        : base(message)
-    {
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        /// <param name="errorCode"></param>
+        /// <param name="message"></param>
+        public BusinessException(int errorCode, string message)
+            : base(message)
+        {
+            ErrorCode = errorCode;
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessException"/> class.
-    /// </summary>
-    /// <param name="message"></param>
-    /// <param name="innerException"></param>
-    public BusinessException(string message, Exception innerException)
-        : base(message, innerException)
-    {
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        /// <param name="errorCode"></param>
+        /// <param name="message"></param>
+        /// <param name="argments"></param>
+        public BusinessException(int errorCode, string message, params object[] argments)
+            : base(message)
+        {
+            ErrorCode = errorCode;
 
-    /// <inheritdoc />
-    public override string ToString()
-    {
-        return Message;
+            Argments = argments;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        /// <param name="message"></param>
+        public BusinessException(string message)
+            : base(message)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="innerException"></param>
+        public BusinessException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return Message;
+        }
     }
 }
