@@ -4,11 +4,12 @@
 
 using Maomi;
 
-namespace MaomiAI.User.Api;
-
-public class UserApiModule : IModule
+namespace MaomiAI.User.Api
 {
-    public void ConfigureServices(ServiceContext context)
+    public class UserApiModule : IModule
     {
+        public void ConfigureServices(ServiceContext context)
+        {
+        }
     }
 }
