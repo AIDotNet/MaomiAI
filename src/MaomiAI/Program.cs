@@ -25,11 +25,11 @@ if (app.Environment.IsDevelopment())
 //    FileProvider = new LocalPhysicalFileProvider(),
 //});
 
-app.UseMaomiAIMiddleware();
 app.UseAuthentication();
 app.UseAuthorization();
-
+ 
 app.UseRouting();
+app.UseMaomiAIMiddleware();
 
 app.UseHttpLogging();
 

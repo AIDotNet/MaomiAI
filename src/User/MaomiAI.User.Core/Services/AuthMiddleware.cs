@@ -14,17 +14,11 @@ namespace MaomiAI.User.Core.Services
     public class AuthMiddleware : IMiddleware
     {
         private readonly DefaultUserContext _userContext;
-        private readonly MaomiaiContext _dbContext;
         private readonly ILogger<AuthMiddleware> _logger;
 
-        public AuthMiddleware(
-            IHttpContextAccessor httpContextAccessor,
-            DefaultUserContext userContext,
-            MaomiaiContext dbContext,
-            ILogger<AuthMiddleware> logger)
+        public AuthMiddleware(DefaultUserContext userContext, ILogger<AuthMiddleware> logger)
         {
             _userContext = userContext;
-            _dbContext = dbContext;
             _logger = logger;
         }
 
@@ -58,8 +52,8 @@ namespace MaomiAI.User.Core.Services
 
             if (!await CheckAuthorizationRequirements(context))
             {
-                _logger.LogWarning("用户 {UserName} ({UserId}) 没有足够的权限访问 {Path}",
-                    _userContext.UserName, _userContext.UserId, path);
+                _logger.LogWarning("用户 {UserName} ({UserId}) 没有足够的权限访问 {Path}", _userContext.UserName,
+                    _userContext.UserId, path);
                 await SetResponseAsync(context, StatusCodes.Status403Forbidden, "没有足够的权限访问此资源");
                 return;
             }
@@ -67,6 +61,7 @@ namespace MaomiAI.User.Core.Services
             await next(context);
         }
 
+        // 改进后的方法，确保匿名路径能正确识别
         private bool IsAnonymousAllowed(HttpContext context, string? path)
         {
             if (!string.IsNullOrEmpty(path) && (path.StartsWith("/scalar") || path.StartsWith("/openapi")))
@@ -76,8 +71,7 @@ namespace MaomiAI.User.Core.Services
             }
 
             Endpoint? endpoint = context.GetEndpoint();
-            if (endpoint?.Metadata.GetMetadata<IAllowAnonymous>() != null ||
-                endpoint?.Metadata.GetMetadata<AllowAnonymousAttribute>() != null)
+            if (endpoint?.Metadata.GetMetadata<IAllowAnonymous>() != null)
             {
                 _logger.LogDebug("请求路径 {Path} 允许匿名访问", path);
                 return true;
@@ -89,28 +83,27 @@ namespace MaomiAI.User.Core.Services
         private async Task<AuthenticationResult> AuthenticateUserAsync(HttpContext context)
         {
             Claim? userIdClaim = context.User.FindFirst(ClaimTypes.NameIdentifier);
+            Claim? userNameClaim = context.User.FindFirst(ClaimTypes.Name);
+            Claim? nickNameClaim = context.User.FindFirst("nickname");
+            Claim? emailClaim = context.User.FindFirst(ClaimTypes.Email);
+            Claim? avatarClaim = context.User.FindFirst("avatar");
+
             if (userIdClaim is null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
             {
                 return AuthenticationResult.Failed("用户ID解析失败");
             }
 
-            if (!await _dbContext.User.AnyAsync(u => u.Id == userId && !u.IsDeleted))
-            {
-                return AuthenticationResult.Failed($"找不到ID为 {userId} 的用户");
-            }
-
-            UserEntity user = await _dbContext.User.FirstAsync(u => u.Id == userId && !u.IsDeleted);
-            if (!user.Status)
-            {
-                return AuthenticationResult.Failed($"用户 {user.UserName} ({user.Id}) 已被禁用");
-            }
-
             _userContext
-                .SetUserInfo(user.Id, user.UserName, user.NickName, user.Email, user.AvatarUrl)
+                .SetUserInfo(
+                    userId,
+                    userNameClaim?.Value ?? string.Empty,
+                    nickNameClaim?.Value ?? string.Empty,
+                    emailClaim?.Value ?? string.Empty,
+                    avatarClaim?.Value ?? string.Empty)
                 .SetAuthenticated(true)
                 .AddRoles(context.User.FindAll(ClaimTypes.Role).Select(c => c.Value));
 
-            _logger.LogInformation("用户 {UserName} ({UserId}) 已认证", user.UserName, user.Id);
+            _logger.LogInformation("用户 {UserName} ({UserId}) 已认证", userNameClaim?.Value, userId);
             return AuthenticationResult.Success();
         }
 

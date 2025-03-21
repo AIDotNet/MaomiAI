@@ -125,7 +125,7 @@ namespace MaomiAI.Controllers
         /// <returns>登录结果.</returns>
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<LoginResult>> Login(LoginCommand command)
+        public async Task<LoginResult> Login(LoginCommand command)
         {
             return await _mediator.Send(command);
         }
