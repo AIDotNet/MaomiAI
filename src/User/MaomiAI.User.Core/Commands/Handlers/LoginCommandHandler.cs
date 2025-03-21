@@ -76,7 +76,7 @@ namespace MaomiAI.User.Core.Commands.Handlers
         }
 
         // 生成访问令牌
-        private LoginResult GenerateAccessToken(Database.Entities.UserEntity user)
+        private LoginResult GenerateAccessToken(UserEntity user)
         {
             IConfigurationSection jwtSettings = _configuration.GetSection("Jwt");
             string secretKey = jwtSettings["SecretKey"] ?? "MaomiAIDefaultSecretKey1234567890ABCDEFGH";
@@ -91,7 +91,8 @@ namespace MaomiAI.User.Core.Commands.Handlers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Name, user.NickName),
+                new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Nickname, user.NickName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("username", user.UserName)
             };

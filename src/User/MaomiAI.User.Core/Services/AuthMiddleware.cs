@@ -83,7 +83,7 @@ namespace MaomiAI.User.Core.Services
         private async Task<AuthenticationResult> AuthenticateUserAsync(HttpContext context)
         {
             Claim? userIdClaim = context.User.FindFirst(ClaimTypes.NameIdentifier);
-            Claim? userNameClaim = context.User.FindFirst(ClaimTypes.Name);
+            Claim? userNameClaim = context.User.FindFirst("name");
             Claim? nickNameClaim = context.User.FindFirst("nickname");
             Claim? emailClaim = context.User.FindFirst(ClaimTypes.Email);
             Claim? avatarClaim = context.User.FindFirst("avatar");
