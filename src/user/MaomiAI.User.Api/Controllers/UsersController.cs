@@ -69,6 +69,7 @@ namespace MaomiAI.Controllers
         /// <param name="command">创建用户命令.</param>
         /// <returns>新创建的用户ID.</returns>
         [HttpPost("create-user")]
+        [AllowAnonymous]
         public async Task<ActionResult<Guid>> CreateUser(CreateUserCommand command)
         {
             Guid userId = await _mediator.Send(command);
