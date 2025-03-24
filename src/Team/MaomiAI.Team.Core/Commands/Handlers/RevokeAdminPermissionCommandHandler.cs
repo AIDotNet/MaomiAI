@@ -4,9 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;

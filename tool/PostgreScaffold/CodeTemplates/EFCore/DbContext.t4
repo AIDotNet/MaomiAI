@@ -6,14 +6,6 @@
 <#@ parameter name="Model" type="Microsoft.EntityFrameworkCore.Metadata.IModel" #>
 <#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
 <#@ parameter name="NamespaceHint" type="System.String" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore.Infrastructure" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore.Scaffolding" #>
-<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#
     if (!ProductInfo.GetVersion().StartsWith("9.0"))
     {
@@ -128,7 +120,7 @@ public partial class <#= Options.ContextName #> : DbContext
         usings.AddRange(modelFluentApiCalls.GetRequiredUsings());
 #>
         modelBuilder<#=
-                code.Fragment(modelFluentApiCalls, indent: 3) #>;
+            code.Fragment(modelFluentApiCalls, indent: 3) #>;
 <#
         anyConfiguration = true;
     }
@@ -164,7 +156,7 @@ public partial class <#= Options.ContextName #> : DbContext
                 }
 #>
             entity.HasKey(<#= code.Lambda(key.Properties, "e") #>)<#=
-                        code.Fragment(keyFluentApiCalls, indent: 4) #>;
+                    code.Fragment(keyFluentApiCalls, indent: 4) #>;
 <#
                 anyEntityTypeConfiguration = true;
             }
@@ -182,7 +174,7 @@ public partial class <#= Options.ContextName #> : DbContext
             }
 #>
             entity<#=
-                    code.Fragment(entityTypeFluentApiCalls, indent: 4) #>;
+                code.Fragment(entityTypeFluentApiCalls, indent: 4) #>;
 <#
             anyEntityTypeConfiguration = true;
         }
@@ -202,7 +194,7 @@ public partial class <#= Options.ContextName #> : DbContext
             }
 #>
             entity.HasIndex(<#= code.Lambda(index.Properties, "e") #>, <#= code.Literal(index.GetDatabaseName()) #>)<#=
-                    code.Fragment(indexFluentApiCalls, indent: 4) #>;
+                code.Fragment(indexFluentApiCalls, indent: 4) #>;
 <#
             anyEntityTypeConfiguration = true;
         }
@@ -228,7 +220,7 @@ public partial class <#= Options.ContextName #> : DbContext
             }
 #>
             entity.Property(e => e.<#= property.Name #>)<#=
-                    code.Fragment(propertyFluentApiCalls, indent: 4) #>;
+                code.Fragment(propertyFluentApiCalls, indent: 4) #>;
 <#
             anyEntityTypeConfiguration = true;
             firstProperty = false;
@@ -251,9 +243,9 @@ public partial class <#= Options.ContextName #> : DbContext
             }
 #>
             entity.HasOne(d => d.<#= foreignKey.DependentToPrincipal.Name #>).<#=
-                    foreignKey.IsUnique ? "WithOne" : "WithMany" #>(<#=
-                    foreignKey.PrincipalToDependent != null ? $"p => p.{foreignKey.PrincipalToDependent.Name}" : "" #>)<#=
-                    code.Fragment(foreignKeyFluentApiCalls, indent: 4) #>;
+                foreignKey.IsUnique ? "WithOne" : "WithMany" #>(<#=
+                foreignKey.PrincipalToDependent != null ? $"p => p.{foreignKey.PrincipalToDependent.Name}" : "" #>)<#=
+                code.Fragment(foreignKeyFluentApiCalls, indent: 4) #>;
 <#
             anyEntityTypeConfiguration = true;
         }
@@ -285,9 +277,9 @@ public partial class <#= Options.ContextName #> : DbContext
                 .UsingEntity<Dictionary<string, object>>(
                     <#= code.Literal(joinEntityType.Name) #>,
                     r => r.HasOne<<#= right.PrincipalEntityType.Name #>>().WithMany()<#=
-                    code.Fragment(rightFluentApiCalls, indent: 6) #>,
+                code.Fragment(rightFluentApiCalls, indent: 6) #>,
                     l => l.HasOne<<#= left.PrincipalEntityType.Name #>>().WithMany()<#=
-                    code.Fragment(leftFluentApiCalls, indent: 6) #>,
+                code.Fragment(leftFluentApiCalls, indent: 6) #>,
                     j =>
                     {
 <#
@@ -300,8 +292,8 @@ public partial class <#= Options.ContextName #> : DbContext
             }
 #>
                         j.HasKey(<#=
-                    code.Arguments(joinKey.Properties.Select(e => e.Name)) #>)<#=
-                    code.Fragment(joinKeyFluentApiCalls, indent: 7) #>;
+                code.Arguments(joinKey.Properties.Select(e => e.Name)) #>)<#=
+                code.Fragment(joinKeyFluentApiCalls, indent: 7) #>;
 <#
             var joinEntityTypeFluentApiCalls = joinEntityType.GetFluentApiCalls(annotationCodeGenerator);
             if (joinEntityTypeFluentApiCalls != null)
@@ -309,7 +301,7 @@ public partial class <#= Options.ContextName #> : DbContext
                 usings.AddRange(joinEntityTypeFluentApiCalls.GetRequiredUsings());
 #>
                         j<#=
-                        code.Fragment(joinEntityTypeFluentApiCalls, indent: 7) #>;
+                    code.Fragment(joinEntityTypeFluentApiCalls, indent: 7) #>;
 <#
             }
 
@@ -322,9 +314,9 @@ public partial class <#= Options.ContextName #> : DbContext
                 }
 #>
                         j.HasIndex(<#=
-                        code.Literal(index.Properties.Select(e => e.Name).ToArray()) #>, <#=
-                        code.Literal(index.GetDatabaseName()) #>)<#=
-                        code.Fragment(indexFluentApiCalls, indent: 7) #>;
+                    code.Literal(index.Properties.Select(e => e.Name).ToArray()) #>, <#=
+                    code.Literal(index.GetDatabaseName()) #>)<#=
+                    code.Fragment(indexFluentApiCalls, indent: 7) #>;
 <#
             }
 
@@ -339,7 +331,7 @@ public partial class <#= Options.ContextName #> : DbContext
                 usings.AddRange(propertyFluentApiCalls.GetRequiredUsings());
 #>
                         j.IndexerProperty<<#= code.Reference(property.ClrType) #>>(<#= code.Literal(property.Name) #>)<#=
-                        code.Fragment(propertyFluentApiCalls, indent: 7) #>;
+                    code.Fragment(propertyFluentApiCalls, indent: 7) #>;
 <#
             }
 #>
@@ -368,9 +360,9 @@ public partial class <#= Options.ContextName #> : DbContext
         var sequenceFluentApiCalls = sequence.GetFluentApiCalls(annotationCodeGenerator);
 #>
         modelBuilder.HasSequence<#=
-                needsType ? $"<{code.Reference(sequence.Type)}>" : "" #>(<#= code.Literal(sequence.Name) #><#=
-                needsSchema ? $", {code.Literal(sequence.Schema)}" : "" #>)<#=
-                code.Fragment(sequenceFluentApiCalls, indent: 3) #>;
+            needsType ? $"<{code.Reference(sequence.Type)}>" : "" #>(<#= code.Literal(sequence.Name) #><#=
+            needsSchema ? $", {code.Literal(sequence.Schema)}" : "" #>)<#=
+            code.Fragment(sequenceFluentApiCalls, indent: 3) #>;
 <#
     }
 

@@ -5,7 +5,6 @@
 // </copyright>
 
 using MaomiAI.Infra.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaomiAI.Controllers

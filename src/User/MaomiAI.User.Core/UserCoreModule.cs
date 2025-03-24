@@ -4,16 +4,10 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.Reflection;
-using System.Text;
 using Maomi;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core.Services;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 
 namespace MaomiAI.User.Core
 {

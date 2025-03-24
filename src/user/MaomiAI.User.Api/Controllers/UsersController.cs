@@ -11,10 +11,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MaomiAI.Controllers
+namespace MaomiAI.User.Api.Controllers
 {
     // todo：api 描述改成 openapi
-// todo：请求响应参数要模型化
+    // todo：请求响应参数要模型化
 
     /// <summary>
     /// 用户管理控制器.
@@ -51,7 +51,7 @@ namespace MaomiAI.Controllers
         /// <param name="id">用户ID.</param>
         /// <returns>用户信息.</returns>
         [HttpGet("get-user/{id}")]
-        public async Task<ActionResult<UserDto>> GetUser(Guid id)
+        public async Task<ActionResult<UserDto>> UserByIdQuery(Guid id)
         {
             GetUserByIdQuery query = new() { Id = id };
             UserDto? result = await _mediator.Send(query);
@@ -73,7 +73,7 @@ namespace MaomiAI.Controllers
         public async Task<ActionResult<Guid>> CreateUser(CreateUserCommand command)
         {
             Guid userId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetUser), new { id = userId }, userId);
+            return CreatedAtAction(nameof(UserByIdQuery), new { id = userId }, userId);
         }
 
         /// <summary>

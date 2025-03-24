@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Audits;
+﻿using MaomiAI.Database.Audits;
 
 namespace MaomiAI.Database.Entities
 {

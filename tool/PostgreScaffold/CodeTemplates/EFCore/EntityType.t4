@@ -6,13 +6,6 @@
 <#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
 <#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
 <#@ parameter name="NamespaceHint" type="System.String" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.ComponentModel.DataAnnotations" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore" #>
-<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
-<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#
     if (EntityType.IsSimpleManyToManyJoinEntityType())
     {
@@ -81,7 +74,7 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
 #>
     /// <summary>
     /// <#=
-                    code.XmlComment(property.GetComment(), indent: 1) #>.
+                code.XmlComment(property.GetComment(), indent: 1) #>.
     /// </summary>
 <#
         }

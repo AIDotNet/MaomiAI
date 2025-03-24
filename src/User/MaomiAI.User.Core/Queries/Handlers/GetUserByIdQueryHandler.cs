@@ -6,7 +6,6 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
-using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Models;
 using MaomiAI.User.Shared.Queries;
 using MediatR;
@@ -39,7 +38,7 @@ namespace MaomiAI.User.Core.Queries.Handlers
         public async Task<UserDto?> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             UserEntity? user = await _dbContext.User
-                .Where(u => u.Id == request.Id && !u.IsDeleted)
+                .Where(u => u.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (user == null)

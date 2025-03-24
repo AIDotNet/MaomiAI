@@ -5,7 +5,6 @@
 // </copyright>
 
 using Maomi;
-using MaomiAI.Infra.Helpers;
 using MaomiAI.Infra.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

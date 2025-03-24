@@ -5,12 +5,10 @@
 // </copyright>
 
 using Maomi;
-using MaomiAI;
 using MaomiAI.Database.Postgres;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace MaomiAI.Database
 {

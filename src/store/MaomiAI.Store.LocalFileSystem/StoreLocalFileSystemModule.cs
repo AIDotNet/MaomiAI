@@ -5,13 +5,6 @@
 // </copyright>
 
 using Maomi;
-using MaomiAI.Infra;
-using MaomiAI.Infra.Service;
-using MaomiAI.Store.Enums;
-using MaomiAI.Store.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MaomiAI.Store
 {

@@ -6,7 +6,6 @@
 
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
-using System;
 
 namespace MaomiAI
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Entities;
+﻿using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

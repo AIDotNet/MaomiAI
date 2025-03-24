@@ -1,9 +1,6 @@
 ﻿using System.Security.Claims;
-using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MaomiAI.User.Core.Services
