@@ -65,7 +65,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
 
                 // 验证用户是否存在
                 UserEntity? user = await _dbContext.Users
-                    .FirstOrDefaultAsync(u => u.Id == request.UserId && !u.IsDeleted, cancellationToken);
+                    .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
 
                 if (user == null)
                 {
@@ -75,7 +75,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
 
                 // 验证操作人是否有权限（必须是团队管理员或所有者）
                 TeamMemberEntity? operatorMember = await _dbContext.TeamMembers
-                    .FirstOrDefaultAsync(m => m.TeamId == request.TeamId && m.UserId == currentUserId && !m.IsDeleted,
+                    .FirstOrDefaultAsync(m => m.TeamId == request.TeamId && m.UserId == currentUserId,
                         cancellationToken);
 
                 if (operatorMember == null || (!operatorMember.IsAdmin && !operatorMember.IsRoot))

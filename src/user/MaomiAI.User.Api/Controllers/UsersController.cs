@@ -13,9 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MaomiAI.User.Api.Controllers
 {
-    // todo：api 描述改成 openapi
-    // todo：请求响应参数要模型化
-
     /// <summary>
     /// 用户管理控制器.
     /// </summary>

@@ -78,6 +78,7 @@ namespace MaomiAI.Database
         /// <inheritdoc/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("public");
             modelBuilder
                 .ApplyConfigurationsFromAssembly(_contextOptions.ConfigurationAssembly)
                 .ApplyConfigurationsFromAssembly(_contextOptions.EntityAssembly);

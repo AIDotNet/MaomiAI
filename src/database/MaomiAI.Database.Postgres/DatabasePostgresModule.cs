@@ -96,6 +96,7 @@ namespace MaomiAI.Database.Postgres
 
                 // 如果数据库不存在，则会创建数据库及其所有表。
                 dbContext.Database.EnsureCreated();
+                dbContext.Database.Migrate();
             }
             catch (Exception ex)
             {
