@@ -37,18 +37,11 @@ namespace MaomiAI.User.Core.Commands.Handlers
         public async Task Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             UserEntity? user = await _dbContext.User
-                .Where(u => u.Id == request.Id && !u.IsDeleted)
-                .FirstOrDefaultAsync(cancellationToken);
+                                   .Where(u => u.Id == request.Id && !u.IsDeleted)
+                                   .FirstOrDefaultAsync(cancellationToken)
+                               ?? throw new InvalidOperationException($"用户 {request.Id} 不存在或已被删除");
 
-            if (user == null)
-            {
-                throw new InvalidOperationException($"用户 {request.Id} 不存在或已被删除");
-            }
-
-            // 执行软删除
-            user.IsDeleted = true;
-            user.UpdateTime = DateTimeOffset.UtcNow;
-
+            user.MarkAsDeleted();
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
