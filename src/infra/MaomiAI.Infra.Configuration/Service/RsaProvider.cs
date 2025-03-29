@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI.Infra.Helpers;
+using MaomiAI.Infra.Services;
 using System.Security.Cryptography;
 
 namespace MaomiAI.Infra.Service

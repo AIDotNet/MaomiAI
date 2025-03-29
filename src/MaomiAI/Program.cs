@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI;
+using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -15,15 +16,14 @@ WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapScalarApiReference(); // scalar/v1
-    app.MapOpenApi(); // /openapi/v1.json
+    app.MapScalarApiReference();
+    app.MapOpenApi();
 }
 
-//app.UseStaticFiles(new StaticFileOptions
-//{
-//    RequestPath = "/files/",
-//    FileProvider = new LocalPhysicalFileProvider(),
-//});
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(builder.Environment.ContentRootPath),
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

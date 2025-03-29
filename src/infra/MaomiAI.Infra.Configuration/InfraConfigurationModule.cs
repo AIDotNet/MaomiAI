@@ -6,6 +6,7 @@
 
 using Maomi;
 using MaomiAI.Infra.Service;
+using MaomiAI.Infra.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

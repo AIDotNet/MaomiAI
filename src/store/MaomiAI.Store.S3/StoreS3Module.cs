@@ -11,28 +11,26 @@ using MaomiAI.Store.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MaomiAI.Store
+namespace MaomiAI.Store;
+
+/// <summary>
+/// S3 存储模块.
+/// </summary>
+public class StoreS3Module : IModule
 {
-    public class StoreS3Module : IModule
+    /// <inheritdoc/>
+    public void ConfigureServices(ServiceContext context)
     {
-        /// <inheritdoc/>
-        public void ConfigureServices(ServiceContext context)
-        {
-            SystemOptions? systemOptions = context.Configuration.Get<SystemOptions>();
+        SystemOptions? systemOptions = context.Configuration.Get<SystemOptions>();
 
-            ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
+        ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
 
-            if (systemOptions.PublicStore.Type == "S3")
-            {
-                context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Public,
-                    (s, _) => { return new S3Store(systemOptions.PublicStore.Options); });
-            }
+        context.Services.AddKeyedScoped<IFileStore>(
+            FileStoreType.Public,
+            (s, _) => { return new S3Store(systemOptions.PublicStore); });
 
-            if (systemOptions.PrivateStore.Type == "S3")
-            {
-                context.Services.AddKeyedScoped<IFileStore>(FileStoreType.Private,
-                    (s, _) => { return new S3Store(systemOptions.PrivateStore.Options); });
-            }
-        }
+        context.Services.AddKeyedScoped<IFileStore>(
+            FileStoreType.Private,
+            (s, _) => { return new S3Store(systemOptions.PrivateStore); });
     }
 }

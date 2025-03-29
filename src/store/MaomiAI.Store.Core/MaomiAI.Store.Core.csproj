@@ -10,12 +10,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
+        <AdditionalFiles Include="..\..\..\stylecop.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\MaomiAI.Store.LocalFileSystem\MaomiAI.Store.LocalFileSystem.csproj"/>
-        <ProjectReference Include="..\MaomiAI.Store.S3\MaomiAI.Store.S3.csproj"/>
-        <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj"/>
+        <ProjectReference Include="..\MaomiAI.Store.LocalFileSystem\MaomiAI.Store.LocalFileSystem.csproj" />
+        <ProjectReference Include="..\MaomiAI.Store.S3\MaomiAI.Store.S3.csproj" />
+        <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
     </ItemGroup>
 </Project>

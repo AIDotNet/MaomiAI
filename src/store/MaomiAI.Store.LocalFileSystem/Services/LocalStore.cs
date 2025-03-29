@@ -1,176 +1,181 @@
-﻿using MaomiAI.Infra.Service;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Primitives;
+﻿//// <copyright file="LocalStore.cs" company="MaomiAI">
+//// Copyright (c) MaomiAI. All rights reserved.
+//// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+//// Github link: https://github.com/AIDotNet/MaomiAI
+//// </copyright>
 
-namespace MaomiAI.Store.Services
-{
-    public class LocalStore : IFileStore
-    {
-        private readonly string _serviceUrl;
-        private readonly string _storePath;
-        private readonly IAESProvider _aesProvider;
+//using MaomiAI.Infra.Service;
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.Extensions.FileProviders;
+//using Microsoft.Extensions.Primitives;
 
-        public LocalStore(IAESProvider aesProvider, string serviceUrl, string storePath)
-        {
-            _aesProvider = aesProvider;
-            _serviceUrl = serviceUrl;
-            _storePath = storePath;
-        }
+//namespace MaomiAI.Store.Services;
 
-        public async Task DeleteFilesAsync(IEnumerable<string> objectKeys)
-        {
-            foreach (string? key in objectKeys)
-            {
-                string? filePath = Path.Combine(_storePath, key);
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
-            }
+//public class LocalStore : IFileStore
+//{
+//    private readonly string _serviceUrl;
+//    private readonly string _storePath;
+//    private readonly IAESProvider _aesProvider;
 
-            await Task.CompletedTask;
-        }
+//    public LocalStore(IAESProvider aesProvider, string serviceUrl, string storePath)
+//    {
+//        _aesProvider = aesProvider;
+//        _serviceUrl = serviceUrl;
+//        _storePath = storePath;
+//    }
 
-        public async Task<bool> FileExistsAsync(string objectKey)
-        {
-            string? filePath = Path.Combine(_storePath, objectKey);
-            return await Task.FromResult(File.Exists(filePath));
-        }
+//    public async Task DeleteFilesAsync(IEnumerable<string> objectKeys)
+//    {
+//        foreach (string? key in objectKeys)
+//        {
+//            string? filePath = Path.Combine(_storePath, key);
+//            if (File.Exists(filePath))
+//            {
+//                File.Delete(filePath);
+//            }
+//        }
 
-        public async Task<IReadOnlyDictionary<string, long>> GetFileSizeAsync(IEnumerable<string> objectKeys)
-        {
-            Dictionary<string, long>? result = new();
-            foreach (string? key in objectKeys)
-            {
-                string? filePath = Path.Combine(_storePath, key);
-                if (File.Exists(filePath))
-                {
-                    FileInfo? fileInfo = new(filePath);
-                    result[key] = fileInfo.Length;
-                }
-            }
+//        await Task.CompletedTask;
+//    }
 
-            return await Task.FromResult(result);
-        }
+//    public async Task<bool> FileExistsAsync(string objectKey)
+//    {
+//        string? filePath = Path.Combine(_storePath, objectKey);
+//        return await Task.FromResult(File.Exists(filePath));
+//    }
 
-        public async Task<IReadOnlyDictionary<string, Uri>> GetFileUrlAsync(IEnumerable<string> objectKeys,
-            TimeSpan expiryDuration)
-        {
-            Dictionary<string, Uri>? result = new();
-            foreach (string? key in objectKeys)
-            {
-                string? filePath = Path.Combine(_storePath, key);
-                if (File.Exists(filePath))
-                {
-                    string? token = GenerateToken(key, expiryDuration);
-                    Uri? fileUri = new($"{_serviceUrl}/{key}?token={token}");
-                    result[key] = fileUri;
-                }
-            }
+//    public async Task<IReadOnlyDictionary<string, long>> GetFileSizeAsync(IEnumerable<string> objectKeys)
+//    {
+//        Dictionary<string, long>? result = new();
+//        foreach (string? key in objectKeys)
+//        {
+//            string? filePath = Path.Combine(_storePath, key);
+//            if (File.Exists(filePath))
+//            {
+//                FileInfo? fileInfo = new(filePath);
+//                result[key] = fileInfo.Length;
+//            }
+//        }
 
-            return await Task.FromResult(result);
-        }
+//        return await Task.FromResult(result);
+//    }
 
-        public async Task<Uri> UploadFileAsync(Stream inputStream, string objectKey)
-        {
-            string? filePath = Path.Combine(_storePath, objectKey);
-            using (FileStream? fileStream = new(filePath, FileMode.Create, FileAccess.Write))
-            {
-                await inputStream.CopyToAsync(fileStream);
-            }
+//    public async Task<IReadOnlyDictionary<string, Uri>> GetFileUrlAsync(IEnumerable<string> objectKeys,
+//        TimeSpan expiryDuration)
+//    {
+//        Dictionary<string, Uri>? result = new();
+//        foreach (string? key in objectKeys)
+//        {
+//            string? filePath = Path.Combine(_storePath, key);
+//            if (File.Exists(filePath))
+//            {
+//                string? token = GenerateToken(key, expiryDuration);
+//                Uri? fileUri = new($"{_serviceUrl}/{key}?token={token}");
+//                result[key] = fileUri;
+//            }
+//        }
 
-            return await Task.FromResult(new Uri(Path.Combine(_serviceUrl, objectKey)));
-        }
+//        return await Task.FromResult(result);
+//    }
 
-        public string GenerateToken(string objectKey, TimeSpan expiryDuration)
-        {
-            long expiry = DateTimeOffset.Now.Add(expiryDuration).ToUnixTimeSeconds();
+//    public async Task<Uri> UploadFileAsync(Stream inputStream, string objectKey)
+//    {
+//        string? filePath = Path.Combine(_storePath, objectKey);
+//        using (FileStream? fileStream = new(filePath, FileMode.Create, FileAccess.Write))
+//        {
+//            await inputStream.CopyToAsync(fileStream);
+//        }
 
-            return _aesProvider.Encrypt($"{objectKey}:{expiry}");
-        }
+//        return await Task.FromResult(new Uri(Path.Combine(_serviceUrl, objectKey)));
+//    }
 
-        public bool ValidateToken(string objectKey, string token)
-        {
-            try
-            {
-                string? plainText = _aesProvider.Decrypt(token);
+//    public string GenerateToken(string objectKey, TimeSpan expiryDuration)
+//    {
+//        long expiry = DateTimeOffset.Now.Add(expiryDuration).ToUnixTimeSeconds();
 
-                string[]? parts = token.Split(':');
-                if (parts.Length != 2)
-                {
-                    return false;
-                }
+//        return _aesProvider.Encrypt($"{objectKey}:{expiry}");
+//    }
 
-                if (parts[0] != objectKey)
-                {
-                    return false;
-                }
+//    public bool ValidateToken(string objectKey, string token)
+//    {
+//        try
+//        {
+//            string? plainText = _aesProvider.Decrypt(token);
 
-                long expiry = long.Parse(parts[1]);
+//            string[]? parts = token.Split(':');
+//            if (parts.Length != 2)
+//            {
+//                return false;
+//            }
 
-                if (expiry <= DateTimeOffset.Now.ToUnixTimeSeconds())
-                {
-                    return false;
-                }
+//            if (parts[0] != objectKey)
+//            {
+//                return false;
+//            }
 
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-    }
+//            long expiry = long.Parse(parts[1]);
+
+//            if (expiry <= DateTimeOffset.Now.ToUnixTimeSeconds())
+//            {
+//                return false;
+//            }
+
+//            return true;
+//        }
+//        catch
+//        {
+//            return false;
+//        }
+//    }
+//}
 
 
-    public class LocalPhysicalFileProvider : IFileProvider
-    {
-        private readonly PhysicalFileProvider _physicalFileProvider;
-        private readonly LocalStore _localStore;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+//public class LocalPhysicalFileProvider : IFileProvider
+//{
+//    private readonly PhysicalFileProvider _physicalFileProvider;
+//    private readonly LocalStore _localStore;
+//    private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LocalPhysicalFileProvider(string root, LocalStore localStore, IHttpContextAccessor httpContextAccessor)
-        {
-            _physicalFileProvider = new PhysicalFileProvider(root);
-            _localStore = localStore;
-            _httpContextAccessor = httpContextAccessor;
-        }
+//    public LocalPhysicalFileProvider(string root, LocalStore localStore, IHttpContextAccessor httpContextAccessor)
+//    {
+//        _physicalFileProvider = new PhysicalFileProvider(root);
+//        _localStore = localStore;
+//        _httpContextAccessor = httpContextAccessor;
+//    }
 
-        public IDirectoryContents GetDirectoryContents(string subpath)
-        {
-            // 不允许浏览目录
-            return NotFoundDirectoryContents.Singleton;
-        }
+//    public IDirectoryContents GetDirectoryContents(string subpath)
+//    {
+//        // 不允许浏览目录
+//        return NotFoundDirectoryContents.Singleton;
+//    }
 
-        public IFileInfo GetFileInfo(string subpath)
-        {
-            HttpContext? context = _httpContextAccessor.HttpContext;
-            if (context == null)
-            {
-                return new NotFoundFileInfo(subpath);
-            }
+//    public IFileInfo GetFileInfo(string subpath)
+//    {
+//        HttpContext? context = _httpContextAccessor.HttpContext;
+//        if (context == null)
+//        {
+//            return new NotFoundFileInfo(subpath);
+//        }
 
-            // 从查询字符串中获取token
-            if (!context.Request.Query.TryGetValue("token", out StringValues token))
-            {
-                return new NotFoundFileInfo(subpath);
-            }
+//        // 从查询字符串中获取token
+//        if (!context.Request.Query.TryGetValue("token", out StringValues token))
+//        {
+//            return new NotFoundFileInfo(subpath);
+//        }
 
-            // 验证token
-            if (!_localStore.ValidateToken(subpath, token))
-            {
-                return new NotFoundFileInfo(subpath);
-            }
+//        // 验证token
+//        if (!_localStore.ValidateToken(subpath, token))
+//        {
+//            return new NotFoundFileInfo(subpath);
+//        }
 
-            // 如果token验证通过，返回文件
-            return _physicalFileProvider.GetFileInfo(subpath);
-        }
+//        // 如果token验证通过，返回文件
+//        return _physicalFileProvider.GetFileInfo(subpath);
+//    }
 
-        public IChangeToken Watch(string filter)
-        {
-            // 不支持文件变更监控
-            return NullChangeToken.Singleton;
-        }
-    }
-}
+//    public IChangeToken Watch(string filter)
+//    {
+//        // 不支持文件变更监控
+//        return NullChangeToken.Singleton;
+//    }
+//}

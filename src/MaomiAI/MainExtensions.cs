@@ -1,4 +1,5 @@
 ﻿using Maomi;
+using MaomiAI.Infra;
 using MaomiAI.Services;
 using MaomiAI.User.Core.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

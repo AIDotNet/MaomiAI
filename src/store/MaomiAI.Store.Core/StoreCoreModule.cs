@@ -6,14 +6,17 @@
 
 using Maomi;
 
-namespace MaomiAI.Store
+namespace MaomiAI.Store;
+
+/// <summary>
+/// 存储核心模块.
+/// </summary>
+[InjectModule<StoreLocalFileSystemModule>]
+[InjectModule<StoreS3Module>]
+public class StoreCoreModule : IModule
 {
-    [InjectModule<StoreLocalFileSystemModule>]
-    [InjectModule<StoreS3Module>]
-    public class StoreCoreModule : IModule
+    /// <inheritdoc />
+    public void ConfigureServices(ServiceContext context)
     {
-        public void ConfigureServices(ServiceContext context)
-        {
-        }
     }
 }

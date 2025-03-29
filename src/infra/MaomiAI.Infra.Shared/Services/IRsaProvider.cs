@@ -6,12 +6,11 @@
 
 using System.Security.Cryptography;
 
-namespace MaomiAI.Infra.Service
+namespace MaomiAI.Infra.Services;
+
+public interface IRsaProvider
 {
-    public interface IRsaProvider
-    {
-        string Decrypt(string message, RSAEncryptionPadding? padding = null);
-        string Encrypt(string message, RSAEncryptionPadding? padding = null);
-        string ExportPublichKeyPck8();
-    }
+    string Decrypt(string message, RSAEncryptionPadding? padding = null);
+    string Encrypt(string message, RSAEncryptionPadding? padding = null);
+    string ExportPublichKeyPck8();
 }

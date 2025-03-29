@@ -6,6 +6,7 @@
 
 using Maomi;
 using MaomiAI.Database.Postgres;
+using MaomiAI.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
