@@ -6,6 +6,13 @@
 <#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
 <#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
 <#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#
     if (EntityType.IsSimpleManyToManyJoinEntityType())
     {
@@ -73,8 +80,7 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
         {
 #>
     /// <summary>
-    /// <#=
-                code.XmlComment(property.GetComment(), indent: 1) #>.
+    /// <#= code.XmlComment(property.GetComment(), indent: 1) #>.
     /// </summary>
 <#
         }
@@ -82,10 +88,7 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
         if (Options.UseDataAnnotations)
         {
             var dataAnnotations = property.GetDataAnnotations(annotationCodeGenerator)
-                .Where(
-                    a =>
-                        !(a.Type == typeof(RequiredAttribute) && Options.UseNullableReferenceTypes &&
-                          !property.ClrType.IsValueType));
+                .Where(a => !(a.Type == typeof(RequiredAttribute) && Options.UseNullableReferenceTypes && !property.ClrType.IsValueType));
             foreach (var dataAnnotation in dataAnnotations)
             {
 #>
@@ -97,10 +100,9 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
         usings.AddRange(code.GetRequiredUsings(property.ClrType));
 
         var needsNullable = Options.UseNullableReferenceTypes && property.IsNullable && !property.ClrType.IsValueType;
-        var needsInitializer = Options.UseNullableReferenceTypes && !property.IsNullable &&
-                               !property.ClrType.IsValueType;
+        var needsInitializer = Options.UseNullableReferenceTypes && !property.IsNullable && !property.ClrType.IsValueType;
         var targetTypeName = code.Reference(property.ClrType);
-        if (targetTypeName == "DateTime")
+        if(targetTypeName == "DateTime")
         {
             targetTypeName = "DateTimeOffset";
         }
@@ -133,10 +135,8 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
         }
         else
         {
-            var needsNullable = Options.UseNullableReferenceTypes &&
-                                !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
-            var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired &&
-                                   navigation.IsOnDependent;
+            var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
+            var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
 #>
     public virtual <#= targetType #><#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
 <#

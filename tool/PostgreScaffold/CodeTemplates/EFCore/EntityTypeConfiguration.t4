@@ -7,11 +7,19 @@
 <#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
 <#@ parameter name="NamespaceHint" type="System.String" #>
 <#@ parameter name="ProjectDefaultNamespace" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Infrastructure" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Scaffolding" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Metadata.Builders" #>
 <#
     if (!ProductInfo.GetVersion().StartsWith("7.0"))
     {
-        Warning(
-            "Your templates were created using an older version of Entity Framework. Additional features and bug fixes may be available. See https://aka.ms/efcore-docs-updating-templates for more information.");
+        Warning("Your templates were created using an older version of Entity Framework. Additional features and bug fixes may be available. See https://aka.ms/efcore-docs-updating-templates for more information.");
     }
 
     var services = (IServiceProvider)Host;
@@ -54,7 +62,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
     var anyConfiguration = false;
 
     StringBuilder mainEnvironment;
-    if (EntityType?.Name != null)
+    if (EntityType?.Name!=null)
     {
         // Save all previously generated code, and start generating into a new temporary environment
         mainEnvironment = GenerationEnvironment;
@@ -73,8 +81,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                     usings.AddRange(keyFluentApiCalls.GetRequiredUsings());
                 }
 #>
-        entity.HasKey(<#= code.Lambda(key.Properties, "e") #>)<#=
-                    code.Fragment(keyFluentApiCalls, indent: 3) #>;
+        entity.HasKey(<#= code.Lambda(key.Properties, "e") #>)<#= code.Fragment(keyFluentApiCalls, indent: 3) #>;
 <#
                 anyEntityTypeConfiguration = true;
             }
@@ -91,8 +98,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                 WriteLine("");
             }
 #>
-        entity<#=
-                code.Fragment(entityTypeFluentApiCalls, indent: 3) #>;
+        entity<#= code.Fragment(entityTypeFluentApiCalls, indent: 3) #>;
 <#
             anyEntityTypeConfiguration = true;
         }
@@ -111,8 +117,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                 usings.AddRange(indexFluentApiCalls.GetRequiredUsings());
             }
 #>
-        entity.HasIndex(<#= code.Lambda(index.Properties, "e") #>, <#= code.Literal(index.GetDatabaseName()) #>)<#=
-                code.Fragment(indexFluentApiCalls, indent: 3) #>;
+        entity.HasIndex(<#= code.Lambda(index.Properties, "e") #>, <#= code.Literal(index.GetDatabaseName()) #>)<#= code.Fragment(indexFluentApiCalls, indent: 3) #>;
 <#
             anyEntityTypeConfiguration = true;
         }
@@ -122,9 +127,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
         {
             var propertyFluentApiCalls = property.GetFluentApiCalls(annotationCodeGenerator)
                 ?.FilterChain(c => !(Options.UseDataAnnotations && c.IsHandledByDataAnnotations)
-                                   &&
-                                   !(c.Method == "IsRequired" && Options.UseNullableReferenceTypes &&
-                                     !property.ClrType.IsValueType));
+                    && !(c.Method == "IsRequired" && Options.UseNullableReferenceTypes && !property.ClrType.IsValueType));
             if (propertyFluentApiCalls == null)
             {
                 continue;
@@ -137,8 +140,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                 WriteLine("");
             }
 #>
-        entity.Property(e => e.<#= property.Name #>)<#=
-                code.Fragment(propertyFluentApiCalls, indent: 3) #>;
+        entity.Property(e => e.<#= property.Name #>)<#= code.Fragment(propertyFluentApiCalls, indent: 3) #>;
 <#
             anyEntityTypeConfiguration = true;
             firstProperty = false;
@@ -162,9 +164,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
             if (foreignKey.DependentToPrincipal?.Name != null && foreignKey.PrincipalToDependent?.Name != null)
             {
 #>
-        entity.HasOne(d => d.<#= foreignKey.DependentToPrincipal.Name #>).<#=
-                    foreignKey.IsUnique ? "WithOne" : "WithMany" #>(p => p.<#= foreignKey.PrincipalToDependent.Name #>)<#=
-                    code.Fragment(foreignKeyFluentApiCalls, indent: 3) #>;
+        entity.HasOne(d => d.<#= foreignKey.DependentToPrincipal.Name #>).<#= foreignKey.IsUnique ? "WithOne" : "WithMany" #>(p => p.<#= foreignKey.PrincipalToDependent.Name #>)<#= code.Fragment(foreignKeyFluentApiCalls, indent: 3) #>;
 <#
             }
             anyEntityTypeConfiguration = true;
@@ -196,10 +196,8 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
         entity.HasMany(d => d.<#= skipNavigation.Name #>).WithMany(p => p.<#= skipNavigation.Inverse.Name #>)
             .UsingEntity<Dictionary<string, object>>(
                 <#= code.Literal(joinEntityType.Name) #>,
-                r => r.HasOne<<#= right.PrincipalEntityType.Name #>>().WithMany()<#=
-                code.Fragment(rightFluentApiCalls, indent: 6) #>,
-                l => l.HasOne<<#= left.PrincipalEntityType.Name #>>().WithMany()<#=
-                code.Fragment(leftFluentApiCalls, indent: 6) #>,
+                r => r.HasOne<<#= right.PrincipalEntityType.Name #>>().WithMany()<#= code.Fragment(rightFluentApiCalls, indent: 6) #>,
+                l => l.HasOne<<#= left.PrincipalEntityType.Name #>>().WithMany()<#= code.Fragment(leftFluentApiCalls, indent: 6) #>,
                 j =>
                 {
 <#
@@ -211,17 +209,14 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                 usings.AddRange(joinKeyFluentApiCalls.GetRequiredUsings());
             }
 #>
-                    j.HasKey(<#=
-                code.Arguments(joinKey.Properties.Select(e => e.Name)) #>)<#=
-                code.Fragment(joinKeyFluentApiCalls, indent: 7) #>;
+                    j.HasKey(<#= code.Arguments(joinKey.Properties.Select(e => e.Name)) #>)<#= code.Fragment(joinKeyFluentApiCalls, indent: 7) #>;
 <#
             var joinEntityTypeFluentApiCalls = joinEntityType.GetFluentApiCalls(annotationCodeGenerator);
             if (joinEntityTypeFluentApiCalls != null)
             {
                 usings.AddRange(joinEntityTypeFluentApiCalls.GetRequiredUsings());
 #>
-                    j<#=
-                    code.Fragment(joinEntityTypeFluentApiCalls, indent: 7) #>;
+                    j<#= code.Fragment(joinEntityTypeFluentApiCalls, indent: 7) #>;
 <#
             }
 
@@ -233,10 +228,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
                     usings.AddRange(indexFluentApiCalls.GetRequiredUsings());
                 }
 #>
-                    j.HasIndex(<#=
-                    code.Literal(index.Properties.Select(e => e.Name).ToArray()) #>, <#=
-                    code.Literal(index.GetDatabaseName()) #>)<#=
-                    code.Fragment(indexFluentApiCalls, indent: 7) #>;
+                    j.HasIndex(<#= code.Literal(index.Properties.Select(e => e.Name).ToArray()) #>, <#= code.Literal(index.GetDatabaseName()) #>)<#= code.Fragment(indexFluentApiCalls, indent: 7) #>;
 <#
             }
 #>

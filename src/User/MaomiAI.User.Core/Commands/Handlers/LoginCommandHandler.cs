@@ -51,7 +51,7 @@ namespace MaomiAI.User.Core.Commands.Handlers
         /// <returns>登录结果.</returns>
         public async Task<LoginResult> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            UserEntity user = await _dbContext.User.Where(u =>
+            UserEntity user = await _dbContext.Users.Where(u =>
                                       u.UserName == request.Username || u.Phone == request.Username ||
                                       u.Email == request.Username)
                                   .FirstOrDefaultAsync(cancellationToken)

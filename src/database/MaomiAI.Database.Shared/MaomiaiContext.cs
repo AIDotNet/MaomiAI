@@ -46,6 +46,12 @@ public partial class MaomiaiContext : DbContext
         };
     }
 
+
+    /// <summary>
+    /// 文件列表.
+    /// </summary>
+    public virtual DbSet<FileEntity> Files { get; set; }
+
     /// <summary>
     /// 系统配置.
     /// </summary>
@@ -75,11 +81,6 @@ public partial class MaomiaiContext : DbContext
     /// 用户表.
     /// </summary>
     public virtual DbSet<UserEntity> Users { get; set; }
-
-    /// <summary>
-    /// 用户表的别名，为了兼容现有代码.
-    /// </summary>
-    public virtual DbSet<UserEntity> User => Users;
 
     /// <inheritdoc/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)

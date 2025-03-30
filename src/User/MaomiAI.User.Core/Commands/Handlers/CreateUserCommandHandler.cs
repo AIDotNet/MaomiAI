@@ -45,7 +45,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
         try
         {
-            var existingUser = await _dbContext.User
+            var existingUser = await _dbContext.Users
                 .Where(u => u.UserName == request.UserName || u.Email == request.Email || u.Phone == request.Phone)
                 .Select(u => new { u.UserName, u.Email, u.Phone })
                 .FirstOrDefaultAsync();
@@ -78,7 +78,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
                 avatarUrl: request.AvatarUrl,
                 phone: request.Phone);
 
-            _dbContext.User.Add(user);
+            _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("用户创建成功: {UserName}, ID: {UserId}", request.UserName, user.Id);

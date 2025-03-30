@@ -42,7 +42,7 @@ public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordComman
     /// <returns>Task.</returns>
     public async Task Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.User.Where(u => u.Id == request.UserId && !u.IsDeleted)
+        var user = await _dbContext.Users.Where(u => u.Id == request.UserId && !u.IsDeleted)
                               .FirstOrDefaultAsync(cancellationToken)
                               ?? throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
 

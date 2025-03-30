@@ -39,6 +39,15 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
+        entity.Property(e => e.IsPublic)
+            .HasDefaultValue(false)
+            .HasComment("公开使用，所有人不需要加入团队即可使用此知识库")
+            .HasColumnName("is_public");
+        entity.Property(e => e.Markdown)
+            .HasMaxLength(2000)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("知识库详细介绍")
+            .HasColumnName("markdown");
         entity.Property(e => e.ModelId)
             .HasComment("绑定的向量模型id")
             .HasColumnName("model_id");
