@@ -3,7 +3,6 @@ using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using MaomiAI.Infra;
 using System.Net;
-using static MaomiAI.Infra.SystemOptions;
 
 namespace MaomiAI.Store.Services;
 
@@ -27,7 +26,7 @@ public class S3Store : IFileStore, IDisposable
         _s3Client = new AmazonS3Client(_storeOption.AccessKeyId, _storeOption.AccessKeySecret, new AmazonS3Config
         {
             ServiceURL = _storeOption.Endpoint,
-            ForcePathStyle = true,
+            ForcePathStyle = false,
             UseHttp = true
         });
     }
@@ -37,6 +36,21 @@ public class S3Store : IFileStore, IDisposable
     {
         using TransferUtility? fileTransferUtility = new(_s3Client);
         await fileTransferUtility.UploadAsync(inputStream, _storeOption.Bucket, objectKey);
+    }
+
+    /// <inheritdoc/>
+    public async Task<string> GeneratePreSignedUploadUrlAsync(string objectKey, TimeSpan expiryDuration)
+    {
+        GetPreSignedUrlRequest request = new()
+        {
+            BucketName = _storeOption.Bucket,
+            Key = objectKey,
+            Expires = DateTime.UtcNow.Add(expiryDuration),
+            Verb = HttpVerb.PUT
+        };
+
+        string url = await _s3Client.GetPreSignedURLAsync(request);
+        return url;
     }
 
     /// <inheritdoc/>

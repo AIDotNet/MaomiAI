@@ -5,15 +5,14 @@
 // </copyright>
 
 using Maomi;
+using Maomi.I18n;
 using MaomiAI.Database;
+using MaomiAI.Filters;
 using MaomiAI.Infra;
+using MaomiAI.Modules;
 using MaomiAI.Store;
 using MaomiAI.Team.Core;
-using MaomiAI.User.Api;
 using MaomiAI.User.Core;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 
 namespace MaomiAI
 {
@@ -27,6 +26,7 @@ namespace MaomiAI
     [InjectModule<StoreCoreModule>]
     [InjectModule<UserCoreModule>]
     [InjectModule<TeamCoreModule>]
+    [InjectModule<ApiModule>]
     public partial class MainModule : IModule
     {
         private readonly IConfiguration _configuration;
@@ -41,62 +41,8 @@ namespace MaomiAI
         /// <inheritdoc/>
         public void ConfigureServices(ServiceContext context)
         {
-            ConfigureHttpLogging(context);
-
-            context.Services.AddControllers(options => { })
-                .ConfigureApplicationPartManager(apm =>
-                {
-                    apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
-                });
-
-            ConfigureOpeiApi(context);
-
-            context.Services.AddMediatR(options =>
-            {
-                options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).ToArray());
-            });
-        }
-
-        // 配置 http 请求日志.
-        private void ConfigureHttpLogging(ServiceContext context)
-        {
-            // todo: 后续是否允许在配置文件指定 LoggingFields 参数
-            context.Services.AddHttpLogging(logging =>
-            {
-                //logging.LoggingFields = HttpLoggingFields.All;
-                logging.CombineLogs = true;
-            });
-        }
-
-        private void ConfigureOpeiApi(ServiceContext context)
-        {
-            context.Services.AddOpenApi(options =>
-            {
-                options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
-                options.AddDocumentTransformer((document, context, cancellationToken) =>
-                {
-                    document.Info = new OpenApiInfo
-                    {
-                        Title = "Maomi API",
-                        Version = "v1",
-                        Description = "MaomiAI openapi document."
-                    };
-
-                    document.Servers = new List<OpenApiServer>
-                    {
-                        new()
-                        {
-                            Url = _systemOptions.Server,
-                            Description = "User-defined service address"
-                        }
-                    };
-
-                    return Task.CompletedTask;
-                });
-
-                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-                options.AddSchemaTransformer<TypeSchemeTransformer>();
-            });
+            context.Services.AddExceptionHandler<CustomGlobalExceptionHandler>();
+            context.Services.AddI18nAspNetCore();
         }
     }
 }

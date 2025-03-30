@@ -54,4 +54,5 @@ public interface IFileStore
     /// <param name="objectKeys"></param>
     /// <returns>Task.</returns>
     Task DeleteFilesAsync(IEnumerable<string> objectKeys);
+    Task<string> GeneratePreSignedUploadUrlAsync(string objectKey, TimeSpan expiryDuration);
 }

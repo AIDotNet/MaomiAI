@@ -18,8 +18,4 @@
         <ProjectReference Include="..\MaomiAI.Store.S3\MaomiAI.Store.S3.csproj" />
         <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
 </Project>

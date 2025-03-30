@@ -75,7 +75,7 @@ namespace MaomiAI
         public static WebApplication UseMaomiAIMiddleware(this WebApplication app)
         {
             // 使用认证中间件
-            app.UseMiddleware<AuthMiddleware>();
+            app.UseMiddleware<CustomAuthorizaMiddleware>();
 
             return app;
         }

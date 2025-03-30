@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
-using MaomiAI.User.Core.Services;
+using MaomiAI.Infra.Helpers;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
 using MediatR;
@@ -57,7 +57,7 @@ namespace MaomiAI.User.Core.Commands.Handlers
                                   .FirstOrDefaultAsync(cancellationToken)
                               ?? throw new InvalidOperationException("用户名或密码错误");
 
-            if (!PasswordService.VerifyPassword(request.Password, user.Password))
+            if (!UserPasswordHelper.VerifyPassword(request.Password, user.Password))
             {
                 _logger.LogWarning("密码验证失败: {Username}", request.Username);
                 throw new InvalidOperationException("用户名或密码错误");
