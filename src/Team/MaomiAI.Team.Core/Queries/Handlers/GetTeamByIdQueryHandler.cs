@@ -40,37 +40,39 @@ namespace MaomiAI.Team.Core.Queries.Handlers
         /// <returns>团队信息.</returns>
         public async Task<TeamDto?> Handle(GetTeamByIdQuery request, CancellationToken cancellationToken)
         {
-            try
-            {
-                TeamDto? team = await _dbContext.Teams
-                    .Where(t => t.Id == request.Id)
-                    .Select(t => new TeamDto
-                    {
-                        Id = t.Id,
-                        Name = t.Name,
-                        Description = t.Description,
-                        Avatar = t.Avatar,
-                        Status = t.Status,
-                        CreateTime = t.CreateTime,
-                        UpdateTime = t.UpdateTime,
-                        CreateUserId = t.CreateUserId
-                    })
-                    .FirstOrDefaultAsync(cancellationToken);
+            throw new NotImplementedException();
 
-                if (team == null)
-                {
-                    _logger.LogInformation("未找到ID为{Id}的团队", request.Id);
-                    return null;
-                }
+            //try
+            //{
+            //    TeamDto? team = await _dbContext.Teams
+            //        .Where(t => t.Id == request.Id)
+            //        .Select(t => new TeamDto
+            //        {
+            //            Id = t.Id,
+            //            Name = t.Name,
+            //            Description = t.Description,
+            //            Avatar = t.Avatar,
+            //            Status = t.Status,
+            //            CreateTime = t.CreateTime,
+            //            UpdateTime = t.UpdateTime,
+            //            CreateUserId = t.CreateUserId
+            //        })
+            //        .FirstOrDefaultAsync(cancellationToken);
 
-                _logger.LogInformation("成功获取ID为{Id}的团队信息", request.Id);
-                return team;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "获取ID为{Id}的团队信息失败: {Message}", request.Id, ex.Message);
-                throw;
-            }
+            //    if (team == null)
+            //    {
+            //        _logger.LogInformation("未找到ID为{Id}的团队", request.Id);
+            //        return null;
+            //    }
+
+            //    _logger.LogInformation("成功获取ID为{Id}的团队信息", request.Id);
+            //    return team;
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, "获取ID为{Id}的团队信息失败: {Message}", request.Id, ex.Message);
+            //    throw;
+            //}
         }
     }
 }

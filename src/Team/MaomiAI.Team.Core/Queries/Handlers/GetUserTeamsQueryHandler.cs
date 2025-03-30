@@ -40,77 +40,79 @@ namespace MaomiAI.Team.Core.Queries.Handlers
         /// <returns>用户所属的团队列表.</returns>
         public async Task<List<TeamDto>> Handle(GetUserTeamsQuery request, CancellationToken cancellationToken)
         {
-            try
-            {
-                _logger.LogInformation("获取用户 {UserId} 所属的团队列表, 关键词: {Keyword}, 是否管理员: {IsAdmin}, 是否所有者: {IsOwner}",
-                    request.UserId, request.Keyword, request.IsAdmin, request.IsOwner);
+            throw new NotImplementedException();
 
-                // 验证用户是否存在
-                bool userExists = await _dbContext.Users
-                    .AnyAsync(u => u.Id == request.UserId && !u.IsDeleted, cancellationToken);
+            //try
+            //{
+            //    _logger.LogInformation("获取用户 {UserId} 所属的团队列表, 关键词: {Keyword}, 是否管理员: {IsAdmin}, 是否所有者: {IsOwner}",
+            //        request.UserId, request.Keyword, request.IsAdmin, request.IsOwner);
 
-                if (!userExists)
-                {
-                    _logger.LogWarning("用户不存在: UserId={UserId}", request.UserId);
-                    return new List<TeamDto>();
-                }
+            //    // 验证用户是否存在
+            //    bool userExists = await _dbContext.Users
+            //        .AnyAsync(u => u.Id == request.UserId && !u.IsDeleted, cancellationToken);
 
-                // 构建基础查询
-                var query = from member in _dbContext.TeamMembers
-                    join team in _dbContext.Teams on member.TeamId equals team.Id
-                    where member.UserId == request.UserId &&
-                          !member.IsDeleted &&
-                          !team.IsDeleted
-                    select new { Member = member, Team = team };
+            //    if (!userExists)
+            //    {
+            //        _logger.LogWarning("用户不存在: UserId={UserId}", request.UserId);
+            //        return new List<TeamDto>();
+            //    }
 
-                // 应用筛选条件
-                if (!string.IsNullOrWhiteSpace(request.Keyword))
-                {
-                    string keyword = "%" + request.Keyword.ToUpperInvariant() + "%";
-                    query = query.Where(x => EF.Functions.ILike(x.Team.Name, keyword));
-                }
+            //    // 构建基础查询
+            //    var query = from member in _dbContext.TeamMembers
+            //        join team in _dbContext.Teams on member.TeamId equals team.Id
+            //        where member.UserId == request.UserId &&
+            //              !member.IsDeleted &&
+            //              !team.IsDeleted
+            //        select new { Member = member, Team = team };
 
-                if (request.IsAdmin.HasValue && request.IsAdmin.Value)
-                {
-                    query = query.Where(x => x.Member.IsAdmin);
-                }
+            //    // 应用筛选条件
+            //    if (!string.IsNullOrWhiteSpace(request.Keyword))
+            //    {
+            //        string keyword = "%" + request.Keyword.ToUpperInvariant() + "%";
+            //        query = query.Where(x => EF.Functions.ILike(x.Team.Name, keyword));
+            //    }
 
-                if (request.IsOwner.HasValue && request.IsOwner.Value)
-                {
-                    query = query.Where(x => x.Member.IsRoot);
-                }
+            //    if (request.IsAdmin.HasValue && request.IsAdmin.Value)
+            //    {
+            //        query = query.Where(x => x.Member.IsAdmin);
+            //    }
 
-                // 获取结果并映射到DTO
-                List<TeamDto>? teams = await query
-                    .OrderByDescending(x => x.Member.IsRoot)
-                    .ThenByDescending(x => x.Member.IsAdmin)
-                    .ThenByDescending(x => x.Team.CreateTime)
-                    .Select(x => new TeamDto
-                    {
-                        Id = x.Team.Id,
-                        Name = x.Team.Name,
-                        Description = x.Team.Description,
-                        Avatar = x.Team.Avatar,
-                        Status = x.Team.Status,
-                        CreateTime = x.Team.CreateTime,
-                        UpdateTime = x.Team.UpdateTime,
-                        CreateUserId = x.Team.CreateUserId,
-                        IsOwner = x.Member.IsRoot,
-                        IsAdmin = x.Member.IsAdmin
-                    })
-                    .ToListAsync(cancellationToken);
+            //    if (request.IsOwner.HasValue && request.IsOwner.Value)
+            //    {
+            //        query = query.Where(x => x.Member.IsRoot);
+            //    }
 
-                _logger.LogInformation("成功获取用户 {UserId} 所属的团队列表，共 {Count} 个团队",
-                    request.UserId, teams.Count);
+            //    // 获取结果并映射到DTO
+            //    List<TeamDto>? teams = await query
+            //        .OrderByDescending(x => x.Member.IsRoot)
+            //        .ThenByDescending(x => x.Member.IsAdmin)
+            //        .ThenByDescending(x => x.Team.CreateTime)
+            //        .Select(x => new TeamDto
+            //        {
+            //            Id = x.Team.Id,
+            //            Name = x.Team.Name,
+            //            Description = x.Team.Description,
+            //            Avatar = x.Team.Avatar,
+            //            Status = x.Team.Status,
+            //            CreateTime = x.Team.CreateTime,
+            //            UpdateTime = x.Team.UpdateTime,
+            //            CreateUserId = x.Team.CreateUserId,
+            //            IsOwner = x.Member.IsRoot,
+            //            IsAdmin = x.Member.IsAdmin
+            //        })
+            //        .ToListAsync(cancellationToken);
 
-                return teams;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "获取用户 {UserId} 所属的团队列表失败: {Message}",
-                    request.UserId, ex.Message);
-                throw;
-            }
+            //    _logger.LogInformation("成功获取用户 {UserId} 所属的团队列表，共 {Count} 个团队",
+            //        request.UserId, teams.Count);
+
+            //    return teams;
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, "获取用户 {UserId} 所属的团队列表失败: {Message}",
+            //        request.UserId, ex.Message);
+            //    throw;
+            //}
         }
     }
 }

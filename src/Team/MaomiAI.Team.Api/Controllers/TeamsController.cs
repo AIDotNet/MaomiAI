@@ -7,13 +7,11 @@
 using Maomi.AI.Exceptions;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
-using MaomiAI.Team.Shared.Commands.Response;
 using MaomiAI.Team.Shared.Models;
 using MaomiAI.Team.Shared.Queries;
 using MaomiAI.User.Shared.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace MaomiAI.Team.Api.Controllers;
 

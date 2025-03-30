@@ -47,49 +47,50 @@ namespace MaomiAI.Team.Core.Commands.Handlers
         /// <returns>任务.</returns>
         public async Task Handle(ToggleTeamStatusCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // 获取当前用户ID
-                Guid currentUserId = _userContext.UserId;
+            throw new NotImplementedException();
+            //try
+            //{
+            //    // 获取当前用户ID
+            //    Guid currentUserId = _userContext.UserId;
 
-                // 查找需要更新的团队
-                List<TeamEntity>? teamsToUpdate = await _dbContext.Teams
-                    .Where(t => request.TeamIds.Contains(t.Id) && !t.IsDeleted)
-                    .ToListAsync(cancellationToken);
+            //    // 查找需要更新的团队
+            //    List<TeamEntity>? teamsToUpdate = await _dbContext.Teams
+            //        .Where(t => request.TeamIds.Contains(t.Id) && !t.IsDeleted)
+            //        .ToListAsync(cancellationToken);
 
-                if (!teamsToUpdate.Any())
-                {
-                    _logger.LogWarning("没有找到需要更新状态的团队");
-                    return;
-                }
+            //    if (!teamsToUpdate.Any())
+            //    {
+            //        _logger.LogWarning("没有找到需要更新状态的团队");
+            //        return;
+            //    }
 
-                // 验证操作人是否有权限（必须是团队管理员或所有者）
-                foreach (TeamEntity? team in teamsToUpdate)
-                {
-                    TeamMemberEntity? operatorMember = await _dbContext.TeamMembers
-                        .FirstOrDefaultAsync(m => m.TeamId == team.Id && m.UserId == currentUserId && !m.IsDeleted,
-                            cancellationToken);
+            //    // 验证操作人是否有权限（必须是团队管理员或所有者）
+            //    foreach (TeamEntity? team in teamsToUpdate)
+            //    {
+            //        TeamMemberEntity? operatorMember = await _dbContext.TeamMembers
+            //            .FirstOrDefaultAsync(m => m.TeamId == team.Id && m.UserId == currentUserId && !m.IsDeleted,
+            //                cancellationToken);
 
-                    if (operatorMember == null || (!operatorMember.IsAdmin && !operatorMember.IsRoot))
-                    {
-                        _logger.LogWarning("用户 {OperatorId} 没有权限更新团队 {TeamId} 的状态", currentUserId, team.Id);
-                        throw new InvalidOperationException($"您没有权限更新团队 {team.Name} 的状态");
-                    }
+            //        if (operatorMember == null || (!operatorMember.IsAdmin && !operatorMember.IsRoot))
+            //        {
+            //            _logger.LogWarning("用户 {OperatorId} 没有权限更新团队 {TeamId} 的状态", currentUserId, team.Id);
+            //            throw new InvalidOperationException($"您没有权限更新团队 {team.Name} 的状态");
+            //        }
 
-                    // 更新团队状态
-                    team.ChangeStatus(request.Status, currentUserId);
-                }
+            //        // 更新团队状态
+            //        team.ChangeStatus(request.Status, currentUserId);
+            //    }
 
-                int count = await _dbContext.SaveChangesAsync(cancellationToken);
+            //    int count = await _dbContext.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("成功更新 {Count} 个团队的状态为 {Status}, 操作者: {OperatorId}", count, request.Status,
-                    currentUserId);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "更新团队状态失败: {Message}", ex.Message);
-                throw;
-            }
+            //    _logger.LogInformation("成功更新 {Count} 个团队的状态为 {Status}, 操作者: {OperatorId}", count, request.Status,
+            //        currentUserId);
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, "更新团队状态失败: {Message}", ex.Message);
+            //    throw;
+            //}
         }
     }
 }
