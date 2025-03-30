@@ -10,15 +10,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Maomi.Core" Version="2.2.0"/>
-        <PackageReference Include="Maomi.I18n" Version="2.2.1"/>
-        <PackageReference Include="MediatR" Version="12.4.1"/>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="Maomi.Core" Version="2.2.0" />
+        <PackageReference Include="Maomi.I18n" Version="2.2.1" />
+        <PackageReference Include="MediatR" Version="12.4.1" />
+        <PackageReference Include="StackExchange.Redis" Version="2.8.31" />
 
-        <PackageReference Include="Yitter.IdGenerator" Version="1.0.14"/>
+        <PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
 
     </ItemGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
+        <AdditionalFiles Include="..\..\..\stylecop.json" />
     </ItemGroup>
 </Project>

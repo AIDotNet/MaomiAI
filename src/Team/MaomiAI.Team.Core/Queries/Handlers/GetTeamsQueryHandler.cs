@@ -68,7 +68,7 @@ namespace MaomiAI.Team.Core.Queries.Handlers
                     .Take(request.PageSize)
                     .Select(t => new TeamDto
                     {
-                        Id = t.Uuid,
+                        Id = t.Id,
                         Name = t.Name,
                         Description = t.Description,
                         Avatar = t.Avatar,

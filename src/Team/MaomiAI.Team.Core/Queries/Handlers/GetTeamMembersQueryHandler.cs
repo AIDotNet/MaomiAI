@@ -48,7 +48,7 @@ namespace MaomiAI.Team.Core.Queries.Handlers
             {
                 // 验证团队是否存在
                 TeamEntity? team = await _dbContext.Teams
-                    .FirstOrDefaultAsync(t => t.Uuid == request.TeamId && !t.IsDeleted, cancellationToken);
+                    .FirstOrDefaultAsync(t => t.Id == request.TeamId && !t.IsDeleted, cancellationToken);
 
                 if (team == null)
                 {

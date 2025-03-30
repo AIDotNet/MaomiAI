@@ -15,19 +15,21 @@ public partial class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
     public void Configure(EntityTypeBuilder<TeamEntity> builder)
     {
         var entity = builder;
-        entity.HasKey(e => e.Uuid).HasName("team_pk");
+        entity.HasKey(e => e.Id).HasName("team_pk");
 
         entity.ToTable("team", tb => tb.HasComment("团队"));
 
-        entity.Property(e => e.Uuid)
+        entity.HasIndex(e => e.Name, "team_name_uindex").IsUnique();
+
+        entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
-            .HasComment("uuid")
-            .HasColumnName("uuid");
-        entity.Property(e => e.Avatar)
+            .HasComment("id")
+            .HasColumnName("id");
+        entity.Property(e => e.AvatarFileId)
             .HasMaxLength(100)
             .HasDefaultValueSql("''::character varying")
             .HasComment("团队头像")
-            .HasColumnName("avatar");
+            .HasColumnName("avatar_file_id");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")
@@ -44,6 +46,18 @@ public partial class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
+        entity.Property(e => e.IsDisable)
+            .HasDefaultValue(false)
+            .HasComment("禁用团队")
+            .HasColumnName("is_disable");
+        entity.Property(e => e.IsPublic)
+            .HasComment("是否公开,能够被外部搜索")
+            .HasColumnName("is_public");
+        entity.Property(e => e.Markdown)
+            .HasMaxLength(2000)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("团队详细介绍")
+            .HasColumnName("markdown");
         entity.Property(e => e.Name)
             .HasMaxLength(20)
             .HasComment("团队名称")

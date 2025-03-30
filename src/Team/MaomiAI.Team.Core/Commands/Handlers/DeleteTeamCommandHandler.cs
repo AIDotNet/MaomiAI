@@ -55,7 +55,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
 
                 // 查找团队
                 TeamEntity? team = await _dbContext.Teams
-                    .FirstOrDefaultAsync(t => t.Uuid == request.Id, cancellationToken);
+                    .FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
 
                 if (team == null)
                 {
@@ -67,7 +67,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
                 team.MarkAsDeleted(currentUserId);
                 await _dbContext.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("成功删除团队: {TeamId}, 操作者: {OperatorId}", team.Uuid, currentUserId);
+                _logger.LogInformation("成功删除团队: {TeamId}, 操作者: {OperatorId}", team.Id, currentUserId);
             }
             catch (Exception ex)
             {

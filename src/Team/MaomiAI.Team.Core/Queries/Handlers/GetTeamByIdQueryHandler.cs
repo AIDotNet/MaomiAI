@@ -43,10 +43,10 @@ namespace MaomiAI.Team.Core.Queries.Handlers
             try
             {
                 TeamDto? team = await _dbContext.Teams
-                    .Where(t => t.Uuid == request.Id)
+                    .Where(t => t.Id == request.Id)
                     .Select(t => new TeamDto
                     {
-                        Id = t.Uuid,
+                        Id = t.Id,
                         Name = t.Name,
                         Description = t.Description,
                         Avatar = t.Avatar,

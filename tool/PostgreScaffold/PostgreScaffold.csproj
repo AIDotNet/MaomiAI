@@ -9,13 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj"/>
-        <ProjectReference Include="..\..\src\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj"/>
+        <ProjectReference Include="..\..\src\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
+        <ProjectReference Include="..\..\src\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4"/>
-        <PackageReference Include="Scalar.AspNetCore" Version="2.0.30"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.0.30" />
     </ItemGroup>
 
     <ItemGroup>

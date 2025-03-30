@@ -54,7 +54,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
 
                 // 查找需要更新的团队
                 List<TeamEntity>? teamsToUpdate = await _dbContext.Teams
-                    .Where(t => request.TeamIds.Contains(t.Uuid) && !t.IsDeleted)
+                    .Where(t => request.TeamIds.Contains(t.Id) && !t.IsDeleted)
                     .ToListAsync(cancellationToken);
 
                 if (!teamsToUpdate.Any())
@@ -67,12 +67,12 @@ namespace MaomiAI.Team.Core.Commands.Handlers
                 foreach (TeamEntity? team in teamsToUpdate)
                 {
                     TeamMemberEntity? operatorMember = await _dbContext.TeamMembers
-                        .FirstOrDefaultAsync(m => m.TeamId == team.Uuid && m.UserId == currentUserId && !m.IsDeleted,
+                        .FirstOrDefaultAsync(m => m.TeamId == team.Id && m.UserId == currentUserId && !m.IsDeleted,
                             cancellationToken);
 
                     if (operatorMember == null || (!operatorMember.IsAdmin && !operatorMember.IsRoot))
                     {
-                        _logger.LogWarning("用户 {OperatorId} 没有权限更新团队 {TeamId} 的状态", currentUserId, team.Uuid);
+                        _logger.LogWarning("用户 {OperatorId} 没有权限更新团队 {TeamId} 的状态", currentUserId, team.Id);
                         throw new InvalidOperationException($"您没有权限更新团队 {team.Name} 的状态");
                     }
 

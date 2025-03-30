@@ -57,7 +57,7 @@ namespace MaomiAI.Team.Core.Queries.Handlers
 
                 // 构建基础查询
                 var query = from member in _dbContext.TeamMembers
-                    join team in _dbContext.Teams on member.TeamId equals team.Uuid
+                    join team in _dbContext.Teams on member.TeamId equals team.Id
                     where member.UserId == request.UserId &&
                           !member.IsDeleted &&
                           !team.IsDeleted
@@ -87,7 +87,7 @@ namespace MaomiAI.Team.Core.Queries.Handlers
                     .ThenByDescending(x => x.Team.CreateTime)
                     .Select(x => new TeamDto
                     {
-                        Id = x.Team.Uuid,
+                        Id = x.Team.Id,
                         Name = x.Team.Name,
                         Description = x.Team.Description,
                         Avatar = x.Team.Avatar,

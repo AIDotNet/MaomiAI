@@ -30,11 +30,6 @@ public partial class FileEntity : IFullAudited
     public bool IsPublic { get; set; }
 
     /// <summary>
-    /// 该文件属于哪个模块.
-    /// </summary>
-    public string SourceType { get; set; } = null!;
-
-    /// <summary>
     /// 文件md5值.
     /// </summary>
     public string FileMd5 { get; set; } = null!;
@@ -53,4 +48,14 @@ public partial class FileEntity : IFullAudited
     public Guid CreateUserId { get; set; }
 
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 已上传文件.
+    /// </summary>
+    public bool IsUpload { get; set; }
+
+    /// <summary>
+    /// 文件类型.
+    /// </summary>
+    public string ContentType { get; set; } = null!;
 }

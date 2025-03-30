@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
@@ -39,23 +40,21 @@ namespace MaomiAI.Team.Core.Commands.Handlers
             _userContext = userContext;
         }
 
-        /// <summary>
-        /// 处理更新团队命令.
-        /// </summary>
-        /// <param name="request">更新团队命令.</param>
-        /// <param name="cancellationToken">取消令牌.</param>
-        /// <returns>任务.</returns>
-        /// <exception cref="InvalidOperationException">当团队不存在时抛出.</exception>
+        /// <inheritdoc/>
         public async Task Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
         {
+            var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+            if (team == null)
+            {
+                throw new BusinessException("团队不存在");
+            }
+
+
             try
             {
                 // 获取当前用户ID
                 Guid currentUserId = _userContext.UserId;
 
-                // 查找团队
-                TeamEntity? team = await _dbContext.Teams
-                    .FirstOrDefaultAsync(t => t.Uuid == request.Id, cancellationToken);
 
                 if (team == null)
                 {
@@ -72,7 +71,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
 
                 await _dbContext.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("成功更新团队: {TeamId}, 更新者: {UpdateUserId}", team.Uuid, currentUserId);
+                _logger.LogInformation("成功更新团队: {TeamId}, 更新者: {UpdateUserId}", team.Id, currentUserId);
             }
             catch (Exception ex)
             {

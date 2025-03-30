@@ -10,9 +10,9 @@ namespace MaomiAI.Database.Entities;
 public partial class TeamEntity : IFullAudited
 {
     /// <summary>
-    /// uuid.
+    /// id.
     /// </summary>
-    public Guid Uuid { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// 团队描述.
@@ -27,7 +27,7 @@ public partial class TeamEntity : IFullAudited
     /// <summary>
     /// 团队头像.
     /// </summary>
-    public string Avatar { get; set; } = null!;
+    public string AvatarFileId { get; set; } = null!;
 
     /// <summary>
     /// 是否删除.
@@ -54,5 +54,18 @@ public partial class TeamEntity : IFullAudited
     /// </summary>
     public Guid UpdateUserId { get; set; }
 
-    public bool Status { get; set; }
+    /// <summary>
+    /// 禁用团队.
+    /// </summary>
+    public bool IsDisable { get; set; }
+
+    /// <summary>
+    /// 团队详细介绍.
+    /// </summary>
+    public string Markdown { get; set; } = null!;
+
+    /// <summary>
+    /// 是否公开,能够被外部搜索.
+    /// </summary>
+    public bool IsPublic { get; set; }
 }

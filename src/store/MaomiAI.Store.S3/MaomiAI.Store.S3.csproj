@@ -10,15 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
+        <AdditionalFiles Include="..\..\..\stylecop.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.S3" Version="4.0.0-preview.10"/>
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.60"/>
+        <PackageReference Include="AWSSDK.S3" Version="4.0.0-preview.10" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.60" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj"/>
+        <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
     </ItemGroup>
 </Project>

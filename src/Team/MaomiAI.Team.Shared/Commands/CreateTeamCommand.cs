@@ -4,39 +4,38 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+using MaomiAI.Infra.Models;
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands
+namespace MaomiAI.Team.Shared.Commands;
+
+/// <summary>
+/// 创建团队命令.
+/// </summary>
+public class CreateTeamCommand : IRequest<GuidDto>
 {
     /// <summary>
-    /// 创建团队命令.
+    /// 团队名称.
     /// </summary>
-    public class CreateTeamCommand : IRequest<Guid>
+    public string Name { get; set; } = null!;
+
+    /// <summary>
+    /// 团队描述.
+    /// </summary>
+    public string Description { get; set; } = null!;
+
+    /// <summary>
+    /// 是否允许被外部搜索.
+    /// </summary>
+    public bool IsPublic { get; set; }
+}
+
+public class CreateTeamCommandValidator : AbstractValidator<CreateTeamCommand>
+{
+    public CreateTeamCommandValidator()
     {
-        /// <summary>
-        /// 团队名称.
-        /// </summary>
-        [Required]
-        [StringLength(50, MinimumLength = 2)]
-        public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// 团队描述.
-        /// </summary>
-        [Required]
-        [StringLength(500)]
-        public string Description { get; set; } = null!;
-
-        /// <summary>
-        /// 团队头像URL.
-        /// </summary>
-        [StringLength(500)]
-        public string? Avatar { get; set; }
-
-        /// <summary>
-        /// 状态：true-正常，false-禁用.
-        /// </summary>
-        public bool Status { get; set; } = true;
+        RuleFor(x => x.Name).NotEmpty().WithMessage("团队名称最大长度20.");
+        RuleFor(x => x.Description).MaximumLength(255).WithMessage("团队描述最大长度255.");
     }
 }

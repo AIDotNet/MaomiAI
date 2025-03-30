@@ -8,18 +8,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
+        <AdditionalFiles Include="..\..\..\stylecop.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="12.4.1"/>
-        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1"/>
+        <PackageReference Include="MediatR" Version="12.4.1" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj"/>
-        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj"/>
-        <ProjectReference Include="..\..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj"/>
+        <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
+        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+        <ProjectReference Include="..\..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Commands\Response\" />
     </ItemGroup>
 
 </Project> 

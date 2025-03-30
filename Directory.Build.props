@@ -6,8 +6,8 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <LangVersion>11</LangVersion>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<LangVersion>11</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
         <RollForward>LatestMajor</RollForward>

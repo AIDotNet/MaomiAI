@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi;
 using static MaomiAI.MainModule;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace MaomiAI.Modules;
 
@@ -30,10 +32,13 @@ public class ConfigureMVCModule : IModule
         {
             options.Filters.Add<MVCExceptionFilter>();
         })
-            .ConfigureApplicationPartManager(apm =>
-            {
-                apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
-            });
+        .ConfigureApplicationPartManager(apm =>
+        {
+            apm.ApplicationParts.Add(new AssemblyPart(typeof(UserApiModule).Assembly));
+        });
 
+        context.Services.AddFluentValidationAutoValidation();
+
+        context.Services.AddValidatorsFromAssemblies(context.Modules.Select(x => x.Assembly));
     }
 }

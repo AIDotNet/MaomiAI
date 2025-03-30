@@ -3,6 +3,10 @@ using MaomiAI.Infra;
 using MaomiAI.OpenApi;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using MartinCostello.OpenApi;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Text.Json.Serialization;
 
 namespace MaomiAI.Modules;
 
@@ -66,8 +70,6 @@ public class ConfigureOpenApiModule : IModule
             options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
             options.AddSchemaTransformer<TypeSchemeTransformer>();
 
-
-
             options.AddOperationTransformer((operation, context, cancellationToken) =>
             {
                 operation.Responses.Add("500", new OpenApiResponse
@@ -89,6 +91,24 @@ public class ConfigureOpenApiModule : IModule
 
                 return Task.CompletedTask;
             });
+        });
+
+        context.Services.AddOpenApiExtensions((options) =>
+        {
+            options.AddServerUrls = true;
+
+            options.DefaultServerUrl = _systemOptions.Server;
+
+            options.AddExamples = true;
+
+            //options.SerializationContexts.Add(JsonSerializerContext);
+
+            foreach (var item in context.Modules.Select(x => x.Assembly))
+            {
+                options.XmlDocumentationAssemblies.Add(item);
+            }
+
+            options.DescriptionTransformations.Add((p) => p.ToUpperInvariant());
         });
     }
 }

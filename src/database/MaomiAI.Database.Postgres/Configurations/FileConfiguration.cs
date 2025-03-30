@@ -19,6 +19,8 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
 
         entity.ToTable("files", tb => tb.HasComment("文件列表"));
 
+        entity.HasIndex(e => new { e.FileMd5, e.FileSize }, "files_file_md5_file_size_uindex").IsUnique();
+
         entity.HasIndex(e => e.FileMd5, "files_file_md5_index");
 
         entity.HasIndex(e => e.FileName, "files_file_name_index");
@@ -29,6 +31,11 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
+        entity.Property(e => e.ContentType)
+            .HasMaxLength(30)
+            .HasDefaultValueSql("'application/octet-stream'::character varying")
+            .HasComment("文件类型")
+            .HasColumnName("content_type");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasColumnName("create_time");
@@ -51,14 +58,14 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasDefaultValue(false)
             .HasComment("允许公开访问")
             .HasColumnName("is_public");
+        entity.Property(e => e.IsUpload)
+            .HasDefaultValue(false)
+            .HasComment("已上传文件")
+            .HasColumnName("is_upload");
         entity.Property(e => e.Path)
             .HasMaxLength(255)
             .HasComment("文件路径")
             .HasColumnName("path");
-        entity.Property(e => e.SourceType)
-            .HasMaxLength(10)
-            .HasComment("该文件属于哪个模块")
-            .HasColumnName("source_type");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasColumnName("update_time");

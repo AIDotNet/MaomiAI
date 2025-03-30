@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Maomi.I18n.AspNetCore" Version="2.2.2" />
+        <PackageReference Include="MartinCostello.OpenApi.Extensions" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
         <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.2">

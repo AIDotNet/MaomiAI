@@ -46,7 +46,7 @@ namespace MaomiAI.Team.Core.Queries.Handlers
 
                 // 首先检查团队是否存在
                 bool teamExists = await _dbContext.Teams
-                    .AnyAsync(t => t.Uuid == request.TeamId && !t.IsDeleted, cancellationToken);
+                    .AnyAsync(t => t.Id == request.TeamId && !t.IsDeleted, cancellationToken);
 
                 if (!teamExists)
                 {

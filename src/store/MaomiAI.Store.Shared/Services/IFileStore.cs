@@ -42,6 +42,13 @@ public interface IFileStore
     Task<IReadOnlyDictionary<string, bool>> FilesExistsAsync(IEnumerable<string> objectKeys);
 
     /// <summary>
+    /// 获取文件大小.
+    /// </summary>
+    /// <param name="objectKey"></param>
+    /// <returns>文件信息.</returns>
+    Task<long> GetFileSizeAsync(string objectKey);
+
+    /// <summary>
     /// 批量获取文件大小，返回文件大小字典.
     /// </summary>
     /// <param name="objectKeys"></param>
@@ -54,5 +61,12 @@ public interface IFileStore
     /// <param name="objectKeys"></param>
     /// <returns>Task.</returns>
     Task DeleteFilesAsync(IEnumerable<string> objectKeys);
+
+    /// <summary>
+    /// 生成预签名上传地址.
+    /// </summary>
+    /// <param name="objectKey"></param>
+    /// <param name="expiryDuration"></param>
+    /// <returns>预签名地址.</returns>
     Task<string> GeneratePreSignedUploadUrlAsync(string objectKey, TimeSpan expiryDuration);
 }

@@ -2,6 +2,7 @@
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using MaomiAI.Infra;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Net;
 
 namespace MaomiAI.Store.Services;
@@ -115,6 +116,20 @@ public class S3Store : IFileStore, IDisposable
 
         var results = await Task.WhenAll(tasks);
         return results.ToDictionary();
+    }
+
+    /// <inheritdoc/>
+    public async Task<long> GetFileSizeAsync(string objectKey)
+    {
+        GetObjectMetadataRequest? request = new()
+        {
+            BucketName = _storeOption.Bucket,
+            Key = objectKey
+        };
+
+        GetObjectMetadataResponse? response = await _s3Client.GetObjectMetadataAsync(request);
+
+        return response.ContentLength;
     }
 
     /// <inheritdoc/>
