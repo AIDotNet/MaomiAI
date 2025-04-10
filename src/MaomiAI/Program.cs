@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using FastEndpoints;
 using MaomiAI;
 using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
@@ -29,10 +30,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseRouting();
+
 app.UseMaomiAIMiddleware();
 
 app.UseHttpLogging();
 
 app.MapControllers();
+app.UseFastEndpoints();
 
 app.Run();

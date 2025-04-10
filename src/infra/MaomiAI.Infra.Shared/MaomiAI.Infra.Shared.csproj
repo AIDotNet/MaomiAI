@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FastEndpoints" Version="6.0.0-beta.11" />
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
         <PackageReference Include="Maomi.Core" Version="2.2.0" />
         <PackageReference Include="Maomi.I18n" Version="2.2.1" />
