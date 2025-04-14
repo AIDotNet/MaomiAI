@@ -12,18 +12,18 @@ using MediatR;
 namespace MaomiAI.Store.Commands;
 
 /// <summary>
-/// 获取上传公开文件的预签名地址.
+/// 获取上传私有文件的预签名地址.
 /// </summary>
-public class PublicPreUploadCommandHandler : IRequestHandler<PublicPreUploadFileCommand, PreUploadFileCommandResponse>
+public class PrivatePreUploadCommandHandler : IRequestHandler<PrivatePreUploadFileCommand, PreUploadFileCommandResponse>
 {
     private readonly IMediator _mediator;
 
-    public PublicPreUploadCommandHandler(IMediator mediator)
+    public PrivatePreUploadCommandHandler(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    public async Task<PreUploadFileCommandResponse> Handle(PublicPreUploadFileCommand request, CancellationToken cancellationToken)
+    public async Task<PreUploadFileCommandResponse> Handle(PrivatePreUploadFileCommand request, CancellationToken cancellationToken)
     {
         var preu = new PreuploadFileCommand
         {
@@ -32,7 +32,7 @@ public class PublicPreUploadCommandHandler : IRequestHandler<PublicPreUploadFile
             FileSize = request.FileSize,
             MD5 = request.MD5,
             Expiration = TimeSpan.FromMinutes(1),
-            FileStoreType = Enums.FileStoreType.Public,
+            FileStoreType = Enums.FileStoreType.Private,
             Path = FileStoreHelper.GetObjectKey(request.MD5, request.FileName)
         };
 
