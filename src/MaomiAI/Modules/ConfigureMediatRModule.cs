@@ -1,11 +1,5 @@
 ﻿using Maomi;
-using MaomiAI.Filters;
 using MaomiAI.Infra;
-using MaomiAI.User.Api;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi;
-using static MaomiAI.MainModule;
 
 namespace MaomiAI.Modules;
 

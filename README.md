@@ -22,7 +22,19 @@ MAI_CONFIG = E:/configs/maiconfigs.json
 
 使用 docker 启动时，可以通过 `docker -v /data/config:/app/configs -e MAI_CONFIG=/app/configs/system.yaml` 的形式向服务提供配置文件。
 
+### 指定端口
+默认服务使用 8080 端口启动服务，如果需要改变，可以添加环境变量。
 
+```
+ASPNETCORE_HTTP_PORTS=80;8080
+ASPNETCORE_HTTPS_PORTS=443;8081
+```
+
+或者
+
+```
+ASPNETCORE_URLS=http://*:80/;http://*:8080/;https://*:443/;https://*:8081/
+```
 
 ### 日志
 

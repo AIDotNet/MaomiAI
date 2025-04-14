@@ -41,6 +41,8 @@ namespace MaomiAI
         /// <inheritdoc/>
         public void ConfigureServices(ServiceContext context)
         {
+            // 添加HTTP上下文访问器
+            context.Services.AddHttpContextAccessor();
             context.Services.AddExceptionHandler<CustomGlobalExceptionHandler>();
             context.Services.AddI18nAspNetCore();
         }

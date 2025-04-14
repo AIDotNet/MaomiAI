@@ -1,9 +1,16 @@
-﻿using Maomi;
+﻿// <copyright file="CustomGlobalExceptionHandler.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using Maomi.AI.Exceptions;
+using MaomiAI.Infra.Diagnostics;
+using MaomiAI.Infra.Models;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
-using MaomiAI.Dtos;
+using System;
+using System.Diagnostics;
 
 namespace MaomiAI.Filters;
 
@@ -30,12 +37,38 @@ public class CustomGlobalExceptionHandler : IExceptionHandler
         Exception exception,
         CancellationToken cancellationToken)
     {
-        var exceptionMessage = exception.Message;
-        logger.LogError(
-            "Error Message: {exceptionMessage}, Time of occurrence {time}",
-            exceptionMessage, DateTime.UtcNow);
+        var message = string.Empty;
+        var messageDetail = string.Empty;
 
-        // 后续其它中间件不再重复处理.
+        if (exception is BusinessException businessException)
+        {
+            message = businessException.Message;
+            messageDetail = businessException.ToString();
+        }
+        else
+        {
+#if DEBUG
+            message = exception.Message;
+            messageDetail = exception.ToString();
+#else
+        Message = "Internal server error",
+#endif
+        }
+
+        var response = new ErrorResponse()
+        {
+            Code = 500,
+            RequestId = httpContext.TraceIdentifier,
+            Message = message,
+            Detail = messageDetail,
+        };
+
+        httpContext.Response.WriteAsJsonAsync(
+            response,
+            cancellationToken: cancellationToken);
+
+        httpContext.Response.StatusCode = 500;
+
         return ValueTask.FromResult(true);
     }
 }

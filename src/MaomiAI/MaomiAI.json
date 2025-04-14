@@ -1,0 +1,2607 @@
+{
+  "x-generator": "NSwag v14.3.0.0 (NJsonSchema v11.2.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AI API",
+    "description": "MaomiAI openapi document.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8999",
+      "description": "User-defined service address"
+    }
+  ],
+  "paths": {
+    "/api/store/pre_public_url": {
+      "post": {
+        "tags": [
+          "Api"
+        ],
+        "summary": "获取可公开访问的文件上传预签名地址.",
+        "operationId": "MaomiAIStoreControllersPreUploadEnpoint",
+        "requestBody": {
+          "x-name": "PublicPreUploadFileCommand",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsPublicPreUploadFileCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIStoreCommandsResponsePreUploadFileCommandResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "错误响应模型.",
+                  "additionalProperties": false,
+                  "required": [
+                    "RequestId",
+                    "Code",
+                    "Message",
+                    "Detail"
+                  ],
+                  "properties": {
+                    "RequestId": {
+                      "type": "string",
+                      "description": "请求上下文 ID."
+                    },
+                    "Code": {
+                      "type": "integer",
+                      "description": "错误码.",
+                      "format": "int32"
+                    },
+                    "Message": {
+                      "type": "string",
+                      "description": "错误消息."
+                    },
+                    "Detail": {
+                      "type": "string",
+                      "description": "错误详情."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "错误响应模型.",
+                  "additionalProperties": false,
+                  "required": [
+                    "RequestId",
+                    "Code",
+                    "Message",
+                    "Detail"
+                  ],
+                  "properties": {
+                    "RequestId": {
+                      "type": "string",
+                      "description": "请求上下文 ID."
+                    },
+                    "Code": {
+                      "type": "integer",
+                      "description": "错误码.",
+                      "format": "int32"
+                    },
+                    "Message": {
+                      "type": "string",
+                      "description": "错误消息."
+                    },
+                    "Detail": {
+                      "type": "string",
+                      "description": "错误详情."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "错误响应模型.",
+                  "additionalProperties": false,
+                  "required": [
+                    "RequestId",
+                    "Code",
+                    "Message",
+                    "Detail"
+                  ],
+                  "properties": {
+                    "RequestId": {
+                      "type": "string",
+                      "description": "请求上下文 ID."
+                    },
+                    "Code": {
+                      "type": "integer",
+                      "description": "错误码.",
+                      "format": "int32"
+                    },
+                    "Message": {
+                      "type": "string",
+                      "description": "错误消息."
+                    },
+                    "Detail": {
+                      "type": "string",
+                      "description": "错误详情."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "错误响应模型.",
+                  "additionalProperties": false,
+                  "required": [
+                    "RequestId",
+                    "Code",
+                    "Message",
+                    "Detail"
+                  ],
+                  "properties": {
+                    "RequestId": {
+                      "type": "string",
+                      "description": "请求上下文 ID."
+                    },
+                    "Code": {
+                      "type": "integer",
+                      "description": "错误码.",
+                      "format": "int32"
+                    },
+                    "Message": {
+                      "type": "string",
+                      "description": "错误消息."
+                    },
+                    "Detail": {
+                      "type": "string",
+                      "description": "错误详情."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          },
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/store/complate_url": {
+      "post": {
+        "tags": [
+          "Api"
+        ],
+        "summary": "完成文件上传.",
+        "operationId": "MaomiAIStoreControllersComplateUploadEndpoint",
+        "requestBody": {
+          "x-name": "ComplateFileUploadCommand",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIStoreCommandsComplateFileUploadCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIStoreCommandsResponseComplateFileCommandResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          },
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/Test/public": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "summary": "获取公开信息（无需认证）.",
+        "operationId": "Test_GetPublicInfo",
+        "responses": {
+          "200": {
+            "description": "公开信息.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/create": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "创建团队.",
+        "operationId": "Teams_CreateTeam",
+        "requestBody": {
+          "x-name": "command",
+          "description": "创建团队命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCreateTeamCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "新创建的团队ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIInfraModelsGuidDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/{id}/update": {
+      "put": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "更新团队信息.",
+        "operationId": "Teams_UpdateTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "团队ID.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "团队ID.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "description": "更新团队命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsUpdateTeamCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIInfraModelsEmptyDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/get-team-list": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "获取团队列表.",
+        "operationId": "Teams_GetTeamList",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "页码，从1开始.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "每页大小.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "description": "关键词（团队名称、描述）.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "description": "状态过滤.",
+            "schema": {
+              "type": "boolean",
+              "nullable": true
+            },
+            "x-position": 4
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "团队列表.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfTeamDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/get-team/{id}": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "根据ID获取团队.",
+        "operationId": "Teams_GetTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "团队ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "团队信息.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/delete-team/{id}": {
+      "delete": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "删除团队.",
+        "operationId": "Teams_DeleteTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "团队ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/toggle-status": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "切换团队状态.",
+        "operationId": "Teams_ToggleTeamStatus",
+        "requestBody": {
+          "x-name": "command",
+          "description": "切换团队状态命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsToggleTeamStatusCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/invite-user": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "邀请用户加入团队.",
+        "operationId": "Teams_InviteUser",
+        "requestBody": {
+          "x-name": "command",
+          "description": "邀请用户加入团队命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsInviteUserToTeamCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "新创建的团队成员ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/revoke-admin": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "撤销用户的管理员权限.",
+        "operationId": "Teams_RevokeAdminPermission",
+        "requestBody": {
+          "x-name": "command",
+          "description": "撤销管理员权限命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsRevokeAdminPermissionCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Teams/get-team-members/{teamId}": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "获取团队成员列表.",
+        "operationId": "Teams_GetTeamMembers",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "description": "团队ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "TeamId",
+            "in": "query",
+            "description": "团队ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "页码，从1开始.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "每页大小.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 4
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "description": "关键词（用户名）.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "IsAdmin",
+            "in": "query",
+            "description": "角色过滤（管理员/普通成员）.",
+            "schema": {
+              "type": "boolean",
+              "nullable": true
+            },
+            "x-position": 6
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "团队成员列表.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfTeamMemberDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/get-user-list": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "获取用户列表.",
+        "operationId": "Users_GetUserList",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "页码，从1开始.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "每页大小.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "description": "关键词（用户名、昵称、邮箱）.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "description": "状态过滤.",
+            "schema": {
+              "type": "boolean",
+              "nullable": true
+            },
+            "x-position": 4
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "用户列表.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfUserDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/get-user/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "根据ID获取用户.",
+        "operationId": "Users_UserByIdQuery",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "用户ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "用户信息.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsUserDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/create-user": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "创建用户.",
+        "operationId": "Users_CreateUser",
+        "requestBody": {
+          "x-name": "command",
+          "description": "创建用户命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIUserSharedCommandsCreateUserCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "新创建的用户ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/update-user/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "更新用户信息.",
+        "operationId": "Users_UpdateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "用户ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "description": "更新用户命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIUserSharedCommandsUpdateUserCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/delete-user/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "删除用户.",
+        "operationId": "Users_DeleteUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "用户ID.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/change-password": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "修改密码.",
+        "operationId": "Users_ChangePassword",
+        "requestBody": {
+          "x-name": "command",
+          "description": "修改密码命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIUserSharedCommandsChangePasswordCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "用户登录.",
+        "operationId": "Users_Login",
+        "requestBody": {
+          "x-name": "command",
+          "description": "登录命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIUserSharedCommandsLoginCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "登录结果.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsLoginResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/toggle-status": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "启用或禁用用户.",
+        "operationId": "Users_ToggleUserStatus",
+        "requestBody": {
+          "x-name": "command",
+          "description": "启用或禁用用户命令.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAIUserSharedCommandsToggleUserStatusCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "操作结果.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MaomiAIStoreCommandsResponsePreUploadFileCommandResponse": {
+        "type": "object",
+        "description": "预上传文件.",
+        "additionalProperties": false,
+        "required": [
+          "IsExist",
+          "FileId"
+        ],
+        "properties": {
+          "IsExist": {
+            "type": "boolean",
+            "description": "文件已存在."
+          },
+          "FileId": {
+            "type": "string",
+            "description": "文件ID.",
+            "format": "uuid"
+          },
+          "UploadUrl": {
+            "type": "string",
+            "description": "预签名上传地址，当 IsExist = true 时字段为空.",
+            "format": "uri",
+            "nullable": true
+          },
+          "Expiration": {
+            "type": "string",
+            "description": "签名过期时间，当 IsExist = true 时字段为空.",
+            "format": "int64",
+            "minimum": 0.0,
+            "nullable": true,
+            "example": "1744630979740"
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsPublicPreUploadFileCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "FileName",
+          "ContentType",
+          "FileSize",
+          "MD5"
+        ],
+        "properties": {
+          "FileName": {
+            "type": "string",
+            "description": "文件名称."
+          },
+          "ContentType": {
+            "type": "string",
+            "description": "文件类型."
+          },
+          "FileSize": {
+            "type": "string",
+            "description": "文件大小.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          },
+          "MD5": {
+            "type": "string",
+            "description": "文件 MD5."
+          }
+        }
+      },
+      "MaomiAIInfraModelsErrorResponse": {
+        "type": "object",
+        "description": "错误响应模型.",
+        "additionalProperties": false,
+        "required": [
+          "RequestId",
+          "Code",
+          "Message",
+          "Detail"
+        ],
+        "properties": {
+          "RequestId": {
+            "type": "string",
+            "description": "请求上下文 ID."
+          },
+          "Code": {
+            "type": "integer",
+            "description": "错误码.",
+            "format": "int32"
+          },
+          "Message": {
+            "type": "string",
+            "description": "错误消息."
+          },
+          "Detail": {
+            "type": "string",
+            "description": "错误详情."
+          }
+        }
+      },
+      "MaomiAIStoreCommandsResponseComplateFileCommandResponse": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MaomiAIStoreCommandsComplateFileUploadCommand": {
+        "type": "object",
+        "description": "结束上传文件.",
+        "additionalProperties": false,
+        "required": [
+          "IsSuccess",
+          "FileId"
+        ],
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "上传成功或失败."
+          },
+          "FileId": {
+            "type": "string",
+            "description": "文件ID.",
+            "format": "uuid"
+          }
+        }
+      },
+      "MaomiAIInfraModelsGuidDto": {
+        "type": "object",
+        "description": "Guid.",
+        "additionalProperties": false,
+        "required": [
+          "Guid"
+        ],
+        "properties": {
+          "Guid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsCreateTeamCommand": {
+        "type": "object",
+        "description": "创建团队命令.",
+        "additionalProperties": false,
+        "required": [
+          "Name",
+          "Description",
+          "IsPublic"
+        ],
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "团队名称."
+          },
+          "Description": {
+            "type": "string",
+            "description": "团队描述."
+          },
+          "IsPublic": {
+            "type": "boolean",
+            "description": "是否允许被外部搜索."
+          }
+        }
+      },
+      "MaomiAIInfraModelsEmptyDto": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MaomiAITeamSharedCommandsUpdateTeamCommand": {
+        "type": "object",
+        "description": "更新团队命令.",
+        "additionalProperties": false,
+        "required": [
+          "Id"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "Name": {
+            "type": "string",
+            "description": "团队名称.",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "description": "团队描述.",
+            "nullable": true
+          },
+          "Avatar": {
+            "type": "string",
+            "description": "团队头像URL.",
+            "nullable": true
+          }
+        }
+      },
+      "MaomiAIUserSharedModelsPagedResultOfTeamDto": {
+        "type": "object",
+        "description": "分页结果.",
+        "additionalProperties": false,
+        "required": [
+          "Items",
+          "Total",
+          "Page",
+          "PageSize",
+          "TotalPages",
+          "HasPrevious",
+          "HasNext"
+        ],
+        "properties": {
+          "Items": {
+            "type": "array",
+            "description": "项目集合.",
+            "items": {
+              "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamDto"
+            }
+          },
+          "Total": {
+            "type": "string",
+            "description": "总数.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          },
+          "Page": {
+            "type": "integer",
+            "description": "当前页.",
+            "format": "int32"
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "每页大小.",
+            "format": "int32"
+          },
+          "TotalPages": {
+            "type": "integer",
+            "description": "总页数.",
+            "format": "int32"
+          },
+          "HasPrevious": {
+            "type": "boolean",
+            "description": "是否有上一页."
+          },
+          "HasNext": {
+            "type": "boolean",
+            "description": "是否有下一页."
+          }
+        }
+      },
+      "MaomiAITeamSharedModelsTeamDto": {
+        "type": "object",
+        "description": "团队数据传输对象.",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "Name",
+          "Description",
+          "Avatar",
+          "Status",
+          "CreateTime",
+          "UpdateTime",
+          "CreateUserId",
+          "IsOwner",
+          "IsAdmin"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string",
+            "description": "团队名称."
+          },
+          "Description": {
+            "type": "string",
+            "description": "团队描述."
+          },
+          "Avatar": {
+            "type": "string",
+            "description": "团队头像."
+          },
+          "Status": {
+            "type": "boolean",
+            "description": "状态：true-正常，false-禁用."
+          },
+          "CreateTime": {
+            "type": "string",
+            "description": "创建时间.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1744630979740"
+          },
+          "UpdateTime": {
+            "type": "string",
+            "description": "更新时间.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1744630979740"
+          },
+          "CreateUserId": {
+            "type": "string",
+            "description": "创建人ID.",
+            "format": "uuid"
+          },
+          "IsOwner": {
+            "type": "boolean",
+            "description": "当前用户是否是团队所有者（仅在查询用户所属团队时有值）."
+          },
+          "IsAdmin": {
+            "type": "boolean",
+            "description": "当前用户是否是团队管理员（仅在查询用户所属团队时有值）."
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsToggleTeamStatusCommand": {
+        "type": "object",
+        "description": "切换团队状态命令.",
+        "additionalProperties": false,
+        "required": [
+          "TeamIds",
+          "Status"
+        ],
+        "properties": {
+          "TeamIds": {
+            "type": "array",
+            "description": "团队ID列表.",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "Status": {
+            "type": "boolean",
+            "description": "状态：true-正常，false-禁用."
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsInviteUserToTeamCommand": {
+        "type": "object",
+        "description": "邀请用户加入团队命令.",
+        "additionalProperties": false,
+        "required": [
+          "TeamId",
+          "UserId",
+          "IsAdmin"
+        ],
+        "properties": {
+          "TeamId": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "UserId": {
+            "type": "string",
+            "description": "被邀请的用户ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "IsAdmin": {
+            "type": "boolean",
+            "description": "是否设置为管理员."
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsRevokeAdminPermissionCommand": {
+        "type": "object",
+        "description": "撤销团队成员管理员权限命令.",
+        "additionalProperties": false,
+        "required": [
+          "TeamId",
+          "UserId"
+        ],
+        "properties": {
+          "TeamId": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "UserId": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid",
+            "minLength": 1
+          }
+        }
+      },
+      "MaomiAIUserSharedModelsPagedResultOfTeamMemberDto": {
+        "type": "object",
+        "description": "分页结果.",
+        "additionalProperties": false,
+        "required": [
+          "Items",
+          "Total",
+          "Page",
+          "PageSize",
+          "TotalPages",
+          "HasPrevious",
+          "HasNext"
+        ],
+        "properties": {
+          "Items": {
+            "type": "array",
+            "description": "项目集合.",
+            "items": {
+              "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamMemberDto"
+            }
+          },
+          "Total": {
+            "type": "string",
+            "description": "总数.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          },
+          "Page": {
+            "type": "integer",
+            "description": "当前页.",
+            "format": "int32"
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "每页大小.",
+            "format": "int32"
+          },
+          "TotalPages": {
+            "type": "integer",
+            "description": "总页数.",
+            "format": "int32"
+          },
+          "HasPrevious": {
+            "type": "boolean",
+            "description": "是否有上一页."
+          },
+          "HasNext": {
+            "type": "boolean",
+            "description": "是否有下一页."
+          }
+        }
+      },
+      "MaomiAITeamSharedModelsTeamMemberDto": {
+        "type": "object",
+        "description": "团队成员数据传输对象.",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "TeamId",
+          "UserId",
+          "IsRoot",
+          "IsAdmin",
+          "CreateTime"
+        ],
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "成员ID.",
+            "format": "int32"
+          },
+          "TeamId": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid"
+          },
+          "UserId": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid"
+          },
+          "UserName": {
+            "type": "string",
+            "description": "用户名称.",
+            "nullable": true
+          },
+          "UserAvatar": {
+            "type": "string",
+            "description": "用户头像.",
+            "nullable": true
+          },
+          "IsRoot": {
+            "type": "boolean",
+            "description": "是否为团队所有者."
+          },
+          "IsAdmin": {
+            "type": "boolean",
+            "description": "是否为管理员."
+          },
+          "CreateTime": {
+            "type": "string",
+            "description": "加入时间.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1744630979740"
+          }
+        }
+      },
+      "MaomiAIUserSharedModelsPagedResultOfUserDto": {
+        "type": "object",
+        "description": "分页结果.",
+        "additionalProperties": false,
+        "required": [
+          "Items",
+          "Total",
+          "Page",
+          "PageSize",
+          "TotalPages",
+          "HasPrevious",
+          "HasNext"
+        ],
+        "properties": {
+          "Items": {
+            "type": "array",
+            "description": "项目集合.",
+            "items": {
+              "$ref": "#/components/schemas/MaomiAIUserSharedModelsUserDto"
+            }
+          },
+          "Total": {
+            "type": "string",
+            "description": "总数.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          },
+          "Page": {
+            "type": "integer",
+            "description": "当前页.",
+            "format": "int32"
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "每页大小.",
+            "format": "int32"
+          },
+          "TotalPages": {
+            "type": "integer",
+            "description": "总页数.",
+            "format": "int32"
+          },
+          "HasPrevious": {
+            "type": "boolean",
+            "description": "是否有上一页."
+          },
+          "HasNext": {
+            "type": "boolean",
+            "description": "是否有下一页."
+          }
+        }
+      },
+      "MaomiAIUserSharedModelsUserDto": {
+        "type": "object",
+        "description": "用户数据传输对象.",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "UserName",
+          "Email",
+          "NickName",
+          "AvatarUrl",
+          "Phone",
+          "Status",
+          "CreateTime",
+          "UpdateTime"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid"
+          },
+          "UserName": {
+            "type": "string",
+            "description": "用户名."
+          },
+          "Email": {
+            "type": "string",
+            "description": "邮箱."
+          },
+          "NickName": {
+            "type": "string",
+            "description": "昵称."
+          },
+          "AvatarUrl": {
+            "type": "string",
+            "description": "头像URL."
+          },
+          "Phone": {
+            "type": "string",
+            "description": "手机号."
+          },
+          "Status": {
+            "type": "boolean",
+            "description": "状态：true-正常，false-禁用."
+          },
+          "CreateTime": {
+            "type": "string",
+            "description": "创建时间.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1744630979740"
+          },
+          "UpdateTime": {
+            "type": "string",
+            "description": "更新时间.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1744630979740"
+          }
+        }
+      },
+      "MaomiAIUserSharedCommandsCreateUserCommand": {
+        "type": "object",
+        "description": "创建用户命令.",
+        "additionalProperties": false,
+        "required": [
+          "UserName",
+          "Email",
+          "Password",
+          "NickName",
+          "Status"
+        ],
+        "properties": {
+          "UserName": {
+            "type": "string",
+            "description": "用户名.",
+            "maxLength": 50,
+            "minLength": 3
+          },
+          "Email": {
+            "type": "string",
+            "description": "邮箱.",
+            "format": "email",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "Password": {
+            "type": "string",
+            "description": "密码.",
+            "maxLength": 100,
+            "minLength": 6
+          },
+          "NickName": {
+            "type": "string",
+            "description": "昵称.",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "AvatarUrl": {
+            "type": "string",
+            "description": "头像URL.",
+            "maxLength": 500,
+            "minLength": 0,
+            "nullable": true
+          },
+          "Phone": {
+            "type": "string",
+            "description": "手机号.",
+            "format": "phone",
+            "maxLength": 20,
+            "minLength": 0,
+            "nullable": true
+          },
+          "Status": {
+            "type": "boolean",
+            "description": "状态：true-正常，false-禁用."
+          }
+        }
+      },
+      "MaomiAIUserSharedCommandsUpdateUserCommand": {
+        "type": "object",
+        "description": "更新用户命令.",
+        "additionalProperties": false,
+        "required": [
+          "Id"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "Email": {
+            "type": "string",
+            "description": "邮箱.",
+            "format": "email",
+            "maxLength": 100,
+            "minLength": 0,
+            "nullable": true
+          },
+          "NickName": {
+            "type": "string",
+            "description": "昵称.",
+            "maxLength": 50,
+            "minLength": 0,
+            "nullable": true
+          },
+          "AvatarUrl": {
+            "type": "string",
+            "description": "头像URL.",
+            "maxLength": 500,
+            "minLength": 0,
+            "nullable": true
+          },
+          "Phone": {
+            "type": "string",
+            "description": "手机号.",
+            "format": "phone",
+            "maxLength": 20,
+            "minLength": 0,
+            "nullable": true
+          }
+        }
+      },
+      "MaomiAIUserSharedCommandsChangePasswordCommand": {
+        "type": "object",
+        "description": "修改密码命令.",
+        "additionalProperties": false,
+        "required": [
+          "UserId",
+          "OldPassword",
+          "NewPassword",
+          "ConfirmNewPassword"
+        ],
+        "properties": {
+          "UserId": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "OldPassword": {
+            "type": "string",
+            "description": "旧密码.",
+            "maxLength": 100,
+            "minLength": 6
+          },
+          "NewPassword": {
+            "type": "string",
+            "description": "新密码.",
+            "maxLength": 100,
+            "minLength": 6
+          },
+          "ConfirmNewPassword": {
+            "type": "string",
+            "description": "确认新密码.",
+            "minLength": 1
+          }
+        }
+      },
+      "MaomiAIUserSharedModelsLoginResult": {
+        "type": "object",
+        "description": "登录结果.",
+        "additionalProperties": false,
+        "required": [
+          "UserId",
+          "UserName",
+          "AccessToken",
+          "TokenType",
+          "ExpiresIn"
+        ],
+        "properties": {
+          "UserId": {
+            "type": "string",
+            "description": "用户ID.",
+            "format": "uuid"
+          },
+          "UserName": {
+            "type": "string",
+            "description": "用户名."
+          },
+          "AccessToken": {
+            "type": "string",
+            "description": "访问令牌."
+          },
+          "TokenType": {
+            "type": "string",
+            "description": "令牌类型."
+          },
+          "ExpiresIn": {
+            "type": "string",
+            "description": "过期时间（秒）.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          }
+        }
+      },
+      "MaomiAIUserSharedCommandsLoginCommand": {
+        "type": "object",
+        "description": "登录命令.",
+        "additionalProperties": false,
+        "required": [
+          "Username",
+          "Password"
+        ],
+        "properties": {
+          "Username": {
+            "type": "string",
+            "description": "用户名或邮箱.",
+            "minLength": 1
+          },
+          "Password": {
+            "type": "string",
+            "description": "密码.",
+            "minLength": 1
+          }
+        }
+      },
+      "MaomiAIUserSharedCommandsToggleUserStatusCommand": {
+        "type": "object",
+        "description": "切换用户状态命令.",
+        "additionalProperties": false,
+        "required": [
+          "UserIds",
+          "Status"
+        ],
+        "properties": {
+          "UserIds": {
+            "type": "array",
+            "description": "用户ID.",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "Status": {
+            "type": "boolean",
+            "description": "状态: true-启用, false-禁用."
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "JWTBearerAuth": {
+        "type": "http",
+        "description": "Enter a JWT token to authorize the requests...",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      },
+      "Bearer": {
+        "type": "http",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

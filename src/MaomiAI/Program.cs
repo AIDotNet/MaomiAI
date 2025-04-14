@@ -5,6 +5,7 @@
 // </copyright>
 
 using FastEndpoints;
+using FastEndpoints.Swagger;
 using MaomiAI;
 using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
@@ -17,8 +18,8 @@ WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseOpenApi(c => c.Path = "/openapi/{documentName}.json");
     app.MapScalarApiReference();
-    app.MapOpenApi();
 }
 
 app.UseStaticFiles(new StaticFileOptions
@@ -26,16 +27,17 @@ app.UseStaticFiles(new StaticFileOptions
     FileProvider = new PhysicalFileProvider(builder.Environment.ContentRootPath),
 });
 
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseRouting();
 
 app.UseMaomiAIMiddleware();
 
 app.UseHttpLogging();
 
-app.MapControllers();
 app.UseFastEndpoints();
+
+app.MapControllers();
 
 app.Run();

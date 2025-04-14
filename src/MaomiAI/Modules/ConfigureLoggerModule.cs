@@ -1,11 +1,5 @@
 ﻿using Maomi;
-using MaomiAI.Filters;
 using MaomiAI.Infra;
-using MaomiAI.User.Api;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi;
-using static MaomiAI.MainModule;
 
 namespace MaomiAI.Modules;
 
@@ -37,6 +31,8 @@ public class ConfigureLoggerModule : IModule
         {
             //logging.LoggingFields = HttpLoggingFields.All;
             logging.CombineLogs = true;
+            logging.RequestBodyLogLimit = 4096;
+            logging.ResponseBodyLogLimit = 4096;
         });
     }
 
