@@ -7,38 +7,11 @@
 using FastEndpoints;
 using MaomiAI.Store.Commands;
 using MaomiAI.Store.Commands.Response;
-using MaomiAI.Team.Shared.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.Store.Controllers;
-
-/// <summary>
-/// 获取可公开访问的文件上传预签名地址.
-/// </summary>
-[EndpointGroupName("store")]
-[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_public_url")]
-[Authorize]
-public class PreUploadEnpoint : Endpoint<PublicPreUploadFileCommand, PreUploadFileCommandResponse>
-{
-    private readonly IMediator _mediator;
-
-    public PreUploadEnpoint(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    ///// <inheritdoc/>
-    //public override void Configure()
-    //{
-    //    Post($"{StoreApi.ApiPrefix}/pre_public_url");
-    //}
-
-    /// <inheritdoc/>
-    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PublicPreUploadFileCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
-}
 
 /// <summary>
 /// 完成文件上传.
