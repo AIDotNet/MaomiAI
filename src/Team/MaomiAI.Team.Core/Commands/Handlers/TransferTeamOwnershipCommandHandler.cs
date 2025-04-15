@@ -68,7 +68,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
             // 验证新所有者是否是团队成员
             TeamMemberEntity? newOwner = await _dbContext.TeamMembers
                                              .FirstOrDefaultAsync(
-                                                 m => m.TeamId == request.TeamId && m.UserId == request.NewOwnerUserId,
+                                                 m => m.TeamId == request.TeamId && m.UserId == request.NewOwnerId,
                                                  cancellationToken)
                                          ?? throw new InvalidOperationException("新所有者不是该团队的成员");
 

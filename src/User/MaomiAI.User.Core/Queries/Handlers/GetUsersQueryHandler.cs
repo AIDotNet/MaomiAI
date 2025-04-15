@@ -51,7 +51,13 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, PagedResult<U
 
         if (totalCount == 0)
         {
-            return new PagedResult<UserDto>(new List<UserDto>(), 0, request.Page, request.PageSize);
+            return new PagedResult<UserDto>
+            {
+                Items = new List<UserDto>(),
+                Total = 0,
+                PageNo = request.Page,
+                PageSize = request.PageSize
+            };
         }
 
         // 应用排序和分页，并映射到DTO
@@ -73,7 +79,13 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, PagedResult<U
             })
             .ToListAsync(cancellationToken);
 
-        return new PagedResult<UserDto>(items, totalCount, request.Page, request.PageSize);
+        return new PagedResult<UserDto>
+        {
+            Items = items,
+            Total = totalCount,
+            PageNo = request.Page,
+            PageSize = request.PageSize
+        };
     }
 
     /// <summary>

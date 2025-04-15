@@ -53,4 +53,9 @@ public partial class TeamMemberEntity : IFullAudited
     /// 更新人ID.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 是否管理员
+    /// </summary>
+    public bool IsRoot { get; set; }
 }
