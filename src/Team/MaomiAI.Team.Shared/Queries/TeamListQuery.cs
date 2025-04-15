@@ -13,7 +13,7 @@ namespace MaomiAI.Team.Shared.Queries;
 /// <summary>
 /// 获取团队列表查询.
 /// </summary>
-public class TeamListQuery : PagedParamter, IRequest<PagedResult<TeamDto>>>
+public class TeamListQuery : PagedParamter, IRequest<PagedResult<TeamDto>>
 {
     /// <summary>
     /// 查询关键字.

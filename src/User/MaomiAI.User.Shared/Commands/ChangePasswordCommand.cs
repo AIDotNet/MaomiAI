@@ -5,6 +5,7 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.User.Shared.Commands
@@ -12,7 +13,7 @@ namespace MaomiAI.User.Shared.Commands
     /// <summary>
     /// 修改密码命令.
     /// </summary>
-    public class ChangePasswordCommand : IRequest
+    public class ChangePasswordCommand : IRequest<EmptyDto>
     {
         /// <summary>
         /// 用户ID.

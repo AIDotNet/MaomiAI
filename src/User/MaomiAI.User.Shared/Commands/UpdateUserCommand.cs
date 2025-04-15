@@ -5,6 +5,7 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.User.Shared.Commands
@@ -12,7 +13,7 @@ namespace MaomiAI.User.Shared.Commands
     /// <summary>
     /// 更新用户命令.
     /// </summary>
-    public class UpdateUserCommand : IRequest
+    public class UpdateUserCommand : IRequest<EmptyDto>
     {
         /// <summary>
         /// 用户ID.

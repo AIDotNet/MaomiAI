@@ -8,25 +8,25 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.1:8999",
+      "url": "http://localhost:5000",
       "description": "User-defined service address"
     }
   ],
   "paths": {
-    "/api/team/create": {
+    "/api/store/pre_public_url": {
       "post": {
         "tags": [
-          "Api"
+          "User"
         ],
-        "summary": "创建团队.",
-        "operationId": "MaomiAITeamApiEndpointsCreateTeamEndpoint",
+        "summary": "获取可公开访问的文件上传预签名地址.",
+        "operationId": "MaomiAIStoreControllersPreUploadEnpoint",
         "requestBody": {
-          "x-name": "CreateTeamCommand",
+          "x-name": "PublicPreUploadFileCommand",
           "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCreateTeamCommand"
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsPublicPreUploadFileCommand"
               }
             }
           },
@@ -39,7 +39,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MaomiAIInfraModelsGuidDto"
+                  "$ref": "#/components/schemas/MaomiAIStoreCommandsResponsePreUploadFileCommandResponse"
                 }
               }
             }
@@ -203,32 +203,20 @@
         ]
       }
     },
-    "/api/team/{id}/update": {
+    "/api/store/complate_url": {
       "post": {
         "tags": [
           "Api"
         ],
-        "summary": "创建团队.",
-        "operationId": "MaomiAITeamApiEndpointsUpdateTeamEndpoint",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "团队ID.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
+        "summary": "完成文件上传.",
+        "operationId": "MaomiAIStoreControllersComplateUploadEndpoint",
         "requestBody": {
-          "x-name": "UpdateTeamCommand",
+          "x-name": "ComplateFileUploadCommand",
           "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsUpdateTeamCommand"
+                "$ref": "#/components/schemas/MaomiAIStoreCommandsComplateFileUploadCommand"
               }
             }
           },
@@ -241,7 +229,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MaomiAIInfraModelsEmptyDto"
+                  "$ref": "#/components/schemas/MaomiAIStoreCommandsResponseComplateFileCommandResponse"
                 }
               }
             }
@@ -251,7 +239,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -261,7 +249,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -271,7 +259,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -281,7 +269,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -321,7 +309,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -331,7 +319,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -341,7 +329,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -351,7 +339,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -395,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -405,7 +393,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -415,7 +403,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -425,7 +413,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -490,7 +478,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -500,7 +488,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -510,7 +498,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -520,7 +508,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -593,7 +581,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -603,7 +591,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -613,7 +601,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -623,7 +611,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -667,7 +655,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -677,7 +665,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -687,7 +675,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -697,7 +685,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -742,7 +730,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -752,7 +740,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -762,7 +750,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -772,7 +760,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -817,7 +805,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -827,7 +815,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -837,7 +825,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -847,7 +835,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -892,7 +880,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -902,7 +890,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -912,7 +900,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -922,7 +910,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -967,7 +955,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -977,7 +965,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -987,7 +975,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -997,7 +985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1091,7 +1079,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1101,7 +1089,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1111,7 +1099,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1121,7 +1109,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1194,7 +1182,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1204,7 +1192,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1214,7 +1202,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1224,7 +1212,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1268,7 +1256,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1278,7 +1266,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1288,7 +1276,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1298,7 +1286,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1343,7 +1331,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1353,7 +1341,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1363,7 +1351,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1373,7 +1361,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1431,7 +1419,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1441,7 +1429,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1451,7 +1439,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1461,7 +1449,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1506,7 +1494,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1516,7 +1504,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1526,7 +1514,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1536,7 +1524,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1581,7 +1569,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1591,7 +1579,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1601,7 +1589,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1611,7 +1599,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1655,7 +1643,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1665,7 +1653,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1675,7 +1663,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1685,7 +1673,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1730,7 +1718,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1740,7 +1728,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1750,7 +1738,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1760,7 +1748,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//api/store/pre_public_url/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1771,6 +1759,125 @@
   },
   "components": {
     "schemas": {
+      "MaomiAIStoreCommandsResponsePreUploadFileCommandResponse": {
+        "type": "object",
+        "description": "预上传文件.",
+        "additionalProperties": false,
+        "required": [
+          "IsExist",
+          "FileId"
+        ],
+        "properties": {
+          "IsExist": {
+            "type": "boolean",
+            "description": "文件已存在."
+          },
+          "FileId": {
+            "type": "string",
+            "description": "文件ID.",
+            "format": "uuid"
+          },
+          "UploadUrl": {
+            "type": "string",
+            "description": "预签名上传地址，当 IsExist = true 时字段为空.",
+            "format": "uri",
+            "nullable": true
+          },
+          "Expiration": {
+            "type": "string",
+            "description": "签名过期时间，当 IsExist = true 时字段为空.",
+            "format": "int64",
+            "minimum": 0.0,
+            "nullable": true,
+            "example": "1744630979740"
+          }
+        }
+      },
+      "MaomiAITeamSharedCommandsPublicPreUploadFileCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "FileName",
+          "ContentType",
+          "FileSize",
+          "MD5"
+        ],
+        "properties": {
+          "FileName": {
+            "type": "string",
+            "description": "文件名称."
+          },
+          "ContentType": {
+            "type": "string",
+            "description": "文件类型."
+          },
+          "FileSize": {
+            "type": "string",
+            "description": "文件大小.",
+            "format": "int64",
+            "minimum": 0.0,
+            "example": "1415926535897934852"
+          },
+          "MD5": {
+            "type": "string",
+            "description": "文件 MD5."
+          }
+        }
+      },
+      "MaomiAIInfraModelsErrorResponse": {
+        "type": "object",
+        "description": "错误响应模型.",
+        "additionalProperties": false,
+        "required": [
+          "RequestId",
+          "Code",
+          "Message",
+          "Detail"
+        ],
+        "properties": {
+          "RequestId": {
+            "type": "string",
+            "description": "请求上下文 ID."
+          },
+          "Code": {
+            "type": "integer",
+            "description": "错误码.",
+            "format": "int32"
+          },
+          "Message": {
+            "type": "string",
+            "description": "错误消息."
+          },
+          "Detail": {
+            "type": "string",
+            "description": "错误详情."
+          }
+        }
+      },
+      "MaomiAIStoreCommandsResponseComplateFileCommandResponse": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MaomiAIStoreCommandsComplateFileUploadCommand": {
+        "type": "object",
+        "description": "结束上传文件.",
+        "additionalProperties": false,
+        "required": [
+          "IsSuccess",
+          "FileId"
+        ],
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "上传成功或失败."
+          },
+          "FileId": {
+            "type": "string",
+            "description": "文件ID.",
+            "format": "uuid"
+          }
+        }
+      },
       "MaomiAIInfraModelsGuidDto": {
         "type": "object",
         "description": "Guid.",
@@ -1806,36 +1913,6 @@
           "IsPublic": {
             "type": "boolean",
             "description": "是否允许被外部搜索."
-          }
-        }
-      },
-      "MaomiAIInfraModelsErrorResponse": {
-        "type": "object",
-        "description": "错误响应模型.",
-        "additionalProperties": false,
-        "required": [
-          "RequestId",
-          "Code",
-          "Message",
-          "Detail"
-        ],
-        "properties": {
-          "RequestId": {
-            "type": "string",
-            "description": "请求上下文 ID."
-          },
-          "Code": {
-            "type": "integer",
-            "description": "错误码.",
-            "format": "int32"
-          },
-          "Message": {
-            "type": "string",
-            "description": "错误消息."
-          },
-          "Detail": {
-            "type": "string",
-            "description": "错误详情."
           }
         }
       },
@@ -1961,14 +2038,14 @@
             "description": "创建时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744630979740"
           },
           "UpdateTime": {
             "type": "string",
             "description": "更新时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744630979740"
           },
           "CreateUserId": {
             "type": "string",
@@ -2163,7 +2240,7 @@
             "description": "加入时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744630979740"
           }
         }
       },
@@ -2270,14 +2347,14 @@
             "description": "创建时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744630979740"
           },
           "UpdateTime": {
             "type": "string",
             "description": "更新时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744630979740"
           }
         }
       },

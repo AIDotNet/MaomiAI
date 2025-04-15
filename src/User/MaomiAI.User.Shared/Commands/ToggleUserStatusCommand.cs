@@ -5,6 +5,7 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.User.Shared.Commands
@@ -12,7 +13,7 @@ namespace MaomiAI.User.Shared.Commands
     /// <summary>
     /// 切换用户状态命令.
     /// </summary>
-    public class ToggleUserStatusCommand : IRequest
+    public class ToggleUserStatusCommand : IRequest<EmptyDto>
     {
         /// <summary>
         /// 用户ID.

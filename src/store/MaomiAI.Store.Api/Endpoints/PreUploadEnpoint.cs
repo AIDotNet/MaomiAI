@@ -33,6 +33,7 @@ public class PreUploadEnpoint : Endpoint<PublicPreUploadFileCommand, PreUploadFi
     }
 
     /// <inheritdoc/>
-    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PublicPreUploadFileCommand req, CancellationToken ct)
+    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PublicPreUploadFileCommand req,
+        CancellationToken ct)
         => _mediator.Send(req, ct);
 }
