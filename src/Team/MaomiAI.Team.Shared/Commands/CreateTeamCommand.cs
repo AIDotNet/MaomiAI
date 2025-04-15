@@ -30,12 +30,3 @@ public class CreateTeamCommand : IRequest<GuidDto>
     /// </summary>
     public bool IsPublic { get; set; }
 }
-
-public class CreateTeamCommandValidator : AbstractValidator<CreateTeamCommand>
-{
-    public CreateTeamCommandValidator()
-    {
-        RuleFor(x => x.Name).NotEmpty().WithMessage("团队名称最大长度20.");
-        RuleFor(x => x.Description).MaximumLength(255).WithMessage("团队描述最大长度255.");
-    }
-}

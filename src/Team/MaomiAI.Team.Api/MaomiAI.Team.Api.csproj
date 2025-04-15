@@ -16,8 +16,4 @@
         <ProjectReference Include="..\MaomiAI.Team.Shared\MaomiAI.Team.Shared.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Endpoints\" />
-    </ItemGroup>
-
 </Project> 

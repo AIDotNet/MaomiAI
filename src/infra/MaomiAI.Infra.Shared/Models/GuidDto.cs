@@ -11,5 +11,8 @@ namespace MaomiAI.Infra.Models;
 /// </summary>
 public class GuidDto
 {
+    /// <summary>
+    /// Guid.
+    /// </summary>
     public Guid Guid { get; set; }
 }

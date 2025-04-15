@@ -5,8 +5,8 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Models;
-using MaomiAI.User.Shared.Models;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Queries

@@ -2,6 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Models;
 using MediatR;
 

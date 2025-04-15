@@ -1,18 +1,18 @@
-// <copyright file="DeleteTeamCommand.cs" company="MaomiAI">
+// <copyright file="GetTeamByIdQuery.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
+using MaomiAI.Team.Shared.Models;
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
+namespace MaomiAI.Team.Shared.Queries;
 
 /// <summary>
-/// 删除团队命令.
+/// 获取团队详细信息.
 /// </summary>
-public class DeleteTeamCommand : IRequest
+public class TeamDetailQuery : IRequest<TeamDetailDto>
 {
     /// <summary>
     /// 团队ID.

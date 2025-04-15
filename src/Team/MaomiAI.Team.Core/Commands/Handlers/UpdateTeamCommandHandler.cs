@@ -43,43 +43,27 @@ namespace MaomiAI.Team.Core.Commands.Handlers
         /// <inheritdoc/>
         public async Task Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+            if (team == null)
+            {
+                throw new BusinessException("团队不存在");
+            }
 
-            //var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
-            //if (team == null)
-            //{
-            //    throw new BusinessException("团队不存在");
-            //}
+            var anySameName = await _dbContext.Teams.Where(x => x.Id != request.Id && x.Name == request.Name).AnyAsync();
+            if (anySameName)
+            {
+                throw new BusinessException("已存在相同名称的团队");
+            }
 
+            team.Name = request.Name;
+            team.Description = request.Description;
+            team.AvatarFileId = request.Avatar;
+            team.IsPublic = request.IsPublic;
+            team.IsDisable = request.IsDisable;
+            team.Markdown = request.Markdown ?? string.Empty;
 
-            //try
-            //{
-            //    // 获取当前用户ID
-            //    Guid currentUserId = _userContext.UserId;
-
-
-            //    if (team == null)
-            //    {
-            //        _logger.LogWarning("尝试更新不存在的团队: {TeamId}", request.Id);
-            //        throw new InvalidOperationException($"ID为{request.Id}的团队不存在");
-            //    }
-
-            //    // 使用领域模型的方法更新团队
-            //    team.Update(
-            //        request.Name,
-            //        request.Description,
-            //        request.Avatar,
-            //        currentUserId);
-
-            //    await _dbContext.SaveChangesAsync(cancellationToken);
-
-            //    _logger.LogInformation("成功更新团队: {TeamId}, 更新者: {UpdateUserId}", team.Id, currentUserId);
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError(ex, "更新团队失败: {TeamId}, {Message}", request.Id, ex.Message);
-            //    throw;
-            //}
+            _dbContext.Update(team);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

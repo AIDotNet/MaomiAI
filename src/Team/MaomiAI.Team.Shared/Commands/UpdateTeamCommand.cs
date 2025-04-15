@@ -24,24 +24,30 @@ public class UpdateTeamCommand : IRequest
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string? Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string? Description { get; set; }
+    public string Description { get; set; } = null!;
 
     /// <summary>
     /// 团队头像URL.
     /// </summary>
-    public string? Avatar { get; set; }
-}
+    public string Avatar { get; set; } = null!;
 
-public class UpdateTeamCommandValidator : AbstractValidator<UpdateTeamCommand>
-{
-    public UpdateTeamCommandValidator()
-    {
-        RuleFor(x => x.Name).NotEmpty().WithMessage("团队名称最大长度20.");
-        RuleFor(x => x.Description).MaximumLength(255).WithMessage("团队描述最大长度255.");
-    }
+    /// <summary>
+    /// 禁用团队.
+    /// </summary>
+    public bool IsDisable { get; set; }
+
+    /// <summary>
+    /// 是否公开,能够被外部搜索.
+    /// </summary>
+    public bool IsPublic { get; set; }
+
+    /// <summary>
+    /// 团队详细介绍.
+    /// </summary>
+    public string? Markdown { get; set; } = null!;
 }

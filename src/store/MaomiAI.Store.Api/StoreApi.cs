@@ -8,5 +8,5 @@ namespace MaomiAI.Store;
 
 public static class StoreApi
 {
-    public const string ApiPrefix = "/api/store";
+    public const string ApiPrefix = "/store";
 }

@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Models;
 using MaomiAI.User.Shared.Queries;

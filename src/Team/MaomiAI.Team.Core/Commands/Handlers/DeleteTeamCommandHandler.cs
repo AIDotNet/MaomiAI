@@ -4,8 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using Maomi.AI.Exceptions;
 using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
 using MediatR;
@@ -48,34 +48,22 @@ namespace MaomiAI.Team.Core.Commands.Handlers
         /// <exception cref="InvalidOperationException">当团队不存在时抛出.</exception>
         public async Task Handle(DeleteTeamCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var team = await _dbContext.Teams
+                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
-            //try
-            //{
-            //    // 获取当前用户ID
-            //    Guid currentUserId = _userContext.UserId;
+            if (team == null)
+            {
+                throw new BusinessException("团队不存在.");
+            }
 
-            //    // 查找团队
-            //    TeamEntity? team = await _dbContext.Teams
-            //        .FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+            if (team.OwnId != _userContext.UserId)
+            {
+                throw new BusinessException("没有权限删除该团队.");
+            }
 
-            //    if (team == null)
-            //    {
-            //        _logger.LogWarning("尝试删除不存在的团队: {TeamId}", request.Id);
-            //        throw new InvalidOperationException($"ID为{request.Id}的团队不存在");
-            //    }
-
-            //    // 使用领域模型的方法标记为删除
-            //    team.MarkAsDeleted(currentUserId);
-            //    await _dbContext.SaveChangesAsync(cancellationToken);
-
-            //    _logger.LogInformation("成功删除团队: {TeamId}, 操作者: {OperatorId}", team.Id, currentUserId);
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError(ex, "删除团队失败: {TeamId}, {Message}", request.Id, ex.Message);
-            //    throw;
-            //}
+            // todo: 检查团队下是否有资源
+            _dbContext.Teams.Remove(team);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -1,21 +1,18 @@
-// <copyright file="DeleteTeamCommand.cs" company="MaomiAI">
+// <copyright file="CreateTeamEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
-using MediatR;
-
-namespace MaomiAI.Team.Shared.Commands;
+namespace MaomiAI.Team.Api.Endpoints;
 
 /// <summary>
-/// 删除团队命令.
+/// 数据是否存在.
 /// </summary>
-public class DeleteTeamCommand : IRequest
+public class ExistResponse
 {
     /// <summary>
-    /// 团队ID.
+    /// 数据是否存在.
     /// </summary>
-    public Guid Id { get; set; }
+    public bool IsExist { get; set; }
 }

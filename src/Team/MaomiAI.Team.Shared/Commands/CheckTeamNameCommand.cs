@@ -1,28 +1,23 @@
-// <copyright file="RevokeAdminPermissionCommand.cs" company="MaomiAI">
+// <copyright file="CheckTeamNameCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
-using MediatR;
-
 namespace MaomiAI.Team.Shared.Commands;
 
 /// <summary>
-/// 撤销团队成员管理员权限命令.
+/// 检查团队名称是否存在.
 /// </summary>
-public class RevokeAdminPermissionCommand : IRequest<bool>
+public class CheckTeamNameCommand
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
-    [Required]
-    public Guid TeamId { get; set; }
+    public Guid? Id { get; set; }
 
     /// <summary>
-    /// 用户ID.
+    /// 团队名称.
     /// </summary>
-    [Required]
-    public Guid UserId { get; set; }
+    public string Name { get; set; } = null!;
 }

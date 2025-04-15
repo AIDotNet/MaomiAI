@@ -25,11 +25,6 @@ public partial class TeamMemberEntity : IFullAudited
     public Guid UserId { get; set; }
 
     /// <summary>
-    /// 是否所有者.
-    /// </summary>
-    public bool IsRoot { get; set; }
-
-    /// <summary>
     /// 是否为管理员.
     /// </summary>
     public bool IsAdmin { get; set; }

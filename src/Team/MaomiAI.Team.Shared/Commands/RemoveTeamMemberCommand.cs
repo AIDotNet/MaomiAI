@@ -7,17 +7,17 @@
 using System.ComponentModel.DataAnnotations;
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands
+namespace MaomiAI.Team.Shared.Commands;
+
+/// <summary>
+/// 移除团队成员命令.
+/// </summary>
+public class RemoveTeamMemberCommand : IRequest
 {
+    public Guid TeamId { get; set; }
+
     /// <summary>
-    /// 移除团队成员命令.
+    /// 要移除的团队成员ID.
     /// </summary>
-    public class RemoveTeamMemberCommand : IRequest
-    {
-        /// <summary>
-        /// 要移除的团队成员ID.
-        /// </summary>
-        [Required]
-        public int MemberId { get; set; }
-    }
+    public Guid UserId { get; set; }
 }

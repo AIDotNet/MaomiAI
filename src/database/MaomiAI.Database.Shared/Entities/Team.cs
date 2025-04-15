@@ -45,6 +45,11 @@ public partial class TeamEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
+    /// 所有者 id.
+    /// </summary>
+    public Guid OwnId { get; set; }
+
+    /// <summary>
     /// 创建人ID.
     /// </summary>
     public Guid CreateUserId { get; set; }
