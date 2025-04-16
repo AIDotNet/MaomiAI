@@ -16,24 +16,24 @@ using Microsoft.AspNetCore.Routing;
 namespace MaomiAI.Store.Controllers;
 
 /// <summary>
-/// 完成文件上传.
+/// 检查文件是否存在.
 /// </summary>
 [EndpointGroupName("store")]
-[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/complate_url")]
-public class ComplateUploadEndpoint : Endpoint<ComplateFileUploadCommand, ComplateFileCommandResponse>
+[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/check_exist")]
+public class CheckFileExistEndpoint:Endpoint<CheckFileExistCommand, CheckFileExistCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComplateUploadEndpoint"/> class.
+    /// Initializes a new instance of the <see cref="CheckFileExistEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public ComplateUploadEndpoint(IMediator mediator)
+    public CheckFileExistEndpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <inheritdoc/>
-    public override Task<ComplateFileCommandResponse> ExecuteAsync(ComplateFileUploadCommand req, CancellationToken ct)
+    public override Task<CheckFileExistCommandResponse> ExecuteAsync(CheckFileExistCommand req, CancellationToken ct)
         => _mediator.Send(req, ct);
 }

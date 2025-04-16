@@ -21,9 +21,4 @@ public class PagedResult<T> : PagedParamter
     /// 总数.
     /// </summary>
     public long Total { get; init; }
-
-    /// <summary>
-    /// 总页数.
-    /// </summary>
-    public int TotalCount { get; init; }
 }

@@ -1,39 +1,36 @@
-﻿// <copyright file="S3Controller.cs" company="MaomiAI">
+﻿// <copyright file="PreUploadEnpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Store.Commands;
 using MaomiAI.Store.Commands.Response;
-using MaomiAI.Store.Queries;
-using MaomiAI.Store.Queries.Response;
+using MaomiAI.Team.Shared.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.Store.Controllers;
 
 /// <summary>
-/// 完成文件上传.
+/// 获取上传头像的地址.
 /// </summary>
 [EndpointGroupName("store")]
-[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/complate_url")]
-public class ComplateUploadEndpoint : Endpoint<ComplateFileUploadCommand, ComplateFileCommandResponse>
+[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_upload_avatar")]
+public class PreUploadAvatarEnpoint : Endpoint<PreUploadAvatarCommand, PreUploadFileCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComplateUploadEndpoint"/> class.
+    /// Initializes a new instance of the <see cref="PreUploadAvatarEnpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public ComplateUploadEndpoint(IMediator mediator)
+    public PreUploadAvatarEnpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <inheritdoc/>
-    public override Task<ComplateFileCommandResponse> ExecuteAsync(ComplateFileUploadCommand req, CancellationToken ct)
+    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PreUploadAvatarCommand req, CancellationToken ct)
         => _mediator.Send(req, ct);
 }

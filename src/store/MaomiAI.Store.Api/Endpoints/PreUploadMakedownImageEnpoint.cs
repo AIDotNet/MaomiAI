@@ -14,25 +14,24 @@ using Microsoft.AspNetCore.Routing;
 namespace MaomiAI.Store.Controllers;
 
 /// <summary>
-/// 获取可公开访问的文件上传预签名地址.
+/// 获取上传头像的地址.
 /// </summary>
 [EndpointGroupName("store")]
-[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_public_url")]
-[Authorize]
-public class PreUploadEnpoint : Endpoint<PublicPreUploadFileCommand, PreUploadFileCommandResponse>
+[FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_upload_markdown_image")]
+public class PreUploadMakedownImageEnpoint : Endpoint<PreUploadAvatarCommand, PreUploadFileCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PreUploadEnpoint"/> class.
+    /// Initializes a new instance of the <see cref="PreUploadMakedownImageEnpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public PreUploadEnpoint(IMediator mediator)
+    public PreUploadMakedownImageEnpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <inheritdoc/>
-    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PublicPreUploadFileCommand req, CancellationToken ct)
+    public override Task<PreUploadFileCommandResponse> ExecuteAsync(PreUploadAvatarCommand req, CancellationToken ct)
         => _mediator.Send(req, ct);
 }

@@ -13,20 +13,20 @@
     }
   ],
   "paths": {
-    "/api/team/create": {
+    "/team/check_name": {
       "post": {
         "tags": [
-          "Api"
+          "Team"
         ],
-        "summary": "创建团队.",
-        "operationId": "MaomiAITeamApiEndpointsCreateTeamEndpoint",
+        "summary": "检查团队名称是否存在.",
+        "operationId": "MaomiAITeamApiEndpointsCheckTeamNameEndpoint",
         "requestBody": {
-          "x-name": "CreateTeamCommand",
+          "x-name": "CheckTeamNameCommand",
           "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCreateTeamCommand"
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCheckTeamNameCommand"
               }
             }
           },
@@ -39,7 +39,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MaomiAIInfraModelsGuidDto"
+                  "$ref": "#/components/schemas/MaomiAITeamApiEndpointsExistResponse"
                 }
               }
             }
@@ -203,12 +203,176 @@
         ]
       }
     },
-    "/api/team/{id}/update": {
+    "/team/create": {
       "post": {
         "tags": [
-          "Api"
+          "Team"
         ],
         "summary": "创建团队.",
+        "operationId": "MaomiAITeamApiEndpointsCreateTeamEndpoint",
+        "requestBody": {
+          "x-name": "CreateTeamCommand",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCreateTeamCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIInfraModelsGuidDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          },
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/team/list": {
+      "post": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "获取团队列表.",
+        "operationId": "MaomiAITeamApiEndpointsQueryTeamListEndpoint",
+        "requestBody": {
+          "x-name": "TeamListQuery",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaomiAITeamSharedQueriesTeamListQuery"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaomiAIInfraModelsPagedResultOfTeamDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "An unexpected error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          },
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/team/{id}/update": {
+      "post": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "更新团队信息.",
         "operationId": "MaomiAITeamApiEndpointsUpdateTeamEndpoint",
         "parameters": [
           {
@@ -251,7 +415,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -261,7 +425,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -271,7 +435,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -281,7 +445,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -321,7 +485,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -331,7 +495,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -341,7 +505,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -351,777 +515,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/create": {
-      "post": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "创建团队.",
-        "operationId": "Teams_CreateTeam",
-        "requestBody": {
-          "x-name": "command",
-          "description": "创建团队命令.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsCreateTeamCommand"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 1
-        },
-        "responses": {
-          "200": {
-            "description": "新创建的团队ID.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MaomiAIInfraModelsGuidDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/{id}/update": {
-      "put": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "更新团队信息.",
-        "operationId": "Teams_UpdateTeam",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "description": "团队ID.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "团队ID.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 3
-          }
-        ],
-        "requestBody": {
-          "x-name": "command",
-          "description": "更新团队命令.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsUpdateTeamCommand"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 2
-        },
-        "responses": {
-          "200": {
-            "description": "操作结果.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MaomiAIInfraModelsEmptyDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/get-team-list": {
-      "post": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "获取团队列表.",
-        "operationId": "Teams_GetTeamList",
-        "parameters": [
-          {
-            "name": "Page",
-            "in": "query",
-            "description": "页码，从1开始.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-position": 1
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "description": "每页大小.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-position": 2
-          },
-          {
-            "name": "Keyword",
-            "in": "query",
-            "description": "关键词（团队名称、描述）.",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            },
-            "x-position": 3
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "description": "状态过滤.",
-            "schema": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "x-position": 4
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "团队列表.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfTeamDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/get-team/{id}": {
-      "get": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "根据ID获取团队.",
-        "operationId": "Teams_GetTeam",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "团队ID.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "x-position": 1
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "团队信息.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/delete-team/{id}": {
-      "delete": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "删除团队.",
-        "operationId": "Teams_DeleteTeam",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "团队ID.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "x-position": 1
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "操作结果.",
-            "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/toggle-status": {
-      "post": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "切换团队状态.",
-        "operationId": "Teams_ToggleTeamStatus",
-        "requestBody": {
-          "x-name": "command",
-          "description": "切换团队状态命令.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsToggleTeamStatusCommand"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 1
-        },
-        "responses": {
-          "200": {
-            "description": "操作结果.",
-            "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/invite-user": {
-      "post": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "邀请用户加入团队.",
-        "operationId": "Teams_InviteUser",
-        "requestBody": {
-          "x-name": "command",
-          "description": "邀请用户加入团队命令.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsInviteUserToTeamCommand"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 1
-        },
-        "responses": {
-          "200": {
-            "description": "新创建的团队成员ID.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/revoke-admin": {
-      "post": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "撤销用户的管理员权限.",
-        "operationId": "Teams_RevokeAdminPermission",
-        "requestBody": {
-          "x-name": "command",
-          "description": "撤销管理员权限命令.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MaomiAITeamSharedCommandsRevokeAdminPermissionCommand"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 1
-        },
-        "responses": {
-          "200": {
-            "description": "操作结果.",
-            "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Teams/get-team-members/{teamId}": {
-      "get": {
-        "tags": [
-          "Teams"
-        ],
-        "summary": "获取团队成员列表.",
-        "operationId": "Teams_GetTeamMembers",
-        "parameters": [
-          {
-            "name": "teamId",
-            "in": "path",
-            "required": true,
-            "description": "团队ID.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "x-position": 1
-          },
-          {
-            "name": "TeamId",
-            "in": "query",
-            "description": "团队ID.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "x-position": 2
-          },
-          {
-            "name": "Page",
-            "in": "query",
-            "description": "页码，从1开始.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-position": 3
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "description": "每页大小.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-position": 4
-          },
-          {
-            "name": "Keyword",
-            "in": "query",
-            "description": "关键词（用户名）.",
-            "schema": {
-              "type": "string",
-              "nullable": true
-            },
-            "x-position": 5
-          },
-          {
-            "name": "IsAdmin",
-            "in": "query",
-            "description": "角色过滤（管理员/普通成员）.",
-            "schema": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "x-position": 6
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "团队成员列表.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfTeamMemberDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "An unexpected error occurred.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1184,7 +578,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsPagedResultOfUserDto"
+                  "$ref": "#/components/schemas/MaomiAIInfraModelsPagedResultOfUserDto"
                 }
               }
             }
@@ -1194,7 +588,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1204,7 +598,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1214,7 +608,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1224,7 +618,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1268,7 +662,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1278,7 +672,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1288,7 +682,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1298,7 +692,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1343,7 +737,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1353,7 +747,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1363,7 +757,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1373,7 +767,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1431,7 +825,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1441,7 +835,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1451,7 +845,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1461,7 +855,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1506,7 +900,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1516,7 +910,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1526,7 +920,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1536,7 +930,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1581,7 +975,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1591,7 +985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1601,7 +995,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1611,7 +1005,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1655,7 +1049,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1665,7 +1059,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1675,7 +1069,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1685,7 +1079,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1730,7 +1124,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1740,7 +1134,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1750,7 +1144,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1760,7 +1154,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/paths//api/team/create/post/responses/401/content/application/json/schema"
+                  "$ref": "#/paths//team/check_name/post/responses/401/content/application/json/schema"
                 }
               }
             }
@@ -1771,41 +1165,37 @@
   },
   "components": {
     "schemas": {
-      "MaomiAIInfraModelsGuidDto": {
+      "MaomiAITeamApiEndpointsExistResponse": {
         "type": "object",
-        "description": "Guid.",
+        "description": "数据是否存在.",
         "additionalProperties": false,
         "required": [
-          "Guid"
+          "IsExist"
         ],
         "properties": {
-          "Guid": {
-            "type": "string",
-            "format": "uuid"
+          "IsExist": {
+            "type": "boolean",
+            "description": "数据是否存在."
           }
         }
       },
-      "MaomiAITeamSharedCommandsCreateTeamCommand": {
+      "MaomiAITeamSharedCommandsCheckTeamNameCommand": {
         "type": "object",
-        "description": "创建团队命令.",
+        "description": "检查团队名称是否存在.",
         "additionalProperties": false,
         "required": [
-          "Name",
-          "Description",
-          "IsPublic"
+          "Name"
         ],
         "properties": {
+          "Id": {
+            "type": "string",
+            "description": "团队ID.",
+            "format": "uuid",
+            "nullable": true
+          },
           "Name": {
             "type": "string",
             "description": "团队名称."
-          },
-          "Description": {
-            "type": "string",
-            "description": "团队描述."
-          },
-          "IsPublic": {
-            "type": "boolean",
-            "description": "是否允许被外部搜索."
           }
         }
       },
@@ -1839,107 +1229,31 @@
           }
         }
       },
-      "MaomiAIInfraModelsEmptyDto": {
+      "MaomiAIInfraModelsGuidDto": {
         "type": "object",
-        "additionalProperties": false
-      },
-      "MaomiAITeamSharedCommandsUpdateTeamCommand": {
-        "type": "object",
-        "description": "更新团队命令.",
-        "additionalProperties": false,
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "团队名称.",
-            "nullable": true
-          },
-          "Description": {
-            "type": "string",
-            "description": "团队描述.",
-            "nullable": true
-          },
-          "Avatar": {
-            "type": "string",
-            "description": "团队头像URL.",
-            "nullable": true
-          }
-        }
-      },
-      "MaomiAIUserSharedModelsPagedResultOfTeamDto": {
-        "type": "object",
-        "description": "分页结果.",
+        "description": "Guid.",
         "additionalProperties": false,
         "required": [
-          "Items",
-          "Total",
-          "Page",
-          "PageSize",
-          "TotalPages",
-          "HasPrevious",
-          "HasNext"
+          "Guid"
         ],
         "properties": {
-          "Items": {
-            "type": "array",
-            "description": "项目集合.",
-            "items": {
-              "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamDto"
-            }
-          },
-          "Total": {
+          "Guid": {
             "type": "string",
-            "description": "总数.",
-            "format": "int64",
-            "minimum": 0.0,
-            "example": "1415926535897934852"
-          },
-          "Page": {
-            "type": "integer",
-            "description": "当前页.",
-            "format": "int32"
-          },
-          "PageSize": {
-            "type": "integer",
-            "description": "每页大小.",
-            "format": "int32"
-          },
-          "TotalPages": {
-            "type": "integer",
-            "description": "总页数.",
-            "format": "int32"
-          },
-          "HasPrevious": {
-            "type": "boolean",
-            "description": "是否有上一页."
-          },
-          "HasNext": {
-            "type": "boolean",
-            "description": "是否有下一页."
+            "description": "Guid.",
+            "format": "uuid"
           }
         }
       },
-      "MaomiAITeamSharedModelsTeamDto": {
+      "MaomiAITeamSharedCommandsCreateTeamCommand": {
         "type": "object",
-        "description": "团队数据传输对象.",
+        "description": "创建团队命令.",
         "additionalProperties": false,
         "required": [
-          "Id",
           "Name",
           "Description",
-          "Avatar",
-          "Status",
-          "CreateTime",
-          "UpdateTime",
-          "CreateUserId",
-          "IsOwner",
-          "IsAdmin"
+          "IsPublic"
         ],
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "团队ID.",
-            "format": "uuid"
-          },
           "Name": {
             "type": "string",
             "description": "团队名称."
@@ -1948,277 +1262,266 @@
             "type": "string",
             "description": "团队描述."
           },
-          "Avatar": {
-            "type": "string",
-            "description": "团队头像."
-          },
-          "Status": {
+          "IsPublic": {
             "type": "boolean",
-            "description": "状态：true-正常，false-禁用."
+            "description": "是否允许被外部搜索."
+          }
+        }
+      },
+      "MaomiAIInfraModelsPagedResultOfTeamDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MaomiAIInfraModelsPagedParamter"
           },
+          {
+            "type": "object",
+            "description": "分页结果.",
+            "additionalProperties": false,
+            "required": [
+              "Items",
+              "Total"
+            ],
+            "properties": {
+              "Items": {
+                "type": "array",
+                "description": "项目集合.",
+                "items": {
+                  "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamDto"
+                }
+              },
+              "Total": {
+                "type": "string",
+                "description": "总数.",
+                "format": "int64",
+                "minimum": 0.0,
+                "example": "1415926535897934852"
+              }
+            }
+          }
+        ]
+      },
+      "MaomiAITeamSharedModelsTeamDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MaomiAIInfraModelsAuditsInfo"
+          },
+          {
+            "type": "object",
+            "description": "团队数据传输对象.",
+            "additionalProperties": false,
+            "required": [
+              "Id",
+              "Name",
+              "Description",
+              "AvatarFileId",
+              "IsDisable",
+              "IsPublic",
+              "OwnUserId",
+              "OwnUserName"
+            ],
+            "properties": {
+              "Id": {
+                "type": "string",
+                "description": "团队ID.",
+                "format": "uuid"
+              },
+              "Name": {
+                "type": "string",
+                "description": "团队名称."
+              },
+              "Description": {
+                "type": "string",
+                "description": "团队描述."
+              },
+              "AvatarFileId": {
+                "type": "string",
+                "description": "团队头像.",
+                "format": "uuid"
+              },
+              "IsDisable": {
+                "type": "boolean",
+                "description": "禁用团队."
+              },
+              "IsPublic": {
+                "type": "boolean",
+                "description": "是否公开,能够被外部搜索."
+              },
+              "OwnUserId": {
+                "type": "string",
+                "description": "所有者 id.",
+                "format": "uuid"
+              },
+              "OwnUserName": {
+                "type": "string",
+                "description": "所有人名字."
+              }
+            }
+          }
+        ]
+      },
+      "MaomiAIInfraModelsAuditsInfo": {
+        "type": "object",
+        "description": "数据子项.",
+        "additionalProperties": false,
+        "required": [
+          "CreateTime",
+          "CreateUserId",
+          "CreateUserName",
+          "UpdateTime",
+          "UpdateUserId",
+          "UpdateUserName"
+        ],
+        "properties": {
           "CreateTime": {
             "type": "string",
             "description": "创建时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
-          },
-          "UpdateTime": {
-            "type": "string",
-            "description": "更新时间.",
-            "format": "int64",
-            "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744810189184"
           },
           "CreateUserId": {
             "type": "string",
             "description": "创建人ID.",
             "format": "uuid"
           },
-          "IsOwner": {
-            "type": "boolean",
-            "description": "当前用户是否是团队所有者（仅在查询用户所属团队时有值）."
-          },
-          "IsAdmin": {
-            "type": "boolean",
-            "description": "当前用户是否是团队管理员（仅在查询用户所属团队时有值）."
-          }
-        }
-      },
-      "MaomiAITeamSharedCommandsToggleTeamStatusCommand": {
-        "type": "object",
-        "description": "切换团队状态命令.",
-        "additionalProperties": false,
-        "required": [
-          "TeamIds",
-          "Status"
-        ],
-        "properties": {
-          "TeamIds": {
-            "type": "array",
-            "description": "团队ID列表.",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "Status": {
-            "type": "boolean",
-            "description": "状态：true-正常，false-禁用."
-          }
-        }
-      },
-      "MaomiAITeamSharedCommandsInviteUserToTeamCommand": {
-        "type": "object",
-        "description": "邀请用户加入团队命令.",
-        "additionalProperties": false,
-        "required": [
-          "TeamId",
-          "UserId",
-          "IsAdmin"
-        ],
-        "properties": {
-          "TeamId": {
+          "CreateUserName": {
             "type": "string",
-            "description": "团队ID.",
-            "format": "uuid",
-            "minLength": 1
+            "description": "创建者 名字."
           },
-          "UserId": {
+          "UpdateTime": {
             "type": "string",
-            "description": "被邀请的用户ID.",
-            "format": "uuid",
-            "minLength": 1
-          },
-          "IsAdmin": {
-            "type": "boolean",
-            "description": "是否设置为管理员."
-          }
-        }
-      },
-      "MaomiAITeamSharedCommandsRevokeAdminPermissionCommand": {
-        "type": "object",
-        "description": "撤销团队成员管理员权限命令.",
-        "additionalProperties": false,
-        "required": [
-          "TeamId",
-          "UserId"
-        ],
-        "properties": {
-          "TeamId": {
-            "type": "string",
-            "description": "团队ID.",
-            "format": "uuid",
-            "minLength": 1
-          },
-          "UserId": {
-            "type": "string",
-            "description": "用户ID.",
-            "format": "uuid",
-            "minLength": 1
-          }
-        }
-      },
-      "MaomiAIUserSharedModelsPagedResultOfTeamMemberDto": {
-        "type": "object",
-        "description": "分页结果.",
-        "additionalProperties": false,
-        "required": [
-          "Items",
-          "Total",
-          "Page",
-          "PageSize",
-          "TotalPages",
-          "HasPrevious",
-          "HasNext"
-        ],
-        "properties": {
-          "Items": {
-            "type": "array",
-            "description": "项目集合.",
-            "items": {
-              "$ref": "#/components/schemas/MaomiAITeamSharedModelsTeamMemberDto"
-            }
-          },
-          "Total": {
-            "type": "string",
-            "description": "总数.",
+            "description": "更新时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1415926535897934852"
+            "example": "1744810189184"
           },
-          "Page": {
+          "UpdateUserId": {
+            "type": "string",
+            "description": "更新人ID.",
+            "format": "uuid"
+          },
+          "UpdateUserName": {
+            "type": "string",
+            "description": "更新人 名字."
+          }
+        }
+      },
+      "MaomiAIInfraModelsPagedParamter": {
+        "type": "object",
+        "description": "分页参数.",
+        "additionalProperties": false,
+        "required": [
+          "PageNo",
+          "PageSize"
+        ],
+        "properties": {
+          "PageNo": {
             "type": "integer",
-            "description": "当前页.",
+            "description": "页码，从1开始.",
             "format": "int32"
           },
           "PageSize": {
             "type": "integer",
             "description": "每页大小.",
             "format": "int32"
-          },
-          "TotalPages": {
-            "type": "integer",
-            "description": "总页数.",
-            "format": "int32"
-          },
-          "HasPrevious": {
-            "type": "boolean",
-            "description": "是否有上一页."
-          },
-          "HasNext": {
-            "type": "boolean",
-            "description": "是否有下一页."
           }
         }
       },
-      "MaomiAITeamSharedModelsTeamMemberDto": {
-        "type": "object",
-        "description": "团队成员数据传输对象.",
-        "additionalProperties": false,
-        "required": [
-          "Id",
-          "TeamId",
-          "UserId",
-          "IsRoot",
-          "IsAdmin",
-          "CreateTime"
-        ],
-        "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "成员ID.",
-            "format": "int32"
+      "MaomiAITeamSharedQueriesTeamListQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MaomiAIInfraModelsPagedParamter"
           },
-          "TeamId": {
-            "type": "string",
-            "description": "团队ID.",
-            "format": "uuid"
-          },
-          "UserId": {
-            "type": "string",
-            "description": "用户ID.",
-            "format": "uuid"
-          },
-          "UserName": {
-            "type": "string",
-            "description": "用户名称.",
-            "nullable": true
-          },
-          "UserAvatar": {
-            "type": "string",
-            "description": "用户头像.",
-            "nullable": true
-          },
-          "IsRoot": {
-            "type": "boolean",
-            "description": "是否为团队所有者."
-          },
-          "IsAdmin": {
-            "type": "boolean",
-            "description": "是否为管理员."
-          },
-          "CreateTime": {
-            "type": "string",
-            "description": "加入时间.",
-            "format": "int64",
-            "minimum": 0.0,
-            "example": "1744716888415"
-          }
-        }
-      },
-      "MaomiAIUserSharedModelsPagedResultOfUserDto": {
-        "type": "object",
-        "description": "分页结果.",
-        "additionalProperties": false,
-        "required": [
-          "Items",
-          "Total",
-          "Page",
-          "PageSize",
-          "TotalPages",
-          "HasPrevious",
-          "HasNext"
-        ],
-        "properties": {
-          "Items": {
-            "type": "array",
-            "description": "项目集合.",
-            "items": {
-              "$ref": "#/components/schemas/MaomiAIUserSharedModelsUserDto"
+          {
+            "type": "object",
+            "description": "获取团队列表查询.",
+            "additionalProperties": false,
+            "properties": {
+              "Keyword": {
+                "type": "string",
+                "description": "查询关键字.",
+                "nullable": true
+              }
             }
-          },
-          "Total": {
+          }
+        ]
+      },
+      "MaomiAIInfraModelsEmptyDto": {
+        "type": "object",
+        "description": "空数据.",
+        "additionalProperties": false
+      },
+      "MaomiAITeamSharedCommandsUpdateTeamCommand": {
+        "type": "object",
+        "description": "更新团队命令.",
+        "additionalProperties": false,
+        "required": [
+          "Name",
+          "Description",
+          "AvatarFileId",
+          "IsDisable",
+          "IsPublic"
+        ],
+        "properties": {
+          "Name": {
             "type": "string",
-            "description": "总数.",
-            "format": "int64",
-            "minimum": 0.0,
-            "example": "1415926535897934852"
+            "description": "团队名称."
           },
-          "Page": {
-            "type": "integer",
-            "description": "当前页.",
-            "format": "int32"
+          "Description": {
+            "type": "string",
+            "description": "团队描述."
           },
-          "PageSize": {
-            "type": "integer",
-            "description": "每页大小.",
-            "format": "int32"
+          "AvatarFileId": {
+            "type": "string",
+            "description": "团队头像 id.",
+            "format": "uuid"
           },
-          "TotalPages": {
-            "type": "integer",
-            "description": "总页数.",
-            "format": "int32"
-          },
-          "HasPrevious": {
+          "IsDisable": {
             "type": "boolean",
-            "description": "是否有上一页."
+            "description": "禁用团队."
           },
-          "HasNext": {
+          "IsPublic": {
             "type": "boolean",
-            "description": "是否有下一页."
+            "description": "是否公开,能够被外部搜索."
+          },
+          "Markdown": {
+            "type": "string",
+            "description": "团队详细介绍.",
+            "nullable": true
           }
         }
+      },
+      "MaomiAIInfraModelsPagedResultOfUserDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MaomiAIInfraModelsPagedParamter"
+          },
+          {
+            "type": "object",
+            "description": "分页结果.",
+            "additionalProperties": false,
+            "required": [
+              "Items",
+              "Total"
+            ],
+            "properties": {
+              "Items": {
+                "type": "array",
+                "description": "项目集合.",
+                "items": {
+                  "$ref": "#/components/schemas/MaomiAIUserSharedModelsUserDto"
+                }
+              },
+              "Total": {
+                "type": "string",
+                "description": "总数.",
+                "format": "int64",
+                "minimum": 0.0,
+                "example": "1415926535897934852"
+              }
+            }
+          }
+        ]
       },
       "MaomiAIUserSharedModelsUserDto": {
         "type": "object",
@@ -2270,14 +1573,14 @@
             "description": "创建时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744810189184"
           },
           "UpdateTime": {
             "type": "string",
             "description": "更新时间.",
             "format": "int64",
             "minimum": 0.0,
-            "example": "1744716888415"
+            "example": "1744810189184"
           }
         }
       },

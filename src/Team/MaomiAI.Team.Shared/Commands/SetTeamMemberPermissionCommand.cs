@@ -5,6 +5,7 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Commands;
@@ -12,17 +13,25 @@ namespace MaomiAI.Team.Shared.Commands;
 /// <summary>
 /// 撤销团队成员管理员权限命令.
 /// </summary>
-public class RevokeAdminPermissionCommand : IRequest<bool>
+public class SetTeamMemberPermissionCommand : IRequest<EmptyDto>
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
-    [Required]
     public Guid TeamId { get; set; }
 
     /// <summary>
     /// 用户ID.
     /// </summary>
-    [Required]
     public Guid UserId { get; set; }
+
+    /// <summary>
+    /// 启用.
+    /// </summary>
+    public bool IsEnable { get; set; } = true;
+
+    /// <summary>
+    /// 设置为管理员.
+    /// </summary>
+    public bool? IsAdmin { get; set; }
 }

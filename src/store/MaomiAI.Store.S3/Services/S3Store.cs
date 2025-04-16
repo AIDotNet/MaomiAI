@@ -40,15 +40,24 @@ public class S3Store : IFileStore, IDisposable
     }
 
     /// <inheritdoc/>
-    public async Task<string> GeneratePreSignedUploadUrlAsync(string objectKey, TimeSpan expiryDuration)
+    public async Task<string> GeneratePreSignedUploadUrlAsync(FileObject fileObject)
     {
         GetPreSignedUrlRequest request = new()
         {
             BucketName = _storeOption.Bucket,
-            Key = objectKey,
-            Expires = DateTime.UtcNow.Add(expiryDuration),
-            Verb = HttpVerb.PUT
+            Key = fileObject.ObjectKey,
+            Expires = DateTime.UtcNow.Add(fileObject.ExpiryDuration),
+            Verb = HttpVerb.PUT,
         };
+
+        // 限制上传的文件类型.
+        if (!string.IsNullOrWhiteSpace(fileObject.ContentType))
+        {
+            request.ContentType = fileObject.ContentType;
+        }
+
+        // 可以在对象 metadata 中添加最大的文件大小信息
+        request.Headers["x-amz-meta-max-file-size"] = fileObject.MaxFileSize.ToString();
 
         string url = await _s3Client.GetPreSignedURLAsync(request);
         return url;

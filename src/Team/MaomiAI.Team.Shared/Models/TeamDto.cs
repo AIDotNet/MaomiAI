@@ -31,7 +31,7 @@ public class TeamDto : AuditsInfo
     /// <summary>
     /// 团队头像.
     /// </summary>
-    public string Avatar { get; set; } = null!;
+    public Guid AvatarFileId { get; set; }
 
     /// <summary>
     /// 禁用团队.

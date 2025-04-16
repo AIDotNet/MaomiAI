@@ -9,7 +9,7 @@ namespace MaomiAI.Store.Enums
     /// <summary>
     /// 存储类型.
     /// </summary>
-    public enum FileStoreType
+    public enum FileVisibility
     {
         /// <summary>
         /// 公共存储.

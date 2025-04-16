@@ -56,7 +56,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
                 throw new BusinessException("团队不存在.");
             }
 
-            if (team.OwnId != _userContext.UserId)
+            if (team.OwnerId != _userContext.UserId)
             {
                 throw new BusinessException("没有权限删除该团队.");
             }

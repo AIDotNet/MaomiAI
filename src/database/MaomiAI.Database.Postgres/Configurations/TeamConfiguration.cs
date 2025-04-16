@@ -26,8 +26,6 @@ public partial class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
             .HasComment("id")
             .HasColumnName("id");
         entity.Property(e => e.AvatarFileId)
-            .HasMaxLength(100)
-            .HasDefaultValueSql("''::character varying")
             .HasComment("团队头像")
             .HasColumnName("avatar_file_id");
         entity.Property(e => e.CreateTime)
@@ -62,6 +60,9 @@ public partial class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
             .HasMaxLength(20)
             .HasComment("团队名称")
             .HasColumnName("name");
+        entity.Property(e => e.OwnerId)
+            .HasComment("所有者id")
+            .HasColumnName("owner_id");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

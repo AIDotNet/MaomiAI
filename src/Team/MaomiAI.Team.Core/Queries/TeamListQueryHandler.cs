@@ -62,7 +62,7 @@ public class TeamListQueryHandler : IRequestHandler<TeamListQuery, PagedResult<T
                 Name = x.Name,
                 Id = x.Id,
                 Description = x.Description,
-                Avatar = x.AvatarFileId,
+                AvatarFileId = x.AvatarFileId,
                 IsDisable = x.IsDisable,
                 IsPublic = x.IsPublic,
                 CreateTime = x.CreateTime,
@@ -79,7 +79,7 @@ public class TeamListQueryHandler : IRequestHandler<TeamListQuery, PagedResult<T
 
         return new PagedResult<TeamDto>
         {
-            TotalCount = totalCount,
+            Total = totalCount,
             PageNo = request.PageNo,
             PageSize = request.PageSize,
             Items = response

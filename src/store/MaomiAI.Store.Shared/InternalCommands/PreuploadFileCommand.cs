@@ -1,20 +1,19 @@
-// <copyright file="UploadTeamAvatarCommand.cs" company="MaomiAI">
+﻿// <copyright file="PreuploadFileCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using FluentValidation;
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
 using MediatR;
 
-namespace MaomiAI.Team.Shared.Commands;
+namespace MaomiAI.Store.InternalCommands;
 
 /// <summary>
-/// 预上传文件.
+/// 预上传文件，该命令只允许内部调用.
 /// </summary>
-public class PreUploadFileCommand : IRequest<PreUploadFileCommandResponse>
+public class PreuploadFileCommand : IRequest<PreUploadFileCommandResponse>
 {
     /// <summary>
     /// 文件可见性.
@@ -34,21 +33,20 @@ public class PreUploadFileCommand : IRequest<PreUploadFileCommandResponse>
     /// <summary>
     /// 文件大小.
     /// </summary>
-    public long FileSize { get; set; } = default!;
+    public int FileSize { get; set; } = default!;
 
     /// <summary>
     /// 文件 MD5.
     /// </summary>
     public string MD5 { get; set; } = default!;
-}
 
-public class PrivatePreUploadFileCommandValidator : AbstractValidator<PreUploadFileCommand>
-{
-    public PrivatePreUploadFileCommandValidator()
-    {
-        RuleFor(x => x.FileName).NotEmpty().WithMessage("文件名称不能为空.");
-        RuleFor(x => x.ContentType).NotEmpty().WithMessage("文件类型不能为空.");
-        RuleFor(x => x.FileSize).GreaterThan(0).WithMessage("文件大小必须大于0.");
-        RuleFor(x => x.MD5).NotEmpty().WithMessage("文件 MD5 不能为空.");
-    }
+    /// <summary>
+    /// 文件路径，即 ObjectKey.
+    /// </summary>
+    public string Path { get; set; } = null!;
+
+    /// <summary>
+    /// 预签名上传地址有效期.
+    /// </summary>
+    public TimeSpan Expiration { get; set; } = TimeSpan.FromMinutes(2)!;
 }

@@ -10,5 +10,5 @@ namespace MaomiAI.Store.Queries.Response;
 
 public class CheckFileExistCommandResponse
 {
-
+    public bool Exist { get; set; }
 }

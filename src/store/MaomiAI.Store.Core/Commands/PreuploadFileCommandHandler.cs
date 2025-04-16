@@ -8,7 +8,9 @@ using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
+using MaomiAI.Store.InternalCommands;
 using MaomiAI.Store.Services;
+using MaomiAI.Team.Shared.Helpers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +39,7 @@ public class PreuploadFileCommandHandler : IRequestHandler<PreuploadFileCommand,
     /// <inheritdoc/>
     public async Task<PreUploadFileCommandResponse> Handle(PreuploadFileCommand request, CancellationToken cancellationToken)
     {
-        var isPublic = request.FileStoreType == FileStoreType.Public ? true : false;
+        var isPublic = request.Visibility == FileVisibility.Public ? true : false;
 
         // 如果文件的 md5 已存在并且文件大小相同，则直接返回文件的 oss 地址，无需重复上传
         // public 和 private 不可以是同一个桶
@@ -67,15 +69,20 @@ public class PreuploadFileCommandHandler : IRequestHandler<PreuploadFileCommand,
         await _dbContext.Files.AddAsync(fileEntity, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(
-            request.FileStoreType);
+        var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(request.Visibility);
 
-        var uploadUrl = await fileStore.GeneratePreSignedUploadUrlAsync(request.Path, request.Expiration);
+        var uploadUrl = await fileStore.GeneratePreSignedUploadUrlAsync(new FileObject
+        {
+            ExpiryDuration = request.Expiration,
+            ObjectKey = request.Path,
+            ContentType = request.ContentType,
+            MaxFileSize = FileStoreHelper.GetAllowedFileSizeLimit(request.FileSize)
+        });
 
         return new PreUploadFileCommandResponse
         {
             IsExist = false,
-            Expiration = DateTimeOffset.Now.AddHours(1),
+            Expiration = DateTimeOffset.Now.Add(request.Expiration),
             FileId = fileEntity.Id,
             UploadUrl = new Uri(uploadUrl)
         };

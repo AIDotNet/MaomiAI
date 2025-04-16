@@ -14,7 +14,7 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取管理员 id 列表.
 /// </summary>
-public class QueryTeamAdminIdsHandler : IRequestHandler<TeamAdminIdsListQuery, TeamAdminListIdsResponse>
+public class QueryTeamAdminIdsHandler : IRequestHandler<QueryTeamAdminIdsListReuqest, TeamAdminListIdsResponse>
 {
     private readonly MaomiaiContext _dbContext;
 
@@ -23,10 +23,10 @@ public class QueryTeamAdminIdsHandler : IRequestHandler<TeamAdminIdsListQuery, T
         _dbContext = dbContext;
     }
 
-    public async Task<TeamAdminListIdsResponse> Handle(TeamAdminIdsListQuery request, CancellationToken cancellationToken)
+    public async Task<TeamAdminListIdsResponse> Handle(QueryTeamAdminIdsListReuqest request, CancellationToken cancellationToken)
     {
         var ownId = await _dbContext.Teams.Where(x => x.Id == request.TeamId)
-            .Select(x => x.OwnId).FirstOrDefaultAsync();
+            .Select(x => x.OwnerId).FirstOrDefaultAsync();
 
         var adminIds = await _dbContext.TeamMembers
             .Where(x => x.TeamId == request.TeamId && x.IsAdmin == true)

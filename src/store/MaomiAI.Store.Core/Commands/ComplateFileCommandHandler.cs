@@ -44,7 +44,7 @@ public class ComplateFileCommandHandler : IRequestHandler<ComplateFileUploadComm
         }
 
         // 无论成功失败，都先检查对象存储文件是否存在
-        var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(file.IsPublic ? FileStoreType.Public : FileStoreType.Private);
+        var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(file.IsPublic ? FileVisibility.Public : FileVisibility.Private);
         var fileSize = await fileStore.GetFileSizeAsync(file.Path);
 
         if (request.IsSuccess)

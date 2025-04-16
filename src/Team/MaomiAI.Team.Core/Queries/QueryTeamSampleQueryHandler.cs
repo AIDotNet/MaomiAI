@@ -47,13 +47,13 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<TeamSimpleQuery, Team
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                Avatar = x.AvatarFileId,
+                AvatarFileId = x.AvatarFileId,
                 IsDisable = x.IsDisable,
                 CreateTime = x.CreateTime,
                 UpdateTime = x.UpdateTime,
                 CreateUserId = x.CreateUserId,
                 IsPublic = x.IsPublic,
-                OwnUserId = x.OwnId,
+                OwnUserId = x.OwnerId,
                 OwnUserName = string.Empty
             }).FirstOrDefaultAsync(cancellationToken);
 

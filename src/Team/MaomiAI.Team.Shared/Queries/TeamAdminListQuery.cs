@@ -12,7 +12,7 @@ namespace MaomiAI.Team.Shared.Queries;
 /// <summary>
 /// 检查用户是否是团队管理员的查询.
 /// </summary>
-public class TeamAdminIdsListQuery : IRequest<TeamAdminListIdsResponse>
+public class QueryTeamAdminIdsListReuqest : IRequest<TeamAdminListIdsResponse>
 {
     /// <summary>
     /// 团队ID.

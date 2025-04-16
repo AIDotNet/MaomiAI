@@ -26,11 +26,11 @@ public class StoreS3Module : IModule
         ArgumentNullException.ThrowIfNull(systemOptions, nameof(systemOptions));
 
         context.Services.AddKeyedScoped<IFileStore>(
-            FileStoreType.Public,
+            FileVisibility.Public,
             (s, _) => { return new S3Store(systemOptions.PublicStore); });
 
         context.Services.AddKeyedScoped<IFileStore>(
-            FileStoreType.Private,
+            FileVisibility.Private,
             (s, _) => { return new S3Store(systemOptions.PrivateStore); });
     }
 }

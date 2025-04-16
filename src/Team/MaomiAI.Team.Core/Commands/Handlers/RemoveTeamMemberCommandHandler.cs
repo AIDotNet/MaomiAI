@@ -6,7 +6,6 @@
 
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
 using MaomiAI.Team.Shared.Queries;
@@ -54,7 +53,7 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
     /// <exception cref="InvalidOperationException">当团队成员不存在时抛出.</exception>
     public async Task Handle(RemoveTeamMemberCommand request, CancellationToken cancellationToken)
     {
-        var adminIds = await _mediator.Send(new TeamAdminIdsListQuery { TeamId = request.TeamId }, cancellationToken);
+        var adminIds = await _mediator.Send(new QueryTeamAdminIdsListReuqest { TeamId = request.TeamId }, cancellationToken);
 
         if (request.UserId == adminIds.OwnId)
         {

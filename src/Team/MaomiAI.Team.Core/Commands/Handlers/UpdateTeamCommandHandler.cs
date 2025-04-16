@@ -6,64 +6,87 @@
 
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
+using MaomiAI.Store.Queries;
 using MaomiAI.Team.Shared.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace MaomiAI.Team.Core.Commands.Handlers
+namespace MaomiAI.Team.Core.Commands.Handlers;
+
+/// <summary>
+/// 处理更新团队命令.
+/// </summary>
+public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
 {
+    private readonly MaomiaiContext _dbContext;
+    private readonly ILogger<UpdateTeamCommandHandler> _logger;
+    private readonly UserContext _userContext;
+    private readonly IMediator _mediator;
+
     /// <summary>
-    /// 处理更新团队命令.
+    /// Initializes a new instance of the <see cref="UpdateTeamCommandHandler"/> class.
     /// </summary>
-    public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
+    /// <param name="dbContext"></param>
+    /// <param name="logger"></param>
+    /// <param name="userContext"></param>
+    /// <param name="mediator"></param>
+    public UpdateTeamCommandHandler(
+        MaomiaiContext dbContext,
+        ILogger<UpdateTeamCommandHandler> logger,
+        UserContext userContext,
+        IMediator mediator)
     {
-        private readonly MaomiaiContext _dbContext;
-        private readonly ILogger<UpdateTeamCommandHandler> _logger;
-        private readonly UserContext _userContext;
+        _dbContext = dbContext;
+        _logger = logger;
+        _userContext = userContext;
+        _mediator = mediator;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateTeamCommandHandler"/> class.
-        /// </summary>
-        /// <param name="dbContext">数据库上下文.</param>
-        /// <param name="logger">日志记录器.</param>
-        /// <param name="userContext">用户上下文.</param>
-        public UpdateTeamCommandHandler(
-            MaomiaiContext dbContext,
-            ILogger<UpdateTeamCommandHandler> logger,
-            UserContext userContext)
+    /// <inheritdoc/>
+    public async Task Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
+    {
+        var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+        if (team == null)
         {
-            _dbContext = dbContext;
-            _logger = logger;
-            _userContext = userContext;
+            throw new BusinessException("团队不存在");
         }
 
-        /// <inheritdoc/>
-        public async Task Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
+        if (team.OwnerId != _userContext.UserId)
         {
-            var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
-            if (team == null)
-            {
-                throw new BusinessException("团队不存在");
-            }
-
-            var anySameName = await _dbContext.Teams.Where(x => x.Id != request.Id && x.Name == request.Name).AnyAsync();
-            if (anySameName)
-            {
-                throw new BusinessException("已存在相同名称的团队");
-            }
-
-            team.Name = request.Name;
-            team.Description = request.Description;
-            team.AvatarFileId = request.Avatar;
-            team.IsPublic = request.IsPublic;
-            team.IsDisable = request.IsDisable;
-            team.Markdown = request.Markdown ?? string.Empty;
-
-            _dbContext.Update(team);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            throw new BusinessException("没有权限修改该团队");
         }
+
+        var anySameName = await _dbContext.Teams.Where(x => x.Id != request.Id && x.Name == request.Name).AnyAsync();
+        if (anySameName)
+        {
+            throw new BusinessException("已存在相同名称的团队");
+        }
+
+        // 如果修改了图像文件，则检查文件是否存在
+        if (request.AvatarFileId != Guid.Empty && request.AvatarFileId != team.AvatarFileId)
+        {
+            var existFile = await _mediator.Send(new CheckFileExistCommand
+            {
+                Visibility = Store.Enums.FileVisibility.Public,
+                FileId = request.AvatarFileId,
+            });
+
+            if (!existFile.Exist)
+            {
+                throw new BusinessException("头像文件不存在");
+            }
+        }
+
+        team.Name = request.Name;
+        team.Description = request.Description;
+        team.AvatarFileId = request.AvatarFileId;
+        team.IsPublic = request.IsPublic;
+        team.IsDisable = request.IsDisable;
+        team.Markdown = request.Markdown ?? string.Empty;
+
+        _dbContext.Update(team);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

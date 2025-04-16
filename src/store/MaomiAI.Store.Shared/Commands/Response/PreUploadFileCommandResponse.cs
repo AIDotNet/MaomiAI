@@ -1,10 +1,10 @@
-﻿// <copyright file="PreuploadFileCommand.cs" company="MaomiAI">
+﻿// <copyright file="PreUploadFileCommandResponse.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MediatR;
+using MaomiAI.Store.Enums;
 
 namespace MaomiAI.Store.Commands.Response;
 
@@ -14,7 +14,12 @@ namespace MaomiAI.Store.Commands.Response;
 public class PreUploadFileCommandResponse
 {
     /// <summary>
-    /// 文件已存在.
+    /// 文件可见性.
+    /// </summary>
+    public FileVisibility Visibility { get; set; }
+
+    /// <summary>
+    /// 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
     /// </summary>
     public bool IsExist { get; set; }
 

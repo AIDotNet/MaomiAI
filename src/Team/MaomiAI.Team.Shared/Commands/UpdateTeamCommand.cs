@@ -32,9 +32,9 @@ public class UpdateTeamCommand : IRequest
     public string Description { get; set; } = null!;
 
     /// <summary>
-    /// 团队头像URL.
+    /// 团队头像 id.
     /// </summary>
-    public string Avatar { get; set; } = null!;
+    public Guid AvatarFileId { get; set; }
 
     /// <summary>
     /// 禁用团队.

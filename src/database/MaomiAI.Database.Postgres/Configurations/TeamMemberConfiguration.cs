@@ -39,10 +39,10 @@ public partial class TeamMemberConfiguration : IEntityTypeConfiguration<TeamMemb
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
-        entity.Property(e => e.IsRoot)
+        entity.Property(e => e.IsEnable)
             .HasDefaultValue(false)
-            .HasComment("是否所有者")
-            .HasColumnName("is_root");
+            .HasComment("启用")
+            .HasColumnName("is_enable");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");

@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Store.Enums;
 using MaomiAI.Store.Queries.Response;
 using MediatR;
 
@@ -14,5 +15,12 @@ namespace MaomiAI.Store.Queries;
 /// </summary>
 public class CheckFileExistCommand : IRequest<CheckFileExistCommandResponse>
 {
-    public string MD5 { get; set; } = default!;
+    /// <summary>
+    /// 文件可见性.
+    /// </summary>
+    public FileVisibility Visibility { get; init; }
+
+    public Guid? FileId { get; init; }
+    public string? MD5 { get; init; }
+    public string? Key { get; init; }
 }

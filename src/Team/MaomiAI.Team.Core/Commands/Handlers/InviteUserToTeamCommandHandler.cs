@@ -57,7 +57,7 @@ public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCo
             throw new BusinessException("团队不存在");
         }
 
-        if (team.OwnId == request.UserId)
+        if (team.OwnerId == request.UserId)
         {
             throw new BusinessException("用户已经是团队成员");
         }

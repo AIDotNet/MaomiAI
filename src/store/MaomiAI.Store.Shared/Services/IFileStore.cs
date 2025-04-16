@@ -68,5 +68,5 @@ public interface IFileStore
     /// <param name="objectKey"></param>
     /// <param name="expiryDuration"></param>
     /// <returns>预签名地址.</returns>
-    Task<string> GeneratePreSignedUploadUrlAsync(string objectKey, TimeSpan expiryDuration);
+    Task<string> GeneratePreSignedUploadUrlAsync(FileObject fileObject);
 }
