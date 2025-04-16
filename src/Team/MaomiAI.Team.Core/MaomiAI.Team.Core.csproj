@@ -7,7 +7,6 @@
         <RootNamespace>MaomiAI.Team.Core</RootNamespace>
     </PropertyGroup>
 
-
     <ItemGroup>
         <AdditionalFiles Include="..\..\..\stylecop.json" />
     </ItemGroup>

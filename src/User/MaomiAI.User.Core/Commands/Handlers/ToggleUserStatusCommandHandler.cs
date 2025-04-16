@@ -5,11 +5,10 @@
 // </copyright>
 
 using MaomiAI.Database;
+using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared;
 using MaomiAI.User.Shared.Commands;
-
 using MediatR;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -18,7 +17,7 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 /// <summary>
 /// 切换用户状态命令处理程序.
 /// </summary>
-public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCommand>
+public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCommand, EmptyDto>
 {
     private readonly MaomiaiContext _dbContext;
     private readonly ILogger<ToggleUserStatusCommandHandler> _logger;
@@ -40,7 +39,7 @@ public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCo
     /// <param name="request">命令请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>Task.</returns>
-    public async Task Handle(ToggleUserStatusCommand request, CancellationToken cancellationToken)
+    public async Task<EmptyDto> Handle(ToggleUserStatusCommand request, CancellationToken cancellationToken)
     {
         // 查询所有需要更新状态的用户
         var users = await _dbContext.Users
@@ -71,6 +70,9 @@ public class ToggleUserStatusCommandHandler : IRequestHandler<ToggleUserStatusCo
         // 保存更改
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        _logger.LogInformation("成功切换用户状态: 状态={Status}, 用户数量={Count}, UserIds={UserIds}", request.Status, users.Count, string.Join(", ", foundUserIds));
+        _logger.LogInformation("成功切换用户状态: 状态={Status}, 用户数量={Count}, UserIds={UserIds}", request.Status, users.Count,
+            string.Join(", ", foundUserIds));
+
+        return new EmptyDto();
     }
 }

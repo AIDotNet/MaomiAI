@@ -6,10 +6,9 @@
 
 using MaomiAI.Database;
 using MaomiAI.Infra.Helpers;
+using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Commands;
-
 using MediatR;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -18,7 +17,7 @@ namespace MaomiAI.User.Core.Commands.Handlers;
 /// <summary>
 /// 修改密码命令处理程序.
 /// </summary>
-public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand>
+public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, EmptyDto>
 {
     private readonly MaomiaiContext _dbContext;
     private readonly ILogger<ChangePasswordCommandHandler> _logger;
@@ -40,11 +39,11 @@ public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordComman
     /// <param name="request">命令请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>Task.</returns>
-    public async Task Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
+    public async Task<EmptyDto> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
     {
         var user = await _dbContext.Users.Where(u => u.Id == request.UserId && !u.IsDeleted)
-                              .FirstOrDefaultAsync(cancellationToken)
-                              ?? throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
+                       .FirstOrDefaultAsync(cancellationToken)
+                   ?? throw new InvalidOperationException($"用户 {request.UserId} 不存在或已被删除");
 
         // 验证旧密码
         if (!UserPasswordHelper.VerifyPassword(request.OldPassword, user.Password))
@@ -69,5 +68,7 @@ public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordComman
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         _logger.LogInformation("用户密码修改成功: {UserId}", request.UserId);
+
+        return new EmptyDto();
     }
 }

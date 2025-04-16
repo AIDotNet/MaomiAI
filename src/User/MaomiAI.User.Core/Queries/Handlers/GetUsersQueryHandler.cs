@@ -82,9 +82,9 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, PagedResult<U
         return new PagedResult<UserDto>
         {
             Items = items,
+            Total = totalCount,
             PageNo = request.Page,
-            PageSize = request.PageSize,
-            Total = totalCount
+            PageSize = request.PageSize
         };
     }
 

@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /src/Maomi.AI.Api/appsettings.Development.json
 /.idea/.idea.MaomiAI/.idea
 .DS_Store
+/src/MaomiAI/MaomiAI.json
