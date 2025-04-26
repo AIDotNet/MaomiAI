@@ -1,43 +1,38 @@
 ﻿using Maomi;
 using MaomiAI.Infra;
-using MaomiAI.Services;
 using MaomiAI.User.Core.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System.Text;
 
-namespace MaomiAI
+namespace MaomiAI;
+
+public static class MainExtensions
 {
-    public static class MainExtensions
+    public static IHostApplicationBuilder UseMaomiAI(this IHostApplicationBuilder builder)
     {
-        public static IHostApplicationBuilder UseMaomiAI(this IHostApplicationBuilder builder)
+        builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
+
+        // 注册系统配置
+        builder.Services.Configure<SystemOptions>(builder.Configuration);
+        builder.Services.AddSingleton(resolver =>
+            resolver.GetRequiredService<IOptions<SystemOptions>>().Value);
+
+        builder.Services.AddSerilog((services, configuration) =>
         {
-            builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
+            configuration.ReadFrom.Services(services);
+            configuration.ReadFrom.Configuration(builder.Configuration);
+        });
 
-            // 注册系统配置
-            builder.Services.Configure<SystemOptions>(builder.Configuration);
-            builder.Services.AddSingleton(resolver =>
-                resolver.GetRequiredService<IOptions<SystemOptions>>().Value);
+        builder.Services.AddModule<MainModule>();
 
-            builder.Services.AddSerilog((services, configuration) =>
-            {
-                configuration.ReadFrom.Services(services);
-                configuration.ReadFrom.Configuration(builder.Configuration);
-            });
+        return builder;
+    }
 
-            builder.Services.AddModule<MainModule>();
+    public static WebApplication UseMaomiAIMiddleware(this WebApplication app)
+    {
+        // 使用认证中间件
+        app.UseMiddleware<CustomAuthorizaMiddleware>();
 
-            return builder;
-        }
-
-        public static WebApplication UseMaomiAIMiddleware(this WebApplication app)
-        {
-            // 使用认证中间件
-            app.UseMiddleware<CustomAuthorizaMiddleware>();
-
-            return app;
-        }
+        return app;
     }
 }

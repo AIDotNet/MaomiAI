@@ -6,7 +6,7 @@
 
 using FastEndpoints;
 using MaomiAI.User.Shared.Commands;
-using MaomiAI.User.Shared.Models;
+using MaomiAI.User.Shared.Commands.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 
@@ -18,7 +18,7 @@ namespace MaomiAI.User.Api.Endpoints;
 [EndpointGroupName("user")]
 [HttpPost($"{UserApi.ApiPrefix}/login")]
 [AllowAnonymous]
-public class LoginEndpoint : Endpoint<LoginCommand, LoginResult>
+public class LoginEndpoint : Endpoint<LoginCommand, LoginResponse>
 {
     private readonly IMediator _mediator;
 
@@ -31,7 +31,8 @@ public class LoginEndpoint : Endpoint<LoginCommand, LoginResult>
         _mediator = mediator;
     }
 
-    public override async Task<LoginResult> ExecuteAsync(LoginCommand req, CancellationToken ct)
+    /// <inheritdoc/>
+    public override async Task<LoginResponse> ExecuteAsync(LoginCommand req, CancellationToken ct)
     {
         return await _mediator.Send(req, ct);
     }

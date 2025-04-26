@@ -8,9 +8,42 @@ using System.Security.Cryptography;
 
 namespace MaomiAI.Infra.Services;
 
+/// <summary>
+/// RSA 服务.
+/// </summary>
 public interface IRsaProvider
 {
+    /// <summary>
+    /// 解密.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="padding"></param>
+    /// <returns>解密后的字符串.</returns>
     string Decrypt(string message, RSAEncryptionPadding? padding = null);
+
+    /// <summary>
+    /// 加密.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="padding"></param>
+    /// <returns></returns>
     string Encrypt(string message, RSAEncryptionPadding? padding = null);
-    string ExportPublichKeyPck8();
+
+    /// <summary>
+    /// 导出 pem 格式的公钥.
+    /// </summary>
+    /// <returns></returns>
+    string GetPublicKeyPem();
+
+    /// <summary>
+    /// 导出公钥.
+    /// </summary>
+    /// <returns></returns>
+    string GetPublicKey();
+
+    /// <summary>
+    /// 获取 RSA 对象.
+    /// </summary>
+    /// <returns></returns>
+    RSA GetPrivateRsa();
 }

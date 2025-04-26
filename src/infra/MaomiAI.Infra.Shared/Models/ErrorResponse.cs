@@ -4,6 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using FluentValidation.Results;
+
 namespace MaomiAI.Infra.Models;
 
 /// <summary>
@@ -30,4 +32,33 @@ public class ErrorResponse
     /// 错误详情.
     /// </summary>
     public string Detail { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 具体错误列表.
+    /// </summary>
+    public IReadOnlyDictionary<string, IReadOnlyCollection<string>>? Errors { get; init; }
+
+    /// <summary>
+    /// 扩展.
+    /// </summary>
+    public IReadOnlyDictionary<string, object?>? Extensions { get; set; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ErrorResponse"/> class.
+    /// </summary>
+    public ErrorResponse()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ErrorResponse"/> class.
+    /// </summary>
+    /// <param name="failures"></param>
+    /// <param name="statusCode"></param>
+    public ErrorResponse(IReadOnlyList<ValidationFailure> failures, int statusCode = 400)
+    {
+        // Microsoft.AspNetCore.Mvc.ValidationProblemDetails
+        Code = statusCode;
+        Errors = failures.GroupBy(f => f.PropertyName).ToDictionary(e => e.Key, elementSelector: e => (IReadOnlyCollection<string>)e.Select(m => m.ErrorMessage).ToArray());
+    }
 }

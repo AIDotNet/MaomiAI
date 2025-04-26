@@ -4,27 +4,23 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
-using MaomiAI.User.Shared.Models;
+using MaomiAI.User.Shared.Commands.Responses;
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands
+namespace MaomiAI.User.Shared.Commands;
+
+/// <summary>
+/// 登录.
+/// </summary>
+public class LoginCommand : IRequest<LoginResponse>
 {
     /// <summary>
-    /// 登录命令.
+    /// 用户名或邮箱.
     /// </summary>
-    public class LoginCommand : IRequest<LoginResult>
-    {
-        /// <summary>
-        /// 用户名或邮箱.
-        /// </summary>
-        [Required]
-        public string Username { get; set; } = null!;
+    public string Username { get; init; } = null!;
 
-        /// <summary>
-        /// 密码.
-        /// </summary>
-        [Required]
-        public string Password { get; set; } = null!;
-    }
+    /// <summary>
+    /// 密码，使用 RSA 公钥加密.
+    /// </summary>
+    public string Password { get; init; } = null!;
 }

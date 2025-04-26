@@ -6,29 +6,27 @@
 
 using MaomiAI.Database.Audits;
 using MaomiAI.Database.Entities;
-using MaomiAI.Infra.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace MaomiAI.Database;
 
 /// <summary>
 /// 数据库上下文.
 /// </summary>
-public partial class MaomiaiContext : DbContext
+public partial class DatabaseContext : DbContext
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseOptions _contextOptions;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MaomiaiContext"/> class.
+    /// Initializes a new instance of the <see cref="DatabaseContext"/> class.
     /// </summary>
     /// <param name="options"></param>
     /// <param name="serviceProvider"></param>
     /// <param name="contextOptions"></param>
-    public MaomiaiContext(DbContextOptions options, IServiceProvider serviceProvider, DatabaseOptions contextOptions)
+    public DatabaseContext(DbContextOptions options, IServiceProvider serviceProvider, DatabaseOptions contextOptions)
         : base(options)
     {
         _serviceProvider = serviceProvider;
@@ -45,7 +43,6 @@ public partial class MaomiaiContext : DbContext
             AuditFilter(args);
         };
     }
-
 
     /// <summary>
     /// 文件列表.
@@ -98,7 +95,7 @@ public partial class MaomiaiContext : DbContext
 /// <summary>
 /// 数据库上下文.
 /// </summary>
-public partial class MaomiaiContext
+public partial class DatabaseContext
 {
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
     {

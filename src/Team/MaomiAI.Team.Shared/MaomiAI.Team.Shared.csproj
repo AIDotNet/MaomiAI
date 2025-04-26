@@ -23,7 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\Response\" />
+      <Folder Include="InternalCommands\" />
+      <Folder Include="Queries\Admin\" />
     </ItemGroup>
 
 </Project> 

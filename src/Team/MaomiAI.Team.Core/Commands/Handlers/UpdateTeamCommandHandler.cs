@@ -8,7 +8,7 @@ using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra.Models;
 using MaomiAI.Store.Queries;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,7 +20,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers;
 /// </summary>
 public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<UpdateTeamCommandHandler> _logger;
     private readonly UserContext _userContext;
     private readonly IMediator _mediator;
@@ -33,7 +33,7 @@ public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
     /// <param name="userContext"></param>
     /// <param name="mediator"></param>
     public UpdateTeamCommandHandler(
-        MaomiaiContext dbContext,
+        DatabaseContext dbContext,
         ILogger<UpdateTeamCommandHandler> logger,
         UserContext userContext,
         IMediator mediator)

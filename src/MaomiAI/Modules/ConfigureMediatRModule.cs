@@ -20,10 +20,9 @@ public class ConfigureMediatRModule : IModule
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
-
         context.Services.AddMediatR(options =>
         {
-            options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).ToArray());
+            options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).Distinct().ToArray());
         });
     }
 }

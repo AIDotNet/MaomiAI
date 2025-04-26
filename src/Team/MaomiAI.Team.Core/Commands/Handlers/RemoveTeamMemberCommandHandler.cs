@@ -7,7 +7,7 @@
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Admin;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +18,9 @@ namespace MaomiAI.Team.Core.Commands.Handlers;
 /// <summary>
 /// 处理移除团队成员命令.
 /// </summary>
-public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCommand>
+public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCommand, EmptyCommandResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<RemoveTeamMemberCommandHandler> _logger;
     private readonly UserContext _userContext;
     private readonly IMediator _mediator;
@@ -33,7 +33,7 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
     /// <param name="userContext">用户上下文.</param>
     /// <param name="mediator"></param>
     public RemoveTeamMemberCommandHandler(
-        MaomiaiContext dbContext,
+        DatabaseContext dbContext,
         ILogger<RemoveTeamMemberCommandHandler> logger,
         UserContext userContext,
         IMediator mediator)
@@ -51,9 +51,9 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>任务.</returns>
     /// <exception cref="InvalidOperationException">当团队成员不存在时抛出.</exception>
-    public async Task Handle(RemoveTeamMemberCommand request, CancellationToken cancellationToken)
+    public async Task<EmptyCommandResponse> Handle(RemoveTeamMemberCommand request, CancellationToken cancellationToken)
     {
-        var adminIds = await _mediator.Send(new QueryTeamAdminIdsListReuqest { TeamId = request.TeamId }, cancellationToken);
+        var adminIds = await _mediator.Send(new QueryTeamAdminIdsListCommand { TeamId = request.TeamId }, cancellationToken);
 
         if (request.UserId == adminIds.OwnId)
         {
@@ -64,7 +64,7 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
             .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.UserId == request.UserId, cancellationToken);
         if (teamMember == null)
         {
-            return;
+            return EmptyCommandResponse.Default;
         }
 
         // 如果移除管理员
@@ -80,7 +80,7 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
                 await _dbContext.SaveChangesAsync(cancellationToken);
             }
 
-            return;
+            return EmptyCommandResponse.Default;
         }
 
         // 需要管理员权限才能操作
@@ -91,5 +91,6 @@ public class RemoveTeamMemberCommandHandler : IRequestHandler<RemoveTeamMemberCo
 
         _dbContext.TeamMembers.Remove(teamMember);
         await _dbContext.SaveChangesAsync(cancellationToken);
+        return EmptyCommandResponse.Default;
     }
 }

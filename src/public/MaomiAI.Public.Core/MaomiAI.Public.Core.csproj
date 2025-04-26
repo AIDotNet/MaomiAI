@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>MaomiAI.Public</RootNamespace>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MaomiAI.Public.Api\MaomiAI.Public.Api.csproj" />
+		<ProjectReference Include="..\MaomiAI.Public.Shared\MaomiAI.Public.Shared.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\stylecop.json" />
+	</ItemGroup>
+</Project>

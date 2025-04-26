@@ -12,7 +12,7 @@ namespace MaomiAI.Team.Shared.Queries;
 /// <summary>
 /// 获取团队简单信息.
 /// </summary>
-public class TeamSimpleQuery : IRequest<TeamDto>
+public class TeamSimpleQuery : IRequest<UserJoinedTeamItemResponse>
 {
     /// <summary>
     /// 团队ID.

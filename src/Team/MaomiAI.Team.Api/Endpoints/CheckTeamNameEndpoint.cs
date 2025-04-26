@@ -6,10 +6,7 @@
 
 using FastEndpoints;
 using MaomiAI.Database;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Team.Api.Endpoints;
@@ -21,13 +18,13 @@ namespace MaomiAI.Team.Api.Endpoints;
 [FastEndpoints.HttpPost($"{TeamApi.ApiPrefix}/check_name")]
 public class CheckTeamNameEndpoint : Endpoint<CheckTeamNameCommand, ExistResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CheckTeamNameEndpoint"/> class.
     /// </summary>
     /// <param name="maomiaiContext"></param>
-    public CheckTeamNameEndpoint(MaomiaiContext maomiaiContext)
+    public CheckTeamNameEndpoint(DatabaseContext maomiaiContext)
     {
         _dbContext = maomiaiContext;
     }

@@ -8,7 +8,7 @@ using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Admin;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -18,9 +18,9 @@ namespace MaomiAI.Team.Core.Commands.Handlers;
 /// <summary>
 /// 处理邀请用户加入团队命令.
 /// </summary>
-public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCommand>
+public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCommand, EmptyCommandResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<InviteUserToTeamCommandHandler> _logger;
     private readonly UserContext _userContext;
 
@@ -31,7 +31,7 @@ public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCo
     /// <param name="logger">日志记录器.</param>
     /// <param name="userContext">用户上下文.</param>
     public InviteUserToTeamCommandHandler(
-        MaomiaiContext dbContext,
+        DatabaseContext dbContext,
         ILogger<InviteUserToTeamCommandHandler> logger,
         UserContext userContext)
     {
@@ -47,7 +47,7 @@ public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCo
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>新创建的团队成员ID.</returns>
     /// <exception cref="InvalidOperationException">当团队不存在、用户不存在或用户已经是团队成员时抛出.</exception>
-    public async Task Handle(InviteUserToTeamCommand request, CancellationToken cancellationToken)
+    public async Task<EmptyCommandResponse> Handle(InviteUserToTeamCommand request, CancellationToken cancellationToken)
     {
         var team = await _dbContext.Teams
             .FirstOrDefaultAsync(t => t.Id == request.TeamId, cancellationToken);
@@ -87,5 +87,7 @@ public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCo
         });
 
         await _dbContext.SaveChangesAsync();
+
+        return EmptyCommandResponse.Default;
     }
 }

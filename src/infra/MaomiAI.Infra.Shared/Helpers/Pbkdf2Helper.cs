@@ -1,128 +1,88 @@
-﻿using System.Security.Cryptography;
+// <copyright file="PBKDF2Helper.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
 
-namespace MaomiAI.Infra.Helpers
+#pragma warning disable CA1031 // 不捕获常规异常类型
+
+using System.Security.Cryptography;
+using System.Text;
+
+namespace MaomiAI.Infra.Helpers;
+
+/// <summary>
+/// 密码服务 - 提供密码哈希和验证功能
+/// </summary>
+public static class PBKDF2Helper
 {
+    private const int PBKDF2Itreation = 10000; // 迭代次数
+    private const int SaltLength = 32;
+    private const int OutputLength = 32;
+
     /// <summary>
-    /// Pbkdf2.
+    /// 计算字符串 PBKDF2 哈希值.
     /// </summary>
-    public static class Pbkdf2Helper
+    /// <param name="sourceText">原文.</param>
+    /// <returns>返回 base64 的哈希文和解码的 salt.</returns>
+    public static (string HashBase64Text, string SaltBase64) ToHash(string sourceText)
     {
-        // size in bytes，salt 的大小.
-        private const int SALTSIZE = 128;
-
-        // number of pbkdf2 iterations，表示循环次数.
-        private const int ITERATIONS = 1000;
-
-        /// <summary>
-        /// 随机生成 salt，相当于生成密钥.
-        /// </summary>
-        /// <returns>Salt.</returns>
-        public static byte[] GenerateSalt()
+        byte[] salt = new byte[SaltLength];
+        using (RandomNumberGenerator? rng = RandomNumberGenerator.Create())
         {
-            // 生成盐
-            using RandomNumberGenerator provider = RandomNumberGenerator.Create();
-            byte[] salt = new byte[SALTSIZE];
-            provider.GetBytes(salt);
-            return salt;
+            rng.GetBytes(salt);
         }
 
-        /// <summary>
-        /// 随机生成 salt，相当于生成密钥，同时返回此密钥的字符串.
-        /// </summary>
-        /// <param name="saltBase64">Salt 的 base64 .</param>
-        /// <returns>Salt.</returns>
-        public static byte[] GenerateSalt(out string saltBase64)
+        byte[] hash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(sourceText),
+            salt,
+            PBKDF2Itreation,
+            HashAlgorithmName.SHA256,
+            OutputLength);
+
+        return (Convert.ToBase64String(hash), Convert.ToBase64String(salt));
+    }
+
+    /// <summary>
+    /// 计算字符串 PBKDF2 哈希值.
+    /// </summary>
+    /// <param name="sourceText">原文.</param>
+    /// <param name="saltBase64"></param>
+    /// <returns>返回 base64 的哈希文.</returns>
+    public static string ToHash(string sourceText, string saltBase64)
+    {
+        byte[] salt = Convert.FromBase64String(saltBase64);
+
+        byte[] hash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(sourceText),
+            salt,
+            PBKDF2Itreation,
+            HashAlgorithmName.SHA256,
+            OutputLength);
+
+        return Convert.ToBase64String(hash);
+    }
+
+    /// <summary>
+    /// 检查源字符串和哈希字符串是否一致.
+    /// </summary>
+    /// <param name="sourceText"></param>
+    /// <param name="hashBase64Text"></param>
+    /// <param name="saltBase64"></param>
+    /// <returns>是否一致.</returns>
+    public static bool VerifyHash(string sourceText, string hashBase64Text, string saltBase64)
+    {
+        try
         {
-            byte[]? bytes = GenerateSalt();
-            saltBase64 = SaltToBase64String(bytes);
-            return bytes;
+            byte[] saltBytes = Convert.FromBase64String(saltBase64);
+            byte[] hashBytes = Convert.FromBase64String(hashBase64Text);
+
+            var sourceHashBase64Text = ToHash(sourceText, saltBase64);
+            return string.CompareOrdinal(sourceHashBase64Text, hashBase64Text) == 0;
         }
-
-        /// <summary>
-        /// 将 salt 转换为 Base64 字符串.
-        /// </summary>
-        /// <param name="bytes">Salt.</param>
-        /// <returns>Salt 字符串.</returns>
-        public static string SaltToBase64String(byte[] bytes)
+        catch
         {
-            string? text = Convert.ToBase64String(bytes);
-            return text;
-        }
-
-        /// <summary>
-        /// 将 base64 字符串转换为 byte[].
-        /// </summary>
-        /// <param name="saltBase64">base64 字符串.</param>
-        /// <returns>Salt.</returns>
-        public static byte[] Base64StringToSalt(string saltBase64)
-        {
-            byte[]? bytes = Convert.FromBase64String(saltBase64);
-            return bytes;
-        }
-
-        /// <summary>
-        /// 使用 salt 给一个字符串加密.
-        /// </summary>
-        /// <param name="text">待加密的字符串.</param>
-        /// <param name="salt">Salt.</param>
-        /// <param name="base64">加密后的 base64 字符串.</param>
-        /// <returns>加密后的字符串字节.</returns>
-        public static byte[] Encrypt(string text, byte[] salt, out string base64)
-        {
-            byte[]? bytes = Rfc2898DeriveBytes.Pbkdf2(
-                text,
-                salt,
-                ITERATIONS,
-                HashAlgorithmName.SHA1,
-                32);
-
-            base64 = Convert.ToBase64String(bytes);
-            return bytes;
-        }
-
-        /// <summary>
-        /// 使用 salt 给一个字符串加密.
-        /// </summary>
-        /// <param name="text">待加密的字符串.</param>
-        /// <param name="saltBase64">Salt.</param>
-        /// <param name="base64">加密后的 base64 字符串.</param>
-        /// <returns>加密后的字符串字节.</returns>
-        public static byte[] Encrypt(string text, string saltBase64, out string base64)
-        {
-            byte[]? bytes = Rfc2898DeriveBytes.Pbkdf2(
-                text,
-                Base64StringToSalt(saltBase64),
-                ITERATIONS,
-                HashAlgorithmName.SHA1,
-                32);
-
-            base64 = Convert.ToBase64String(bytes);
-            return bytes;
-        }
-
-        /// <summary>
-        /// 将未加密的字符串与加密后的字符串对比，判断是否相同.
-        /// </summary>
-        /// <param name="sourceText">未加密的字符串.</param>
-        /// <param name="salt">Salt.</param>
-        /// <param name="targetBase64">已加密的字符串.</param>
-        /// <returns>是否相等.</returns>
-        public static bool Check(string sourceText, string salt, string targetBase64)
-        {
-            return Check(sourceText, Base64StringToSalt(salt), targetBase64);
-        }
-
-        /// <summary>
-        /// 将未加密的字符串与加密后的字符串对比，判断是否相同.
-        /// </summary>
-        /// <param name="sourceText">未加密的字符串.</param>
-        /// <param name="salt">Salt.</param>
-        /// <param name="targetBase64">已加密的字符串.</param>
-        /// <returns>是否相等.</returns>
-        public static bool Check(string sourceText, byte[] salt, string targetBase64)
-        {
-            _ = Encrypt(sourceText, salt, out string? base64);
-            return base64 == targetBase64;
+            return false;
         }
     }
 }

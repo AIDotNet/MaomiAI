@@ -7,7 +7,7 @@
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -19,7 +19,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
     /// </summary>
     public class DeleteTeamCommandHandler : IRequestHandler<DeleteTeamCommand>
     {
-        private readonly MaomiaiContext _dbContext;
+        private readonly DatabaseContext _dbContext;
         private readonly ILogger<DeleteTeamCommandHandler> _logger;
         private readonly UserContext _userContext;
 
@@ -30,7 +30,7 @@ namespace MaomiAI.Team.Core.Commands.Handlers
         /// <param name="logger">日志记录器.</param>
         /// <param name="userContext">用户上下文.</param>
         public DeleteTeamCommandHandler(
-            MaomiaiContext dbContext,
+            DatabaseContext dbContext,
             ILogger<DeleteTeamCommandHandler> logger,
             UserContext userContext)
         {

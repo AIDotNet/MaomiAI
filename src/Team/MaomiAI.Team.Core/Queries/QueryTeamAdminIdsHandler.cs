@@ -6,6 +6,7 @@
 
 using MaomiAI.Database;
 using MaomiAI.Team.Shared.Queries;
+using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,16 +15,16 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取管理员 id 列表.
 /// </summary>
-public class QueryTeamAdminIdsHandler : IRequestHandler<QueryTeamAdminIdsListReuqest, TeamAdminListIdsResponse>
+public class QueryTeamAdminIdsHandler : IRequestHandler<QueryTeamAdminIdsListCommand, TeamAdminListIdsResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
 
-    public QueryTeamAdminIdsHandler(MaomiaiContext dbContext)
+    public QueryTeamAdminIdsHandler(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<TeamAdminListIdsResponse> Handle(QueryTeamAdminIdsListReuqest request, CancellationToken cancellationToken)
+    public async Task<TeamAdminListIdsResponse> Handle(QueryTeamAdminIdsListCommand request, CancellationToken cancellationToken)
     {
         var ownId = await _dbContext.Teams.Where(x => x.Id == request.TeamId)
             .Select(x => x.OwnerId).FirstOrDefaultAsync();

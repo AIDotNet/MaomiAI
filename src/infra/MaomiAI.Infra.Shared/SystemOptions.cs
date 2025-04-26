@@ -32,6 +32,11 @@ public class SystemOptions
     public string Database { get; init; } = string.Empty;
 
     /// <summary>
+    /// Redis 连接字符串.
+    /// </summary>
+    public string Redis { get; init; } = string.Empty;
+
+    /// <summary>
     /// 公共文件存储.
     /// </summary>
     public SystemStoreOption PublicStore { get; init; } = default!;

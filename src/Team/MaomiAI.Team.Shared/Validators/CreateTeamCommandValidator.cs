@@ -6,7 +6,7 @@
 
 using FluentValidation;
 using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Validators;

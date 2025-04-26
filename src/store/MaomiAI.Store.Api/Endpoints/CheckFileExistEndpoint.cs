@@ -1,16 +1,13 @@
-﻿// <copyright file="S3Controller.cs" company="MaomiAI">
+﻿// <copyright file="CheckFileExistEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Store.Commands;
-using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Queries;
 using MaomiAI.Store.Queries.Response;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.Store.Controllers;
@@ -20,7 +17,7 @@ namespace MaomiAI.Store.Controllers;
 /// </summary>
 [EndpointGroupName("store")]
 [FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/check_exist")]
-public class CheckFileExistEndpoint:Endpoint<CheckFileExistCommand, CheckFileExistCommandResponse>
+public class CheckFileExistEndpoint : Endpoint<CheckFileExistCommand, CheckFileExistCommandResponse>
 {
     private readonly IMediator _mediator;
 

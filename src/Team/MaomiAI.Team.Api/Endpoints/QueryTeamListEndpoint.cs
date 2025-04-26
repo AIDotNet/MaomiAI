@@ -8,7 +8,7 @@ using FastEndpoints;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
 using MaomiAI.Team.Shared.Models;
-using MaomiAI.Team.Shared.Queries;
+using MaomiAI.Team.Shared.Queries.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 
@@ -19,7 +19,7 @@ namespace MaomiAI.Team.Api.Endpoints;
 /// </summary>
 [EndpointGroupName("team")]
 [FastEndpoints.HttpPost($"{TeamApi.ApiPrefix}/list")]
-public class QueryTeamListEndpoint : Endpoint<TeamListQuery, PagedResult<TeamDto>>
+public class QueryTeamListEndpoint : Endpoint<QueryUserJoinedTeamPagedCommand, PagedResult<UserJoinedTeamItemResponse>>
 {
     private readonly IMediator _mediator;
 
@@ -33,7 +33,7 @@ public class QueryTeamListEndpoint : Endpoint<TeamListQuery, PagedResult<TeamDto
     }
 
     /// <inheritdoc/>
-    public override Task<PagedResult<TeamDto>> ExecuteAsync(TeamListQuery req, CancellationToken ct)
+    public override Task<PagedResult<UserJoinedTeamItemResponse>> ExecuteAsync(QueryUserJoinedTeamPagedCommand req, CancellationToken ct)
     {
         return _mediator.Send(req);
     }

@@ -4,50 +4,95 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.Infra.Helpers;
 using MaomiAI.Infra.Services;
 using System.Security.Cryptography;
+using System.Text;
 
-namespace MaomiAI.Infra.Service
+namespace MaomiAI.Infra.Service;
+
+/// <summary>
+/// RSA 处理.
+/// </summary>
+public class RsaProvider : IRsaProvider, IDisposable
 {
-    public class RsaProvider : IRsaProvider, IDisposable
+    private readonly RSA _rsaPrivate;
+    private bool disposedValue;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RsaProvider"/> class.
+    /// </summary>
+    /// <param name="rsaPem"></param>
+    public RsaProvider(string rsaPem)
     {
-        private readonly RSA _rsaPrivate;
+        _rsaPrivate = RSA.Create();
+        _rsaPrivate.ImportFromPem(rsaPem);
+    }
 
-        public RsaProvider(string rsaPem)
+    /// <inheritdoc/>
+    public string GetPublicKey()
+    {
+        return Convert.ToBase64String(_rsaPrivate.ExportSubjectPublicKeyInfo());
+    }
+
+    /// <inheritdoc/>
+    public string GetPublicKeyPem()
+    {
+        return _rsaPrivate.ExportRSAPublicKeyPem();
+    }
+
+    /// <inheritdoc/>
+    public string Encrypt(string message, RSAEncryptionPadding? padding = null)
+    {
+        if (padding == null)
         {
-            _rsaPrivate = RSA.Create();
-            _rsaPrivate.ImportFromPem(rsaPem);
+            padding = RSAEncryptionPadding.OaepSHA256;
         }
 
-        public string ExportPublichKeyPck8()
+        byte[]? encryptData = _rsaPrivate.Encrypt(Encoding.UTF8.GetBytes(message), padding);
+        return Convert.ToBase64String(encryptData);
+    }
+
+    /// <inheritdoc/>
+    public string Decrypt(string message, RSAEncryptionPadding? padding = null)
+    {
+        if (padding == null)
         {
-            return RsaHelper.ExportPublichKeyPck8(_rsaPrivate);
+            padding = RSAEncryptionPadding.OaepSHA256;
         }
 
-        public string Encrypt(string message, RSAEncryptionPadding? padding = null)
+        byte[]? cipherByteData = Convert.FromBase64String(message);
+
+        byte[]? encryptData = _rsaPrivate.Decrypt(cipherByteData, padding);
+        return Encoding.UTF8.GetString(encryptData);
+    }
+
+    /// <inheritdoc/>
+    public RSA GetPrivateRsa()
+    {
+        return _rsaPrivate;
+    }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// <see cref="IDisposable.Dispose"/>.
+    /// </summary>
+    /// <param name="disposing"></param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
         {
-            if (padding == null)
+            if (disposing)
             {
-                padding = RSAEncryptionPadding.OaepSHA256;
+                _rsaPrivate.Dispose();
             }
 
-            return RsaHelper.Encrypt(_rsaPrivate, message, padding);
-        }
-
-        public string Decrypt(string message, RSAEncryptionPadding? padding = null)
-        {
-            if (padding == null)
-            {
-                padding = RSAEncryptionPadding.OaepSHA256;
-            }
-
-            return RsaHelper.Decrypt(_rsaPrivate, message, padding);
-        }
-
-        public void Dispose()
-        {
-            ((IDisposable)_rsaPrivate).Dispose();
+            disposedValue = true;
         }
     }
 }

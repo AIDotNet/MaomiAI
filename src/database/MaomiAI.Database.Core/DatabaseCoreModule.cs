@@ -10,58 +10,86 @@ using MaomiAI.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis.Extensions.Core;
+using StackExchange.Redis.Extensions.Core.Abstractions;
+using StackExchange.Redis.Extensions.Core.Configuration;
+using StackExchange.Redis.Extensions.Core.Implementations;
+using StackExchange.Redis.Extensions.System.Text.Json;
 
-namespace MaomiAI.Database
+namespace MaomiAI.Database;
+
+/// <summary>
+/// DatabaseCoreModule.
+/// </summary>
+[InjectModule<DatabasePostgresModule>]
+public class DatabaseCoreModule : IModule
 {
+    private readonly IConfiguration _configuration;
+
     /// <summary>
-    /// DatabaseCoreModule.
+    /// Initializes a new instance of the <see cref="DatabaseCoreModule"/> class.
     /// </summary>
-    [InjectModule<DatabasePostgresModule>]
-    public class DatabaseCoreModule : IModule
+    /// <param name="configuration">配置.</param>
+    public DatabaseCoreModule(IConfiguration configuration)
     {
-        private readonly IConfiguration _configuration;
+        _configuration = configuration;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseCoreModule"/> class.
-        /// </summary>
-        /// <param name="configuration">配置.</param>
-        public DatabaseCoreModule(IConfiguration configuration)
+    /// <inheritdoc/>
+    public void ConfigureServices(ServiceContext context)
+    {
+        SystemOptions? systemOptions = _configuration.Get<SystemOptions>();
+        if (systemOptions == null)
         {
-            _configuration = configuration;
+            return;
         }
 
-        /// <inheritdoc/>
-        public void ConfigureServices(ServiceContext context)
+        // 添加 redis
+        AddStackExchangeRedis(context.Services, new RedisConfiguration
         {
-            SystemOptions? systemOptions = _configuration.Get<SystemOptions>();
-            if (systemOptions == null)
+            ConnectionString = systemOptions.Redis,
+            PoolSize = 10,
+            KeyPrefix = "maomi:",
+            ConnectTimeout = 5000,
+            IsDefault = true
+        });
+
+        // 如果使用内存数据库
+        if ("inmemory".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
+        {
+            DatabaseOptions? dbContextOptions = new()
             {
-                return;
-            }
+                ConfigurationAssembly = typeof(DatabaseCoreModule).Assembly,
+                EntityAssembly = typeof(DatabaseContext).Assembly
+            };
 
-            // 如果使用内存数据库
-            if ("inmemory".Equals(systemOptions.DBType, StringComparison.OrdinalIgnoreCase))
+            context.Services.AddSingleton(dbContextOptions);
+
+            // 注册内存数据库
+            context.Services.AddDbContext<DatabaseContext>(options =>
             {
-                DatabaseOptions? dbContextOptions = new()
-                {
-                    ConfigurationAssembly = typeof(DatabaseCoreModule).Assembly,
-                    EntityAssembly = typeof(MaomiaiContext).Assembly
-                };
+                options.UseInMemoryDatabase(systemOptions.Database);
+            });
 
-                context.Services.AddSingleton(dbContextOptions);
-
-                // 注册内存数据库
-                context.Services.AddDbContext<MaomiaiContext>(options =>
-                {
-                    options.UseInMemoryDatabase(systemOptions.Database);
-                });
-
-                // 创建数据库
-                using ServiceProvider? serviceProvider = context.Services.BuildServiceProvider();
-                using IServiceScope? scope = serviceProvider.CreateScope();
-                MaomiaiContext? dbContext = scope.ServiceProvider.GetRequiredService<MaomiaiContext>();
-                dbContext.Database.EnsureCreated();
-            }
+            // 创建数据库
+            using ServiceProvider? serviceProvider = context.Services.BuildServiceProvider();
+            using IServiceScope? scope = serviceProvider.CreateScope();
+            DatabaseContext? dbContext = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+            dbContext.Database.EnsureCreated();
         }
+    }
+
+    private static void AddStackExchangeRedis(IServiceCollection services, RedisConfiguration redisConfiguration)
+    {
+        services.AddSingleton<ISerializer, SystemTextJsonSerializer>();
+
+        services.AddSingleton<IRedisClientFactory, RedisClientFactory>();
+
+        services.AddSingleton((provider) => provider
+            .GetRequiredService<IRedisClientFactory>()
+            .GetDefaultRedisClient()
+            .GetDefaultDatabase());
+
+        services.AddSingleton(redisConfiguration);
     }
 }

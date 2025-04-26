@@ -1,11 +1,10 @@
-﻿// <copyright file="PreuploadFileCommand.cs" company="MaomiAI">
+﻿// <copyright file="ComplateFileUploadCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using FluentValidation;
-using MaomiAI.Infra.Models;
 using MaomiAI.Store.Commands.Response;
 using MediatR;
 

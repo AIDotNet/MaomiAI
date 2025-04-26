@@ -17,9 +17,9 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamDetailQueryHandler : IRequestHandler<TeamDetailQuery, TeamDetailDto>
+public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, TeamDetailDto>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
 
     /// <summary>
@@ -27,7 +27,7 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<TeamDetailQuery, Team
     /// </summary>
     /// <param name="dbContext">数据库上下文.</param>
     /// <param name="logger">日志记录器.</param>
-    public QueryTeamDetailQueryHandler(MaomiaiContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger)
+    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger)
     {
         _dbContext = dbContext;
         _logger = logger;
@@ -39,7 +39,7 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<TeamDetailQuery, Team
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队信息.</returns>
-    public async Task<TeamDetailDto> Handle(TeamDetailQuery request, CancellationToken cancellationToken)
+    public async Task<TeamDetailDto> Handle(QueryTeamDetailCommand request, CancellationToken cancellationToken)
     {
         var team = await _dbContext.Teams.Where(t => t.Id == request.Id)
             .Select(x => new TeamDetailDto

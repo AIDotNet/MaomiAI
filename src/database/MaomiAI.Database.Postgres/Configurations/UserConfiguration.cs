@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Entities;
+﻿using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,21 +17,11 @@ public partial class UserConfiguration : IEntityTypeConfiguration<UserEntity>
 
         entity.ToTable("users", tb => tb.HasComment("用户表"));
 
-        entity.HasIndex(e => e.CreateUserId, "idx_users_create_user_id");
+        entity.HasIndex(e => e.Email, "idx_users_email").IsUnique();
 
-        entity.HasIndex(e => e.Email, "idx_users_email");
+        entity.HasIndex(e => e.Phone, "idx_users_phone").IsUnique();
 
-        entity.HasIndex(e => e.Extensions, "idx_users_extensions").HasMethod("gin");
-
-        entity.HasIndex(e => e.Phone, "idx_users_phone");
-
-        entity.HasIndex(e => e.UpdateUserId, "idx_users_update_user_id");
-
-        entity.HasIndex(e => e.UserName, "idx_users_user_name");
-
-        entity.HasIndex(e => e.Email, "users_email_key").IsUnique();
-
-        entity.HasIndex(e => e.UserName, "users_user_name_key").IsUnique();
+        entity.HasIndex(e => e.UserName, "idx_users_user_name").IsUnique();
 
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
@@ -54,11 +42,6 @@ public partial class UserConfiguration : IEntityTypeConfiguration<UserEntity>
             .HasMaxLength(255)
             .HasComment("邮箱")
             .HasColumnName("email");
-        entity.Property(e => e.Extensions)
-            .HasDefaultValueSql("'{}'::jsonb")
-            .HasComment("JSONB格式的扩展字段")
-            .HasColumnType("jsonb")
-            .HasColumnName("extensions");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("是否删除")
@@ -68,17 +51,21 @@ public partial class UserConfiguration : IEntityTypeConfiguration<UserEntity>
             .HasComment("昵称")
             .HasColumnName("nick_name");
         entity.Property(e => e.Password)
-            .HasMaxLength(255)
+            .HasMaxLength(300)
             .HasComment("密码")
             .HasColumnName("password");
+        entity.Property(e => e.PasswordHalt)
+            .HasMaxLength(300)
+            .HasComment("计算密码值的salt")
+            .HasColumnName("password_halt");
         entity.Property(e => e.Phone)
             .HasMaxLength(20)
             .HasComment("手机号")
             .HasColumnName("phone");
-        entity.Property(e => e.Status)
+        entity.Property(e => e.IsEnable)
             .HasDefaultValue(true)
             .HasComment("状态：true-正常，false-禁用")
-            .HasColumnName("status");
+            .HasColumnName("is_enable");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

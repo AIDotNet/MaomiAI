@@ -92,6 +92,8 @@ dotnet_diagnostic.SA1629.severity = silent
 dotnet_diagnostic.CA2016.severity = silent
 dotnet_diagnostic.SA1311.severity = silent
 dotnet_diagnostic.CA1311.severity = silent
+csharp_prefer_static_local_function = true:suggestion
+dotnet_diagnostic.SA1616.severity = silent
 
 [*.vb]
 #### 命名样式 ####
@@ -155,3 +157,4 @@ dotnet_diagnostic.CA1303.severity = silent
 
 # Default severity for analyzer diagnostics with category 'Globalization'
 dotnet_analyzer_diagnostic.category-Globalization.severity = silent
+dotnet_diagnostic.CA1304.severity = none

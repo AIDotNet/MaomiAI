@@ -10,6 +10,7 @@ using MaomiAI.Database;
 using MaomiAI.Filters;
 using MaomiAI.Infra;
 using MaomiAI.Modules;
+using MaomiAI.Public;
 using MaomiAI.Store;
 using MaomiAI.Team.Core;
 using MaomiAI.User.Core;
@@ -26,6 +27,7 @@ namespace MaomiAI
     [InjectModule<StoreCoreModule>]
     [InjectModule<UserCoreModule>]
     [InjectModule<TeamCoreModule>]
+    [InjectModule<PublicCoreModule>]
     [InjectModule<ApiModule>]
     public partial class MainModule : IModule
     {
@@ -43,7 +45,7 @@ namespace MaomiAI
         {
             // 添加HTTP上下文访问器
             context.Services.AddHttpContextAccessor();
-            context.Services.AddExceptionHandler<CustomGlobalExceptionHandler>();
+            context.Services.AddExceptionHandler<MaomiExceptionHandler>();
             context.Services.AddI18nAspNetCore();
         }
     }

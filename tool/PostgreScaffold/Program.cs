@@ -3,11 +3,11 @@
 // </copyright>
 
 using Maomi;
+using MaomiAI;
 using MaomiAI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MaomiAI;
 using System.Diagnostics;
 using System.Text;
 
@@ -57,6 +57,8 @@ public class Program
         processStartInfo.ArgumentList.Add("Npgsql.EntityFrameworkCore.PostgreSQL");
         processStartInfo.ArgumentList.Add("--context-dir");
         processStartInfo.ArgumentList.Add("Data");
+        processStartInfo.ArgumentList.Add("--context");
+        processStartInfo.ArgumentList.Add("DatabaseContext");
         processStartInfo.ArgumentList.Add("--output-dir");
         processStartInfo.ArgumentList.Add("Entities");
         processStartInfo.ArgumentList.Add("--namespace");

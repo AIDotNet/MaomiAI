@@ -1,17 +1,13 @@
-﻿// <copyright file="S3Controller.cs" company="MaomiAI">
+﻿// <copyright file="ComplateUploadEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-
 using FastEndpoints;
 using MaomiAI.Store.Commands;
 using MaomiAI.Store.Commands.Response;
-using MaomiAI.Store.Queries;
-using MaomiAI.Store.Queries.Response;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.Store.Controllers;

@@ -13,7 +13,6 @@ using MaomiAI.Swaggers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
@@ -32,7 +31,11 @@ public class FastEndpointModule : IModule
     public void ConfigureServices(ServiceContext context)
     {
         context.Services
-            .AddFastEndpoints()
+            .AddFastEndpoints(options =>
+            {
+                options.Assemblies = context.Modules.Select(x => x.Assembly).Distinct();
+                options.IncludeAbstractValidators = true;
+            })
             .SwaggerDocument(options =>
             {
                 var settings = options.Services.GetRequiredService<SystemOptions>();

@@ -8,7 +8,7 @@ using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -18,9 +18,9 @@ namespace MaomiAI.Team.Core.Commands.Handlers;
 /// <summary>
 /// 处理创建团队命令.
 /// </summary>
-public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidDto>
+public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<CreateTeamCommandHandler> _logger;
     private readonly UserContext _userContext;
 
@@ -31,7 +31,7 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidD
     /// <param name="logger"></param>
     /// <param name="userContext"></param>
     public CreateTeamCommandHandler(
-        MaomiaiContext dbContext,
+        DatabaseContext dbContext,
         ILogger<CreateTeamCommandHandler> logger,
         UserContext userContext)
     {
@@ -41,7 +41,7 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidD
     }
 
     /// <inheritdoc/>
-    public async Task<GuidDto> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
+    public async Task<GuidResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
     {
         Guid currentUserId = _userContext.UserId;
 
@@ -65,6 +65,6 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidD
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         _logger.LogInformation("The user creates a team,{@Team}.", team);
-        return new GuidDto { Guid = team.Id };
+        return new GuidResponse { Guid = team.Id };
     }
 }

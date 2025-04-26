@@ -8,6 +8,7 @@ using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands;
+using MaomiAI.Team.Shared.Commands.Root;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +19,9 @@ namespace MaomiAI.Team.Core.Commands.Handlers;
 /// <summary>
 /// 设置团队成员权限.
 /// </summary>
-public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamMemberPermissionCommand, EmptyDto>
+public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamAdminCommand, EmptyCommandResponse>
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
     private readonly ILogger<SetTeamMemberPermissionCommandHandler> _logger;
     private readonly UserContext _userContext;
     private readonly IMediator _mediator;
@@ -33,7 +34,7 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamMemb
     /// <param name="userContext"></param>
     /// <param name="mediator"></param>
     public SetTeamMemberPermissionCommandHandler(
-        MaomiaiContext dbContext,
+        DatabaseContext dbContext,
         ILogger<SetTeamMemberPermissionCommandHandler> logger,
         UserContext userContext,
         IMediator mediator)
@@ -45,7 +46,7 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamMemb
     }
 
     /// <inheritdoc/>
-    public async Task<EmptyDto> Handle(SetTeamMemberPermissionCommand request, CancellationToken cancellationToken)
+    public async Task<EmptyCommandResponse> Handle(SetTeamAdminCommand request, CancellationToken cancellationToken)
     {
         var currentUserId = _userContext.UserId;
 
@@ -70,7 +71,7 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamMemb
             throw new BusinessException("不可以设置团队所有者的权限");
         }
 
-        var adminIds = await _mediator.Send(new QueryTeamAdminIdsListReuqest
+        var adminIds = await _mediator.Send(new QueryTeamAdminIdsListCommand
         {
             TeamId = team.Id,
         });
@@ -95,15 +96,13 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamMemb
             }
             else
             {
-                teamMember.IsAdmin = request.IsAdmin.GetValueOrDefault();
+                teamMember.IsAdmin = request.IsAdmin;
             }
         }
-
-        teamMember.IsEnable = request.IsEnable;
 
         _dbContext.Update(teamMember);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        return new EmptyDto();
+        return EmptyCommandResponse.Default;
     }
 }

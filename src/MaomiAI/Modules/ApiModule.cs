@@ -8,8 +8,8 @@ namespace MaomiAI.Modules;
 [InjectModule<ConfigureLoggerModule>]
 [InjectModule<ConfigureAuthorizaModule>]
 [InjectModule<ConfigureMVCModule>]
-[InjectModule<ConfigureMediatRModule>]
 [InjectModule<FastEndpointModule>]
+[InjectModule<ConfigureMediatRModule>]
 public class ApiModule : IModule
 {
     /// <inheritdoc/>

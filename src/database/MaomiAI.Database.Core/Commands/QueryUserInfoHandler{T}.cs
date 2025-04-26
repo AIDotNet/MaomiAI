@@ -12,13 +12,13 @@ namespace MaomiAI.Database.Commands;
 public class QueryUserInfoHandler<T> : IRequestHandler<UserInfoQuery<T>, ICollection<T>>
         where T : AuditsInfo
 {
-    private readonly MaomiaiContext _dbContext;
+    private readonly DatabaseContext _dbContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryUserInfoHandler{T}"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
-    public QueryUserInfoHandler(MaomiaiContext dbContext)
+    public QueryUserInfoHandler(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }

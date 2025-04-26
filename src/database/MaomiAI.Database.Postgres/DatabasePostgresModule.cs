@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Reflection.Emit;
 
 namespace MaomiAI.Database.Postgres
 {
@@ -41,7 +42,7 @@ namespace MaomiAI.Database.Postgres
             DatabaseOptions? dbContextOptions = new()
             {
                 ConfigurationAssembly = typeof(DatabasePostgresModule).Assembly,
-                EntityAssembly = typeof(MaomiaiContext).Assembly
+                EntityAssembly = typeof(DatabaseContext).Assembly
             };
 
             context.Services.AddSingleton(dbContextOptions);
@@ -85,14 +86,14 @@ namespace MaomiAI.Database.Postgres
                     .EnableDetailedErrors();
             };
 
-            context.Services.AddDbContext<MaomiaiContext>(contextOptionsBuilder);
+            context.Services.AddDbContext<DatabaseContext, PostgresDatabaseContext>(contextOptionsBuilder);
 
             try
             {
-                DbContextOptionsBuilder<MaomiaiContext> options = new();
+                DbContextOptionsBuilder<DatabaseContext> options = new();
                 contextOptionsBuilder.Invoke(options);
 
-                using MaomiaiContext? dbContext = new(options.Options, ioc, dbContextOptions);
+                using DatabaseContext? dbContext = new(options.Options, ioc, dbContextOptions);
 
                 // 如果数据库不存在，则会创建数据库及其所有表。
                 dbContext.Database.EnsureCreated();

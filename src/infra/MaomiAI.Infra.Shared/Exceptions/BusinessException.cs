@@ -23,14 +23,19 @@ namespace Maomi.AI.Exceptions
         }
 
         /// <summary>
+        ///  http 状态码.
+        /// </summary>
+        public int StatusCode { get; init; } = 500;
+
+        /// <summary>
         /// 错误代码.
         /// </summary>
-        public int ErrorCode { get; private set; } = 500;
+        public int ErrorCode { get; init; } = 500;
 
         /// <summary>
         /// 错误信息参数.
         /// </summary>
-        public IReadOnlyList<object>? Argments { get; private set; } = new List<object>();
+        public IReadOnlyList<object>? Argments { get; init; } = new List<object>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BusinessException"/> class.
@@ -65,6 +70,17 @@ namespace Maomi.AI.Exceptions
         {
             ErrorCode = errorCode;
 
+            Argments = argments;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BusinessException"/> class.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="argments"></param>
+        public BusinessException(string message, params object[] argments)
+            : base(message)
+        {
             Argments = argments;
         }
 

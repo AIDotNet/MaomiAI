@@ -31,6 +31,7 @@
         <ProjectReference Include="..\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj" />
         <ProjectReference Include="..\embedding\MaomiAI.Embedding.Core\MaomiAI.Embedding.Core.csproj" />
         <ProjectReference Include="..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
+        <ProjectReference Include="..\public\MaomiAI.Public.Core\MaomiAI.Public.Core.csproj" />
         <ProjectReference Include="..\store\MaomiAI.Store.Core\MaomiAI.Store.Core.csproj" />
         <ProjectReference Include="..\Team\MaomiAI.Team.Core\MaomiAI.Team.Core.csproj" />
         <ProjectReference Include="..\User\MaomiAI.User.Core\MaomiAI.User.Core.csproj" />
