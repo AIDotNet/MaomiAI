@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI.Infra.Services;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -13,9 +14,10 @@ namespace MaomiAI.Infra.Service;
 /// <summary>
 /// RSA 处理.
 /// </summary>
-public class RsaProvider : IRsaProvider, IDisposable
+public class RsaProvider : IRsaProvider
 {
     private readonly RSA _rsaPrivate;
+    private readonly RsaSecurityKey _rsaSecurityKey;
     private bool disposedValue;
 
     /// <summary>
@@ -26,6 +28,7 @@ public class RsaProvider : IRsaProvider, IDisposable
     {
         _rsaPrivate = RSA.Create();
         _rsaPrivate.ImportFromPem(rsaPem);
+        _rsaSecurityKey = new RsaSecurityKey(_rsaPrivate);
     }
 
     /// <inheritdoc/>
@@ -73,26 +76,8 @@ public class RsaProvider : IRsaProvider, IDisposable
     }
 
     /// <inheritdoc/>
-    public void Dispose()
+    public RsaSecurityKey GetRsaSecurityKey()
     {
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// <see cref="IDisposable.Dispose"/>.
-    /// </summary>
-    /// <param name="disposing"></param>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!disposedValue)
-        {
-            if (disposing)
-            {
-                _rsaPrivate.Dispose();
-            }
-
-            disposedValue = true;
-        }
+        return _rsaSecurityKey;
     }
 }

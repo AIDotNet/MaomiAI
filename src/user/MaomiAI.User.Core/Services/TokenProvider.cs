@@ -3,6 +3,7 @@ using Maomi.AI.Exceptions;
 using Maomi.I18n;
 using MaomiAI.Infra;
 using MaomiAI.Infra.Models;
+using MaomiAI.Infra.Service;
 using MaomiAI.Infra.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -35,13 +36,13 @@ public class TokenProvider : ITokenProvider
     {
         Claim[] claims = new[]
         {
-                new Claim(JwtRegisteredClaimNames.Sub, userContext.UserId.ToString()),
-                new Claim(JwtRegisteredClaimNames.NameId, userContext.UserId.ToString()),
-                new Claim(JwtRegisteredClaimNames.Name, userContext.UserName),
-                new Claim(JwtRegisteredClaimNames.Nickname, userContext.NickName),
-                new Claim(JwtRegisteredClaimNames.Email, userContext.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("token_type", "access")
+            new Claim(JwtRegisteredClaimNames.Sub, userContext.UserId.ToString()),
+            new Claim(JwtRegisteredClaimNames.NameId, userContext.UserId.ToString()),
+            new Claim(JwtRegisteredClaimNames.Name, userContext.UserName),
+            new Claim(JwtRegisteredClaimNames.Nickname, userContext.NickName),
+            new Claim(JwtRegisteredClaimNames.Email, userContext.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim("token_type", "access")
         };
 
         var rsaKey = new RsaSecurityKey(_rsaProvider.GetPrivateRsa());
@@ -55,7 +56,7 @@ public class TokenProvider : ITokenProvider
             Audience = _systemOptions.Server,
             Expires = DateTime.UtcNow.AddMinutes(30),
             SigningCredentials = new SigningCredentials(rsaKey, SecurityAlgorithms.RsaSha256),
-            TokenType = "AccessToken",
+            TokenType = "access_token",
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -63,12 +64,13 @@ public class TokenProvider : ITokenProvider
 
         // 生成 Refresh Token
         var resfrshTokenClaims = new[]
-            {
+        {
             new Claim(JwtRegisteredClaimNames.Sub, userContext.UserId.ToString()),
             new Claim(JwtRegisteredClaimNames.NameId, userContext.UserId.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim("token_type", "refresh")
-            };
+        };
+
         var refreshTokenDescriptor = new SecurityTokenDescriptor
         {
             Claims = resfrshTokenClaims.ToDictionary(x => x.Type, x => (object)x.Value),
@@ -76,7 +78,8 @@ public class TokenProvider : ITokenProvider
             Issuer = _systemOptions.Server,
             Audience = _systemOptions.Server,
             Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials = new SigningCredentials(rsaKey, SecurityAlgorithms.RsaSha256)
+            SigningCredentials = new SigningCredentials(rsaKey, SecurityAlgorithms.RsaSha256),
+            TokenType = "refresh_token",
         };
 
         var refreshToken = tokenHandler.CreateToken(refreshTokenDescriptor);
@@ -94,7 +97,7 @@ public class TokenProvider : ITokenProvider
             throw new BusinessException("不是有效的 token 格式.");
         }
 
-        var rsaKey = new RsaSecurityKey(_rsaProvider.GetPrivateRsa());
+        var rsaKey = _rsaProvider.GetRsaSecurityKey();
 
         var checkResult = await jwtSecurityTokenHandler.ValidateTokenAsync(token, new TokenValidationParameters()
         {
@@ -122,19 +125,17 @@ public class TokenProvider : ITokenProvider
             throw new BusinessException("不是有效的 token 格式.");
         }
 
-        var rsaKey = new RsaSecurityKey(_rsaProvider.GetPrivateRsa());
-
         var checkResult = await jwtSecurityTokenHandler.ValidateTokenAsync(token, new TokenValidationParameters()
         {
             RequireExpirationTime = true,
-            ValidateIssuer = true,
-
-            ValidIssuer = _systemOptions.Server,
-            ValidAudience = _systemOptions.Server,
-
-            ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = rsaKey,
+            IssuerSigningKey = _rsaProvider.GetRsaSecurityKey(),
+            ValidateIssuer = true,
+            ValidIssuer = _systemOptions.Server,
+            ValidateAudience = true,
+            ValidAudience = _systemOptions.Server,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero,
         });
 
         if (!checkResult.IsValid)

@@ -3,7 +3,9 @@ using MaomiAI.Infra;
 using MaomiAI.Infra.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Npgsql.Internal.Postgres;
 using System.Security.Cryptography;
+using YamlDotNet.Core.Tokens;
 
 namespace MaomiAI.Modules;
 
@@ -24,7 +26,12 @@ public class ConfigureAuthorizaModule : IModule
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
-        var rsaKey = new RsaSecurityKey(RSA.Create());
+        using var serviceProvider = context.Services.BuildServiceProvider();
+        var rsaProvider = serviceProvider.GetRequiredService<IRsaProvider>();
+
+#if DEBUG
+        Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+#endif
 
         context.Services.AddAuthentication(options =>
         {
@@ -35,14 +42,15 @@ public class ConfigureAuthorizaModule : IModule
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    RequireExpirationTime = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = rsaKey,
+                    IssuerSigningKey = rsaProvider.GetRsaSecurityKey(),
                     ValidateIssuer = true,
                     ValidIssuer = _systemOptions.Server,
                     ValidateAudience = true,
                     ValidAudience = _systemOptions.Server,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
+                    ClockSkew = TimeSpan.Zero,
                 };
             });
 

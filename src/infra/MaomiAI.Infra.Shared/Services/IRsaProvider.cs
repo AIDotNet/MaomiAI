@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 
 namespace MaomiAI.Infra.Services;
@@ -46,4 +47,10 @@ public interface IRsaProvider
     /// </summary>
     /// <returns></returns>
     RSA GetPrivateRsa();
+
+    /// <summary>
+    /// RsaSecurityKey.
+    /// </summary>
+    /// <returns></returns>
+    RsaSecurityKey GetRsaSecurityKey();
 }
