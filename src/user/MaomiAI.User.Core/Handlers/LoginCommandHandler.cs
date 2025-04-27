@@ -59,7 +59,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
     /// <returns>登录结果.</returns>
     public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var cacheKey = $"login:fail:{request.Username}";
+        var cacheKey = $"login:fail:{request.UserName}";
         var failCount = await _database.GetAsync<int>(cacheKey);
 
         if (failCount >= 5)
@@ -68,7 +68,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
         }
 
         var user = await _dbContext.Users.Where(u =>
-                                  u.UserName == request.Username || u.Email == request.Username)
+                                  u.UserName == request.UserName || u.Email == request.UserName)
                               .FirstOrDefaultAsync(cancellationToken);
 
         if (user == null)

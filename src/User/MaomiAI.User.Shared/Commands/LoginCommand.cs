@@ -17,7 +17,7 @@ public class LoginCommand : IRequest<LoginResponse>
     /// <summary>
     /// 用户名或邮箱.
     /// </summary>
-    public string Username { get; init; } = null!;
+    public string UserName { get; init; } = null!;
 
     /// <summary>
     /// 密码，使用 RSA 公钥加密.

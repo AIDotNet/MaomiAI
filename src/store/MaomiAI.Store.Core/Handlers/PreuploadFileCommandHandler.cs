@@ -8,7 +8,6 @@ using MaomiAI.Database;
 using MaomiAI.Database.Entities;
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
-using MaomiAI.Store.InternalCommands;
 using MaomiAI.Store.Services;
 using MaomiAI.Team.Shared.Helpers;
 using MediatR;

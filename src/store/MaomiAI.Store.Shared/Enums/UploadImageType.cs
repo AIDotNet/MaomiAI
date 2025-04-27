@@ -19,15 +19,15 @@ public enum UploadImageType
     /// <summary>
     /// 头像.
     /// </summary>
-    Avatar = 1,
+    UserAvatar = 1,
 
     /// <summary>
     /// 团队中的.
     /// </summary>
-    Team = 2,
+    TeamAvatar = 2,
 
     /// <summary>
     /// 知识库中的
     /// </summary>
-    Document = 3,
+    DocumentFile = 3,
 }

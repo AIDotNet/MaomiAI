@@ -1,7 +1,16 @@
-﻿using Maomi;
+﻿// <copyright file="UserContextProvider.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using Maomi;
+using Maomi.AI.Exceptions;
 using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Services;
 using Microsoft.AspNetCore.Http;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace MaomiAI.User.Core.Services;
 
@@ -50,15 +59,15 @@ public class UserContextProvider : IUserContextProvider
             };
         }
 
-        var userId = user.FindFirst("sub")?.Value;
-        var userName = user.Identity.Name;
-        var nickName = user.FindFirst("nickname")?.Value;
-        var email = user.FindFirst("email")?.Value;
+        var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userName = user.FindFirstValue(JwtRegisteredClaimNames.Name);
+        var nickName = user.FindFirstValue(JwtRegisteredClaimNames.Nickname);
+        var email = user.FindFirstValue(ClaimTypes.Email);
 
         return new DefaultUserContext
         {
-            IsAuthenticated = true,
-            UserId = Guid.TryParse(userId, out var guid) ? guid : Guid.Empty,
+            IsAuthenticated = user.Identity.IsAuthenticated,
+            UserId = Guid.TryParse(userId, out var guid) ? guid : throw new BusinessException("Token 格式错误") { StatusCode = 401 },
             UserName = userName ?? string.Empty,
             NickName = nickName ?? string.Empty,
             Email = email ?? string.Empty

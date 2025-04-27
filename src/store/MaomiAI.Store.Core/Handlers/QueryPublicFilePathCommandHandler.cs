@@ -18,30 +18,31 @@ using Microsoft.Extensions.DependencyInjection;
 namespace MaomiAI.Store.Commands;
 
 /// <summary>
-/// 检查文件是否存在.
+/// 获取文件路径.
 /// </summary>
-public class CheckFileExistCommandHandler : IRequestHandler<CheckFileExistCommand, CheckFileExistCommandResponse>
+public class QueryPublicFilePathCommandHandler : IRequestHandler<QueryPublicFilePathCommand, QueryPublicFilePathCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IServiceProvider _serviceProvider;
+    private readonly SystemOptions _systemOptions;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CheckFileExistCommandHandler"/> class.
+    /// Initializes a new instance of the <see cref="QueryPublicFilePathCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
     /// <param name="serviceProvider"></param>
-    public CheckFileExistCommandHandler(DatabaseContext dbContext, IServiceProvider serviceProvider)
+    /// <param name="systemOptions"></param>
+    public QueryPublicFilePathCommandHandler(DatabaseContext dbContext, IServiceProvider serviceProvider, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _serviceProvider = serviceProvider;
+        _systemOptions = systemOptions;
     }
 
     /// <inheritdoc/>
-    public async Task<CheckFileExistCommandResponse> Handle(CheckFileExistCommand request, CancellationToken cancellationToken)
+    public async Task<QueryPublicFilePathCommandResponse> Handle(QueryPublicFilePathCommand request, CancellationToken cancellationToken)
     {
-        var isPublicFile = request.Visibility == Enums.FileVisibility.Public ? true : false;
-
-        var query = _dbContext.Files.Where(x => x.IsPublic == isPublicFile);
+        var query = _dbContext.Files.Where(x => x.IsPublic == true);
         if (request.FileId != null)
         {
             query = query.Where(x => x.Id == request.FileId);
@@ -57,10 +58,22 @@ public class CheckFileExistCommandHandler : IRequestHandler<CheckFileExistComman
             query = query.Where(x => x.Path == request.Key);
         }
 
-        var existFile = await query.AnyAsync(cancellationToken);
-        return new CheckFileExistCommandResponse
+        var existFile = await query.FirstOrDefaultAsync(cancellationToken);
+        if (existFile == null)
         {
-            Exist = existFile
+            return new QueryPublicFilePathCommandResponse
+            {
+                Exist = false
+            };
+        }
+
+        var url = Path.Combine(_systemOptions.PublicStore.Endpoint, existFile.Path);
+
+        return new QueryPublicFilePathCommandResponse
+        {
+            Exist = true,
+            Path = existFile.Path,
+            Url = url,
         };
     }
 }

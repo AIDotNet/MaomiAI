@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Routing;
 namespace MaomiAI.Store.Controllers;
 
 /// <summary>
-/// 完成文件上传.
+/// 完成文件上传，私有和公有文件都可以使用.
 /// </summary>
 [EndpointGroupName("store")]
 [FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/complate_url")]

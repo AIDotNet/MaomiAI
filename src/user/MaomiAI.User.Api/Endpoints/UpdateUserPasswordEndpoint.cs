@@ -1,4 +1,4 @@
-// <copyright file="RegisterUserEndpoint.cs" company="MaomiAI">
+// <copyright file="LoginEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -7,32 +7,33 @@
 using FastEndpoints;
 using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Commands;
-using MaomiAI.User.Shared.Queries;
+using MaomiAI.User.Shared.Commands.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MaomiAI.User.Api.Endpoints;
 
 /// <summary>
-/// 注册账号.
+/// 重置密码.
 /// </summary>
 [EndpointGroupName("user")]
-[HttpPost($"{UserApi.ApiPrefix}/register")]
-[AllowAnonymous]
-public class RegisterUserEndpoint : Endpoint<RegisterUserCommand, GuidResponse>
+[HttpPost($"{UserApi.ApiPrefix}/resetpassword")]
+public class UpdateUserPasswordEndpoint : Endpoint<UpdateUserPasswordCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterUserEndpoint"/> class.
+    /// Initializes a new instance of the <see cref="UpdateUserPasswordEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public RegisterUserEndpoint(IMediator mediator)
+    public UpdateUserPasswordEndpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <inheritdoc/>
-    public override Task<GuidResponse> ExecuteAsync(RegisterUserCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
+    public override async Task<EmptyCommandResponse> ExecuteAsync(UpdateUserPasswordCommand req, CancellationToken ct)
+    {
+        return await _mediator.Send(req, ct);
+    }
 }

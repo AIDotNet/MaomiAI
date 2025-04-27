@@ -1,0 +1,21 @@
+﻿// <copyright file="PreUploadImageCommandValidtor.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using FastEndpoints;
+using FluentValidation;
+using MaomiAI.Store.Commands;
+using MaomiAI.Team.Shared.Commands;
+
+namespace MaomiAI.Store.Validators;
+public class ComplateFileUploadCommandValidtor : Validator<ComplateFileUploadCommand>
+{
+    public ComplateFileUploadCommandValidtor()
+    {
+        RuleFor(x => x.FileId)
+            .NotEmpty()
+            .WithMessage("文件名称不能为空");
+    }
+}

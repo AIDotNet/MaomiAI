@@ -1,4 +1,4 @@
-// <copyrig   1ht file="RegisterUserCommandHandler.cs" company="MaomiAI">
+// <copyright file="RegisterUserCommandHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -14,6 +14,7 @@ using MaomiAI.User.Shared.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
 
 namespace MaomiAI.User.Core.Handlers;
 
@@ -75,6 +76,12 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
         try
         {
             restorePassword = _rsaProvider.Decrypt(request.Password);
+            Regex regex = new Regex(@"^(?![0-9]+$)(?![a-zA-Z]+$)(?![0-9a-zA-Z]+$)(?![0-9\\W]+$)(?![a-zA-Z\\W]+$)[0-9A-Za-z\\W]{8,30}$");
+            Match match = regex.Match(restorePassword);
+            if (!match.Success)
+            {
+                throw new BusinessException("密码 8-30 长度，并包含数字+字母+特殊字符.") { StatusCode = 400 };
+            }
         }
         catch
         {
@@ -92,7 +99,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
                 UserName = request.UserName,
                 Password = hashedPassword,
                 PasswordHalt = saltBase64,
-                AvatarUrl = string.Empty,
+                AvatarPath = string.Empty,
                 Phone = request.Phone,
                 IsEnable = true
             };

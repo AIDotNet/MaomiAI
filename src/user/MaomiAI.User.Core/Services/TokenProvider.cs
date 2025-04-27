@@ -37,7 +37,6 @@ public class TokenProvider : ITokenProvider
         Claim[] claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, userContext.UserId.ToString()),
-            new Claim(JwtRegisteredClaimNames.NameId, userContext.UserId.ToString()),
             new Claim(JwtRegisteredClaimNames.Name, userContext.UserName),
             new Claim(JwtRegisteredClaimNames.Nickname, userContext.NickName),
             new Claim(JwtRegisteredClaimNames.Email, userContext.Email),
@@ -54,7 +53,11 @@ public class TokenProvider : ITokenProvider
             Subject = new ClaimsIdentity(claims),
             Issuer = _systemOptions.Server,
             Audience = _systemOptions.Server,
+#if DEBUG
+            Expires = DateTime.UtcNow.AddDays(30),
+#else
             Expires = DateTime.UtcNow.AddMinutes(30),
+#endif
             SigningCredentials = new SigningCredentials(rsaKey, SecurityAlgorithms.RsaSha256),
             TokenType = "access_token",
         };
@@ -66,7 +69,6 @@ public class TokenProvider : ITokenProvider
         var resfrshTokenClaims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, userContext.UserId.ToString()),
-            new Claim(JwtRegisteredClaimNames.NameId, userContext.UserId.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim("token_type", "refresh")
         };

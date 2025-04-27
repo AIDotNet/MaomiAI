@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Routing;
 namespace MaomiAI.Store.Controllers;
 
 /// <summary>
-/// 获取上传头像的地址.
+/// 获取预上传文件签名地址，只能用于上传公开类文件，如头像等.
 /// </summary>
 [EndpointGroupName("store")]
 [FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_upload_image")]

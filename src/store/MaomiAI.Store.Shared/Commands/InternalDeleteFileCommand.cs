@@ -1,7 +1,7 @@
 ﻿using MaomiAI.Infra.Models;
 using MediatR;
 
-namespace MaomiAI.Store.InternalCommands;
+namespace MaomiAI.Store.Commands;
 
 /// <summary>
 /// 删除文件.

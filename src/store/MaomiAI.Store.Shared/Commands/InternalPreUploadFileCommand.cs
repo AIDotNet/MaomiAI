@@ -8,7 +8,7 @@ using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
 using MediatR;
 
-namespace MaomiAI.Store.InternalCommands;
+namespace MaomiAI.Store.Commands;
 
 /// <summary>
 /// 预上传文件，该命令只允许内部调用.

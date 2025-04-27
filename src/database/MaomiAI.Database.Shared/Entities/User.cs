@@ -35,9 +35,9 @@ public partial class UserEntity : IFullAudited
     public string NickName { get; set; } = null!;
 
     /// <summary>
-    /// 头像URL.
+    /// 头像路径.
     /// </summary>
-    public string AvatarUrl { get; set; } = null!;
+    public string AvatarPath { get; set; } = null!;
 
     /// <summary>
     /// 手机号.
@@ -45,7 +45,7 @@ public partial class UserEntity : IFullAudited
     public string Phone { get; set; } = null!;
 
     /// <summary>
-    /// 状态：true-正常，false-禁用.
+    /// 是否启用.
     /// </summary>
     public bool IsEnable { get; set; }
 
@@ -78,4 +78,9 @@ public partial class UserEntity : IFullAudited
     /// 计算密码值的salt.
     /// </summary>
     public string PasswordHalt { get; set; } = null!;
+
+    /// <summary>
+    /// 头像id.
+    /// </summary>
+    public Guid AvatarId { get; set; }
 }

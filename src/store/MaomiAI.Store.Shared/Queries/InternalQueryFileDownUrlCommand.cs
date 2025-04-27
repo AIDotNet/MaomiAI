@@ -1,4 +1,4 @@
-﻿namespace MaomiAI.Store.InternalQueries;
+﻿namespace MaomiAI.Store.Queries;
 
 public class InternalQueryFileDownUrlCommand
 {
