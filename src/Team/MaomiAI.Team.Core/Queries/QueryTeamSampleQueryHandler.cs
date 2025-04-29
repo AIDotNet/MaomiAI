@@ -6,8 +6,10 @@
 
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
-using MaomiAI.Team.Shared.Models;
+using MaomiAI.Database.Queries;
+using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries;
+using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,20 +19,26 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamSampleQueryHandler : IRequestHandler<TeamSimpleQuery, UserJoinedTeamItemResponse>
+public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleCommand, TeamSimpleResponse>
 {
     private readonly DatabaseContext _dbContext;
+    private readonly UserContext _userContext;
+    private readonly IMediator _mediator;
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryTeamSampleQueryHandler"/> class.
     /// </summary>
-    /// <param name="dbContext">数据库上下文.</param>
-    /// <param name="logger">日志记录器.</param>
-    public QueryTeamSampleQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger)
+    /// <param name="dbContext"></param>
+    /// <param name="logger"></param>
+    /// <param name="mediator"></param>
+    /// <param name="userContext"></param>
+    public QueryTeamSampleQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext)
     {
         _dbContext = dbContext;
         _logger = logger;
+        _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <summary>
@@ -39,28 +47,44 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<TeamSimpleQuery, User
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队信息.</returns>
-    public async Task<UserJoinedTeamItemResponse> Handle(TeamSimpleQuery request, CancellationToken cancellationToken)
+    public async Task<TeamSimpleResponse> Handle(QueryTeamSimpleCommand request, CancellationToken cancellationToken)
     {
-        var team = await _dbContext.Teams.Where(t => t.Id == request.Id)
-            .Select(x => new UserJoinedTeamItemResponse
+        var team = await _dbContext.Teams.Where(t => t.Id == request.TeamId)
+            .Select(x => new TeamSimpleResponse
             {
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                AvatarFileId = x.AvatarFileId,
+                AvatarId = x.AvatarId,
+                AvatarPath = x.AvatarPath,
                 IsDisable = x.IsDisable,
                 CreateTime = x.CreateTime,
                 UpdateTime = x.UpdateTime,
                 CreateUserId = x.CreateUserId,
                 IsPublic = x.IsPublic,
                 OwnUserId = x.OwnerId,
-                OwnUserName = string.Empty
+                OwnUserName = string.Empty,
+                UpdateUserId = x.UpdateUserId
             }).FirstOrDefaultAsync(cancellationToken);
 
         if (team == null)
         {
             throw new BusinessException("未找到团队");
         }
+
+        if (!team.IsPublic && team.OwnUserId != _userContext.UserId)
+        {
+            var joinedTeam = await _dbContext.TeamMembers.AnyAsync(x => x.TeamId == request.TeamId && x.UserId == _userContext.UserId);
+            if (!joinedTeam)
+            {
+                throw new BusinessException("没有权限访问该团队");
+            }
+        }
+
+        _ = await _mediator.Send(new FillUserInfoCommand<TeamSimpleResponse>
+        {
+            Items = new List<TeamSimpleResponse> { team }
+        });
 
         return team;
     }

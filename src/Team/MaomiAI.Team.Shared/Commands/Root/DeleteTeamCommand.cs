@@ -4,7 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
+using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Commands.Root;
@@ -12,10 +12,10 @@ namespace MaomiAI.Team.Shared.Commands.Root;
 /// <summary>
 /// 删除团队命令.
 /// </summary>
-public class DeleteTeamCommand : IRequest
+public class DeleteTeamCommand : IRequest<EmptyCommandResponse>
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid TeamId { get; set; }
 }

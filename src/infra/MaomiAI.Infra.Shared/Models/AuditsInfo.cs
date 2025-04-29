@@ -1,4 +1,10 @@
-﻿namespace MaomiAI.Infra.Models;
+﻿// <copyright file="AuditsInfo.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+namespace MaomiAI.Infra.Models;
 
 /// <summary>
 /// 数据子项.

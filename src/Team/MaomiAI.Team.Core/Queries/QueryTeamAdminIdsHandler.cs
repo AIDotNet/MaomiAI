@@ -1,11 +1,12 @@
-// <copyright file="CheckTeamOwnerQueryHandler.cs" company="MaomiAI">
+// <copyright file="QueryTeamAdminIdsHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using MaomiAI.Database;
-using MaomiAI.Team.Shared.Queries;
+using MaomiAI.Infra.Models;
+using MaomiAI.Team.Shared.Queries.Admin;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +20,16 @@ public class QueryTeamAdminIdsHandler : IRequestHandler<QueryTeamAdminIdsListCom
 {
     private readonly DatabaseContext _dbContext;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QueryTeamAdminIdsHandler"/> class.
+    /// </summary>
+    /// <param name="dbContext"></param>
     public QueryTeamAdminIdsHandler(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }
 
+    /// <inheritdoc/>
     public async Task<TeamAdminListIdsResponse> Handle(QueryTeamAdminIdsListCommand request, CancellationToken cancellationToken)
     {
         var ownId = await _dbContext.Teams.Where(x => x.Id == request.TeamId)

@@ -1,4 +1,4 @@
-// <copyright file="GetTeamByIdQueryHandler.cs" company="MaomiAI">
+// <copyright file="QueryTeamDetailQueryHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -6,8 +6,10 @@
 
 using Maomi.AI.Exceptions;
 using MaomiAI.Database;
-using MaomiAI.Team.Shared.Models;
+using MaomiAI.Database.Queries;
+using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries;
+using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,20 +19,26 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, TeamDetailDto>
+public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, TeamDetailResponse>
 {
     private readonly DatabaseContext _dbContext;
+    private readonly IMediator _mediator;
+    private readonly UserContext _userContext;
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryTeamDetailQueryHandler"/> class.
     /// </summary>
-    /// <param name="dbContext">数据库上下文.</param>
-    /// <param name="logger">日志记录器.</param>
-    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger)
+    /// <param name="dbContext"></param>
+    /// <param name="logger"></param>
+    /// <param name="mediator"></param>
+    /// <param name="userContext"></param>
+    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext)
     {
         _dbContext = dbContext;
         _logger = logger;
+        _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <summary>
@@ -39,15 +47,17 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队信息.</returns>
-    public async Task<TeamDetailDto> Handle(QueryTeamDetailCommand request, CancellationToken cancellationToken)
+    public async Task<TeamDetailResponse> Handle(QueryTeamDetailCommand request, CancellationToken cancellationToken)
     {
-        var team = await _dbContext.Teams.Where(t => t.Id == request.Id)
-            .Select(x => new TeamDetailDto
+        var team = await _dbContext.Teams.Where(t => t.Id == request.TeamId)
+            .Select(x => new TeamDetailResponse
             {
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                AvatarFileId = x.AvatarFileId,
+                AvatarId = x.AvatarId,
+                AvatarPath = x.AvatarPath,
+                UpdateUserId = x.UpdateUserId,
                 IsDisable = x.IsDisable,
                 CreateTime = x.CreateTime,
                 UpdateTime = x.UpdateTime,
@@ -62,6 +72,20 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
         {
             throw new BusinessException("未找到团队");
         }
+
+        if (!team.IsPublic && team.OwnUserId != _userContext.UserId)
+        {
+            var joinedTeam = await _dbContext.TeamMembers.AnyAsync(x => x.TeamId == request.TeamId && x.UserId == _userContext.UserId);
+            if (!joinedTeam)
+            {
+                throw new BusinessException("没有权限访问该团队");
+            }
+        }
+
+        _ = await _mediator.Send(new FillUserInfoCommand<TeamDetailResponse>
+        {
+            Items = new List<TeamDetailResponse> { team }
+        });
 
         return team;
     }

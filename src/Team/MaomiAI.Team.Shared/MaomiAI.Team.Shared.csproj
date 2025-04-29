@@ -21,9 +21,4 @@
         <ProjectReference Include="..\..\User\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="InternalCommands\" />
-      <Folder Include="Queries\Admin\" />
-    </ItemGroup>
-
 </Project> 

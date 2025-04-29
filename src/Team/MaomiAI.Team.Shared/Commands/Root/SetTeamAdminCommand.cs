@@ -19,7 +19,7 @@ public class SetTeamAdminCommand : IRequest<EmptyCommandResponse>
     public Guid UserId { get; set; }
 
     /// <summary>
-    /// 设置为管理员.
+    /// 设置为管理员，或取消管理员.
     /// </summary>
     public bool IsAdmin { get; set; }
 }

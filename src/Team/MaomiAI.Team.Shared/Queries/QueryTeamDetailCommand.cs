@@ -4,7 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.Team.Shared.Models;
+using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Queries;
@@ -12,10 +12,10 @@ namespace MaomiAI.Team.Shared.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamDetailCommand : IRequest<TeamDetailDto>
+public class QueryTeamDetailCommand : IRequest<TeamDetailResponse>
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid TeamId { get; set; }
 }

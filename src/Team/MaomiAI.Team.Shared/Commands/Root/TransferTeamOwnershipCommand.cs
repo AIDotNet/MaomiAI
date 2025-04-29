@@ -25,4 +25,4 @@ public class TransferTeamOwnershipCommand : IRequest
     /// </summary>
     [Required]
     public Guid NewOwnerId { get; set; }
-} 
+}

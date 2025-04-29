@@ -2,9 +2,12 @@
 using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MaomiAI.User.Api.Endpoints;
 
+[EndpointGroupName("user")]
+[HttpPost($"{UserApi.ApiPrefix}/uploadavatar")]
 public class UploadtUserAvatarEndpoint : Endpoint<UploadtUserAvatarCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;

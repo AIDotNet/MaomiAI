@@ -7,8 +7,6 @@
 using FastEndpoints;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands.Root;
-using MaomiAI.Team.Shared.Models;
-using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 
@@ -20,7 +18,7 @@ namespace MaomiAI.Team.Api.Endpoints.Root;
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/{{id}}/update")]
 [Authorize]
-public class UpdateTeamEndpoint : Endpoint<UpdateTeamCommand, EmptyDto>
+public class UpdateTeamEndpoint : Endpoint<UpdateTeamInfoCommand, EmptyDto>
 {
     private readonly IMediator _mediator;
 
@@ -34,7 +32,7 @@ public class UpdateTeamEndpoint : Endpoint<UpdateTeamCommand, EmptyDto>
     }
 
     /// <inheritdoc/>
-    public override async Task<EmptyDto> ExecuteAsync(UpdateTeamCommand req, CancellationToken ct)
+    public override async Task<EmptyDto> ExecuteAsync(UpdateTeamInfoCommand req, CancellationToken ct)
     {
         await _mediator.Send(req);
         return EmptyDto.Default;

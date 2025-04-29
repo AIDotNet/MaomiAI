@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using FluentValidation;
 using MaomiAI.Infra.Models;
 using MediatR;
 
@@ -24,9 +23,4 @@ public class CreateTeamCommand : IRequest<GuidResponse>
     /// 团队描述.
     /// </summary>
     public string Description { get; set; } = null!;
-
-    /// <summary>
-    /// 是否允许被外部搜索.
-    /// </summary>
-    public bool IsPublic { get; set; }
 }

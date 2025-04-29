@@ -25,9 +25,9 @@ public partial class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
-        entity.Property(e => e.AvatarFileId)
+        entity.Property(e => e.AvatarId)
             .HasComment("团队头像")
-            .HasColumnName("avatar_file_id");
+            .HasColumnName("avatar_id");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")

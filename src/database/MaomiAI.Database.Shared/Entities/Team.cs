@@ -72,5 +72,10 @@ public partial class TeamEntity : IFullAudited
     /// <summary>
     /// 团队头像.
     /// </summary>
-    public Guid AvatarFileId { get; set; }
+    public Guid AvatarId { get; set; }
+
+    /// <summary>
+    /// 团队头像.
+    /// </summary>
+    public string AvatarPath { get; set; } = null!;
 }
