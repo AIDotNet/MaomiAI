@@ -11,7 +11,7 @@ namespace MaomiAI.Team.Shared.Commands.Root;
 /// <summary>
 /// 创建团队命令.
 /// </summary>
-public class CreateTeamCommand : IRequest<GuidResponse>
+public class CreateTeamCommand : IRequest<IdResponse>
 {
     /// <summary>
     /// 团队名称.

@@ -6,8 +6,12 @@
 
 namespace MaomiAI.AiModel.Api;
 
+/// <summary>
+/// AiModelApiModule.
+/// </summary>
 public class AiModelApiModule : IModule
 {
+    /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)
     {
     }

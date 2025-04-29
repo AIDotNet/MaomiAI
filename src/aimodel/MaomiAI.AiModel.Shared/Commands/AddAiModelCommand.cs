@@ -12,7 +12,7 @@ namespace MaomiAI.AiModel.Shared.Commands;
 /// <summary>
 /// 添加 AI 模型.
 /// </summary>
-public class AddAiModelCommand : IRequest<GuidResponse>
+public class AddAiModelCommand : IRequest<IdResponse>
 {
     /// <summary>
     /// 团队 id.

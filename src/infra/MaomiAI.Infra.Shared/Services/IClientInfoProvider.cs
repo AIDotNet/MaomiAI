@@ -8,5 +8,5 @@ namespace MaomiAI.Infra.Services;
 
 public interface IClientInfoProvider
 {
-    ClientInfo GetClientInfo();
+    MaomiAI.Infra.Models.ClientInfo GetClientInfo();
 }

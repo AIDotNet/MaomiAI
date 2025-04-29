@@ -9,10 +9,10 @@ namespace MaomiAI.Infra.Models;
 /// <summary>
 /// Guid.
 /// </summary>
-public class GuidResponse
+public class IdResponse
 {
     /// <summary>
     /// Guid.
     /// </summary>
-    public Guid Guid { get; init; }
+    public Guid Id { get; init; }
 }

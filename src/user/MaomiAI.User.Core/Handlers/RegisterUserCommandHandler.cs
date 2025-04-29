@@ -19,7 +19,7 @@ namespace MaomiAI.User.Core.Handlers;
 /// <summary>
 /// 注册账号.
 /// </summary>
-public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, GuidResponse>
+public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, IdResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly ILogger<RegisterUserCommandHandler> _logger;
@@ -44,7 +44,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
     /// <param name="request">命令请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>新用户ID.</returns>
-    public async Task<GuidResponse> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    public async Task<IdResponse> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         var existingUser = await _dbContext.Users
                 .Where(u => u.UserName == request.UserName || u.Email == request.Email || u.Phone == request.Phone)
@@ -105,9 +105,9 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
             await _dbContext.Users.AddAsync(userEntity);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            return new GuidResponse
+            return new IdResponse
             {
-                Guid = userEntity.Id
+                Id = userEntity.Id
             };
         }
         catch (Exception ex)

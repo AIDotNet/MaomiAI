@@ -17,7 +17,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// </summary>
 [EndpointGroupName("aimodel")]
 [HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/admodel/create")]
-public class AddAiModelEndpoint : Endpoint<AddAiModelCommand, GuidResponse>
+public class AddAiModelEndpoint : Endpoint<AddAiModelCommand, IdResponse>
 {
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
@@ -34,7 +34,7 @@ public class AddAiModelEndpoint : Endpoint<AddAiModelCommand, GuidResponse>
     }
 
     /// <inheritdoc/>
-    public override async Task<GuidResponse> ExecuteAsync(AddAiModelCommand req, CancellationToken ct)
+    public override async Task<IdResponse> ExecuteAsync(AddAiModelCommand req, CancellationToken ct)
     {
         var isAdmin = await _mediator.Send(new QueryUserIsTeamAdminCommand
         {

@@ -52,8 +52,4 @@
 
 		<AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Include="$(SolutionDir)\Using.cs" Link="Using.cs" />
-	</ItemGroup>
 </Project>

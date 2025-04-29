@@ -1,14 +1,12 @@
-﻿// <copyright file="AddAiModelEndpoint.cs" company="MaomiAI">
+﻿// <copyright file="QueryAiModelProviderListEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.AiModel.Shared.Commands.Admin;
 using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Routing;

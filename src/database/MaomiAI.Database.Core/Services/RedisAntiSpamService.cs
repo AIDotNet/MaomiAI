@@ -33,7 +33,7 @@ public class RedisAntiSpamService
     /// <param name="seconds">时间窗口（秒）.</param>
     /// <param name="count">最大请求次数.</param>
     /// <returns>是否允许请求.</returns>
-    public async Task<bool> IsRequestAllowed(string key, ClientInfo clientInfo, int seconds, int count)
+    public async Task<bool> IsRequestAllowed(string key, Models.ClientInfo clientInfo, int seconds, int count)
     {
         string clientKey = $"antispam:{key}";
 

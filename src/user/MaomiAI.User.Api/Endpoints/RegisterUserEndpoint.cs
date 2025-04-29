@@ -17,7 +17,7 @@ namespace MaomiAI.User.Api.Endpoints;
 [EndpointGroupName("user")]
 [HttpPost($"{UserApi.ApiPrefix}/register")]
 [AllowAnonymous]
-public class RegisterUserEndpoint : Endpoint<RegisterUserCommand, GuidResponse>
+public class RegisterUserEndpoint : Endpoint<RegisterUserCommand, IdResponse>
 {
     private readonly IMediator _mediator;
 
@@ -31,6 +31,6 @@ public class RegisterUserEndpoint : Endpoint<RegisterUserCommand, GuidResponse>
     }
 
     /// <inheritdoc/>
-    public override Task<GuidResponse> ExecuteAsync(RegisterUserCommand req, CancellationToken ct)
+    public override Task<IdResponse> ExecuteAsync(RegisterUserCommand req, CancellationToken ct)
         => _mediator.Send(req, ct);
 }

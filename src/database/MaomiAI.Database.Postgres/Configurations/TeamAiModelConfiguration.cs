@@ -1,4 +1,6 @@
-﻿using MaomiAI.Database.Entities;
+﻿using System;
+using System.Collections.Generic;
+using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -63,6 +65,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasMaxLength(50)
             .HasComment("模型id")
             .HasColumnName("mode_id");
+        entity.Property(e => e.Name)
+            .HasMaxLength(20)
+            .HasComment("名字")
+            .HasColumnName("name");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");

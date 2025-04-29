@@ -14,7 +14,6 @@ namespace MaomiAI.User.Core.Services;
 /// <summary>
 /// 用户上下文提供者.
 /// </summary>
-[InjectOnScoped]
 public class UserContextProvider : IUserContextProvider
 {
     private readonly IHttpContextAccessor _httpContextAccessor;

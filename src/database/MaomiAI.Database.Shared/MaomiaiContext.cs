@@ -65,6 +65,11 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<TeamAiModelEntity> TeamAiModels { get; set; }
 
     /// <summary>
+    /// 默认模型配置.
+    /// </summary>
+    public virtual DbSet<TeamDefaultAiModelEntity> TeamDefaultAiModels { get; set; }
+
+    /// <summary>
     /// 团队成员.
     /// </summary>
     public virtual DbSet<TeamMemberEntity> TeamMembers { get; set; }

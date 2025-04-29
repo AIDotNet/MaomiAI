@@ -16,7 +16,7 @@ namespace MaomiAI.Team.Core.Handlers;
 /// <summary>
 /// 处理创建团队命令.
 /// </summary>
-public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidResponse>
+public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, IdResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly ILogger<CreateTeamCommandHandler> _logger;
@@ -39,7 +39,7 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidR
     }
 
     /// <inheritdoc/>
-    public async Task<GuidResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
+    public async Task<IdResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
     {
         Guid currentUserId = _userContext.UserId;
 
@@ -63,6 +63,6 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, GuidR
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         _logger.LogInformation("The user creates a team,{@Team}.", team);
-        return new GuidResponse { Guid = team.Id };
+        return new IdResponse { Id = team.Id };
     }
 }

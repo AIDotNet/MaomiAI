@@ -37,7 +37,7 @@ app.UseHttpLogging();
 app.UseFastEndpoints(c =>
 {
     c.Endpoints.RoutePrefix = "api";
-    c.Errors.ProducesMetadataType = typeof(ErrorResponse);
+    c.Errors.ProducesMetadataType = typeof(MaomiAI.Infra.Models.ErrorResponse);
     c.Errors.ResponseBuilder = (failures, ctx, statusCode) =>
     {
         return new MaomiAI.Infra.Models.ErrorResponse(failures, statusCode)

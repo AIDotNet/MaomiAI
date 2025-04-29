@@ -15,7 +15,7 @@ namespace MaomiAI.Team.Api.Endpoints.Root;
 /// </summary>
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/create")]
-public class CreateTeamEndpoint : Endpoint<CreateTeamCommand, GuidResponse>
+public class CreateTeamEndpoint : Endpoint<CreateTeamCommand, IdResponse>
 {
     private readonly IMediator _mediator;
 
@@ -29,6 +29,6 @@ public class CreateTeamEndpoint : Endpoint<CreateTeamCommand, GuidResponse>
     }
 
     /// <inheritdoc/>
-    public override Task<GuidResponse> ExecuteAsync(CreateTeamCommand req, CancellationToken ct)
+    public override Task<IdResponse> ExecuteAsync(CreateTeamCommand req, CancellationToken ct)
         => _mediator.Send(req);
 }

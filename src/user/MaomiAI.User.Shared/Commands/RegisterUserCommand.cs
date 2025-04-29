@@ -11,7 +11,7 @@ namespace MaomiAI.User.Shared.Commands;
 /// <summary>
 /// 注册用户.
 /// </summary>
-public class RegisterUserCommand : IRequest<GuidResponse>
+public class RegisterUserCommand : IRequest<IdResponse>
 {
     /// <summary>
     /// 用户名.

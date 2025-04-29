@@ -81,4 +81,9 @@ public partial class TeamAiModelEntity : IFullAudited
     /// 支持function call.
     /// </summary>
     public bool IsSupportFunctionCall { get; set; }
+
+    /// <summary>
+    /// 名字.
+    /// </summary>
+    public string Name { get; set; } = null!;
 }
