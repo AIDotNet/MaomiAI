@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Entities;
+﻿using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -23,6 +21,13 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
+        entity.Property(e => e.AiModelFunction)
+            .HasComment("模型功能AiModelFunction")
+            .HasColumnName("ai_model_function");
+        entity.Property(e => e.AiProvider)
+            .HasDefaultValue(0)
+            .HasComment("ai供应商AiProvider")
+            .HasColumnName("ai_provider");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")
@@ -42,6 +47,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
+        entity.Property(e => e.IsSupportFunctionCall)
+            .HasDefaultValue(false)
+            .HasComment("支持function call")
+            .HasColumnName("is_support_function_call");
         entity.Property(e => e.IsSupportImg)
             .HasDefaultValue(false)
             .HasComment("是否支持图片")
@@ -54,13 +63,6 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasMaxLength(50)
             .HasComment("模型id")
             .HasColumnName("mode_id");
-        entity.Property(e => e.ModelType)
-            .HasComment("模型类型")
-            .HasColumnName("model_type");
-        entity.Property(e => e.Provider)
-            .HasMaxLength(20)
-            .HasComment("ai供应商")
-            .HasColumnName("provider");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");

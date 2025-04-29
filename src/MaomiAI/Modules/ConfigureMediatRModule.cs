@@ -1,5 +1,4 @@
-﻿using Maomi;
-using MaomiAI.Infra;
+﻿using MaomiAI.Infra;
 
 namespace MaomiAI.Modules;
 

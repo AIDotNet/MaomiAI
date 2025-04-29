@@ -1,5 +1,4 @@
-﻿using MaomiAI.Infra.Models;
-using MediatR;
+﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
 
 namespace MaomiAI.Team.Shared.Commands.User;

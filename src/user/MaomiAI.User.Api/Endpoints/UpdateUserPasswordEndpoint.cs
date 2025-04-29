@@ -5,11 +5,8 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Commands;
-using MaomiAI.User.Shared.Commands.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MaomiAI.User.Api.Endpoints;
 

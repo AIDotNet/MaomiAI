@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.User.Core.Services;
 using MaomiAI.User.Shared.Commands;

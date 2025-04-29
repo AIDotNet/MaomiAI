@@ -5,7 +5,6 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Infra.Models;
 using MaomiAI.Infra.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;

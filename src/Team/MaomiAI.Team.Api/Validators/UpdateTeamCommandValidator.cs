@@ -4,10 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
 using FluentValidation;
 using MaomiAI.Team.Shared.Commands.Root;
-using MediatR;
 
 namespace MaomiAI.Team.Shared.Validators;
 

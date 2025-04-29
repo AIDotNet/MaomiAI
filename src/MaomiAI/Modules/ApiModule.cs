@@ -1,6 +1,4 @@
-﻿using Maomi;
-
-namespace MaomiAI.Modules;
+﻿namespace MaomiAI.Modules;
 
 /// <summary>
 /// 聚合 API 项目中的各个子模块.

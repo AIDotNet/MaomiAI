@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
 using Maomi.I18n;
 using MaomiAI.AiModel.Core;
 using MaomiAI.Database;

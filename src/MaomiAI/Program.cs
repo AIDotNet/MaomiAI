@@ -5,8 +5,6 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 

@@ -6,9 +6,6 @@
 
 #pragma warning disable SA1118 // Parameter should not span multiple lines
 
-using Maomi;
-using Maomi.AI.Exceptions;
-using MaomiAI.Infra.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;

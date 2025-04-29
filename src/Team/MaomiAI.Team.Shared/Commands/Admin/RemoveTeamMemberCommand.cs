@@ -4,8 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.ComponentModel.DataAnnotations;
-using MaomiAI.Infra.Models;
 using MediatR;
 
 namespace MaomiAI.Team.Shared.Commands.Admin;

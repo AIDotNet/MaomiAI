@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
 

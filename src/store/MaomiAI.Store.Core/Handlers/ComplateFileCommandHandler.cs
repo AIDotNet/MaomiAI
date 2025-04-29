@@ -1,5 +1,4 @@
-﻿using Maomi.AI.Exceptions;
-using MaomiAI.Database;
+﻿using MaomiAI.Database;
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
 using MaomiAI.Store.Services;

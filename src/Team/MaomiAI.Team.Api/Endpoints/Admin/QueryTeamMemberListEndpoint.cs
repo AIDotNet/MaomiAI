@@ -5,10 +5,6 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Infra.Models;
-using MaomiAI.Public.Queries;
-using MaomiAI.Public.Queries.Response;
-using MaomiAI.Team.Shared.Commands.Admin;
 using MaomiAI.Team.Shared.Queries.Admin;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;

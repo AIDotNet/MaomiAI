@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Entities;
+﻿using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -34,6 +32,7 @@ public partial class UserConfiguration : IEntityTypeConfiguration<UserEntity>
             .HasColumnName("avatar_id");
         entity.Property(e => e.AvatarPath)
             .HasMaxLength(255)
+            .HasDefaultValueSql("''::character varying")
             .HasComment("头像路径")
             .HasColumnName("avatar_path");
         entity.Property(e => e.CreateTime)

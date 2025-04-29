@@ -6,7 +6,6 @@
 
 using FastEndpoints;
 using FluentValidation;
-using MaomiAI.User.Shared.Queries;
 
 namespace MaomiAI.User.Shared.Commands.Validators;
 

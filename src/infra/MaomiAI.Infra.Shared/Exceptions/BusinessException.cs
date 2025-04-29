@@ -1,10 +1,8 @@
-﻿// <copyright file="BusinessException.cs" company="MaomiAI">
-// Copyright (c) MaomiAI. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-// Github link: https://github.com/AIDotNet/MaomiAI
+﻿// <copyright file="BusinessException.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace Maomi.AI.Exceptions;
+namespace MaomiAI.Infra.Exceptions;
 
 /// <summary>
 /// 业务异常.

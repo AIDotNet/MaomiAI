@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Audits;
+﻿using MaomiAI.Database.Audits;
 
 namespace MaomiAI.Database.Entities;
 
@@ -20,14 +18,14 @@ public partial class TeamAiModelEntity : IFullAudited
     public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 模型类型.
+    /// 模型功能AiModelFunction.
     /// </summary>
-    public int ModelType { get; set; }
+    public int AiModelFunction { get; set; }
 
     /// <summary>
-    /// ai供应商.
+    /// ai供应商AiProvider.
     /// </summary>
-    public string Provider { get; set; } = null!;
+    public int AiProvider { get; set; }
 
     /// <summary>
     /// api服务端点.
@@ -78,4 +76,9 @@ public partial class TeamAiModelEntity : IFullAudited
     /// 更新人ID.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 支持function call.
+    /// </summary>
+    public bool IsSupportFunctionCall { get; set; }
 }

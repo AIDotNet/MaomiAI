@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
 using Maomi.MQ;
 using MaomiAI.Infra.Defaults;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,5 +1,4 @@
-﻿using Maomi;
-using MaomiAI.AiModel.Api;
+﻿using MaomiAI.AiModel.Api;
 
 namespace MaomiAI.AiModel.Core;
 

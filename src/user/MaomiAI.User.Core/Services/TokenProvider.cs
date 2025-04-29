@@ -1,9 +1,4 @@
-﻿using Maomi;
-using Maomi.AI.Exceptions;
-using Maomi.I18n;
-using MaomiAI.Infra;
-using MaomiAI.Infra.Models;
-using MaomiAI.Infra.Service;
+﻿using MaomiAI.Infra;
 using MaomiAI.Infra.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

@@ -1,5 +1,4 @@
-﻿using MaomiAI.Infra.Models;
-using MediatR;
+﻿using MediatR;
 
 namespace MaomiAI.Store.Commands;
 

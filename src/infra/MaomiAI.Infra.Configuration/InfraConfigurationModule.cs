@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
 using MaomiAI.Infra.Service;
 using MaomiAI.Infra.Services;
 using Microsoft.Extensions.Configuration;

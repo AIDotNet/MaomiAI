@@ -4,8 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using System.Net;
-
 namespace MaomiAI.Infra.Models;
 
 /// <summary>

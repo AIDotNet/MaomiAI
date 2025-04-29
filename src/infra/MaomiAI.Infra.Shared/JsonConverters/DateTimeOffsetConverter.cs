@@ -1,5 +1,4 @@
-﻿using FastEndpoints;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace MaomiAI.Infra.JsonConverters;

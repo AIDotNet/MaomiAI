@@ -6,7 +6,6 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries.Admin;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;

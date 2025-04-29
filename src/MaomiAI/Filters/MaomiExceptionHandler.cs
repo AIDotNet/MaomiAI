@@ -4,8 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi.AI.Exceptions;
-using MaomiAI.Infra.Models;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace MaomiAI.Filters;

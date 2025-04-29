@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
 using MaomiAI.Infra;
 using MaomiAI.Store.Enums;
 using MaomiAI.Store.Services;

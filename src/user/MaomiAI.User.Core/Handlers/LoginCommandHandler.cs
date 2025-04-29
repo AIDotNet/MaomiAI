@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra;
 using MaomiAI.Infra.Helpers;
@@ -15,7 +14,6 @@ using MaomiAI.User.Shared.Commands.Responses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using StackExchange.Redis;
 using StackExchange.Redis.Extensions.Core.Abstractions;
 
 namespace MaomiAI.User.Core.Handlers;

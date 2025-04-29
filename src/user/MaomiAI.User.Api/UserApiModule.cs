@@ -2,8 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Maomi;
-
 namespace MaomiAI.User.Api
 {
     public class UserApiModule : IModule

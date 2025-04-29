@@ -1,5 +1,4 @@
 ﻿using FastEndpoints;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

@@ -5,7 +5,7 @@
 // </copyright>
 
 using MaomiAI.Database;
-using MaomiAI.Infra.Models;
+using MaomiAI.Team.Shared.Queries;
 using MaomiAI.Team.Shared.Queries.Admin;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
@@ -16,15 +16,15 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取管理员 id 列表.
 /// </summary>
-public class QueryTeamAdminIdsHandler : IRequestHandler<QueryTeamAdminIdsListCommand, TeamAdminListIdsResponse>
+public class QueryTeamAdminIdsCommandHandler : IRequestHandler<QueryTeamAdminIdsListCommand, TeamAdminListIdsResponse>
 {
     private readonly DatabaseContext _dbContext;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueryTeamAdminIdsHandler"/> class.
+    /// Initializes a new instance of the <see cref="QueryTeamAdminIdsCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
-    public QueryTeamAdminIdsHandler(DatabaseContext dbContext)
+    public QueryTeamAdminIdsCommandHandler(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }

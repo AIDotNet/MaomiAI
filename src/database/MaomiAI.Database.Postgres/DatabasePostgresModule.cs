@@ -1,11 +1,9 @@
-﻿using Maomi;
-using MaomiAI.Infra;
+﻿using MaomiAI.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Reflection.Emit;
 
 namespace MaomiAI.Database.Postgres
 {

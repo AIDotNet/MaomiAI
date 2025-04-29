@@ -2,13 +2,9 @@
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
         <RootNamespace>MaomiAI.Infra</RootNamespace>
-        <LangVersion>12.0</LangVersion>
     </PropertyGroup>
-
+	
     <ItemGroup>
         <PackageReference Include="FastEndpoints" Version="6.0.0-beta.11" />
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
@@ -18,7 +14,6 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.9.0" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.31" />
-
         <PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
 
     </ItemGroup>

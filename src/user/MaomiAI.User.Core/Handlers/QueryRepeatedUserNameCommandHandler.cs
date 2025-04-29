@@ -1,5 +1,4 @@
 ﻿using MaomiAI.Database;
-using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

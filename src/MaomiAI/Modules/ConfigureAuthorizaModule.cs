@@ -1,11 +1,7 @@
-﻿using Maomi;
-using MaomiAI.Infra;
+﻿using MaomiAI.Infra;
 using MaomiAI.Infra.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Npgsql.Internal.Postgres;
-using System.Security.Cryptography;
-using YamlDotNet.Core.Tokens;
 
 namespace MaomiAI.Modules;
 

@@ -5,7 +5,6 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Infra.Models;
 using MaomiAI.User.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

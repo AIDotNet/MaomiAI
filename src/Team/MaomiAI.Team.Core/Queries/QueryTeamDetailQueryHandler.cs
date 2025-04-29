@@ -4,10 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Queries;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;

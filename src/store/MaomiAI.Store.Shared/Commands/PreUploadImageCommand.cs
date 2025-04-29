@@ -7,7 +7,6 @@
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
 using MediatR;
-using System.ComponentModel;
 
 namespace MaomiAI.Team.Shared.Commands;
 

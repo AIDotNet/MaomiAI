@@ -1,5 +1,4 @@
-﻿using Maomi;
-using MaomiAI.Infra;
+﻿using MaomiAI.Infra;
 using MaomiAI.User.Core.Services;
 using Microsoft.Extensions.Options;
 using Serilog;

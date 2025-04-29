@@ -5,19 +5,16 @@
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MaomiAI.Team.Api.Endpoints.Root;
 
 /// <summary>
-/// 删除团队.
+/// 创建团队.
 /// </summary>
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/create")]
-[Authorize]
 public class CreateTeamEndpoint : Endpoint<CreateTeamCommand, GuidResponse>
 {
     private readonly IMediator _mediator;

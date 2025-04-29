@@ -6,7 +6,6 @@
 
 using FastEndpoints;
 using FluentValidation;
-using MaomiAI.Store.Commands;
 using MaomiAI.Team.Shared.Commands;
 
 namespace MaomiAI.Store.Validators;

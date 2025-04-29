@@ -4,9 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
-using Maomi.AI.Exceptions;
-using MaomiAI.Infra.Models;
 using MaomiAI.Infra.Services;
 using Microsoft.AspNetCore.Http;
 

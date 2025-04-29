@@ -1,7 +1,6 @@
-﻿using NSwag.Generation.Processors.Contexts;
+﻿using NSwag;
 using NSwag.Generation.Processors;
-using NSwag;
-using MaomiAI.Infra.Models;
+using NSwag.Generation.Processors.Contexts;
 
 namespace MaomiAI.Swaggers;
 

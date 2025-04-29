@@ -1,9 +1,9 @@
-﻿// <copyright file="Program.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="Program.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
-using MaomiAI;
 using MaomiAI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
 using System.Text;
 
+/// <summary>
+/// Program.
+/// </summary>
 public class Program
 {
     private static async Task Main()
@@ -22,12 +25,12 @@ public class Program
         Console.WriteLine("使用前先删除 Data、Entities 两个目录，用完后也要删除");
 
         DirectoryInfo? assemblyDirectory = Directory.GetParent(typeof(Program).Assembly.Location);
-        if (assemblyDirectory.FullName.Contains("bin"))
+        if (assemblyDirectory!.FullName.Contains("bin", StringComparison.CurrentCultureIgnoreCase))
         {
-            assemblyDirectory = assemblyDirectory.Parent.Parent.Parent;
+            assemblyDirectory = assemblyDirectory!.Parent!.Parent!.Parent;
         }
 
-        string projectDirectory = assemblyDirectory.FullName;
+        string projectDirectory = assemblyDirectory!.FullName;
         Directory.SetCurrentDirectory(projectDirectory);
         Console.WriteLine("当前工作目录: " + projectDirectory);
 

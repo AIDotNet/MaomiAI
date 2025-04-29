@@ -1,5 +1,4 @@
-﻿using Maomi.AI.Exceptions;
-using MaomiAI.Store.Commands;
+﻿using MaomiAI.Store.Commands;
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Team.Shared.Helpers;
 using MediatR;

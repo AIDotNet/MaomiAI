@@ -4,16 +4,12 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
 using MaomiAI.Database;
 using MaomiAI.Infra;
-using MaomiAI.Store.Enums;
 using MaomiAI.Store.Queries;
 using MaomiAI.Store.Queries.Response;
-using MaomiAI.Store.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MaomiAI.Store.Commands;
 

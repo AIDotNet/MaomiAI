@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MaomiAI.Database.Audits;
+﻿using MaomiAI.Database.Audits;
 
 namespace MaomiAI.Database.Entities;
 
@@ -75,7 +73,7 @@ public partial class TeamEntity : IFullAudited
     public Guid AvatarId { get; set; }
 
     /// <summary>
-    /// 团队头像.
+    /// 头像路径.
     /// </summary>
     public string AvatarPath { get; set; } = null!;
 }

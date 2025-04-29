@@ -4,8 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
-
 namespace MaomiAI.User.Shared;
 
 /// <summary>

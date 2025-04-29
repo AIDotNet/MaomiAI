@@ -6,14 +6,12 @@
 
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using Maomi;
 using MaomiAI.Infra;
 using MaomiAI.Infra.JsonConverters;
 using MaomiAI.Swaggers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.Extensions.Options;
 using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
 using NSwag;

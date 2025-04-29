@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Maomi;
 using MaomiAI.Database.Postgres;
 using MaomiAI.Infra;
 using Microsoft.EntityFrameworkCore;

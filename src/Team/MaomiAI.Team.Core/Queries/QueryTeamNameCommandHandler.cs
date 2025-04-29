@@ -5,8 +5,6 @@
 // </copyright>
 
 using MaomiAI.Database;
-using MaomiAI.Infra.Models;
-using MaomiAI.Team.Api.Endpoints;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

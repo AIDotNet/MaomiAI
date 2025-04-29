@@ -4,7 +4,6 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.Infra.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaomiAI.Controllers
