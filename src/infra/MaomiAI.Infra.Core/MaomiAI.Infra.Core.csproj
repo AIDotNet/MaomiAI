@@ -12,7 +12,4 @@
         <ProjectReference Include="..\MaomiAI.Infra.Configuration\MaomiAI.Infra.Configuration.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
-    </ItemGroup>
 </Project>

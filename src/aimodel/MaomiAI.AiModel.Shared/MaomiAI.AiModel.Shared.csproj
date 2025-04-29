@@ -4,11 +4,10 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <RootNamespace>MaomiAI.Public</RootNamespace>
-
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MaomiAI.Public.Shared\MaomiAI.Public.Shared.csproj" />
+    <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
   </ItemGroup>
+
 </Project>

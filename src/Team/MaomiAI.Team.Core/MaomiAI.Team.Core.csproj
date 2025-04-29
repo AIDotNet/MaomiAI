@@ -7,9 +7,6 @@
         <RootNamespace>MaomiAI.Team.Core</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />

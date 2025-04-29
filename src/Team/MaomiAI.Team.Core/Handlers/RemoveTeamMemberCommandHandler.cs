@@ -8,6 +8,7 @@ using Maomi.AI.Exceptions;
 using MaomiAI.Database;
 using MaomiAI.Infra.Models;
 using MaomiAI.Team.Shared.Commands.Admin;
+using MaomiAI.Team.Shared.Queries.Admin;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

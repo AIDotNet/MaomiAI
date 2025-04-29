@@ -26,7 +26,4 @@
         <ProjectReference Include="..\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
-    </ItemGroup>
 </Project>

@@ -8,10 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\..\stylecop.json"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj"/>
         <ProjectReference Include="..\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj"/>
     </ItemGroup>
