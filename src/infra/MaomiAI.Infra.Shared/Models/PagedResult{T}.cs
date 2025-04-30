@@ -15,7 +15,7 @@ public class PagedResult<T> : PagedParamter
     /// <summary>
     /// 项目集合.
     /// </summary>
-    public IEnumerable<T> Items { get; init; }
+    public IReadOnlyCollection<T> Items { get; init; }
 
     /// <summary>
     /// 总数.

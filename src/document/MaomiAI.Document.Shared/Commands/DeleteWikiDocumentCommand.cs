@@ -1,0 +1,22 @@
+﻿// <copyright file="DeleteWikiDocumentCommand.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using MediatR;
+
+namespace MaomiAI.Document.Shared.Commands;
+
+/// <summary>
+/// 删除 Wiki 文档.
+/// </summary>
+public class DeleteWikiDocumentCommand : IRequest<EmptyCommandResponse>
+{
+    /// <summary>
+    /// 团队id.
+    /// </summary>
+    public Guid TeamId { get; init; }
+    public Guid WikiId { get; init; }
+    public Guid DocumentId { get; init; }
+}

@@ -30,11 +30,6 @@ public partial class TeamWikiEntity : IFullAudited
     public string Description { get; set; } = null!;
 
     /// <summary>
-    /// 绑定的向量模型id.
-    /// </summary>
-    public Guid ModelId { get; set; }
-
-    /// <summary>
     /// 是否删除.
     /// </summary>
     public bool IsDeleted { get; set; }

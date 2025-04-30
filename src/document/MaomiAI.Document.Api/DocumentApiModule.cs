@@ -1,18 +1,15 @@
-﻿// <copyright file="DocumentModule.cs" company="MaomiAI">
+﻿// <copyright file="DocumentApiModule.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.Document.Api;
-
-namespace MaomiAI.Infra;
+namespace MaomiAI.Document.Api;
 
 /// <summary>
-/// InfraCoreModule.
+/// DocumentApiModule.
 /// </summary>
-[InjectModule<DocumentApiModule>]
-public class DocumentModule : IModule
+public class DocumentApiModule : IModule
 {
     /// <inheritdoc/>
     public void ConfigureServices(ServiceContext context)

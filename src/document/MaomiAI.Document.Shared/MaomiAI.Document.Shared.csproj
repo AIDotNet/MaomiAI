@@ -8,7 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj"/>
+        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+        <ProjectReference Include="..\..\store\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
     </ItemGroup>
 
 </Project>

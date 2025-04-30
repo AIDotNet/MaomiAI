@@ -48,9 +48,6 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasDefaultValueSql("''::character varying")
             .HasComment("知识库详细介绍")
             .HasColumnName("markdown");
-        entity.Property(e => e.ModelId)
-            .HasComment("绑定的向量模型id")
-            .HasColumnName("model_id");
         entity.Property(e => e.Name)
             .HasMaxLength(20)
             .HasComment("知识库名称")
