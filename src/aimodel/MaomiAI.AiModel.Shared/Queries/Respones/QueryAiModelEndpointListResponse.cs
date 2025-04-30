@@ -7,5 +7,5 @@ public class QueryAiModelEndpointListResponse
     /// <summary>
     /// AI 模型列表.
     /// </summary>
-    public IReadOnlyDictionary<Guid, AiNotKeyEndpoint> Providers { get; init; } = new Dictionary<Guid, AiNotKeyEndpoint>();
+    public IReadOnlyCollection<AiNotKeyEndpoint> AiModels { get; init; } = new List<AiNotKeyEndpoint>();
 }

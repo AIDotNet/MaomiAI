@@ -8,7 +8,6 @@ using FastEndpoints;
 using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MediatR;
-using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.AiModel.Api.Endpoints;
 
@@ -17,21 +16,21 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// </summary>
 [EndpointGroupName("aimodel")]
 [HttpPost($"{AiModelApi.ApiPrefix}/aimodel/defaultconfiguration")]
-public class QueryAiModelDefaultConfigurationsEndpoint : Endpoint<QueryAiModelDefaultConfigurationsCommand, QueryAiModelDefaultConfigurationsResponse>
+public class QueryDefaultAiModelListEndpoint : Endpoint<QueryDefaultAiModelListCommand, QueryDefaultAiModelListResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueryAiModelDefaultConfigurationsEndpoint"/> class.
+    /// Initializes a new instance of the <see cref="QueryDefaultAiModelListEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public QueryAiModelDefaultConfigurationsEndpoint(IMediator mediator)
+    public QueryDefaultAiModelListEndpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     /// <inheritdoc/>
-    public override async Task<QueryAiModelDefaultConfigurationsResponse> ExecuteAsync(QueryAiModelDefaultConfigurationsCommand req, CancellationToken ct)
+    public override async Task<QueryDefaultAiModelListResponse> ExecuteAsync(QueryDefaultAiModelListCommand req, CancellationToken ct)
     {
         return await _mediator.Send(req);
     }

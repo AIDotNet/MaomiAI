@@ -12,6 +12,11 @@ namespace MaomiAI.AiModel.Shared.Models;
 public class AiNotKeyEndpoint
 {
     /// <summary>
+    /// id.
+    /// </summary>
+    public Guid Id { get; init; } = Guid.Empty;
+
+    /// <summary>
     /// 名称.
     /// </summary>
     public string Name { get; init; } = default!;

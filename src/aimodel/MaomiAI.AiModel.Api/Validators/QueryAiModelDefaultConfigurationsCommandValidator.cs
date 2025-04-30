@@ -13,7 +13,7 @@ namespace MaomiAI.AiModel.Api.Validators;
 /// <summary>
 /// QueryAiModelDefaultConfigurationsCommandValidator.
 /// </summary>
-public class QueryAiModelDefaultConfigurationsCommandValidator : Validator<QueryAiModelDefaultConfigurationsCommand>
+public class QueryAiModelDefaultConfigurationsCommandValidator : Validator<QueryDefaultAiModelListCommand>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryAiModelDefaultConfigurationsCommandValidator"/> class.

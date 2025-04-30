@@ -11,17 +11,12 @@ using MediatR;
 namespace MaomiAI.AiModel.Shared.Queries;
 
 /// <summary>
-/// 查询供应商模型默认配置.
+/// 查询供应商模型默认列表.
 /// </summary>
-public class QueryAiModelDefaultConfigurationsCommand : IRequest<QueryAiModelDefaultConfigurationsResponse>
+public class QueryDefaultAiModelListCommand : IRequest<QueryDefaultAiModelListResponse>
 {
     /// <summary>
-    /// 模型名称或id.
+    /// 团队 id.
     /// </summary>
-    public string ModelId { get; init; } = default!;
-
-    /// <summary>
-    /// AI 服务商.
-    /// </summary>
-    public AiProvider Provider { get; init; }
+    public Guid TeamId { get; init; } = default!;
 }
