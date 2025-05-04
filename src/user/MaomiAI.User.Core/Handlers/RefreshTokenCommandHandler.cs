@@ -51,7 +51,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, L
         // 如果不是 refresh_token，禁止刷新 token
         if (!claims.TryGetValue("token_type", out var tokenType) || string.IsNullOrEmpty(tokenType.Value) || !"refresh".Equals(tokenType.Value, StringComparison.OrdinalIgnoreCase))
         {
-            throw new BusinessException("非 refresh_token.") { ErrorCode = 401 };
+            throw new BusinessException("非 refresh_token.") { StatusCode = 401 };
         }
 
         var user = await _dbContext.Users.Where(x => x.Id == refreshTokenUserContext.UserId)
@@ -59,12 +59,12 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, L
 
         if (user == null)
         {
-            throw new BusinessException("用户不存在") { ErrorCode = 401 };
+            throw new BusinessException("用户不存在") { StatusCode = 401 };
         }
 
         if (!user.IsEnable)
         {
-            throw new BusinessException("用户已被禁用") { ErrorCode = 401 };
+            throw new BusinessException("用户已被禁用") { StatusCode = 401 };
         }
 
         var userContext = new DefaultUserContext

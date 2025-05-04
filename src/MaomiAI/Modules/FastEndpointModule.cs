@@ -12,9 +12,11 @@ using MaomiAI.Swaggers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Mvc;
 using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
 using NSwag;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 
@@ -85,14 +87,14 @@ public class FastEndpointModule : IModule
                                 }));
                     s.SchemaSettings.TypeMappers.Add(new LongTypeMapper());
                     s.SchemaSettings.TypeMappers.Add(new DateTimeOffsetTypeMapper());
-
                     s.OperationProcessors.Add(new ErrorResponseOperationProcessor());
                 };
 
                 options.SerializerSettings = s =>
                 {
-                    s.PropertyNamingPolicy = null;
+                    s.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                     s.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                    s.PropertyNameCaseInsensitive = true;
 
                     // todo: 后续添加，https://maomi.whuanle.cn/10.web.html#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86
                     s.Converters.Add(new JsonStringEnumConverter());

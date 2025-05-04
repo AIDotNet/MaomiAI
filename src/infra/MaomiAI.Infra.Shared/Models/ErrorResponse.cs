@@ -26,11 +26,6 @@ public class ErrorResponse
     /// <summary>
     /// 错误消息.
     /// </summary>
-    public string Message { get; init; } = string.Empty;
-
-    /// <summary>
-    /// 错误详情.
-    /// </summary>
     public string Detail { get; init; } = string.Empty;
 
     /// <summary>

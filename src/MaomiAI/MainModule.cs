@@ -23,11 +23,11 @@ namespace MaomiAI;
 [InjectModule<InfraCoreModule>]
 [InjectModule<DatabaseCoreModule>]
 [InjectModule<EmbeddingCoreModule>]
-[InjectModule<DocumentModule>]
+//[InjectModule<DocumentModule>]
 [InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
 [InjectModule<TeamCoreModule>]
-[InjectModule<AiModelCoreModule>]
+//[InjectModule<AiModelCoreModule>]
 [InjectModule<PublicCoreModule>]
 [InjectModule<ApiModule>]
 public partial class MainModule : IModule

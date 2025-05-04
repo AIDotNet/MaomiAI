@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using Microsoft.AspNetCore.Http;
+
 namespace MaomiAI.Infra.Exceptions;
 
 /// <summary>
@@ -26,11 +28,6 @@ public class BusinessException : Exception
     public int StatusCode { get; init; } = 500;
 
     /// <summary>
-    /// 错误代码.
-    /// </summary>
-    public int ErrorCode { get; init; } = 500;
-
-    /// <summary>
     /// 错误信息参数.
     /// </summary>
     public IReadOnlyList<object>? Argments { get; init; } = new List<object>();
@@ -49,24 +46,24 @@ public class BusinessException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="BusinessException"/> class.
     /// </summary>
-    /// <param name="errorCode"></param>
+    /// <param name="statusCode"></param>
     /// <param name="message"></param>
-    public BusinessException(int errorCode, string message)
+    public BusinessException(int statusCode, string message)
         : base(message)
     {
-        ErrorCode = errorCode;
+        StatusCode = statusCode;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BusinessException"/> class.
     /// </summary>
-    /// <param name="errorCode"></param>
+    /// <param name="statusCode"></param>
     /// <param name="message"></param>
     /// <param name="argments"></param>
-    public BusinessException(int errorCode, string message, params object[] argments)
+    public BusinessException(int statusCode, string message, params object[] argments)
         : base(message)
     {
-        ErrorCode = errorCode;
+        StatusCode = statusCode;
 
         Argments = argments;
     }

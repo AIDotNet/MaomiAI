@@ -20,8 +20,6 @@ public class QueryAiModelDefaultConfigurationsCommandValidator : Validator<Query
     /// </summary>
     public QueryAiModelDefaultConfigurationsCommandValidator()
     {
-        RuleFor(x => x.ModelId)
-            .NotEmpty()
-            .MaximumLength(50);
+        RuleFor(x => x.TeamId).NotEmpty();
     }
 }

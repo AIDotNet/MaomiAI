@@ -40,7 +40,7 @@ public class UpdateUserPasswordCommandHandler : IRequestHandler<UpdateUserPasswo
         try
         {
             restorePassword = _rsaProvider.Decrypt(request.Password);
-            Regex regex = new Regex(@"^(?![0-9]+$)(?![a-zA-Z]+$)(?![0-9a-zA-Z]+$)(?![0-9\\W]+$)(?![a-zA-Z\\W]+$)[0-9A-Za-z\\W]{8,30}$");
+            Regex regex = new Regex(@"(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\S]{8,20}$");
             Match match = regex.Match(restorePassword);
             if (!match.Success)
             {

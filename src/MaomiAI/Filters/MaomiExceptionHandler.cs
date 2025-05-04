@@ -49,7 +49,6 @@ public class MaomiExceptionHandler : IExceptionHandler
 
 #if DEBUG
         message = ex.Message;
-        messageDetail = ex.ToString();
 #else
         Message = "Internal server error",
 #endif
@@ -58,8 +57,7 @@ public class MaomiExceptionHandler : IExceptionHandler
         {
             Code = 500,
             RequestId = context.TraceIdentifier,
-            Message = message,
-            Detail = messageDetail,
+            Detail = message,
         };
 
         context.Response.StatusCode = 500;
@@ -75,6 +73,10 @@ public class MaomiExceptionHandler : IExceptionHandler
         var messageDetail = string.Empty;
 
         message = businessException.Message;
+        if (businessException.Argments?.Count > 0)
+        {
+            message = string.Format(message, businessException.Argments.ToArray());
+        }
 
 #if DEBUG
         messageDetail = businessException.ToString();
@@ -82,10 +84,9 @@ public class MaomiExceptionHandler : IExceptionHandler
 
         var response = new ErrorResponse()
         {
-            Code = businessException.ErrorCode,
+            Code = businessException.StatusCode,
             RequestId = httpContext.TraceIdentifier,
-            Message = message,
-            Detail = messageDetail,
+            Detail = message,
         };
 
         httpContext.Response.StatusCode = businessException.StatusCode;

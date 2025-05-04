@@ -99,32 +99,32 @@ public class InfraConfigurationModule : IModule
     // 导入日志配置文件.
     private void ImportLoggerConfiguration(ServiceContext context, IConfigurationBuilder configurationBuilder)
     {
-        if (!File.Exists("configs/logger.json"))
+        if (!File.Exists(AppConsts.LoggerJson))
         {
-            if (Directory.Exists("default_configs"))
+            if (Directory.Exists(AppConsts.DefaultConfigsPath))
             {
-                File.Copy("default_configs/logger.json", "configs/logger.json");
+                File.Copy(AppConsts.DefaultLoggerJson, AppConsts.LoggerJson);
             }
         }
 
-        if (File.Exists("configs/logger.json"))
+        if (File.Exists(AppConsts.LoggerJson))
         {
-            configurationBuilder.AddJsonFile("configs/logger.json");
+            configurationBuilder.AddJsonFile(AppConsts.LoggerJson);
         }
     }
 
     private void ConfigureRsaPrivate(ServiceContext context, IConfigurationBuilder configurationBuilder)
     {
-        if (!File.Exists("configs/rsa_private.key"))
+        if (!File.Exists(AppConsts.RSA))
         {
-            using RSA? rsa = RSA.Create();
+            using RSA? rsa = RSA.Create(2048);
             string rsaPrivate = rsa.ExportPkcs8PrivateKeyPem();
-            File.WriteAllText("configs/rsa_private.key", rsaPrivate);
+            File.WriteAllText(AppConsts.RSA, rsaPrivate);
             context.Services.AddSingleton<IRsaProvider>(s => { return new RsaProvider(rsaPrivate); });
         }
         else
         {
-            string? rsaPrivate = File.ReadAllText("configs/rsa_private.key");
+            string? rsaPrivate = File.ReadAllText(Path.Combine(AppConsts.AppPath, AppConsts.RSA));
             context.Services.AddSingleton<IRsaProvider>(s => { return new RsaProvider(rsaPrivate); });
         }
     }

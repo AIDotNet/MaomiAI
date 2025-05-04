@@ -16,9 +16,14 @@ WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseOpenApi(c => c.Path = "/openapi/{documentName}.json");
+    app.UseOpenApi(c =>
+    {
+        c.Path = "/openapi/{documentName}.json";
+    });
     app.MapScalarApiReference();
 }
+
+app.UseCors("AllowSpecificOrigins");
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -34,18 +39,18 @@ app.UseMaomiAIMiddleware();
 
 app.UseHttpLogging();
 
-app.UseFastEndpoints(c =>
+app.UseFastEndpoints((Action<Config>?)(c =>
 {
     c.Endpoints.RoutePrefix = "api";
     c.Errors.ProducesMetadataType = typeof(MaomiAI.Infra.Models.ErrorResponse);
     c.Errors.ResponseBuilder = (failures, ctx, statusCode) =>
     {
-        return new MaomiAI.Infra.Models.ErrorResponse(failures, statusCode)
+        return (object)new MaomiAI.Infra.Models.ErrorResponse(failures, statusCode)
         {
-            Message = "请求参数验证失败",
+            Detail = "请求参数验证失败",
             RequestId = ctx.TraceIdentifier,
         };
     };
-});
+}));
 
 app.Run();

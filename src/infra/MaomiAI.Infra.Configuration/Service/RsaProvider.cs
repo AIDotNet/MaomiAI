@@ -48,7 +48,7 @@ public class RsaProvider : IRsaProvider
     {
         if (padding == null)
         {
-            padding = RSAEncryptionPadding.OaepSHA256;
+            padding = RSAEncryptionPadding.Pkcs1;
         }
 
         byte[]? encryptData = _rsaPrivate.Encrypt(Encoding.UTF8.GetBytes(message), padding);
@@ -60,7 +60,7 @@ public class RsaProvider : IRsaProvider
     {
         if (padding == null)
         {
-            padding = RSAEncryptionPadding.OaepSHA256;
+            padding = RSAEncryptionPadding.Pkcs1;
         }
 
         byte[]? cipherByteData = Convert.FromBase64String(message);

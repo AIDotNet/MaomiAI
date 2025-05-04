@@ -61,7 +61,6 @@ public class MaomiExceptionFilter : IAsyncExceptionFilter
 
 #if DEBUG
         message = context.Exception.Message;
-        messageDetail = context.Exception.ToString();
 #else
         Message = "Internal server error",
 #endif
@@ -70,8 +69,7 @@ public class MaomiExceptionFilter : IAsyncExceptionFilter
         {
             Code = 500,
             RequestId = context.HttpContext.TraceIdentifier,
-            Message = message,
-            Detail = messageDetail,
+            Detail = message,
         };
 
         context.Result = new ObjectResult(response)
@@ -83,20 +81,14 @@ public class MaomiExceptionFilter : IAsyncExceptionFilter
     private static void HandleBusinessException(ExceptionContext context, BusinessException businessException)
     {
         var message = string.Empty;
-        var messageDetail = string.Empty;
 
         message = businessException.Message;
 
-#if DEBUG
-        messageDetail = businessException.ToString();
-#endif
-
         var response = new ErrorResponse()
         {
-            Code = businessException.ErrorCode,
+            Code = businessException.StatusCode,
             RequestId = context.HttpContext.TraceIdentifier,
-            Message = message,
-            Detail = messageDetail,
+            Detail = message,
         };
 
         context.Result = new ObjectResult(response)

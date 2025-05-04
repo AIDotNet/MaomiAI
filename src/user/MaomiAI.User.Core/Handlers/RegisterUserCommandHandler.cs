@@ -12,6 +12,7 @@ using MaomiAI.User.Shared.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace MaomiAI.User.Core.Handlers;
@@ -46,6 +47,25 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, I
     /// <returns>新用户ID.</returns>
     public async Task<IdResponse> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
+        // 使用 RSA 解密还原密码
+        string restorePassword = default!;
+        try
+        {
+            restorePassword = _rsaProvider.Decrypt(request.Password);
+            Regex regex = new Regex(@"(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\S]{8,20}$");
+            Match match = regex.Match(restorePassword);
+            if (!match.Success)
+            {
+                throw new BusinessException("密码 8-20 长度，并包含数字+字母.") { StatusCode = 400 };
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.WriteLine(ex);
+            Debug.Assert(ex != null);
+            throw new BusinessException("密码 8-20 长度，并包含数字+字母.") { StatusCode = 400 };
+        }
+
         var existingUser = await _dbContext.Users
                 .Where(u => u.UserName == request.UserName || u.Email == request.Email || u.Phone == request.Phone)
                 .Select(u => new { u.UserName, u.Email, u.Phone })
@@ -67,23 +87,6 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, I
             {
                 throw new BusinessException("手机号 {0} 已被注册", request.Phone) { StatusCode = 409 };
             }
-        }
-
-        // 使用 RSA 解密还原密码
-        string restorePassword = default!;
-        try
-        {
-            restorePassword = _rsaProvider.Decrypt(request.Password);
-            Regex regex = new Regex(@"^(?![0-9]+$)(?![a-zA-Z]+$)(?![0-9a-zA-Z]+$)(?![0-9\\W]+$)(?![a-zA-Z\\W]+$)[0-9A-Za-z\\W]{8,30}$");
-            Match match = regex.Match(restorePassword);
-            if (!match.Success)
-            {
-                throw new BusinessException("密码 8-30 长度，并包含数字+字母+特殊字符.") { StatusCode = 400 };
-            }
-        }
-        catch
-        {
-            throw new BusinessException("密码验证失败") { StatusCode = 400 };
         }
 
         try
