@@ -4,6 +4,8 @@
 // @ts-ignore
 import { ChecknameRequestBuilderRequestsMetadata, type ChecknameRequestBuilder } from './checkname/index.js';
 // @ts-ignore
+import { InfoRequestBuilderRequestsMetadata, type InfoRequestBuilder } from './info/index.js';
+// @ts-ignore
 import { LoginRequestBuilderRequestsMetadata, type LoginRequestBuilder } from './login/index.js';
 // @ts-ignore
 import { Refresh_tokenRequestBuilderRequestsMetadata, type Refresh_tokenRequestBuilder } from './refresh_token/index.js';
@@ -24,6 +26,10 @@ export interface UserRequestBuilder extends BaseRequestBuilder<UserRequestBuilde
      * The checkname property
      */
     get checkname(): ChecknameRequestBuilder;
+    /**
+     * The info property
+     */
+    get info(): InfoRequestBuilder;
     /**
      * The login property
      */
@@ -55,6 +61,9 @@ export const UserRequestBuilderUriTemplate = "{+baseurl}/api/user";
 export const UserRequestBuilderNavigationMetadata: Record<Exclude<keyof UserRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     checkname: {
         requestsMetadata: ChecknameRequestBuilderRequestsMetadata,
+    },
+    info: {
+        requestsMetadata: InfoRequestBuilderRequestsMetadata,
     },
     login: {
         requestsMetadata: LoginRequestBuilderRequestsMetadata,

@@ -4,7 +4,9 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.User.Shared.Services;
+using MaomiAI.Infra.Models;
+
+namespace MaomiAI.Infra.Services;
 
 /// <summary>
 /// 用户上下文提供者.

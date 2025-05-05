@@ -4,10 +4,10 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Infra.Services;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core.Services;
 using MaomiAI.User.Shared;
-using MaomiAI.User.Shared.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MaomiAI.User.Core;

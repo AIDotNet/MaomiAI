@@ -2,9 +2,9 @@ import { Col, Row, Card, Form, Input, Button, message } from "antd";
 import { useNavigate } from "react-router";
 import { RsaHelper } from "../../helper/RsaHalper";
 import "./Register.css";
-import { GetApiClient } from "../ServiceClient";
+import { GetAllowApiClient, GetApiClient } from "../ServiceClient";
 import { useEffect } from "react";
-import { CheckToken, GetServiceInfo, InitServerInfo } from "../../InitPage";
+import { CheckToken, GetServiceInfo, RefreshServerInfo } from "../../InitPage";
 import Parse400Error from "../../helper/FromErrors";
 export default function Register() {
   const [form] = Form.useForm();
@@ -12,17 +12,18 @@ export default function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const fetchData = (async () => {
-    //   await InitServerInfo();
-    //   var isVerify = await CheckToken();
-    //   if (isVerify) {
-    //     messageApi.success("您已经登录，正在重定向到首页");
-    //     setTimeout(() => {
-    //       navigate("/app");
-    //     }, 1000);
-    //   }
-    // });
-    // fetchData();
+    let client =  GetAllowApiClient();
+    const fetchData = (async () => {
+      await RefreshServerInfo(client);
+      var isVerify = await CheckToken();
+      if (isVerify) {
+        messageApi.success("您已经登录，正在重定向到首页");
+        setTimeout(() => {
+          navigate("/app");
+        }, 1000);
+      }
+    });
+    fetchData();
 
     return () => {};
   }, []);
@@ -36,7 +37,7 @@ export default function Register() {
         values.password
       );
 
-      const client = await GetApiClient();
+      const client = GetAllowApiClient();
       await client.api.user.register.post({
         userName: values.username,
         password: encryptedPassword,
@@ -55,7 +56,7 @@ export default function Register() {
         detail?: string;
         errors?: Record<string, string[]>;
       };
-      if (typedError.errors) {
+      if (typedError.errors && Object.keys(typedError.errors).length > 0) {
         let errors = Parse400Error(typedError.errors);
         form.setFields(errors);
       } else if (typedError.detail) {

@@ -4,7 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.User.Shared.Services;
+using MaomiAI.Infra.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;

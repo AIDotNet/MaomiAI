@@ -9,8 +9,9 @@ namespace MaomiAI.Store;
 /// <summary>
 /// 存储核心模块.
 /// </summary>
-[InjectModule<StoreLocalFileSystemModule>]
+//[InjectModule<StoreLocalFileSystemModule>]
 [InjectModule<StoreS3Module>]
+[InjectModule<StoreApiModule>]
 public class StoreCoreModule : IModule
 {
     /// <inheritdoc />

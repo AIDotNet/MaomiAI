@@ -11,6 +11,7 @@
     "syncapi": "kiota generate --additional-data false -l typescript -d http://127.0.0.1:5000/openapi/v1.json -c MaomiClient -o ./src/ApiClient"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.802.0",
     "@lobehub/ui": "^1.171.0",
     "@microsoft/kiota-abstractions": "^1.0.0-preview.93",
     "@microsoft/kiota-bundle": "^1.0.0-preview.93",
@@ -27,13 +28,15 @@
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.5.2",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "spark-md5": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.15.3",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@types/spark-md5": "^3.0.5",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
     "eslint-plugin-react-hooks": "^5.2.0",

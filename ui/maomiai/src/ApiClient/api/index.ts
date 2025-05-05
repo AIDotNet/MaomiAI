@@ -4,6 +4,8 @@
 // @ts-ignore
 import { PublicRequestBuilderNavigationMetadata, type PublicRequestBuilder } from './public/index.js';
 // @ts-ignore
+import { StoreRequestBuilderNavigationMetadata, type StoreRequestBuilder } from './store/index.js';
+// @ts-ignore
 import { TeamRequestBuilderNavigationMetadata, type TeamRequestBuilder } from './team/index.js';
 // @ts-ignore
 import { type UserRequestBuilder, UserRequestBuilderNavigationMetadata } from './user/index.js';
@@ -18,6 +20,10 @@ export interface ApiRequestBuilder extends BaseRequestBuilder<ApiRequestBuilder>
      * The public property
      */
     get public(): PublicRequestBuilder;
+    /**
+     * The store property
+     */
+    get store(): StoreRequestBuilder;
     /**
      * The team property
      */
@@ -37,6 +43,9 @@ export const ApiRequestBuilderUriTemplate = "{+baseurl}/api";
 export const ApiRequestBuilderNavigationMetadata: Record<Exclude<keyof ApiRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     public: {
         navigationMetadata: PublicRequestBuilderNavigationMetadata,
+    },
+    store: {
+        navigationMetadata: StoreRequestBuilderNavigationMetadata,
     },
     team: {
         navigationMetadata: TeamRequestBuilderNavigationMetadata,

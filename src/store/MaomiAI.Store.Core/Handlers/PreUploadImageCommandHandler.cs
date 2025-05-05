@@ -39,7 +39,7 @@ public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageComman
             MD5 = request.MD5,
             Expiration = TimeSpan.FromMinutes(1),
             Visibility = Enums.FileVisibility.Public,
-            Path = Path.Combine(request.ImageType.ToString().ToLower(), FileStoreHelper.GetObjectKey(request.MD5, request.FileName)),
+            Path = FileStoreHelper.CombineUrl(request.ImageType.ToString().ToLower(), FileStoreHelper.GetObjectKey(request.MD5, request.FileName)),
         };
 
         return await _mediator.Send(preu, cancellationToken);

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MaomiAI.Team.Api.Endpoints.Root;
 
 /// <summary>
-/// 创建团队.
+/// 删除团队.
 /// </summary>
 [EndpointGroupName("team")]
 [HttpDelete($"{TeamApi.ApiPrefix}/{{teamId}}/delete")]

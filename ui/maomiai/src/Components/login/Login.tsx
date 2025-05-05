@@ -2,9 +2,9 @@ import { Col, Row, Card, Form, Input, Button, message } from "antd";
 import { useNavigate } from "react-router";
 import { RsaHelper } from "../../helper/RsaHalper";
 import "./Login.css";
-import { GetApiClient } from "../ServiceClient";
+import { GetAllowApiClient, GetApiClient } from "../ServiceClient";
 import { useEffect } from "react";
-import { CheckToken, GetServiceInfo, InitServerInfo } from "../../InitPage";
+import { CheckToken, GetServiceInfo, RefreshServerInfo, SetUserInfo } from "../../InitPage";
 import Parse400Error from "../../helper/FromErrors";
 
 export default function Login() {
@@ -13,8 +13,9 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      await InitServerInfo();
+    let client = GetAllowApiClient();
+    const fetchData = async () => {
+      await RefreshServerInfo(client);
       var isVerify = await CheckToken();
       if (isVerify) {
         messageApi.success("您已经登录，正在重定向到首页");
@@ -22,7 +23,8 @@ export default function Login() {
           navigate("/app");
         }, 1000);
       }
-    })();
+    };
+    fetchData();
 
     return () => {};
   }, []);
@@ -36,26 +38,28 @@ export default function Login() {
         values.password
       );
 
-      const client = await GetApiClient();
+      const client = GetAllowApiClient();
       const response = await client.api.user.login.post({
         userName: values.username,
         password: encryptedPassword,
       });
 
       if (response) {
+        SetUserInfo(response);
         messageApi.success("登录成功，正在重定向到主页");
         setTimeout(() => {
-          navigate("/home");
+          navigate("/app");
         }, 1000);
       } else {
         messageApi.error("登录失败");
       }
     } catch (error) {
+      console.error("Login error:", error);
       const typedError = error as {
         detail?: string;
         errors?: Record<string, string[]>;
       };
-      if (typedError.errors) {
+      if (typedError.errors && Object.keys(typedError.errors).length > 0) {
         let errors = Parse400Error(typedError.errors);
         form.setFields(errors);
       } else if (typedError.detail) {

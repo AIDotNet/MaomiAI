@@ -20,6 +20,7 @@ import {
   JsonSerializationWriterFactory,
 } from "@microsoft/kiota-serialization-json";
 import { message } from "antd";
+import { IsTokenExpired } from "../helper/TokenHelper";
 
 // 中间件请求
 class FilterRequestHandler implements Middleware {
@@ -71,11 +72,11 @@ serializationRegistry.contentTypeAssociatedFactories.set(
 const handlers = MiddlewareFactory.getDefaultMiddlewares();
 handlers.unshift(new FilterRequestHandler());
 
-export const GetApiClient = async function (): Promise<MaomiClient> {
+export const GetApiClient = function (): MaomiClient {
   const token = localStorage.getItem("userinfo.accessToken");
   let authProvider;
   if (token) {
-    const jwtToken = `Bearer ${token}`;
+    const jwtToken = token;
     authProvider = new BaseBearerTokenAuthenticationProvider({
       getAuthorizationToken: async () => jwtToken,
       getAllowedHostsValidator: () => new AllowedHostsValidator(),
@@ -83,6 +84,8 @@ export const GetApiClient = async function (): Promise<MaomiClient> {
   } else {
     authProvider = new AnonymousAuthenticationProvider();
   }
+
+
   const httpClient = KiotaClientFactory.create(undefined, handlers);
   const adapter = new FetchRequestAdapter(
     authProvider,
@@ -94,9 +97,16 @@ export const GetApiClient = async function (): Promise<MaomiClient> {
   return createMaomiClient(adapter);
 };
 
+export const GetAllowApiClient = function (): MaomiClient {
+  const authProvider = new AnonymousAuthenticationProvider();
+  const adapter = new FetchRequestAdapter(authProvider);
+  adapter.baseUrl = EnvOptions.ServerUrl;
+  return createMaomiClient(adapter);
+};
+
 // 刷新 token
 export const RefreshAccessToken = async function (refreshToken: string) {
-  let client = await GetApiClient();
+  let client = GetAllowApiClient();
   return await client.api.user.refresh_token.post({
     refreshToken: refreshToken,
   });

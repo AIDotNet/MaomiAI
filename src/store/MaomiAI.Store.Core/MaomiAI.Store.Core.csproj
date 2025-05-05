@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\MaomiAI.Store.Api\MaomiAI.Store.Api.csproj" />
         <ProjectReference Include="..\MaomiAI.Store.LocalFileSystem\MaomiAI.Store.LocalFileSystem.csproj" />
         <ProjectReference Include="..\MaomiAI.Store.S3\MaomiAI.Store.S3.csproj" />
         <ProjectReference Include="..\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />

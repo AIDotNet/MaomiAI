@@ -20,11 +20,17 @@ namespace MaomiAI.User.Api.Endpoints;
 public class QueryRepeatedUserNameEndpoint : Endpoint<QueryRepeatedUserNameCommand, Simple<bool>>
 {
     private readonly IMediator _mediator;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QueryRepeatedUserNameEndpoint"/> class.
+    /// </summary>
+    /// <param name="mediator"></param>
     public QueryRepeatedUserNameEndpoint(IMediator mediator)
     {
         _mediator = mediator;
     }
 
+    /// <inheritdoc/>
     public override async Task<Simple<bool>> ExecuteAsync(QueryRepeatedUserNameCommand req, CancellationToken ct)
     {
         var result = await _mediator.Send(req, ct);

@@ -73,6 +73,7 @@ public static class FileStoreHelper
     public static string GetObjectKey(string md5, string fileName)
     {
         var fileExtensions = Path.GetExtension(fileName);
+        fileExtensions = fileExtensions.TrimStart('.');
         return $"{DateTimeOffset.Now.ToString("yyyyMMdd")}/{md5}.{fileExtensions}";
     }
 
@@ -95,4 +96,27 @@ public static class FileStoreHelper
     {
         return (int)(fileSize * 1.1);
     }
+
+    /// <summary>
+    /// 拼接 URL 地址.
+    /// </summary>
+    /// <param name="baseUrl">前缀地址.</param>
+    /// <param name="relativePath">后缀地址.</param>
+    /// <returns>拼接后的完整 URL 地址.</returns>
+    public static string CombineUrl(string baseUrl, string relativePath)
+    {
+        if (string.IsNullOrWhiteSpace(baseUrl))
+        {
+            throw new ArgumentException("Base URL 不能为空.", nameof(baseUrl));
+        }
+
+        if (string.IsNullOrWhiteSpace(relativePath))
+        {
+            throw new ArgumentException("Relative path 不能为空.", nameof(relativePath));
+        }
+
+        return $"{baseUrl.TrimEnd('/')}/{relativePath.TrimStart('/')}";
+    }
+
+    /// <summary>
 }

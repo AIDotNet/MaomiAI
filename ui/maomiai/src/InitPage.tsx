@@ -1,4 +1,5 @@
-import { RefreshAccessToken, GetApiClient } from "./Components/ServiceClient";
+import { MaomiClient } from "./ApiClient/maomiClient";
+import { RefreshAccessToken, GetApiClient, GetAllowApiClient } from "./Components/ServiceClient";
 import { IsTokenExpired } from "./helper/TokenHelper";
 
 export interface ServerInfoModel {
@@ -44,9 +45,11 @@ export interface UserInfoModel {
 }
 
 // 加载服务器公共信息
-export const InitServerInfo = async () => {
+export const RefreshServerInfo = async (client?: MaomiClient) => {
   try {
-    const client = await GetApiClient();
+    if (!client) {
+      client = GetAllowApiClient();
+    }
     const response = await client.api.public.serverinfo.get();
     if (response) {
       localStorage.setItem("serverinfo.serviceUrl", response.serviceUrl!);
@@ -63,10 +66,10 @@ export const InitServerInfo = async () => {
   }
 };
 
-export async function GetServiceInfo(): Promise<ServerInfoModel> {
+export const GetServiceInfo = async function (): Promise<ServerInfoModel> {
   let serviceUrl = localStorage.getItem("serverinfo.serviceUrl");
   if (!serviceUrl) {
-    await InitServerInfo();
+    await RefreshServerInfo();
   }
 
   return {
@@ -74,7 +77,7 @@ export async function GetServiceInfo(): Promise<ServerInfoModel> {
     rsaPublic: localStorage.getItem("serverinfo.rsaPublic")!,
     serviceUrl: localStorage.getItem("serverinfo.serviceUrl")!,
   };
-}
+};
 
 // 登录后设置用户信息到缓存
 export const SetUserInfo = (userInfo: UserInfoModel) => {
@@ -119,6 +122,8 @@ export const CheckToken = async () => {
 
         return true;
       }
+    } else {
+      return true;
     }
   } catch (error) {
     console.error("Error checking token:", error);
@@ -157,6 +162,3 @@ export const GetAccessToken = async (): Promise<string | null> => {
 
   return null;
 };
-
-// 服务器信息
-export const ServerInfo: ServerInfoModel = await GetServiceInfo();

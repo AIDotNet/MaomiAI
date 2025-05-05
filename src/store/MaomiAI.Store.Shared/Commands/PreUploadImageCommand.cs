@@ -7,6 +7,7 @@
 using MaomiAI.Store.Commands.Response;
 using MaomiAI.Store.Enums;
 using MediatR;
+using System.Text.Json.Serialization;
 
 namespace MaomiAI.Team.Shared.Commands;
 
@@ -38,5 +39,6 @@ public class PreUploadImageCommand : IRequest<PreUploadFileCommandResponse>
     /// <summary>
     /// 文件类型根据具体的功能模块决定.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public UploadImageType ImageType { get; set; } = default!;
 }
