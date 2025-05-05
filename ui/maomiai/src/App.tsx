@@ -1,10 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { CheckToken, InitServerInfo } from './InitPage'
+import { useNavigate } from 'react-router'
+import { message } from 'antd'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [messageApi, contextHolder] = message.useMessage();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    (async () => {
+      await InitServerInfo();
+      var isVerify = await CheckToken();
+      if (!isVerify) {
+        messageApi.error("登录失效，正在重定向到登录页面");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      }
+    })();
+
+    // 每分钟刷新一次 token
+    const refreshToken = setInterval(async () => {
+      await CheckToken();
+    }, 1000 * 60);
+
+
+    return () => {
+      clearInterval(refreshToken);
+    };
+  }, []); 
+
 
   return (
     <>
