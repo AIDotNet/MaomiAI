@@ -4,12 +4,13 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Infra.Models;
+
 namespace MaomiAI.Infra.Defaults;
 
 /// <summary>
 /// 默认上下文.
 /// </summary>
-[InjectOnScoped(InjectScheme.OnlyBaseClass)]
 public class DefaultUserContext : UserContext
 {
 }

@@ -15,7 +15,7 @@ namespace MaomiAI.User.Api.Endpoints;
 /// </summary>
 [EndpointGroupName("user")]
 [HttpGet($"{UserApi.ApiPrefix}/info")]
-public class QueryUserInfoEndpoint : Endpoint<EmptyRequest, QueryUserInfoResponse>
+public class QueryUserInfoEndpoint : Endpoint<EmptyRequest, QueryUserInfoCommandResponse>
 {
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
@@ -32,7 +32,7 @@ public class QueryUserInfoEndpoint : Endpoint<EmptyRequest, QueryUserInfoRespons
     }
 
     /// <inheritdoc/>
-    public override Task<QueryUserInfoResponse> ExecuteAsync(EmptyRequest req, CancellationToken ct)
+    public override Task<QueryUserInfoCommandResponse> ExecuteAsync(EmptyRequest req, CancellationToken ct)
     {
         var query = new QueryUserInfoCommand
         {

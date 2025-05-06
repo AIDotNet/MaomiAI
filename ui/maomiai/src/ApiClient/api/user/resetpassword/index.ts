@@ -12,14 +12,14 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
 export interface ResetpasswordRequestBuilder extends BaseRequestBuilder<ResetpasswordRequestBuilder> {
     /**
      * 重置密码.
-     * @param body The request body
+     * @param body 重置密码.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<MaomiAIInfraModelsEmptyCommandResponse>}
      */
      post(body: MaomiAIUserSharedCommandsUpdateUserPasswordCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAIInfraModelsEmptyCommandResponse | undefined>;
     /**
      * 重置密码.
-     * @param body The request body
+     * @param body 重置密码.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */

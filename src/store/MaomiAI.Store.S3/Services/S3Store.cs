@@ -1,7 +1,14 @@
-﻿using Amazon.S3;
+﻿// <copyright file="S3Store.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using MaomiAI.Infra;
+using System.Diagnostics;
 using System.Net;
 
 namespace MaomiAI.Store.Services;
@@ -26,7 +33,7 @@ public class S3Store : IFileStore, IDisposable
         _s3Client = new AmazonS3Client(_storeOption.AccessKeyId, _storeOption.AccessKeySecret, new AmazonS3Config
         {
             ServiceURL = _storeOption.Endpoint,
-            ForcePathStyle = false,
+            ForcePathStyle = storeOption.ForcePathStyle,
             UseHttp = true
         });
     }
@@ -56,7 +63,7 @@ public class S3Store : IFileStore, IDisposable
         }
 
         // 可以在对象 metadata 中添加最大的文件大小信息
-        request.Headers["x-amz-meta-max-file-size"] = fileObject.MaxFileSize.ToString();
+        //request.Headers["x-amz-meta-max-file-size"] = fileObject.MaxFileSize.ToString();
 
         string url = await _s3Client.GetPreSignedURLAsync(request);
         return url;
@@ -135,9 +142,23 @@ public class S3Store : IFileStore, IDisposable
             Key = objectKey
         };
 
-        GetObjectMetadataResponse? response = await _s3Client.GetObjectMetadataAsync(request);
+        try
+        {
+            var response = await _s3Client.GetObjectMetadataAsync(request);
 
-        return response.ContentLength;
+            return response.ContentLength;
+        }
+        catch (AmazonS3Exception ex)
+        {
+            Debug.WriteLine(ex);
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+
+            return 0;
+        }
     }
 
     /// <inheritdoc/>

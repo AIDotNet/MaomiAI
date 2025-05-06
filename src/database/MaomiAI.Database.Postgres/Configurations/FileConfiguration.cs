@@ -25,7 +25,7 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
 
         entity.HasIndex(e => e.FileName, "files_file_name_index");
 
-        entity.HasIndex(e => e.Path, "files_path_index");
+        entity.HasIndex(e => e.ObjectKey, "files_path_index");
 
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
@@ -62,7 +62,7 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasDefaultValue(false)
             .HasComment("已上传文件")
             .HasColumnName("is_upload");
-        entity.Property(e => e.Path)
+        entity.Property(e => e.ObjectKey)
             .HasMaxLength(255)
             .HasComment("文件路径")
             .HasColumnName("path");

@@ -18,7 +18,7 @@ namespace MaomiAI.User.Api.Endpoints;
 [EndpointGroupName("user")]
 [HttpPost($"{UserApi.ApiPrefix}/refresh_token")]
 [AllowAnonymous]
-public class RefreshTokenEndpoint : Endpoint<RefreshTokenCommand, LoginResponse>
+public class RefreshTokenEndpoint : Endpoint<RefreshTokenCommand, LoginCommandResponse>
 {
     private readonly IMediator _mediator;
 
@@ -32,7 +32,7 @@ public class RefreshTokenEndpoint : Endpoint<RefreshTokenCommand, LoginResponse>
     }
 
     /// <inheritdoc/>、
-    public override async Task<LoginResponse> ExecuteAsync(RefreshTokenCommand req, CancellationToken ct)
+    public override async Task<LoginCommandResponse> ExecuteAsync(RefreshTokenCommand req, CancellationToken ct)
     {
         return await _mediator.Send(req, ct);
     }

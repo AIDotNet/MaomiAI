@@ -8,6 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="wwwroot\default_avatar\**" />
+      <Content Remove="wwwroot\default_avatar\**" />
+      <EmbeddedResource Remove="wwwroot\default_avatar\**" />
+      <None Remove="wwwroot\default_avatar\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="FastEndpoints.Swagger" Version="6.1.0-beta.1" />
         <PackageReference Include="Maomi.I18n.AspNetCore" Version="2.2.2" />
         <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.2">

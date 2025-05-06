@@ -55,7 +55,7 @@ public class UploadTeamAvatarCommandHandler : IRequestHandler<UploadTeamAvatarCo
             throw new BusinessException("没有权限修改团队头像") { StatusCode = 403 };
         }
 
-        team.AvatarPath = file.Path;
+        team.AvatarPath = file.ObjectKey;
         team.AvatarId = file.Id;
 
         _dbContext.Update(team);

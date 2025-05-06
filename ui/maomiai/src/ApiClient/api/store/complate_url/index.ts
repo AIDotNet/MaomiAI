@@ -4,7 +4,7 @@
 // @ts-ignore
 import { createMaomiAIStoreCommandsResponseComplateFileCommandResponseFromDiscriminatorValue, serializeMaomiAIStoreCommandsComplateFileUploadCommand, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse, type MaomiAIStoreCommandsComplateFileUploadCommand, type MaomiAIStoreCommandsResponseComplateFileCommandResponse } from '../../../models/index.js';
 // @ts-ignore
-import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
+import { type ApiError, type BaseRequestBuilder, type Parsable, type ParsableFactory, type ParseNode, type RequestConfiguration, type RequestInformation, type RequestsMetadata, type SerializationWriter } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /api/store/complate_url
@@ -15,6 +15,11 @@ export interface Complate_urlRequestBuilder extends BaseRequestBuilder<Complate_
      * @param body 结束上传文件.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<MaomiAIStoreCommandsResponseComplateFileCommandResponse>}
+     * @throws {MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error} error when the service returns a 400 status code
+     * @throws {MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error} error when the service returns a 401 status code
+     * @throws {MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error} error when the service returns a 403 status code
+     * @throws {MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error} error when the service returns a 409 status code
+     * @throws {MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error} error when the service returns a 500 status code
      */
      post(body: MaomiAIStoreCommandsComplateFileUploadCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAIStoreCommandsResponseComplateFileCommandResponse | undefined>;
     /**
@@ -24,6 +29,636 @@ export interface Complate_urlRequestBuilder extends BaseRequestBuilder<Complate_
      * @returns {RequestInformation}
      */
      toPostRequestInformation(body: MaomiAIStoreCommandsComplateFileUploadCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse400ErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse401ErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse403ErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse409ErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error}
+ */
+// @ts-ignore
+export function createMaomiAIStoreCommandsResponseComplateFileCommandResponse500ErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error;
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error(maomiAIStoreCommandsResponseComplateFileCommandResponse400Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.code = n.getNumberValue(); },
+        "detail": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.detail = n.getStringValue(); },
+        "errors": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.errors = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errorsFromDiscriminatorValue); },
+        "extensions": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.extensions = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensionsFromDiscriminatorValue); },
+        "requestId": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors(maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions(maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error(maomiAIStoreCommandsResponseComplateFileCommandResponse401Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.code = n.getNumberValue(); },
+        "detail": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.detail = n.getStringValue(); },
+        "errors": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.errors = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errorsFromDiscriminatorValue); },
+        "extensions": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.extensions = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensionsFromDiscriminatorValue); },
+        "requestId": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors(maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions(maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error(maomiAIStoreCommandsResponseComplateFileCommandResponse403Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.code = n.getNumberValue(); },
+        "detail": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.detail = n.getStringValue(); },
+        "errors": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.errors = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errorsFromDiscriminatorValue); },
+        "extensions": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.extensions = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensionsFromDiscriminatorValue); },
+        "requestId": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors(maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions(maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error(maomiAIStoreCommandsResponseComplateFileCommandResponse409Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.code = n.getNumberValue(); },
+        "detail": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.detail = n.getStringValue(); },
+        "errors": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.errors = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errorsFromDiscriminatorValue); },
+        "extensions": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.extensions = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensionsFromDiscriminatorValue); },
+        "requestId": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors(maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions(maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error(maomiAIStoreCommandsResponseComplateFileCommandResponse500Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.code = n.getNumberValue(); },
+        "detail": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.detail = n.getStringValue(); },
+        "errors": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.errors = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errorsFromDiscriminatorValue); },
+        "extensions": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.extensions = n.getObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions>(createMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensionsFromDiscriminatorValue); },
+        "requestId": n => { maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors(maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions(maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * 错误响应模型.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions extends Parsable {
+}
+/**
+ * 错误响应模型.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions extends Parsable {
+}
+/**
+ * 错误响应模型.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions extends Parsable {
+}
+/**
+ * 错误响应模型.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions extends Parsable {
+}
+/**
+ * 错误响应模型.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions extends Parsable {
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse400Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse400Error) {
+        writer.writeNumberValue("code", maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.code);
+        writer.writeStringValue("detail", maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.detail);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors>("errors", maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.errors, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions>("extensions", maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.extensions, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions);
+        writer.writeStringValue("requestId", maomiAIStoreCommandsResponseComplateFileCommandResponse400Error.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse400Error_extensions) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse401Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse401Error) {
+        writer.writeNumberValue("code", maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.code);
+        writer.writeStringValue("detail", maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.detail);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors>("errors", maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.errors, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions>("extensions", maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.extensions, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions);
+        writer.writeStringValue("requestId", maomiAIStoreCommandsResponseComplateFileCommandResponse401Error.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse401Error_extensions) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse403Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse403Error) {
+        writer.writeNumberValue("code", maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.code);
+        writer.writeStringValue("detail", maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.detail);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors>("errors", maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.errors, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions>("extensions", maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.extensions, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions);
+        writer.writeStringValue("requestId", maomiAIStoreCommandsResponseComplateFileCommandResponse403Error.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse403Error_extensions) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse409Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse409Error) {
+        writer.writeNumberValue("code", maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.code);
+        writer.writeStringValue("detail", maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.detail);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors>("errors", maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.errors, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions>("extensions", maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.extensions, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions);
+        writer.writeStringValue("requestId", maomiAIStoreCommandsResponseComplateFileCommandResponse409Error.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse409Error_extensions) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse500Error: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse500Error) {
+        writer.writeNumberValue("code", maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.code);
+        writer.writeStringValue("detail", maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.detail);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors>("errors", maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.errors, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors);
+        writer.writeObjectValue<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions>("extensions", maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.extensions, serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions);
+        writer.writeStringValue("requestId", maomiAIStoreCommandsResponseComplateFileCommandResponse500Error.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions> | undefined | null = {}) : void {
+    if (maomiAIStoreCommandsResponseComplateFileCommandResponse500Error_extensions) {
+    }
 }
 /**
  * Uri template for the request builder.
@@ -36,6 +671,13 @@ export const Complate_urlRequestBuilderRequestsMetadata: RequestsMetadata = {
     post: {
         uriTemplate: Complate_urlRequestBuilderUriTemplate,
         responseBodyContentType: "application/json",
+        errorMappings: {
+            400: createMaomiAIStoreCommandsResponseComplateFileCommandResponse400ErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            401: createMaomiAIStoreCommandsResponseComplateFileCommandResponse401ErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            403: createMaomiAIStoreCommandsResponseComplateFileCommandResponse403ErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            409: createMaomiAIStoreCommandsResponseComplateFileCommandResponse409ErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            500: createMaomiAIStoreCommandsResponseComplateFileCommandResponse500ErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "send",
         responseBodyFactory:  createMaomiAIStoreCommandsResponseComplateFileCommandResponseFromDiscriminatorValue,
         requestBodyContentType: "application/json",

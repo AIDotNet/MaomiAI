@@ -12,10 +12,10 @@ namespace MaomiAI.User.Shared.Commands;
 /// <summary>
 /// 刷新 token.
 /// </summary>
-public class RefreshTokenCommand : IRequest<LoginResponse>
+public class RefreshTokenCommand : IRequest<LoginCommandResponse>
 {
     /// <summary>
     /// 刷新令牌.
     /// </summary>
-    public string RefreshToken { get; set; } = null!;
+    public string RefreshToken { get; init; } = null!;
 }

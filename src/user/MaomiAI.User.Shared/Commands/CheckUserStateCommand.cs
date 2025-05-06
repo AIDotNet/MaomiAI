@@ -8,7 +8,13 @@ using MediatR;
 
 namespace MaomiAI.User.Shared.Commands;
 
+/// <summary>
+/// 检查用户状态，判断用户是否存在以及是否被禁用.
+/// </summary>
 public class CheckUserStateCommand : IRequest<EmptyCommandResponse>
 {
+    /// <summary>
+    /// 用户 id.
+    /// </summary>
     public Guid UserId { get; init; }
 }

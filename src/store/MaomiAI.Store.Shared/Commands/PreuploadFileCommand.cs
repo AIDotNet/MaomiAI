@@ -1,19 +1,25 @@
-// <copyright file="InternalPreUploadImageCommand.cs" company="MaomiAI">
+﻿// <copyright file="PreuploadFileCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using MaomiAI.Store.Commands.Response;
+using MaomiAI.Store.Enums;
 using MediatR;
 
 namespace MaomiAI.Store.Commands;
 
 /// <summary>
-/// 上传图片，图片有指定路径等信息.
+/// 预上传文件，该命令只允许内部调用.
 /// </summary>
-public class InternalPreUploadImageCommand : IRequest<PreUploadFileCommandResponse>
+public class PreuploadFileCommand : IRequest<PreUploadFileCommandResponse>
 {
+    /// <summary>
+    /// 文件可见性.
+    /// </summary>
+    public FileVisibility Visibility { get; set; }
+
     /// <summary>
     /// 文件名称.
     /// </summary>
@@ -37,7 +43,7 @@ public class InternalPreUploadImageCommand : IRequest<PreUploadFileCommandRespon
     /// <summary>
     /// 文件路径，即 ObjectKey.
     /// </summary>
-    public string Path { get; set; } = null!;
+    public string ObjectKey { get; set; } = null!;
 
     /// <summary>
     /// 预签名上传地址有效期.

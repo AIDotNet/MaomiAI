@@ -133,24 +133,6 @@ export function createMaomiAIStoreCommandsResponsePreUploadFileCommandResponseFr
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIStoreQueriesCheckFileExistCommand}
- */
-// @ts-ignore
-export function createMaomiAIStoreQueriesCheckFileExistCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIStoreQueriesCheckFileExistCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIStoreQueriesResponseCheckFileExistCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIStoreQueriesResponseCheckFileExistCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIStoreQueriesResponseCheckFileExistCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand}
  */
 // @ts-ignore
@@ -295,11 +277,11 @@ export function createMaomiAIUserSharedCommandsRegisterUserCommandFromDiscrimina
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsResponsesLoginResponse}
+ * @returns {MaomiAIUserSharedCommandsResponsesLoginCommandResponse}
  */
 // @ts-ignore
-export function createMaomiAIUserSharedCommandsResponsesLoginResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsResponsesLoginResponse;
+export function createMaomiAIUserSharedCommandsResponsesLoginCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIUserSharedCommandsResponsesLoginCommandResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -331,11 +313,11 @@ export function createMaomiAIUserSharedQueriesQueryRepeatedUserNameCommandFromDi
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedQueriesQueryUserInfoResponse}
+ * @returns {MaomiAIUserSharedQueriesQueryUserInfoCommandResponse}
  */
 // @ts-ignore
-export function createMaomiAIUserSharedQueriesQueryUserInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoResponse;
+export function createMaomiAIUserSharedQueriesQueryUserInfoCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandResponse;
 }
 /**
  * The deserialization information for the current model
@@ -489,29 +471,6 @@ export function deserializeIntoMaomiAIStoreCommandsResponsePreUploadFileCommandR
         "isExist": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.isExist = n.getBooleanValue(); },
         "uploadUrl": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.uploadUrl = n.getStringValue(); },
         "visibility": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.visibility = n.getEnumValue<MaomiAIStoreEnumsFileVisibility>(MaomiAIStoreEnumsFileVisibilityObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIStoreQueriesCheckFileExistCommand(maomiAIStoreQueriesCheckFileExistCommand: Partial<MaomiAIStoreQueriesCheckFileExistCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAIStoreQueriesCheckFileExistCommand.fileId = n.getGuidValue(); },
-        "key": n => { maomiAIStoreQueriesCheckFileExistCommand.key = n.getStringValue(); },
-        "mD5": n => { maomiAIStoreQueriesCheckFileExistCommand.mD5 = n.getStringValue(); },
-        "visibility": n => { maomiAIStoreQueriesCheckFileExistCommand.visibility = n.getEnumValue<MaomiAIStoreEnumsFileVisibility>(MaomiAIStoreEnumsFileVisibilityObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIStoreQueriesResponseCheckFileExistCommandResponse(maomiAIStoreQueriesResponseCheckFileExistCommandResponse: Partial<MaomiAIStoreQueriesResponseCheckFileExistCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "exist": n => { maomiAIStoreQueriesResponseCheckFileExistCommandResponse.exist = n.getBooleanValue(); },
     }
 }
 /**
@@ -725,14 +684,14 @@ export function deserializeIntoMaomiAIUserSharedCommandsRegisterUserCommand(maom
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsResponsesLoginResponse(maomiAIUserSharedCommandsResponsesLoginResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMaomiAIUserSharedCommandsResponsesLoginCommandResponse(maomiAIUserSharedCommandsResponsesLoginCommandResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "accessToken": n => { maomiAIUserSharedCommandsResponsesLoginResponse.accessToken = n.getStringValue(); },
-        "expiresIn": n => { maomiAIUserSharedCommandsResponsesLoginResponse.expiresIn = n.getStringValue(); },
-        "refreshToken": n => { maomiAIUserSharedCommandsResponsesLoginResponse.refreshToken = n.getStringValue(); },
-        "tokenType": n => { maomiAIUserSharedCommandsResponsesLoginResponse.tokenType = n.getStringValue(); },
-        "userId": n => { maomiAIUserSharedCommandsResponsesLoginResponse.userId = n.getGuidValue(); },
-        "userName": n => { maomiAIUserSharedCommandsResponsesLoginResponse.userName = n.getStringValue(); },
+        "accessToken": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.accessToken = n.getStringValue(); },
+        "expiresIn": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.expiresIn = n.getStringValue(); },
+        "refreshToken": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.refreshToken = n.getStringValue(); },
+        "tokenType": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.tokenType = n.getStringValue(); },
+        "userId": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.userId = n.getGuidValue(); },
+        "userName": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.userName = n.getStringValue(); },
     }
 }
 /**
@@ -770,12 +729,12 @@ export function deserializeIntoMaomiAIUserSharedQueriesQueryRepeatedUserNameComm
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoResponse(maomiAIUserSharedQueriesQueryUserInfoResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandResponse(maomiAIUserSharedQueriesQueryUserInfoCommandResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "avatar": n => { maomiAIUserSharedQueriesQueryUserInfoResponse.avatar = n.getStringValue(); },
-        "nickName": n => { maomiAIUserSharedQueriesQueryUserInfoResponse.nickName = n.getStringValue(); },
-        "userId": n => { maomiAIUserSharedQueriesQueryUserInfoResponse.userId = n.getGuidValue(); },
-        "userName": n => { maomiAIUserSharedQueriesQueryUserInfoResponse.userName = n.getStringValue(); },
+        "avatar": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.avatar = n.getStringValue(); },
+        "nickName": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.nickName = n.getStringValue(); },
+        "userId": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userId = n.getGuidValue(); },
+        "userName": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName = n.getStringValue(); },
     }
 }
 /**
@@ -919,6 +878,9 @@ export interface MaomiAIStoreCommandsComplateFileUploadCommand extends Parsable 
      */
     isSuccess?: boolean | null;
 }
+/**
+ * 完成文件上传.
+ */
 export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse extends Parsable {
 }
 /**
@@ -948,33 +910,6 @@ export interface MaomiAIStoreCommandsResponsePreUploadFileCommandResponse extend
 }
 export type MaomiAIStoreEnumsFileVisibility = (typeof MaomiAIStoreEnumsFileVisibilityObject)[keyof typeof MaomiAIStoreEnumsFileVisibilityObject];
 export type MaomiAIStoreEnumsUploadImageType = (typeof MaomiAIStoreEnumsUploadImageTypeObject)[keyof typeof MaomiAIStoreEnumsUploadImageTypeObject];
-/**
- * 检查文件是否存在
- */
-export interface MaomiAIStoreQueriesCheckFileExistCommand extends Parsable {
-    /**
-     * The fileId property
-     */
-    fileId?: Guid | null;
-    /**
-     * The key property
-     */
-    key?: string | null;
-    /**
-     * The mD5 property
-     */
-    mD5?: string | null;
-    /**
-     * 文件可见性.
-     */
-    visibility?: MaomiAIStoreEnumsFileVisibility | null;
-}
-export interface MaomiAIStoreQueriesResponseCheckFileExistCommandResponse extends Parsable {
-    /**
-     * The exist property
-     */
-    exist?: boolean | null;
-}
 /**
  * 邀请用户加入团队命令.
  */
@@ -1280,7 +1215,7 @@ export interface MaomiAIUserSharedCommandsRegisterUserCommand extends Parsable {
 /**
  * 登录结果.
  */
-export interface MaomiAIUserSharedCommandsResponsesLoginResponse extends Parsable {
+export interface MaomiAIUserSharedCommandsResponsesLoginCommandResponse extends Parsable {
     /**
      * 访问令牌.
      */
@@ -1306,9 +1241,12 @@ export interface MaomiAIUserSharedCommandsResponsesLoginResponse extends Parsabl
      */
     userName?: string | null;
 }
+/**
+ * 重置密码.
+ */
 export interface MaomiAIUserSharedCommandsUpdateUserPasswordCommand extends Parsable {
     /**
-     * The password property
+     * 新的密码.
      */
     password?: string | null;
 }
@@ -1317,20 +1255,23 @@ export interface MaomiAIUserSharedCommandsUpdateUserPasswordCommand extends Pars
  */
 export interface MaomiAIUserSharedCommandsUploadtUserAvatarCommand extends Parsable {
     /**
-     * The fileId property
+     * 文件id.
      */
     fileId?: Guid | null;
 }
+/**
+ * 检查用户名是否重复.
+ */
 export interface MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand extends Parsable {
     /**
-     * The userName property
+     * 用户名.
      */
     userName?: string | null;
 }
 /**
  * 用户基本信息响应.
  */
-export interface MaomiAIUserSharedQueriesQueryUserInfoResponse extends Parsable {
+export interface MaomiAIUserSharedQueriesQueryUserInfoCommandResponse extends Parsable {
     /**
      * 头像路径.
      */
@@ -1500,29 +1441,6 @@ export function serializeMaomiAIStoreCommandsResponsePreUploadFileCommandRespons
         writer.writeBooleanValue("isExist", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.isExist);
         writer.writeStringValue("uploadUrl", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.uploadUrl);
         writer.writeEnumValue<MaomiAIStoreEnumsFileVisibility>("visibility", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.visibility);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIStoreQueriesCheckFileExistCommand(writer: SerializationWriter, maomiAIStoreQueriesCheckFileExistCommand: Partial<MaomiAIStoreQueriesCheckFileExistCommand> | undefined | null = {}) : void {
-    if (maomiAIStoreQueriesCheckFileExistCommand) {
-        writer.writeGuidValue("fileId", maomiAIStoreQueriesCheckFileExistCommand.fileId);
-        writer.writeStringValue("key", maomiAIStoreQueriesCheckFileExistCommand.key);
-        writer.writeStringValue("mD5", maomiAIStoreQueriesCheckFileExistCommand.mD5);
-        writer.writeEnumValue<MaomiAIStoreEnumsFileVisibility>("visibility", maomiAIStoreQueriesCheckFileExistCommand.visibility);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIStoreQueriesResponseCheckFileExistCommandResponse(writer: SerializationWriter, maomiAIStoreQueriesResponseCheckFileExistCommandResponse: Partial<MaomiAIStoreQueriesResponseCheckFileExistCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIStoreQueriesResponseCheckFileExistCommandResponse) {
-        writer.writeBooleanValue("exist", maomiAIStoreQueriesResponseCheckFileExistCommandResponse.exist);
     }
 }
 /**
@@ -1736,14 +1654,14 @@ export function serializeMaomiAIUserSharedCommandsRegisterUserCommand(writer: Se
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeMaomiAIUserSharedCommandsResponsesLoginResponse(writer: SerializationWriter, maomiAIUserSharedCommandsResponsesLoginResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginResponse> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsResponsesLoginResponse) {
-        writer.writeStringValue("accessToken", maomiAIUserSharedCommandsResponsesLoginResponse.accessToken);
-        writer.writeStringValue("expiresIn", maomiAIUserSharedCommandsResponsesLoginResponse.expiresIn);
-        writer.writeStringValue("refreshToken", maomiAIUserSharedCommandsResponsesLoginResponse.refreshToken);
-        writer.writeStringValue("tokenType", maomiAIUserSharedCommandsResponsesLoginResponse.tokenType);
-        writer.writeGuidValue("userId", maomiAIUserSharedCommandsResponsesLoginResponse.userId);
-        writer.writeStringValue("userName", maomiAIUserSharedCommandsResponsesLoginResponse.userName);
+export function serializeMaomiAIUserSharedCommandsResponsesLoginCommandResponse(writer: SerializationWriter, maomiAIUserSharedCommandsResponsesLoginCommandResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIUserSharedCommandsResponsesLoginCommandResponse) {
+        writer.writeStringValue("accessToken", maomiAIUserSharedCommandsResponsesLoginCommandResponse.accessToken);
+        writer.writeStringValue("expiresIn", maomiAIUserSharedCommandsResponsesLoginCommandResponse.expiresIn);
+        writer.writeStringValue("refreshToken", maomiAIUserSharedCommandsResponsesLoginCommandResponse.refreshToken);
+        writer.writeStringValue("tokenType", maomiAIUserSharedCommandsResponsesLoginCommandResponse.tokenType);
+        writer.writeGuidValue("userId", maomiAIUserSharedCommandsResponsesLoginCommandResponse.userId);
+        writer.writeStringValue("userName", maomiAIUserSharedCommandsResponsesLoginCommandResponse.userName);
     }
 }
 /**
@@ -1781,12 +1699,12 @@ export function serializeMaomiAIUserSharedQueriesQueryRepeatedUserNameCommand(wr
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeMaomiAIUserSharedQueriesQueryUserInfoResponse(writer: SerializationWriter, maomiAIUserSharedQueriesQueryUserInfoResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoResponse> | undefined | null = {}) : void {
-    if (maomiAIUserSharedQueriesQueryUserInfoResponse) {
-        writer.writeStringValue("avatar", maomiAIUserSharedQueriesQueryUserInfoResponse.avatar);
-        writer.writeStringValue("nickName", maomiAIUserSharedQueriesQueryUserInfoResponse.nickName);
-        writer.writeGuidValue("userId", maomiAIUserSharedQueriesQueryUserInfoResponse.userId);
-        writer.writeStringValue("userName", maomiAIUserSharedQueriesQueryUserInfoResponse.userName);
+export function serializeMaomiAIUserSharedQueriesQueryUserInfoCommandResponse(writer: SerializationWriter, maomiAIUserSharedQueriesQueryUserInfoCommandResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIUserSharedQueriesQueryUserInfoCommandResponse) {
+        writer.writeStringValue("avatar", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.avatar);
+        writer.writeStringValue("nickName", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.nickName);
+        writer.writeGuidValue("userId", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userId);
+        writer.writeStringValue("userName", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName);
     }
 }
 /**

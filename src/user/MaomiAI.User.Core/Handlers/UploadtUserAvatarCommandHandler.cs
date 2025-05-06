@@ -40,7 +40,7 @@ public class UploadtUserAvatarCommandHandler : IRequestHandler<UploadtUserAvatar
         await _mediator.Send(new CheckUserStateCommand { UserId = _userContext.UserId }, cancellationToken);
 
         var user = (await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == _userContext.UserId, cancellationToken))!;
-        user.AvatarPath = file.Path;
+        user.AvatarPath = file.ObjectKey;
         user.AvatarId = file.Id;
 
         _dbContext.Update(user);

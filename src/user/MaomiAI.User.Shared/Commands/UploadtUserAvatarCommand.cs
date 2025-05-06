@@ -13,5 +13,8 @@ namespace MaomiAI.User.Shared.Commands;
 /// </summary>
 public class UploadtUserAvatarCommand : IRequest<EmptyCommandResponse>
 {
+    /// <summary>
+    /// 文件id.
+    /// </summary>
     public Guid FileId { get; init; }
 }

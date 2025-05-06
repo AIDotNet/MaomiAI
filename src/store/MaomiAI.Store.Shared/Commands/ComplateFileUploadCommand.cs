@@ -25,11 +25,3 @@ public class ComplateFileUploadCommand : IRequest<ComplateFileCommandResponse>
     /// </summary>
     public Guid FileId { get; set; }
 }
-
-public class ComplateFileUploadCommandCommandValidator : AbstractValidator<ComplateFileUploadCommand>
-{
-    public ComplateFileUploadCommandCommandValidator()
-    {
-        RuleFor(x => x.FileId).NotEmpty().WithMessage("文件ID不能为空.");
-    }
-}

@@ -21,6 +21,8 @@ import {
 } from "@microsoft/kiota-serialization-json";
 import { message } from "antd";
 import { IsTokenExpired } from "../helper/TokenHelper";
+import { MaomiAIStoreCommandsResponsePreUploadFileCommandResponse, MaomiAIStoreEnumsUploadImageType } from "../ApiClient/models";
+import { GetFileMd5 } from "../helper/Md5Helper";
 
 // 中间件请求
 class FilterRequestHandler implements Middleware {
@@ -85,7 +87,6 @@ export const GetApiClient = function (): MaomiClient {
     authProvider = new AnonymousAuthenticationProvider();
   }
 
-
   const httpClient = KiotaClientFactory.create(undefined, handlers);
   const adapter = new FetchRequestAdapter(
     authProvider,
@@ -110,4 +111,51 @@ export const RefreshAccessToken = async function (refreshToken: string) {
   return await client.api.user.refresh_token.post({
     refreshToken: refreshToken,
   });
+};
+
+// 上传公开类型的文件
+export const UploadImage = async (
+  client: MaomiClient,
+  file: File,
+  imageType: MaomiAIStoreEnumsUploadImageType
+): Promise<MaomiAIStoreCommandsResponsePreUploadFileCommandResponse> => {
+  const md5 = await GetFileMd5(file);
+  const preUploadResponse = await client.api.store.pre_upload_image.post({
+    contentType: file.type,
+    fileName: file.name,
+    mD5: md5,
+    imageType: imageType,
+    fileSize: file.size,
+  });
+
+  if (!preUploadResponse || !preUploadResponse.uploadUrl) {
+    throw new Error("获取预签名URL失败");
+  }
+
+  const uploadUrl = preUploadResponse.uploadUrl;
+  if (!uploadUrl) {
+    throw new Error("获取预签名URL失败");
+  }
+
+  // 使用 fetch API 上传到预签名的 S3 URL
+  const uploadResponse = await fetch(uploadUrl, {
+    method: "PUT",
+    body: file,
+    headers: {
+      "Content-Type": file.type,
+      "x-amz-meta-max-file-size": file.size.toString(),
+    },
+  });
+
+  if (uploadResponse.status !== 200) {
+    console.error("upload file error:");
+    console.error(uploadResponse);
+    throw new Error(uploadResponse.statusText);
+  }
+
+  await client.api.store.complate_url.post({
+    fileId: preUploadResponse.fileId,
+  });
+
+  return preUploadResponse;
 };

@@ -117,6 +117,4 @@ public static class FileStoreHelper
 
         return $"{baseUrl.TrimEnd('/')}/{relativePath.TrimStart('/')}";
     }
-
-    /// <summary>
 }

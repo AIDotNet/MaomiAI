@@ -21,6 +21,16 @@ public class QueryServerInfoCommandHandler : IRequestHandler<QueryServerInfoComm
     {
         await Task.CompletedTask;
 
+        var endpoint = new Uri(_systemOptions.PublicStore.Endpoint);
+        if (_systemOptions.PublicStore.ForcePathStyle)
+        {
+            endpoint = new Uri($"{endpoint.Scheme}://{_systemOptions.PublicStore.Bucket}.{endpoint.Host}");
+        }
+        else
+        {
+            endpoint = new Uri($"{endpoint.Scheme}://{endpoint.Host}/{_systemOptions.PublicStore.Bucket}");
+        }
+
         return new QueryServerInfoResponse
         {
             PublicStoreUrl = _systemOptions.PublicStore.Endpoint,

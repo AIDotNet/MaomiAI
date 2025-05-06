@@ -10,9 +10,9 @@ using MediatR;
 namespace MaomiAI.Store.Queries;
 
 /// <summary>
-/// 读取公开文件路径.
+/// 获取文件的访问路径，只支持公有文件.
 /// </summary>
-public class QueryPublicFilePathCommand : IRequest<QueryPublicFilePathCommandResponse>
+public class QueryPublicFilePathCommand : IRequest<QueryPublicFilePathResponse>
 {
     /// <summary>
     /// 文件 id.

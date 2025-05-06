@@ -6,6 +6,7 @@
 
 using MaomiAI.Database;
 using MaomiAI.Infra;
+using MaomiAI.Infra.Defaults;
 using MaomiAI.Infra.Helpers;
 using MaomiAI.Infra.Services;
 using MaomiAI.User.Core.Services;
@@ -21,7 +22,7 @@ namespace MaomiAI.User.Core.Handlers;
 /// <summary>
 /// 登录命令处理程序.
 /// </summary>
-public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
+public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly SystemOptions _systemOptions;
@@ -55,7 +56,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
     /// <param name="request">命令请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>登录结果.</returns>
-    public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<LoginCommandResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var cacheKey = $"login:fail:{request.UserName}";
         var failCount = await _database.GetAsync<int>(cacheKey);
@@ -108,7 +109,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
 
         var (accessToken, refreshToken) = _tokenProvider.GenerateTokens(userContext);
 
-        var result = new LoginResponse
+        var result = new LoginCommandResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,

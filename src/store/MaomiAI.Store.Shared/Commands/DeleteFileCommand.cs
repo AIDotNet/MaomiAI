@@ -1,4 +1,4 @@
-﻿// <copyright file="UpdateUserPasswordCommand.cs" company="MaomiAI">
+﻿// <copyright file="DeleteFileCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -6,15 +6,15 @@
 
 using MediatR;
 
-namespace MaomiAI.User.Shared.Commands;
+namespace MaomiAI.Store.Commands;
 
 /// <summary>
-/// 重置密码.
+/// 删除文件.
 /// </summary>
-public class UpdateUserPasswordCommand : IRequest<EmptyCommandResponse>
+public class DeleteFileCommand : IRequest<EmptyCommandResponse>
 {
     /// <summary>
-    /// 新的密码.
+    /// 文件id.
     /// </summary>
-    public string Password { get; init; }
+    public Guid FileId { get; init; }
 }

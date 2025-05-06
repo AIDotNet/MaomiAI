@@ -22,7 +22,7 @@ public partial class FileEntity : IFullAudited
     /// <summary>
     /// 文件路径.
     /// </summary>
-    public string Path { get; set; } = null!;
+    public string ObjectKey { get; set; } = null!;
 
     /// <summary>
     /// 允许公开访问.

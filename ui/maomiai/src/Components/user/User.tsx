@@ -1,14 +1,30 @@
-import React from "react";
 import { Form, Input, Button, Upload, message, Card, Row, Col } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./User.css";
-import { GetApiClient } from "../ServiceClient";
-import { GetFileMd5 } from "../../helper/Md5Helper";
+import { GetApiClient, UploadImage } from "../ServiceClient";
+import { useEffect, useState } from "react";
 
 export default function User() {
   const [passwordForm] = Form.useForm();
+  const [avatarUrl, setAvatarUrl] = useState("");
   const [avatarForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    let client = GetApiClient();
+    const fetchData = async () => {
+      // 刷新用户信息
+      const userInfo = await client.api.user.info.get();
+      if (userInfo && userInfo.avatar) {
+        setAvatarUrl(userInfo.avatar);
+      }
+    };
+    fetchData();
+    
+    return () => {
+    };
+  }, []);
+
 
   const handlePasswordSubmit = async (values: any) => {
     try {
@@ -22,57 +38,23 @@ export default function User() {
   };
 
   const handleAvatarSubmit = async (values: any) => {
+    const client = GetApiClient();
+    const file = values.avatar[0].originFileObj;
+    if (!file) {
+      messageApi.error("请选择一个文件");
+      return;
+    }
+
     try {
-      const client = GetApiClient();
-      const file = values.avatar[0].originFileObj;
-      if (!file) {
-        messageApi.error("请选择一个文件");
-        return;
-      }
+      // 上传头像
+      const preUploadResponse = await UploadImage(client, file, "UserAvatar");
 
-      const md5 = await GetFileMd5(file);
-      const preUploadResponse = await client.api.store.pre_upload_image.post({
-        contentType: file.type,
-        fileName: file.name,
-        mD5: md5,
-        imageType: "UserAvatar",
-        fileSize: file.size,
-      });
-
-      if (!preUploadResponse || !preUploadResponse.uploadUrl) {
-        messageApi.error("获取预签名URL失败");
-        throw new Error("获取预签名URL失败");
-      }
-
-      const uploadUrl = preUploadResponse.uploadUrl;
-      if (!uploadUrl) {
-        messageApi.error("获取预签名URL失败");
-        throw new Error("获取预签名URL失败");
-      }
-
-      // 使用 fetch API 上传到预签名的 S3 URL
-      const uploadResponse = await fetch(uploadUrl, {
-        method: "PUT",
-        body: file,
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
-
-      if (!uploadResponse.ok) {
-        messageApi.error("文件上传失败");
-        throw new Error("文件上传失败");
-      }
-
-      // 如果文件已存在，则直接使用文件ID
+      // 更新头像
       await client.api.user.uploadavatar.post({
         fileId: preUploadResponse.fileId,
       });
-
-      messageApi.success("头像更新成功");
-      return;
     } catch (error) {
-      console.error("Avatar update error:", error);
+      console.error("upload file error:", error);
       const typedError = error as {
         detail?: string;
       };
@@ -81,7 +63,12 @@ export default function User() {
       } else {
         messageApi.error("头像上传失败");
       }
+      messageApi.error("头像上传失败");
+      return;
     }
+
+    messageApi.success("头像更新成功");
+    return;
   };
 
   return (

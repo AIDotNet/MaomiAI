@@ -20,6 +20,8 @@ namespace MaomiAI.Infra
         public void ConfigureServices(ServiceContext context)
         {
             context.Services.AddSingleton<IIdProvider>(new DefaultIdProvider(0));
+            context.Services.AddHttpContextAccessor();
+            context.Services.AddScoped<UserContext, DefaultUserContext>();
         }
     }
 }

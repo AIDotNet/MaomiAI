@@ -11,7 +11,7 @@ namespace MaomiAI.User.Shared.Queries;
 /// <summary>
 /// 查询用户基本信息的请求.
 /// </summary>
-public class QueryUserInfoCommand : IRequest<QueryUserInfoResponse>
+public class QueryUserInfoCommand : IRequest<QueryUserInfoCommandResponse>
 {
     /// <summary>
     /// 用户 ID.

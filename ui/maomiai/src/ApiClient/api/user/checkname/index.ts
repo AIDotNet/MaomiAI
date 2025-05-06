@@ -12,14 +12,14 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
 export interface ChecknameRequestBuilder extends BaseRequestBuilder<ChecknameRequestBuilder> {
     /**
      * 查询用户名是否重复.
-     * @param body The request body
+     * @param body 检查用户名是否重复.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<MaomiAIInfraModelsSimpleOfBoolean>}
      */
      post(body: MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAIInfraModelsSimpleOfBoolean | undefined>;
     /**
      * 查询用户名是否重复.
-     * @param body The request body
+     * @param body 检查用户名是否重复.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */

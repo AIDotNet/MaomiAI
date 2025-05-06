@@ -14,8 +14,6 @@
     <ItemGroup>
         <ProjectReference Include="..\MaomiAI.User.Api\MaomiAI.User.Api.csproj" />
         <ProjectReference Include="..\MaomiAI.User.Shared\MaomiAI.User.Shared.csproj" />
-        <ProjectReference Include="..\..\database\MaomiAI.Database.Core\MaomiAI.Database.Core.csproj" />
-        <ProjectReference Include="..\..\infra\MaomiAI.Infra.Core\MaomiAI.Infra.Core.csproj" />
     </ItemGroup>
 
 </Project> 

@@ -6,7 +6,7 @@ using MediatR;
 namespace MaomiAI.Store.Commands;
 
 /// <summary>
-/// 预上传图片.
+/// 预上传图片，存储时设置为公开.
 /// </summary>
 public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageCommand, PreUploadFileCommandResponse>
 {
@@ -24,14 +24,15 @@ public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageComman
     /// <inheritdoc/>
     public async Task<PreUploadFileCommandResponse> Handle(PreUploadImageCommand request, CancellationToken cancellationToken)
     {
-        if (FileStoreHelper.ImageExtensions.Contains(request.FileName.Split('.').Last()))
+        var fileExtension = Path.GetExtension(request.FileName);
+        if (!FileStoreHelper.ImageExtensions.Contains(fileExtension))
         {
-            throw new BusinessException("文件格式不正确");
+            throw new BusinessException("不支持该类型的图像") { StatusCode = 400};
         }
 
-        // todo: 限制头像文件大小.
+        // todo: 通过系统设置限制头像文件大小.
 
-        var preu = new InternalPreuploadFileCommand
+        var preu = new PreuploadFileCommand
         {
             FileName = request.FileName,
             ContentType = request.ContentType,
@@ -39,7 +40,7 @@ public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageComman
             MD5 = request.MD5,
             Expiration = TimeSpan.FromMinutes(1),
             Visibility = Enums.FileVisibility.Public,
-            Path = FileStoreHelper.CombineUrl(request.ImageType.ToString().ToLower(), FileStoreHelper.GetObjectKey(request.MD5, request.FileName)),
+            ObjectKey = FileStoreHelper.GetObjectKey(request.MD5, request.FileName),
         };
 
         return await _mediator.Send(preu, cancellationToken);

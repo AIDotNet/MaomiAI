@@ -12,7 +12,7 @@ namespace MaomiAI.User.Shared.Commands;
 /// <summary>
 /// 登录.
 /// </summary>
-public class LoginCommand : IRequest<LoginResponse>
+public class LoginCommand : IRequest<LoginCommandResponse>
 {
     /// <summary>
     /// 用户名或邮箱.

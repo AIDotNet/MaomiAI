@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI.Database;
+using MaomiAI.Infra.Defaults;
 using MaomiAI.User.Core.Services;
 using MaomiAI.User.Shared.Commands;
 using MaomiAI.User.Shared.Commands.Responses;
@@ -17,7 +18,7 @@ namespace MaomiAI.User.Core.Handlers;
 /// <summary>
 /// 刷新 token.
 /// </summary>
-public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, LoginResponse>
+public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, LoginCommandResponse>
 {
     private readonly ITokenProvider _tokenProvider;
     private readonly DatabaseContext _dbContext;
@@ -37,7 +38,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, L
     }
 
     /// <inheritdoc/>
-    public async Task<LoginResponse> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
+    public async Task<LoginCommandResponse> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
     {
         var tokenValidationResult = await _tokenProvider.ValidateTokenAsync(request.RefreshToken);
 
@@ -77,7 +78,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, L
 
         var (accessToken, refreshToken) = _tokenProvider.GenerateTokens(userContext);
 
-        var result = new LoginResponse
+        var result = new LoginCommandResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,

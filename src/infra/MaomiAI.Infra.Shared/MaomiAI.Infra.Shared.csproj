@@ -8,6 +8,7 @@
     <ItemGroup>
         <PackageReference Include="FastEndpoints" Version="6.0.0-beta.11" />
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="LinqKit" Version="1.3.8" />
         <PackageReference Include="Maomi.Core" Version="2.2.0" />
         <PackageReference Include="Maomi.I18n" Version="2.2.1" />
         <PackageReference Include="MediatR" Version="12.4.1" />
@@ -15,7 +16,8 @@
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.9.0" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.31" />
         <PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
-
+		<PackageReference Include="StackExchange.Redis.Extensions.Core" Version="11.0.0" />
+		<PackageReference Include="StackExchange.Redis.Extensions.System.Text.Json" Version="11.0.0" />
     </ItemGroup>
 
 </Project>

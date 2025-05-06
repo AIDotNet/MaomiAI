@@ -18,7 +18,7 @@ namespace MaomiAI.User.Api.Endpoints;
 [EndpointGroupName("user")]
 [HttpPost($"{UserApi.ApiPrefix}/login")]
 [AllowAnonymous]
-public class LoginEndpoint : Endpoint<LoginCommand, LoginResponse>
+public class LoginEndpoint : Endpoint<LoginCommand, LoginCommandResponse>
 {
     private readonly IMediator _mediator;
 
@@ -32,7 +32,7 @@ public class LoginEndpoint : Endpoint<LoginCommand, LoginResponse>
     }
 
     /// <inheritdoc/>
-    public override async Task<LoginResponse> ExecuteAsync(LoginCommand req, CancellationToken ct)
+    public override async Task<LoginCommandResponse> ExecuteAsync(LoginCommand req, CancellationToken ct)
     {
         return await _mediator.Send(req, ct);
     }

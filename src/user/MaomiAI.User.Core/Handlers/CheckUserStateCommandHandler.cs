@@ -11,15 +11,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.User.Core.Handlers;
 
+/// <summary>
+/// <inheritdoc cref="CheckUserStateCommand"/>
+/// </summary>
 public class CheckUserStateCommandHandler : IRequestHandler<CheckUserStateCommand, EmptyCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CheckUserStateCommandHandler"/> class.
+    /// </summary>
+    /// <param name="dbContext"></param>
     public CheckUserStateCommandHandler(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }
 
+    /// <inheritdoc/>
     public async Task<EmptyCommandResponse> Handle(CheckUserStateCommand request, CancellationToken cancellationToken)
     {
         var user = await _dbContext.Users.Where(x => x.Id == request.UserId).FirstOrDefaultAsync(cancellationToken);

@@ -19,7 +19,7 @@ namespace MaomiAI.Store.Commands;
 /// <summary>
 /// 预上传文件.
 /// </summary>
-public class PreuploadFileCommandHandler : IRequestHandler<InternalPreuploadFileCommand, PreUploadFileCommandResponse>
+public class PreuploadFileCommandHandler : IRequestHandler<PreuploadFileCommand, PreUploadFileCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IServiceProvider _serviceProvider;
@@ -36,16 +36,15 @@ public class PreuploadFileCommandHandler : IRequestHandler<InternalPreuploadFile
     }
 
     /// <inheritdoc/>
-    public async Task<PreUploadFileCommandResponse> Handle(InternalPreuploadFileCommand request, CancellationToken cancellationToken)
+    public async Task<PreUploadFileCommandResponse> Handle(PreuploadFileCommand request, CancellationToken cancellationToken)
     {
         var isPublic = request.Visibility == FileVisibility.Public ? true : false;
 
         // 如果文件的 md5 已存在并且文件大小相同，则直接返回文件的 oss 地址，无需重复上传
         // public 和 private 不可以是同一个桶
-        var file = await _dbContext.Files
-            .FirstOrDefaultAsync(x => x.FileMd5 == request.MD5 && x.FileSize == request.FileSize && x.IsPublic == isPublic, cancellationToken);
+        var file = await _dbContext.Files.FirstOrDefaultAsync(x => x.IsPublic == isPublic && x.ObjectKey == request.ObjectKey, cancellationToken);
 
-        // 文件已存在
+        // 文件已存在，直接复用
         if (file != null && file.IsUpload)
         {
             return new PreUploadFileCommandResponse
@@ -66,7 +65,7 @@ public class PreuploadFileCommandHandler : IRequestHandler<InternalPreuploadFile
                 ContentType = request.ContentType,
                 IsUpload = false,
                 IsPublic = isPublic,
-                Path = request.Path
+                ObjectKey = request.ObjectKey
             };
 
             await _dbContext.Files.AddAsync(fileEntity, cancellationToken);
@@ -74,16 +73,21 @@ public class PreuploadFileCommandHandler : IRequestHandler<InternalPreuploadFile
         }
         else
         {
-            // 复用相同的 id
+            // 已存在预上传记录，但是还没有上传，复用相同的 id，
+            // 不过更新人会变化
             fileEntity = file;
+            fileEntity.UpdateTime = DateTimeOffset.Now;
+            _dbContext.Files.Update(fileEntity);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(request.Visibility);
 
+        // 生成预上传地址
         var uploadUrl = await fileStore.GeneratePreSignedUploadUrlAsync(new FileObject
         {
             ExpiryDuration = request.Expiration,
-            ObjectKey = request.Path,
+            ObjectKey = request.ObjectKey,
             ContentType = request.ContentType,
             MaxFileSize = FileStoreHelper.GetAllowedFileSizeLimit(request.FileSize)
         });

@@ -6,6 +6,9 @@
 
 namespace MaomiAI.Store.Commands.Response;
 
+/// <summary>
+/// 完成文件上传.
+/// </summary>
 public class ComplateFileCommandResponse
 {
 }
