@@ -41,10 +41,9 @@ public class UserContextProvider : IUserContextProvider
     private DefaultUserContext Parse()
     {
         var httpContext = _httpContextAccessor.HttpContext;
-        ArgumentNullException.ThrowIfNull(httpContext);
 
-        var user = httpContext.User;
-        if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
+        var user = httpContext?.User;
+        if (httpContext == null || user == null || user.Identity == null || !user.Identity.IsAuthenticated)
         {
             return new DefaultUserContext
             {

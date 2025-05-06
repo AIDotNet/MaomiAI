@@ -5,9 +5,9 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 默认模型配置.
+/// 知识库文档.
 /// </summary>
-public partial class TeamDefaultAiModelEntity : IFullAudited
+public partial class TeamWikiDocumentEntity : IFullAudited
 {
     /// <summary>
     /// id.
@@ -15,14 +15,19 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 模型id.
+    /// 团队id.
     /// </summary>
-    public Guid ModelId { get; set; }
+    public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 功能.
+    /// 知识库id.
     /// </summary>
-    public int Function { get; set; }
+    public Guid WikiId { get; set; }
+
+    /// <summary>
+    /// 文件id.
+    /// </summary>
+    public Guid FileId { get; set; }
 
     /// <summary>
     /// 是否删除.
@@ -40,7 +45,7 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建者ID.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
@@ -48,9 +53,4 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     /// 更新人ID.
     /// </summary>
     public Guid UpdateUserId { get; set; }
-
-    /// <summary>
-    /// 团队id.
-    /// </summary>
-    public Guid TeamId { get; set; }
 }

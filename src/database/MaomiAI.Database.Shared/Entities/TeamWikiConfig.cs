@@ -5,9 +5,9 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 默认模型配置.
+/// 团队知识库配置.
 /// </summary>
-public partial class TeamDefaultAiModelEntity : IFullAudited
+public partial class TeamWikiConfigEntity : IFullAudited
 {
     /// <summary>
     /// id.
@@ -15,42 +15,36 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 模型id.
+    /// 团队id.
     /// </summary>
-    public Guid ModelId { get; set; }
+    public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 功能.
+    /// 知识库id.
     /// </summary>
-    public int Function { get; set; }
+    public Guid WikiId { get; set; }
+
+    /// <summary>
+    /// 知识库处理数据的嵌入模型id.
+    /// </summary>
+    public Guid ModelId { get; set; }
 
     /// <summary>
     /// 是否删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
-    /// <summary>
-    /// 创建时间.
-    /// </summary>
     public DateTimeOffset CreateTime { get; set; }
 
-    /// <summary>
-    /// 更新时间.
-    /// </summary>
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建者id.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人id.
     /// </summary>
     public Guid UpdateUserId { get; set; }
-
-    /// <summary>
-    /// 团队id.
-    /// </summary>
-    public Guid TeamId { get; set; }
 }

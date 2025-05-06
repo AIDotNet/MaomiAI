@@ -25,7 +25,7 @@ public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageComman
     public async Task<PreUploadFileCommandResponse> Handle(PreUploadImageCommand request, CancellationToken cancellationToken)
     {
         var fileExtension = Path.GetExtension(request.FileName);
-        if (!FileStoreHelper.ImageExtensions.Contains(fileExtension))
+        if (!FileStoreHelper.ImageExtensions.Contains(fileExtension.ToLower()))
         {
             throw new BusinessException("不支持该类型的图像") { StatusCode = 400};
         }

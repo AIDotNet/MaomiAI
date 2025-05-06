@@ -6,25 +6,30 @@ import { useEffect, useState } from "react";
 
 export default function User() {
   const [passwordForm] = Form.useForm();
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    avatar: "",
+    userName: "",
+    nickName: "",
+  });
   const [avatarForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
 
-  useEffect(() => {
+  const fetchUserInfo = async () => {
     let client = GetApiClient();
-    const fetchData = async () => {
-      // 刷新用户信息
-      const userInfo = await client.api.user.info.get();
-      if (userInfo && userInfo.avatar) {
-        setAvatarUrl(userInfo.avatar);
-      }
-    };
-    fetchData();
-    
-    return () => {
-    };
-  }, []);
+    const userInfoResponse = await client.api.user.info.get();
+    if (userInfoResponse) {
+      setUserInfo({
+        avatar: userInfoResponse.avatar || "",
+        userName: userInfoResponse.userName || "",
+        nickName: userInfoResponse.nickName || "",
+      });
+    }
+  };
 
+  useEffect(() => {
+    fetchUserInfo();
+    return () => {};
+  }, []);
 
   const handlePasswordSubmit = async (values: any) => {
     try {
@@ -53,6 +58,10 @@ export default function User() {
       await client.api.user.uploadavatar.post({
         fileId: preUploadResponse.fileId,
       });
+
+      messageApi.success("头像更新成功");
+      // Refresh user information to update avatar
+      fetchUserInfo();
     } catch (error) {
       console.error("upload file error:", error);
       const typedError = error as {
@@ -66,9 +75,6 @@ export default function User() {
       messageApi.error("头像上传失败");
       return;
     }
-
-    messageApi.success("头像更新成功");
-    return;
   };
 
   return (
@@ -77,12 +83,32 @@ export default function User() {
       <Row justify="center" align="middle" className="user-container">
         <Col span={20}>
           <Card title="用户信息更新" className="user-card">
+            {/* Flex container for avatar and user info */}
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+              {userInfo.avatar && (
+                <img
+                  src={userInfo.avatar}
+                  alt="用户头像"
+                  style={{ width: "100px", height: "100px", borderRadius: "50%", marginRight: "20px" }}
+                />
+              )}
+              <div>
+                <div>
+                  <strong>用户名:</strong> {userInfo.userName}
+                </div>
+                <div>
+                  <strong>用户昵称:</strong> {userInfo.nickName}
+                </div>
+              </div>
+            </div>
+
             <Form
               form={passwordForm}
               name="passwordUpdate"
               onFinish={handlePasswordSubmit}
               layout="vertical"
               size="large"
+              style={{ marginBottom: "40px" }}
             >
               <Form.Item
                 name="password"

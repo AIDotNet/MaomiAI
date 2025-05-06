@@ -23,6 +23,14 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
+        entity.Property(e => e.AvatarId)
+            .HasComment("头像id")
+            .HasColumnName("avatar_id");
+        entity.Property(e => e.AvatarPath)
+            .HasMaxLength(100)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("头像路径")
+            .HasColumnName("avatar_path");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")

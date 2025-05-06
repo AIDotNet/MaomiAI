@@ -63,4 +63,14 @@ public partial class TeamWikiEntity : IFullAudited
     /// 公开使用，所有人不需要加入团队即可使用此知识库.
     /// </summary>
     public bool IsPublic { get; set; }
+
+    /// <summary>
+    /// 头像id.
+    /// </summary>
+    public Guid AvatarId { get; set; }
+
+    /// <summary>
+    /// 头像路径.
+    /// </summary>
+    public string AvatarPath { get; set; } = null!;
 }

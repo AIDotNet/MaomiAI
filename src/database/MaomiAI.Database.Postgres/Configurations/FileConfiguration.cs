@@ -19,13 +19,13 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
 
         entity.ToTable("files", tb => tb.HasComment("文件列表"));
 
-        entity.HasIndex(e => new { e.FileMd5, e.FileSize }, "files_file_md5_file_size_uindex").IsUnique();
-
         entity.HasIndex(e => e.FileMd5, "files_file_md5_index");
 
         entity.HasIndex(e => e.FileName, "files_file_name_index");
 
-        entity.HasIndex(e => e.ObjectKey, "files_path_index");
+        entity.HasIndex(e => new { e.IsPublic, e.ObjectKey }, "files_is_public_object_key_uindex").IsUnique();
+
+        entity.HasIndex(e => e.ObjectKey, "files_object_key_index");
 
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
@@ -38,8 +38,11 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasColumnName("content_type");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .HasComment("创建时间")
             .HasColumnName("create_time");
-        entity.Property(e => e.CreateUserId).HasColumnName("create_user_id");
+        entity.Property(e => e.CreateUserId)
+            .HasComment("创建人")
+            .HasColumnName("create_user_id");
         entity.Property(e => e.FileMd5)
             .HasMaxLength(50)
             .HasComment("文件md5值")
@@ -53,10 +56,11 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasColumnName("file_size");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
+            .HasComment("软删除")
             .HasColumnName("is_deleted");
         entity.Property(e => e.IsPublic)
             .HasDefaultValue(false)
-            .HasComment("允许公开访问")
+            .HasComment("允许公开访问，公有文件不带路径")
             .HasColumnName("is_public");
         entity.Property(e => e.IsUpload)
             .HasDefaultValue(false)
@@ -65,11 +69,14 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
         entity.Property(e => e.ObjectKey)
             .HasMaxLength(255)
             .HasComment("文件路径")
-            .HasColumnName("path");
+            .HasColumnName("object_key");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .HasComment("更新时间")
             .HasColumnName("update_time");
-        entity.Property(e => e.UpdateUserId).HasColumnName("update_user_id");
+        entity.Property(e => e.UpdateUserId)
+            .HasComment("更新用户id")
+            .HasColumnName("update_user_id");
 
         OnConfigurePartial(entity);
     }

@@ -8,6 +8,7 @@ using MaomiAI.Database.Audits;
 using MaomiAI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq.Expressions;
 
 namespace MaomiAI.Database;
@@ -80,6 +81,16 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<TeamWikiEntity> TeamWikis { get; set; }
 
     /// <summary>
+    /// 团队知识库配置.
+    /// </summary>
+    public virtual DbSet<TeamWikiConfigEntity> TeamWikiConfigs { get; set; }
+
+    /// <summary>
+    /// 知识库文档.
+    /// </summary>
+    public virtual DbSet<TeamWikiDocumentEntity> TeamWikiDocuments { get; set; }
+
+    /// <summary>
     /// 用户表.
     /// </summary>
     public virtual DbSet<UserEntity> Users { get; set; }
@@ -109,7 +120,6 @@ public partial class DatabaseContext
         QueryFilter(modelBuilder);
     }
 
-    // 
     private static void QueryFilter(ModelBuilder modelBuilder)
     {
         // 给实体配置查询时自动加上 IsDeleted == false;
@@ -142,7 +152,7 @@ public partial class DatabaseContext
     // 审计属性过滤
     private void AuditFilter(EntityEntryEventArgs args)
     {
-        // todo: 要区分 API 调用和用户调用
+        var userContext = _serviceProvider.GetService<UserContext>();
 
         if (args.Entry.State == EntityState.Unchanged)
         {
@@ -151,12 +161,12 @@ public partial class DatabaseContext
 
         if (args.Entry.State == EntityState.Added && args.Entry.Entity is ICreationAudited creationAudited)
         {
-            creationAudited.CreateUserId = default(Guid);
+            creationAudited.CreateUserId = userContext?.UserId ?? default(Guid);
             creationAudited.CreateTime = DateTimeOffset.Now;
         }
         else if (args.Entry.State == EntityState.Modified && args.Entry.Entity is IModificationAudited modificationAudited)
         {
-            modificationAudited.UpdateUserId = default(Guid);
+            modificationAudited.UpdateUserId = userContext?.UserId ?? default(Guid);
             modificationAudited.UpdateTime = DateTimeOffset.Now;
         }
         else if (args.Entry.State == EntityState.Deleted && args.Entry.Entity is IDeleteAudited deleteAudited)
@@ -164,9 +174,8 @@ public partial class DatabaseContext
             args.Entry.State = EntityState.Modified;
 
             deleteAudited.IsDeleted = true;
-            deleteAudited.UpdateUserId = default(Guid);
+            deleteAudited.UpdateUserId = userContext?.UserId ?? default(Guid);
             deleteAudited.UpdateTime = DateTimeOffset.Now;
-            args.Entry.CurrentValues[nameof(IDeleteAudited.IsDeleted)] = true;
         }
     }
 }

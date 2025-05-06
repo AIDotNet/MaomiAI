@@ -31,7 +31,7 @@ public class QueryPublicFileUrlFromPathCommandHandler : IRequestHandler<QueryPub
     {
         await Task.CompletedTask;
         var endpoint = new Uri(_systemOptions.PublicStore.Endpoint);
-        if (_systemOptions.PublicStore.ForcePathStyle)
+        if (!_systemOptions.PublicStore.ForcePathStyle)
         {
             endpoint = new Uri($"{endpoint.Scheme}://{_systemOptions.PublicStore.Bucket}.{endpoint.Host}");
         }

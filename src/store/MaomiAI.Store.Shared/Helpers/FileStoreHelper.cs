@@ -4,6 +4,8 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+#pragma warning disable CA1054 // 类 URI 参数不应为字符串
+
 namespace MaomiAI.Team.Shared.Helpers;
 
 /// <summary>
@@ -69,12 +71,20 @@ public static class FileStoreHelper
     /// </summary>
     /// <param name="md5"></param>
     /// <param name="fileName">文件名称.</param>
+    /// <param name="prefix"></param>
     /// <returns>ObjectKey.</returns>
-    public static string GetObjectKey(string md5, string fileName)
+    public static string GetObjectKey(string md5, string fileName, string? prefix = "")
     {
         var fileExtensions = Path.GetExtension(fileName);
         fileExtensions = fileExtensions.TrimStart('.');
-        return $"{DateTimeOffset.Now.ToString("yyyyMMdd")}/{md5}.{fileExtensions}";
+
+        var objectKey = $"{md5}.{fileExtensions}";
+        if (!string.IsNullOrEmpty(prefix))
+        {
+            return $"{prefix}/{objectKey}";
+        }
+
+        return objectKey;
     }
 
     /// <summary>
@@ -103,7 +113,7 @@ public static class FileStoreHelper
     /// <param name="baseUrl">前缀地址.</param>
     /// <param name="relativePath">后缀地址.</param>
     /// <returns>拼接后的完整 URL 地址.</returns>
-    public static string CombineUrl(string baseUrl, string relativePath)
+    public static Uri CombineUrl(string baseUrl, string relativePath)
     {
         if (string.IsNullOrWhiteSpace(baseUrl))
         {
@@ -115,6 +125,6 @@ public static class FileStoreHelper
             throw new ArgumentException("Relative path 不能为空.", nameof(relativePath));
         }
 
-        return $"{baseUrl.TrimEnd('/')}/{relativePath.TrimStart('/')}";
+        return new Uri($"{baseUrl.TrimEnd('/')}/{relativePath.TrimStart('/')}");
     }
 }

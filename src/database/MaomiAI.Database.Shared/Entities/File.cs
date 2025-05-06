@@ -25,7 +25,7 @@ public partial class FileEntity : IFullAudited
     public string ObjectKey { get; set; } = null!;
 
     /// <summary>
-    /// 允许公开访问.
+    /// 允许公开访问，公有文件不带路径.
     /// </summary>
     public bool IsPublic { get; set; }
 
@@ -39,14 +39,29 @@ public partial class FileEntity : IFullAudited
     /// </summary>
     public long FileSize { get; set; }
 
+    /// <summary>
+    /// 软删除.
+    /// </summary>
     public bool IsDeleted { get; set; }
 
+    /// <summary>
+    /// 创建时间.
+    /// </summary>
     public DateTimeOffset CreateTime { get; set; }
 
+    /// <summary>
+    /// 更新时间.
+    /// </summary>
     public DateTimeOffset UpdateTime { get; set; }
 
+    /// <summary>
+    /// 创建人.
+    /// </summary>
     public Guid CreateUserId { get; set; }
 
+    /// <summary>
+    /// 更新用户id.
+    /// </summary>
     public Guid UpdateUserId { get; set; }
 
     /// <summary>

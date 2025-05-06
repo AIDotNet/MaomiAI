@@ -21,7 +21,10 @@ import {
 } from "@microsoft/kiota-serialization-json";
 import { message } from "antd";
 import { IsTokenExpired } from "../helper/TokenHelper";
-import { MaomiAIStoreCommandsResponsePreUploadFileCommandResponse, MaomiAIStoreEnumsUploadImageType } from "../ApiClient/models";
+import {
+  MaomiAIStoreCommandsResponsePreUploadFileCommandResponse,
+  MaomiAIStoreEnumsUploadImageType,
+} from "../ApiClient/models";
 import { GetFileMd5 } from "../helper/Md5Helper";
 
 // 中间件请求
@@ -128,7 +131,15 @@ export const UploadImage = async (
     fileSize: file.size,
   });
 
-  if (!preUploadResponse || !preUploadResponse.uploadUrl) {
+  if (!preUploadResponse) {
+    throw new Error("获取预签名URL失败");
+  }
+
+  if (preUploadResponse.isExist === true) {
+    return preUploadResponse;
+  }
+
+  if (!preUploadResponse.uploadUrl) {
     throw new Error("获取预签名URL失败");
   }
 
@@ -155,6 +166,7 @@ export const UploadImage = async (
 
   await client.api.store.complate_url.post({
     fileId: preUploadResponse.fileId,
+    isSuccess: true,
   });
 
   return preUploadResponse;

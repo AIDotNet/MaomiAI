@@ -21,7 +21,6 @@ namespace MaomiAI.Infra
         {
             context.Services.AddSingleton<IIdProvider>(new DefaultIdProvider(0));
             context.Services.AddHttpContextAccessor();
-            context.Services.AddScoped<UserContext, DefaultUserContext>();
         }
     }
 }

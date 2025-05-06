@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Infra.Defaults;
 using MaomiAI.Infra.Services;
 using MaomiAI.User.Api;
 using MaomiAI.User.Core.Services;
@@ -23,6 +24,8 @@ public class UserCoreModule : IModule
     public void ConfigureServices(ServiceContext context)
     {
         context.Services.AddScoped<IUserContextProvider, UserContextProvider>();
+        context.Services.AddScoped<UserContext, DefaultUserContext>();
+
         context.Services.AddScoped<UserContext>(s =>
         {
             return s.GetRequiredService<IUserContextProvider>().GetUserContext();

@@ -7,21 +7,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace MaomiAI.Database;
 
 /// <summary>
-/// 默认模型配置.
+/// 知识库文档.
 /// </summary>
-public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<TeamDefaultAiModelEntity>
+public partial class TeamWikiDocumentConfiguration : IEntityTypeConfiguration<TeamWikiDocumentEntity>
 {
     /// <inheritdoc/>
-    public void Configure(EntityTypeBuilder<TeamDefaultAiModelEntity> builder)
+    public void Configure(EntityTypeBuilder<TeamWikiDocumentEntity> builder)
     {
         var entity = builder;
-        entity.HasKey(e => e.Id).HasName("team_default_ai_model_pk");
+        entity.HasKey(e => e.Id).HasName("team_wiki_document_pk");
 
-        entity.ToTable("team_default_ai_model", tb => tb.HasComment("默认模型配置"));
-
-        entity.HasIndex(e => new { e.ModelId, e.Function }, "team_default_ai_model_model_id_function_uindex").IsUnique();
-
-        entity.HasIndex(e => e.TeamId, "team_default_ai_model_team_id_index");
+        entity.ToTable("team_wiki_document", tb => tb.HasComment("知识库文档"));
 
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
@@ -32,18 +28,15 @@ public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<
             .HasComment("创建时间")
             .HasColumnName("create_time");
         entity.Property(e => e.CreateUserId)
-            .HasComment("创建人ID")
+            .HasComment("创建者ID")
             .HasColumnName("create_user_id");
-        entity.Property(e => e.Function)
-            .HasComment("功能")
-            .HasColumnName("function");
+        entity.Property(e => e.FileId)
+            .HasComment("文件id")
+            .HasColumnName("file_id");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
-        entity.Property(e => e.ModelId)
-            .HasComment("模型id")
-            .HasColumnName("model_id");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");
@@ -54,9 +47,12 @@ public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<
         entity.Property(e => e.UpdateUserId)
             .HasComment("更新人ID")
             .HasColumnName("update_user_id");
+        entity.Property(e => e.WikiId)
+            .HasComment("知识库id")
+            .HasColumnName("wiki_id");
 
         OnConfigurePartial(entity);
     }
 
-    partial void OnConfigurePartial(EntityTypeBuilder<TeamDefaultAiModelEntity> modelBuilder);
+    partial void OnConfigurePartial(EntityTypeBuilder<TeamWikiDocumentEntity> modelBuilder);
 }
