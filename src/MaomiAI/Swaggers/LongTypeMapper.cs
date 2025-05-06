@@ -1,16 +1,31 @@
-﻿using NJsonSchema;
+﻿// <copyright file="LongTypeMapper.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
 
 namespace MaomiAI.Swaggers;
 
-// Swagger 模型类过滤器
+/// <summary>
+/// Swagger 模型类过滤器.
+/// </summary>
 public class LongTypeMapper : ITypeMapper
 {
+    /// <inheritdoc/>
     Type ITypeMapper.MappedType => typeof(long);
 
+    /// <inheritdoc/>
     bool ITypeMapper.UseReference => false;
 
-    void ITypeMapper.GenerateSchema(JsonSchema schema, TypeMapperContext context)
+    /// <summary>
+    /// 生成模型类.
+    /// </summary>
+    /// <param name="schema"></param>
+    /// <param name="context"></param>
+    public void GenerateSchema(JsonSchema schema, TypeMapperContext context)
     {
         schema.Type = JsonObjectType.String;
         schema.Format = JsonFormatStrings.Long;
