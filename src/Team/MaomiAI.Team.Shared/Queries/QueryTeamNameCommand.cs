@@ -21,5 +21,5 @@ public class QueryTeamNameCommand : IRequest<ExistResponse>
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string? Name { get; set; } = null!;
+    public string? Name { get; set; } = default!;
 }

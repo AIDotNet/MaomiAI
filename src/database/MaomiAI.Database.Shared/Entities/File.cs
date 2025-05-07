@@ -17,12 +17,12 @@ public partial class FileEntity : IFullAudited
     /// <summary>
     /// 文件名称.
     /// </summary>
-    public string FileName { get; set; } = null!;
+    public string FileName { get; set; } = default!;
 
     /// <summary>
     /// 文件路径.
     /// </summary>
-    public string ObjectKey { get; set; } = null!;
+    public string ObjectKey { get; set; } = default!;
 
     /// <summary>
     /// 允许公开访问，公有文件不带路径.
@@ -32,7 +32,7 @@ public partial class FileEntity : IFullAudited
     /// <summary>
     /// 文件md5值.
     /// </summary>
-    public string FileMd5 { get; set; } = null!;
+    public string FileMd5 { get; set; } = default!;
 
     /// <summary>
     /// 文件大小.
@@ -72,5 +72,5 @@ public partial class FileEntity : IFullAudited
     /// <summary>
     /// 文件类型.
     /// </summary>
-    public string ContentType { get; set; } = null!;
+    public string ContentType { get; set; } = default!;
 }

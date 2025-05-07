@@ -11,11 +11,17 @@ namespace MaomiAI.Database.Queries;
 /// <summary>
 /// 用户信息查询填充.
 /// </summary>
-/// <typeparam name="T">带有审计属性的.</typeparam>
-public class FillUserInfoFuncCommand<T> : IRequest<ICollection<T>>
+public class FillUserInfoFuncCommand : IRequest<FillUserInfoFuncCommandResponse>
 {
-    public ICollection<T> Items { get; init; }
+    public IReadOnlyCollection<object> Items { get; init; }
 
-    public Func<ICollection<T>, ICollection<Guid>> GetUserId { get; init; }
-    public Action<IReadOnlyDictionary<Guid, string>, T> SetUserName { get; init; }
+    public Func<IReadOnlyCollection<object>, IReadOnlyCollection<Guid>> GetUserId { get; init; }
+    public Action<IReadOnlyDictionary<Guid, string>, object> SetUserName { get; init; }
+}
+
+
+public class FillUserInfoFuncCommandResponse
+{
+    public IReadOnlyCollection<object> Items { get; init; }
+
 }

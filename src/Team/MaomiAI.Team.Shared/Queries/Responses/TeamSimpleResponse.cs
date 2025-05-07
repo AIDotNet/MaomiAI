@@ -17,24 +17,29 @@ public class TeamSimpleResponse : AuditsInfo
     public Guid Id { get; set; }
 
     /// <summary>
+    /// 是否所有者.
+    /// </summary>
+    public bool IsRoot { get; init; }
+
+    /// <summary>
+    /// 是否管理员.
+    /// </summary>
+    public bool IsAdmin { get; init; }
+
+    /// <summary>
     /// 团队名称.
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string Description { get; set; } = null!;
-
-    /// <summary>
-    /// 团队头像.
-    /// </summary>
-    public Guid AvatarId { get; set; }
+    public string Description { get; set; } = default!;
 
     /// <summary>
     /// 团队头像路径.
     /// </summary>
-    public string AvatarPath { get; set; }
+    public string AvatarUrl { get; set; } = default!;
 
     /// <summary>
     /// 团队已被禁用.
@@ -54,5 +59,5 @@ public class TeamSimpleResponse : AuditsInfo
     /// <summary>
     /// 所有人名字.
     /// </summary>
-    public string OwnUserName { get; set; } = null!;
+    public string OwnUserName { get; set; } = default!;
 }

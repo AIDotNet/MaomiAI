@@ -23,12 +23,12 @@ public class UpdateTeamInfoCommand : IRequest
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string Description { get; set; } = null!;
+    public string Description { get; set; } = default!;
 
     /// <summary>
     /// 禁用团队.
@@ -43,5 +43,5 @@ public class UpdateTeamInfoCommand : IRequest
     /// <summary>
     /// 团队详细介绍.
     /// </summary>
-    public string Markdown { get; set; } = null!;
+    public string Markdown { get; set; } = default!;
 }

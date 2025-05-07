@@ -21,7 +21,7 @@ public class TeamMemberResponse : AuditsInfo
     /// <summary>
     /// 昵称.
     /// </summary>
-    public string NickName { get; set; } = null!;
+    public string NickName { get; set; } = default!;
 
     /// <summary>
     /// 用户头像.

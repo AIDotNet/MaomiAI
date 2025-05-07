@@ -1,4 +1,10 @@
-﻿using MaomiAI.Database.Queries;
+﻿// <copyright file="FillUserInfoCommandHandler{T}.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using MaomiAI.Database.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,14 +13,12 @@ namespace MaomiAI.Database.Commands;
 /// <summary>
 /// 填充审计属性信息.
 /// </summary>
-/// <typeparam name="T">数据.</typeparam>
-public class FillUserInfoCommandHandler<T> : IRequestHandler<FillUserInfoCommand<T>, ICollection<T>>
-        where T : AuditsInfo
+public class FillUserInfoCommandHandler : IRequestHandler<FillUserInfoCommand, FillUserInfoCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FillUserInfoCommandHandler{T}"/> class.
+    /// Initializes a new instance of the <see cref="FillUserInfoCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
     public FillUserInfoCommandHandler(DatabaseContext dbContext)
@@ -23,7 +27,7 @@ public class FillUserInfoCommandHandler<T> : IRequestHandler<FillUserInfoCommand
     }
 
     /// <inheritdoc/>
-    public async Task<ICollection<T>> Handle(FillUserInfoCommand<T> request, CancellationToken cancellationToken)
+    public async Task<FillUserInfoCommandResponse> Handle(FillUserInfoCommand request, CancellationToken cancellationToken)
     {
         var createUserIds = request.Items.Select(x => x.CreateUserId).ToArray();
         var updateUserIds = request.Items.Select(x => x.UpdateUserId).ToArray();
@@ -33,10 +37,10 @@ public class FillUserInfoCommandHandler<T> : IRequestHandler<FillUserInfoCommand
 
         if (userIds.Count == 0)
         {
-            return request.Items;
+            return new FillUserInfoCommandResponse { Items = request.Items };
         }
 
-        var userNames = await _dbContext.Users.Where(x => userIds.Contains(x.Id)).ToDictionaryAsync(x => x.Id, x => x.UserName);
+        var userNames = await _dbContext.Users.Where(x => userIds.Contains(x.Id)).ToDictionaryAsync(x => x.Id, x => x.NickName);
 
         foreach (var item in request.Items)
         {
@@ -59,44 +63,6 @@ public class FillUserInfoCommandHandler<T> : IRequestHandler<FillUserInfoCommand
             }
         }
 
-        return request.Items;
-    }
-}
-
-/// <summary>
-/// 填充审计属性信息.
-/// </summary>
-/// <typeparam name="T">数据.</typeparam>
-public class FillUserInfoFuncCommandHandler<T> : IRequestHandler<FillUserInfoFuncCommand<T>, ICollection<T>>
-{
-    private readonly DatabaseContext _dbContext;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FillUserInfoFuncCommandHandler{T}"/> class.
-    /// </summary>
-    /// <param name="dbContext"></param>
-    public FillUserInfoFuncCommandHandler(DatabaseContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
-    /// <inheritdoc/>
-    public async Task<ICollection<T>> Handle(FillUserInfoFuncCommand<T> request, CancellationToken cancellationToken)
-    {
-        var userIds = request.GetUserId(request.Items);
-
-        if (userIds.Count == 0)
-        {
-            return request.Items;
-        }
-
-        var userNames = await _dbContext.Users.Where(x => userIds.Contains(x.Id)).ToDictionaryAsync(x => x.Id, x => x.UserName);
-
-        foreach (var item in request.Items)
-        {
-            request.SetUserName(userNames, item);
-        }
-
-        return request.Items;
+        return new FillUserInfoCommandResponse { Items = request.Items };
     }
 }

@@ -82,7 +82,7 @@ public class QueryTeamAdminListHandler : IRequestHandler<QueryTeamAdminListComma
 
         if (adminList.Count > 0)
         {
-            await _mediator.Send(new FillUserInfoCommand<TeamMemberResponse>
+            await _mediator.Send(new FillUserInfoCommand
             {
                 Items = adminList
             });

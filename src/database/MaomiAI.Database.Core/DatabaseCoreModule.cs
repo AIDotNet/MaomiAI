@@ -4,8 +4,11 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Database.Commands;
 using MaomiAI.Database.Postgres;
+using MaomiAI.Database.Queries;
 using MaomiAI.Infra;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -43,7 +43,7 @@ public class PreuploadFileCommand : IRequest<PreUploadFileCommandResponse>
     /// <summary>
     /// 文件路径，即 ObjectKey.
     /// </summary>
-    public string ObjectKey { get; set; } = null!;
+    public string ObjectKey { get; set; } = default!;
 
     /// <summary>
     /// 预签名上传地址有效期.

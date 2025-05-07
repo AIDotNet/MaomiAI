@@ -622,12 +622,13 @@ export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamMemberRespon
 export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamSimpleResponse(maomiAITeamSharedQueriesResponsesTeamSimpleResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesTeamSimpleResponse),
-        "avatarId": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarId = n.getGuidValue(); },
-        "avatarPath": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarPath = n.getStringValue(); },
+        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarUrl = n.getStringValue(); },
         "description": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.description = n.getStringValue(); },
         "id": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.id = n.getGuidValue(); },
+        "isAdmin": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isAdmin = n.getBooleanValue(); },
         "isDisable": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isDisable = n.getBooleanValue(); },
         "isPublic": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isPublic = n.getBooleanValue(); },
+        "isRoot": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isRoot = n.getBooleanValue(); },
         "name": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.name = n.getStringValue(); },
         "ownUserId": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserId = n.getGuidValue(); },
         "ownUserName": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserName = n.getStringValue(); },
@@ -641,6 +642,8 @@ export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamSimpleRespon
 export function deserializeIntoMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand(maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand: Partial<MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand),
+        "isAdmin": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isAdmin = n.getBooleanValue(); },
+        "isRoot": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isRoot = n.getBooleanValue(); },
         "keyword": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.keyword = n.getStringValue(); },
     }
 }
@@ -1120,13 +1123,9 @@ export interface MaomiAITeamSharedQueriesResponsesTeamMemberResponse extends Mao
  */
 export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
     /**
-     * 团队头像.
-     */
-    avatarId?: Guid | null;
-    /**
      * 团队头像路径.
      */
-    avatarPath?: string | null;
+    avatarUrl?: string | null;
     /**
      * 团队描述.
      */
@@ -1136,6 +1135,10 @@ export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends Mao
      */
     id?: Guid | null;
     /**
+     * 是否管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
      * 团队已被禁用.
      */
     isDisable?: boolean | null;
@@ -1143,6 +1146,10 @@ export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends Mao
      * 是否公开,能够被外部搜索.
      */
     isPublic?: boolean | null;
+    /**
+     * 是否所有者.
+     */
+    isRoot?: boolean | null;
     /**
      * 团队名称.
      */
@@ -1160,6 +1167,14 @@ export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends Mao
  * 分页查询用户已加入的团队列表.
  */
 export interface MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand extends MaomiAIInfraModelsPagedParamter, Parsable {
+    /**
+     * 当前用户有管理员权限的.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 当前用户所有的.
+     */
+    isRoot?: boolean | null;
     /**
      * 查询关键字.
      */
@@ -1592,12 +1607,13 @@ export function serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse(wri
 export function serializeMaomiAITeamSharedQueriesResponsesTeamSimpleResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesTeamSimpleResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse> | undefined | null = {}) : void {
     if (maomiAITeamSharedQueriesResponsesTeamSimpleResponse) {
         serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesTeamSimpleResponse)
-        writer.writeGuidValue("avatarId", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarId);
-        writer.writeStringValue("avatarPath", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarPath);
+        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarUrl);
         writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.description);
         writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.id);
+        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isAdmin);
         writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isDisable);
         writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isPublic);
+        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isRoot);
         writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.name);
         writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserId);
         writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserName);
@@ -1611,6 +1627,8 @@ export function serializeMaomiAITeamSharedQueriesResponsesTeamSimpleResponse(wri
 export function serializeMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand(writer: SerializationWriter, maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand: Partial<MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand> | undefined | null = {}) : void {
     if (maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand) {
         serializeMaomiAIInfraModelsPagedParamter(writer, maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand)
+        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isAdmin);
+        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isRoot);
         writer.writeStringValue("keyword", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.keyword);
     }
 }

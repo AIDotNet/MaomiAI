@@ -65,7 +65,7 @@ public class MaomiExceptionFilter : IAsyncExceptionFilter
         Message = "Internal server error",
 #endif
 
-        var response = new ErrorResponse()
+        var response = new BusinessErrorResponse()
         {
             Code = 500,
             RequestId = context.HttpContext.TraceIdentifier,
@@ -84,7 +84,7 @@ public class MaomiExceptionFilter : IAsyncExceptionFilter
 
         message = businessException.Message;
 
-        var response = new ErrorResponse()
+        var response = new BusinessErrorResponse()
         {
             Code = businessException.StatusCode,
             RequestId = context.HttpContext.TraceIdentifier,

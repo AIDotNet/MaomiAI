@@ -17,5 +17,5 @@ public class RefreshTokenCommand : IRequest<LoginCommandResponse>
     /// <summary>
     /// 刷新令牌.
     /// </summary>
-    public string RefreshToken { get; init; } = null!;
+    public string RefreshToken { get; init; } = default!;
 }

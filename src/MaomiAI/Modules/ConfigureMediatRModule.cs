@@ -10,6 +10,10 @@ public class ConfigureMediatRModule : IModule
     private readonly IConfiguration _configuration;
     private readonly SystemOptions _systemOptions;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ConfigureMediatRModule"/> class.
+    /// </summary>
+    /// <param name="configuration"></param>
     public ConfigureMediatRModule(IConfiguration configuration)
     {
         _configuration = configuration;

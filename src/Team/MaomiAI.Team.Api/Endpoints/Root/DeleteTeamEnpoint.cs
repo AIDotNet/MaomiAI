@@ -7,7 +7,6 @@
 using FastEndpoints;
 using MaomiAI.Team.Shared.Commands.Root;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MaomiAI.Team.Api.Endpoints.Root;
 
@@ -16,7 +15,6 @@ namespace MaomiAI.Team.Api.Endpoints.Root;
 /// </summary>
 [EndpointGroupName("team")]
 [HttpDelete($"{TeamApi.ApiPrefix}/{{teamId}}/delete")]
-[Authorize]
 public class DeleteTeamEnpoint : Endpoint<DeleteTeamCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;

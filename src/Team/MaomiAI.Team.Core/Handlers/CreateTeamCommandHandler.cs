@@ -41,12 +41,10 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, IdRes
     /// <inheritdoc/>
     public async Task<IdResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
     {
-        Guid currentUserId = _userContext.UserId;
-
         var existTeam = await _dbContext.Teams.AnyAsync(x => x.Name == request.Name, cancellationToken);
         if (existTeam)
         {
-            throw new BusinessException("团队名称已存在.");
+            throw new BusinessException("团队名称已存在.") { StatusCode = 400 };
         }
 
         var team = new TeamEntity
@@ -54,9 +52,7 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, IdRes
             Id = Guid.NewGuid(),
             Name = request.Name,
             Description = request.Description,
-            IsPublic = false,
-            CreateUserId = currentUserId,
-            CreateTime = DateTime.Now
+            IsPublic = false
         };
 
         await _dbContext.Teams.AddAsync(team, cancellationToken);

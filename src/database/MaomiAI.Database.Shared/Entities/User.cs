@@ -17,32 +17,32 @@ public partial class UserEntity : IFullAudited
     /// <summary>
     /// 用户名.
     /// </summary>
-    public string UserName { get; set; } = null!;
+    public string UserName { get; set; } = default!;
 
     /// <summary>
     /// 邮箱.
     /// </summary>
-    public string Email { get; set; } = null!;
+    public string Email { get; set; } = default!;
 
     /// <summary>
     /// 密码.
     /// </summary>
-    public string Password { get; set; } = null!;
+    public string Password { get; set; } = default!;
 
     /// <summary>
     /// 昵称.
     /// </summary>
-    public string NickName { get; set; } = null!;
+    public string NickName { get; set; } = default!;
 
     /// <summary>
     /// 头像路径.
     /// </summary>
-    public string AvatarPath { get; set; } = null!;
+    public string AvatarPath { get; set; } = default!;
 
     /// <summary>
     /// 手机号.
     /// </summary>
-    public string Phone { get; set; } = null!;
+    public string Phone { get; set; } = default!;
 
     /// <summary>
     /// 是否启用.
@@ -77,7 +77,7 @@ public partial class UserEntity : IFullAudited
     /// <summary>
     /// 计算密码值的salt.
     /// </summary>
-    public string PasswordHalt { get; set; } = null!;
+    public string PasswordHalt { get; set; } = default!;
 
     /// <summary>
     /// 头像id.

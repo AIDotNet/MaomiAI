@@ -15,7 +15,17 @@ namespace MaomiAI.Team.Shared.Queries.User;
 public class QueryUserJoinedTeamCommand : PagedParamter, IRequest<PagedResult<TeamSimpleResponse>>
 {
     /// <summary>
+    /// 当前用户所有的.
+    /// </summary>
+    public bool? IsRoot { get; init; }
+
+    /// <summary>
+    /// 当前用户有管理员权限的.
+    /// </summary>
+    public bool? IsAdmin { get; init; }
+
+    /// <summary>
     /// 查询关键字.
     /// </summary>
-    public string? Keyword { get; set; }
+    public string? Keyword { get; init; }
 }

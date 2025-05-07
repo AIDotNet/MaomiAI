@@ -17,10 +17,10 @@ public class LoginCommand : IRequest<LoginCommandResponse>
     /// <summary>
     /// 用户名或邮箱.
     /// </summary>
-    public string UserName { get; init; } = null!;
+    public string UserName { get; init; } = default!;
 
     /// <summary>
     /// 密码，使用 RSA 公钥加密.
     /// </summary>
-    public string Password { get; init; } = null!;
+    public string Password { get; init; } = default!;
 }

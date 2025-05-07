@@ -12,7 +12,6 @@ using MaomiAI.Swaggers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.AspNetCore.Mvc;
 using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
 using NSwag;

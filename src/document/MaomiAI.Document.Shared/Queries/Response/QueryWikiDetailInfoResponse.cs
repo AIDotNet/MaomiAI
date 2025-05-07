@@ -18,7 +18,7 @@ public class QueryWikiDetailInfoResponse
     /// <summary>
     /// 知识库名称.
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 团队头像.
@@ -33,12 +33,12 @@ public class QueryWikiDetailInfoResponse
     /// <summary>
     /// 知识库描述.
     /// </summary>
-    public string Description { get; set; } = null!;
+    public string Description { get; set; } = default!;
 
     /// <summary>
     /// 知识库详细介绍.
     /// </summary>
-    public string Markdown { get; set; } = null!;
+    public string Markdown { get; set; } = default!;
 
     /// <summary>
     /// 公开使用，所有人不需要加入团队即可使用此知识库.

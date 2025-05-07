@@ -16,10 +16,10 @@ public class CreateTeamCommand : IRequest<IdResponse>
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string Description { get; set; } = null!;
+    public string Description { get; set; } = default!;
 }

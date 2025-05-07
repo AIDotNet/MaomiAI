@@ -1,18 +1,27 @@
-﻿using NSwag;
+﻿// <copyright file="ErrorResponseOperationProcessor.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using NSwag;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
 
 namespace MaomiAI.Swaggers;
 
+/// <summary>
+/// Swagger 统一响应处理.
+/// </summary>
 public class ErrorResponseOperationProcessor : IOperationProcessor
 {
+    /// <inheritdoc/>
     public bool Process(OperationProcessorContext context)
     {
-        var responseSchema = context.SchemaGenerator.Generate(typeof(MaomiAI.Infra.Models.ErrorResponse), context.SchemaResolver);
-
+        var responseSchema = context.SchemaGenerator.Generate(typeof(BusinessErrorResponse), context.SchemaResolver);
         var response = new OpenApiResponse
         {
-            Description = "An unexpected error occurred.",
+            Description = "An error occurred in the request.",
         };
 
         response.Content["application/json"] = new OpenApiMediaType

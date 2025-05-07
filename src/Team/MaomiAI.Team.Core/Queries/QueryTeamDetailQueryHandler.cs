@@ -80,7 +80,7 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
             }
         }
 
-        _ = await _mediator.Send(new FillUserInfoCommand<TeamDetailResponse>
+        _ = await _mediator.Send(new FillUserInfoCommand
         {
             Items = new List<TeamDetailResponse> { team }
         });

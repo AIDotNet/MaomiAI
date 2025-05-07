@@ -68,7 +68,7 @@ public class QueryTeamMemberListHandler : IRequestHandler<QueryTeamMemberListCom
             adminList.AddRange(admins);
         }
 
-        await _mediator.Send(new FillUserInfoCommand<TeamMemberResponse>
+        await _mediator.Send(new FillUserInfoCommand
         {
             Items = adminList
         });

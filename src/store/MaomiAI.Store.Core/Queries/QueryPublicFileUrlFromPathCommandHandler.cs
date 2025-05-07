@@ -41,8 +41,12 @@ public class QueryPublicFileUrlFromPathCommandHandler : IRequestHandler<QueryPub
         }
 
         Dictionary<string, string> urls = new();
-        foreach (var objectKey in request.ObjectKeys)
+        foreach (var objectKey in request.ObjectKeys.Distinct())
         {
+            if (string.IsNullOrWhiteSpace(objectKey))
+            {
+                continue;
+            }
             urls.Add(objectKey, new Uri(endpoint, objectKey).ToString());
         }
 

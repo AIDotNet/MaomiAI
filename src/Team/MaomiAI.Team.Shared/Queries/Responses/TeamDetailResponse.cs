@@ -19,12 +19,12 @@ public class TeamDetailResponse : AuditsInfo
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string Description { get; set; } = null!;
+    public string Description { get; set; } = default!;
 
     /// <summary>
     /// 团队头像.
@@ -54,10 +54,10 @@ public class TeamDetailResponse : AuditsInfo
     /// <summary>
     /// 所有人名字.
     /// </summary>
-    public string OwnUserName { get; set; } = null!;
+    public string OwnUserName { get; set; } = default!;
 
     /// <summary>
     /// 团队详细介绍.
     /// </summary>
-    public string Markdown { get; set; } = null!;
+    public string Markdown { get; set; } = default!;
 }

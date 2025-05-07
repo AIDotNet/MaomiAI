@@ -6,6 +6,8 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
+using MaomiAI.Infra;
+using MaomiAI.Store.Queries;
 using MaomiAI.Team.Shared.Queries;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
@@ -22,6 +24,7 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
     private readonly DatabaseContext _dbContext;
     private readonly UserContext _userContext;
     private readonly IMediator _mediator;
+    private readonly SystemOptions _systemOptions;
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
 
     /// <summary>
@@ -31,12 +34,14 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
     /// <param name="logger"></param>
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
-    public QueryTeamSampleQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext)
+    /// <param name="systemOptions"></param>
+    public QueryTeamSampleQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _logger = logger;
         _mediator = mediator;
         _userContext = userContext;
+        _systemOptions = systemOptions;
     }
 
     /// <summary>
@@ -53,8 +58,7 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                AvatarId = x.AvatarId,
-                AvatarPath = x.AvatarPath,
+                AvatarUrl = x.AvatarPath,
                 IsDisable = x.IsDisable,
                 CreateTime = x.CreateTime,
                 UpdateTime = x.UpdateTime,
@@ -79,10 +83,21 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
             }
         }
 
-        _ = await _mediator.Send(new FillUserInfoCommand<TeamSimpleResponse>
+        _ = await _mediator.Send(new FillUserInfoCommand
         {
             Items = new List<TeamSimpleResponse> { team }
         });
+
+        var avatarUrl = string.Empty;
+        if (!string.IsNullOrEmpty(team.AvatarUrl))
+        {
+            var fileUrls = await _mediator.Send(new QueryPublicFileUrlFromPathCommand { ObjectKeys = new List<string>() { team.AvatarUrl } });
+            avatarUrl = fileUrls.Urls.First().Value!;
+        }
+        else
+        {
+            avatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
+        }
 
         return team;
     }
