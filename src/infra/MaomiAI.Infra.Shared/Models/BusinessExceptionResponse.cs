@@ -11,7 +11,7 @@ namespace MaomiAI.Infra.Models;
 /// <summary>
 /// 错误响应模型.
 /// </summary>
-public class BusinessErrorResponse
+public class BusinessExceptionResponse
 {
     /// <summary>
     /// 请求上下文 ID.
@@ -39,18 +39,18 @@ public class BusinessErrorResponse
     public IReadOnlyDictionary<string, object?>? Extensions { get; set; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessErrorResponse"/> class.
+    /// Initializes a new instance of the <see cref="BusinessExceptionResponse"/> class.
     /// </summary>
-    public BusinessErrorResponse()
+    public BusinessExceptionResponse()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BusinessErrorResponse"/> class.
+    /// Initializes a new instance of the <see cref="BusinessExceptionResponse"/> class.
     /// </summary>
     /// <param name="failures"></param>
     /// <param name="statusCode"></param>
-    public BusinessErrorResponse(IReadOnlyList<ValidationFailure> failures, int statusCode = 400)
+    public BusinessExceptionResponse(IReadOnlyList<ValidationFailure> failures, int statusCode = 400)
     {
         // Microsoft.AspNetCore.Mvc.ValidationProblemDetails
         Code = statusCode;

@@ -18,24 +18,32 @@ public class ErrorResponseOperationProcessor : IOperationProcessor
     /// <inheritdoc/>
     public bool Process(OperationProcessorContext context)
     {
-        var responseSchema = context.SchemaGenerator.Generate(typeof(BusinessErrorResponse), context.SchemaResolver);
-        var response = new OpenApiResponse
+        var schemaReference = context.SchemaResolver.HasSchema(typeof(BusinessExceptionResponse), false);
+        NJsonSchema.JsonSchema? responseSchema;
+
+        if (schemaReference != false)
         {
-            Description = "An error occurred in the request.",
-        };
-
-        response.Content["application/json"] = new OpenApiMediaType
+            responseSchema = context.SchemaResolver.GetSchema(typeof(BusinessExceptionResponse), false);
+        }
+        else
         {
-            Schema = responseSchema
-        };
+            responseSchema = context.SchemaGenerator.Generate(typeof(BusinessExceptionResponse), context.SchemaResolver);
+        }
 
-        context.OperationDescription.Operation.Responses.Remove("400");
+        foreach (var statusCode in new[] { "400", "401", "403", "409", "500" })
+        {
+            responseSchema = context.SchemaGenerator.Generate(typeof(BusinessExceptionResponse), context.SchemaResolver);
+            var response = new OpenApiResponse
+            {
+                Description = "An error occurred in the request.",
+                Content =
+                {
+                    ["application/json"] = new OpenApiMediaType { Schema = responseSchema }
+                }
+            };
 
-        context.OperationDescription.Operation.Responses["500"] = response;
-        context.OperationDescription.Operation.Responses["400"] = response;
-        context.OperationDescription.Operation.Responses["401"] = response;
-        context.OperationDescription.Operation.Responses["403"] = response;
-        context.OperationDescription.Operation.Responses["409"] = response;
+            context.OperationDescription.Operation.Responses[statusCode] = response;
+        }
 
         return true;
     }

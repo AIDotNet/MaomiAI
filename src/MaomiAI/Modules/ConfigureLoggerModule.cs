@@ -37,6 +37,7 @@ public class ConfigureLoggerModule : IModule
     private void ConfigureHttpLogging(ServiceContext context)
     {
         // todo: 后续是否允许在配置文件指定 LoggingFields 参数
+        // todo: 忽略 swagger
         context.Services.AddHttpLogging(logging =>
         {
             logging.LoggingFields = HttpLoggingFields.RequestPath | HttpLoggingFields.RequestQuery | HttpLoggingFields.RequestProtocol

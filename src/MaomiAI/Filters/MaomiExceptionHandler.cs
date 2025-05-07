@@ -53,7 +53,7 @@ public class MaomiExceptionHandler : IExceptionHandler
         Message = "Internal server error",
 #endif
 
-        var response = new BusinessErrorResponse()
+        var response = new BusinessExceptionResponse()
         {
             Code = 500,
             RequestId = context.TraceIdentifier,
@@ -82,7 +82,7 @@ public class MaomiExceptionHandler : IExceptionHandler
         messageDetail = businessException.ToString();
 #endif
 
-        var response = new BusinessErrorResponse()
+        var response = new BusinessExceptionResponse()
         {
             Code = businessException.StatusCode,
             RequestId = httpContext.TraceIdentifier,
