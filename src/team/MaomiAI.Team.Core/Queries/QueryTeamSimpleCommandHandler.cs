@@ -19,7 +19,7 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleCommand, TeamSimpleResponse>
+public class QueryTeamSimpleCommandHandler : IRequestHandler<QueryTeamSimpleCommand, QueryTeamSimpleCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly UserContext _userContext;
@@ -28,14 +28,14 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueryTeamSampleQueryHandler"/> class.
+    /// Initializes a new instance of the <see cref="QueryTeamSimpleCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
     /// <param name="logger"></param>
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
     /// <param name="systemOptions"></param>
-    public QueryTeamSampleQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
+    public QueryTeamSimpleCommandHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _logger = logger;
@@ -50,10 +50,10 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队信息.</returns>
-    public async Task<TeamSimpleResponse> Handle(QueryTeamSimpleCommand request, CancellationToken cancellationToken)
+    public async Task<QueryTeamSimpleCommandResponse> Handle(QueryTeamSimpleCommand request, CancellationToken cancellationToken)
     {
         var team = await _dbContext.Teams.Where(t => t.Id == request.TeamId)
-            .Select(x => new TeamSimpleResponse
+            .Select(x => new QueryTeamSimpleCommandResponse
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -71,7 +71,7 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
 
         if (team == null)
         {
-            throw new BusinessException("未找到团队");
+            throw new BusinessException("未找到团队") { StatusCode = 404 };
         }
 
         if (!team.IsPublic && team.OwnUserId != _userContext.UserId)
@@ -79,13 +79,13 @@ public class QueryTeamSampleQueryHandler : IRequestHandler<QueryTeamSimpleComman
             var joinedTeam = await _dbContext.TeamMembers.AnyAsync(x => x.TeamId == request.TeamId && x.UserId == _userContext.UserId);
             if (!joinedTeam)
             {
-                throw new BusinessException("没有权限访问该团队");
+                throw new BusinessException("没有权限访问该团队") { StatusCode = 403 };
             }
         }
 
         _ = await _mediator.Send(new FillUserInfoCommand
         {
-            Items = new List<TeamSimpleResponse> { team }
+            Items = new List<QueryTeamSimpleCommandResponse> { team }
         });
 
         var avatarUrl = string.Empty;

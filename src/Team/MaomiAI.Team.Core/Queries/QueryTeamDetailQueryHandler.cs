@@ -6,6 +6,8 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
+using MaomiAI.Infra;
+using MaomiAI.Store.Queries;
 using MaomiAI.Team.Shared.Queries;
 using MaomiAI.Team.Shared.Queries.Responses;
 using MediatR;
@@ -17,12 +19,13 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, TeamDetailResponse>
+public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, QueryTeamDetailCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
     private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
+    private readonly SystemOptions _systemOptions;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryTeamDetailQueryHandler"/> class.
@@ -31,12 +34,14 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
     /// <param name="logger"></param>
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
-    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext)
+    /// <param name="systemOptions"></param>
+    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _logger = logger;
         _mediator = mediator;
         _userContext = userContext;
+        _systemOptions = systemOptions;
     }
 
     /// <summary>
@@ -45,16 +50,15 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队信息.</returns>
-    public async Task<TeamDetailResponse> Handle(QueryTeamDetailCommand request, CancellationToken cancellationToken)
+    public async Task<QueryTeamDetailCommandResponse> Handle(QueryTeamDetailCommand request, CancellationToken cancellationToken)
     {
         var team = await _dbContext.Teams.Where(t => t.Id == request.TeamId)
-            .Select(x => new TeamDetailResponse
+            .Select(x => new QueryTeamDetailCommandResponse
             {
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                AvatarId = x.AvatarId,
-                AvatarPath = x.AvatarPath,
+                AvatarUrl = x.AvatarPath,
                 UpdateUserId = x.UpdateUserId,
                 IsDisable = x.IsDisable,
                 CreateTime = x.CreateTime,
@@ -80,9 +84,20 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
             }
         }
 
+        var avatarUrl = string.Empty;
+        if (!string.IsNullOrEmpty(team.AvatarUrl))
+        {
+            var fileUrls = await _mediator.Send(new QueryPublicFileUrlFromPathCommand { ObjectKeys = new List<string>() { team.AvatarUrl } });
+            avatarUrl = fileUrls.Urls.First().Value!;
+        }
+        else
+        {
+            avatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
+        }
+
         _ = await _mediator.Send(new FillUserInfoCommand
         {
-            Items = new List<TeamDetailResponse> { team }
+            Items = new List<QueryTeamDetailCommandResponse> { team }
         });
 
         return team;

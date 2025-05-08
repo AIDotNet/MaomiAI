@@ -1,4 +1,4 @@
-// <copyright file="TeamDetailResponse.cs" company="MaomiAI">
+// <copyright file="QueryTeamSimpleCommandResponse.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -7,14 +7,24 @@
 namespace MaomiAI.Team.Shared.Queries.Responses;
 
 /// <summary>
-/// 团队详细信息.
+/// 团队基础信息.
 /// </summary>
-public class TeamDetailResponse : AuditsInfo
+public class QueryTeamSimpleCommandResponse : AuditsInfo
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
     public Guid Id { get; set; }
+
+    /// <summary>
+    /// 是否所有者.
+    /// </summary>
+    public bool IsRoot { get; init; }
+
+    /// <summary>
+    /// 是否管理员.
+    /// </summary>
+    public bool IsAdmin { get; init; }
 
     /// <summary>
     /// 团队名称.
@@ -27,14 +37,9 @@ public class TeamDetailResponse : AuditsInfo
     public string Description { get; set; } = default!;
 
     /// <summary>
-    /// 团队头像.
-    /// </summary>
-    public Guid AvatarId { get; set; }
-
-    /// <summary>
     /// 团队头像路径.
     /// </summary>
-    public string AvatarPath { get; set; }
+    public string AvatarUrl { get; set; } = default!;
 
     /// <summary>
     /// 团队已被禁用.
@@ -55,9 +60,4 @@ public class TeamDetailResponse : AuditsInfo
     /// 所有人名字.
     /// </summary>
     public string OwnUserName { get; set; } = default!;
-
-    /// <summary>
-    /// 团队详细介绍.
-    /// </summary>
-    public string Markdown { get; set; } = default!;
 }

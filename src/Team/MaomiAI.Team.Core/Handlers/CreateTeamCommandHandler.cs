@@ -52,7 +52,8 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, IdRes
             Id = Guid.NewGuid(),
             Name = request.Name,
             Description = request.Description,
-            IsPublic = false
+            IsPublic = false,
+            OwnerId = _userContext.UserId
         };
 
         await _dbContext.Teams.AddAsync(team, cancellationToken);

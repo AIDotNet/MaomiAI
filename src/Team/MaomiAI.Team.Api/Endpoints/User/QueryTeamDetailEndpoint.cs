@@ -16,9 +16,8 @@ namespace MaomiAI.Team.Api.Endpoints.User;
 /// 查询团队详细信息.
 /// </summary>
 [EndpointGroupName("team")]
-[HttpPost($"{TeamApi.ApiPrefix}/{{teamId}}/teamdetail")]
-[Authorize]
-public class QueryTeamDetailEndpoint : Endpoint<QueryTeamDetailCommand, TeamDetailResponse>
+[HttpGet($"{TeamApi.ApiPrefix}/{{teamId}}/teamdetail")]
+public class QueryTeamDetailEndpoint : Endpoint<QueryTeamDetailCommand, QueryTeamDetailCommandResponse>
 {
     private readonly IMediator _mediator;
 
@@ -31,7 +30,7 @@ public class QueryTeamDetailEndpoint : Endpoint<QueryTeamDetailCommand, TeamDeta
         _mediator = mediator;
     }
 
-    public override Task<TeamDetailResponse> ExecuteAsync(QueryTeamDetailCommand req, CancellationToken ct)
+    public override Task<QueryTeamDetailCommandResponse> ExecuteAsync(QueryTeamDetailCommand req, CancellationToken ct)
     {
         return _mediator.Send(req, ct);
     }

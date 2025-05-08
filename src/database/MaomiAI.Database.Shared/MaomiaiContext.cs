@@ -163,6 +163,11 @@ public partial class DatabaseContext
         {
             creationAudited.CreateUserId = userContext?.UserId ?? default(Guid);
             creationAudited.CreateTime = DateTimeOffset.Now;
+            if(args.Entry.Entity is IModificationAudited modificationAudited)
+            {
+                modificationAudited.UpdateUserId = userContext?.UserId ?? default(Guid);
+                modificationAudited.UpdateTime = DateTimeOffset.Now;
+            }
         }
         else if (args.Entry.State == EntityState.Modified && args.Entry.Entity is IModificationAudited modificationAudited)
         {

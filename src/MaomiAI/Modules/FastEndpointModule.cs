@@ -96,6 +96,8 @@ public class FastEndpointModule : IModule
                     s.PropertyNameCaseInsensitive = true;
 
                     // todo: 后续添加，https://maomi.whuanle.cn/10.web.html#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86
+                    // todo:缺少 longstring
+                    // todo:没有起效
                     s.Converters.Add(new JsonStringEnumConverter());
                     s.Converters.Add(new DateTimeOffsetConverter());
                     s.Converters.Add(JsonMetadataServices.DateTimeConverter);

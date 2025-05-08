@@ -19,7 +19,7 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 处理获取团队列表查询.
 /// </summary>
-public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCommand, PagedResult<TeamSimpleResponse>>
+public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCommand, PagedResult<QueryTeamSimpleCommandResponse>>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IMediator _mediator;
@@ -50,9 +50,9 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
     /// <param name="request">查询请求.</param>
     /// <param name="cancellationToken">取消令牌.</param>
     /// <returns>团队列表.</returns>
-    public async Task<PagedResult<TeamSimpleResponse>> Handle(QueryUserJoinedTeamCommand request, CancellationToken cancellationToken)
+    public async Task<PagedResult<QueryTeamSimpleCommandResponse>> Handle(QueryUserJoinedTeamCommand request, CancellationToken cancellationToken)
     {
-        List<TeamSimpleResponse> result = new();
+        List<QueryTeamSimpleCommandResponse> result = new();
         int totalCount = 0;
 
         var query = _dbContext.Teams.AsQueryable();
@@ -78,7 +78,7 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
             totalCount = await query.Where(x => _dbContext.TeamMembers.Any(y => y.UserId == _userContext.UserId && y.IsAdmin)).CountAsync();
 
             result = await query
-                .Join(_dbContext.TeamMembers.Where(y => y.UserId == _userContext.UserId && y.IsAdmin), x => x.Id, y => y.TeamId, (x, y) => new TeamSimpleResponse
+                .Join(_dbContext.TeamMembers.Where(y => y.UserId == _userContext.UserId && y.IsAdmin), x => x.Id, y => y.TeamId, (x, y) => new QueryTeamSimpleCommandResponse
                 {
                     Name = x.Name,
                     Id = x.Id,
@@ -108,7 +108,7 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
 
             totalCount = await query.CountAsync();
             result = await query
-                .Select(x => new TeamSimpleResponse
+                .Select(x => new QueryTeamSimpleCommandResponse
                 {
                     Name = x.Name,
                     Id = x.Id,
@@ -130,7 +130,7 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
                         .ToListAsync(cancellationToken);
         }
 
-        var response = new PagedResult<TeamSimpleResponse>
+        var response = new PagedResult<QueryTeamSimpleCommandResponse>
         {
             Total = totalCount,
             PageNo = request.PageNo,
@@ -153,12 +153,12 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
         await _mediator.Send(new FillUserInfoFuncCommand
         {
             Items = result,
-            GetUserId = x => x.OfType<TeamSimpleResponse>().Select(x => x.OwnUserId).ToArray(),
+            GetUserId = x => x.OfType<QueryTeamSimpleCommandResponse>().Select(x => x.OwnUserId).ToArray(),
             SetUserName = (x, t) =>
             {
-                if (x.TryGetValue(((TeamSimpleResponse)t).OwnUserId, out var name))
+                if (x.TryGetValue(((QueryTeamSimpleCommandResponse)t).OwnUserId, out var name))
                 {
-                    ((TeamSimpleResponse)t).OwnUserName = name;
+                    ((QueryTeamSimpleCommandResponse)t).OwnUserName = name;
                 }
             }
         });

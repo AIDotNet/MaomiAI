@@ -88,20 +88,20 @@ export function createMaomiAIInfraModelsPagedParamterFromDiscriminatorValue(pars
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAIInfraModelsPagedResultOfTeamMemberResponse}
  */
 // @ts-ignore
 export function createMaomiAIInfraModelsPagedResultOfTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsPagedResultOfTeamSimpleResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsPagedResultOfTeamSimpleResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsPagedResultOfTeamSimpleResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -241,11 +241,20 @@ export function createMaomiAITeamSharedQueriesQueryTeamNameCommandFromDiscrimina
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesResponsesTeamDetailResponse}
+ * @returns {MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse}
  */
 // @ts-ignore
-export function createMaomiAITeamSharedQueriesResponsesTeamDetailResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesResponsesTeamDetailResponse;
+export function createMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -255,15 +264,6 @@ export function createMaomiAITeamSharedQueriesResponsesTeamDetailResponseFromDis
 // @ts-ignore
 export function createMaomiAITeamSharedQueriesResponsesTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAITeamSharedQueriesResponsesTeamMemberResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesResponsesTeamSimpleResponse}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesResponsesTeamSimpleResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesResponsesTeamSimpleResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -447,11 +447,11 @@ export function deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModel
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse(maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse(maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse: Partial<MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfTeamMemberResponse),
-        "items": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>(createMaomiAITeamSharedQueriesResponsesTeamMemberResponseFromDiscriminatorValue); },
-        "total": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.total = n.getStringValue(); },
+        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse),
+        "items": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>(createMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponseFromDiscriminatorValue); },
+        "total": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total = n.getNumberValue(); },
     }
 }
 /**
@@ -459,11 +459,11 @@ export function deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedResultOfTeamSimpleResponse(maomiAIInfraModelsPagedResultOfTeamSimpleResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamSimpleResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse(maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfTeamSimpleResponse),
-        "items": n => { maomiAIInfraModelsPagedResultOfTeamSimpleResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse>(createMaomiAITeamSharedQueriesResponsesTeamSimpleResponseFromDiscriminatorValue); },
-        "total": n => { maomiAIInfraModelsPagedResultOfTeamSimpleResponse.total = n.getStringValue(); },
+        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfTeamMemberResponse),
+        "items": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>(createMaomiAITeamSharedQueriesResponsesTeamMemberResponseFromDiscriminatorValue); },
+        "total": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.total = n.getNumberValue(); },
     }
 }
 /**
@@ -642,19 +642,40 @@ export function deserializeIntoMaomiAITeamSharedQueriesQueryTeamNameCommand(maom
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamDetailResponse(maomiAITeamSharedQueriesResponsesTeamDetailResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamDetailResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse(maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesTeamDetailResponse),
-        "avatarId": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.avatarId = n.getGuidValue(); },
-        "avatarPath": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.avatarPath = n.getStringValue(); },
-        "description": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.description = n.getStringValue(); },
-        "id": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.id = n.getGuidValue(); },
-        "isDisable": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.isDisable = n.getBooleanValue(); },
-        "isPublic": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.isPublic = n.getBooleanValue(); },
-        "markdown": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.markdown = n.getStringValue(); },
-        "name": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.name = n.getStringValue(); },
-        "ownUserId": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.ownUserId = n.getGuidValue(); },
-        "ownUserName": n => { maomiAITeamSharedQueriesResponsesTeamDetailResponse.ownUserName = n.getStringValue(); },
+        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse),
+        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.description = n.getStringValue(); },
+        "id": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.id = n.getGuidValue(); },
+        "isAdmin": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isAdmin = n.getBooleanValue(); },
+        "isDisable": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isDisable = n.getBooleanValue(); },
+        "isPublic": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isPublic = n.getBooleanValue(); },
+        "isRoot": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isRoot = n.getBooleanValue(); },
+        "markdown": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.markdown = n.getStringValue(); },
+        "name": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.name = n.getStringValue(); },
+        "ownUserId": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserId = n.getGuidValue(); },
+        "ownUserName": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse(maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse),
+        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.description = n.getStringValue(); },
+        "id": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.id = n.getGuidValue(); },
+        "isAdmin": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isAdmin = n.getBooleanValue(); },
+        "isDisable": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isDisable = n.getBooleanValue(); },
+        "isPublic": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isPublic = n.getBooleanValue(); },
+        "isRoot": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isRoot = n.getBooleanValue(); },
+        "name": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.name = n.getStringValue(); },
+        "ownUserId": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserId = n.getGuidValue(); },
+        "ownUserName": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserName = n.getStringValue(); },
     }
 }
 /**
@@ -671,26 +692,6 @@ export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamMemberRespon
         "userAvatarPath": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userAvatarPath = n.getStringValue(); },
         "userId": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userId = n.getGuidValue(); },
         "userName": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamSimpleResponse(maomiAITeamSharedQueriesResponsesTeamSimpleResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesTeamSimpleResponse),
-        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarUrl = n.getStringValue(); },
-        "description": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.description = n.getStringValue(); },
-        "id": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.id = n.getGuidValue(); },
-        "isAdmin": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isAdmin = n.getBooleanValue(); },
-        "isDisable": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isDisable = n.getBooleanValue(); },
-        "isPublic": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isPublic = n.getBooleanValue(); },
-        "isRoot": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isRoot = n.getBooleanValue(); },
-        "name": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.name = n.getStringValue(); },
-        "ownUserId": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserId = n.getGuidValue(); },
-        "ownUserName": n => { maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserName = n.getStringValue(); },
     }
 }
 /**
@@ -907,6 +908,19 @@ export interface MaomiAIInfraModelsPagedParamter extends Parsable {
 /**
  * 分页结果.
  */
+export interface MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse extends MaomiAIInfraModelsPagedParamter, Parsable {
+    /**
+     * 项目集合.
+     */
+    items?: MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse[] | null;
+    /**
+     * 总数.
+     */
+    total?: number | null;
+}
+/**
+ * 分页结果.
+ */
 export interface MaomiAIInfraModelsPagedResultOfTeamMemberResponse extends MaomiAIInfraModelsPagedParamter, Parsable {
     /**
      * 项目集合.
@@ -915,20 +929,7 @@ export interface MaomiAIInfraModelsPagedResultOfTeamMemberResponse extends Maomi
     /**
      * 总数.
      */
-    total?: string | null;
-}
-/**
- * 分页结果.
- */
-export interface MaomiAIInfraModelsPagedResultOfTeamSimpleResponse extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * 项目集合.
-     */
-    items?: MaomiAITeamSharedQueriesResponsesTeamSimpleResponse[] | null;
-    /**
-     * 总数.
-     */
-    total?: string | null;
+    total?: number | null;
 }
 /**
  * 简单类型.
@@ -1144,15 +1145,11 @@ export interface MaomiAITeamSharedQueriesQueryTeamNameCommand extends Parsable {
 /**
  * 团队详细信息.
  */
-export interface MaomiAITeamSharedQueriesResponsesTeamDetailResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 团队头像.
-     */
-    avatarId?: Guid | null;
+export interface MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
     /**
      * 团队头像路径.
      */
-    avatarPath?: string | null;
+    avatarUrl?: string | null;
     /**
      * 团队描述.
      */
@@ -1162,6 +1159,10 @@ export interface MaomiAITeamSharedQueriesResponsesTeamDetailResponse extends Mao
      */
     id?: Guid | null;
     /**
+     * 是否管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
      * 团队已被禁用.
      */
     isDisable?: boolean | null;
@@ -1169,6 +1170,10 @@ export interface MaomiAITeamSharedQueriesResponsesTeamDetailResponse extends Mao
      * 是否公开,能够被外部搜索.
      */
     isPublic?: boolean | null;
+    /**
+     * 是否所有者.
+     */
+    isRoot?: boolean | null;
     /**
      * 团队详细介绍.
      */
@@ -1186,36 +1191,10 @@ export interface MaomiAITeamSharedQueriesResponsesTeamDetailResponse extends Mao
      */
     ownUserName?: string | null;
 }
-export interface MaomiAITeamSharedQueriesResponsesTeamMemberResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 是否为管理员.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 团队所有者.
-     */
-    isOwner?: boolean | null;
-    /**
-     * 昵称.
-     */
-    nickName?: string | null;
-    /**
-     * 用户头像.
-     */
-    userAvatarPath?: string | null;
-    /**
-     * 成员ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名称.
-     */
-    userName?: string | null;
-}
 /**
  * 团队基础信息.
  */
-export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
+export interface MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
     /**
      * 团队头像路径.
      */
@@ -1256,6 +1235,32 @@ export interface MaomiAITeamSharedQueriesResponsesTeamSimpleResponse extends Mao
      * 所有人名字.
      */
     ownUserName?: string | null;
+}
+export interface MaomiAITeamSharedQueriesResponsesTeamMemberResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
+    /**
+     * 是否为管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 团队所有者.
+     */
+    isOwner?: boolean | null;
+    /**
+     * 昵称.
+     */
+    nickName?: string | null;
+    /**
+     * 用户头像.
+     */
+    userAvatarPath?: string | null;
+    /**
+     * 成员ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名称.
+     */
+    userName?: string | null;
 }
 /**
  * 分页查询用户已加入的团队列表.
@@ -1499,11 +1504,11 @@ export function serializeMaomiAIInfraModelsPagedParamter(writer: SerializationWr
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeMaomiAIInfraModelsPagedResultOfTeamMemberResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedResultOfTeamMemberResponse) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfTeamMemberResponse)
-        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>("items", maomiAIInfraModelsPagedResultOfTeamMemberResponse.items, serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse);
-        writer.writeStringValue("total", maomiAIInfraModelsPagedResultOfTeamMemberResponse.total);
+export function serializeMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse: Partial<MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse) {
+        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse)
+        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>("items", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items, serializeMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse);
+        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total);
     }
 }
 /**
@@ -1511,11 +1516,11 @@ export function serializeMaomiAIInfraModelsPagedResultOfTeamMemberResponse(write
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeMaomiAIInfraModelsPagedResultOfTeamSimpleResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfTeamSimpleResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamSimpleResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedResultOfTeamSimpleResponse) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfTeamSimpleResponse)
-        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse>("items", maomiAIInfraModelsPagedResultOfTeamSimpleResponse.items, serializeMaomiAITeamSharedQueriesResponsesTeamSimpleResponse);
-        writer.writeStringValue("total", maomiAIInfraModelsPagedResultOfTeamSimpleResponse.total);
+export function serializeMaomiAIInfraModelsPagedResultOfTeamMemberResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined | null = {}) : void {
+    if (maomiAIInfraModelsPagedResultOfTeamMemberResponse) {
+        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfTeamMemberResponse)
+        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>("items", maomiAIInfraModelsPagedResultOfTeamMemberResponse.items, serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse);
+        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfTeamMemberResponse.total);
     }
 }
 /**
@@ -1694,19 +1699,40 @@ export function serializeMaomiAITeamSharedQueriesQueryTeamNameCommand(writer: Se
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeMaomiAITeamSharedQueriesResponsesTeamDetailResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesTeamDetailResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamDetailResponse> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesResponsesTeamDetailResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesTeamDetailResponse)
-        writer.writeGuidValue("avatarId", maomiAITeamSharedQueriesResponsesTeamDetailResponse.avatarId);
-        writer.writeStringValue("avatarPath", maomiAITeamSharedQueriesResponsesTeamDetailResponse.avatarPath);
-        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesTeamDetailResponse.description);
-        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesTeamDetailResponse.id);
-        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesTeamDetailResponse.isDisable);
-        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesTeamDetailResponse.isPublic);
-        writer.writeStringValue("markdown", maomiAITeamSharedQueriesResponsesTeamDetailResponse.markdown);
-        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesTeamDetailResponse.name);
-        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesTeamDetailResponse.ownUserId);
-        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesTeamDetailResponse.ownUserName);
+export function serializeMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse> | undefined | null = {}) : void {
+    if (maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse) {
+        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse)
+        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.avatarUrl);
+        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.description);
+        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.id);
+        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isAdmin);
+        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isDisable);
+        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isPublic);
+        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isRoot);
+        writer.writeStringValue("markdown", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.markdown);
+        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.name);
+        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserId);
+        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
+    if (maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse) {
+        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse)
+        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.avatarUrl);
+        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.description);
+        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.id);
+        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isAdmin);
+        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isDisable);
+        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isPublic);
+        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isRoot);
+        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.name);
+        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserId);
+        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserName);
     }
 }
 /**
@@ -1723,26 +1749,6 @@ export function serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse(wri
         writer.writeStringValue("userAvatarPath", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userAvatarPath);
         writer.writeGuidValue("userId", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userId);
         writer.writeStringValue("userName", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesResponsesTeamSimpleResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesTeamSimpleResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamSimpleResponse> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesResponsesTeamSimpleResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesTeamSimpleResponse)
-        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.avatarUrl);
-        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.description);
-        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.id);
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isAdmin);
-        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isDisable);
-        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isPublic);
-        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.isRoot);
-        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.name);
-        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserId);
-        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesTeamSimpleResponse.ownUserName);
     }
 }
 /**

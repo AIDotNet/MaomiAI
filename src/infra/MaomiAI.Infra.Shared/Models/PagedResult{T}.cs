@@ -20,5 +20,5 @@ public class PagedResult<T> : PagedParamter
     /// <summary>
     /// 总数.
     /// </summary>
-    public long Total { get; init; }
+    public int Total { get; init; }
 }

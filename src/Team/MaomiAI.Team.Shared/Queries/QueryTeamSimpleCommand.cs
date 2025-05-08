@@ -12,19 +12,10 @@ namespace MaomiAI.Team.Shared.Queries;
 /// <summary>
 /// 获取团队简单信息.
 /// </summary>
-public class QueryTeamSimpleCommand : IRequest<TeamSimpleResponse>
+public class QueryTeamSimpleCommand : IRequest<QueryTeamSimpleCommandResponse>
 {
     /// <summary>
     /// 团队ID.
     /// </summary>
     public Guid TeamId { get; set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="QueryTeamSimpleCommand"/> class.
-    /// </summary>
-    /// <param name="id">团队ID.</param>
-    public QueryTeamSimpleCommand(Guid id)
-    {
-        TeamId = id;
-    }
 }

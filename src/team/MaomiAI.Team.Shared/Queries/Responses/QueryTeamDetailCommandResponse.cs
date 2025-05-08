@@ -1,4 +1,4 @@
-// <copyright file="QueryTeamSimpleCommandResponse.cs" company="MaomiAI">
+// <copyright file="QueryTeamDetailCommandResponse.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -7,9 +7,9 @@
 namespace MaomiAI.Team.Shared.Queries.Responses;
 
 /// <summary>
-/// 团队基础信息.
+/// 团队详细信息.
 /// </summary>
-public class TeamSimpleResponse : AuditsInfo
+public class QueryTeamDetailCommandResponse : AuditsInfo
 {
     /// <summary>
     /// 团队ID.
@@ -60,4 +60,9 @@ public class TeamSimpleResponse : AuditsInfo
     /// 所有人名字.
     /// </summary>
     public string OwnUserName { get; set; } = default!;
+
+    /// <summary>
+    /// 团队详细介绍.
+    /// </summary>
+    public string Markdown { get; set; } = default!;
 }

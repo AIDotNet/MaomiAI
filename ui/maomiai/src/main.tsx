@@ -10,6 +10,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux';
 import { RouterProvider } from "react-router";
 import { ThemeProvider } from '@lobehub/ui'
+import { App } from 'antd'
 
 import './index.css'
 import store from './stateshare/store.tsx';
@@ -22,8 +23,10 @@ message.config({
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-  <ThemeProvider>
-    <RouterProvider router={PageRouterProvider} />
-  </ThemeProvider>
-</Provider>
+    <ThemeProvider>
+      <App>
+        <RouterProvider router={PageRouterProvider} />
+      </App>
+    </ThemeProvider>
+  </Provider>
 )

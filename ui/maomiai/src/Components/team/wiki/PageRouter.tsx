@@ -4,6 +4,6 @@ import {
 import Wiki from "./Wiki";
 
 export const WikiPageRouter: RouteObject = {
-    path: 'wiki',
+    path: ':/team/document',
     Component: Wiki
 }

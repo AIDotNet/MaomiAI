@@ -16,7 +16,7 @@ namespace MaomiAI.Team.Api.Endpoints.User;
 /// </summary>
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/joined_list")]
-public class QueryUserJoinedTeamEndpoint : Endpoint<QueryUserJoinedTeamCommand, PagedResult<TeamSimpleResponse>>
+public class QueryUserJoinedTeamEndpoint : Endpoint<QueryUserJoinedTeamCommand, PagedResult<QueryTeamSimpleCommandResponse>>
 {
     private readonly IMediator _mediator;
 
@@ -30,7 +30,7 @@ public class QueryUserJoinedTeamEndpoint : Endpoint<QueryUserJoinedTeamCommand, 
     }
 
     /// <inheritdoc/>
-    public override Task<PagedResult<TeamSimpleResponse>> ExecuteAsync(QueryUserJoinedTeamCommand req, CancellationToken ct)
+    public override Task<PagedResult<QueryTeamSimpleCommandResponse>> ExecuteAsync(QueryUserJoinedTeamCommand req, CancellationToken ct)
     {
         return _mediator.Send(req);
     }

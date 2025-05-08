@@ -5,6 +5,6 @@ import {
 import Plugin from "./Plugin";
 
 export const PluginPageRouter: RouteObject = {
-    path: 'plugin',
+    path: ':/team/plugin',
     Component: Plugin
 }

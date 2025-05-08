@@ -3,6 +3,6 @@ import { RouteObject } from "react-router";
 import Application from "./Application";
 
 export const ApplicationPageRouter: RouteObject = {
-  path: "application",
+  path: ":/team/application",
   Component: Application,
 };

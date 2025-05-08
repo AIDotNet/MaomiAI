@@ -12,7 +12,7 @@ namespace MaomiAI.Team.Shared.Queries.User;
 /// <summary>
 /// 分页查询用户已加入的团队列表.
 /// </summary>
-public class QueryUserJoinedTeamCommand : PagedParamter, IRequest<PagedResult<TeamSimpleResponse>>
+public class QueryUserJoinedTeamCommand : PagedParamter, IRequest<PagedResult<QueryTeamSimpleCommandResponse>>
 {
     /// <summary>
     /// 当前用户所有的.

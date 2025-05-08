@@ -5,6 +5,6 @@ import {
 import Note from "./Note";
 
 export const NotePageRouter: RouteObject = {
-    path: 'note',
+    path: ':/team/note',
     Component: Note
 }

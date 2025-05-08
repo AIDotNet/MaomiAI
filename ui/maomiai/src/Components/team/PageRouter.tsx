@@ -1,20 +1,30 @@
-import {
-    RouteObject
-} from "react-router";
+import { RouteObject } from "react-router";
 import Team from "./Team";
 import Dashboard from "./Dashboard";
+import { AiModelPageRouter } from "./aimodel/PageRouter";
+import { ApplicationPageRouter } from "./application/PageRouter";
+import { WikiPageRouter } from "./wiki/PageRouter";
+import { PluginPageRouter } from "./plugin/PageRouter";
 
 export const TeamPageRouter: RouteObject = {
-    path: 'team/*',
-    Component: Team,
-    children: [
-        {
-            path: ':teamId/dashboard',
-            Component: Dashboard
-        },
-        {
-            path: 'dashboard',
-            Component: Dashboard
-        }
-    ]
-}
+  path: "team/:teamId/*",
+  Component: Team,
+  children: [
+    {
+      path: "aimodel/*",
+      ...AiModelPageRouter,
+    },
+    {
+      path: "application/*",
+      ...ApplicationPageRouter,
+    },
+    {
+      path: "wiki/*",
+      ...WikiPageRouter,
+    },
+    {
+      path: "plugin/*",
+      ...PluginPageRouter,
+    },
+  ],
+};
