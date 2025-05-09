@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace MaomiAI.Team.Shared.Commands.Root;
 
@@ -13,9 +14,15 @@ public class SetTeamAdminCommand : IRequest<EmptyCommandResponse>
     public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 用户ID.
+    /// 被邀请的用户ID.
     /// </summary>
-    public Guid UserId { get; set; }
+    [Required]
+    public Guid? UserId { get; init; }
+
+    /// <summary>
+    /// 用户名.
+    /// </summary>
+    public string? UserName { get; init; } = default!;
 
     /// <summary>
     /// 设置为管理员，或取消管理员.

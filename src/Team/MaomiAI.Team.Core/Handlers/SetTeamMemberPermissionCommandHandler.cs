@@ -47,7 +47,7 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamAdmi
         var currentUserId = _userContext.UserId;
 
         var team = await _dbContext.Teams
-            .FirstOrDefaultAsync(t => t.Id == request.TeamId && !t.IsDeleted, cancellationToken);
+            .FirstOrDefaultAsync(t => t.Id == request.TeamId, cancellationToken);
 
         if (team == null)
         {
@@ -64,8 +64,28 @@ public class SetTeamMemberPermissionCommandHandler : IRequestHandler<SetTeamAdmi
             throw new BusinessException("不可以设置团队所有者的权限") { StatusCode = 403 };
         }
 
+        var userQuery = _dbContext.Users.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(request.UserName))
+        {
+            userQuery = userQuery.Where(u => u.UserName == request.UserName);
+        }
+        else if (request.UserId != null)
+        {
+            userQuery = userQuery.Where(u => u.Id == request.UserId);
+        }
+        else
+        {
+            throw new BusinessException("用户ID或用户名不能为空") { StatusCode = 400 };
+        }
+
+        var userId = await userQuery.Select(x => x.Id).FirstOrDefaultAsync();
+        if (userId == default)
+        {
+            throw new BusinessException("用户不存在") { StatusCode = 404 };
+        }
+
         var teamMember = await _dbContext.TeamMembers
-            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.UserId == request.UserId, cancellationToken);
+            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.UserId == userId, cancellationToken);
 
         if (teamMember == null)
         {

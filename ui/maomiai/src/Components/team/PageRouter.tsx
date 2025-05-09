@@ -5,6 +5,7 @@ import { AiModelPageRouter } from "./aimodel/PageRouter";
 import { ApplicationPageRouter } from "./application/PageRouter";
 import { WikiPageRouter } from "./wiki/PageRouter";
 import { PluginPageRouter } from "./plugin/PageRouter";
+import { SettingPageRouter } from "./setting/PageRouter";
 
 export const TeamPageRouter: RouteObject = {
   path: "team/:teamId/*",
@@ -25,6 +26,10 @@ export const TeamPageRouter: RouteObject = {
     {
       path: "plugin/*",
       ...PluginPageRouter,
+    },
+    {
+      path: "setting/*",
+      ...SettingPageRouter,
     },
   ],
 };

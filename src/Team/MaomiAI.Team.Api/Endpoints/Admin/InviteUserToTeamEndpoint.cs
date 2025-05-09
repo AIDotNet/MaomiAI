@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MaomiAI.Team.Api.Endpoints.Admin;
 
 /// <summary>
-/// 创建团队.
+/// 邀请用户加入团队.
 /// </summary>
 [EndpointGroupName("tram")]
 [HttpPost($"{TeamApi.ApiPrefix}/member/invite")]

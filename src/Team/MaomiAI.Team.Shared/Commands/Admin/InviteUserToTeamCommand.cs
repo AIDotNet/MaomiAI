@@ -18,11 +18,16 @@ public class InviteUserToTeamCommand : IRequest<EmptyCommandResponse>
     /// 团队ID.
     /// </summary>
     [Required]
-    public Guid TeamId { get; set; }
+    public Guid TeamId { get; init; }
 
     /// <summary>
     /// 被邀请的用户ID.
     /// </summary>
     [Required]
-    public Guid UserId { get; set; }
+    public Guid? UserId { get; init; }
+
+    /// <summary>
+    /// 用户名.
+    /// </summary>
+    public string? UserName { get; init; } = default!;
 }

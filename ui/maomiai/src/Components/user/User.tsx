@@ -72,7 +72,6 @@ export default function User() {
       } else {
         messageApi.error("头像上传失败");
       }
-      messageApi.error("头像上传失败");
       return;
     }
   };

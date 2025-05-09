@@ -42,3 +42,22 @@
   text-align: center;
   background: #f0f2f5;
 }
+
+/* 自定义菜单选中样式 */
+.menu-inline .ant-menu-item-selected {
+  background-color: #e6f7ff !important;
+  font-weight: 500;
+}
+
+.menu-inline .ant-menu-item:hover {
+  background-color: #f5f5f5 !important;
+}
+
+/* 子菜单选中样式 */
+.menu-inline .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #1890ff !important;
+}
+
+.menu-inline .ant-menu-submenu-active > .ant-menu-submenu-title {
+  color: #1890ff !important;
+}

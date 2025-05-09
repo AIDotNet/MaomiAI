@@ -16,8 +16,7 @@ namespace MaomiAI.Team.Api.Endpoints.Admin;
 /// 查询团队管理员列表.
 /// </summary>
 [EndpointGroupName("tram")]
-[HttpPost($"{TeamApi.ApiPrefix}/{{teamId}}/adminlist")]
-[Authorize]
+[HttpGet($"{TeamApi.ApiPrefix}/{{teamId}}/adminlist")]
 public class QueryTeamAdminListEndpoint : Endpoint<QueryTeamAdminListCommand, ICollection<TeamMemberResponse>>
 {
     private readonly IMediator _mediator;

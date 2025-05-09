@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MaomiAI.Team.Api.Endpoints.Admin;
 
 /// <summary>
-/// 创建团队.
+/// 移除成员.
 /// </summary>
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/member/remove")]

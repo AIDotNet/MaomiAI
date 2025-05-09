@@ -19,23 +19,23 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取团队详细信息.
 /// </summary>
-public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailCommand, QueryTeamDetailCommandResponse>
+public class QueryTeamDetailCommandHandler : IRequestHandler<QueryTeamDetailCommand, QueryTeamDetailCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
-    private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
+    private readonly ILogger<QueryTeamDetailCommandHandler> _logger;
     private readonly SystemOptions _systemOptions;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueryTeamDetailQueryHandler"/> class.
+    /// Initializes a new instance of the <see cref="QueryTeamDetailCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
     /// <param name="logger"></param>
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
     /// <param name="systemOptions"></param>
-    public QueryTeamDetailQueryHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
+    public QueryTeamDetailCommandHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailCommandHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _logger = logger;
@@ -56,6 +56,8 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
             .Select(x => new QueryTeamDetailCommandResponse
             {
                 Id = x.Id,
+                IsRoot = x.OwnerId == _userContext.UserId,
+                IsAdmin = _dbContext.TeamMembers.Any(tm => tm.TeamId == x.Id && tm.UserId == _userContext.UserId && tm.IsAdmin),
                 Name = x.Name,
                 Description = x.Description,
                 AvatarUrl = x.AvatarPath,
@@ -94,6 +96,8 @@ public class QueryTeamDetailQueryHandler : IRequestHandler<QueryTeamDetailComman
         {
             avatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
         }
+
+        team.AvatarUrl = avatarUrl;
 
         _ = await _mediator.Send(new FillUserInfoCommand
         {

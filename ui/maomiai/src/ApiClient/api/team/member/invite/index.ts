@@ -11,7 +11,7 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
  */
 export interface InviteRequestBuilder extends BaseRequestBuilder<InviteRequestBuilder> {
     /**
-     * 创建团队.
+     * 邀请用户加入团队.
      * @param body 邀请用户加入团队命令.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<MaomiAIInfraModelsEmptyCommandResponse>}
@@ -23,7 +23,7 @@ export interface InviteRequestBuilder extends BaseRequestBuilder<InviteRequestBu
      */
      post(body: MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAIInfraModelsEmptyCommandResponse | undefined>;
     /**
-     * 创建团队.
+     * 邀请用户加入团队.
      * @param body 邀请用户加入团队命令.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}

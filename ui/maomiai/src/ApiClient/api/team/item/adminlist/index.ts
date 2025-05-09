@@ -20,13 +20,13 @@ export interface AdminlistRequestBuilder extends BaseRequestBuilder<AdminlistReq
      * @throws {MaomiAIInfraModelsBusinessExceptionResponse} error when the service returns a 409 status code
      * @throws {MaomiAIInfraModelsBusinessExceptionResponse} error when the service returns a 500 status code
      */
-     post(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAITeamSharedQueriesResponsesTeamMemberResponse[] | undefined>;
+     get(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAITeamSharedQueriesResponsesTeamMemberResponse[] | undefined>;
     /**
      * 查询团队管理员列表.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */
-     toPostRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
+     toGetRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
 /**
  * Uri template for the request builder.
@@ -36,7 +36,7 @@ export const AdminlistRequestBuilderUriTemplate = "{+baseurl}/api/team/{%2Did}/a
  * Metadata for all the requests in the request builder.
  */
 export const AdminlistRequestBuilderRequestsMetadata: RequestsMetadata = {
-    post: {
+    get: {
         uriTemplate: AdminlistRequestBuilderUriTemplate,
         responseBodyContentType: "application/json",
         errorMappings: {

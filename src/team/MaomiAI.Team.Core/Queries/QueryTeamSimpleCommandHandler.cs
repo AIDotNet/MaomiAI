@@ -25,7 +25,7 @@ public class QueryTeamSimpleCommandHandler : IRequestHandler<QueryTeamSimpleComm
     private readonly UserContext _userContext;
     private readonly IMediator _mediator;
     private readonly SystemOptions _systemOptions;
-    private readonly ILogger<QueryTeamDetailQueryHandler> _logger;
+    private readonly ILogger<QueryTeamDetailCommandHandler> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryTeamSimpleCommandHandler"/> class.
@@ -35,7 +35,7 @@ public class QueryTeamSimpleCommandHandler : IRequestHandler<QueryTeamSimpleComm
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
     /// <param name="systemOptions"></param>
-    public QueryTeamSimpleCommandHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailQueryHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
+    public QueryTeamSimpleCommandHandler(DatabaseContext dbContext, ILogger<QueryTeamDetailCommandHandler> logger, IMediator mediator, UserContext userContext, SystemOptions systemOptions)
     {
         _dbContext = dbContext;
         _logger = logger;
@@ -57,6 +57,8 @@ public class QueryTeamSimpleCommandHandler : IRequestHandler<QueryTeamSimpleComm
             {
                 Id = x.Id,
                 Name = x.Name,
+                IsRoot = x.OwnerId == _userContext.UserId,
+                IsAdmin = _dbContext.TeamMembers.Any(tm => tm.TeamId == x.Id && tm.UserId == _userContext.UserId && tm.IsAdmin),
                 Description = x.Description,
                 AvatarUrl = x.AvatarPath,
                 IsDisable = x.IsDisable,
@@ -98,6 +100,10 @@ public class QueryTeamSimpleCommandHandler : IRequestHandler<QueryTeamSimpleComm
         {
             avatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
         }
+
+        team.AvatarUrl = avatarUrl;
+
+        team.AvatarUrl = avatarUrl;
 
         return team;
     }

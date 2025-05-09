@@ -11,7 +11,7 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
  */
 export interface RemoveRequestBuilder extends BaseRequestBuilder<RemoveRequestBuilder> {
     /**
-     * 创建团队.
+     * 移除成员.
      * @param body 移除团队成员命令.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<MaomiAIInfraModelsEmptyCommandResponse>}
@@ -23,7 +23,7 @@ export interface RemoveRequestBuilder extends BaseRequestBuilder<RemoveRequestBu
      */
      post(body: MaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MaomiAIInfraModelsEmptyCommandResponse | undefined>;
     /**
-     * 创建团队.
+     * 移除成员.
      * @param body 移除团队成员命令.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}

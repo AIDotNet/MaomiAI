@@ -541,6 +541,7 @@ export function deserializeIntoMaomiAITeamSharedCommandsAdminInviteUserToTeamCom
     return {
         "teamId": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.teamId = n.getGuidValue(); },
         "userId": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userId = n.getGuidValue(); },
+        "userName": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userName = n.getStringValue(); },
     }
 }
 /**
@@ -589,6 +590,7 @@ export function deserializeIntoMaomiAITeamSharedCommandsRootSetTeamAdminCommand(
         "isAdmin": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.isAdmin = n.getBooleanValue(); },
         "teamId": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.teamId = n.getGuidValue(); },
         "userId": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.userId = n.getGuidValue(); },
+        "userName": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.userName = n.getStringValue(); },
     }
 }
 /**
@@ -1020,6 +1022,10 @@ export interface MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand extends P
      * 被邀请的用户ID.
      */
     userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
 }
 /**
  * 移除团队成员命令.
@@ -1085,9 +1091,13 @@ export interface MaomiAITeamSharedCommandsRootSetTeamAdminCommand extends Parsab
      */
     teamId?: Guid | null;
     /**
-     * 用户ID.
+     * 被邀请的用户ID.
      */
     userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
 }
 /**
  * 更新团队信息命令.
@@ -1598,6 +1608,7 @@ export function serializeMaomiAITeamSharedCommandsAdminInviteUserToTeamCommand(w
     if (maomiAITeamSharedCommandsAdminInviteUserToTeamCommand) {
         writer.writeGuidValue("teamId", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.teamId);
         writer.writeGuidValue("userId", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userId);
+        writer.writeStringValue("userName", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userName);
     }
 }
 /**
@@ -1646,6 +1657,7 @@ export function serializeMaomiAITeamSharedCommandsRootSetTeamAdminCommand(writer
         writer.writeBooleanValue("isAdmin", maomiAITeamSharedCommandsRootSetTeamAdminCommand.isAdmin);
         writer.writeGuidValue("teamId", maomiAITeamSharedCommandsRootSetTeamAdminCommand.teamId);
         writer.writeGuidValue("userId", maomiAITeamSharedCommandsRootSetTeamAdminCommand.userId);
+        writer.writeStringValue("userName", maomiAITeamSharedCommandsRootSetTeamAdminCommand.userName);
     }
 }
 /**

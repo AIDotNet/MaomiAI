@@ -54,28 +54,45 @@ public class InviteUserToTeamCommandHandler : IRequestHandler<InviteUserToTeamCo
             throw new BusinessException("用户已经是团队成员");
         }
 
-        var existUser = await _dbContext.Users
-            .AnyAsync(u => u.Id == request.UserId, cancellationToken);
-
-        if (existUser == false)
+        var userQuery = _dbContext.Users.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(request.UserName))
         {
-            throw new BusinessException("用户不存在");
+            userQuery = userQuery.Where(u => u.UserName == request.UserName);
+        }
+        else if (request.UserId != null)
+        {
+            userQuery = userQuery.Where(u => u.Id == request.UserId);
+        }
+        else
+        {
+            throw new BusinessException("用户ID或用户名不能为空") { StatusCode = 400 };
+        }
+
+        var userId = await userQuery.Select(x => x.Id).FirstOrDefaultAsync();
+        if (userId == default)
+        {
+            throw new BusinessException("用户不存在") { StatusCode = 404 };
+        }
+
+        if (team.OwnerId == userId)
+        {
+            throw new BusinessException("用户已经是团队成员") { StatusCode = 409 };
         }
 
         var existMember = await _dbContext.TeamMembers.AnyAsync(
-            tm => tm.TeamId == request.TeamId && tm.UserId == request.UserId,
+            tm => tm.TeamId == request.TeamId && tm.UserId == userId,
             cancellationToken);
 
         if (existMember)
         {
-            throw new BusinessException("用户已经是团队成员");
+            throw new BusinessException("用户已经是团队成员") { StatusCode = 409 };
         }
 
         await _dbContext.TeamMembers.AddAsync(new TeamMemberEntity
         {
             IsAdmin = false,
             TeamId = request.TeamId,
-            UserId = request.UserId,
+            UserId = userId,
         });
 
         await _dbContext.SaveChangesAsync();
