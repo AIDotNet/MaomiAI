@@ -16,7 +16,10 @@ public class DeleteWikiDocumentCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// 团队id.
     /// </summary>
-    public Guid TeamId { get; init; }
     public Guid WikiId { get; init; }
+
+    /// <summary>
+    /// 文档 id.
+    /// </summary>
     public Guid DocumentId { get; init; }
 }

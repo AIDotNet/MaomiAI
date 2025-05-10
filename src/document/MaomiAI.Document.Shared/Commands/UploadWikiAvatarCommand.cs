@@ -16,7 +16,7 @@ public class UploadWikiAvatarCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// 团队 id.
     /// </summary>
-    public Guid TeamId { get; init; }
+    public Guid WikiId { get; init; }
 
     /// <summary>
     /// 文件 id.

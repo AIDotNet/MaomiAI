@@ -21,14 +21,9 @@ public class QueryWikiSimpleInfoResponse
     public string Name { get; set; } = default!;
 
     /// <summary>
-    /// 团队头像.
-    /// </summary>
-    public Guid AvatarId { get; set; }
-
-    /// <summary>
     /// 团队头像路径.
     /// </summary>
-    public string AvatarPath { get; set; }
+    public string AvatarUrl { get; set; }
 
     /// <summary>
     /// 知识库描述.

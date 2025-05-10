@@ -9,6 +9,9 @@ using MediatR;
 
 namespace MaomiAI.Document.Shared.Queries;
 
+/// <summary>
+/// 获取知识库简单信息.
+/// </summary>
 public class QueryWikiSimpleInfoCommand : IRequest<QueryWikiSimpleInfoResponse>
 {
     public Guid WikiId { get; init; }

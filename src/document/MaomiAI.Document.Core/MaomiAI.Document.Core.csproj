@@ -12,4 +12,8 @@
         <ProjectReference Include="..\MaomiAI.Document.Shared\MaomiAI.Document.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Queries\" />
+    </ItemGroup>
+
 </Project>

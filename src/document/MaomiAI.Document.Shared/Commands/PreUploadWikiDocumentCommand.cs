@@ -10,12 +10,13 @@ using MediatR;
 namespace MaomiAI.Document.Shared.Commands;
 
 /// <summary>
-/// 预生产文档.
+/// 预上传文档文件.
 /// </summary>
 public class PreUploadWikiDocumentCommand : IRequest<PreloadWikiDocumentResponse>
 {
-    public Guid TeamId { get; init; }
-
+    /// <summary>
+    ///  知识库 id.
+    /// </summary>
     public Guid WikiId { get; init; } = default!;
 
     /// <summary>
