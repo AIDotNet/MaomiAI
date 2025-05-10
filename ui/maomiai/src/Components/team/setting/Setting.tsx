@@ -55,8 +55,7 @@ export default function Setting() {
     const path = location.pathname;
     if (path.includes("/member")) return "member";
     if (path.includes("/admin")) return "admin";
-    if (path.includes("/team")) return "team";
-    if (path.includes("/setting")) return "setting";
+    if (path.includes("/settings")) return "settings";
     return "team"; // default
   };
 
@@ -72,9 +71,9 @@ export default function Setting() {
       label: <Link to={`/app/team/${teamId}/setting/admin`}>管理员</Link>,
     },
     {
-      key: "setting",
+      key: "settings",
       icon: <SettingOutlined />,
-      label: <Link to={`/app/team/${teamId}/setting/team`}>团队设置</Link>,
+      label: <Link to={`/app/team/${teamId}/setting/settings`}>团队设置</Link>,
     },
   ];
 

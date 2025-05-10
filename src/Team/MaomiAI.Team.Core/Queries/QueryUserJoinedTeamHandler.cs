@@ -171,8 +171,10 @@ public class QueryUserJoinedTeamHandler : IRequestHandler<QueryUserJoinedTeamCom
             {
                 item.AvatarUrl = url;
             }
-
-            item.AvatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
+            else
+            {
+                item.AvatarUrl = new Uri(new Uri(_systemOptions.Server), "default/avatar.png").ToString();
+            }
         }
 
         return response;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, Form, Input, Button, Upload, message, Switch, Avatar, Descriptions, Space, Row, Col } from 'antd';
+import { Card, Form, Input, Button, Upload, message, Switch, Avatar, Descriptions, Space, Row, Col, Tooltip } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import type { RcFile } from 'antd/es/upload';
 import { GetApiClient, UploadImage } from '../../ServiceClient';
@@ -82,8 +82,7 @@ export default function TeamSetting() {
     };
 
     // Handle avatar upload
-    const handleAvatarSubmit = async (values: any) => {
-        const file = values.avatar[0]?.originFileObj;
+    const handleAvatarUpload = async (file: File) => {
         if (!file) {
             messageApi.error('请选择一个文件');
             return;
@@ -103,8 +102,6 @@ export default function TeamSetting() {
             messageApi.success('头像更新成功');
             // 刷新团队信息
             fetchTeamDetail();
-            // 清空文件列表
-            avatarForm.setFieldsValue({ avatar: [] });
         } catch (error) {
             console.error('upload file error:', error);
             const typedError = error as {
@@ -125,56 +122,33 @@ export default function TeamSetting() {
             {contextHolder}
             <Card title="团队设置" loading={loading}>
                 <Form
-                    form={avatarForm}
-                    name="avatarUpdate"
-                    onFinish={handleAvatarSubmit}
-                    layout="vertical"
-                    style={{ marginBottom: '24px' }}
-                >
-                    <Form.Item
-                        name="avatar"
-                        label="团队头像"
-                        valuePropName="fileList"
-                        getValueFromEvent={(e) => e.fileList}
-                    >
-                        <Row gutter={8} justify="space-between">
-                            <Col>
-                                <Avatar 
-                                    size={64} 
-                                    src={teamDetail?.avatarUrl} 
-                                    icon={<UserOutlined />} 
-                                />
-                            </Col>
-                            <Col>
-                                <Upload
-                                    name="avatar"
-                                    listType="picture"
-                                    maxCount={1}
-                                    beforeUpload={() => false}
-                                    showUploadList={{ showPreviewIcon: false }}
-                                    fileList={avatarForm.getFieldsValue().avatar}
-                                    accept="image/*"
-                                    onChange={({ fileList }) => {
-                                        avatarForm.setFieldsValue({ avatar: fileList });
-                                    }}
-                                >
-                                    <Button icon={<UploadOutlined />}>选择头像</Button>
-                                </Upload>
-                            </Col>
-                            <Col>
-                                <Button type="primary" onClick={() => avatarForm.submit()} loading={uploading}>
-                                    更新头像
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Form.Item>
-                </Form>
-
-                <Form
                     form={form}
                     layout="vertical"
                     onFinish={handleTeamInfoUpdate}
                 >
+                    <Form.Item
+                        label="团队头像"
+                    >
+                        <Upload
+                            name="avatar"
+                            showUploadList={false}
+                            beforeUpload={(file) => {
+                                handleAvatarUpload(file);
+                                return false;
+                            }}
+                            accept="image/*"
+                        >
+                            <Tooltip title="点击更换头像">
+                                <Avatar 
+                                    size={64} 
+                                    src={teamDetail?.avatarUrl} 
+                                    icon={<UserOutlined />}
+                                    style={{ cursor: 'pointer' }}
+                                />
+                            </Tooltip>
+                        </Upload>
+                    </Form.Item>
+
                     <Form.Item
                         name="name"
                         label="团队名称"

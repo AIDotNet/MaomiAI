@@ -1,5 +1,5 @@
-import { Form, Input, Button, Upload, message, Card, Row, Col } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Upload, message, Card, Row, Col, Avatar, Tooltip } from "antd";
+import { UploadOutlined, UserOutlined } from "@ant-design/icons";
 import "./User.css";
 import { GetApiClient, UploadImage } from "../ServiceClient";
 import { useEffect, useState } from "react";
@@ -11,8 +11,8 @@ export default function User() {
     userName: "",
     nickName: "",
   });
-  const [avatarForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
+  const [uploading, setUploading] = useState(false);
 
   const fetchUserInfo = async () => {
     let client = GetApiClient();
@@ -42,15 +42,15 @@ export default function User() {
     }
   };
 
-  const handleAvatarSubmit = async (values: any) => {
+  const handleAvatarUpload = async (file: File) => {
     const client = GetApiClient();
-    const file = values.avatar[0].originFileObj;
     if (!file) {
       messageApi.error("请选择一个文件");
       return;
     }
 
     try {
+      setUploading(true);
       // 上传头像
       const preUploadResponse = await UploadImage(client, file, "UserAvatar");
 
@@ -72,7 +72,8 @@ export default function User() {
       } else {
         messageApi.error("头像上传失败");
       }
-      return;
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -84,13 +85,24 @@ export default function User() {
           <Card title="用户信息更新" className="user-card">
             {/* Flex container for avatar and user info */}
             <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
-              {userInfo.avatar && (
-                <img
-                  src={userInfo.avatar}
-                  alt="用户头像"
-                  style={{ width: "100px", height: "100px", borderRadius: "50%", marginRight: "20px" }}
-                />
-              )}
+              <Upload
+                name="avatar"
+                showUploadList={false}
+                beforeUpload={(file) => {
+                  handleAvatarUpload(file);
+                  return false;
+                }}
+                accept="image/*"
+              >
+                <Tooltip title="点击更换头像">
+                  <Avatar 
+                    size={100}
+                    src={userInfo.avatar}
+                    icon={<UserOutlined />}
+                    style={{ cursor: 'pointer', marginRight: "20px" }}
+                  />
+                </Tooltip>
+              </Upload>
               <div>
                 <div>
                   <strong>用户名:</strong> {userInfo.userName}
@@ -124,41 +136,6 @@ export default function User() {
                   block
                 >
                   提交密码更新
-                </Button>
-              </Form.Item>
-            </Form>
-
-            <Form
-              form={avatarForm}
-              name="avatarUpdate"
-              onFinish={handleAvatarSubmit}
-              layout="vertical"
-              size="large"
-            >
-              <Form.Item
-                name="avatar"
-                label="修改头像"
-                valuePropName="fileList"
-                getValueFromEvent={(e) => e.fileList}
-                rules={[{ required: true, message: "请选择一个头像文件" }]}
-              >
-                <Upload
-                  name="avatar"
-                  listType="picture"
-                  maxCount={1}
-                  beforeUpload={() => false}
-                >
-                  <Button icon={<UploadOutlined />}>选择头像</Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  style={{ width: "200px" }}
-                  block
-                >
-                  提交头像更新
                 </Button>
               </Form.Item>
             </Form>

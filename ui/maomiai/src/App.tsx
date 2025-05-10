@@ -12,7 +12,19 @@ import {
   Spin,
 } from "antd";
 import { Header } from "@lobehub/ui";
-import { TeamOutlined } from "@ant-design/icons";
+import { 
+  TeamOutlined, 
+  HomeOutlined, 
+  AppstoreOutlined, 
+  DashboardOutlined,
+  RobotOutlined,
+  AppstoreAddOutlined,
+  BookOutlined,
+  ApiOutlined,
+  SettingOutlined,
+  FileTextOutlined,
+  UserOutlined
+} from "@ant-design/icons";
 import "./App.css";
 import { CheckToken, RefreshServerInfo } from "./InitPage";
 import { GetApiClient } from "./Components/ServiceClient";
@@ -67,6 +79,8 @@ function App() {
   // 获取子菜单的 key
   const getSubMenuKey = (path: string) => {
     switch (path) {
+      case "dashboard":
+        return "0";
       case "aimodel":
         return "1";
       case "application":
@@ -122,14 +136,24 @@ function App() {
   ];
 
   const inlineMenuItems = [
-    { key: "1", label: <Link to="/app/index">首页</Link> },
-    { key: "2", label: <Link to="/app/teamlist">团队列表</Link> },
+    { 
+      key: "1", 
+      icon: <HomeOutlined />,
+      label: <Link to="/app/index">首页</Link> 
+    },
+    { 
+      key: "2", 
+      icon: <AppstoreOutlined />,
+      label: <Link to="/app/teamlist">团队列表</Link> 
+    },
     {
       key: "3",
+      icon: <TeamOutlined />,
       label: "团队",
       children: [
         {
           key: "3-0",
+          icon: <DashboardOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/dashboard`}>
               仪表盘
@@ -138,6 +162,7 @@ function App() {
         },
         {
           key: "3-1",
+          icon: <RobotOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/aimodel`}>
               模型
@@ -146,6 +171,7 @@ function App() {
         },
         {
           key: "3-2",
+          icon: <AppstoreAddOutlined />,
           label: (
             <Link
               to={`/app/team/${location.pathname.split("/")[3]}/application`}
@@ -156,6 +182,7 @@ function App() {
         },
         {
           key: "3-3",
+          icon: <BookOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/wiki`}>
               知识库
@@ -164,6 +191,7 @@ function App() {
         },
         {
           key: "3-4",
+          icon: <ApiOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/plugin`}>
               插件
@@ -172,6 +200,7 @@ function App() {
         },
         {
           key: "3-5",
+          icon: <SettingOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/setting`}>
               设置
@@ -180,8 +209,16 @@ function App() {
         },
       ],
     },
-    { key: "4", label: <Link to="/app/note">笔记系统</Link> },
-    { key: "8", label: <Link to="/app/user">个人中心</Link> },
+    { 
+      key: "4", 
+      icon: <FileTextOutlined />,
+      label: <Link to="/app/note">笔记系统</Link> 
+    },
+    { 
+      key: "8", 
+      icon: <UserOutlined />,
+      label: <Link to="/app/user">个人中心</Link> 
+    },
   ];
 
   return (
