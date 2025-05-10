@@ -84,6 +84,7 @@ public class FastEndpointModule : IModule
                                     schema.Type = JsonObjectType.String;
                                     schema.Format = "uuid";
                                 }));
+
                     s.SchemaSettings.TypeMappers.Add(new LongTypeMapper());
                     s.SchemaSettings.TypeMappers.Add(new DateTimeOffsetTypeMapper());
                     s.OperationProcessors.Add(new ErrorResponseOperationProcessor());
@@ -94,15 +95,19 @@ public class FastEndpointModule : IModule
                     s.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                     s.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                     s.PropertyNameCaseInsensitive = true;
+                    s.NumberHandling = JsonNumberHandling.AllowReadingFromString;
 
-                    // todo: 后续添加，https://maomi.whuanle.cn/10.web.html#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86
-                    // todo:缺少 longstring
-                    // todo:没有起效
+                    // 这里配置的转换器不会起效，只能用于生成文档，需要 UseFastEndpoints 配置请求和响应序列化
+                    // https://maomi.whuanle.cn/10.web.html#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86
                     s.Converters.Add(new JsonStringEnumConverter());
-                    s.Converters.Add(new DateTimeOffsetConverter());
-                    s.Converters.Add(JsonMetadataServices.DateTimeConverter);
-                    s.Converters.Add(JsonMetadataServices.DateOnlyConverter);
+                    //s.Converters.Add(new DateTimeOffsetConverter());
                     s.Converters.Add(JsonMetadataServices.DecimalConverter);
+                };
+
+                // NSWAG 只能使用 Newtonsoft
+                options.NewtonsoftSettings = s =>
+                {
+                    s.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                 };
             });
     }

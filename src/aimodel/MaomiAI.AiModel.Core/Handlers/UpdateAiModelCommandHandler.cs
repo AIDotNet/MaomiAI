@@ -7,6 +7,7 @@
 using FastEndpoints;
 using MaomiAI.AiModel.Shared.Commands;
 using MaomiAI.Database;
+using MaomiAI.Infra.Helpers;
 using MaomiAI.Infra.Service;
 using MaomiAI.Infra.Services;
 using MediatR;
@@ -78,7 +79,7 @@ public class UpdateAiModelCommandHandler : IRequestHandler<UpdateAiModelCommand,
         aiModel.Endpoint = request.Endpoint.Enpoint;
         aiModel.DeploymentName = request.Endpoint.DeploymentName;
         aiModel.ModeId = request.Endpoint.ModelId;
-        aiModel.AiModelFunction = (int)request.Endpoint.Function;
+        aiModel.AiModelFunction = (int)EnumHelper.ComposeFlags(request.Endpoint.AiFunction);
         aiModel.IsSupportImg = request.Endpoint.IsSupportImg;
         aiModel.IsSupportFunctionCall = request.Endpoint.IsSupportFunctionCall;
         aiModel.Name = request.Endpoint.Name;

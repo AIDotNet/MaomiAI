@@ -43,7 +43,7 @@ public class SetDefaultAiModelCommandHandler : IRequestHandler<SetDefaultAiModel
         }
 
         var defaultModel = await _dbContext.TeamDefaultAiModels
-            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.Function == (int)request.Function, cancellationToken);
+            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.Function == (int)request.AiFunction, cancellationToken);
 
         if (defaultModel == null)
         {
@@ -51,7 +51,7 @@ public class SetDefaultAiModelCommandHandler : IRequestHandler<SetDefaultAiModel
             {
                 TeamId = request.TeamId,
                 ModelId = request.ModelId,
-                Function = (int)request.Function
+                Function = (int)request.AiFunction
             };
 
             await _dbContext.AddAsync(defaultModel, cancellationToken);

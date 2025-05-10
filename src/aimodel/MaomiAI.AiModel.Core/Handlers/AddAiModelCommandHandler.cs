@@ -7,6 +7,7 @@
 using MaomiAI.AiModel.Shared.Commands;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
+using MaomiAI.Infra.Helpers;
 using MaomiAI.Infra.Service;
 using MaomiAI.Infra.Services;
 using MediatR;
@@ -68,8 +69,8 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
             Endpoint = request.Endpoint.Enpoint,
             DeploymentName = request.Endpoint.DeploymentName,
             ModeId = request.Endpoint.ModelId,
-            AiModelFunction = (int)request.Endpoint.Function,
-            AiProvider = (int)request.Endpoint.Provider,
+            AiModelFunction = (int)EnumHelper.ComposeFlags(request.Endpoint.AiFunction),
+            AiProvider = request.Endpoint.Provider.ToString(),
             Key = skKey,
             IsSupportImg = request.Endpoint.IsSupportImg,
             IsSupportFunctionCall = request.Endpoint.IsSupportFunctionCall,

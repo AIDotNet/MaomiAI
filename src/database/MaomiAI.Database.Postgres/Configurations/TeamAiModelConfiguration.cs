@@ -27,7 +27,8 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasComment("模型功能AiModelFunction")
             .HasColumnName("ai_model_function");
         entity.Property(e => e.AiProvider)
-            .HasDefaultValue(0)
+            .HasMaxLength(50)
+            .HasDefaultValueSql("'Custom'::character varying")
             .HasComment("ai供应商AiProvider")
             .HasColumnName("ai_provider");
         entity.Property(e => e.CreateTime)

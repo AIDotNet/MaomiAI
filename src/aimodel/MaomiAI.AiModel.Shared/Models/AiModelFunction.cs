@@ -13,7 +13,7 @@ namespace MaomiAI.AiModel.Shared.Models;
 public enum AiModelFunction
 {
     /// <summary>
-    /// 不具备任何功能.
+    /// 不具备任何功能，不可使用.
     /// </summary>
     None = 0,
 

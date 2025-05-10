@@ -19,7 +19,7 @@ public partial class TeamMemberConfiguration : IEntityTypeConfiguration<TeamMemb
 
         entity.ToTable("team_member", tb => tb.HasComment("团队成员"));
 
-        entity.HasIndex(e => new { e.TeamId, e.UserId }, "team_member_pk2").IsUnique();
+        entity.HasIndex(e => new { e.TeamId, e.UserId }, "team_member_pk2");
 
         entity.Property(e => e.Id)
             .HasComment("id")

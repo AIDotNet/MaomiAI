@@ -14,20 +14,45 @@ public enum AiProvider
     /// <summary>
     /// 自定义.
     /// </summary>
-    Custom = 0,
+    Custom,
 
     /// <summary>
     /// OpenAI.
     /// </summary>
-    OpenAI = 1,
+    OpenAI,
 
     /// <summary>
     /// AzureOpenAI.
     /// </summary>
-    AzureOpenAI = 2,
+    AzureOpenAI,
 
     /// <summary>
     /// Deepseek.
     /// </summary>
-    Deepseek = 3,
+    Deepseek,
+
+    /// <summary>
+    /// Anthropic.
+    /// </summary>
+    Anthropic,
+
+    /// <summary>
+    /// Google.
+    /// </summary>
+    Google,
+
+    /// <summary>
+    /// Cohere.
+    /// </summary>
+    Cohere,
+
+    /// <summary>
+    /// Mistral.
+    /// </summary>
+    Mistral,
+
+    /// <summary>
+    /// HuggingFace.
+    /// </summary>
+    HuggingFace
 }

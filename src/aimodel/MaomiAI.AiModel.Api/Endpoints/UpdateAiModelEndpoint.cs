@@ -1,4 +1,4 @@
-﻿// <copyright file="AddAiModelEndpoint.cs" company="MaomiAI">
+﻿// <copyright file="UpdateAiModelEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -6,11 +6,8 @@
 
 using FastEndpoints;
 using MaomiAI.AiModel.Shared.Commands;
-using MaomiAI.AiModel.Shared.Queries;
-using MaomiAI.AiModel.Shared.Queries.Respones;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.AiModel.Api.Endpoints;
 
@@ -18,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 修改 AI 模型信息，key 要使用 RSA 公钥加密，如果不修改 key 需设置 key=*.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/admodel/update")]
+[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/update")]
 public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;

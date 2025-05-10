@@ -27,5 +27,5 @@ public class SetDefaultAiModelCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// AI 模型的功能.
     /// </summary>
-    public AiModelFunction Function { get; init; }
+    public AiModelFunction AiFunction { get; init; }
 }

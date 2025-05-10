@@ -27,27 +27,27 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// ai供应商AiProvider.
     /// </summary>
-    public int AiProvider { get; set; }
+    public string AiProvider { get; set; }  = default!;
 
     /// <summary>
     /// api服务端点.
     /// </summary>
-    public string Endpoint { get; set; } = default!;
+    public string Endpoint { get; set; }  = default!;
 
     /// <summary>
     /// 模型id.
     /// </summary>
-    public string ModeId { get; set; } = default!;
+    public string ModeId { get; set; }  = default!;
 
     /// <summary>
     /// 部署名称.
     /// </summary>
-    public string DeploymentName { get; set; } = default!;
+    public string DeploymentName { get; set; }  = default!;
 
     /// <summary>
     /// key.
     /// </summary>
-    public string Key { get; set; } = default!;
+    public string Key { get; set; }  = default!;
 
     /// <summary>
     /// 是否支持图片.
@@ -87,5 +87,5 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// 名字.
     /// </summary>
-    public string Name { get; set; } = default!;
+    public string Name { get; set; }  = default!;
 }

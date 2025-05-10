@@ -23,7 +23,7 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
 
         entity.HasIndex(e => e.FileName, "files_file_name_index");
 
-        entity.HasIndex(e => new { e.IsPublic, e.ObjectKey }, "files_is_public_object_key_uindex").IsUnique();
+        entity.HasIndex(e => new { e.IsPublic, e.ObjectKey }, "files_is_public_object_key_index");
 
         entity.HasIndex(e => e.ObjectKey, "files_object_key_index");
 

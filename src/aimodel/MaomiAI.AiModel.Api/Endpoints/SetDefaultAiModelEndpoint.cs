@@ -15,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 设置某个领域下默认的 ai 模型.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/aimodel/setdefault")]
+[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/setdefault")]
 public class SetDefaultAiModelEndpoint : Endpoint<SetDefaultAiModelCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;

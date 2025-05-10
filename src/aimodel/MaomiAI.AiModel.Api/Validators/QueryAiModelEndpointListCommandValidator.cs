@@ -13,7 +13,7 @@ namespace MaomiAI.AiModel.Api.Validators;
 /// <summary>
 /// QueryAiModelEndpointListCommandValidator.
 /// </summary>
-public class QueryAiModelEndpointListCommandValidator : Validator<QueryAiModelEndpointListCommand>
+public class QueryAiModelEndpointListCommandValidator : Validator<QueryAiModelListCommand>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryAiModelEndpointListCommandValidator"/> class.
@@ -21,7 +21,7 @@ public class QueryAiModelEndpointListCommandValidator : Validator<QueryAiModelEn
     public QueryAiModelEndpointListCommandValidator()
     {
         RuleFor(x => x.TeamId)
-            .Equal(default(Guid))
+            .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
     }
 }

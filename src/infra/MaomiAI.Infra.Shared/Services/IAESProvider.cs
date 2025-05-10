@@ -4,11 +4,10 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.Infra.Service
+namespace MaomiAI.Infra.Service;
+
+public interface IAESProvider
 {
-    public interface IAESProvider
-    {
-        string Decrypt(string cipherText);
-        string Encrypt(string plainText);
-    }
+    string Decrypt(string cipherText);
+    string Encrypt(string plainText);
 }

@@ -24,7 +24,7 @@ public class AiEndpoint
     /// <summary>
     /// AI 模型的功能，判断是否多模态.
     /// </summary>
-    public AiModelFunction Function { get; init; }
+    public AiModelFunction[] AiFunction { get; init; } = default!;
 
     /// <summary>
     /// 支持 function call.

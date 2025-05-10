@@ -4,14 +4,13 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MediatR;
 
 namespace MaomiAI.AiModel.Shared.Queries;
 
 /// <summary>
-/// 查询供应商模型默认列表.
+/// 查询供应商模型默认列表，获取在某个功能需求下默认使用的模型.
 /// </summary>
 public class QueryDefaultAiModelListCommand : IRequest<QueryDefaultAiModelListResponse>
 {

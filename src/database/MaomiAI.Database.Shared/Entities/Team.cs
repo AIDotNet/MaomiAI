@@ -17,12 +17,12 @@ public partial class TeamEntity : IFullAudited
     /// <summary>
     /// 团队描述.
     /// </summary>
-    public string Description { get; set; } = default!;
+    public string Description { get; set; }  = default!;
 
     /// <summary>
     /// 团队名称.
     /// </summary>
-    public string Name { get; set; } = default!;
+    public string Name { get; set; }  = default!;
 
     /// <summary>
     /// 是否删除.
@@ -57,7 +57,7 @@ public partial class TeamEntity : IFullAudited
     /// <summary>
     /// 团队详细介绍.
     /// </summary>
-    public string Markdown { get; set; } = default!;
+    public string Markdown { get; set; }  = default!;
 
     /// <summary>
     /// 是否公开,能够被外部搜索.
@@ -77,5 +77,5 @@ public partial class TeamEntity : IFullAudited
     /// <summary>
     /// 头像路径.
     /// </summary>
-    public string AvatarPath { get; set; } = default!;
+    public string AvatarPath { get; set; }  = default!;
 }

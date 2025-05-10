@@ -18,7 +18,7 @@ public class UploadAiModelEndpoint
     /// <summary>
     /// AI 模型的功能，判断是否多模态.
     /// </summary>
-    public AiModelFunction Function { get; init; }
+    public AiModelFunction[] AiFunction { get; init; }
 
     /// <summary>
     /// 支持 function call.

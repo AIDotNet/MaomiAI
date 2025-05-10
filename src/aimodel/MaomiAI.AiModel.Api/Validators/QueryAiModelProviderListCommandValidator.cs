@@ -21,7 +21,7 @@ public class QueryAiModelProviderListCommandValidator : Validator<QueryAiModelPr
     public QueryAiModelProviderListCommandValidator()
     {
         RuleFor(x => x.TeamId)
-            .Equal(default(Guid))
+            .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
     }
 }

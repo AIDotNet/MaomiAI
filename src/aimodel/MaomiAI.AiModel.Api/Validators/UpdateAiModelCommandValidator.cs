@@ -21,11 +21,11 @@ public class UpdateAiModelCommandValidator : Validator<UpdateAiModelCommand>
     public UpdateAiModelCommandValidator()
     {
         RuleFor(x => x.TeamId)
-            .Equal(default(Guid))
+            .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
 
         RuleFor(x => x.ModelId)
-            .Equal(default(Guid))
+            .NotEmpty()
             .WithMessage("模型 ID 不能为空.");
 
         RuleFor(x => x.Endpoint.Enpoint)

@@ -42,15 +42,19 @@ app.UseHttpLogging();
 app.UseFastEndpoints((Action<Config>?)(c =>
 {
     c.Endpoints.RoutePrefix = "api";
-    //c.Errors.ProducesMetadataType = typeof(MaomiAI.Infra.Models.BusinessExceptionResponse);
-    //c.Errors.ResponseBuilder = (failures, ctx, statusCode) =>
-    //{
-    //    return (object)new MaomiAI.Infra.Models.BusinessExceptionResponse(failures, statusCode)
-    //    {
-    //        Detail = "请求参数验证失败",
-    //        RequestId = ctx.TraceIdentifier,
-    //    };
-    //};
+    c.Errors.ProducesMetadataType = typeof(MaomiAI.Infra.Models.BusinessExceptionResponse);
+
+    // 拦截一些验证异常等
+    c.Errors.ResponseBuilder = (failures, ctx, statusCode) =>
+    {
+        return (object)new MaomiAI.Infra.Models.BusinessExceptionResponse(failures, statusCode)
+        {
+            Detail = failures.FirstOrDefault()?.ErrorMessage ?? "请求参数错误",
+            RequestId = ctx.TraceIdentifier,
+        };
+    };
+    c.Serializer.Options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    c.Serializer.Options.Converters.Add(System.Text.Json.Serialization.Metadata.JsonMetadataServices.DecimalConverter);
 }));
 
 app.Run();

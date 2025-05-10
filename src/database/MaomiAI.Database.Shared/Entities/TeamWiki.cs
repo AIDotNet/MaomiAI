@@ -22,12 +22,12 @@ public partial class TeamWikiEntity : IFullAudited
     /// <summary>
     /// 知识库名称.
     /// </summary>
-    public string Name { get; set; } = default!;
+    public string Name { get; set; }  = default!;
 
     /// <summary>
     /// 知识库描述.
     /// </summary>
-    public string Description { get; set; } = default!;
+    public string Description { get; set; }  = default!;
 
     /// <summary>
     /// 是否删除.
@@ -57,7 +57,7 @@ public partial class TeamWikiEntity : IFullAudited
     /// <summary>
     /// 知识库详细介绍.
     /// </summary>
-    public string Markdown { get; set; } = default!;
+    public string Markdown { get; set; }  = default!;
 
     /// <summary>
     /// 公开使用，所有人不需要加入团队即可使用此知识库.
@@ -72,5 +72,5 @@ public partial class TeamWikiEntity : IFullAudited
     /// <summary>
     /// 头像路径.
     /// </summary>
-    public string AvatarPath { get; set; } = default!;
+    public string AvatarPath { get; set; }  = default!;
 }

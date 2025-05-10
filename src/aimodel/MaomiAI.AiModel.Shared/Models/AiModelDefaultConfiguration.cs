@@ -24,12 +24,12 @@ public class AiModelDefaultConfiguration
     /// <summary>
     /// AI 服务商.
     /// </summary>
-    public AiProvider Provider { get; init; }
+    public string Provider { get; init; }
 
     /// <summary>
     /// AI 模型的功能，判断是否多模态.
     /// </summary>
-    public AiModelFunction Function { get; init; }
+    public AiModelFunction[] AiFunction { get; init; }
 
     /// <summary>
     /// 支持 function call.

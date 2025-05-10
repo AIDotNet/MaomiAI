@@ -1,4 +1,4 @@
-﻿// <copyright file="QueryDefaultAiModelListCommandHandler.cs" company="MaomiAI">
+﻿// <copyright file="QueryAiModelProviderListCommandHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -32,19 +32,29 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
     /// <inheritdoc/>
     public async Task<QueryAiModelProviderListResponse> Handle(QueryAiModelProviderListCommand request, CancellationToken cancellationToken)
     {
+        Dictionary<string, int> providers = new();
+
         var list = await _dbContext.TeamAiModels
             .Where(x => x.TeamId == request.TeamId)
             .GroupBy(x => x.AiProvider)
             .Select(x => new
             {
-                Provider = (AiProvider)x.Key,
+                Provider = x.Key,
                 Count = x.Count()
             })
-            .ToArrayAsync(cancellationToken);
+            .ToListAsync(cancellationToken);
+
+        if (list.Count > 0)
+        {
+            foreach (var item in Enum.GetNames<AiProvider>())
+            {
+                providers[item] = list.FirstOrDefault(x => x.Provider == item)?.Count ?? 0;
+            }
+        }
 
         return new QueryAiModelProviderListResponse
         {
-            Providers = list.ToDictionary(x => x.Provider, x => x.Count)
+            Providers = providers
         };
     }
 }

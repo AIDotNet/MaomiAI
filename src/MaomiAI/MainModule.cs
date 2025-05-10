@@ -5,7 +5,7 @@
 // </copyright>
 
 using Maomi.I18n;
-
+using MaomiAI.AiModel.Core;
 using MaomiAI.Database;
 using MaomiAI.Filters;
 using MaomiAI.Infra;
@@ -27,7 +27,7 @@ namespace MaomiAI;
 [InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
 [InjectModule<TeamCoreModule>]
-//[InjectModule<AiModelCoreModule>]
+[InjectModule<AiModelCoreModule>]
 [InjectModule<PublicCoreModule>]
 [InjectModule<ApiModule>]
 public partial class MainModule : IModule

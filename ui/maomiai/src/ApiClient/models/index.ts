@@ -7,6 +7,123 @@ import { type ApiError, type Guid, type Parsable, type ParseNode, type Serializa
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedCommandsAddAiModelCommand}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedCommandsAddAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedCommandsAddAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedCommandsSetDefaultAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedCommandsUpdateAiModelCommand}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedCommandsUpdateAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedCommandsUpdateAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedModelsAiEndpoint}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedModelsAiEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedModelsAiModelDefaultConfiguration}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedModelsAiModelDefaultConfigurationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedModelsAiModelDefaultConfiguration;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedModelsAiNotKeyEndpoint}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedModelsAiNotKeyEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedModelsAiProviderInfo}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedModelsAiProviderInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedModelsAiProviderInfo;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedModelsUploadAiModelEndpoint}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedModelsUploadAiModelEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedModelsUploadAiModelEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesQueryAiModelListCommand}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesQueryAiModelListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAIInfraModelsAuditsInfo}
  */
 // @ts-ignore
@@ -345,6 +462,179 @@ export function createMaomiAIUserSharedQueriesQueryRepeatedUserNameCommandFromDi
 // @ts-ignore
 export function createMaomiAIUserSharedQueriesQueryUserInfoCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SystemCollectionsGenericKeyValuePairOfStringAndInt32}
+ */
+// @ts-ignore
+export function createSystemCollectionsGenericKeyValuePairOfStringAndInt32FromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSystemCollectionsGenericKeyValuePairOfStringAndInt32;
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedCommandsAddAiModelCommand(maomiAIAiModelSharedCommandsAddAiModelCommand: Partial<MaomiAIAiModelSharedCommandsAddAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "endpoint": n => { maomiAIAiModelSharedCommandsAddAiModelCommand.endpoint = n.getObjectValue<MaomiAIAiModelSharedModelsAiEndpoint>(createMaomiAIAiModelSharedModelsAiEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand(maomiAIAiModelSharedCommandsSetDefaultAiModelCommand: Partial<MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.aiFunction = n.getEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "modelId": n => { maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.modelId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedCommandsUpdateAiModelCommand(maomiAIAiModelSharedCommandsUpdateAiModelCommand: Partial<MaomiAIAiModelSharedCommandsUpdateAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "endpoint": n => { maomiAIAiModelSharedCommandsUpdateAiModelCommand.endpoint = n.getObjectValue<MaomiAIAiModelSharedModelsUploadAiModelEndpoint>(createMaomiAIAiModelSharedModelsUploadAiModelEndpointFromDiscriminatorValue); },
+        "modelId": n => { maomiAIAiModelSharedCommandsUpdateAiModelCommand.modelId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint(maomiAIAiModelSharedModelsAiEndpoint: Partial<MaomiAIAiModelSharedModelsAiEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { maomiAIAiModelSharedModelsAiEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "deploymentName": n => { maomiAIAiModelSharedModelsAiEndpoint.deploymentName = n.getStringValue(); },
+        "enpoint": n => { maomiAIAiModelSharedModelsAiEndpoint.enpoint = n.getStringValue(); },
+        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportImg = n.getBooleanValue(); },
+        "key": n => { maomiAIAiModelSharedModelsAiEndpoint.key = n.getStringValue(); },
+        "modelId": n => { maomiAIAiModelSharedModelsAiEndpoint.modelId = n.getStringValue(); },
+        "name": n => { maomiAIAiModelSharedModelsAiEndpoint.name = n.getStringValue(); },
+        "provider": n => { maomiAIAiModelSharedModelsAiEndpoint.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(maomiAIAiModelSharedModelsAiModelDefaultConfiguration: Partial<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg = n.getBooleanValue(); },
+        "modelId": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId = n.getGuidValue(); },
+        "name": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name = n.getStringValue(); },
+        "provider": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedModelsAiNotKeyEndpoint(maomiAIAiModelSharedModelsAiNotKeyEndpoint: Partial<MaomiAIAiModelSharedModelsAiNotKeyEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "deploymentName": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName = n.getStringValue(); },
+        "enpoint": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.enpoint = n.getStringValue(); },
+        "id": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.id = n.getGuidValue(); },
+        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg = n.getBooleanValue(); },
+        "modelId": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId = n.getStringValue(); },
+        "name": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.name = n.getStringValue(); },
+        "provider": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedModelsAiProviderInfo(maomiAIAiModelSharedModelsAiProviderInfo: Partial<MaomiAIAiModelSharedModelsAiProviderInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "defaultEndpoint": n => { maomiAIAiModelSharedModelsAiProviderInfo.defaultEndpoint = n.getStringValue(); },
+        "description": n => { maomiAIAiModelSharedModelsAiProviderInfo.description = n.getStringValue(); },
+        "icon": n => { maomiAIAiModelSharedModelsAiProviderInfo.icon = n.getStringValue(); },
+        "name": n => { maomiAIAiModelSharedModelsAiProviderInfo.name = n.getStringValue(); },
+        "provider": n => { maomiAIAiModelSharedModelsAiProviderInfo.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedModelsUploadAiModelEndpoint(maomiAIAiModelSharedModelsUploadAiModelEndpoint: Partial<MaomiAIAiModelSharedModelsUploadAiModelEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "deploymentName": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName = n.getStringValue(); },
+        "enpoint": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.enpoint = n.getStringValue(); },
+        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg = n.getBooleanValue(); },
+        "key": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.key = n.getStringValue(); },
+        "modelId": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId = n.getStringValue(); },
+        "name": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelListCommand(maomiAIAiModelSharedQueriesQueryAiModelListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "provider": n => { maomiAIAiModelSharedQueriesQueryAiModelListCommand.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse(maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>(createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse(maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "providers": n => { maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse.providers = n.getCollectionOfObjectValues<SystemCollectionsGenericKeyValuePairOfStringAndInt32>(createSystemCollectionsGenericKeyValuePairOfStringAndInt32FromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse(maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration>(createMaomiAIAiModelSharedModelsAiModelDefaultConfigurationFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "providers": n => { maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>(createMaomiAIAiModelSharedModelsAiProviderInfoFromDiscriminatorValue); },
+    }
 }
 /**
  * The deserialization information for the current model
@@ -801,6 +1091,254 @@ export function deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandRespo
         "userId": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userId = n.getGuidValue(); },
         "userName": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName = n.getStringValue(); },
     }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSystemCollectionsGenericKeyValuePairOfStringAndInt32(systemCollectionsGenericKeyValuePairOfStringAndInt32: Partial<SystemCollectionsGenericKeyValuePairOfStringAndInt32> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "key": n => { systemCollectionsGenericKeyValuePairOfStringAndInt32.key = n.getStringValue(); },
+        "value": n => { systemCollectionsGenericKeyValuePairOfStringAndInt32.value = n.getNumberValue(); },
+    }
+}
+/**
+ * 添加 AI 模型.
+ */
+export interface MaomiAIAiModelSharedCommandsAddAiModelCommand extends Parsable {
+    /**
+     * AI 端点.
+     */
+    endpoint?: MaomiAIAiModelSharedModelsAiEndpoint | null;
+}
+/**
+ * 设置某个功能模型使用的 ai 模型.
+ */
+export interface MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand extends Parsable {
+    /**
+     * AI 模型的功能.
+     */
+    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction | null;
+    /**
+     * 模型 id.
+     */
+    modelId?: Guid | null;
+}
+/**
+ * 修改 AI 模型.
+ */
+export interface MaomiAIAiModelSharedCommandsUpdateAiModelCommand extends Parsable {
+    /**
+     * AI 端点.
+     */
+    endpoint?: MaomiAIAiModelSharedModelsUploadAiModelEndpoint | null;
+    /**
+     * AI 模型 id.
+     */
+    modelId?: Guid | null;
+}
+/**
+ * AI 模型.
+ */
+export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    /**
+     * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
+     */
+    deploymentName?: string | null;
+    /**
+     * 请求端点.
+     */
+    enpoint?: string | null;
+    /**
+     * 支持 function call.
+     */
+    isSupportFunctionCall?: boolean | null;
+    /**
+     * 支持图片.
+     */
+    isSupportImg?: boolean | null;
+    /**
+     * key.
+     */
+    key?: string | null;
+    /**
+     * 模型部署 id 或 name.
+     */
+    modelId?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * AI 服务商.
+     */
+    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+}
+/**
+ * AI 模型默认配置.
+ */
+export interface MaomiAIAiModelSharedModelsAiModelDefaultConfiguration extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    /**
+     * 支持 function call.
+     */
+    isSupportFunctionCall?: boolean | null;
+    /**
+     * 支持图片.
+     */
+    isSupportImg?: boolean | null;
+    /**
+     * 模型 id.
+     */
+    modelId?: Guid | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * AI 服务商.
+     */
+    provider?: string | null;
+}
+export type MaomiAIAiModelSharedModelsAiModelFunction = (typeof MaomiAIAiModelSharedModelsAiModelFunctionObject)[keyof typeof MaomiAIAiModelSharedModelsAiModelFunctionObject];
+/**
+ * AI 模型.
+ */
+export interface MaomiAIAiModelSharedModelsAiNotKeyEndpoint extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    /**
+     * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
+     */
+    deploymentName?: string | null;
+    /**
+     * 请求端点.
+     */
+    enpoint?: string | null;
+    /**
+     * id.
+     */
+    id?: Guid | null;
+    /**
+     * 支持 function call.
+     */
+    isSupportFunctionCall?: boolean | null;
+    /**
+     * 支持图片.
+     */
+    isSupportImg?: boolean | null;
+    /**
+     * 模型部署 id 或 name.
+     */
+    modelId?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * AI 服务商.
+     */
+    provider?: string | null;
+}
+export type MaomiAIAiModelSharedModelsAiProvider = (typeof MaomiAIAiModelSharedModelsAiProviderObject)[keyof typeof MaomiAIAiModelSharedModelsAiProviderObject];
+export interface MaomiAIAiModelSharedModelsAiProviderInfo extends Parsable {
+    /**
+     * 默认端点.
+     */
+    defaultEndpoint?: string | null;
+    /**
+     * 描述.
+     */
+    description?: string | null;
+    /**
+     * Icon 图标地址.
+     */
+    icon?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * 类型.
+     */
+    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+}
+export interface MaomiAIAiModelSharedModelsUploadAiModelEndpoint extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    /**
+     * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
+     */
+    deploymentName?: string | null;
+    /**
+     * 请求端点.
+     */
+    enpoint?: string | null;
+    /**
+     * 支持 function call.
+     */
+    isSupportFunctionCall?: boolean | null;
+    /**
+     * 支持图片.
+     */
+    isSupportImg?: boolean | null;
+    /**
+     * key.
+     */
+    key?: string | null;
+    /**
+     * 模型部署 id 或 name.
+     */
+    modelId?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+}
+/**
+ * 查询供应商下已配置的 ai 模型列表.
+ */
+export interface MaomiAIAiModelSharedQueriesQueryAiModelListCommand extends Parsable {
+    /**
+     * AI 模型类型.
+     */
+    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+}
+export interface MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse extends Parsable {
+    /**
+     * AI 模型列表.
+     */
+    aiModels?: MaomiAIAiModelSharedModelsAiNotKeyEndpoint[] | null;
+}
+export interface MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse extends Parsable {
+    /**
+     * AI 服务商列表，{ai服务提供商,模型数量}.
+     */
+    providers?: SystemCollectionsGenericKeyValuePairOfStringAndInt32[] | null;
+}
+export interface MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse extends Parsable {
+    /**
+     * The aiModels property
+     */
+    aiModels?: MaomiAIAiModelSharedModelsAiModelDefaultConfiguration[] | null;
+}
+export interface MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse extends Parsable {
+    /**
+     * 支持的模型供应商列表.
+     */
+    providers?: MaomiAIAiModelSharedModelsAiProviderInfo[] | null;
 }
 /**
  * 数据子项.
@@ -1418,6 +1956,174 @@ export interface MaomiAIUserSharedQueriesQueryUserInfoCommandResponse extends Pa
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeMaomiAIAiModelSharedCommandsAddAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsAddAiModelCommand: Partial<MaomiAIAiModelSharedCommandsAddAiModelCommand> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedCommandsAddAiModelCommand) {
+        writer.writeObjectValue<MaomiAIAiModelSharedModelsAiEndpoint>("endpoint", maomiAIAiModelSharedCommandsAddAiModelCommand.endpoint, serializeMaomiAIAiModelSharedModelsAiEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsSetDefaultAiModelCommand: Partial<MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedCommandsSetDefaultAiModelCommand) {
+        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.aiFunction);
+        writer.writeGuidValue("modelId", maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.modelId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedCommandsUpdateAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsUpdateAiModelCommand: Partial<MaomiAIAiModelSharedCommandsUpdateAiModelCommand> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedCommandsUpdateAiModelCommand) {
+        writer.writeObjectValue<MaomiAIAiModelSharedModelsUploadAiModelEndpoint>("endpoint", maomiAIAiModelSharedCommandsUpdateAiModelCommand.endpoint, serializeMaomiAIAiModelSharedModelsUploadAiModelEndpoint);
+        writer.writeGuidValue("modelId", maomiAIAiModelSharedCommandsUpdateAiModelCommand.modelId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedModelsAiEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsAiEndpoint: Partial<MaomiAIAiModelSharedModelsAiEndpoint> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedModelsAiEndpoint) {
+        if(maomiAIAiModelSharedModelsAiEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiEndpoint.deploymentName);
+        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsAiEndpoint.enpoint);
+        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiEndpoint.isSupportImg);
+        writer.writeStringValue("key", maomiAIAiModelSharedModelsAiEndpoint.key);
+        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiEndpoint.modelId);
+        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiEndpoint.name);
+        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedModelsAiEndpoint.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(writer: SerializationWriter, maomiAIAiModelSharedModelsAiModelDefaultConfiguration: Partial<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedModelsAiModelDefaultConfiguration) {
+        if(maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction)
+        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction);
+        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg);
+        writer.writeGuidValue("modelId", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId);
+        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name);
+        writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsAiNotKeyEndpoint: Partial<MaomiAIAiModelSharedModelsAiNotKeyEndpoint> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedModelsAiNotKeyEndpoint) {
+        if(maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName);
+        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsAiNotKeyEndpoint.enpoint);
+        writer.writeGuidValue("id", maomiAIAiModelSharedModelsAiNotKeyEndpoint.id);
+        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg);
+        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId);
+        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiNotKeyEndpoint.name);
+        writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedModelsAiProviderInfo(writer: SerializationWriter, maomiAIAiModelSharedModelsAiProviderInfo: Partial<MaomiAIAiModelSharedModelsAiProviderInfo> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedModelsAiProviderInfo) {
+        writer.writeStringValue("defaultEndpoint", maomiAIAiModelSharedModelsAiProviderInfo.defaultEndpoint);
+        writer.writeStringValue("description", maomiAIAiModelSharedModelsAiProviderInfo.description);
+        writer.writeStringValue("icon", maomiAIAiModelSharedModelsAiProviderInfo.icon);
+        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiProviderInfo.name);
+        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedModelsAiProviderInfo.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedModelsUploadAiModelEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsUploadAiModelEndpoint: Partial<MaomiAIAiModelSharedModelsUploadAiModelEndpoint> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedModelsUploadAiModelEndpoint) {
+        if(maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName);
+        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsUploadAiModelEndpoint.enpoint);
+        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg);
+        writer.writeStringValue("key", maomiAIAiModelSharedModelsUploadAiModelEndpoint.key);
+        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId);
+        writer.writeStringValue("name", maomiAIAiModelSharedModelsUploadAiModelEndpoint.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesQueryAiModelListCommand(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelListCommand> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesQueryAiModelListCommand) {
+        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedQueriesQueryAiModelListCommand.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse) {
+        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>("aiModels", maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse) {
+        writer.writeCollectionOfObjectValues<SystemCollectionsGenericKeyValuePairOfStringAndInt32>("providers", maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse.providers, serializeSystemCollectionsGenericKeyValuePairOfStringAndInt32);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse) {
+        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration>("aiModels", maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiModelDefaultConfiguration);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse) {
+        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>("providers", maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers, serializeMaomiAIAiModelSharedModelsAiProviderInfo);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeMaomiAIInfraModelsAuditsInfo(writer: SerializationWriter, maomiAIInfraModelsAuditsInfo: Partial<MaomiAIInfraModelsAuditsInfo> | undefined | null = {}) : void {
     if (maomiAIInfraModelsAuditsInfo) {
         writer.writeStringValue("createTime", maomiAIInfraModelsAuditsInfo.createTime);
@@ -1869,6 +2575,53 @@ export function serializeMaomiAIUserSharedQueriesQueryUserInfoCommandResponse(wr
         writer.writeStringValue("userName", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName);
     }
 }
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSystemCollectionsGenericKeyValuePairOfStringAndInt32(writer: SerializationWriter, systemCollectionsGenericKeyValuePairOfStringAndInt32: Partial<SystemCollectionsGenericKeyValuePairOfStringAndInt32> | undefined | null = {}) : void {
+    if (systemCollectionsGenericKeyValuePairOfStringAndInt32) {
+        writer.writeStringValue("key", systemCollectionsGenericKeyValuePairOfStringAndInt32.key);
+        writer.writeNumberValue("value", systemCollectionsGenericKeyValuePairOfStringAndInt32.value);
+    }
+}
+export interface SystemCollectionsGenericKeyValuePairOfStringAndInt32 extends Parsable {
+    /**
+     * The key property
+     */
+    key?: string | null;
+    /**
+     * The value property
+     */
+    value?: number | null;
+}
+/**
+ * AI 模型的功能，判断是否多模态.
+ */
+export const MaomiAIAiModelSharedModelsAiModelFunctionObject = {
+    None: "None",
+    ChatCompletion: "ChatCompletion",
+    TextGeneration: "TextGeneration",
+    TextEmbeddingGeneration: "TextEmbeddingGeneration",
+    TextToImage: "TextToImage",
+    TextToAudio: "TextToAudio",
+    AudioToText: "AudioToText",
+} as const;
+/**
+ * AI 服务提供商，服务商来源.
+ */
+export const MaomiAIAiModelSharedModelsAiProviderObject = {
+    Custom: "Custom",
+    OpenAI: "OpenAI",
+    AzureOpenAI: "AzureOpenAI",
+    Deepseek: "Deepseek",
+    Anthropic: "Anthropic",
+    Google: "Google",
+    Cohere: "Cohere",
+    Mistral: "Mistral",
+    HuggingFace: "HuggingFace",
+} as const;
 /**
  * 存储类型.
  */

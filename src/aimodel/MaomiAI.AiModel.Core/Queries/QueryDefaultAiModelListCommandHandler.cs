@@ -8,6 +8,7 @@ using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MaomiAI.Database;
+using MaomiAI.Infra.Helpers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,13 +36,13 @@ public class QueryDefaultAiModelListCommandHandler : IRequestHandler<QueryDefaul
         var list = await _dbContext.TeamDefaultAiModels.Where(x => x.TeamId == request.TeamId)
             .Join(_dbContext.TeamAiModels.Where(x => x.TeamId == request.TeamId), a => a.ModelId, b => b.Id, (a, b) => new AiModelDefaultConfiguration
             {
-                Function = (AiModelFunction)b.AiModelFunction,
+                AiFunction = EnumHelper.DecomposeFlags<AiModelFunction>(b.AiModelFunction),
                 ModelId = a.ModelId,
                 Name = b.Name,
                 IsSupportFunctionCall = b.IsSupportFunctionCall,
                 IsSupportImg = b.IsSupportImg,
-                Provider = (AiProvider)b.AiProvider
-            }).DistinctBy(x => x.Function)
+                Provider = b.AiProvider
+            }).DistinctBy(x => x.AiFunction)
             .ToArrayAsync();
 
         return new QueryDefaultAiModelListResponse

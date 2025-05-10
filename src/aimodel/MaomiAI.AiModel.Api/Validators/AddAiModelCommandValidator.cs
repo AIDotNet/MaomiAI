@@ -21,7 +21,7 @@ public class AddAiModelCommandValidator : Validator<AddAiModelCommand>
     public AddAiModelCommandValidator()
     {
         RuleFor(x => x.TeamId)
-            .Equal(default(Guid))
+            .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
 
         RuleFor(x => x.Endpoint.Enpoint)

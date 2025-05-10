@@ -1,4 +1,4 @@
-﻿// <copyright file="QueryDefaultAiModelListCommandHandler.cs" company="MaomiAI">
+﻿// <copyright file="QueryAiModelEndpointListCommandHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -8,6 +8,7 @@ using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MaomiAI.Database;
+using MaomiAI.Infra.Helpers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace MaomiAI.AiModel.Core.Queries;
 /// <summary>
 /// 查询供应商下已配置的模型列表.
 /// </summary>
-public class QueryAiModelEndpointListCommandHandler : IRequestHandler<QueryAiModelEndpointListCommand, QueryAiModelEndpointListResponse>
+public class QueryAiModelEndpointListCommandHandler : IRequestHandler<QueryAiModelListCommand, QueryAiModelListCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
 
@@ -30,10 +31,10 @@ public class QueryAiModelEndpointListCommandHandler : IRequestHandler<QueryAiMod
     }
 
     /// <inheritdoc/>
-    public async Task<QueryAiModelEndpointListResponse> Handle(QueryAiModelEndpointListCommand request, CancellationToken cancellationToken)
+    public async Task<QueryAiModelListCommandResponse> Handle(QueryAiModelListCommand request, CancellationToken cancellationToken)
     {
         var list = await _dbContext.TeamAiModels
-                .Where(x => x.TeamId == request.TeamId && x.AiProvider == (int)request.Provider)
+                .Where(x => x.TeamId == request.TeamId && x.AiProvider == request.Provider.ToString())
                 .Select(x => new AiNotKeyEndpoint
                 {
                     Id = x.Id,
@@ -42,12 +43,12 @@ public class QueryAiModelEndpointListCommandHandler : IRequestHandler<QueryAiMod
                     IsSupportImg = x.IsSupportImg,
                     DeploymentName = x.DeploymentName,
                     Enpoint = x.Endpoint,
-                    Function = (AiModelFunction)x.AiModelFunction,
+                    AiFunction = EnumHelper.DecomposeFlags<AiModelFunction>(x.AiModelFunction),
                     ModelId = x.ModeId,
-                    Provider = (AiProvider)x.AiProvider
+                    Provider = x.AiProvider
                 }).ToArrayAsync();
 
-        return new QueryAiModelEndpointListResponse
+        return new QueryAiModelListCommandResponse
         {
             AiModels = list
         };

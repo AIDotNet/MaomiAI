@@ -9,7 +9,6 @@ using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.AiModel.Api.Endpoints;
 
@@ -17,7 +16,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询团队的ai服务商列表.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/admodel/providerlist")]
+[HttpGet($"{AiModelApi.ApiPrefix}/{{teamId}}/providerlist")]
 public class QueryAiModelProviderListEndpoint : Endpoint<QueryAiModelProviderListCommand, QueryAiModelProviderListResponse>
 {
     private readonly IMediator _mediator;

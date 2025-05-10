@@ -2,7 +2,7 @@
 
 namespace MaomiAI.AiModel.Shared.Queries.Respones;
 
-public class QueryAiModelEndpointListResponse
+public class QueryAiModelListCommandResponse
 {
     /// <summary>
     /// AI 模型列表.
