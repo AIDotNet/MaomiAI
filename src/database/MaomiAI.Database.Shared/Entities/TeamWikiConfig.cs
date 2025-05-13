@@ -25,7 +25,7 @@ public partial class TeamWikiConfigEntity : IFullAudited
     public Guid WikiId { get; set; }
 
     /// <summary>
-    /// 知识库处理数据的嵌入模型id.
+    /// 指定进行文档向量化的模型.
     /// </summary>
     public Guid ModelId { get; set; }
 

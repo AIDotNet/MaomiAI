@@ -17,17 +17,33 @@ namespace MaomiAI.Document.Api.Endpoints;
 public class UploadWikiAvatarEndpoint : Endpoint<UploadWikiAvatarCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
+    private readonly UserContext _userContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UploadWikiAvatarEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public UploadWikiAvatarEndpoint(IMediator mediator)
+    /// <param name="userContext"></param>
+    public UploadWikiAvatarEndpoint(IMediator mediator, UserContext userContext)
     {
         _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <inheritdoc/>
-    public override Task<EmptyCommandResponse> ExecuteAsync(UploadWikiAvatarCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
+    public override async Task<EmptyCommandResponse> ExecuteAsync(UploadWikiAvatarCommand req, CancellationToken ct)
+    {
+        var isAdmin = await _mediator.Send(new QueryCanUpdateWikiCommand
+        {
+            WikiId = req.WikiId,
+            UserId = _userContext.UserId
+        });
+
+        if (!isAdmin)
+        {
+            throw new BusinessException("没有操作权限.") { StatusCode = 403 };
+        }
+
+        return await _mediator.Send(req, ct);
+    }
 }

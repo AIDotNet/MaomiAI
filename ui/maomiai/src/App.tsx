@@ -12,10 +12,10 @@ import {
   Spin,
 } from "antd";
 import { Header } from "@lobehub/ui";
-import { 
-  TeamOutlined, 
-  HomeOutlined, 
-  AppstoreOutlined, 
+import {
+  TeamOutlined,
+  HomeOutlined,
+  AppstoreOutlined,
   DashboardOutlined,
   RobotOutlined,
   AppstoreAddOutlined,
@@ -23,7 +23,7 @@ import {
   ApiOutlined,
   SettingOutlined,
   FileTextOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import "./App.css";
 import { CheckToken, RefreshServerInfo } from "./InitPage";
@@ -44,6 +44,9 @@ import Setting from "./Components/team/setting/Setting";
 import TeamAdmin from "./Components/team/setting/TeamAdmin";
 import TeamSetting from "./Components/team/setting/TeamSetting";
 import TeamMember from "./Components/team/setting/TeamMember";
+import WikiList from "./Components/team/wiki/WikiList";
+import WikiDocument from "./Components/team/wiki/WikiDocument";
+import WikiSetting from "./Components/team/wiki/WikiSetting";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -85,6 +88,8 @@ function App() {
         return "1";
       case "application":
         return "2";
+      case "wikilist":
+        return "3";
       case "wiki":
         return "3";
       case "plugin":
@@ -136,15 +141,15 @@ function App() {
   ];
 
   const inlineMenuItems = [
-    { 
-      key: "1", 
+    {
+      key: "1",
       icon: <HomeOutlined />,
-      label: <Link to="/app/index">首页</Link> 
+      label: <Link to="/app/index">首页</Link>,
     },
-    { 
-      key: "2", 
+    {
+      key: "2",
       icon: <AppstoreOutlined />,
-      label: <Link to="/app/teamlist">团队列表</Link> 
+      label: <Link to="/app/teamlist">团队列表</Link>,
     },
     {
       key: "3",
@@ -184,7 +189,7 @@ function App() {
           key: "3-3",
           icon: <BookOutlined />,
           label: (
-            <Link to={`/app/team/${location.pathname.split("/")[3]}/wiki`}>
+            <Link to={`/app/team/${location.pathname.split("/")[3]}/wikilist`}>
               知识库
             </Link>
           ),
@@ -209,15 +214,15 @@ function App() {
         },
       ],
     },
-    { 
-      key: "4", 
+    {
+      key: "4",
       icon: <FileTextOutlined />,
-      label: <Link to="/app/note">笔记系统</Link> 
+      label: <Link to="/app/note">笔记系统</Link>,
     },
-    { 
-      key: "8", 
+    {
+      key: "8",
       icon: <UserOutlined />,
-      label: <Link to="/app/user">个人中心</Link> 
+      label: <Link to="/app/user">个人中心</Link>,
     },
   ];
 
@@ -255,7 +260,12 @@ function App() {
                 <Route path="dashboard" element={<TeamDashboard />} />
                 <Route path="aimodel" element={<AiModel />} />
                 <Route path="application" element={<Application />} />
-                <Route path="wiki" element={<Wiki />} />
+                <Route path="wiki/:wikiId/*" element={<Wiki />}>
+                  <Route path="setting" element={<WikiSetting />} />
+                  <Route path="document" element={<WikiDocument />} />
+                  <Route path="*" element={<WikiSetting />} />
+                </Route>
+                <Route path="wikilist" element={<WikiList />} />
                 <Route path="plugin" element={<Plugin />} />
                 <Route path="setting" element={<Setting />}>
                   <Route path="admin" element={<TeamAdmin />} />

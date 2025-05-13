@@ -37,6 +37,11 @@ public class SystemOptions
     public string Redis { get; init; } = string.Empty;
 
     /// <summary>
+    /// 消息处理.
+    /// </summary>
+    public MessageOption MessageStore { get; init; } = new MessageOption();
+
+    /// <summary>
     /// 公共文件存储.
     /// </summary>
     public SystemStoreOption PublicStore { get; init; } = default!;
@@ -45,4 +50,20 @@ public class SystemOptions
     /// 私有文件存储.
     /// </summary>
     public SystemStoreOption PrivateStore { get; init; } = default!;
+
+    /// <summary>
+    /// 消息处理.
+    /// </summary>
+    public class MessageOption
+    {
+        /// <summary>
+        /// 模式.
+        /// </summary>
+        public string Mode { get; init; } = "Local";
+
+        /// <summary>
+        /// RabbitMQ 连接字符串.
+        /// </summary>
+        public string RabbitMQ { get; init; } = string.Empty;
+    }
 }

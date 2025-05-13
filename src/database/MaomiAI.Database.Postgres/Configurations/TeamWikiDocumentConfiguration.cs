@@ -19,6 +19,8 @@ public partial class TeamWikiDocumentConfiguration : IEntityTypeConfiguration<Te
 
         entity.ToTable("team_wiki_document", tb => tb.HasComment("知识库文档"));
 
+        entity.HasIndex(e => e.FileName, "team_wiki_document_file_name_index");
+
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
@@ -33,6 +35,11 @@ public partial class TeamWikiDocumentConfiguration : IEntityTypeConfiguration<Te
         entity.Property(e => e.FileId)
             .HasComment("文件id")
             .HasColumnName("file_id");
+        entity.Property(e => e.FileName)
+            .HasMaxLength(50)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("冗余列，文件名")
+            .HasColumnName("file_name");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("是否删除")

@@ -13,7 +13,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Queries\" />
+      <PackageReference Include="Microsoft.KernelMemory.AI.Anthropic" Version="0.98.250508.3" />
+      <PackageReference Include="Microsoft.KernelMemory.AI.AzureOpenAI" Version="0.98.250508.3" />
+      <PackageReference Include="Microsoft.KernelMemory.AI.OpenAI" Version="0.98.250508.3" />
+      <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.98.250508.3" />
+      <PackageReference Include="Microsoft.KernelMemory.MemoryDb.Postgres" Version="0.98.250508.3" />
+      <PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureOpenAI" Version="1.49.0" />
+      <PackageReference Include="Microsoft.SemanticKernel.Connectors.Milvus" Version="1.49.0-alpha" />
+      <PackageReference Include="Microsoft.SemanticKernel.Connectors.MistralAI" Version="1.49.0-alpha" />
+      <PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.49.0" />
     </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ using MediatR;
 namespace MaomiAI.Document.Shared.Commands;
 
 /// <summary>
-/// 预上传文档文件.
+/// 预上传知识库文件.
 /// </summary>
 public class PreUploadWikiDocumentCommand : IRequest<PreloadWikiDocumentResponse>
 {

@@ -12,6 +12,6 @@ import {
 import AiModel from "./AiModel";
 
 export const AiModelPageRouter: RouteObject = {
-    path: ':/team/aimodel',
+    path: 'aimodel',
     Component: AiModel
 }

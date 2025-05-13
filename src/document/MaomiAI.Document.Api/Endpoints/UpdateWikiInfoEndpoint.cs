@@ -1,9 +1,6 @@
 ﻿using FastEndpoints;
 using MaomiAI.Document.Shared.Commands;
-using MaomiAI.Document.Shared.Commands.Responses;
 using MaomiAI.Document.Shared.Queries;
-using MaomiAI.Document.Shared.Queries.Response;
-using MaomiAI.Store.Commands.Response;
 using MediatR;
 using Microsoft.AspNetCore.Routing;
 
@@ -17,17 +14,33 @@ namespace MaomiAI.Document.Api.Endpoints;
 public class UpdateWikiInfoEndpoint : Endpoint<UpdateWikiInfoCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
+    private readonly UserContext _userContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UpdateWikiInfoEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public UpdateWikiInfoEndpoint(IMediator mediator)
+    /// <param name="userContext"></param>
+    public UpdateWikiInfoEndpoint(IMediator mediator, UserContext userContext)
     {
         _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <inheritdoc/>
-    public override Task<EmptyCommandResponse> ExecuteAsync(UpdateWikiInfoCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
+    public override async Task<EmptyCommandResponse> ExecuteAsync(UpdateWikiInfoCommand req, CancellationToken ct)
+    {
+        var isAdmin = await _mediator.Send(new QueryCanUpdateWikiCommand
+        {
+            WikiId = req.WikiId,
+            UserId = _userContext.UserId
+        });
+
+        if (!isAdmin)
+        {
+            throw new BusinessException("没有操作权限.") { StatusCode = 403 };
+        }
+
+        return await _mediator.Send(req, ct);
+    }
 }

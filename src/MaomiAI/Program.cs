@@ -54,7 +54,8 @@ app.UseFastEndpoints((Action<Config>?)(c =>
         };
     };
     c.Serializer.Options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
-    c.Serializer.Options.Converters.Add(System.Text.Json.Serialization.Metadata.JsonMetadataServices.DecimalConverter);
+    c.Serializer.Options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    c.Serializer.Options.Converters.Add(new System.Text.Json.LongStringConverter());
 }));
 
 app.Run();

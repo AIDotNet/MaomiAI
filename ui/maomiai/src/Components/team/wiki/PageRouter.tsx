@@ -1,9 +1,25 @@
-import {
-    RouteObject
-} from "react-router";
+import { RouteObject } from "react-router";
 import Wiki from "./Wiki";
+import WikiList from "./WikiList";
+import WikiSetting from "./WikiSetting";
+import WikiDocument from "./WikiDocument";
 
 export const WikiPageRouter: RouteObject = {
-    path: ':/team/document',
-    Component: Wiki
-}
+  path: "wiki/:wikiId",
+  Component: Wiki,
+  children: [
+    {
+      path: "setting",
+      Component: WikiSetting,
+    },
+    {
+      path: "document",
+      Component: WikiDocument,
+    },
+  ],
+};
+
+export const WikiListPageRouter: RouteObject = {
+  path: "wikilist",
+  Component: WikiList,
+};

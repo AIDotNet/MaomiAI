@@ -19,7 +19,9 @@ public partial class TeamWikiConfigConfiguration : IEntityTypeConfiguration<Team
 
         entity.ToTable("team_wiki_config", tb => tb.HasComment("团队知识库配置"));
 
-        entity.HasIndex(e => new { e.TeamId, e.WikiId }, "team_wiki_config_team_id_wiki_id_uindex").IsUnique();
+        entity.HasIndex(e => e.TeamId, "team_wiki_config_team_id_uindex").IsUnique();
+
+        entity.HasIndex(e => e.WikiId, "team_wiki_config_wiki_id_uindex").IsUnique();
 
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
@@ -36,7 +38,7 @@ public partial class TeamWikiConfigConfiguration : IEntityTypeConfiguration<Team
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
         entity.Property(e => e.ModelId)
-            .HasComment("知识库处理数据的嵌入模型id")
+            .HasComment("指定进行文档向量化的模型")
             .HasColumnName("model_id");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")

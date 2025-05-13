@@ -53,4 +53,9 @@ public partial class TeamWikiDocumentEntity : IFullAudited
     /// 更新人ID.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 冗余列，文件名.
+    /// </summary>
+    public string FileName { get; set; }  = default!;
 }

@@ -15,17 +15,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Document.Core.Handlers;
 
+/// <summary>
+/// 预上传知识库文件.
+/// </summary>
 public class PreUploadWikiDocumentCommandHandler : IRequestHandler<PreUploadWikiDocumentCommand, PreloadWikiDocumentResponse>
 {
     private readonly IMediator _mediator;
     private readonly DatabaseContext _databaseContext;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PreUploadWikiDocumentCommandHandler"/> class.
+    /// </summary>
+    /// <param name="mediator"></param>
+    /// <param name="databaseContext"></param>
     public PreUploadWikiDocumentCommandHandler(IMediator mediator, DatabaseContext databaseContext)
     {
         _mediator = mediator;
         _databaseContext = databaseContext;
     }
 
+    /// <inheritdoc/>
     public async Task<PreloadWikiDocumentResponse> Handle(PreUploadWikiDocumentCommand request, CancellationToken cancellationToken)
     {
         if (!FileStoreHelper.DocumentFormats.Contains(Path.GetExtension(request.FileName).ToLower()))
@@ -61,6 +70,8 @@ public class PreUploadWikiDocumentCommandHandler : IRequestHandler<PreUploadWiki
             FileId = result.FileId,
             WikiId = request.WikiId,
         });
+
+        await _databaseContext.SaveChangesAsync();
 
         if (result.IsExist)
         {

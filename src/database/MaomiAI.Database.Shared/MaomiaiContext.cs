@@ -91,7 +91,12 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<TeamWikiDocumentEntity> TeamWikiDocuments { get; set; }
 
     /// <summary>
-    /// 用户表.
+    /// 知识库文档处理任务.
+    /// </summary>
+    public virtual DbSet<TeamWikiDocumentTaskEntity> TeamWikiDocumentTasks { get; set; }
+
+    /// <summary>
+    /// 用户.
     /// </summary>
     public virtual DbSet<UserEntity> Users { get; set; }
 

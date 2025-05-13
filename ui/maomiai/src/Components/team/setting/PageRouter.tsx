@@ -8,7 +8,7 @@ import TeamSetting from "./TeamSetting";
 import TeamMember from "./TeamMember";
 
 export const SettingPageRouter: RouteObject = {
-    path: ':/team/setting',
+    path: 'setting',
     Component: Setting,
     children: [
         {

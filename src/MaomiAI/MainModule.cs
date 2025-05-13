@@ -23,7 +23,7 @@ namespace MaomiAI;
 [InjectModule<InfraCoreModule>]
 [InjectModule<DatabaseCoreModule>]
 [InjectModule<EmbeddingCoreModule>]
-//[InjectModule<DocumentModule>]
+[InjectModule<DocumentModule>]
 [InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
 [InjectModule<TeamCoreModule>]

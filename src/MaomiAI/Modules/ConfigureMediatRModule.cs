@@ -1,4 +1,10 @@
-﻿using MaomiAI.Infra;
+﻿// <copyright file="ConfigureMediatRModule.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using MaomiAI.Infra;
 
 namespace MaomiAI.Modules;
 
@@ -26,6 +32,7 @@ public class ConfigureMediatRModule : IModule
         context.Services.AddMediatR(options =>
         {
             options.RegisterServicesFromAssemblies(context.Modules.Select(x => x.Assembly).Distinct().ToArray());
+            options.RegisterGenericHandlers = true;
         });
     }
 }

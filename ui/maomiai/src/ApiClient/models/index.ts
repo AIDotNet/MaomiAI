@@ -124,6 +124,114 @@ export function createMaomiAIAiModelSharedQueriesResponesQuerySupportModelProvid
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsCreateWikiCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsCreateWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsCreateWikiCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsUpdateWikiInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedCommandsUploadWikiAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesQueryWikiFileListCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesQueryWikiFileListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAIInfraModelsAuditsInfo}
  */
 // @ts-ignore
@@ -210,6 +318,15 @@ export function createMaomiAIInfraModelsPagedParamterFromDiscriminatorValue(pars
 // @ts-ignore
 export function createMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem}
+ */
+// @ts-ignore
+export function createMaomiAIInfraModelsPagedResultOfQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -641,6 +758,152 @@ export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportMo
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand(maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.fileId = n.getGuidValue(); },
+        "isSuccess": n => { maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.isSuccess = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsCreateWikiCommand(maomiAIDocumentSharedCommandsCreateWikiCommand: Partial<MaomiAIDocumentSharedCommandsCreateWikiCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { maomiAIDocumentSharedCommandsCreateWikiCommand.description = n.getStringValue(); },
+        "name": n => { maomiAIDocumentSharedCommandsCreateWikiCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand(maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand(maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "contentType": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.contentType = n.getStringValue(); },
+        "fileName": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileName = n.getStringValue(); },
+        "fileSize": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileSize = n.getNumberValue(); },
+        "mD5": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.mD5 = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse(maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse: Partial<MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "expiration": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.expiration = n.getStringValue(); },
+        "fileId": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.fileId = n.getGuidValue(); },
+        "isExist": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.isExist = n.getBooleanValue(); },
+        "uploadUrl": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.uploadUrl = n.getStringValue(); },
+        "visibility": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.visibility = n.getEnumValue<MaomiAIStoreEnumsFileVisibility>(MaomiAIStoreEnumsFileVisibilityObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand(maomiAIDocumentSharedCommandsUpdateWikiInfoCommand: Partial<MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.description = n.getStringValue(); },
+        "isPublic": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.isPublic = n.getBooleanValue(); },
+        "markdown": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.markdown = n.getStringValue(); },
+        "name": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand(maomiAIDocumentSharedCommandsUploadWikiAvatarCommand: Partial<MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { maomiAIDocumentSharedCommandsUploadWikiAvatarCommand.fileId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIDocumentSharedQueriesQueryWikiFileListCommand),
+        "search": n => { maomiAIDocumentSharedQueriesQueryWikiFileListCommand.search = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse(maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "avatarUrl": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.description = n.getStringValue(); },
+        "isPublic": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.isPublic = n.getBooleanValue(); },
+        "markdown": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.markdown = n.getStringValue(); },
+        "name": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.name = n.getStringValue(); },
+        "wikiId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem(maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem),
+        "contentType": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.contentType = n.getStringValue(); },
+        "documentId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.documentId = n.getGuidValue(); },
+        "fileName": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileName = n.getStringValue(); },
+        "fileSize": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileSize = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse(maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse),
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse(maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "avatarUrl": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.description = n.getStringValue(); },
+        "isPublic": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic = n.getBooleanValue(); },
+        "name": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name = n.getStringValue(); },
+        "wikiId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIInfraModelsAuditsInfo: Partial<MaomiAIInfraModelsAuditsInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "createTime": n => { maomiAIInfraModelsAuditsInfo.createTime = n.getStringValue(); },
@@ -742,6 +1005,18 @@ export function deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCom
         ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse),
         "items": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>(createMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponseFromDiscriminatorValue); },
         "total": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(maomiAIInfraModelsPagedResultOfQueryWikiFileListItem: Partial<MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfQueryWikiFileListItem),
+        "items": n => { maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.items = n.getCollectionOfObjectValues<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem>(createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItemFromDiscriminatorValue); },
+        "total": n => { maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.total = n.getNumberValue(); },
     }
 }
 /**
@@ -1341,6 +1616,191 @@ export interface MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCom
     providers?: MaomiAIAiModelSharedModelsAiProviderInfo[] | null;
 }
 /**
+ * 结束上传文件.
+ */
+export interface MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand extends Parsable {
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 上传成功或失败.
+     */
+    isSuccess?: boolean | null;
+}
+/**
+ * 创建知识库.
+ */
+export interface MaomiAIDocumentSharedCommandsCreateWikiCommand extends Parsable {
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+}
+/**
+ * 删除 Wiki 文档.
+ */
+export interface MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand extends Parsable {
+    /**
+     * 文档 id.
+     */
+    documentId?: Guid | null;
+}
+/**
+ * 预上传知识库文件.
+ */
+export interface MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand extends Parsable {
+    /**
+     * 文件类型.
+     */
+    contentType?: string | null;
+    /**
+     * 文件名称.
+     */
+    fileName?: string | null;
+    /**
+     * 文件大小.
+     */
+    fileSize?: number | null;
+    /**
+     * 文件 MD5.
+     */
+    mD5?: string | null;
+}
+export interface MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse extends Parsable {
+    /**
+     * 签名过期时间，当 IsExist = true 时字段为空.
+     */
+    expiration?: string | null;
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
+     */
+    isExist?: boolean | null;
+    /**
+     * 预签名上传地址，当 IsExist = true 时字段为空.
+     */
+    uploadUrl?: string | null;
+    /**
+     * 文件可见性.
+     */
+    visibility?: MaomiAIStoreEnumsFileVisibility | null;
+}
+/**
+ * 修改知识库信息.
+ */
+export interface MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand extends Parsable {
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+}
+/**
+ * 上传知识库头像.
+ */
+export interface MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand extends Parsable {
+    /**
+     * 文件 id.
+     */
+    fileId?: Guid | null;
+}
+/**
+ * 查询 wiki 文件列表.
+ */
+export interface MaomiAIDocumentSharedQueriesQueryWikiFileListCommand extends MaomiAIInfraModelsPagedParamter, Parsable {
+    /**
+     * The search property
+     */
+    search?: string | null;
+}
+export interface MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse extends Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+    /**
+     * 知识库 id.
+     */
+    wikiId?: Guid | null;
+}
+export interface MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem extends MaomiAIInfraModelsAuditsInfo, Parsable {
+    /**
+     * The contentType property
+     */
+    contentType?: string | null;
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+    /**
+     * The fileName property
+     */
+    fileName?: string | null;
+    /**
+     * The fileSize property
+     */
+    fileSize?: string | null;
+}
+export interface MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse extends MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem, Parsable {
+}
+export interface MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse extends Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+    /**
+     * 知识库 id.
+     */
+    wikiId?: Guid | null;
+}
+/**
  * 数据子项.
  */
 export interface MaomiAIInfraModelsAuditsInfo extends Parsable {
@@ -1453,6 +1913,19 @@ export interface MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse e
      * 项目集合.
      */
     items?: MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse[] | null;
+    /**
+     * 总数.
+     */
+    total?: number | null;
+}
+/**
+ * 分页结果.
+ */
+export interface MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem extends MaomiAIInfraModelsPagedParamter, Parsable {
+    /**
+     * 项目集合.
+     */
+    items?: MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem[] | null;
     /**
      * 总数.
      */
@@ -2124,6 +2597,152 @@ export function serializeMaomiAIAiModelSharedQueriesResponesQuerySupportModelPro
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand) {
+        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.fileId);
+        writer.writeBooleanValue("isSuccess", maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.isSuccess);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsCreateWikiCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsCreateWikiCommand: Partial<MaomiAIDocumentSharedCommandsCreateWikiCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsCreateWikiCommand) {
+        writer.writeStringValue("description", maomiAIDocumentSharedCommandsCreateWikiCommand.description);
+        writer.writeStringValue("name", maomiAIDocumentSharedCommandsCreateWikiCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand) {
+        writer.writeGuidValue("documentId", maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand) {
+        writer.writeStringValue("contentType", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.contentType);
+        writer.writeStringValue("fileName", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileName);
+        writer.writeNumberValue("fileSize", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileSize);
+        writer.writeStringValue("mD5", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.mD5);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse(writer: SerializationWriter, maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse: Partial<MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse) {
+        writer.writeStringValue("expiration", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.expiration);
+        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.fileId);
+        writer.writeBooleanValue("isExist", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.isExist);
+        writer.writeStringValue("uploadUrl", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.uploadUrl);
+        writer.writeEnumValue<MaomiAIStoreEnumsFileVisibility>("visibility", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.visibility);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsUpdateWikiInfoCommand: Partial<MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsUpdateWikiInfoCommand) {
+        writer.writeStringValue("description", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.description);
+        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.isPublic);
+        writer.writeStringValue("markdown", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.markdown);
+        writer.writeStringValue("name", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsUploadWikiAvatarCommand: Partial<MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedCommandsUploadWikiAvatarCommand) {
+        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsUploadWikiAvatarCommand.fileId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesQueryWikiFileListCommand) {
+        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIDocumentSharedQueriesQueryWikiFileListCommand)
+        writer.writeStringValue("search", maomiAIDocumentSharedQueriesQueryWikiFileListCommand.search);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse) {
+        writer.writeStringValue("avatarUrl", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.avatarUrl);
+        writer.writeStringValue("description", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.description);
+        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.isPublic);
+        writer.writeStringValue("markdown", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.markdown);
+        writer.writeStringValue("name", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.name);
+        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem) {
+        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem)
+        writer.writeStringValue("contentType", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.contentType);
+        writer.writeGuidValue("documentId", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.documentId);
+        writer.writeStringValue("fileName", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileName);
+        writer.writeStringValue("fileSize", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileSize);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse) {
+        serializeMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(writer, maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse)
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse) {
+        writer.writeStringValue("avatarUrl", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.avatarUrl);
+        writer.writeStringValue("description", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.description);
+        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic);
+        writer.writeStringValue("name", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name);
+        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeMaomiAIInfraModelsAuditsInfo(writer: SerializationWriter, maomiAIInfraModelsAuditsInfo: Partial<MaomiAIInfraModelsAuditsInfo> | undefined | null = {}) : void {
     if (maomiAIInfraModelsAuditsInfo) {
         writer.writeStringValue("createTime", maomiAIInfraModelsAuditsInfo.createTime);
@@ -2225,6 +2844,18 @@ export function serializeMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandRe
         serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse)
         writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>("items", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items, serializeMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse);
         writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfQueryWikiFileListItem: Partial<MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem> | undefined | null = {}) : void {
+    if (maomiAIInfraModelsPagedResultOfQueryWikiFileListItem) {
+        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfQueryWikiFileListItem)
+        writer.writeCollectionOfObjectValues<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem>("items", maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.items, serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem);
+        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.total);
     }
 }
 /**

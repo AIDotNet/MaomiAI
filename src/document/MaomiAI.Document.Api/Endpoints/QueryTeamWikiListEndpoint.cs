@@ -1,9 +1,6 @@
 ﻿using FastEndpoints;
-using MaomiAI.Document.Shared.Commands;
-using MaomiAI.Document.Shared.Commands.Responses;
 using MaomiAI.Document.Shared.Queries;
 using MaomiAI.Document.Shared.Queries.Response;
-using MaomiAI.Store.Commands.Response;
 using MediatR;
 using Microsoft.AspNetCore.Routing;
 
@@ -13,8 +10,8 @@ namespace MaomiAI.Document.Api.Endpoints;
 /// 查询团队知识库列表.
 /// </summary>
 [EndpointGroupName("wiki")]
-[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/{{teamId}}/wikis")]
-public class QueryTeamWikiListEndpoint : Endpoint<QueryTeamWikiListCommand, ICollection<QueryWikiSimpleInfoResponse>>
+[FastEndpoints.HttpGet($"{DocumentApi.ApiPrefix}/{{teamId}}/wikis")]
+public class QueryTeamWikiListEndpoint : Endpoint<QueryTeamWikiListCommand, IReadOnlyCollection<QueryWikiSimpleInfoResponse>>
 {
     private readonly IMediator _mediator;
 
@@ -28,6 +25,8 @@ public class QueryTeamWikiListEndpoint : Endpoint<QueryTeamWikiListCommand, ICol
     }
 
     /// <inheritdoc/>
-    public override Task<ICollection<QueryWikiSimpleInfoResponse>> ExecuteAsync(QueryTeamWikiListCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
+    public override Task<IReadOnlyCollection<QueryWikiSimpleInfoResponse>> ExecuteAsync(QueryTeamWikiListCommand req, CancellationToken ct)
+    {
+        return _mediator.Send(req, ct);
+    }
 }
