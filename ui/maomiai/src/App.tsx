@@ -47,6 +47,7 @@ import TeamMember from "./Components/team/setting/TeamMember";
 import WikiList from "./Components/team/wiki/WikiList";
 import WikiDocument from "./Components/team/wiki/WikiDocument";
 import WikiSetting from "./Components/team/wiki/WikiSetting";
+import WikiEmbedding from "./Components/team/wiki/WikiEmbedding";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -263,6 +264,7 @@ function App() {
                 <Route path="wiki/:wikiId/*" element={<Wiki />}>
                   <Route path="setting" element={<WikiSetting />} />
                   <Route path="document" element={<WikiDocument />} />
+                  <Route path="embedding" element={<WikiEmbedding />} />
                   <Route path="*" element={<WikiSetting />} />
                 </Route>
                 <Route path="wikilist" element={<WikiList />} />

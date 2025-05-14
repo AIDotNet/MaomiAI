@@ -42,6 +42,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasMaxLength(50)
             .HasComment("部署名称")
             .HasColumnName("deployment_name");
+        entity.Property(e => e.EmbeddinMaxToken)
+            .HasDefaultValue(8191)
+            .HasComment("嵌入模型最大支持token数量")
+            .HasColumnName("embeddin_max_token");
         entity.Property(e => e.Endpoint)
             .HasMaxLength(100)
             .HasComment("api服务端点")
@@ -73,6 +77,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");
+        entity.Property(e => e.TextMaxToken)
+            .HasDefaultValue(8192)
+            .HasComment("文本模型最大支持上下文token")
+            .HasColumnName("text_max_token");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

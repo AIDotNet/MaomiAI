@@ -1,4 +1,4 @@
-﻿// <copyright file="UploadTeamAvatarEnpoint.cs" company="MaomiAI">
+﻿// <copyright file="UploadTeamAvatarendpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -15,11 +15,11 @@ namespace MaomiAI.Team.Api.Endpoints.Root;
 /// </summary>
 [EndpointGroupName("team")]
 [HttpPost($"{TeamApi.ApiPrefix}/config/uploadavatar")]
-public class UploadTeamAvatarEnpoint : Endpoint<UploadTeamAvatarCommand, EmptyCommandResponse>
+public class UploadTeamAvatarendpoint : Endpoint<UploadTeamAvatarCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
 
-    public UploadTeamAvatarEnpoint(IMediator mediator)
+    public UploadTeamAvatarendpoint(IMediator mediator)
     {
         _mediator = mediator;
     }

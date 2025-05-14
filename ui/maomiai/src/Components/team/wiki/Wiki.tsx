@@ -25,6 +25,11 @@ export default function Wiki() {
       label: <Link to={`/app/team/${teamId}/wiki/${wikiId}/document`}>文档</Link>,
     },
     {
+      key: "embedding",
+      icon: <FileTextOutlined />,
+      label: <Link to={`/app/team/${teamId}/wiki/${wikiId}/embedding`}>向量化</Link>,
+    },
+    {
       key: "setting",
       icon: <SettingOutlined />,
       label: <Link to={`/app/team/${teamId}/wiki/${wikiId}/setting`}>设置</Link>,

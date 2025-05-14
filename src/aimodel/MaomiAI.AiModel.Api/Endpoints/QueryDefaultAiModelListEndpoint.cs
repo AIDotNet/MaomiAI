@@ -35,3 +35,28 @@ public class QueryDefaultAiModelListEndpoint : Endpoint<QueryDefaultAiModelListC
         return await _mediator.Send(req);
     }
 }
+
+/// <summary>
+/// 获取某个功能需求下的 AI 模型列表.
+/// </summary>
+[EndpointGroupName("aimodel")]
+[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/function_ailist")]
+public class QueryAiModelFunctionListCommandEndpoint : Endpoint<QueryAiModelFunctionListCommand, QueryAiModelFunctionListCommandResponse>
+{
+    private readonly IMediator _mediator;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QueryAiModelFunctionListCommandEndpoint"/> class.
+    /// </summary>
+    /// <param name="mediator"></param>
+    public QueryAiModelFunctionListCommandEndpoint(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    /// <inheritdoc/>
+    public override async Task<QueryAiModelFunctionListCommandResponse> ExecuteAsync(QueryAiModelFunctionListCommand req, CancellationToken ct)
+    {
+        return await _mediator.Send(req);
+    }
+}

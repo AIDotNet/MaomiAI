@@ -41,7 +41,9 @@ public class QueryDefaultAiModelListCommandHandler : IRequestHandler<QueryDefaul
                 Name = b.Name,
                 IsSupportFunctionCall = b.IsSupportFunctionCall,
                 IsSupportImg = b.IsSupportImg,
-                Provider = b.AiProvider
+                Provider = b.AiProvider,
+                EmbeddinMaxToken = b.EmbeddinMaxToken,
+                TextMaxToken = b.TextMaxToken,
             }).DistinctBy(x => x.AiFunction)
             .ToArrayAsync();
 

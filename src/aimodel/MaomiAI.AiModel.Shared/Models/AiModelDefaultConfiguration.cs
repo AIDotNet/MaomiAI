@@ -40,4 +40,15 @@ public class AiModelDefaultConfiguration
     /// 支持图片.
     /// </summary>
     public bool IsSupportImg { get; init; }
+
+
+    /// <summary>
+    /// 文本模型最大支持上下文token.
+    /// </summary>
+    public int TextMaxToken { get; set; }
+
+    /// <summary>
+    /// 嵌入模型最大支持token数量.
+    /// </summary>
+    public int EmbeddinMaxToken { get; set; }
 }

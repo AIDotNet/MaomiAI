@@ -14,7 +14,15 @@ namespace MaomiAI.Document.Shared.Queries;
 /// </summary>
 public class QueryWikiFileListCommand : PagedParamter, IRequest<QueryWikiFileListResponse>
 {
+    public Guid TeamId { get; init; }
     public Guid WikiId { get; init; } = default!;
 
     public string? Search { get; init; } = default!;
+}
+
+public class QueryWikiFileCommand : IRequest<QueryWikiFileListItem>
+{
+    public Guid TeamId { get; init; }
+    public Guid WikiId { get; init; } = default!;
+    public Guid DocumentId { get; init; } = default!;
 }

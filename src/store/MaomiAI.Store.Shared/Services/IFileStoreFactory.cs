@@ -11,7 +11,7 @@ namespace MaomiAI.Store.Services;
 /// <summary>
 /// 文件存储工厂接口.
 /// </summary>
-public interface IFileFactory
+public interface IFileStoreFactory
 {
     /// <summary>
     /// 创建文件存储实例.

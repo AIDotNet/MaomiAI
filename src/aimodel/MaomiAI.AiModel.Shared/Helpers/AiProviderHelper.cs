@@ -33,6 +33,25 @@ public static class AiProviderHelper
     }
 
     /// <summary>
+    /// 通过服务商名称获取对应的枚举值.
+    /// </summary>
+    /// <param name="name">服务商名称.</param>
+    /// <returns>对应的 AiProvider 枚举值.</returns>
+    /// <exception cref="ArgumentException">如果名称无效则抛出异常.</exception>
+    public static AiProvider GetProviderByName(string name)
+    {
+        foreach (var info in Providers)
+        {
+            if (string.Equals(info.Name, name, StringComparison.OrdinalIgnoreCase))
+            {
+                return info.Provider;
+            }
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(name), name, null);
+    }
+
+    /// <summary>
     /// 获取支持的供应商列表.
     /// </summary>
     public static readonly IReadOnlyCollection<AiProviderInfo> Providers = new AiProviderInfo[]

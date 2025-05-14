@@ -37,7 +37,7 @@ public class CreateWikiCommandHandler : IRequestHandler<CreateWikiCommand, IdRes
             throw new BusinessException("已存在同名知识库") { StatusCode = 409 };
         }
 
-        var entity = new TeamWikiEntity
+        var wikiEntity = new TeamWikiEntity
         {
             Id = Guid.NewGuid(),
             TeamId = request.TeamId,
@@ -45,12 +45,25 @@ public class CreateWikiCommandHandler : IRequestHandler<CreateWikiCommand, IdRes
             Description = request.Description,
         };
 
-        await _databaseContext.TeamWikis.AddAsync(entity, cancellationToken);
+        await _databaseContext.TeamWikis.AddAsync(wikiEntity, cancellationToken);
+
+        var wikiConfigEneity = new TeamWikiConfigEntity
+        {
+            TeamId = request.TeamId,
+            WikiId = wikiEntity.Id,
+            EmbeddingModelId = default,
+            EmbeddingDimensions = 512,
+            EmbeddingModelTokenizer = string.Empty,
+            EmbeddingBatchSize = 50,
+            MaxRetries = 3
+        };
+
+        await _databaseContext.TeamWikiConfigs.AddAsync(wikiConfigEneity);
         await _databaseContext.SaveChangesAsync(cancellationToken);
 
         return new IdResponse
         {
-            Id = entity.Id
+            Id = wikiEntity.Id
         };
     }
 }

@@ -79,6 +79,24 @@ export function createMaomiAIAiModelSharedModelsUploadAiModelEndpointFromDiscrim
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAIAiModelSharedQueriesQueryAiModelListCommand}
  */
 // @ts-ignore
@@ -120,6 +138,15 @@ export function createMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelList
 // @ts-ignore
 export function createMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentCoreHandlersEmbeddingocumentCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentCoreHandlersEmbeddingocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentCoreHandlersEmbeddingocumentCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -187,6 +214,24 @@ export function createMaomiAIDocumentSharedCommandsUploadWikiAvatarCommandFromDi
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesQueryWikiFileCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesQueryWikiFileCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MaomiAIDocumentSharedQueriesQueryWikiFileListCommand}
  */
 // @ts-ignore
@@ -228,6 +273,15 @@ export function createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListRespo
 // @ts-ignore
 export function createMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand}
+ */
+// @ts-ignore
+export function createMaomiAIDocumentSharedQueriesUpdateWikiConfigCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -630,13 +684,15 @@ export function deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint(maomiAIAiMod
     return {
         "aiFunction": n => { maomiAIAiModelSharedModelsAiEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
         "deploymentName": n => { maomiAIAiModelSharedModelsAiEndpoint.deploymentName = n.getStringValue(); },
-        "enpoint": n => { maomiAIAiModelSharedModelsAiEndpoint.enpoint = n.getStringValue(); },
+        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { maomiAIAiModelSharedModelsAiEndpoint.endpoint = n.getStringValue(); },
         "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
         "isSupportImg": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportImg = n.getBooleanValue(); },
         "key": n => { maomiAIAiModelSharedModelsAiEndpoint.key = n.getStringValue(); },
         "modelId": n => { maomiAIAiModelSharedModelsAiEndpoint.modelId = n.getStringValue(); },
         "name": n => { maomiAIAiModelSharedModelsAiEndpoint.name = n.getStringValue(); },
         "provider": n => { maomiAIAiModelSharedModelsAiEndpoint.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
+        "textMaxToken": n => { maomiAIAiModelSharedModelsAiEndpoint.textMaxToken = n.getNumberValue(); },
     }
 }
 /**
@@ -647,11 +703,13 @@ export function deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint(maomiAIAiMod
 export function deserializeIntoMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(maomiAIAiModelSharedModelsAiModelDefaultConfiguration: Partial<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "aiFunction": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.embeddinMaxToken = n.getNumberValue(); },
         "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall = n.getBooleanValue(); },
         "isSupportImg": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg = n.getBooleanValue(); },
         "modelId": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId = n.getGuidValue(); },
         "name": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name = n.getStringValue(); },
         "provider": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider = n.getStringValue(); },
+        "textMaxToken": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.textMaxToken = n.getNumberValue(); },
     }
 }
 /**
@@ -663,13 +721,15 @@ export function deserializeIntoMaomiAIAiModelSharedModelsAiNotKeyEndpoint(maomiA
     return {
         "aiFunction": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
         "deploymentName": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName = n.getStringValue(); },
-        "enpoint": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.enpoint = n.getStringValue(); },
+        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.endpoint = n.getStringValue(); },
         "id": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.id = n.getGuidValue(); },
         "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
         "isSupportImg": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg = n.getBooleanValue(); },
         "modelId": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId = n.getStringValue(); },
         "name": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.name = n.getStringValue(); },
         "provider": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider = n.getStringValue(); },
+        "textMaxToken": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.textMaxToken = n.getNumberValue(); },
     }
 }
 /**
@@ -695,12 +755,34 @@ export function deserializeIntoMaomiAIAiModelSharedModelsUploadAiModelEndpoint(m
     return {
         "aiFunction": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
         "deploymentName": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName = n.getStringValue(); },
-        "enpoint": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.enpoint = n.getStringValue(); },
+        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.endpoint = n.getStringValue(); },
         "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
         "isSupportImg": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg = n.getBooleanValue(); },
         "key": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.key = n.getStringValue(); },
         "modelId": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId = n.getStringValue(); },
         "name": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.name = n.getStringValue(); },
+        "textMaxToken": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.textMaxToken = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand(maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModelFunction": n => { maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand.aiModelFunction = n.getEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse(maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>(createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue); },
     }
 }
 /**
@@ -751,6 +833,20 @@ export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryDefaultAi
 export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "providers": n => { maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>(createMaomiAIAiModelSharedModelsAiProviderInfoFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentCoreHandlersEmbeddingocumentCommand(maomiAIDocumentCoreHandlersEmbeddingocumentCommand: Partial<MaomiAIDocumentCoreHandlersEmbeddingocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.documentId = n.getGuidValue(); },
+        "maxTokensPerParagraph": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.maxTokensPerParagraph = n.getNumberValue(); },
+        "overlappingTokens": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.overlappingTokens = n.getNumberValue(); },
+        "tokenizer": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.tokenizer = n.getStringValue(); },
+        "wikiId": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.wikiId = n.getGuidValue(); },
     }
 }
 /**
@@ -840,6 +936,33 @@ export function deserializeIntoMaomiAIDocumentSharedCommandsUploadWikiAvatarComm
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse(maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse: Partial<MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse),
+        "embeddingBatchSize": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingBatchSize = n.getNumberValue(); },
+        "embeddingDimensions": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingDimensions = n.getNumberValue(); },
+        "embeddingModelId": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelId = n.getGuidValue(); },
+        "embeddingModelTokenizer": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelTokenizer = n.getStringValue(); },
+        "isLock": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.isLock = n.getBooleanValue(); },
+        "maxRetries": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.maxRetries = n.getNumberValue(); },
+        "wikiId": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileCommand(maomiAIDocumentSharedQueriesQueryWikiFileCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { maomiAIDocumentSharedQueriesQueryWikiFileCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIDocumentSharedQueriesQueryWikiFileListCommand),
@@ -897,6 +1020,20 @@ export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimp
         "isPublic": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic = n.getBooleanValue(); },
         "name": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name = n.getStringValue(); },
         "wikiId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand(maomiAIDocumentSharedQueriesUpdateWikiConfigCommand: Partial<MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "embeddingBatchSize": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingBatchSize = n.getNumberValue(); },
+        "embeddingDimensions": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingDimensions = n.getNumberValue(); },
+        "embeddingModelId": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelId = n.getGuidValue(); },
+        "embeddingModelTokenizer": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelTokenizer = n.getStringValue(); },
+        "maxRetries": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.maxRetries = n.getNumberValue(); },
     }
 }
 /**
@@ -1426,9 +1563,13 @@ export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
      */
     deploymentName?: string | null;
     /**
+     * 嵌入模型最大支持token数量.
+     */
+    embeddinMaxToken?: number | null;
+    /**
      * 请求端点.
      */
-    enpoint?: string | null;
+    endpoint?: string | null;
     /**
      * 支持 function call.
      */
@@ -1453,6 +1594,10 @@ export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
      * AI 服务商.
      */
     provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+    /**
+     * 文本模型最大支持上下文token.
+     */
+    textMaxToken?: number | null;
 }
 /**
  * AI 模型默认配置.
@@ -1462,6 +1607,10 @@ export interface MaomiAIAiModelSharedModelsAiModelDefaultConfiguration extends P
      * AI 模型的功能，判断是否多模态.
      */
     aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    /**
+     * 嵌入模型最大支持token数量.
+     */
+    embeddinMaxToken?: number | null;
     /**
      * 支持 function call.
      */
@@ -1482,6 +1631,10 @@ export interface MaomiAIAiModelSharedModelsAiModelDefaultConfiguration extends P
      * AI 服务商.
      */
     provider?: string | null;
+    /**
+     * 文本模型最大支持上下文token.
+     */
+    textMaxToken?: number | null;
 }
 export type MaomiAIAiModelSharedModelsAiModelFunction = (typeof MaomiAIAiModelSharedModelsAiModelFunctionObject)[keyof typeof MaomiAIAiModelSharedModelsAiModelFunctionObject];
 /**
@@ -1497,9 +1650,13 @@ export interface MaomiAIAiModelSharedModelsAiNotKeyEndpoint extends Parsable {
      */
     deploymentName?: string | null;
     /**
+     * 嵌入模型最大支持token数量.
+     */
+    embeddinMaxToken?: number | null;
+    /**
      * 请求端点.
      */
-    enpoint?: string | null;
+    endpoint?: string | null;
     /**
      * id.
      */
@@ -1524,6 +1681,10 @@ export interface MaomiAIAiModelSharedModelsAiNotKeyEndpoint extends Parsable {
      * AI 服务商.
      */
     provider?: string | null;
+    /**
+     * 文本模型最大支持上下文token.
+     */
+    textMaxToken?: number | null;
 }
 export type MaomiAIAiModelSharedModelsAiProvider = (typeof MaomiAIAiModelSharedModelsAiProviderObject)[keyof typeof MaomiAIAiModelSharedModelsAiProviderObject];
 export interface MaomiAIAiModelSharedModelsAiProviderInfo extends Parsable {
@@ -1558,9 +1719,13 @@ export interface MaomiAIAiModelSharedModelsUploadAiModelEndpoint extends Parsabl
      */
     deploymentName?: string | null;
     /**
+     * 嵌入模型最大支持token数量.
+     */
+    embeddinMaxToken?: number | null;
+    /**
      * 请求端点.
      */
-    enpoint?: string | null;
+    endpoint?: string | null;
     /**
      * 支持 function call.
      */
@@ -1581,6 +1746,25 @@ export interface MaomiAIAiModelSharedModelsUploadAiModelEndpoint extends Parsabl
      * 名称.
      */
     name?: string | null;
+    /**
+     * 文本模型最大支持上下文token.
+     */
+    textMaxToken?: number | null;
+}
+/**
+ * 查询某种用途的 AI 模型列表
+ */
+export interface MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiModelFunction?: MaomiAIAiModelSharedModelsAiModelFunction | null;
+}
+export interface MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse extends Parsable {
+    /**
+     * AI 模型列表.
+     */
+    aiModels?: MaomiAIAiModelSharedModelsAiNotKeyEndpoint[] | null;
 }
 /**
  * 查询供应商下已配置的 ai 模型列表.
@@ -1614,6 +1798,31 @@ export interface MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCom
      * 支持的模型供应商列表.
      */
     providers?: MaomiAIAiModelSharedModelsAiProviderInfo[] | null;
+}
+/**
+ * 执行对文件的处理.
+ */
+export interface MaomiAIDocumentCoreHandlersEmbeddingocumentCommand extends Parsable {
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+    /**
+     * The maximum number of tokens per paragraph.When partitioning a document, each partition usually contains one paragraph.
+     */
+    maxTokensPerParagraph?: number | null;
+    /**
+     * The number of overlapping tokens between chunks.
+     */
+    overlappingTokens?: number | null;
+    /**
+     * Name of the tokenizer used to count tokens.Supported values: "p50k", "cl100k", "o200k". Leave it empty for autodetect.
+     */
+    tokenizer?: string | null;
+    /**
+     * The wikiId property
+     */
+    wikiId?: Guid | null;
 }
 /**
  * 结束上传文件.
@@ -1723,6 +1932,42 @@ export interface MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand extends Pa
      */
     fileId?: Guid | null;
 }
+export interface MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
+    /**
+     * 批处理大小.
+     */
+    embeddingBatchSize?: number | null;
+    /**
+     * 维度，跟模型有关.
+     */
+    embeddingDimensions?: number | null;
+    /**
+     * 指定进行文档向量化的模型.
+     */
+    embeddingModelId?: Guid | null;
+    /**
+     * 分词器.
+     */
+    embeddingModelTokenizer?: string | null;
+    /**
+     * 锁定配置，锁定后不能再修改.
+     */
+    isLock?: boolean | null;
+    /**
+     * 最大重试次数.
+     */
+    maxRetries?: number | null;
+    /**
+     * 知识库id.
+     */
+    wikiId?: Guid | null;
+}
+export interface MaomiAIDocumentSharedQueriesQueryWikiFileCommand extends Parsable {
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+}
 /**
  * 查询 wiki 文件列表.
  */
@@ -1799,6 +2044,28 @@ export interface MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse
      * 知识库 id.
      */
     wikiId?: Guid | null;
+}
+export interface MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand extends Parsable {
+    /**
+     * 批处理大小.
+     */
+    embeddingBatchSize?: number | null;
+    /**
+     * 维度，跟模型有关.
+     */
+    embeddingDimensions?: number | null;
+    /**
+     * 指定进行文档向量化的模型.
+     */
+    embeddingModelId?: Guid | null;
+    /**
+     * 分词器.
+     */
+    embeddingModelTokenizer?: string | null;
+    /**
+     * 最大重试次数.
+     */
+    maxRetries?: number | null;
 }
 /**
  * 数据子项.
@@ -2466,13 +2733,15 @@ export function serializeMaomiAIAiModelSharedModelsAiEndpoint(writer: Serializat
         if(maomiAIAiModelSharedModelsAiEndpoint.aiFunction)
         writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiEndpoint.aiFunction);
         writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiEndpoint.deploymentName);
-        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsAiEndpoint.enpoint);
+        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsAiEndpoint.endpoint);
         writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall);
         writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiEndpoint.isSupportImg);
         writer.writeStringValue("key", maomiAIAiModelSharedModelsAiEndpoint.key);
         writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiEndpoint.modelId);
         writer.writeStringValue("name", maomiAIAiModelSharedModelsAiEndpoint.name);
         writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedModelsAiEndpoint.provider);
+        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiEndpoint.textMaxToken);
     }
 }
 /**
@@ -2484,11 +2753,13 @@ export function serializeMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(w
     if (maomiAIAiModelSharedModelsAiModelDefaultConfiguration) {
         if(maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction)
         writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction);
+        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.embeddinMaxToken);
         writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall);
         writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg);
         writer.writeGuidValue("modelId", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId);
         writer.writeStringValue("name", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name);
         writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider);
+        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.textMaxToken);
     }
 }
 /**
@@ -2501,13 +2772,15 @@ export function serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint(writer: Seri
         if(maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction)
         writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction);
         writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName);
-        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsAiNotKeyEndpoint.enpoint);
+        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiNotKeyEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsAiNotKeyEndpoint.endpoint);
         writer.writeGuidValue("id", maomiAIAiModelSharedModelsAiNotKeyEndpoint.id);
         writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall);
         writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg);
         writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId);
         writer.writeStringValue("name", maomiAIAiModelSharedModelsAiNotKeyEndpoint.name);
         writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider);
+        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiNotKeyEndpoint.textMaxToken);
     }
 }
 /**
@@ -2534,12 +2807,34 @@ export function serializeMaomiAIAiModelSharedModelsUploadAiModelEndpoint(writer:
         if(maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction)
         writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction);
         writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName);
-        writer.writeStringValue("enpoint", maomiAIAiModelSharedModelsUploadAiModelEndpoint.enpoint);
+        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsUploadAiModelEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsUploadAiModelEndpoint.endpoint);
         writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall);
         writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg);
         writer.writeStringValue("key", maomiAIAiModelSharedModelsUploadAiModelEndpoint.key);
         writer.writeStringValue("modelId", maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId);
         writer.writeStringValue("name", maomiAIAiModelSharedModelsUploadAiModelEndpoint.name);
+        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsUploadAiModelEndpoint.textMaxToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand) {
+        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>("aiModelFunction", maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand.aiModelFunction);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse) {
+        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>("aiModels", maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint);
     }
 }
 /**
@@ -2590,6 +2885,20 @@ export function serializeMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelL
 export function serializeMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined | null = {}) : void {
     if (maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse) {
         writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>("providers", maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers, serializeMaomiAIAiModelSharedModelsAiProviderInfo);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentCoreHandlersEmbeddingocumentCommand(writer: SerializationWriter, maomiAIDocumentCoreHandlersEmbeddingocumentCommand: Partial<MaomiAIDocumentCoreHandlersEmbeddingocumentCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentCoreHandlersEmbeddingocumentCommand) {
+        writer.writeGuidValue("documentId", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.documentId);
+        writer.writeNumberValue("maxTokensPerParagraph", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.maxTokensPerParagraph);
+        writer.writeNumberValue("overlappingTokens", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.overlappingTokens);
+        writer.writeStringValue("tokenizer", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.tokenizer);
+        writer.writeGuidValue("wikiId", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.wikiId);
     }
 }
 /**
@@ -2679,6 +2988,33 @@ export function serializeMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand(wr
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse: Partial<MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse) {
+        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse)
+        writer.writeNumberValue("embeddingBatchSize", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingBatchSize);
+        writer.writeNumberValue("embeddingDimensions", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingDimensions);
+        writer.writeGuidValue("embeddingModelId", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelId);
+        writer.writeStringValue("embeddingModelTokenizer", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelTokenizer);
+        writer.writeBooleanValue("isLock", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.isLock);
+        writer.writeNumberValue("maxRetries", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.maxRetries);
+        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesQueryWikiFileCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiFileCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesQueryWikiFileCommand) {
+        writer.writeGuidValue("documentId", maomiAIDocumentSharedQueriesQueryWikiFileCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined | null = {}) : void {
     if (maomiAIDocumentSharedQueriesQueryWikiFileListCommand) {
         serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIDocumentSharedQueriesQueryWikiFileListCommand)
@@ -2736,6 +3072,20 @@ export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfo
         writer.writeBooleanValue("isPublic", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic);
         writer.writeStringValue("name", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name);
         writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesUpdateWikiConfigCommand: Partial<MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand> | undefined | null = {}) : void {
+    if (maomiAIDocumentSharedQueriesUpdateWikiConfigCommand) {
+        writer.writeNumberValue("embeddingBatchSize", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingBatchSize);
+        writer.writeNumberValue("embeddingDimensions", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingDimensions);
+        writer.writeGuidValue("embeddingModelId", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelId);
+        writer.writeStringValue("embeddingModelTokenizer", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelTokenizer);
+        writer.writeNumberValue("maxRetries", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.maxRetries);
     }
 }
 /**

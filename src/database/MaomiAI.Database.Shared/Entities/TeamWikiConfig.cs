@@ -27,7 +27,7 @@ public partial class TeamWikiConfigEntity : IFullAudited
     /// <summary>
     /// 指定进行文档向量化的模型.
     /// </summary>
-    public Guid ModelId { get; set; }
+    public Guid EmbeddingModelId { get; set; }
 
     /// <summary>
     /// 是否删除.
@@ -47,4 +47,29 @@ public partial class TeamWikiConfigEntity : IFullAudited
     /// 更新人id.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 锁定配置，锁定后不能再修改.
+    /// </summary>
+    public bool IsLock { get; set; }
+
+    /// <summary>
+    /// 分词器.
+    /// </summary>
+    public string EmbeddingModelTokenizer { get; set; }  = default!;
+
+    /// <summary>
+    /// 维度，跟模型有关.
+    /// </summary>
+    public int EmbeddingDimensions { get; set; }
+
+    /// <summary>
+    /// 批处理大小.
+    /// </summary>
+    public int EmbeddingBatchSize { get; set; }
+
+    /// <summary>
+    /// 最大重试次数.
+    /// </summary>
+    public int MaxRetries { get; set; }
 }

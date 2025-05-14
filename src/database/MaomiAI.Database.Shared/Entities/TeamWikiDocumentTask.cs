@@ -78,4 +78,19 @@ public partial class TeamWikiDocumentTaskEntity : IFullAudited
     /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 每段最大token数量.
+    /// </summary>
+    public int MaxTokensPerParagraph { get; set; }
+
+    /// <summary>
+    /// 重叠的token数量.
+    /// </summary>
+    public int OverlappingTokens { get; set; }
+
+    /// <summary>
+    /// 分词器.
+    /// </summary>
+    public string Tokenizer { get; set; }  = default!;
 }

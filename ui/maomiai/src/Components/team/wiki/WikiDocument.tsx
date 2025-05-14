@@ -27,7 +27,7 @@ import type { UploadFile, UploadProps } from "antd/es/upload/interface";
 import { GetApiClient, UploadImage } from "../../../Components/ServiceClient";
 import { GetFileMd5 } from "../../../helper/Md5Helper";
 import { RcFile } from "antd/es/upload";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import type { MaomiAIDocumentSharedQueriesQueryWikiFileListCommand } from "../../../ApiClient/models";
 import { MaomiAIStoreEnumsUploadImageTypeObject } from "../../../ApiClient/models";
 import { FileTypeHelper } from "../../../helper/FileTypeHelper";
@@ -82,6 +82,7 @@ interface UploadStatus {
 
 export default function WikiDocument() {
   const params = useParams();
+  const navigate = useNavigate();
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -439,6 +440,19 @@ export default function WikiDocument() {
       dataIndex: "updateUserName",
       key: "updateUserName",
       width: 120,
+    },
+    {
+      title: "操作",
+      key: "action",
+      width: 80,  // http://localhost:4000/app/team/07eb6ca6-8a38-4555-8202-d6072f34f801/wiki/b00a896d-ad45-4e83-bc53-68a3b2c24e39/embedding?fileId=ce47b566-9070-4502-ad95-fd8a1f66123a
+      render: (_: unknown, record: DocumentItem) => (
+        <Button
+          type="link"
+          onClick={() => navigate(`/app/team/${params.teamId}/wiki/${params.wikiId}/embedding?fileId=${record.documentId}`)}
+        >
+          量化
+        </Button>
+      ),
     },
   ];
 

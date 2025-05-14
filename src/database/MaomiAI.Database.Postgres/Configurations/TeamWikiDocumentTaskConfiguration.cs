@@ -40,6 +40,10 @@ public partial class TeamWikiDocumentTaskConfiguration : IEntityTypeConfiguratio
             .HasDefaultValue(false)
             .HasComment("软删除")
             .HasColumnName("is_deleted");
+        entity.Property(e => e.MaxTokensPerParagraph)
+            .HasDefaultValue(1000)
+            .HasComment("每段最大token数量")
+            .HasColumnName("max_tokens_per_paragraph");
         entity.Property(e => e.Message)
             .HasDefaultValueSql("''::text")
             .HasComment("执行信息")
@@ -47,6 +51,10 @@ public partial class TeamWikiDocumentTaskConfiguration : IEntityTypeConfiguratio
         entity.Property(e => e.ModelId)
             .HasComment("当前使用的模型id，默认跟知识库配置一致")
             .HasColumnName("model_id");
+        entity.Property(e => e.OverlappingTokens)
+            .HasDefaultValue(20)
+            .HasComment("重叠的token数量")
+            .HasColumnName("overlapping_tokens");
         entity.Property(e => e.State)
             .HasComment("任务状态")
             .HasColumnName("state");
@@ -57,6 +65,11 @@ public partial class TeamWikiDocumentTaskConfiguration : IEntityTypeConfiguratio
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");
+        entity.Property(e => e.Tokenizer)
+            .HasMaxLength(20)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("分词器")
+            .HasColumnName("tokenizer");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

@@ -42,10 +42,12 @@ public class QueryAiModelEndpointListCommandHandler : IRequestHandler<QueryAiMod
                     IsSupportFunctionCall = x.IsSupportFunctionCall,
                     IsSupportImg = x.IsSupportImg,
                     DeploymentName = x.DeploymentName,
-                    Enpoint = x.Endpoint,
+                    endpoint = x.Endpoint,
                     AiFunction = EnumHelper.DecomposeFlags<AiModelFunction>(x.AiModelFunction),
                     ModelId = x.ModeId,
-                    Provider = x.AiProvider
+                    Provider = x.AiProvider,
+                    EmbeddinMaxToken = x.EmbeddinMaxToken,
+                    TextMaxToken = x.TextMaxToken
                 }).ToArrayAsync();
 
         return new QueryAiModelListCommandResponse

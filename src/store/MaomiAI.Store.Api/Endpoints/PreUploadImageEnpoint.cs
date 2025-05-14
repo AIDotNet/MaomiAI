@@ -1,4 +1,4 @@
-﻿// <copyright file="PreUploadImageEnpoint.cs" company="MaomiAI">
+﻿// <copyright file="PreUploadImageendpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -17,15 +17,15 @@ namespace MaomiAI.Store.Controllers;
 /// </summary>
 [EndpointGroupName("store")]
 [FastEndpoints.HttpPost($"{StoreApi.ApiPrefix}/pre_upload_image")]
-public class PreUploadImageEnpoint : Endpoint<PreUploadImageCommand, PreUploadFileCommandResponse>
+public class PreUploadImageendpoint : Endpoint<PreUploadImageCommand, PreUploadFileCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PreUploadImageEnpoint"/> class.
+    /// Initializes a new instance of the <see cref="PreUploadImageendpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public PreUploadImageEnpoint(IMediator mediator)
+    public PreUploadImageendpoint(IMediator mediator)
     {
         _mediator = mediator;
     }

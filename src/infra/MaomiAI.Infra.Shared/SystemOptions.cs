@@ -52,6 +52,25 @@ public class SystemOptions
     public SystemStoreOption PrivateStore { get; init; } = default!;
 
     /// <summary>
+    /// 文档向量化存储.
+    /// </summary>
+    public DatabaseStore DocumentStore { get; init; } = new DatabaseStore();
+
+    public class DatabaseStore
+    {
+        /// <summary>
+        /// 系统数据库类型.
+        /// </summary>
+        public string DBType { get; init; } = string.Empty;
+
+        /// <summary>
+        /// 系统数据库连接字符串.
+        /// </summary>
+        public string Database { get; init; } = string.Empty;
+    }
+
+
+    /// <summary>
     /// 消息处理.
     /// </summary>
     public class MessageOption

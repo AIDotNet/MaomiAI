@@ -88,4 +88,14 @@ public partial class TeamAiModelEntity : IFullAudited
     /// 名字.
     /// </summary>
     public string Name { get; set; }  = default!;
+
+    /// <summary>
+    /// 文本模型最大支持上下文token.
+    /// </summary>
+    public int TextMaxToken { get; set; }
+
+    /// <summary>
+    /// 嵌入模型最大支持token数量.
+    /// </summary>
+    public int EmbeddinMaxToken { get; set; }
 }

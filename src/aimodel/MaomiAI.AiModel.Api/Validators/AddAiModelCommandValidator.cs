@@ -24,7 +24,7 @@ public class AddAiModelCommandValidator : Validator<AddAiModelCommand>
             .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
 
-        RuleFor(x => x.Endpoint.Enpoint)
+        RuleFor(x => x.Endpoint.Endpoint)
             .NotEmpty().MaximumLength(50)
             .WithMessage("长度 50 内.");
 

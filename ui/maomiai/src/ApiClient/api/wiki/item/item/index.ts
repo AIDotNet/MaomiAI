@@ -4,9 +4,13 @@
 // @ts-ignore
 import { Complate_uploadRequestBuilderRequestsMetadata, type Complate_uploadRequestBuilder } from './complate_upload/index.js';
 // @ts-ignore
+import { ConfigRequestBuilderRequestsMetadata, type ConfigRequestBuilder } from './config/index.js';
+// @ts-ignore
 import { DeleteRequestBuilderRequestsMetadata, type DeleteRequestBuilder } from './delete/index.js';
 // @ts-ignore
 import { DetailRequestBuilderRequestsMetadata, type DetailRequestBuilder } from './detail/index.js';
+// @ts-ignore
+import { DocumentRequestBuilderRequestsMetadata, type DocumentRequestBuilder } from './document/index.js';
 // @ts-ignore
 import { DocumentsRequestBuilderRequestsMetadata, type DocumentsRequestBuilder } from './documents/index.js';
 // @ts-ignore
@@ -29,6 +33,10 @@ export interface WithWikiItemRequestBuilder extends BaseRequestBuilder<WithWikiI
      */
     get complate_upload(): Complate_uploadRequestBuilder;
     /**
+     * The config property
+     */
+    get config(): ConfigRequestBuilder;
+    /**
      * The deletePath property
      */
     get deletePath(): DeleteRequestBuilder;
@@ -36,6 +44,10 @@ export interface WithWikiItemRequestBuilder extends BaseRequestBuilder<WithWikiI
      * The detail property
      */
     get detail(): DetailRequestBuilder;
+    /**
+     * The document property
+     */
+    get document(): DocumentRequestBuilder;
     /**
      * The documents property
      */
@@ -68,11 +80,17 @@ export const WithWikiItemRequestBuilderNavigationMetadata: Record<Exclude<keyof 
     complate_upload: {
         requestsMetadata: Complate_uploadRequestBuilderRequestsMetadata,
     },
+    config: {
+        requestsMetadata: ConfigRequestBuilderRequestsMetadata,
+    },
     deletePath: {
         requestsMetadata: DeleteRequestBuilderRequestsMetadata,
     },
     detail: {
         requestsMetadata: DetailRequestBuilderRequestsMetadata,
+    },
+    document: {
+        requestsMetadata: DocumentRequestBuilderRequestsMetadata,
     },
     documents: {
         requestsMetadata: DocumentsRequestBuilderRequestsMetadata,

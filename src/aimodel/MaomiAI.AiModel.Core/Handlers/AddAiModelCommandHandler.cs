@@ -66,7 +66,7 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
         var aiModel = new TeamAiModelEntity
         {
             TeamId = request.TeamId,
-            Endpoint = request.Endpoint.Enpoint,
+            Endpoint = request.Endpoint.Endpoint,
             DeploymentName = request.Endpoint.DeploymentName,
             ModeId = request.Endpoint.ModelId,
             AiModelFunction = (int)EnumHelper.ComposeFlags(request.Endpoint.AiFunction),
@@ -75,6 +75,8 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
             IsSupportImg = request.Endpoint.IsSupportImg,
             IsSupportFunctionCall = request.Endpoint.IsSupportFunctionCall,
             Name = request.Endpoint.Name,
+            EmbeddinMaxToken = request.Endpoint.EmbeddinMaxToken,
+            TextMaxToken = request.Endpoint.TextMaxToken,
         };
 
         await _dbContext.AddAsync(aiModel, cancellationToken);

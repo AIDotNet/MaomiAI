@@ -4,6 +4,11 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Store.Clients;
+using Microsoft.Extensions.DependencyInjection;
+using Refit;
+using System.Text.Json;
+
 namespace MaomiAI.Store;
 
 /// <summary>
@@ -14,8 +19,22 @@ namespace MaomiAI.Store;
 [InjectModule<StoreApiModule>]
 public class StoreCoreModule : IModule
 {
+    private static readonly RefitSettings RefitSettings = new RefitSettings()
+    {
+        ContentSerializer = new SystemTextJsonContentSerializer(new JsonSerializerOptions
+        {
+            AllowTrailingCommas = true,
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            ReadCommentHandling = JsonCommentHandling.Skip
+        }),
+        Buffered = true
+    };
+
     /// <inheritdoc />
     public void ConfigureServices(ServiceContext context)
     {
+        context.Services.AddRefitClient<IFileDownClient>(RefitSettings)
+            .SetHandlerLifetime(TimeSpan.FromSeconds(2));
     }
 }

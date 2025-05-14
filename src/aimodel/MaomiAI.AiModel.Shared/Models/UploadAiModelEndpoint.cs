@@ -33,7 +33,7 @@ public class UploadAiModelEndpoint
     /// <summary>
     /// 请求端点.
     /// </summary>
-    public string Enpoint { get; init; } = default!;
+    public string endpoint { get; init; } = default!;
 
     /// <summary>
     /// 模型部署 id 或 name.
@@ -49,4 +49,14 @@ public class UploadAiModelEndpoint
     /// key.
     /// </summary>
     public string Key { get; init; } = default!;
+
+    /// <summary>
+    /// 文本模型最大支持上下文token.
+    /// </summary>
+    public int TextMaxToken { get; set; }
+
+    /// <summary>
+    /// 嵌入模型最大支持token数量.
+    /// </summary>
+    public int EmbeddinMaxToken { get; set; }
 }

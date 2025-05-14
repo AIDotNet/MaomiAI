@@ -28,7 +28,7 @@ public class UpdateAiModelCommandValidator : Validator<UpdateAiModelCommand>
             .NotEmpty()
             .WithMessage("模型 ID 不能为空.");
 
-        RuleFor(x => x.Endpoint.Enpoint)
+        RuleFor(x => x.Endpoint.endpoint)
             .NotEmpty().MaximumLength(50)
             .WithMessage("长度 50 内.");
 

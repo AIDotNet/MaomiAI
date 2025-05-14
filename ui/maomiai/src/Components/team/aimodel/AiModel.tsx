@@ -137,11 +137,13 @@ export default function AiModel() {
             name: model.name,
             modelId: model.modelId,
             deploymentName: model.deploymentName,
-            enpoint: model.enpoint,
+            endpoint: model.endpoint,
             function: model.aiFunction || [],
             isSupportFunctionCall: model.isSupportFunctionCall,
             isSupportImg: model.isSupportImg,
-            key: ''
+            key: '',
+            textMaxToken: model.textMaxToken ?? 8192,
+            embeddinMaxToken: model.embeddinMaxToken ?? 8192
         });
     };
 
@@ -166,12 +168,14 @@ export default function AiModel() {
                 name: values.name,
                 modelId: values.modelId,
                 deploymentName: values.deploymentName,
-                enpoint: values.enpoint,
+                endpoint: values.endpoint,
                 provider: selectedModel.provider as any,
                 aiFunction: values.function,
                 isSupportFunctionCall: values.isSupportFunctionCall,
                 isSupportImg: values.isSupportImg,
-                key: encryptedKey
+                key: encryptedKey,
+                ...(values.textMaxToken && { textMaxToken: values.textMaxToken }),
+                ...(values.embeddinMaxToken && { embeddinMaxToken: values.embeddinMaxToken })
             };
 
             await apiClient.api.aimodel.byTeamId(teamId).update.post({
@@ -205,7 +209,7 @@ export default function AiModel() {
             setIsCreateModalVisible(true);
             createForm.resetFields();
             if (providerInfo.defaultEndpoint) {
-                createForm.setFieldValue('enpoint', providerInfo.defaultEndpoint);
+                createForm.setFieldValue('endpoint', providerInfo.defaultEndpoint);
             }
         }
     };
@@ -232,12 +236,14 @@ export default function AiModel() {
                 name: values.name,
                 modelId: values.modelId,
                 deploymentName: values.deploymentName,
-                enpoint: values.enpoint,
+                endpoint: values.endpoint,
                 provider: currentProvider.provider,
                 aiFunction: values.function,
                 isSupportFunctionCall: values.isSupportFunctionCall,
                 isSupportImg: values.isSupportImg,
-                key: encryptedKey
+                key: encryptedKey,
+                ...(values.textMaxToken && { textMaxToken: values.textMaxToken }),
+                ...(values.embeddinMaxToken && { embeddinMaxToken: values.embeddinMaxToken })
             };
 
             await apiClient.api.aimodel.byTeamId(teamId).create.post({
@@ -507,7 +513,7 @@ export default function AiModel() {
                     </Form.Item>
                     <Form.Item 
                         label="端点" 
-                        name="enpoint"
+                        name="endpoint"
                         rules={[{ required: true, message: '请输入端点' }]}
                     >
                         <Input />
@@ -521,6 +527,22 @@ export default function AiModel() {
                             mode="multiple"
                             placeholder="请选择功能"
                             optionLabelProp="label"
+                            onChange={(value) => {
+                                // 根据选择的功能动态设置textMaxToken和embeddinMaxToken的必填规则
+                                const hasTextGeneration = value.includes('TextGeneration');
+                                const hasTextEmbedding = value.includes('TextEmbeddingGeneration');
+                                
+                                createForm.setFields([
+                                    {
+                                        name: 'textMaxToken',
+                                        errors: hasTextGeneration ? ['请填写文本生成最大Token数'] : []
+                                    },
+                                    {
+                                        name: 'embeddinMaxToken',
+                                        errors: hasTextEmbedding ? ['请填写嵌入最大Token数'] : []
+                                    }
+                                ]);
+                            }}
                         >
                             {Object.entries(FUNCTION_DESCRIPTIONS).map(([key, description]) => (
                                 <Select.Option 
@@ -538,6 +560,24 @@ export default function AiModel() {
                             ))}
                         </Select>
                     </Form.Item>
+                    {createForm.getFieldValue('function')?.includes('TextGeneration') && (
+                        <Form.Item 
+                            label="文本生成最大Token数" 
+                            name="textMaxToken"
+                            rules={[{ required: true, message: '请填写文本生成最大Token数' }]}
+                        >
+                            <Input type="number" min={1} />
+                        </Form.Item>
+                    )}
+                    {createForm.getFieldValue('function')?.includes('TextEmbeddingGeneration') && (
+                        <Form.Item 
+                            label="嵌入最大Token数" 
+                            name="embeddinMaxToken"
+                            rules={[{ required: true, message: '请填写嵌入最大Token数' }]}
+                        >
+                            <Input type="number" min={1} />
+                        </Form.Item>
+                    )}
                     <Form.Item 
                         label="API Key" 
                         name="key"
@@ -602,7 +642,7 @@ export default function AiModel() {
                     </Form.Item>
                     <Form.Item 
                         label="端点" 
-                        name="enpoint"
+                        name="endpoint"
                         rules={[{ required: true, message: '请输入端点' }]}
                     >
                         <Input />
@@ -616,6 +656,22 @@ export default function AiModel() {
                             mode="multiple"
                             placeholder="请选择功能"
                             optionLabelProp="label"
+                            onChange={(value) => {
+                                // 根据选择的功能动态设置textMaxToken和embeddinMaxToken的必填规则
+                                const hasTextGeneration = value.includes('TextGeneration');
+                                const hasTextEmbedding = value.includes('TextEmbeddingGeneration');
+                                
+                                modelForm.setFields([
+                                    {
+                                        name: 'textMaxToken',
+                                        errors: hasTextGeneration ? ['请填写文本生成最大Token数'] : []
+                                    },
+                                    {
+                                        name: 'embeddinMaxToken',
+                                        errors: hasTextEmbedding ? ['请填写嵌入最大Token数'] : []
+                                    }
+                                ]);
+                            }}
                         >
                             {Object.entries(FUNCTION_DESCRIPTIONS).map(([key, description]) => (
                                 <Select.Option 
@@ -633,6 +689,24 @@ export default function AiModel() {
                             ))}
                         </Select>
                     </Form.Item>
+                    {modelForm.getFieldValue('function')?.includes('TextGeneration') && (
+                        <Form.Item 
+                            label="文本生成最大Token数" 
+                            name="textMaxToken"
+                            rules={[{ required: true, message: '请填写文本生成最大Token数' }]}
+                        >
+                            <Input type="number" min={1} />
+                        </Form.Item>
+                    )}
+                    {modelForm.getFieldValue('function')?.includes('TextEmbeddingGeneration') && (
+                        <Form.Item 
+                            label="嵌入最大Token数" 
+                            name="embeddinMaxToken"
+                            rules={[{ required: true, message: '请填写嵌入最大Token数' }]}
+                        >
+                            <Input type="number" min={1} />
+                        </Form.Item>
+                    )}
                     <Form.Item 
                         label="API Key" 
                         name="key"

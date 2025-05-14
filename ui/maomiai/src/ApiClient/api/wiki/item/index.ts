@@ -4,6 +4,8 @@
 // @ts-ignore
 import { CreateRequestBuilderRequestsMetadata, type CreateRequestBuilder } from './create/index.js';
 // @ts-ignore
+import { EmbeddingRequestBuilderRequestsMetadata, type EmbeddingRequestBuilder } from './embedding/index.js';
+// @ts-ignore
 import { type WithWikiItemRequestBuilder, WithWikiItemRequestBuilderNavigationMetadata } from './item/index.js';
 // @ts-ignore
 import { type WikisRequestBuilder, WikisRequestBuilderRequestsMetadata } from './wikis/index.js';
@@ -18,6 +20,10 @@ export interface WithTeamItemRequestBuilder extends BaseRequestBuilder<WithTeamI
      * The create property
      */
     get create(): CreateRequestBuilder;
+    /**
+     * The embedding property
+     */
+    get embedding(): EmbeddingRequestBuilder;
     /**
      * The wikis property
      */
@@ -43,6 +49,9 @@ export const WithTeamItemRequestBuilderNavigationMetadata: Record<Exclude<keyof 
     },
     create: {
         requestsMetadata: CreateRequestBuilderRequestsMetadata,
+    },
+    embedding: {
+        requestsMetadata: EmbeddingRequestBuilderRequestsMetadata,
     },
     wikis: {
         requestsMetadata: WikisRequestBuilderRequestsMetadata,

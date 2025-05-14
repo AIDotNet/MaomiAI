@@ -56,7 +56,7 @@ public class SetWikiDefaultModelCommandHandler : IRequestHandler<SetWikiDefaultM
             config = new TeamWikiConfigEntity
             {
                 WikiId = request.WikiId,
-                ModelId = request.ModelId,
+                EmbeddingModelId = request.ModelId,
                 TeamId = teamId,
             };
 
@@ -65,7 +65,7 @@ public class SetWikiDefaultModelCommandHandler : IRequestHandler<SetWikiDefaultM
         }
         else
         {
-            config.ModelId = request.ModelId;
+            config.EmbeddingModelId = request.ModelId;
             _databaseContext.TeamWikiConfigs.Update(config);
             await _databaseContext.SaveChangesAsync();
         }

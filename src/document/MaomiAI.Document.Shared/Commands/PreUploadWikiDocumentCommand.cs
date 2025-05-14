@@ -14,6 +14,8 @@ namespace MaomiAI.Document.Shared.Commands;
 /// </summary>
 public class PreUploadWikiDocumentCommand : IRequest<PreloadWikiDocumentResponse>
 {
+    public Guid TeamId { get; init; }
+
     /// <summary>
     ///  知识库 id.
     /// </summary>

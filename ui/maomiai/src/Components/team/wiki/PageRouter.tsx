@@ -3,6 +3,7 @@ import Wiki from "./Wiki";
 import WikiList from "./WikiList";
 import WikiSetting from "./WikiSetting";
 import WikiDocument from "./WikiDocument";
+import WikiEmbedding from "./WikiEmbedding";
 
 export const WikiPageRouter: RouteObject = {
   path: "wiki/:wikiId",
@@ -15,6 +16,10 @@ export const WikiPageRouter: RouteObject = {
     {
       path: "document",
       Component: WikiDocument,
+    },
+    {
+      path: "embedding",
+      Component: WikiEmbedding,
     },
   ],
 };

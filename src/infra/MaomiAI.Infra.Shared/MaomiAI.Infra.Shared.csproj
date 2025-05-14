@@ -14,6 +14,7 @@
         <PackageReference Include="Maomi.MQ.RabbitMQ.MediatR" Version="2.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.9.0" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.31" />
         <PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
 		<PackageReference Include="StackExchange.Redis.Extensions.Core" Version="11.0.0" />

@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace MaomiAI.Store.Services;
 
 [InjectOnScoped]
-public class DefaultFileFactory : IFileFactory
+public class DefaultFileFactory : IFileStoreFactory
 {
     private readonly IServiceProvider _serviceProvider;
 

@@ -69,6 +69,7 @@ public class PreUploadWikiDocumentCommandHandler : IRequestHandler<PreUploadWiki
         {
             FileId = result.FileId,
             WikiId = request.WikiId,
+            TeamId = request.TeamId
         });
 
         await _databaseContext.SaveChangesAsync();

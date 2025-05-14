@@ -1,4 +1,4 @@
-﻿// <copyright file="FileEmbeddingGenerationState.cs" company="MaomiAI">
+﻿// <copyright file="FileEmbeddingState.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -9,7 +9,7 @@ namespace MaomiAI.Document.Shared.Models;
 /// <summary>
 /// 向量化状态.
 /// </summary>
-public enum FileEmbeddingGenerationState
+public enum FileEmbeddingState
 {
     /// <summary>
     /// 无状态.
@@ -39,5 +39,5 @@ public enum FileEmbeddingGenerationState
     /// <summary>
     /// 失败.
     /// </summary>
-    Faild
+    Failed
 }

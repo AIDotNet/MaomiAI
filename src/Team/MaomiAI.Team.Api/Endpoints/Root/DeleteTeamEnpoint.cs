@@ -1,4 +1,4 @@
-﻿// <copyright file="DeleteTeamEnpoint.cs" company="MaomiAI">
+﻿// <copyright file="DeleteTeamendpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -15,15 +15,15 @@ namespace MaomiAI.Team.Api.Endpoints.Root;
 /// </summary>
 [EndpointGroupName("team")]
 [HttpDelete($"{TeamApi.ApiPrefix}/{{teamId}}/delete")]
-public class DeleteTeamEnpoint : Endpoint<DeleteTeamCommand, EmptyCommandResponse>
+public class DeleteTeamendpoint : Endpoint<DeleteTeamCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DeleteTeamEnpoint"/> class.
+    /// Initializes a new instance of the <see cref="DeleteTeamendpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public DeleteTeamEnpoint(IMediator mediator)
+    public DeleteTeamendpoint(IMediator mediator)
     {
         _mediator = mediator;
     }

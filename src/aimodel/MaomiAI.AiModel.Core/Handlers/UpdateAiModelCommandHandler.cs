@@ -76,13 +76,15 @@ public class UpdateAiModelCommandHandler : IRequestHandler<UpdateAiModelCommand,
             }
         }
 
-        aiModel.Endpoint = request.Endpoint.Enpoint;
+        aiModel.Endpoint = request.Endpoint.endpoint;
         aiModel.DeploymentName = request.Endpoint.DeploymentName;
         aiModel.ModeId = request.Endpoint.ModelId;
         aiModel.AiModelFunction = (int)EnumHelper.ComposeFlags(request.Endpoint.AiFunction);
         aiModel.IsSupportImg = request.Endpoint.IsSupportImg;
         aiModel.IsSupportFunctionCall = request.Endpoint.IsSupportFunctionCall;
         aiModel.Name = request.Endpoint.Name;
+        aiModel.EmbeddinMaxToken = request.Endpoint.EmbeddinMaxToken;
+        aiModel.TextMaxToken = request.Endpoint.TextMaxToken;
 
         _dbContext.TeamAiModels.Update(aiModel);
         await _dbContext.SaveChangesAsync(cancellationToken);
