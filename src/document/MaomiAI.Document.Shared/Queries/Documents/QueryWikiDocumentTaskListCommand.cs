@@ -15,6 +15,11 @@ namespace MaomiAI.Document.Shared.Queries.Documents;
 public class QueryWikiDocumentTaskListCommand : IRequest<IReadOnlyCollection<WikiDocumentTaskItem>>
 {
     /// <summary>
+    /// 团队 id.
+    /// </summary>
+    public Guid TeamId { get; init; }
+
+    /// <summary>
     /// 知识库id.
     /// </summary>
     public Guid WikiId { get; set; }

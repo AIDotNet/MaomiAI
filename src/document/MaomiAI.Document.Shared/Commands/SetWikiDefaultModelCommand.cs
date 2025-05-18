@@ -14,6 +14,11 @@ namespace MaomiAI.Document.Shared.Commands;
 public class SetWikiDefaultModelCommand : IRequest<EmptyCommandResponse>
 {
     /// <summary>
+    /// 团队 id.
+    /// </summary>
+    public Guid TeamId { get; init; }
+
+    /// <summary>
     /// 知识库 id.
     /// </summary>
     public Guid WikiId { get; init; }

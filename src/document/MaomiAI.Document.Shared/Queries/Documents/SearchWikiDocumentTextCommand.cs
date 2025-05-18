@@ -15,9 +15,14 @@ namespace MaomiAI.Document.Shared.Queries.Documents;
 public class SearchWikiDocumentTextCommand : IRequest<SearchWikiDocumentTextCommandResponse>
 {
     /// <summary>
-    /// 知识库id.
+    /// 团队 id.
     /// </summary>
-    public Guid WikiId { get; set; }
+    public Guid TeamId { get; init; }
+
+    /// <summary>
+    ///  知识库 id.
+    /// </summary>
+    public Guid WikiId { get; init; } = default!;
 
     /// <summary>
     /// 文档id，不设置时搜索整个知识库.

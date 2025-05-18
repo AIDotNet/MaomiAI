@@ -14,6 +14,11 @@ namespace MaomiAI.Document.Shared.Commands.Documents;
 public class CancalWikiDocumentTaskCommand : IRequest<EmptyCommandResponse>
 {
     /// <summary>
+    /// 团队 id.
+    /// </summary>
+    public Guid TeamId { get; init; }
+
+    /// <summary>
     /// 知识库id.
     /// </summary>
     public Guid WikiId { get; set; }

@@ -6,6 +6,8 @@
 
 using FastEndpoints;
 using MaomiAI.Document.Shared.Commands;
+using MaomiAI.Infra.Models;
+using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Routing;
 
@@ -19,17 +21,33 @@ namespace MaomiAI.Document.Api.Endpoints.Settings;
 public class SetWikiDefaultModelEndpoint : Endpoint<SetWikiDefaultModelCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
+    private readonly UserContext _userContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SetWikiDefaultModelEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public SetWikiDefaultModelEndpoint(IMediator mediator)
+    /// <param name="userContext"></param>
+    public SetWikiDefaultModelEndpoint(IMediator mediator, UserContext userContext)
     {
         _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <inheritdoc/>
-    public override Task<EmptyCommandResponse> ExecuteAsync(SetWikiDefaultModelCommand req, CancellationToken ct)
-        => _mediator.Send(req, ct);
+    public override async Task<EmptyCommandResponse> ExecuteAsync(SetWikiDefaultModelCommand req, CancellationToken ct)
+    {
+        var isAdmin = await _mediator.Send(new QueryUserIsTeamAdminCommand
+        {
+            TeamId = req.TeamId,
+            UserId = _userContext.UserId
+        });
+
+        if (!isAdmin.IsAdmin)
+        {
+            throw new BusinessException("没有操作权限.") { StatusCode = 403 };
+        }
+
+        return await _mediator.Send(req, ct);
+    }
 }
