@@ -22,7 +22,6 @@ namespace MaomiAI;
 /// </summary>
 [InjectModule<InfraCoreModule>]
 [InjectModule<DatabaseCoreModule>]
-[InjectModule<EmbeddingCoreModule>]
 [InjectModule<DocumentModule>]
 [InjectModule<StoreCoreModule>]
 [InjectModule<UserCoreModule>]
