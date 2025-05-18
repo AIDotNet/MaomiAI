@@ -7,6 +7,7 @@
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
 using MaomiAI.Document.Shared.Queries;
+using MaomiAI.Document.Shared.Queries.Response;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

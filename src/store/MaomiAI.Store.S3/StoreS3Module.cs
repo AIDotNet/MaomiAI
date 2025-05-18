@@ -31,5 +31,9 @@ public class StoreS3Module : IModule
         context.Services.AddKeyedScoped<IFileStore>(
             FileVisibility.Private,
             (s, _) => { return new S3Store(systemOptions.PrivateStore); });
+
+        context.Services.AddScoped<IPublicFileStore>((s) => { return new S3Store(systemOptions.PublicStore); });
+
+        context.Services.AddScoped<IPrivateFileStore>((s) => { return new S3Store(systemOptions.PrivateStore); });
     }
 }

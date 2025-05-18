@@ -10,7 +10,7 @@ using MediatR;
 namespace MaomiAI.AiModel.Shared.Queries;
 
 /// <summary>
-/// 查询 ai 模型供应商列表.
+/// 查询 ai 模型供应商和已添加的ai模型数量列表.
 /// </summary>
 public class QueryAiModelProviderListCommand : IRequest<QueryAiModelProviderListResponse>
 {

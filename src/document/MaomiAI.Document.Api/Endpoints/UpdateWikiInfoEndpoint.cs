@@ -10,7 +10,7 @@ namespace MaomiAI.Document.Api.Endpoints;
 /// 更新知识库信息.
 /// </summary>
 [EndpointGroupName("wiki")]
-[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/{{teamId}}/{{wikiId}}/update")]
+[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/info")]
 public class UpdateWikiInfoEndpoint : Endpoint<UpdateWikiInfoCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;

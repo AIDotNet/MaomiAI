@@ -33,23 +33,9 @@ public class QueryDefaultAiModelListCommandHandler : IRequestHandler<QueryDefaul
     /// <inheritdoc/>
     public async Task<QueryDefaultAiModelListResponse> Handle(QueryDefaultAiModelListCommand request, CancellationToken cancellationToken)
     {
-        var list = await _dbContext.TeamDefaultAiModels.Where(x => x.TeamId == request.TeamId)
-            .Join(_dbContext.TeamAiModels.Where(x => x.TeamId == request.TeamId), a => a.ModelId, b => b.Id, (a, b) => new AiModelDefaultConfiguration
-            {
-                AiFunction = EnumHelper.DecomposeFlags<AiModelFunction>(b.AiModelFunction),
-                ModelId = a.ModelId,
-                Name = b.Name,
-                IsSupportFunctionCall = b.IsSupportFunctionCall,
-                IsSupportImg = b.IsSupportImg,
-                Provider = b.AiProvider,
-                EmbeddinMaxToken = b.EmbeddinMaxToken,
-                TextMaxToken = b.TextMaxToken,
-            }).DistinctBy(x => x.AiFunction)
-            .ToArrayAsync();
-
         return new QueryDefaultAiModelListResponse
         {
-            AiModels = list
+            AiModels = null
         };
     }
 }

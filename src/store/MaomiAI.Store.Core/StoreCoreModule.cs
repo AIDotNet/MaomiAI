@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Infra;
 using MaomiAI.Store.Clients;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
@@ -31,10 +32,44 @@ public class StoreCoreModule : IModule
         Buffered = true
     };
 
+    private readonly SystemOptions _systemOptions;
+
+    public StoreCoreModule(SystemOptions systemOptions)
+    {
+        _systemOptions = systemOptions;
+    }
+
     /// <inheritdoc />
     public void ConfigureServices(ServiceContext context)
     {
-        context.Services.AddRefitClient<IFileDownClient>(RefitSettings)
-            .SetHandlerLifetime(TimeSpan.FromSeconds(2));
+        var publicEndpoint = new Uri(_systemOptions.PublicStore.Endpoint);
+        var privateEndpoint = new Uri(_systemOptions.PrivateStore.Endpoint);
+
+        if (!_systemOptions.PublicStore.ForcePathStyle)
+        {
+            publicEndpoint = new Uri($"{publicEndpoint.Scheme}://{_systemOptions.PublicStore.Bucket}.{publicEndpoint.Host}");
+        }
+        else
+        {
+            publicEndpoint = new Uri($"{publicEndpoint.Scheme}://{publicEndpoint.Host}/{_systemOptions.PublicStore.Bucket}");
+        }
+
+        if (!_systemOptions.PrivateStore.ForcePathStyle)
+        {
+            privateEndpoint = new Uri($"{privateEndpoint.Scheme}://{_systemOptions.PrivateStore.Bucket}.{privateEndpoint.Host}");
+        }
+        else
+        {
+            privateEndpoint = new Uri($"{privateEndpoint.Scheme}://{privateEndpoint.Host}/{_systemOptions.PrivateStore.Bucket}");
+        }
+
+        context.Services
+            .AddRefitClient<IPrivateFileDownClient>(RefitSettings)
+            .SetHandlerLifetime(TimeSpan.FromSeconds(100))
+            .ConfigureHttpClient(c => c.BaseAddress = privateEndpoint);
+
+        context.Services.AddRefitClient<IPublicFileDownClient>(RefitSettings)
+            .SetHandlerLifetime(TimeSpan.FromSeconds(100))
+            .ConfigureHttpClient(c => c.BaseAddress = publicEndpoint);
     }
 }

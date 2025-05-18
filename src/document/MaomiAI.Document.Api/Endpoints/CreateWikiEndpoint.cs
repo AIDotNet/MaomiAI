@@ -16,7 +16,7 @@ namespace MaomiAI.Document.Api.Endpoints;
 /// 创建知识库.
 /// </summary>
 [EndpointGroupName("wiki")]
-[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/{{teamId}}/create")]
+[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/create")]
 public class CreateWikiEndpoint : Endpoint<CreateWikiCommand, IdResponse>
 {
     private readonly IMediator _mediator;
@@ -42,7 +42,7 @@ public class CreateWikiEndpoint : Endpoint<CreateWikiCommand, IdResponse>
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsAdmin)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

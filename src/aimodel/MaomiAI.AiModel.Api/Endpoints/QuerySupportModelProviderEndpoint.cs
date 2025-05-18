@@ -15,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询支持的供应商列表和配置.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpGet($"{AiModelApi.ApiPrefix}/support_provider")]
+[HttpGet("aimodel/support_provider")]
 public class QuerySupportModelProviderEndpoint : Endpoint<EmptyRequest, QuerySupportModelProviderCommandResponse>
 {
     private readonly IMediator _mediator;

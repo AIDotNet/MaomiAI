@@ -7,8 +7,6 @@
 using MaomiAI.AiModel.Shared.Commands;
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
-using MaomiAI.Infra.Helpers;
-using MaomiAI.Infra.Service;
 using MaomiAI.Infra.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -22,19 +20,16 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
 {
     private readonly DatabaseContext _dbContext;
     private readonly IRsaProvider _rsaProvider;
-    private readonly IAESProvider _aesProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AddAiModelCommandHandler"/> class.
     /// </summary>
     /// <param name="dbContext"></param>
     /// <param name="rsaProvider"></param>
-    /// <param name="aesProvider"></param>
-    public AddAiModelCommandHandler(DatabaseContext dbContext, IRsaProvider rsaProvider, IAESProvider aesProvider)
+    public AddAiModelCommandHandler(DatabaseContext dbContext, IRsaProvider rsaProvider)
     {
         _dbContext = dbContext;
         _rsaProvider = rsaProvider;
-        _aesProvider = aesProvider;
     }
 
     /// <inheritdoc/>
@@ -42,7 +37,7 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
     {
         var existModel = await _dbContext.TeamAiModels
             .AsNoTracking()
-            .AnyAsync(x => x.TeamId == request.TeamId && x.Name == request.Endpoint.Name, cancellationToken);
+            .AnyAsync(x => x.TeamId == request.TeamId && x.DisplayName == request.Endpoint.DisplayName, cancellationToken);
 
         if (existModel)
         {
@@ -60,23 +55,23 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
             throw new BusinessException("key未正确加密") { StatusCode = 400 };
         }
 
-        // 重新使用 AES加密
-        skKey = _aesProvider.Encrypt(skKey);
-
         var aiModel = new TeamAiModelEntity
         {
             TeamId = request.TeamId,
-            Endpoint = request.Endpoint.Endpoint,
-            DeploymentName = request.Endpoint.DeploymentName,
-            ModeId = request.Endpoint.ModelId,
-            AiModelFunction = (int)EnumHelper.ComposeFlags(request.Endpoint.AiFunction),
-            AiProvider = request.Endpoint.Provider.ToString(),
-            Key = skKey,
-            IsSupportImg = request.Endpoint.IsSupportImg,
-            IsSupportFunctionCall = request.Endpoint.IsSupportFunctionCall,
             Name = request.Endpoint.Name,
-            EmbeddinMaxToken = request.Endpoint.EmbeddinMaxToken,
-            TextMaxToken = request.Endpoint.TextMaxToken,
+            DeploymentName = request.Endpoint.DeploymentName,
+            DisplayName = request.Endpoint.DisplayName,
+            AiModelType = request.Endpoint.AiModelType.ToString(),
+            AiProvider = request.Endpoint.Provider.ToString(),
+            ContextWindowTokens = request.Endpoint.ContextWindowTokens,
+            Endpoint = request.Endpoint.Endpoint,
+            Key = skKey,
+            MaxDimension = request.Endpoint.MaxDimension,
+            TextOutput = request.Endpoint.TextOutput,
+            FunctionCall = request.Endpoint.Abilities.FunctionCall ?? false,
+            Files = request.Endpoint.Abilities.Files ?? false,
+            ImageOutput = request.Endpoint.Abilities.ImageOutput ?? false,
+            Vision = request.Endpoint.Abilities.Vision ?? false,
         };
 
         await _dbContext.AddAsync(aiModel, cancellationToken);

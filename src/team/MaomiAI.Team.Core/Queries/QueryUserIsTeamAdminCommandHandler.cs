@@ -16,7 +16,7 @@ namespace MaomiAI.Team.Core.Queries;
 /// <summary>
 /// 获取管理员 id 列表.
 /// </summary>
-public class QueryUserIsTeamAdminCommandHandler : IRequestHandler<QueryUserIsTeamAdminCommand, ExistResponse>
+public class QueryUserIsTeamAdminCommandHandler : IRequestHandler<QueryUserIsTeamAdminCommand, QueryUserIsTeamAdminCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
 
@@ -30,14 +30,23 @@ public class QueryUserIsTeamAdminCommandHandler : IRequestHandler<QueryUserIsTea
     }
 
     /// <inheritdoc/>
-    public async Task<ExistResponse> Handle(QueryUserIsTeamAdminCommand request, CancellationToken cancellationToken)
+    public async Task<QueryUserIsTeamAdminCommandResponse> Handle(QueryUserIsTeamAdminCommand request, CancellationToken cancellationToken)
     {
-        var isOwner = await _dbContext.Teams.Where(x => x.Id == request.TeamId && x.OwnerId == request.UserId).AnyAsync();
-        if (isOwner)
+        var wikiOwenerId = await _dbContext.Teams.Where(x => x.Id == request.TeamId && x.OwnerId == request.UserId)
+            .Select(x => x.OwnerId)
+            .FirstOrDefaultAsync();
+
+        if (wikiOwenerId == default)
         {
-            return new ExistResponse
+            throw new BusinessException("团队不存在") { StatusCode = 404 };
+        }
+
+        if (wikiOwenerId == request.UserId)
+        {
+            return new QueryUserIsTeamAdminCommandResponse
             {
-                IsExist = true
+                IsOwner = true,
+                IsAdmin = true
             };
         }
 
@@ -45,9 +54,10 @@ public class QueryUserIsTeamAdminCommandHandler : IRequestHandler<QueryUserIsTea
             .Where(x => x.TeamId == request.TeamId && x.UserId == request.UserId && x.IsAdmin == true)
             .AnyAsync(cancellationToken);
 
-        return new ExistResponse
+        return new QueryUserIsTeamAdminCommandResponse
         {
-            IsExist = isAdmin
+            IsOwner = false,
+            IsAdmin = isAdmin
         };
     }
 }

@@ -12,15 +12,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Document.Core.Queries;
 
+/// <summary>
+/// 查询团队知识库列表.
+/// </summary>
 public class QueryTeamWikiListCommandHandler : IRequestHandler<QueryTeamWikiListCommand, IReadOnlyCollection<QueryWikiSimpleInfoResponse>>
 {
     private readonly DatabaseContext _databaseContext;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QueryTeamWikiListCommandHandler"/> class.
+    /// </summary>
+    /// <param name="databaseContext"></param>
     public QueryTeamWikiListCommandHandler(DatabaseContext databaseContext)
     {
         _databaseContext = databaseContext;
     }
 
+    /// <inheritdoc/>
     public async Task<IReadOnlyCollection<QueryWikiSimpleInfoResponse>> Handle(QueryTeamWikiListCommand request, CancellationToken cancellationToken)
     {
         var response = await _databaseContext.TeamWikis

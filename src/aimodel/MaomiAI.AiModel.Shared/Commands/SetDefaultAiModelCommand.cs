@@ -20,12 +20,12 @@ public class SetDefaultAiModelCommand : IRequest<EmptyCommandResponse>
     public Guid TeamId { get; init; }
 
     /// <summary>
+    /// AI 模型的功能.
+    /// </summary>
+    public AiModelType AiModelType { get; init; }
+
+    /// <summary>
     /// 模型 id.
     /// </summary>
     public Guid ModelId { get; init; }
-
-    /// <summary>
-    /// AI 模型的功能.
-    /// </summary>
-    public AiModelFunction AiFunction { get; init; }
 }

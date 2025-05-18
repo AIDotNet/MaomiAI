@@ -6,7 +6,13 @@
 
 namespace MaomiAI.AiModel.Api;
 
+/// <summary>
+/// Api 接口.
+/// </summary>
 public static class AiModelApi
 {
-    public const string ApiPrefix = "aimodel";
+    /// <summary>
+    /// Api 接口前缀.
+    /// </summary>
+    public const string ApiPrefix = "{teamId}/aimodel";
 }

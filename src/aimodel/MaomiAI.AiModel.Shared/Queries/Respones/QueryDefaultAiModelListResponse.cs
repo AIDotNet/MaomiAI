@@ -4,5 +4,5 @@ namespace MaomiAI.AiModel.Shared.Queries.Respones;
 
 public class QueryDefaultAiModelListResponse
 {
-    public IReadOnlyCollection<AiModelDefaultConfiguration> AiModels { get; init; } = default!;
+    public IReadOnlyCollection<AiNotKeyEndpoint> AiModels { get; init; } = default!;
 }

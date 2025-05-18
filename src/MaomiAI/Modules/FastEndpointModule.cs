@@ -40,6 +40,8 @@ public class FastEndpointModule : IModule
                 var settings = options.Services.GetRequiredService<SystemOptions>();
                 var serverAddressesFeature = options.Services.GetRequiredService<IServer>().Features.Get<IServerAddressesFeature>();
 
+                options.ShortSchemaNames = true;
+
                 options.DocumentSettings = s =>
                 {
                     s.Title = "AI API";

@@ -1,27 +1,23 @@
-﻿// <copyright file="SetEmbeddingGenerationDocumentTaskCommandHandler.cs" company="MaomiAI">
+﻿// <copyright file="EmbeddingDocumentCommandConsumer.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Azure.Core;
-using DocumentFormat.OpenXml.Office2016.Excel;
 using Maomi.MQ;
 using MaomiAI.AiModel.Shared.Helpers;
 using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using MaomiAI.Document.Core.Consumers.Events;
 using MaomiAI.Document.Core.Services;
 using MaomiAI.Document.Shared.Models;
 using MaomiAI.Infra;
 using MaomiAI.Infra.Helpers;
-using MaomiAI.Infra.Service;
 using MaomiAI.Store.Clients;
 using MaomiAI.Store.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.AI;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.KernelMemory;
 using Microsoft.KernelMemory.Configuration;
 
@@ -34,21 +30,23 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
     private readonly SystemOptions _systemOptions;
     private readonly CustomKernelMemoryBuilder _customKernelMemoryBuilder;
     private readonly IMediator _mediator;
-    private readonly IFileDownClient _fileDownClient;
 
-    public EmbeddingDocumentCommandConsumer(DatabaseContext databaseContext, SystemOptions systemOptions, CustomKernelMemoryBuilder customKernelMemoryBuilder, IMediator mediator, IFileDownClient fileDownClient)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EmbeddingDocumentCommandConsumer"/> class.
+    /// </summary>
+    /// <param name="serviceProvider"></param>
+    public EmbeddingDocumentCommandConsumer(IServiceProvider serviceProvider)
     {
-        _databaseContext = databaseContext;
-        _systemOptions = systemOptions;
-        _customKernelMemoryBuilder = customKernelMemoryBuilder;
-        _mediator = mediator;
-        _fileDownClient = fileDownClient;
+        _databaseContext = serviceProvider.GetRequiredService<DatabaseContext>();
+        _systemOptions = serviceProvider.GetRequiredService<SystemOptions>();
+        _customKernelMemoryBuilder = serviceProvider.GetRequiredService<CustomKernelMemoryBuilder>();
+        _mediator = serviceProvider.GetRequiredService<IMediator>();
     }
 
     public async Task ExecuteAsync(MessageHeader messageHeader, EmbeddingDocumentEvent message)
     {
         var documentTask = await _databaseContext.TeamWikiDocumentTasks
-             .FirstOrDefaultAsync(x => x.DocumentId == message.DocumentId && x.TaskId == message.TaskId);
+             .FirstOrDefaultAsync(x => x.DocumentId == message.DocumentId && x.TaskTag == message.TaskI);
 
         // 不需要处理
         if (documentTask == null || documentTask.State > (int)FileEmbeddingState.Processing)
@@ -80,18 +78,13 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
 
         // 下载文件
         var filePath = Path.Combine(Path.GetTempPath(), Path.GetTempFileName() + Path.GetExtension(documentFile.FileName));
-        var fileDownloadInfo = await _mediator.Send(new QueryFileDownloadUrlCommand
-        {
-            ExpiryDuration = TimeSpan.FromMinutes(5),
-            ObjectKeys = new List<string> { documentFile.FilePath }
-        });
 
-        using var remoteFileStream = await _fileDownClient.DownloadFileAsync(fileDownloadInfo.Urls.First().Value.ToString());
-        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+        await _mediator.Send(new DownloadFileCommand
         {
-            await remoteFileStream.CopyToAsync(fileStream);
-        }
-        await remoteFileStream.DisposeAsync();
+            Visibility = Store.Enums.FileVisibility.Private,
+            ObjectKey = documentFile.FilePath,
+            FilePath = filePath
+        });
 
         var teamWikiConfig = await _databaseContext.TeamWikiConfigs
         .Where(x => x.TeamId == documentTask.TeamId && x.WikiId == documentTask.WikiId)
@@ -142,15 +135,8 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
 
         _customKernelMemoryBuilder.ConfigEmbeddingModel(memoryBuilder, aiEndpoint, teamWikiConfig.EmbeddingDimensions, teamWikiConfig.EmbeddingBatchSize, teamWikiConfig.MaxRetries, teamWikiConfig.EmbeddingModelTokenizer);
 
-        var memoryClient = memoryBuilder.WithAzureOpenAITextGeneration(new AzureOpenAIConfig
-        {
-            // 向量化时用不到文本生成模型，可以乱配置一个
-            Deployment = "text-embedding-3-large",
-            Endpoint = "https://aaa.openai.azure.com/",
-            Auth = AzureOpenAIConfig.AuthTypes.APIKey,
-            APIType = AzureOpenAIConfig.APITypes.ChatCompletion,
-            APIKey = "00000",
-        })
+        var memoryClient = memoryBuilder.WithoutTextGenerator()
+
             .WithPostgresMemoryDb(new PostgresConfig
             {
                 ConnectionString = _systemOptions.DocumentStore.Database,
@@ -162,6 +148,9 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
                 OverlappingTokens = documentTask.OverlappingTokens
             })
             .Build();
+
+        // 先删除
+        await memoryClient.DeleteDocumentAsync(documentTask.DocumentId.ToString(), index: "n" + documentTask.WikiId);
 
         var docs = new Microsoft.KernelMemory.Document()
         {

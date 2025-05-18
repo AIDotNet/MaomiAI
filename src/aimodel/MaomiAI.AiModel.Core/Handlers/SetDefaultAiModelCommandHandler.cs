@@ -1,21 +1,18 @@
-﻿// <copyright file="UpdateAiModelCommandHandler.cs" company="MaomiAI">
+﻿// <copyright file="SetDefaultAiModelCommandHandler.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using FastEndpoints;
 using MaomiAI.AiModel.Shared.Commands;
 using MaomiAI.Database;
-using MaomiAI.Infra.Service;
-using MaomiAI.Infra.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.AiModel.Core.Handlers;
 
 /// <summary>
-/// 设置默认模型.
+/// 设置某个功能领域默认使用的模型.
 /// </summary>
 public class SetDefaultAiModelCommandHandler : IRequestHandler<SetDefaultAiModelCommand, EmptyCommandResponse>
 {
@@ -43,7 +40,7 @@ public class SetDefaultAiModelCommandHandler : IRequestHandler<SetDefaultAiModel
         }
 
         var defaultModel = await _dbContext.TeamDefaultAiModels
-            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.Function == (int)request.AiFunction, cancellationToken);
+            .FirstOrDefaultAsync(x => x.TeamId == request.TeamId && x.AiModelType == request.AiModelType.ToString(), cancellationToken);
 
         if (defaultModel == null)
         {
@@ -51,7 +48,7 @@ public class SetDefaultAiModelCommandHandler : IRequestHandler<SetDefaultAiModel
             {
                 TeamId = request.TeamId,
                 ModelId = request.ModelId,
-                Function = (int)request.AiFunction
+                AiModelType = request.AiModelType.ToString(),
             };
 
             await _dbContext.AddAsync(defaultModel, cancellationToken);

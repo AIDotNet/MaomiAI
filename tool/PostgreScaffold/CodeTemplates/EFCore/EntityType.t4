@@ -107,7 +107,7 @@ public partial class <#= EntityType.Name #>Entity : IFullAudited
             targetTypeName = "DateTimeOffset";
         }
 #>
-    public <#= targetTypeName #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? "  = default!;" : "" #>
+    public <#= targetTypeName #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = default!;" : "" #>
 <#
         firstProperty = false;
     }

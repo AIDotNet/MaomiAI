@@ -38,7 +38,6 @@ public class MessageModule : IModule
             options.RegisterGenericHandlers = true;
         });
          */
-
         context.Services.AddMaomiMQ(
             (MqOptionsBuilder options) =>
             {
@@ -47,12 +46,12 @@ public class MessageModule : IModule
                 options.AppName = "MaomiAI";
                 options.Rabbit = (ConnectionFactory options) =>
                 {
-                    options.HostName = _systemOptions.MessageStore.RabbitMQ!;
-                    options.Port = 5672;
+                    options.Uri = new Uri(_systemOptions.MessageStore.RabbitMQ!);
+                    options.ConsumerDispatchConcurrency = 100;
                     options.ClientProvidedName = Assembly.GetExecutingAssembly().GetName().Name;
                 };
             },
-            [typeof(Program).Assembly],
+            context.Modules.Select(x => x.Assembly).ToArray(),
             [new ConsumerTypeFilter(), new EventBusTypeFilter(), new MediatrTypeFilter()]);
     }
 }

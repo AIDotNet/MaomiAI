@@ -15,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 设置某个领域下默认的 ai 模型.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/setdefault")]
+[HttpPost($"{AiModelApi.ApiPrefix}/setdefault")]
 public class SetDefaultAiModelEndpoint : Endpoint<SetDefaultAiModelCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
@@ -41,7 +41,7 @@ public class SetDefaultAiModelEndpoint : Endpoint<SetDefaultAiModelCommand, Empt
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsAdmin)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

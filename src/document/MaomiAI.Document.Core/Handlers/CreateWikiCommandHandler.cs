@@ -9,6 +9,7 @@ using MaomiAI.Database.Entities;
 using MaomiAI.Document.Shared.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 
 namespace MaomiAI.Document.Core.Handlers;
 
@@ -36,6 +37,11 @@ public class CreateWikiCommandHandler : IRequestHandler<CreateWikiCommand, IdRes
         {
             throw new BusinessException("已存在同名知识库") { StatusCode = 409 };
         }
+
+        using TransactionScope transactionScope = new TransactionScope(
+            scopeOption: TransactionScopeOption.Required,
+            asyncFlowOption: TransactionScopeAsyncFlowOption.Enabled,
+            transactionOptions: new TransactionOptions { IsolationLevel = IsolationLevel.RepeatableRead });
 
         var wikiEntity = new TeamWikiEntity
         {

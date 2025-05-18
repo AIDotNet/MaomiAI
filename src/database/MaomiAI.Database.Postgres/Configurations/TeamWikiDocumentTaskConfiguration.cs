@@ -58,10 +58,10 @@ public partial class TeamWikiDocumentTaskConfiguration : IEntityTypeConfiguratio
         entity.Property(e => e.State)
             .HasComment("任务状态")
             .HasColumnName("state");
-        entity.Property(e => e.TaskId)
+        entity.Property(e => e.TaskTag)
             .HasMaxLength(50)
             .HasComment("任务标识，用来判断要执行的任务是否一致")
-            .HasColumnName("task_id");
+            .HasColumnName("task_tag");
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");

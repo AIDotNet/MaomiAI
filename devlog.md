@@ -1,3 +1,12 @@
+* 命令使用 Command 结尾，响应结果尽量使用 CommandResponse 结尾，如果是集合或分页，可不使用 CommandResponse 结尾。
+* Handler 使用 CommandHandler 结尾。
+* Endpoint 使用 XXEndpoint，与 XXCommand 抱持一致。
+* 命名一般 20 字符，考虑比较长 50，描述 255，其它长文本。
+
+
+
+
+
 ### 0.0.1 版本
 
 - [ ] 用户注册、用户登录、token、修改密码；

@@ -13,7 +13,7 @@ using MediatR;
 namespace MaomiAI.AiModel.Api.Endpoints;
 
 /// <summary>
-/// 查询团队在某个供应商下的模型列表.
+/// 查询模型列表.
 /// </summary>
 [EndpointGroupName("aimodel")]
 [HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/modellist")]
@@ -42,7 +42,7 @@ public class QueryAiModelListCommandEndpoint : Endpoint<QueryAiModelListCommand,
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsAdmin)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

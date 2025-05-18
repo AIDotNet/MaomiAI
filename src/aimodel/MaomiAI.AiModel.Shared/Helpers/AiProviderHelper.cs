@@ -75,7 +75,7 @@ public static class AiProviderHelper
         new AiProviderInfo
         {
             Provider = AiProvider.AzureOpenAI,
-            Name = "Azure OpenAI",
+            Name = "AzureOpenAI",
             Description = "Azure OpenAI 服务商",
             Icon = "azure_openai.png",
             DefaultEndpoint = "https://{endpoint}.openai.azure.com"

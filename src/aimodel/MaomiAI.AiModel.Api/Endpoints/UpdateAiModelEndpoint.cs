@@ -15,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 修改 AI 模型信息，key 要使用 RSA 公钥加密，如果不修改 key 需设置 key=*.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/update")]
+[HttpPost($"{AiModelApi.ApiPrefix}/update")]
 public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
@@ -41,7 +41,7 @@ public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommand
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsAdmin)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

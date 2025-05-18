@@ -27,5 +27,5 @@ public class UpdateAiModelCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// AI 端点.
     /// </summary>
-    public UploadAiModelEndpoint Endpoint { get; init; } = default!;
+    public AiEndpoint Endpoint { get; init; } = default!;
 }

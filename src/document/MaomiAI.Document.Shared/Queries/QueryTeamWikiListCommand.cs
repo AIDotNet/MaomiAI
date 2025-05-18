@@ -14,5 +14,8 @@ namespace MaomiAI.Document.Shared.Queries;
 /// </summary>
 public class QueryTeamWikiListCommand : IRequest<IReadOnlyCollection<QueryWikiSimpleInfoResponse>>
 {
+    /// <summary>
+    /// 团队 id.
+    /// </summary>
     public Guid TeamId { get; init; }
 }

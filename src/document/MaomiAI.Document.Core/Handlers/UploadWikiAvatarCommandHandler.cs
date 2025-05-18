@@ -6,18 +6,14 @@
 
 using MaomiAI.Database;
 using MaomiAI.Document.Shared.Commands;
-using MaomiAI.Infra.Models;
-using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MaomiAI.Document.Core.Handlers;
 
+/// <summary>
+/// 上传知识库头像.
+/// </summary>
 public class UploadWikiAvatarCommandHandler : IRequestHandler<UploadWikiAvatarCommand, EmptyCommandResponse>
 {
     private readonly DatabaseContext _databaseContext;

@@ -7,6 +7,8 @@
 using FastEndpoints;
 using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
+using System;
+using System.Linq;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +43,8 @@ app.UseHttpLogging();
 
 app.UseFastEndpoints((Action<Config>?)(c =>
 {
+    c.Endpoints.ShortNames = true;
+
     c.Endpoints.RoutePrefix = "api";
     c.Errors.ProducesMetadataType = typeof(MaomiAI.Infra.Models.BusinessExceptionResponse);
 

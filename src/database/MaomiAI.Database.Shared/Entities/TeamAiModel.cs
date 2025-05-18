@@ -20,9 +20,9 @@ public partial class TeamAiModelEntity : IFullAudited
     public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 模型功能AiModelFunction.
+    /// 模型类型，AiModelType.
     /// </summary>
-    public int AiModelFunction { get; set; }
+    public string AiModelType { get; set; }
 
     /// <summary>
     /// ai供应商AiProvider.
@@ -48,11 +48,6 @@ public partial class TeamAiModelEntity : IFullAudited
     /// key.
     /// </summary>
     public string Key { get; set; }  = default!;
-
-    /// <summary>
-    /// 是否支持图片.
-    /// </summary>
-    public bool IsSupportImg { get; set; }
 
     /// <summary>
     /// 是否删除.
@@ -82,7 +77,7 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// 支持function call.
     /// </summary>
-    public bool IsSupportFunctionCall { get; set; }
+    public bool FunctionCall { get; set; }
 
     /// <summary>
     /// 名字.
@@ -90,12 +85,37 @@ public partial class TeamAiModelEntity : IFullAudited
     public string Name { get; set; }  = default!;
 
     /// <summary>
-    /// 文本模型最大支持上下文token.
+    /// 最大文本输出token.
     /// </summary>
-    public int TextMaxToken { get; set; }
+    public int TextOutput { get; set; }
 
     /// <summary>
-    /// 嵌入模型最大支持token数量.
+    /// 向量的维度.
     /// </summary>
-    public int EmbeddinMaxToken { get; set; }
+    public int MaxDimension { get; set; }
+
+    /// <summary>
+    /// 显示名称.
+    /// </summary>
+    public string DisplayName { get; set; }  = default!;
+
+    /// <summary>
+    /// 上下文最大token数量.
+    /// </summary>
+    public int ContextWindowTokens { get; set; }
+
+    /// <summary>
+    /// 支持文件上传.
+    /// </summary>
+    public bool Files { get; set; }
+
+    /// <summary>
+    /// 支持图片输出.
+    /// </summary>
+    public bool ImageOutput { get; set; }
+
+    /// <summary>
+    /// 支持视觉.
+    /// </summary>
+    public bool Vision { get; set; }
 }

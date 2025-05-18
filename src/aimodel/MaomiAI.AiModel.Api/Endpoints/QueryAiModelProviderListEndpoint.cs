@@ -16,7 +16,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询团队的ai服务商列表.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpGet($"{AiModelApi.ApiPrefix}/{{teamId}}/providerlist")]
+[HttpGet($"{AiModelApi.ApiPrefix}/providerlist")]
 public class QueryAiModelProviderListEndpoint : Endpoint<QueryAiModelProviderListCommand, QueryAiModelProviderListResponse>
 {
     private readonly IMediator _mediator;
@@ -36,13 +36,13 @@ public class QueryAiModelProviderListEndpoint : Endpoint<QueryAiModelProviderLis
     /// <inheritdoc/>
     public override async Task<QueryAiModelProviderListResponse> ExecuteAsync(QueryAiModelProviderListCommand req, CancellationToken ct)
     {
-        var isAdmin = await _mediator.Send(new QueryUserIsTeamAdminCommand
+        var isAdmin = await _mediator.Send(new QueryUserIsTeamMemberCommand
         {
             TeamId = req.TeamId,
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsMember)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

@@ -23,14 +23,18 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
-        entity.Property(e => e.AiModelFunction)
-            .HasComment("模型功能AiModelFunction")
-            .HasColumnName("ai_model_function");
+        entity.Property(e => e.AiModelType)
+            .HasComment("模型类型，AiModelType")
+            .HasColumnName("ai_model_type");
         entity.Property(e => e.AiProvider)
             .HasMaxLength(50)
             .HasDefaultValueSql("'Custom'::character varying")
             .HasComment("ai供应商AiProvider")
             .HasColumnName("ai_provider");
+        entity.Property(e => e.ContextWindowTokens)
+            .HasDefaultValue(0)
+            .HasComment("上下文最大token数量")
+            .HasColumnName("context_window_tokens");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")
@@ -42,30 +46,36 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasMaxLength(50)
             .HasComment("部署名称")
             .HasColumnName("deployment_name");
-        entity.Property(e => e.EmbeddinMaxToken)
-            .HasDefaultValue(8191)
-            .HasComment("嵌入模型最大支持token数量")
-            .HasColumnName("embeddin_max_token");
+        entity.Property(e => e.DisplayName)
+            .HasMaxLength(20)
+            .HasComment("显示名称")
+            .HasColumnName("display_name");
         entity.Property(e => e.Endpoint)
             .HasMaxLength(100)
             .HasComment("api服务端点")
             .HasColumnName("endpoint");
+        entity.Property(e => e.Files)
+            .HasComment("支持文件上传")
+            .HasColumnName("files");
+        entity.Property(e => e.FunctionCall)
+            .HasDefaultValue(false)
+            .HasComment("支持function call")
+            .HasColumnName("function_call");
+        entity.Property(e => e.ImageOutput)
+            .HasComment("支持图片输出")
+            .HasColumnName("image_output");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("是否删除")
             .HasColumnName("is_deleted");
-        entity.Property(e => e.IsSupportFunctionCall)
-            .HasDefaultValue(false)
-            .HasComment("支持function call")
-            .HasColumnName("is_support_function_call");
-        entity.Property(e => e.IsSupportImg)
-            .HasDefaultValue(false)
-            .HasComment("是否支持图片")
-            .HasColumnName("is_support_img");
         entity.Property(e => e.Key)
             .HasMaxLength(100)
             .HasComment("key")
             .HasColumnName("key");
+        entity.Property(e => e.MaxDimension)
+            .HasDefaultValue(8191)
+            .HasComment("向量的维度")
+            .HasColumnName("max_dimension");
         entity.Property(e => e.ModeId)
             .HasMaxLength(50)
             .HasComment("模型id")
@@ -77,10 +87,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");
-        entity.Property(e => e.TextMaxToken)
+        entity.Property(e => e.TextOutput)
             .HasDefaultValue(8192)
-            .HasComment("文本模型最大支持上下文token")
-            .HasColumnName("text_max_token");
+            .HasComment("最大文本输出token")
+            .HasColumnName("text_output");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")
@@ -88,6 +98,10 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
         entity.Property(e => e.UpdateUserId)
             .HasComment("更新人ID")
             .HasColumnName("update_user_id");
+        entity.Property(e => e.Vision)
+            .HasDefaultValue(false)
+            .HasComment("支持视觉")
+            .HasColumnName("vision");
 
         OnConfigurePartial(entity);
     }

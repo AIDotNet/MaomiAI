@@ -30,7 +30,7 @@ public class CustomKernelMemoryBuilder
 {
     private readonly SystemOptions _systemOptions;
 
-    public void ConfigEmbeddingModel(IKernelMemoryBuilder kernelMemoryBuilder, AiEndpoint endpoint, int embeddingDimensions, int maxEmbeddingBatchSize, int maxRetries, string tokenizer)
+    public void ConfigEmbeddingModel(IKernelMemoryBuilder kernelMemoryBuilder, AiEndpoint endpoint, WikiConfig wikiConfig)
     {
         if (!endpoint.AiFunction.Contains(AiModelFunction.TextEmbeddingGeneration))
         {

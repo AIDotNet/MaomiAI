@@ -8,15 +8,17 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using MaomiAI.Infra;
+using MaomiAI.Infra.Models;
 using System.Diagnostics;
 using System.Net;
+using System.Security.AccessControl;
 
 namespace MaomiAI.Store.Services;
 
 /// <summary>
 /// S3 存储对接.
 /// </summary>
-public class S3Store : IFileStore, IDisposable
+public class S3Store : IFileStore, IPublicFileStore, IPrivateFileStore, IDisposable
 {
     private readonly SystemStoreOption _storeOption;
     private readonly AmazonS3Client _s3Client;
@@ -78,7 +80,8 @@ public class S3Store : IFileStore, IDisposable
             {
                 BucketName = _storeOption.Bucket,
                 Key = key,
-                Expires = DateTime.UtcNow.Add(expiryDuration)
+                Verb = HttpVerb.GET, // 指定只能用于下载
+                Expires = DateTime.Now.Add(expiryDuration)
             };
             string? url = await _s3Client.GetPreSignedURLAsync(request);
             return new KeyValuePair<string, Uri>(key, new Uri(url));
@@ -106,6 +109,19 @@ public class S3Store : IFileStore, IDisposable
         {
             return false;
         }
+    }
+
+    /// <inheritdoc/>
+    public async Task DownloadAsync(string objectKey,string filePath)
+    {
+        GetObjectRequest? request = new()
+        {
+            BucketName = _storeOption.Bucket,
+            Key = objectKey
+        };
+
+        using var response = await _s3Client.GetObjectAsync(request);
+        await response.WriteResponseStreamToFileAsync(filePath, true, CancellationToken.None);
     }
 
     /// <inheritdoc/>

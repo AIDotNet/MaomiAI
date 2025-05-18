@@ -10,15 +10,13 @@ using MaomiAI.Document.Shared.Queries.Response;
 using MaomiAI.Infra;
 using MaomiAI.Store.Queries;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MaomiAI.Document.Core.Queries;
 
+/// <summary>
+/// 查询知识库简单信息.
+/// </summary>
 public class QueryWikiSimpleInfoCommandHandler : IRequestHandler<QueryWikiSimpleInfoCommand, QueryWikiSimpleInfoResponse>
 {
     private readonly DatabaseContext _databaseContext;

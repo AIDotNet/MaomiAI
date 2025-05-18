@@ -22,7 +22,7 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     /// <summary>
     /// 功能.
     /// </summary>
-    public int Function { get; set; }
+    public string AiModelType { get; set; }
 
     /// <summary>
     /// 是否删除.

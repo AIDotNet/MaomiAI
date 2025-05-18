@@ -7,6 +7,7 @@
 using FastEndpoints;
 using MaomiAI.AiModel.Shared.Queries;
 using MaomiAI.AiModel.Shared.Queries.Respones;
+using MaomiAI.Team.Shared.Queries;
 using MediatR;
 
 namespace MaomiAI.AiModel.Api.Endpoints;
@@ -15,48 +16,37 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询供应商模型默认列表，获取在某个功能需求下默认使用的模型.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/defaultconfiguration")]
+[HttpPost($"{AiModelApi.ApiPrefix}/default_aimodel")]
 public class QueryDefaultAiModelListEndpoint : Endpoint<QueryDefaultAiModelListCommand, QueryDefaultAiModelListResponse>
 {
     private readonly IMediator _mediator;
+    private readonly UserContext _userContext;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryDefaultAiModelListEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
-    public QueryDefaultAiModelListEndpoint(IMediator mediator)
+    /// <param name="userContext"></param>
+    public QueryDefaultAiModelListEndpoint(IMediator mediator, UserContext userContext)
     {
         _mediator = mediator;
+        _userContext = userContext;
     }
 
     /// <inheritdoc/>
     public override async Task<QueryDefaultAiModelListResponse> ExecuteAsync(QueryDefaultAiModelListCommand req, CancellationToken ct)
     {
-        return await _mediator.Send(req);
-    }
-}
+        var isAdmin = await _mediator.Send(new QueryUserIsTeamMemberCommand
+        {
+            TeamId = req.TeamId,
+            UserId = _userContext.UserId
+        });
 
-/// <summary>
-/// 获取某个功能需求下的 AI 模型列表.
-/// </summary>
-[EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/function_ailist")]
-public class QueryAiModelFunctionListCommandEndpoint : Endpoint<QueryAiModelFunctionListCommand, QueryAiModelFunctionListCommandResponse>
-{
-    private readonly IMediator _mediator;
+        if (!isAdmin.IsMember)
+        {
+            throw new BusinessException("没有操作权限.") { StatusCode = 403 };
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="QueryAiModelFunctionListCommandEndpoint"/> class.
-    /// </summary>
-    /// <param name="mediator"></param>
-    public QueryAiModelFunctionListCommandEndpoint(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    /// <inheritdoc/>
-    public override async Task<QueryAiModelFunctionListCommandResponse> ExecuteAsync(QueryAiModelFunctionListCommand req, CancellationToken ct)
-    {
         return await _mediator.Send(req);
     }
 }

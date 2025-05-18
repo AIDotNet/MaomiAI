@@ -5,1559 +5,22 @@
 import { type ApiError, type Guid, type Parsable, type ParseNode, type SerializationWriter } from '@microsoft/kiota-abstractions';
 
 /**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedCommandsAddAiModelCommand}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedCommandsAddAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedCommandsAddAiModelCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedCommandsSetDefaultAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedCommandsUpdateAiModelCommand}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedCommandsUpdateAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedCommandsUpdateAiModelCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedModelsAiEndpoint}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedModelsAiEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedModelsAiModelDefaultConfiguration}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedModelsAiModelDefaultConfigurationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedModelsAiModelDefaultConfiguration;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedModelsAiNotKeyEndpoint}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedModelsAiNotKeyEndpoint;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedModelsAiProviderInfo}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedModelsAiProviderInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedModelsAiProviderInfo;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedModelsUploadAiModelEndpoint}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedModelsUploadAiModelEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedModelsUploadAiModelEndpoint;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesQueryAiModelListCommand}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesQueryAiModelListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelListCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentCoreHandlersEmbeddingocumentCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentCoreHandlersEmbeddingocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentCoreHandlersEmbeddingocumentCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsCreateWikiCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsCreateWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsCreateWikiCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsUpdateWikiInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedCommandsUploadWikiAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesQueryWikiFileCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesQueryWikiFileCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesQueryWikiFileListCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesQueryWikiFileListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileListCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand}
- */
-// @ts-ignore
-export function createMaomiAIDocumentSharedQueriesUpdateWikiConfigCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsAuditsInfo}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsAuditsInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsAuditsInfo;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsBusinessExceptionResponse_errors}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsBusinessExceptionResponse_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse_errors;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsBusinessExceptionResponse_extensions}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsBusinessExceptionResponse_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse_extensions;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsBusinessExceptionResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsBusinessExceptionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsEmptyCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsEmptyCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsEmptyCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsEmptyDto}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsEmptyDtoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsEmptyDto;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsExistResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsExistResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsExistResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsIdResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsIdResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsIdResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsPagedParamter}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsPagedParamterFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsPagedParamter;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsPagedResultOfQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsPagedResultOfTeamMemberResponse}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsPagedResultOfTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsSimpleOfBoolean}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsSimpleOfBooleanFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsSimpleOfBoolean;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIInfraModelsSimpleOfString}
- */
-// @ts-ignore
-export function createMaomiAIInfraModelsSimpleOfStringFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIInfraModelsSimpleOfString;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIPublicQueriesResponseQueryServerInfoResponse}
- */
-// @ts-ignore
-export function createMaomiAIPublicQueriesResponseQueryServerInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIPublicQueriesResponseQueryServerInfoResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIStoreCommandsComplateFileUploadCommand}
- */
-// @ts-ignore
-export function createMaomiAIStoreCommandsComplateFileUploadCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIStoreCommandsComplateFileUploadCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIStoreCommandsResponseComplateFileCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIStoreCommandsResponseComplateFileCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIStoreCommandsResponsePreUploadFileCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIStoreCommandsResponsePreUploadFileCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIStoreCommandsResponsePreUploadFileCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsAdminInviteUserToTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsAdminInviteUserToTeamCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsAdminRemoveTeamMemberCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsPreUploadImageCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsPreUploadImageCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsPreUploadImageCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsRootCreateTeamCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsRootCreateTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsRootCreateTeamCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsRootSetTeamAdminCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsRootSetTeamAdminCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsRootSetTeamAdminCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsRootUpdateTeamInfoCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsRootUpdateTeamInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsRootUpdateTeamInfoCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedCommandsRootUploadTeamAvatarCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedCommandsRootUploadTeamAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedCommandsRootUploadTeamAvatarCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesAdminQueryTeamMemberListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesQueryTeamNameCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesQueryTeamNameCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesQueryTeamNameCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesResponsesTeamMemberResponse}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesResponsesTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesResponsesTeamMemberResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand}
- */
-// @ts-ignore
-export function createMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsLoginCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsLoginCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsLoginCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsRefreshTokenCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsRefreshTokenCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsRefreshTokenCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsRegisterUserCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsRegisterUserCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsRegisterUserCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsResponsesLoginCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsResponsesLoginCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsResponsesLoginCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsUpdateUserPasswordCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsUpdateUserPasswordCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsUpdateUserPasswordCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedCommandsUploadtUserAvatarCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedCommandsUploadtUserAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedCommandsUploadtUserAvatarCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedQueriesQueryRepeatedUserNameCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedQueriesQueryRepeatedUserNameCommand;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {MaomiAIUserSharedQueriesQueryUserInfoCommandResponse}
- */
-// @ts-ignore
-export function createMaomiAIUserSharedQueriesQueryUserInfoCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandResponse;
-}
-/**
- * Creates a new instance of the appropriate class based on discriminator value
- * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {SystemCollectionsGenericKeyValuePairOfStringAndInt32}
- */
-// @ts-ignore
-export function createSystemCollectionsGenericKeyValuePairOfStringAndInt32FromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoSystemCollectionsGenericKeyValuePairOfStringAndInt32;
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedCommandsAddAiModelCommand(maomiAIAiModelSharedCommandsAddAiModelCommand: Partial<MaomiAIAiModelSharedCommandsAddAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "endpoint": n => { maomiAIAiModelSharedCommandsAddAiModelCommand.endpoint = n.getObjectValue<MaomiAIAiModelSharedModelsAiEndpoint>(createMaomiAIAiModelSharedModelsAiEndpointFromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand(maomiAIAiModelSharedCommandsSetDefaultAiModelCommand: Partial<MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiFunction": n => { maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.aiFunction = n.getEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-        "modelId": n => { maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.modelId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedCommandsUpdateAiModelCommand(maomiAIAiModelSharedCommandsUpdateAiModelCommand: Partial<MaomiAIAiModelSharedCommandsUpdateAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "endpoint": n => { maomiAIAiModelSharedCommandsUpdateAiModelCommand.endpoint = n.getObjectValue<MaomiAIAiModelSharedModelsUploadAiModelEndpoint>(createMaomiAIAiModelSharedModelsUploadAiModelEndpointFromDiscriminatorValue); },
-        "modelId": n => { maomiAIAiModelSharedCommandsUpdateAiModelCommand.modelId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedModelsAiEndpoint(maomiAIAiModelSharedModelsAiEndpoint: Partial<MaomiAIAiModelSharedModelsAiEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiFunction": n => { maomiAIAiModelSharedModelsAiEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-        "deploymentName": n => { maomiAIAiModelSharedModelsAiEndpoint.deploymentName = n.getStringValue(); },
-        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiEndpoint.embeddinMaxToken = n.getNumberValue(); },
-        "endpoint": n => { maomiAIAiModelSharedModelsAiEndpoint.endpoint = n.getStringValue(); },
-        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
-        "isSupportImg": n => { maomiAIAiModelSharedModelsAiEndpoint.isSupportImg = n.getBooleanValue(); },
-        "key": n => { maomiAIAiModelSharedModelsAiEndpoint.key = n.getStringValue(); },
-        "modelId": n => { maomiAIAiModelSharedModelsAiEndpoint.modelId = n.getStringValue(); },
-        "name": n => { maomiAIAiModelSharedModelsAiEndpoint.name = n.getStringValue(); },
-        "provider": n => { maomiAIAiModelSharedModelsAiEndpoint.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
-        "textMaxToken": n => { maomiAIAiModelSharedModelsAiEndpoint.textMaxToken = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(maomiAIAiModelSharedModelsAiModelDefaultConfiguration: Partial<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiFunction": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.embeddinMaxToken = n.getNumberValue(); },
-        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall = n.getBooleanValue(); },
-        "isSupportImg": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg = n.getBooleanValue(); },
-        "modelId": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId = n.getGuidValue(); },
-        "name": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name = n.getStringValue(); },
-        "provider": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider = n.getStringValue(); },
-        "textMaxToken": n => { maomiAIAiModelSharedModelsAiModelDefaultConfiguration.textMaxToken = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedModelsAiNotKeyEndpoint(maomiAIAiModelSharedModelsAiNotKeyEndpoint: Partial<MaomiAIAiModelSharedModelsAiNotKeyEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiFunction": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-        "deploymentName": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName = n.getStringValue(); },
-        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.embeddinMaxToken = n.getNumberValue(); },
-        "endpoint": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.endpoint = n.getStringValue(); },
-        "id": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.id = n.getGuidValue(); },
-        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
-        "isSupportImg": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg = n.getBooleanValue(); },
-        "modelId": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId = n.getStringValue(); },
-        "name": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.name = n.getStringValue(); },
-        "provider": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider = n.getStringValue(); },
-        "textMaxToken": n => { maomiAIAiModelSharedModelsAiNotKeyEndpoint.textMaxToken = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedModelsAiProviderInfo(maomiAIAiModelSharedModelsAiProviderInfo: Partial<MaomiAIAiModelSharedModelsAiProviderInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "defaultEndpoint": n => { maomiAIAiModelSharedModelsAiProviderInfo.defaultEndpoint = n.getStringValue(); },
-        "description": n => { maomiAIAiModelSharedModelsAiProviderInfo.description = n.getStringValue(); },
-        "icon": n => { maomiAIAiModelSharedModelsAiProviderInfo.icon = n.getStringValue(); },
-        "name": n => { maomiAIAiModelSharedModelsAiProviderInfo.name = n.getStringValue(); },
-        "provider": n => { maomiAIAiModelSharedModelsAiProviderInfo.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedModelsUploadAiModelEndpoint(maomiAIAiModelSharedModelsUploadAiModelEndpoint: Partial<MaomiAIAiModelSharedModelsUploadAiModelEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiFunction": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction = n.getCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-        "deploymentName": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName = n.getStringValue(); },
-        "embeddinMaxToken": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.embeddinMaxToken = n.getNumberValue(); },
-        "endpoint": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.endpoint = n.getStringValue(); },
-        "isSupportFunctionCall": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
-        "isSupportImg": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg = n.getBooleanValue(); },
-        "key": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.key = n.getStringValue(); },
-        "modelId": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId = n.getStringValue(); },
-        "name": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.name = n.getStringValue(); },
-        "textMaxToken": n => { maomiAIAiModelSharedModelsUploadAiModelEndpoint.textMaxToken = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand(maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiModelFunction": n => { maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand.aiModelFunction = n.getEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>(MaomiAIAiModelSharedModelsAiModelFunctionObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse(maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiModels": n => { maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>(createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesQueryAiModelListCommand(maomiAIAiModelSharedQueriesQueryAiModelListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "provider": n => { maomiAIAiModelSharedQueriesQueryAiModelListCommand.provider = n.getEnumValue<MaomiAIAiModelSharedModelsAiProvider>(MaomiAIAiModelSharedModelsAiProviderObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse(maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiModels": n => { maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>(createMaomiAIAiModelSharedModelsAiNotKeyEndpointFromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse(maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "providers": n => { maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse.providers = n.getCollectionOfObjectValues<SystemCollectionsGenericKeyValuePairOfStringAndInt32>(createSystemCollectionsGenericKeyValuePairOfStringAndInt32FromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse(maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "aiModels": n => { maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse.aiModels = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration>(createMaomiAIAiModelSharedModelsAiModelDefaultConfigurationFromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "providers": n => { maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers = n.getCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>(createMaomiAIAiModelSharedModelsAiProviderInfoFromDiscriminatorValue); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentCoreHandlersEmbeddingocumentCommand(maomiAIDocumentCoreHandlersEmbeddingocumentCommand: Partial<MaomiAIDocumentCoreHandlersEmbeddingocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "documentId": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.documentId = n.getGuidValue(); },
-        "maxTokensPerParagraph": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.maxTokensPerParagraph = n.getNumberValue(); },
-        "overlappingTokens": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.overlappingTokens = n.getNumberValue(); },
-        "tokenizer": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.tokenizer = n.getStringValue(); },
-        "wikiId": n => { maomiAIDocumentCoreHandlersEmbeddingocumentCommand.wikiId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand(maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.fileId = n.getGuidValue(); },
-        "isSuccess": n => { maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.isSuccess = n.getBooleanValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsCreateWikiCommand(maomiAIDocumentSharedCommandsCreateWikiCommand: Partial<MaomiAIDocumentSharedCommandsCreateWikiCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "description": n => { maomiAIDocumentSharedCommandsCreateWikiCommand.description = n.getStringValue(); },
-        "name": n => { maomiAIDocumentSharedCommandsCreateWikiCommand.name = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand(maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "documentId": n => { maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand.documentId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand(maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "contentType": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.contentType = n.getStringValue(); },
-        "fileName": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileName = n.getStringValue(); },
-        "fileSize": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileSize = n.getNumberValue(); },
-        "mD5": n => { maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.mD5 = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse(maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse: Partial<MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "expiration": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.expiration = n.getStringValue(); },
-        "fileId": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.fileId = n.getGuidValue(); },
-        "isExist": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.isExist = n.getBooleanValue(); },
-        "uploadUrl": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.uploadUrl = n.getStringValue(); },
-        "visibility": n => { maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.visibility = n.getEnumValue<MaomiAIStoreEnumsFileVisibility>(MaomiAIStoreEnumsFileVisibilityObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand(maomiAIDocumentSharedCommandsUpdateWikiInfoCommand: Partial<MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "description": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.description = n.getStringValue(); },
-        "isPublic": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.isPublic = n.getBooleanValue(); },
-        "markdown": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.markdown = n.getStringValue(); },
-        "name": n => { maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.name = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand(maomiAIDocumentSharedCommandsUploadWikiAvatarCommand: Partial<MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAIDocumentSharedCommandsUploadWikiAvatarCommand.fileId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse(maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse: Partial<MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse),
-        "embeddingBatchSize": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingBatchSize = n.getNumberValue(); },
-        "embeddingDimensions": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingDimensions = n.getNumberValue(); },
-        "embeddingModelId": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelId = n.getGuidValue(); },
-        "embeddingModelTokenizer": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelTokenizer = n.getStringValue(); },
-        "isLock": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.isLock = n.getBooleanValue(); },
-        "maxRetries": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.maxRetries = n.getNumberValue(); },
-        "wikiId": n => { maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.wikiId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileCommand(maomiAIDocumentSharedQueriesQueryWikiFileCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "documentId": n => { maomiAIDocumentSharedQueriesQueryWikiFileCommand.documentId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIDocumentSharedQueriesQueryWikiFileListCommand),
-        "search": n => { maomiAIDocumentSharedQueriesQueryWikiFileListCommand.search = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse(maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "avatarUrl": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.avatarUrl = n.getStringValue(); },
-        "description": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.description = n.getStringValue(); },
-        "isPublic": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.isPublic = n.getBooleanValue(); },
-        "markdown": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.markdown = n.getStringValue(); },
-        "name": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.name = n.getStringValue(); },
-        "wikiId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.wikiId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem(maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem),
-        "contentType": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.contentType = n.getStringValue(); },
-        "documentId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.documentId = n.getGuidValue(); },
-        "fileName": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileName = n.getStringValue(); },
-        "fileSize": n => { maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileSize = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse(maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse),
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse(maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "avatarUrl": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.avatarUrl = n.getStringValue(); },
-        "description": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.description = n.getStringValue(); },
-        "isPublic": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic = n.getBooleanValue(); },
-        "name": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name = n.getStringValue(); },
-        "wikiId": n => { maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand(maomiAIDocumentSharedQueriesUpdateWikiConfigCommand: Partial<MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "embeddingBatchSize": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingBatchSize = n.getNumberValue(); },
-        "embeddingDimensions": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingDimensions = n.getNumberValue(); },
-        "embeddingModelId": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelId = n.getGuidValue(); },
-        "embeddingModelTokenizer": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelTokenizer = n.getStringValue(); },
-        "maxRetries": n => { maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.maxRetries = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAIInfraModelsAuditsInfo: Partial<MaomiAIInfraModelsAuditsInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "createTime": n => { maomiAIInfraModelsAuditsInfo.createTime = n.getStringValue(); },
-        "createUserId": n => { maomiAIInfraModelsAuditsInfo.createUserId = n.getGuidValue(); },
-        "createUserName": n => { maomiAIInfraModelsAuditsInfo.createUserName = n.getStringValue(); },
-        "updateTime": n => { maomiAIInfraModelsAuditsInfo.updateTime = n.getStringValue(); },
-        "updateUserId": n => { maomiAIInfraModelsAuditsInfo.updateUserId = n.getGuidValue(); },
-        "updateUserName": n => { maomiAIInfraModelsAuditsInfo.updateUserName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse(maomiAIInfraModelsBusinessExceptionResponse: Partial<MaomiAIInfraModelsBusinessExceptionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "code": n => { maomiAIInfraModelsBusinessExceptionResponse.code = n.getNumberValue(); },
-        "detail": n => { maomiAIInfraModelsBusinessExceptionResponse.detail = n.getStringValue(); },
-        "errors": n => { maomiAIInfraModelsBusinessExceptionResponse.errors = n.getObjectValue<MaomiAIInfraModelsBusinessExceptionResponse_errors>(createMaomiAIInfraModelsBusinessExceptionResponse_errorsFromDiscriminatorValue); },
-        "extensions": n => { maomiAIInfraModelsBusinessExceptionResponse.extensions = n.getObjectValue<MaomiAIInfraModelsBusinessExceptionResponse_extensions>(createMaomiAIInfraModelsBusinessExceptionResponse_extensionsFromDiscriminatorValue); },
-        "requestId": n => { maomiAIInfraModelsBusinessExceptionResponse.requestId = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse_errors(maomiAIInfraModelsBusinessExceptionResponse_errors: Partial<MaomiAIInfraModelsBusinessExceptionResponse_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsBusinessExceptionResponse_extensions(maomiAIInfraModelsBusinessExceptionResponse_extensions: Partial<MaomiAIInfraModelsBusinessExceptionResponse_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsEmptyCommandResponse(maomiAIInfraModelsEmptyCommandResponse: Partial<MaomiAIInfraModelsEmptyCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsEmptyDto(maomiAIInfraModelsEmptyDto: Partial<MaomiAIInfraModelsEmptyDto> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsExistResponse(maomiAIInfraModelsExistResponse: Partial<MaomiAIInfraModelsExistResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "isExist": n => { maomiAIInfraModelsExistResponse.isExist = n.getBooleanValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsIdResponse(maomiAIInfraModelsIdResponse: Partial<MaomiAIInfraModelsIdResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "id": n => { maomiAIInfraModelsIdResponse.id = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedParamter: Partial<MaomiAIInfraModelsPagedParamter> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "pageNo": n => { maomiAIInfraModelsPagedParamter.pageNo = n.getNumberValue(); },
-        "pageSize": n => { maomiAIInfraModelsPagedParamter.pageSize = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse(maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse: Partial<MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse),
-        "items": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>(createMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponseFromDiscriminatorValue); },
-        "total": n => { maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(maomiAIInfraModelsPagedResultOfQueryWikiFileListItem: Partial<MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfQueryWikiFileListItem),
-        "items": n => { maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.items = n.getCollectionOfObjectValues<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem>(createMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItemFromDiscriminatorValue); },
-        "total": n => { maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.total = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsPagedResultOfTeamMemberResponse(maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAIInfraModelsPagedResultOfTeamMemberResponse),
-        "items": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.items = n.getCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>(createMaomiAITeamSharedQueriesResponsesTeamMemberResponseFromDiscriminatorValue); },
-        "total": n => { maomiAIInfraModelsPagedResultOfTeamMemberResponse.total = n.getNumberValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsSimpleOfBoolean(maomiAIInfraModelsSimpleOfBoolean: Partial<MaomiAIInfraModelsSimpleOfBoolean> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "data": n => { maomiAIInfraModelsSimpleOfBoolean.data = n.getBooleanValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIInfraModelsSimpleOfString(maomiAIInfraModelsSimpleOfString: Partial<MaomiAIInfraModelsSimpleOfString> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "data": n => { maomiAIInfraModelsSimpleOfString.data = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIPublicQueriesResponseQueryServerInfoResponse(maomiAIPublicQueriesResponseQueryServerInfoResponse: Partial<MaomiAIPublicQueriesResponseQueryServerInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "publicStoreUrl": n => { maomiAIPublicQueriesResponseQueryServerInfoResponse.publicStoreUrl = n.getStringValue(); },
-        "rsaPublic": n => { maomiAIPublicQueriesResponseQueryServerInfoResponse.rsaPublic = n.getStringValue(); },
-        "serviceUrl": n => { maomiAIPublicQueriesResponseQueryServerInfoResponse.serviceUrl = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIStoreCommandsComplateFileUploadCommand(maomiAIStoreCommandsComplateFileUploadCommand: Partial<MaomiAIStoreCommandsComplateFileUploadCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAIStoreCommandsComplateFileUploadCommand.fileId = n.getGuidValue(); },
-        "isSuccess": n => { maomiAIStoreCommandsComplateFileUploadCommand.isSuccess = n.getBooleanValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIStoreCommandsResponseComplateFileCommandResponse(maomiAIStoreCommandsResponseComplateFileCommandResponse: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIStoreCommandsResponsePreUploadFileCommandResponse(maomiAIStoreCommandsResponsePreUploadFileCommandResponse: Partial<MaomiAIStoreCommandsResponsePreUploadFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "expiration": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.expiration = n.getStringValue(); },
-        "fileId": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.fileId = n.getGuidValue(); },
-        "isExist": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.isExist = n.getBooleanValue(); },
-        "uploadUrl": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.uploadUrl = n.getStringValue(); },
-        "visibility": n => { maomiAIStoreCommandsResponsePreUploadFileCommandResponse.visibility = n.getEnumValue<MaomiAIStoreEnumsFileVisibility>(MaomiAIStoreEnumsFileVisibilityObject); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsAdminInviteUserToTeamCommand(maomiAITeamSharedCommandsAdminInviteUserToTeamCommand: Partial<MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "teamId": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.teamId = n.getGuidValue(); },
-        "userId": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userId = n.getGuidValue(); },
-        "userName": n => { maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand(maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand: Partial<MaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "teamId": n => { maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand.teamId = n.getGuidValue(); },
-        "userId": n => { maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand.userId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsPreUploadImageCommand(maomiAITeamSharedCommandsPreUploadImageCommand: Partial<MaomiAITeamSharedCommandsPreUploadImageCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "contentType": n => { maomiAITeamSharedCommandsPreUploadImageCommand.contentType = n.getStringValue(); },
-        "fileName": n => { maomiAITeamSharedCommandsPreUploadImageCommand.fileName = n.getStringValue(); },
-        "fileSize": n => { maomiAITeamSharedCommandsPreUploadImageCommand.fileSize = n.getNumberValue(); },
-        "imageType": n => { maomiAITeamSharedCommandsPreUploadImageCommand.imageType = n.getEnumValue<MaomiAIStoreEnumsUploadImageType>(MaomiAIStoreEnumsUploadImageTypeObject); },
-        "mD5": n => { maomiAITeamSharedCommandsPreUploadImageCommand.mD5 = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsRootCreateTeamCommand(maomiAITeamSharedCommandsRootCreateTeamCommand: Partial<MaomiAITeamSharedCommandsRootCreateTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "description": n => { maomiAITeamSharedCommandsRootCreateTeamCommand.description = n.getStringValue(); },
-        "name": n => { maomiAITeamSharedCommandsRootCreateTeamCommand.name = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsRootSetTeamAdminCommand(maomiAITeamSharedCommandsRootSetTeamAdminCommand: Partial<MaomiAITeamSharedCommandsRootSetTeamAdminCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "isAdmin": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.isAdmin = n.getBooleanValue(); },
-        "teamId": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.teamId = n.getGuidValue(); },
-        "userId": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.userId = n.getGuidValue(); },
-        "userName": n => { maomiAITeamSharedCommandsRootSetTeamAdminCommand.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsRootUpdateTeamInfoCommand(maomiAITeamSharedCommandsRootUpdateTeamInfoCommand: Partial<MaomiAITeamSharedCommandsRootUpdateTeamInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "description": n => { maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.description = n.getStringValue(); },
-        "isDisable": n => { maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.isDisable = n.getBooleanValue(); },
-        "isPublic": n => { maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.isPublic = n.getBooleanValue(); },
-        "markdown": n => { maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.markdown = n.getStringValue(); },
-        "name": n => { maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.name = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedCommandsRootUploadTeamAvatarCommand(maomiAITeamSharedCommandsRootUploadTeamAvatarCommand: Partial<MaomiAITeamSharedCommandsRootUploadTeamAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAITeamSharedCommandsRootUploadTeamAvatarCommand.fileId = n.getGuidValue(); },
-        "teamId": n => { maomiAITeamSharedCommandsRootUploadTeamAvatarCommand.teamId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand(maomiAITeamSharedQueriesAdminQueryTeamMemberListCommand: Partial<MaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAITeamSharedQueriesAdminQueryTeamMemberListCommand),
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesQueryTeamNameCommand(maomiAITeamSharedQueriesQueryTeamNameCommand: Partial<MaomiAITeamSharedQueriesQueryTeamNameCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "id": n => { maomiAITeamSharedQueriesQueryTeamNameCommand.id = n.getGuidValue(); },
-        "name": n => { maomiAITeamSharedQueriesQueryTeamNameCommand.name = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse(maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse),
-        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.avatarUrl = n.getStringValue(); },
-        "description": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.description = n.getStringValue(); },
-        "id": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.id = n.getGuidValue(); },
-        "isAdmin": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isAdmin = n.getBooleanValue(); },
-        "isDisable": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isDisable = n.getBooleanValue(); },
-        "isPublic": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isPublic = n.getBooleanValue(); },
-        "isRoot": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isRoot = n.getBooleanValue(); },
-        "markdown": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.markdown = n.getStringValue(); },
-        "name": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.name = n.getStringValue(); },
-        "ownUserId": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserId = n.getGuidValue(); },
-        "ownUserName": n => { maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse(maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse),
-        "avatarUrl": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.avatarUrl = n.getStringValue(); },
-        "description": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.description = n.getStringValue(); },
-        "id": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.id = n.getGuidValue(); },
-        "isAdmin": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isAdmin = n.getBooleanValue(); },
-        "isDisable": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isDisable = n.getBooleanValue(); },
-        "isPublic": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isPublic = n.getBooleanValue(); },
-        "isRoot": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isRoot = n.getBooleanValue(); },
-        "name": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.name = n.getStringValue(); },
-        "ownUserId": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserId = n.getGuidValue(); },
-        "ownUserName": n => { maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesResponsesTeamMemberResponse(maomiAITeamSharedQueriesResponsesTeamMemberResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsAuditsInfo(maomiAITeamSharedQueriesResponsesTeamMemberResponse),
-        "isAdmin": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.isAdmin = n.getBooleanValue(); },
-        "isOwner": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.isOwner = n.getBooleanValue(); },
-        "nickName": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.nickName = n.getStringValue(); },
-        "userAvatarPath": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userAvatarPath = n.getStringValue(); },
-        "userId": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userId = n.getGuidValue(); },
-        "userName": n => { maomiAITeamSharedQueriesResponsesTeamMemberResponse.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand(maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand: Partial<MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        ...deserializeIntoMaomiAIInfraModelsPagedParamter(maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand),
-        "isAdmin": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isAdmin = n.getBooleanValue(); },
-        "isRoot": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isRoot = n.getBooleanValue(); },
-        "keyword": n => { maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.keyword = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsLoginCommand(maomiAIUserSharedCommandsLoginCommand: Partial<MaomiAIUserSharedCommandsLoginCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "password": n => { maomiAIUserSharedCommandsLoginCommand.password = n.getStringValue(); },
-        "userName": n => { maomiAIUserSharedCommandsLoginCommand.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsRefreshTokenCommand(maomiAIUserSharedCommandsRefreshTokenCommand: Partial<MaomiAIUserSharedCommandsRefreshTokenCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "refreshToken": n => { maomiAIUserSharedCommandsRefreshTokenCommand.refreshToken = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsRegisterUserCommand(maomiAIUserSharedCommandsRegisterUserCommand: Partial<MaomiAIUserSharedCommandsRegisterUserCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "email": n => { maomiAIUserSharedCommandsRegisterUserCommand.email = n.getStringValue(); },
-        "nickName": n => { maomiAIUserSharedCommandsRegisterUserCommand.nickName = n.getStringValue(); },
-        "password": n => { maomiAIUserSharedCommandsRegisterUserCommand.password = n.getStringValue(); },
-        "phone": n => { maomiAIUserSharedCommandsRegisterUserCommand.phone = n.getStringValue(); },
-        "userName": n => { maomiAIUserSharedCommandsRegisterUserCommand.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsResponsesLoginCommandResponse(maomiAIUserSharedCommandsResponsesLoginCommandResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "accessToken": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.accessToken = n.getStringValue(); },
-        "expiresIn": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.expiresIn = n.getStringValue(); },
-        "refreshToken": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.refreshToken = n.getStringValue(); },
-        "tokenType": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.tokenType = n.getStringValue(); },
-        "userId": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.userId = n.getGuidValue(); },
-        "userName": n => { maomiAIUserSharedCommandsResponsesLoginCommandResponse.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsUpdateUserPasswordCommand(maomiAIUserSharedCommandsUpdateUserPasswordCommand: Partial<MaomiAIUserSharedCommandsUpdateUserPasswordCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "password": n => { maomiAIUserSharedCommandsUpdateUserPasswordCommand.password = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedCommandsUploadtUserAvatarCommand(maomiAIUserSharedCommandsUploadtUserAvatarCommand: Partial<MaomiAIUserSharedCommandsUploadtUserAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "fileId": n => { maomiAIUserSharedCommandsUploadtUserAvatarCommand.fileId = n.getGuidValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedQueriesQueryRepeatedUserNameCommand(maomiAIUserSharedQueriesQueryRepeatedUserNameCommand: Partial<MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "userName": n => { maomiAIUserSharedQueriesQueryRepeatedUserNameCommand.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoMaomiAIUserSharedQueriesQueryUserInfoCommandResponse(maomiAIUserSharedQueriesQueryUserInfoCommandResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "avatar": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.avatar = n.getStringValue(); },
-        "nickName": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.nickName = n.getStringValue(); },
-        "userId": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userId = n.getGuidValue(); },
-        "userName": n => { maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName = n.getStringValue(); },
-    }
-}
-/**
- * The deserialization information for the current model
- * @returns {Record<string, (node: ParseNode) => void>}
- */
-// @ts-ignore
-export function deserializeIntoSystemCollectionsGenericKeyValuePairOfStringAndInt32(systemCollectionsGenericKeyValuePairOfStringAndInt32: Partial<SystemCollectionsGenericKeyValuePairOfStringAndInt32> | undefined = {}) : Record<string, (node: ParseNode) => void> {
-    return {
-        "key": n => { systemCollectionsGenericKeyValuePairOfStringAndInt32.key = n.getStringValue(); },
-        "value": n => { systemCollectionsGenericKeyValuePairOfStringAndInt32.value = n.getNumberValue(); },
-    }
-}
-/**
  * 添加 AI 模型.
  */
-export interface MaomiAIAiModelSharedCommandsAddAiModelCommand extends Parsable {
+export interface AddAiModelCommand extends Parsable {
     /**
      * AI 端点.
      */
-    endpoint?: MaomiAIAiModelSharedModelsAiEndpoint | null;
-}
-/**
- * 设置某个功能模型使用的 ai 模型.
- */
-export interface MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand extends Parsable {
-    /**
-     * AI 模型的功能.
-     */
-    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction | null;
-    /**
-     * 模型 id.
-     */
-    modelId?: Guid | null;
-}
-/**
- * 修改 AI 模型.
- */
-export interface MaomiAIAiModelSharedCommandsUpdateAiModelCommand extends Parsable {
-    /**
-     * AI 端点.
-     */
-    endpoint?: MaomiAIAiModelSharedModelsUploadAiModelEndpoint | null;
-    /**
-     * AI 模型 id.
-     */
-    modelId?: Guid | null;
+    endpoint?: AiEndpoint | null;
 }
 /**
  * AI 模型.
  */
-export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
+export interface AiEndpoint extends Parsable {
     /**
      * AI 模型的功能，判断是否多模态.
      */
-    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    aiFunction?: AiModelFunction[] | null;
     /**
      * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
      */
@@ -1593,7 +56,7 @@ export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
     /**
      * AI 服务商.
      */
-    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+    provider?: AiProvider | null;
     /**
      * 文本模型最大支持上下文token.
      */
@@ -1602,11 +65,11 @@ export interface MaomiAIAiModelSharedModelsAiEndpoint extends Parsable {
 /**
  * AI 模型默认配置.
  */
-export interface MaomiAIAiModelSharedModelsAiModelDefaultConfiguration extends Parsable {
+export interface AiModelDefaultConfiguration extends Parsable {
     /**
      * AI 模型的功能，判断是否多模态.
      */
-    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    aiFunction?: AiModelFunction[] | null;
     /**
      * 嵌入模型最大支持token数量.
      */
@@ -1636,15 +99,15 @@ export interface MaomiAIAiModelSharedModelsAiModelDefaultConfiguration extends P
      */
     textMaxToken?: number | null;
 }
-export type MaomiAIAiModelSharedModelsAiModelFunction = (typeof MaomiAIAiModelSharedModelsAiModelFunctionObject)[keyof typeof MaomiAIAiModelSharedModelsAiModelFunctionObject];
+export type AiModelFunction = (typeof AiModelFunctionObject)[keyof typeof AiModelFunctionObject];
 /**
  * AI 模型.
  */
-export interface MaomiAIAiModelSharedModelsAiNotKeyEndpoint extends Parsable {
+export interface AiNotKeyEndpoint extends Parsable {
     /**
      * AI 模型的功能，判断是否多模态.
      */
-    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    aiFunction?: AiModelFunction[] | null;
     /**
      * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
      */
@@ -1686,8 +149,8 @@ export interface MaomiAIAiModelSharedModelsAiNotKeyEndpoint extends Parsable {
      */
     textMaxToken?: number | null;
 }
-export type MaomiAIAiModelSharedModelsAiProvider = (typeof MaomiAIAiModelSharedModelsAiProviderObject)[keyof typeof MaomiAIAiModelSharedModelsAiProviderObject];
-export interface MaomiAIAiModelSharedModelsAiProviderInfo extends Parsable {
+export type AiProvider = (typeof AiProviderObject)[keyof typeof AiProviderObject];
+export interface AiProviderInfo extends Parsable {
     /**
      * 默认端点.
      */
@@ -1707,13 +170,3883 @@ export interface MaomiAIAiModelSharedModelsAiProviderInfo extends Parsable {
     /**
      * 类型.
      */
-    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
+    provider?: AiProvider | null;
 }
-export interface MaomiAIAiModelSharedModelsUploadAiModelEndpoint extends Parsable {
+/**
+ * 数据子项.
+ */
+export interface AuditsInfo extends Parsable {
+    /**
+     * 创建时间.
+     */
+    createTime?: string | null;
+    /**
+     * 创建人ID.
+     */
+    createUserId?: Guid | null;
+    /**
+     * 创建者 名字.
+     */
+    createUserName?: string | null;
+    /**
+     * 更新时间.
+     */
+    updateTime?: string | null;
+    /**
+     * 更新人ID.
+     */
+    updateUserId?: Guid | null;
+    /**
+     * 更新人 名字.
+     */
+    updateUserName?: string | null;
+}
+/**
+ * 错误响应模型.
+ */
+export interface BusinessExceptionResponse extends ApiError, Parsable {
+    /**
+     * 错误码.
+     */
+    code?: number | null;
+    /**
+     * 错误消息.
+     */
+    detail?: string | null;
+    /**
+     * 具体错误列表.
+     */
+    errors?: BusinessExceptionResponse_errors | null;
+    /**
+     * 扩展.
+     */
+    extensions?: BusinessExceptionResponse_extensions | null;
+    /**
+     * 请求上下文 ID.
+     */
+    requestId?: string | null;
+}
+/**
+ * 具体错误列表.
+ */
+export interface BusinessExceptionResponse_errors extends Parsable {
+}
+/**
+ * 扩展.
+ */
+export interface BusinessExceptionResponse_extensions extends Parsable {
+}
+export interface CancalWikiDocumentTaskCommand extends Parsable {
+    /**
+     * 文档id.
+     */
+    documentId?: Guid | null;
+    /**
+     * The taskId property
+     */
+    taskId?: Guid | null;
+}
+export interface Citation extends Parsable {
+    /**
+     * Link to the source, if available.
+     */
+    documentId?: string | null;
+    /**
+     * Link to the source, if available.
+     */
+    fileId?: string | null;
+    /**
+     * Link to the source, if available.
+     */
+    index?: string | null;
+    /**
+     * Link to the source, if available.
+     */
+    link?: string | null;
+    /**
+     * List of chunks/blocks of text used.
+     */
+    partitions?: Citation_Partition[] | null;
+    /**
+     * Type of source, e.g. PDF, Word, Chat, etc.
+     */
+    sourceContentType?: string | null;
+    /**
+     * Name of the source, e.g. file name.
+     */
+    sourceName?: string | null;
+    /**
+     * URL of the source, used for web pages and external data
+     */
+    sourceUrl?: string | null;
+}
+export interface Citation_Partition extends Parsable {
+    /**
+     * Timestamp about the file/text partition.
+     */
+    lastUpdate?: string | null;
+    /**
+     * Partition number, zero based
+     */
+    partitionNumber?: number | null;
+    /**
+     * Relevance of this partition against the given query.Value usually is between 0 and 1, when using cosine similarity.
+     */
+    relevance?: number | null;
+    /**
+     * Text page number / Audio segment number / Video scene number
+     */
+    sectionNumber?: number | null;
+    /**
+     * List of document tags
+     */
+    tags?: KeyValuePairOfStringAndListOfString[] | null;
+    /**
+     * Content of the document partition, aka chunk/block of text.
+     */
+    text?: string | null;
+}
+/**
+ * 完成文件上传.
+ */
+export interface ComplateFileCommandResponse extends Parsable {
+}
+/**
+ * 结束上传文件.
+ */
+export interface ComplateFileUploadCommand extends Parsable {
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 上传成功或失败.
+     */
+    isSuccess?: boolean | null;
+}
+/**
+ * 结束上传文件.
+ */
+export interface ComplateUploadWikiDocumentCommand extends Parsable {
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 上传成功或失败.
+     */
+    isSuccess?: boolean | null;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AddAiModelCommand}
+ */
+// @ts-ignore
+export function createAddAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAddAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AiEndpoint}
+ */
+// @ts-ignore
+export function createAiEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAiEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AiModelDefaultConfiguration}
+ */
+// @ts-ignore
+export function createAiModelDefaultConfigurationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAiModelDefaultConfiguration;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AiNotKeyEndpoint}
+ */
+// @ts-ignore
+export function createAiNotKeyEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAiNotKeyEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AiProviderInfo}
+ */
+// @ts-ignore
+export function createAiProviderInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAiProviderInfo;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AuditsInfo}
+ */
+// @ts-ignore
+export function createAuditsInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAuditsInfo;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {BusinessExceptionResponse_errors}
+ */
+// @ts-ignore
+export function createBusinessExceptionResponse_errorsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoBusinessExceptionResponse_errors;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {BusinessExceptionResponse_extensions}
+ */
+// @ts-ignore
+export function createBusinessExceptionResponse_extensionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoBusinessExceptionResponse_extensions;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {BusinessExceptionResponse}
+ */
+// @ts-ignore
+export function createBusinessExceptionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoBusinessExceptionResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {CancalWikiDocumentTaskCommand}
+ */
+// @ts-ignore
+export function createCancalWikiDocumentTaskCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCancalWikiDocumentTaskCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {Citation_Partition}
+ */
+// @ts-ignore
+export function createCitation_PartitionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCitation_Partition;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {Citation}
+ */
+// @ts-ignore
+export function createCitationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCitation;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ComplateFileCommandResponse}
+ */
+// @ts-ignore
+export function createComplateFileCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoComplateFileCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ComplateFileUploadCommand}
+ */
+// @ts-ignore
+export function createComplateFileUploadCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoComplateFileUploadCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ComplateUploadWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createComplateUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoComplateUploadWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {CreateTeamCommand}
+ */
+// @ts-ignore
+export function createCreateTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCreateTeamCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {CreateWikiCommand}
+ */
+// @ts-ignore
+export function createCreateWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCreateWikiCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {DeleteWikiCommand}
+ */
+// @ts-ignore
+export function createDeleteWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoDeleteWikiCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {DeleteWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createDeleteWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoDeleteWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {EmbeddingocumentCommand}
+ */
+// @ts-ignore
+export function createEmbeddingocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoEmbeddingocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {EmptyCommandResponse}
+ */
+// @ts-ignore
+export function createEmptyCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoEmptyCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {EmptyDto}
+ */
+// @ts-ignore
+export function createEmptyDtoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoEmptyDto;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ExistResponse}
+ */
+// @ts-ignore
+export function createExistResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoExistResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {IdResponse}
+ */
+// @ts-ignore
+export function createIdResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoIdResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {InviteUserToTeamCommand}
+ */
+// @ts-ignore
+export function createInviteUserToTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoInviteUserToTeamCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {KeyValuePairOfStringAndInt32}
+ */
+// @ts-ignore
+export function createKeyValuePairOfStringAndInt32FromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoKeyValuePairOfStringAndInt32;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {KeyValuePairOfStringAndListOfString}
+ */
+// @ts-ignore
+export function createKeyValuePairOfStringAndListOfStringFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoKeyValuePairOfStringAndListOfString;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {LoginCommand}
+ */
+// @ts-ignore
+export function createLoginCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoLoginCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {LoginCommandResponse}
+ */
+// @ts-ignore
+export function createLoginCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoLoginCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PagedParamter}
+ */
+// @ts-ignore
+export function createPagedParamterFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPagedParamter;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PagedResultOfQueryTeamSimpleCommandResponse}
+ */
+// @ts-ignore
+export function createPagedResultOfQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPagedResultOfQueryTeamSimpleCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PagedResultOfQueryWikiFileListItem}
+ */
+// @ts-ignore
+export function createPagedResultOfQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPagedResultOfQueryWikiFileListItem;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PagedResultOfTeamMemberResponse}
+ */
+// @ts-ignore
+export function createPagedResultOfTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPagedResultOfTeamMemberResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreloadWikiDocumentResponse}
+ */
+// @ts-ignore
+export function createPreloadWikiDocumentResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreloadWikiDocumentResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreUploadFileCommandResponse}
+ */
+// @ts-ignore
+export function createPreUploadFileCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreUploadFileCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreUploadImageCommand}
+ */
+// @ts-ignore
+export function createPreUploadImageCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreUploadImageCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreUploadWikiDocumentCommand}
+ */
+// @ts-ignore
+export function createPreUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreUploadWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryAiModelFunctionListCommand}
+ */
+// @ts-ignore
+export function createQueryAiModelFunctionListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryAiModelFunctionListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryAiModelFunctionListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryAiModelFunctionListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryAiModelFunctionListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryAiModelListCommand}
+ */
+// @ts-ignore
+export function createQueryAiModelListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryAiModelListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryAiModelListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryAiModelListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryAiModelListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryAiModelProviderListResponse}
+ */
+// @ts-ignore
+export function createQueryAiModelProviderListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryAiModelProviderListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryDefaultAiModelListResponse}
+ */
+// @ts-ignore
+export function createQueryDefaultAiModelListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryDefaultAiModelListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryRepeatedUserNameCommand}
+ */
+// @ts-ignore
+export function createQueryRepeatedUserNameCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryRepeatedUserNameCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryServerInfoResponse}
+ */
+// @ts-ignore
+export function createQueryServerInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryServerInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QuerySupportModelProviderCommandResponse}
+ */
+// @ts-ignore
+export function createQuerySupportModelProviderCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQuerySupportModelProviderCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryTeamDetailCommandResponse}
+ */
+// @ts-ignore
+export function createQueryTeamDetailCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryTeamDetailCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryTeamMemberListCommand}
+ */
+// @ts-ignore
+export function createQueryTeamMemberListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryTeamMemberListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryTeamNameCommand}
+ */
+// @ts-ignore
+export function createQueryTeamNameCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryTeamNameCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryTeamSimpleCommandResponse}
+ */
+// @ts-ignore
+export function createQueryTeamSimpleCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryTeamSimpleCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryUserInfoCommandResponse}
+ */
+// @ts-ignore
+export function createQueryUserInfoCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryUserInfoCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryUserJoinedTeamCommand}
+ */
+// @ts-ignore
+export function createQueryUserJoinedTeamCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryUserJoinedTeamCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiConfigCommandResponse}
+ */
+// @ts-ignore
+export function createQueryWikiConfigCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiConfigCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiDetailInfoResponse}
+ */
+// @ts-ignore
+export function createQueryWikiDetailInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiDetailInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiDocumentTaskListCommand}
+ */
+// @ts-ignore
+export function createQueryWikiDocumentTaskListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiDocumentTaskListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiDocumentTaskListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryWikiDocumentTaskListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiDocumentTaskListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiFileCommand}
+ */
+// @ts-ignore
+export function createQueryWikiFileCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiFileCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiFileListCommand}
+ */
+// @ts-ignore
+export function createQueryWikiFileListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiFileListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiFileListItem}
+ */
+// @ts-ignore
+export function createQueryWikiFileListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiFileListItem;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiFileListResponse}
+ */
+// @ts-ignore
+export function createQueryWikiFileListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiFileListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryWikiSimpleInfoResponse}
+ */
+// @ts-ignore
+export function createQueryWikiSimpleInfoResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryWikiSimpleInfoResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {RefreshTokenCommand}
+ */
+// @ts-ignore
+export function createRefreshTokenCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoRefreshTokenCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {RegisterUserCommand}
+ */
+// @ts-ignore
+export function createRegisterUserCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoRegisterUserCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {RemoveTeamMemberCommand}
+ */
+// @ts-ignore
+export function createRemoveTeamMemberCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoRemoveTeamMemberCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SearchResult}
+ */
+// @ts-ignore
+export function createSearchResultFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSearchResult;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SearchWikiDocumentTextCommand}
+ */
+// @ts-ignore
+export function createSearchWikiDocumentTextCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSearchWikiDocumentTextCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SearchWikiDocumentTextCommandResponse}
+ */
+// @ts-ignore
+export function createSearchWikiDocumentTextCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSearchWikiDocumentTextCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SetDefaultAiModelCommand}
+ */
+// @ts-ignore
+export function createSetDefaultAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSetDefaultAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SetTeamAdminCommand}
+ */
+// @ts-ignore
+export function createSetTeamAdminCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSetTeamAdminCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SimpleOfBoolean}
+ */
+// @ts-ignore
+export function createSimpleOfBooleanFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSimpleOfBoolean;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {SimpleOfString}
+ */
+// @ts-ignore
+export function createSimpleOfStringFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoSimpleOfString;
+}
+/**
+ * 创建团队命令.
+ */
+export interface CreateTeamCommand extends Parsable {
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {TeamMemberResponse}
+ */
+// @ts-ignore
+export function createTeamMemberResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoTeamMemberResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateAiModelCommand}
+ */
+// @ts-ignore
+export function createUpdateAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateAiModelCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateTeamInfoCommand}
+ */
+// @ts-ignore
+export function createUpdateTeamInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateTeamInfoCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateUserPasswordCommand}
+ */
+// @ts-ignore
+export function createUpdateUserPasswordCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateUserPasswordCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateWikiConfigCommand}
+ */
+// @ts-ignore
+export function createUpdateWikiConfigCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateWikiConfigCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateWikiInfoCommand}
+ */
+// @ts-ignore
+export function createUpdateWikiInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateWikiInfoCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadAiModelEndpoint}
+ */
+// @ts-ignore
+export function createUploadAiModelEndpointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadAiModelEndpoint;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadTeamAvatarCommand}
+ */
+// @ts-ignore
+export function createUploadTeamAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadTeamAvatarCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadtUserAvatarCommand}
+ */
+// @ts-ignore
+export function createUploadtUserAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadtUserAvatarCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadWikiAvatarCommand}
+ */
+// @ts-ignore
+export function createUploadWikiAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadWikiAvatarCommand;
+}
+/**
+ * 创建知识库.
+ */
+export interface CreateWikiCommand extends Parsable {
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+}
+/**
+ * 删除 Wiki 文档.
+ */
+export interface DeleteWikiCommand extends Parsable {
+    /**
+     * 文档 id.
+     */
+    documentId?: Guid | null;
+}
+export interface DeleteWikiDocumentCommand extends Parsable {
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAddAiModelCommand(addAiModelCommand: Partial<AddAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "endpoint": n => { addAiModelCommand.endpoint = n.getObjectValue<AiEndpoint>(createAiEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAiEndpoint(aiEndpoint: Partial<AiEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { aiEndpoint.aiFunction = n.getCollectionOfEnumValues<AiModelFunction>(AiModelFunctionObject); },
+        "deploymentName": n => { aiEndpoint.deploymentName = n.getStringValue(); },
+        "embeddinMaxToken": n => { aiEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { aiEndpoint.endpoint = n.getStringValue(); },
+        "isSupportFunctionCall": n => { aiEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { aiEndpoint.isSupportImg = n.getBooleanValue(); },
+        "key": n => { aiEndpoint.key = n.getStringValue(); },
+        "modelId": n => { aiEndpoint.modelId = n.getStringValue(); },
+        "name": n => { aiEndpoint.name = n.getStringValue(); },
+        "provider": n => { aiEndpoint.provider = n.getEnumValue<AiProvider>(AiProviderObject); },
+        "textMaxToken": n => { aiEndpoint.textMaxToken = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAiModelDefaultConfiguration(aiModelDefaultConfiguration: Partial<AiModelDefaultConfiguration> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { aiModelDefaultConfiguration.aiFunction = n.getCollectionOfEnumValues<AiModelFunction>(AiModelFunctionObject); },
+        "embeddinMaxToken": n => { aiModelDefaultConfiguration.embeddinMaxToken = n.getNumberValue(); },
+        "isSupportFunctionCall": n => { aiModelDefaultConfiguration.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { aiModelDefaultConfiguration.isSupportImg = n.getBooleanValue(); },
+        "modelId": n => { aiModelDefaultConfiguration.modelId = n.getGuidValue(); },
+        "name": n => { aiModelDefaultConfiguration.name = n.getStringValue(); },
+        "provider": n => { aiModelDefaultConfiguration.provider = n.getStringValue(); },
+        "textMaxToken": n => { aiModelDefaultConfiguration.textMaxToken = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAiNotKeyEndpoint(aiNotKeyEndpoint: Partial<AiNotKeyEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { aiNotKeyEndpoint.aiFunction = n.getCollectionOfEnumValues<AiModelFunction>(AiModelFunctionObject); },
+        "deploymentName": n => { aiNotKeyEndpoint.deploymentName = n.getStringValue(); },
+        "embeddinMaxToken": n => { aiNotKeyEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { aiNotKeyEndpoint.endpoint = n.getStringValue(); },
+        "id": n => { aiNotKeyEndpoint.id = n.getGuidValue(); },
+        "isSupportFunctionCall": n => { aiNotKeyEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { aiNotKeyEndpoint.isSupportImg = n.getBooleanValue(); },
+        "modelId": n => { aiNotKeyEndpoint.modelId = n.getStringValue(); },
+        "name": n => { aiNotKeyEndpoint.name = n.getStringValue(); },
+        "provider": n => { aiNotKeyEndpoint.provider = n.getStringValue(); },
+        "textMaxToken": n => { aiNotKeyEndpoint.textMaxToken = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAiProviderInfo(aiProviderInfo: Partial<AiProviderInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "defaultEndpoint": n => { aiProviderInfo.defaultEndpoint = n.getStringValue(); },
+        "description": n => { aiProviderInfo.description = n.getStringValue(); },
+        "icon": n => { aiProviderInfo.icon = n.getStringValue(); },
+        "name": n => { aiProviderInfo.name = n.getStringValue(); },
+        "provider": n => { aiProviderInfo.provider = n.getEnumValue<AiProvider>(AiProviderObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAuditsInfo(auditsInfo: Partial<AuditsInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "createTime": n => { auditsInfo.createTime = n.getStringValue(); },
+        "createUserId": n => { auditsInfo.createUserId = n.getGuidValue(); },
+        "createUserName": n => { auditsInfo.createUserName = n.getStringValue(); },
+        "updateTime": n => { auditsInfo.updateTime = n.getStringValue(); },
+        "updateUserId": n => { auditsInfo.updateUserId = n.getGuidValue(); },
+        "updateUserName": n => { auditsInfo.updateUserName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoBusinessExceptionResponse(businessExceptionResponse: Partial<BusinessExceptionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "code": n => { businessExceptionResponse.code = n.getNumberValue(); },
+        "detail": n => { businessExceptionResponse.detail = n.getStringValue(); },
+        "errors": n => { businessExceptionResponse.errors = n.getObjectValue<BusinessExceptionResponse_errors>(createBusinessExceptionResponse_errorsFromDiscriminatorValue); },
+        "extensions": n => { businessExceptionResponse.extensions = n.getObjectValue<BusinessExceptionResponse_extensions>(createBusinessExceptionResponse_extensionsFromDiscriminatorValue); },
+        "requestId": n => { businessExceptionResponse.requestId = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoBusinessExceptionResponse_errors(businessExceptionResponse_errors: Partial<BusinessExceptionResponse_errors> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoBusinessExceptionResponse_extensions(businessExceptionResponse_extensions: Partial<BusinessExceptionResponse_extensions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCancalWikiDocumentTaskCommand(cancalWikiDocumentTaskCommand: Partial<CancalWikiDocumentTaskCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { cancalWikiDocumentTaskCommand.documentId = n.getGuidValue(); },
+        "taskId": n => { cancalWikiDocumentTaskCommand.taskId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCitation(citation: Partial<Citation> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { citation.documentId = n.getStringValue(); },
+        "fileId": n => { citation.fileId = n.getStringValue(); },
+        "index": n => { citation.index = n.getStringValue(); },
+        "link": n => { citation.link = n.getStringValue(); },
+        "partitions": n => { citation.partitions = n.getCollectionOfObjectValues<Citation_Partition>(createCitation_PartitionFromDiscriminatorValue); },
+        "sourceContentType": n => { citation.sourceContentType = n.getStringValue(); },
+        "sourceName": n => { citation.sourceName = n.getStringValue(); },
+        "sourceUrl": n => { citation.sourceUrl = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCitation_Partition(citation_Partition: Partial<Citation_Partition> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "lastUpdate": n => { citation_Partition.lastUpdate = n.getStringValue(); },
+        "partitionNumber": n => { citation_Partition.partitionNumber = n.getNumberValue(); },
+        "relevance": n => { citation_Partition.relevance = n.getNumberValue(); },
+        "sectionNumber": n => { citation_Partition.sectionNumber = n.getNumberValue(); },
+        "tags": n => { citation_Partition.tags = n.getCollectionOfObjectValues<KeyValuePairOfStringAndListOfString>(createKeyValuePairOfStringAndListOfStringFromDiscriminatorValue); },
+        "text": n => { citation_Partition.text = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoComplateFileCommandResponse(complateFileCommandResponse: Partial<ComplateFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoComplateFileUploadCommand(complateFileUploadCommand: Partial<ComplateFileUploadCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { complateFileUploadCommand.fileId = n.getGuidValue(); },
+        "isSuccess": n => { complateFileUploadCommand.isSuccess = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoComplateUploadWikiDocumentCommand(complateUploadWikiDocumentCommand: Partial<ComplateUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { complateUploadWikiDocumentCommand.fileId = n.getGuidValue(); },
+        "isSuccess": n => { complateUploadWikiDocumentCommand.isSuccess = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCreateTeamCommand(createTeamCommand: Partial<CreateTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { createTeamCommand.description = n.getStringValue(); },
+        "name": n => { createTeamCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCreateWikiCommand(createWikiCommand: Partial<CreateWikiCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { createWikiCommand.description = n.getStringValue(); },
+        "name": n => { createWikiCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoDeleteWikiCommand(deleteWikiCommand: Partial<DeleteWikiCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { deleteWikiCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoDeleteWikiDocumentCommand(deleteWikiDocumentCommand: Partial<DeleteWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { deleteWikiDocumentCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoEmbeddingocumentCommand(embeddingocumentCommand: Partial<EmbeddingocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { embeddingocumentCommand.documentId = n.getGuidValue(); },
+        "maxTokensPerParagraph": n => { embeddingocumentCommand.maxTokensPerParagraph = n.getNumberValue(); },
+        "overlappingTokens": n => { embeddingocumentCommand.overlappingTokens = n.getNumberValue(); },
+        "tokenizer": n => { embeddingocumentCommand.tokenizer = n.getStringValue(); },
+        "wikiId": n => { embeddingocumentCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoEmptyCommandResponse(emptyCommandResponse: Partial<EmptyCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoEmptyDto(emptyDto: Partial<EmptyDto> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoExistResponse(existResponse: Partial<ExistResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "isExist": n => { existResponse.isExist = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoIdResponse(idResponse: Partial<IdResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "id": n => { idResponse.id = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoInviteUserToTeamCommand(inviteUserToTeamCommand: Partial<InviteUserToTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "teamId": n => { inviteUserToTeamCommand.teamId = n.getGuidValue(); },
+        "userId": n => { inviteUserToTeamCommand.userId = n.getGuidValue(); },
+        "userName": n => { inviteUserToTeamCommand.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoKeyValuePairOfStringAndInt32(keyValuePairOfStringAndInt32: Partial<KeyValuePairOfStringAndInt32> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "key": n => { keyValuePairOfStringAndInt32.key = n.getStringValue(); },
+        "value": n => { keyValuePairOfStringAndInt32.value = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoKeyValuePairOfStringAndListOfString(keyValuePairOfStringAndListOfString: Partial<KeyValuePairOfStringAndListOfString> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "key": n => { keyValuePairOfStringAndListOfString.key = n.getStringValue(); },
+        "value": n => { keyValuePairOfStringAndListOfString.value = n.getCollectionOfPrimitiveValues<string>(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoLoginCommand(loginCommand: Partial<LoginCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "password": n => { loginCommand.password = n.getStringValue(); },
+        "userName": n => { loginCommand.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoLoginCommandResponse(loginCommandResponse: Partial<LoginCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "accessToken": n => { loginCommandResponse.accessToken = n.getStringValue(); },
+        "expiresIn": n => { loginCommandResponse.expiresIn = n.getStringValue(); },
+        "refreshToken": n => { loginCommandResponse.refreshToken = n.getStringValue(); },
+        "tokenType": n => { loginCommandResponse.tokenType = n.getStringValue(); },
+        "userId": n => { loginCommandResponse.userId = n.getGuidValue(); },
+        "userName": n => { loginCommandResponse.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPagedParamter(pagedParamter: Partial<PagedParamter> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "pageNo": n => { pagedParamter.pageNo = n.getNumberValue(); },
+        "pageSize": n => { pagedParamter.pageSize = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPagedResultOfQueryTeamSimpleCommandResponse(pagedResultOfQueryTeamSimpleCommandResponse: Partial<PagedResultOfQueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(pagedResultOfQueryTeamSimpleCommandResponse),
+        "items": n => { pagedResultOfQueryTeamSimpleCommandResponse.items = n.getCollectionOfObjectValues<QueryTeamSimpleCommandResponse>(createQueryTeamSimpleCommandResponseFromDiscriminatorValue); },
+        "total": n => { pagedResultOfQueryTeamSimpleCommandResponse.total = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPagedResultOfQueryWikiFileListItem(pagedResultOfQueryWikiFileListItem: Partial<PagedResultOfQueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(pagedResultOfQueryWikiFileListItem),
+        "items": n => { pagedResultOfQueryWikiFileListItem.items = n.getCollectionOfObjectValues<QueryWikiFileListItem>(createQueryWikiFileListItemFromDiscriminatorValue); },
+        "total": n => { pagedResultOfQueryWikiFileListItem.total = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPagedResultOfTeamMemberResponse(pagedResultOfTeamMemberResponse: Partial<PagedResultOfTeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(pagedResultOfTeamMemberResponse),
+        "items": n => { pagedResultOfTeamMemberResponse.items = n.getCollectionOfObjectValues<TeamMemberResponse>(createTeamMemberResponseFromDiscriminatorValue); },
+        "total": n => { pagedResultOfTeamMemberResponse.total = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreloadWikiDocumentResponse(preloadWikiDocumentResponse: Partial<PreloadWikiDocumentResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "expiration": n => { preloadWikiDocumentResponse.expiration = n.getStringValue(); },
+        "fileId": n => { preloadWikiDocumentResponse.fileId = n.getGuidValue(); },
+        "isExist": n => { preloadWikiDocumentResponse.isExist = n.getBooleanValue(); },
+        "uploadUrl": n => { preloadWikiDocumentResponse.uploadUrl = n.getStringValue(); },
+        "visibility": n => { preloadWikiDocumentResponse.visibility = n.getEnumValue<FileVisibility>(FileVisibilityObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreUploadFileCommandResponse(preUploadFileCommandResponse: Partial<PreUploadFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "expiration": n => { preUploadFileCommandResponse.expiration = n.getStringValue(); },
+        "fileId": n => { preUploadFileCommandResponse.fileId = n.getGuidValue(); },
+        "isExist": n => { preUploadFileCommandResponse.isExist = n.getBooleanValue(); },
+        "uploadUrl": n => { preUploadFileCommandResponse.uploadUrl = n.getStringValue(); },
+        "visibility": n => { preUploadFileCommandResponse.visibility = n.getEnumValue<FileVisibility>(FileVisibilityObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreUploadImageCommand(preUploadImageCommand: Partial<PreUploadImageCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "contentType": n => { preUploadImageCommand.contentType = n.getStringValue(); },
+        "fileName": n => { preUploadImageCommand.fileName = n.getStringValue(); },
+        "fileSize": n => { preUploadImageCommand.fileSize = n.getNumberValue(); },
+        "imageType": n => { preUploadImageCommand.imageType = n.getEnumValue<UploadImageType>(UploadImageTypeObject); },
+        "mD5": n => { preUploadImageCommand.mD5 = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreUploadWikiDocumentCommand(preUploadWikiDocumentCommand: Partial<PreUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "contentType": n => { preUploadWikiDocumentCommand.contentType = n.getStringValue(); },
+        "fileName": n => { preUploadWikiDocumentCommand.fileName = n.getStringValue(); },
+        "fileSize": n => { preUploadWikiDocumentCommand.fileSize = n.getNumberValue(); },
+        "mD5": n => { preUploadWikiDocumentCommand.mD5 = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryAiModelFunctionListCommand(queryAiModelFunctionListCommand: Partial<QueryAiModelFunctionListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModelFunction": n => { queryAiModelFunctionListCommand.aiModelFunction = n.getEnumValue<AiModelFunction>(AiModelFunctionObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryAiModelFunctionListCommandResponse(queryAiModelFunctionListCommandResponse: Partial<QueryAiModelFunctionListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { queryAiModelFunctionListCommandResponse.aiModels = n.getCollectionOfObjectValues<AiNotKeyEndpoint>(createAiNotKeyEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryAiModelListCommand(queryAiModelListCommand: Partial<QueryAiModelListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "provider": n => { queryAiModelListCommand.provider = n.getEnumValue<AiProvider>(AiProviderObject); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryAiModelListCommandResponse(queryAiModelListCommandResponse: Partial<QueryAiModelListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { queryAiModelListCommandResponse.aiModels = n.getCollectionOfObjectValues<AiNotKeyEndpoint>(createAiNotKeyEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryAiModelProviderListResponse(queryAiModelProviderListResponse: Partial<QueryAiModelProviderListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "providers": n => { queryAiModelProviderListResponse.providers = n.getCollectionOfObjectValues<KeyValuePairOfStringAndInt32>(createKeyValuePairOfStringAndInt32FromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryDefaultAiModelListResponse(queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiModels": n => { queryDefaultAiModelListResponse.aiModels = n.getCollectionOfObjectValues<AiModelDefaultConfiguration>(createAiModelDefaultConfigurationFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryRepeatedUserNameCommand(queryRepeatedUserNameCommand: Partial<QueryRepeatedUserNameCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "userName": n => { queryRepeatedUserNameCommand.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryServerInfoResponse(queryServerInfoResponse: Partial<QueryServerInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "publicStoreUrl": n => { queryServerInfoResponse.publicStoreUrl = n.getStringValue(); },
+        "rsaPublic": n => { queryServerInfoResponse.rsaPublic = n.getStringValue(); },
+        "serviceUrl": n => { queryServerInfoResponse.serviceUrl = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQuerySupportModelProviderCommandResponse(querySupportModelProviderCommandResponse: Partial<QuerySupportModelProviderCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "providers": n => { querySupportModelProviderCommandResponse.providers = n.getCollectionOfObjectValues<AiProviderInfo>(createAiProviderInfoFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryTeamDetailCommandResponse(queryTeamDetailCommandResponse: Partial<QueryTeamDetailCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryTeamDetailCommandResponse),
+        "avatarUrl": n => { queryTeamDetailCommandResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { queryTeamDetailCommandResponse.description = n.getStringValue(); },
+        "id": n => { queryTeamDetailCommandResponse.id = n.getGuidValue(); },
+        "isAdmin": n => { queryTeamDetailCommandResponse.isAdmin = n.getBooleanValue(); },
+        "isDisable": n => { queryTeamDetailCommandResponse.isDisable = n.getBooleanValue(); },
+        "isPublic": n => { queryTeamDetailCommandResponse.isPublic = n.getBooleanValue(); },
+        "isRoot": n => { queryTeamDetailCommandResponse.isRoot = n.getBooleanValue(); },
+        "markdown": n => { queryTeamDetailCommandResponse.markdown = n.getStringValue(); },
+        "name": n => { queryTeamDetailCommandResponse.name = n.getStringValue(); },
+        "ownUserId": n => { queryTeamDetailCommandResponse.ownUserId = n.getGuidValue(); },
+        "ownUserName": n => { queryTeamDetailCommandResponse.ownUserName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryTeamMemberListCommand(queryTeamMemberListCommand: Partial<QueryTeamMemberListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(queryTeamMemberListCommand),
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryTeamNameCommand(queryTeamNameCommand: Partial<QueryTeamNameCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "id": n => { queryTeamNameCommand.id = n.getGuidValue(); },
+        "name": n => { queryTeamNameCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryTeamSimpleCommandResponse(queryTeamSimpleCommandResponse: Partial<QueryTeamSimpleCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryTeamSimpleCommandResponse),
+        "avatarUrl": n => { queryTeamSimpleCommandResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { queryTeamSimpleCommandResponse.description = n.getStringValue(); },
+        "id": n => { queryTeamSimpleCommandResponse.id = n.getGuidValue(); },
+        "isAdmin": n => { queryTeamSimpleCommandResponse.isAdmin = n.getBooleanValue(); },
+        "isDisable": n => { queryTeamSimpleCommandResponse.isDisable = n.getBooleanValue(); },
+        "isPublic": n => { queryTeamSimpleCommandResponse.isPublic = n.getBooleanValue(); },
+        "isRoot": n => { queryTeamSimpleCommandResponse.isRoot = n.getBooleanValue(); },
+        "name": n => { queryTeamSimpleCommandResponse.name = n.getStringValue(); },
+        "ownUserId": n => { queryTeamSimpleCommandResponse.ownUserId = n.getGuidValue(); },
+        "ownUserName": n => { queryTeamSimpleCommandResponse.ownUserName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryUserInfoCommandResponse(queryUserInfoCommandResponse: Partial<QueryUserInfoCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "avatar": n => { queryUserInfoCommandResponse.avatar = n.getStringValue(); },
+        "nickName": n => { queryUserInfoCommandResponse.nickName = n.getStringValue(); },
+        "userId": n => { queryUserInfoCommandResponse.userId = n.getGuidValue(); },
+        "userName": n => { queryUserInfoCommandResponse.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryUserJoinedTeamCommand(queryUserJoinedTeamCommand: Partial<QueryUserJoinedTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(queryUserJoinedTeamCommand),
+        "isAdmin": n => { queryUserJoinedTeamCommand.isAdmin = n.getBooleanValue(); },
+        "isRoot": n => { queryUserJoinedTeamCommand.isRoot = n.getBooleanValue(); },
+        "keyword": n => { queryUserJoinedTeamCommand.keyword = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiConfigCommandResponse(queryWikiConfigCommandResponse: Partial<QueryWikiConfigCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryWikiConfigCommandResponse),
+        "embeddingBatchSize": n => { queryWikiConfigCommandResponse.embeddingBatchSize = n.getNumberValue(); },
+        "embeddingDimensions": n => { queryWikiConfigCommandResponse.embeddingDimensions = n.getNumberValue(); },
+        "embeddingModelId": n => { queryWikiConfigCommandResponse.embeddingModelId = n.getGuidValue(); },
+        "embeddingModelTokenizer": n => { queryWikiConfigCommandResponse.embeddingModelTokenizer = n.getStringValue(); },
+        "isLock": n => { queryWikiConfigCommandResponse.isLock = n.getBooleanValue(); },
+        "maxRetries": n => { queryWikiConfigCommandResponse.maxRetries = n.getNumberValue(); },
+        "wikiId": n => { queryWikiConfigCommandResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiDetailInfoResponse(queryWikiDetailInfoResponse: Partial<QueryWikiDetailInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "avatarUrl": n => { queryWikiDetailInfoResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { queryWikiDetailInfoResponse.description = n.getStringValue(); },
+        "isPublic": n => { queryWikiDetailInfoResponse.isPublic = n.getBooleanValue(); },
+        "markdown": n => { queryWikiDetailInfoResponse.markdown = n.getStringValue(); },
+        "name": n => { queryWikiDetailInfoResponse.name = n.getStringValue(); },
+        "wikiId": n => { queryWikiDetailInfoResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiDocumentTaskListCommand(queryWikiDocumentTaskListCommand: Partial<QueryWikiDocumentTaskListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { queryWikiDocumentTaskListCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiDocumentTaskListCommandResponse(queryWikiDocumentTaskListCommandResponse: Partial<QueryWikiDocumentTaskListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryWikiDocumentTaskListCommandResponse),
+        "contentType": n => { queryWikiDocumentTaskListCommandResponse.contentType = n.getStringValue(); },
+        "documentId": n => { queryWikiDocumentTaskListCommandResponse.documentId = n.getGuidValue(); },
+        "fileId": n => { queryWikiDocumentTaskListCommandResponse.fileId = n.getGuidValue(); },
+        "fileName": n => { queryWikiDocumentTaskListCommandResponse.fileName = n.getStringValue(); },
+        "fileSize": n => { queryWikiDocumentTaskListCommandResponse.fileSize = n.getStringValue(); },
+        "id": n => { queryWikiDocumentTaskListCommandResponse.id = n.getGuidValue(); },
+        "maxTokensPerParagraph": n => { queryWikiDocumentTaskListCommandResponse.maxTokensPerParagraph = n.getNumberValue(); },
+        "message": n => { queryWikiDocumentTaskListCommandResponse.message = n.getStringValue(); },
+        "overlappingTokens": n => { queryWikiDocumentTaskListCommandResponse.overlappingTokens = n.getNumberValue(); },
+        "state": n => { queryWikiDocumentTaskListCommandResponse.state = n.getEnumValue<FileEmbeddingState>(FileEmbeddingStateObject); },
+        "taskTag": n => { queryWikiDocumentTaskListCommandResponse.taskTag = n.getStringValue(); },
+        "teamId": n => { queryWikiDocumentTaskListCommandResponse.teamId = n.getGuidValue(); },
+        "tokenizer": n => { queryWikiDocumentTaskListCommandResponse.tokenizer = n.getStringValue(); },
+        "wikiId": n => { queryWikiDocumentTaskListCommandResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiFileCommand(queryWikiFileCommand: Partial<QueryWikiFileCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { queryWikiFileCommand.documentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiFileListCommand(queryWikiFileListCommand: Partial<QueryWikiFileListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedParamter(queryWikiFileListCommand),
+        "search": n => { queryWikiFileListCommand.search = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiFileListItem(queryWikiFileListItem: Partial<QueryWikiFileListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryWikiFileListItem),
+        "contentType": n => { queryWikiFileListItem.contentType = n.getStringValue(); },
+        "documentId": n => { queryWikiFileListItem.documentId = n.getGuidValue(); },
+        "fileName": n => { queryWikiFileListItem.fileName = n.getStringValue(); },
+        "fileSize": n => { queryWikiFileListItem.fileSize = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiFileListResponse(queryWikiFileListResponse: Partial<QueryWikiFileListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoPagedResultOfQueryWikiFileListItem(queryWikiFileListResponse),
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryWikiSimpleInfoResponse(queryWikiSimpleInfoResponse: Partial<QueryWikiSimpleInfoResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "avatarUrl": n => { queryWikiSimpleInfoResponse.avatarUrl = n.getStringValue(); },
+        "description": n => { queryWikiSimpleInfoResponse.description = n.getStringValue(); },
+        "isPublic": n => { queryWikiSimpleInfoResponse.isPublic = n.getBooleanValue(); },
+        "name": n => { queryWikiSimpleInfoResponse.name = n.getStringValue(); },
+        "wikiId": n => { queryWikiSimpleInfoResponse.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoRefreshTokenCommand(refreshTokenCommand: Partial<RefreshTokenCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "refreshToken": n => { refreshTokenCommand.refreshToken = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoRegisterUserCommand(registerUserCommand: Partial<RegisterUserCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "email": n => { registerUserCommand.email = n.getStringValue(); },
+        "nickName": n => { registerUserCommand.nickName = n.getStringValue(); },
+        "password": n => { registerUserCommand.password = n.getStringValue(); },
+        "phone": n => { registerUserCommand.phone = n.getStringValue(); },
+        "userName": n => { registerUserCommand.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoRemoveTeamMemberCommand(removeTeamMemberCommand: Partial<RemoveTeamMemberCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "teamId": n => { removeTeamMemberCommand.teamId = n.getGuidValue(); },
+        "userId": n => { removeTeamMemberCommand.userId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSearchResult(searchResult: Partial<SearchResult> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "noResult": n => { searchResult.noResult = n.getBooleanValue(); },
+        "query": n => { searchResult.query = n.getStringValue(); },
+        "results": n => { searchResult.results = n.getCollectionOfObjectValues<Citation>(createCitationFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSearchWikiDocumentTextCommand(searchWikiDocumentTextCommand: Partial<SearchWikiDocumentTextCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { searchWikiDocumentTextCommand.documentId = n.getGuidValue(); },
+        "query": n => { searchWikiDocumentTextCommand.query = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSearchWikiDocumentTextCommandResponse(searchWikiDocumentTextCommandResponse: Partial<SearchWikiDocumentTextCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "searchResult": n => { searchWikiDocumentTextCommandResponse.searchResult = n.getObjectValue<SearchResult>(createSearchResultFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSetDefaultAiModelCommand(setDefaultAiModelCommand: Partial<SetDefaultAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { setDefaultAiModelCommand.aiFunction = n.getEnumValue<AiModelFunction>(AiModelFunctionObject); },
+        "modelId": n => { setDefaultAiModelCommand.modelId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSetTeamAdminCommand(setTeamAdminCommand: Partial<SetTeamAdminCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "isAdmin": n => { setTeamAdminCommand.isAdmin = n.getBooleanValue(); },
+        "teamId": n => { setTeamAdminCommand.teamId = n.getGuidValue(); },
+        "userId": n => { setTeamAdminCommand.userId = n.getGuidValue(); },
+        "userName": n => { setTeamAdminCommand.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSimpleOfBoolean(simpleOfBoolean: Partial<SimpleOfBoolean> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "data": n => { simpleOfBoolean.data = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoSimpleOfString(simpleOfString: Partial<SimpleOfString> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "data": n => { simpleOfString.data = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoTeamMemberResponse(teamMemberResponse: Partial<TeamMemberResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(teamMemberResponse),
+        "isAdmin": n => { teamMemberResponse.isAdmin = n.getBooleanValue(); },
+        "isOwner": n => { teamMemberResponse.isOwner = n.getBooleanValue(); },
+        "nickName": n => { teamMemberResponse.nickName = n.getStringValue(); },
+        "userAvatarPath": n => { teamMemberResponse.userAvatarPath = n.getStringValue(); },
+        "userId": n => { teamMemberResponse.userId = n.getGuidValue(); },
+        "userName": n => { teamMemberResponse.userName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdateAiModelCommand(updateAiModelCommand: Partial<UpdateAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "endpoint": n => { updateAiModelCommand.endpoint = n.getObjectValue<UploadAiModelEndpoint>(createUploadAiModelEndpointFromDiscriminatorValue); },
+        "modelId": n => { updateAiModelCommand.modelId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdateTeamInfoCommand(updateTeamInfoCommand: Partial<UpdateTeamInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { updateTeamInfoCommand.description = n.getStringValue(); },
+        "isDisable": n => { updateTeamInfoCommand.isDisable = n.getBooleanValue(); },
+        "isPublic": n => { updateTeamInfoCommand.isPublic = n.getBooleanValue(); },
+        "markdown": n => { updateTeamInfoCommand.markdown = n.getStringValue(); },
+        "name": n => { updateTeamInfoCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdateUserPasswordCommand(updateUserPasswordCommand: Partial<UpdateUserPasswordCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "password": n => { updateUserPasswordCommand.password = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdateWikiConfigCommand(updateWikiConfigCommand: Partial<UpdateWikiConfigCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "embeddingBatchSize": n => { updateWikiConfigCommand.embeddingBatchSize = n.getNumberValue(); },
+        "embeddingDimensions": n => { updateWikiConfigCommand.embeddingDimensions = n.getNumberValue(); },
+        "embeddingModelId": n => { updateWikiConfigCommand.embeddingModelId = n.getGuidValue(); },
+        "embeddingModelTokenizer": n => { updateWikiConfigCommand.embeddingModelTokenizer = n.getStringValue(); },
+        "maxRetries": n => { updateWikiConfigCommand.maxRetries = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdateWikiInfoCommand(updateWikiInfoCommand: Partial<UpdateWikiInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { updateWikiInfoCommand.description = n.getStringValue(); },
+        "isPublic": n => { updateWikiInfoCommand.isPublic = n.getBooleanValue(); },
+        "markdown": n => { updateWikiInfoCommand.markdown = n.getStringValue(); },
+        "name": n => { updateWikiInfoCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadAiModelEndpoint(uploadAiModelEndpoint: Partial<UploadAiModelEndpoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "aiFunction": n => { uploadAiModelEndpoint.aiFunction = n.getCollectionOfEnumValues<AiModelFunction>(AiModelFunctionObject); },
+        "deploymentName": n => { uploadAiModelEndpoint.deploymentName = n.getStringValue(); },
+        "embeddinMaxToken": n => { uploadAiModelEndpoint.embeddinMaxToken = n.getNumberValue(); },
+        "endpoint": n => { uploadAiModelEndpoint.endpoint = n.getStringValue(); },
+        "isSupportFunctionCall": n => { uploadAiModelEndpoint.isSupportFunctionCall = n.getBooleanValue(); },
+        "isSupportImg": n => { uploadAiModelEndpoint.isSupportImg = n.getBooleanValue(); },
+        "key": n => { uploadAiModelEndpoint.key = n.getStringValue(); },
+        "modelId": n => { uploadAiModelEndpoint.modelId = n.getStringValue(); },
+        "name": n => { uploadAiModelEndpoint.name = n.getStringValue(); },
+        "textMaxToken": n => { uploadAiModelEndpoint.textMaxToken = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadTeamAvatarCommand(uploadTeamAvatarCommand: Partial<UploadTeamAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { uploadTeamAvatarCommand.fileId = n.getGuidValue(); },
+        "teamId": n => { uploadTeamAvatarCommand.teamId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadtUserAvatarCommand(uploadtUserAvatarCommand: Partial<UploadtUserAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { uploadtUserAvatarCommand.fileId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadWikiAvatarCommand(uploadWikiAvatarCommand: Partial<UploadWikiAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { uploadWikiAvatarCommand.fileId = n.getGuidValue(); },
+    }
+}
+/**
+ * 执行对文件的处理.
+ */
+export interface EmbeddingocumentCommand extends Parsable {
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+    /**
+     * The maximum number of tokens per paragraph.When partitioning a document, each partition usually contains one paragraph.
+     */
+    maxTokensPerParagraph?: number | null;
+    /**
+     * The number of overlapping tokens between chunks.
+     */
+    overlappingTokens?: number | null;
+    /**
+     * Name of the tokenizer used to count tokens.Supported values: "p50k", "cl100k", "o200k". Leave it empty for autodetect.
+     */
+    tokenizer?: string | null;
+    /**
+     * The wikiId property
+     */
+    wikiId?: Guid | null;
+}
+/**
+ * 空数据.
+ */
+export interface EmptyCommandResponse extends Parsable {
+}
+/**
+ * 空数据.
+ */
+export interface EmptyDto extends Parsable {
+}
+/**
+ * 数据是否存在.
+ */
+export interface ExistResponse extends Parsable {
+    /**
+     * 数据是否存在.
+     */
+    isExist?: boolean | null;
+}
+export type FileEmbeddingState = (typeof FileEmbeddingStateObject)[keyof typeof FileEmbeddingStateObject];
+export type FileVisibility = (typeof FileVisibilityObject)[keyof typeof FileVisibilityObject];
+/**
+ * Guid.
+ */
+export interface IdResponse extends Parsable {
+    /**
+     * Guid.
+     */
+    id?: Guid | null;
+}
+/**
+ * 邀请用户加入团队命令.
+ */
+export interface InviteUserToTeamCommand extends Parsable {
+    /**
+     * 团队ID.
+     */
+    teamId?: Guid | null;
+    /**
+     * 被邀请的用户ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+export interface KeyValuePairOfStringAndInt32 extends Parsable {
+    /**
+     * The key property
+     */
+    key?: string | null;
+    /**
+     * The value property
+     */
+    value?: number | null;
+}
+export interface KeyValuePairOfStringAndListOfString extends Parsable {
+    /**
+     * The key property
+     */
+    key?: string | null;
+    /**
+     * The value property
+     */
+    value?: string[] | null;
+}
+/**
+ * 登录.
+ */
+export interface LoginCommand extends Parsable {
+    /**
+     * 密码，使用 RSA 公钥加密.
+     */
+    password?: string | null;
+    /**
+     * 用户名或邮箱.
+     */
+    userName?: string | null;
+}
+/**
+ * 登录结果.
+ */
+export interface LoginCommandResponse extends Parsable {
+    /**
+     * 访问令牌.
+     */
+    accessToken?: string | null;
+    /**
+     * 过期时间（秒）.
+     */
+    expiresIn?: string | null;
+    /**
+     * 刷新令牌.
+     */
+    refreshToken?: string | null;
+    /**
+     * 令牌类型.
+     */
+    tokenType?: string | null;
+    /**
+     * 用户ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+/**
+ * 分页参数.
+ */
+export interface PagedParamter extends Parsable {
+    /**
+     * 页码，从1开始.
+     */
+    pageNo?: number | null;
+    /**
+     * 每页大小.
+     */
+    pageSize?: number | null;
+}
+/**
+ * 分页结果.
+ */
+export interface PagedResultOfQueryTeamSimpleCommandResponse extends PagedParamter, Parsable {
+    /**
+     * 项目集合.
+     */
+    items?: QueryTeamSimpleCommandResponse[] | null;
+    /**
+     * 总数.
+     */
+    total?: number | null;
+}
+/**
+ * 分页结果.
+ */
+export interface PagedResultOfQueryWikiFileListItem extends PagedParamter, Parsable {
+    /**
+     * 项目集合.
+     */
+    items?: QueryWikiFileListItem[] | null;
+    /**
+     * 总数.
+     */
+    total?: number | null;
+}
+/**
+ * 分页结果.
+ */
+export interface PagedResultOfTeamMemberResponse extends PagedParamter, Parsable {
+    /**
+     * 项目集合.
+     */
+    items?: TeamMemberResponse[] | null;
+    /**
+     * 总数.
+     */
+    total?: number | null;
+}
+export interface PreloadWikiDocumentResponse extends Parsable {
+    /**
+     * 签名过期时间，当 IsExist = true 时字段为空.
+     */
+    expiration?: string | null;
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
+     */
+    isExist?: boolean | null;
+    /**
+     * 预签名上传地址，当 IsExist = true 时字段为空.
+     */
+    uploadUrl?: string | null;
+    /**
+     * 文件可见性.
+     */
+    visibility?: FileVisibility | null;
+}
+/**
+ * 预上传文件.
+ */
+export interface PreUploadFileCommandResponse extends Parsable {
+    /**
+     * 签名过期时间，当 IsExist = true 时字段为空.
+     */
+    expiration?: string | null;
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
+     */
+    isExist?: boolean | null;
+    /**
+     * 预签名上传地址，当 IsExist = true 时字段为空.
+     */
+    uploadUrl?: string | null;
+    /**
+     * 文件可见性.
+     */
+    visibility?: FileVisibility | null;
+}
+/**
+ * 上传图像，例如头像、公有图像等，文件公开访问，都根路径下.
+ */
+export interface PreUploadImageCommand extends Parsable {
+    /**
+     * 文件类型.
+     */
+    contentType?: string | null;
+    /**
+     * 文件名称.
+     */
+    fileName?: string | null;
+    /**
+     * 文件大小.
+     */
+    fileSize?: number | null;
+    /**
+     * 文件类型根据具体的功能模块决定.
+     */
+    imageType?: UploadImageType | null;
+    /**
+     * 文件 MD5.
+     */
+    mD5?: string | null;
+}
+/**
+ * 预上传知识库文件.
+ */
+export interface PreUploadWikiDocumentCommand extends Parsable {
+    /**
+     * 文件类型.
+     */
+    contentType?: string | null;
+    /**
+     * 文件名称.
+     */
+    fileName?: string | null;
+    /**
+     * 文件大小.
+     */
+    fileSize?: number | null;
+    /**
+     * 文件 MD5.
+     */
+    mD5?: string | null;
+}
+/**
+ * 查询某种用途的 AI 模型列表
+ */
+export interface QueryAiModelFunctionListCommand extends Parsable {
     /**
      * AI 模型的功能，判断是否多模态.
      */
-    aiFunction?: MaomiAIAiModelSharedModelsAiModelFunction[] | null;
+    aiModelFunction?: AiModelFunction | null;
+}
+export interface QueryAiModelFunctionListCommandResponse extends Parsable {
+    /**
+     * AI 模型列表.
+     */
+    aiModels?: AiNotKeyEndpoint[] | null;
+}
+/**
+ * 查询供应商下已配置的 ai 模型列表.
+ */
+export interface QueryAiModelListCommand extends Parsable {
+    /**
+     * AI 模型类型.
+     */
+    provider?: AiProvider | null;
+}
+export interface QueryAiModelListCommandResponse extends Parsable {
+    /**
+     * AI 模型列表.
+     */
+    aiModels?: AiNotKeyEndpoint[] | null;
+}
+export interface QueryAiModelProviderListResponse extends Parsable {
+    /**
+     * AI 服务商列表，{ai服务提供商,模型数量}.
+     */
+    providers?: KeyValuePairOfStringAndInt32[] | null;
+}
+export interface QueryDefaultAiModelListResponse extends Parsable {
+    /**
+     * The aiModels property
+     */
+    aiModels?: AiModelDefaultConfiguration[] | null;
+}
+/**
+ * 检查用户名是否重复.
+ */
+export interface QueryRepeatedUserNameCommand extends Parsable {
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+export interface QueryServerInfoResponse extends Parsable {
+    /**
+     * 公共存储地址，静态资源时可直接访问.
+     */
+    publicStoreUrl?: string | null;
+    /**
+     * RSA 公钥，用于加密密码等信息传输到服务器.
+     */
+    rsaPublic?: string | null;
+    /**
+     * 系统访问地址.
+     */
+    serviceUrl?: string | null;
+}
+export interface QuerySupportModelProviderCommandResponse extends Parsable {
+    /**
+     * 支持的模型供应商列表.
+     */
+    providers?: AiProviderInfo[] | null;
+}
+/**
+ * 团队详细信息.
+ */
+export interface QueryTeamDetailCommandResponse extends AuditsInfo, Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 团队ID.
+     */
+    id?: Guid | null;
+    /**
+     * 是否管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 团队已被禁用.
+     */
+    isDisable?: boolean | null;
+    /**
+     * 是否公开,能够被外部搜索.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 是否所有者.
+     */
+    isRoot?: boolean | null;
+    /**
+     * 团队详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+    /**
+     * 所有者 id.
+     */
+    ownUserId?: Guid | null;
+    /**
+     * 所有人名字.
+     */
+    ownUserName?: string | null;
+}
+/**
+ * 查询团队成员列表.
+ */
+export interface QueryTeamMemberListCommand extends PagedParamter, Parsable {
+}
+/**
+ * 检查团队名称是否存在.
+ */
+export interface QueryTeamNameCommand extends Parsable {
+    /**
+     * 团队ID.
+     */
+    id?: Guid | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+}
+/**
+ * 团队基础信息.
+ */
+export interface QueryTeamSimpleCommandResponse extends AuditsInfo, Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 团队ID.
+     */
+    id?: Guid | null;
+    /**
+     * 是否管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 团队已被禁用.
+     */
+    isDisable?: boolean | null;
+    /**
+     * 是否公开,能够被外部搜索.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 是否所有者.
+     */
+    isRoot?: boolean | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+    /**
+     * 所有者 id.
+     */
+    ownUserId?: Guid | null;
+    /**
+     * 所有人名字.
+     */
+    ownUserName?: string | null;
+}
+/**
+ * 用户基本信息响应.
+ */
+export interface QueryUserInfoCommandResponse extends Parsable {
+    /**
+     * 头像路径.
+     */
+    avatar?: string | null;
+    /**
+     * 昵称.
+     */
+    nickName?: string | null;
+    /**
+     * 用户 ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+/**
+ * 分页查询用户已加入的团队列表.
+ */
+export interface QueryUserJoinedTeamCommand extends PagedParamter, Parsable {
+    /**
+     * 当前用户有管理员权限的.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 当前用户所有的.
+     */
+    isRoot?: boolean | null;
+    /**
+     * 查询关键字.
+     */
+    keyword?: string | null;
+}
+export interface QueryWikiConfigCommandResponse extends AuditsInfo, Parsable {
+    /**
+     * 批处理大小.
+     */
+    embeddingBatchSize?: number | null;
+    /**
+     * 维度，跟模型有关.
+     */
+    embeddingDimensions?: number | null;
+    /**
+     * 指定进行文档向量化的模型.
+     */
+    embeddingModelId?: Guid | null;
+    /**
+     * 分词器.
+     */
+    embeddingModelTokenizer?: string | null;
+    /**
+     * 锁定配置，锁定后不能再修改.
+     */
+    isLock?: boolean | null;
+    /**
+     * 最大重试次数.
+     */
+    maxRetries?: number | null;
+    /**
+     * 知识库id.
+     */
+    wikiId?: Guid | null;
+}
+export interface QueryWikiDetailInfoResponse extends Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+    /**
+     * 知识库 id.
+     */
+    wikiId?: Guid | null;
+}
+/**
+ * 查询文档任务列表.
+ */
+export interface QueryWikiDocumentTaskListCommand extends Parsable {
+    /**
+     * 文档id.
+     */
+    documentId?: Guid | null;
+}
+export interface QueryWikiDocumentTaskListCommandResponse extends AuditsInfo, Parsable {
+    /**
+     * The contentType property
+     */
+    contentType?: string | null;
+    /**
+     * 文档id.
+     */
+    documentId?: Guid | null;
+    /**
+     * 文件id.
+     */
+    fileId?: Guid | null;
+    /**
+     * The fileName property
+     */
+    fileName?: string | null;
+    /**
+     * The fileSize property
+     */
+    fileSize?: string | null;
+    /**
+     * id.
+     */
+    id?: Guid | null;
+    /**
+     * 每段最大token数量.
+     */
+    maxTokensPerParagraph?: number | null;
+    /**
+     * 执行信息.
+     */
+    message?: string | null;
+    /**
+     * 重叠的token数量.
+     */
+    overlappingTokens?: number | null;
+    /**
+     * 任务状态.
+     */
+    state?: FileEmbeddingState | null;
+    /**
+     * 任务标识，用来判断要执行的任务是否一致.
+     */
+    taskTag?: string | null;
+    /**
+     * 团队id.
+     */
+    teamId?: Guid | null;
+    /**
+     * 分词器.
+     */
+    tokenizer?: string | null;
+    /**
+     * 知识库id.
+     */
+    wikiId?: Guid | null;
+}
+export interface QueryWikiFileCommand extends Parsable {
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+}
+/**
+ * 查询 wiki 文件列表.
+ */
+export interface QueryWikiFileListCommand extends PagedParamter, Parsable {
+    /**
+     * The search property
+     */
+    search?: string | null;
+}
+export interface QueryWikiFileListItem extends AuditsInfo, Parsable {
+    /**
+     * The contentType property
+     */
+    contentType?: string | null;
+    /**
+     * The documentId property
+     */
+    documentId?: Guid | null;
+    /**
+     * The fileName property
+     */
+    fileName?: string | null;
+    /**
+     * The fileSize property
+     */
+    fileSize?: string | null;
+}
+export interface QueryWikiFileListResponse extends PagedResultOfQueryWikiFileListItem, Parsable {
+}
+export interface QueryWikiSimpleInfoResponse extends Parsable {
+    /**
+     * 团队头像路径.
+     */
+    avatarUrl?: string | null;
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+    /**
+     * 知识库 id.
+     */
+    wikiId?: Guid | null;
+}
+/**
+ * 刷新 token.
+ */
+export interface RefreshTokenCommand extends Parsable {
+    /**
+     * 刷新令牌.
+     */
+    refreshToken?: string | null;
+}
+/**
+ * 注册用户.
+ */
+export interface RegisterUserCommand extends Parsable {
+    /**
+     * 邮箱.
+     */
+    email?: string | null;
+    /**
+     * 昵称.
+     */
+    nickName?: string | null;
+    /**
+     * 密码，接口请求时，使用 RSA 公钥加密密码.
+     */
+    password?: string | null;
+    /**
+     * 手机号.
+     */
+    phone?: string | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+/**
+ * 移除团队成员命令.
+ */
+export interface RemoveTeamMemberCommand extends Parsable {
+    /**
+     * The teamId property
+     */
+    teamId?: Guid | null;
+    /**
+     * 要移除的团队成员ID.
+     */
+    userId?: Guid | null;
+}
+export interface SearchResult extends Parsable {
+    /**
+     * Whether the search didn't return any result
+     */
+    noResult?: boolean | null;
+    /**
+     * Client question.
+     */
+    query?: string | null;
+    /**
+     * List of the relevant sources used to produce the answer.Key = Document IDValue = List of partitions used from the document.
+     */
+    results?: Citation[] | null;
+}
+export interface SearchWikiDocumentTextCommand extends Parsable {
+    /**
+     * 文档id.
+     */
+    documentId?: Guid | null;
+    /**
+     * 搜索文本.
+     */
+    query?: string | null;
+}
+export interface SearchWikiDocumentTextCommandResponse extends Parsable {
+    /**
+     * The searchResult property
+     */
+    searchResult?: SearchResult | null;
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAddAiModelCommand(writer: SerializationWriter, addAiModelCommand: Partial<AddAiModelCommand> | undefined | null = {}) : void {
+    if (addAiModelCommand) {
+        writer.writeObjectValue<AiEndpoint>("endpoint", addAiModelCommand.endpoint, serializeAiEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAiEndpoint(writer: SerializationWriter, aiEndpoint: Partial<AiEndpoint> | undefined | null = {}) : void {
+    if (aiEndpoint) {
+        if(aiEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<AiModelFunction>("aiFunction", aiEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", aiEndpoint.deploymentName);
+        writer.writeNumberValue("embeddinMaxToken", aiEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", aiEndpoint.endpoint);
+        writer.writeBooleanValue("isSupportFunctionCall", aiEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", aiEndpoint.isSupportImg);
+        writer.writeStringValue("key", aiEndpoint.key);
+        writer.writeStringValue("modelId", aiEndpoint.modelId);
+        writer.writeStringValue("name", aiEndpoint.name);
+        writer.writeEnumValue<AiProvider>("provider", aiEndpoint.provider);
+        writer.writeNumberValue("textMaxToken", aiEndpoint.textMaxToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAiModelDefaultConfiguration(writer: SerializationWriter, aiModelDefaultConfiguration: Partial<AiModelDefaultConfiguration> | undefined | null = {}) : void {
+    if (aiModelDefaultConfiguration) {
+        if(aiModelDefaultConfiguration.aiFunction)
+        writer.writeCollectionOfEnumValues<AiModelFunction>("aiFunction", aiModelDefaultConfiguration.aiFunction);
+        writer.writeNumberValue("embeddinMaxToken", aiModelDefaultConfiguration.embeddinMaxToken);
+        writer.writeBooleanValue("isSupportFunctionCall", aiModelDefaultConfiguration.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", aiModelDefaultConfiguration.isSupportImg);
+        writer.writeGuidValue("modelId", aiModelDefaultConfiguration.modelId);
+        writer.writeStringValue("name", aiModelDefaultConfiguration.name);
+        writer.writeStringValue("provider", aiModelDefaultConfiguration.provider);
+        writer.writeNumberValue("textMaxToken", aiModelDefaultConfiguration.textMaxToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAiNotKeyEndpoint(writer: SerializationWriter, aiNotKeyEndpoint: Partial<AiNotKeyEndpoint> | undefined | null = {}) : void {
+    if (aiNotKeyEndpoint) {
+        if(aiNotKeyEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<AiModelFunction>("aiFunction", aiNotKeyEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", aiNotKeyEndpoint.deploymentName);
+        writer.writeNumberValue("embeddinMaxToken", aiNotKeyEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", aiNotKeyEndpoint.endpoint);
+        writer.writeGuidValue("id", aiNotKeyEndpoint.id);
+        writer.writeBooleanValue("isSupportFunctionCall", aiNotKeyEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", aiNotKeyEndpoint.isSupportImg);
+        writer.writeStringValue("modelId", aiNotKeyEndpoint.modelId);
+        writer.writeStringValue("name", aiNotKeyEndpoint.name);
+        writer.writeStringValue("provider", aiNotKeyEndpoint.provider);
+        writer.writeNumberValue("textMaxToken", aiNotKeyEndpoint.textMaxToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAiProviderInfo(writer: SerializationWriter, aiProviderInfo: Partial<AiProviderInfo> | undefined | null = {}) : void {
+    if (aiProviderInfo) {
+        writer.writeStringValue("defaultEndpoint", aiProviderInfo.defaultEndpoint);
+        writer.writeStringValue("description", aiProviderInfo.description);
+        writer.writeStringValue("icon", aiProviderInfo.icon);
+        writer.writeStringValue("name", aiProviderInfo.name);
+        writer.writeEnumValue<AiProvider>("provider", aiProviderInfo.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeAuditsInfo(writer: SerializationWriter, auditsInfo: Partial<AuditsInfo> | undefined | null = {}) : void {
+    if (auditsInfo) {
+        writer.writeStringValue("createTime", auditsInfo.createTime);
+        writer.writeGuidValue("createUserId", auditsInfo.createUserId);
+        writer.writeStringValue("createUserName", auditsInfo.createUserName);
+        writer.writeStringValue("updateTime", auditsInfo.updateTime);
+        writer.writeGuidValue("updateUserId", auditsInfo.updateUserId);
+        writer.writeStringValue("updateUserName", auditsInfo.updateUserName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeBusinessExceptionResponse(writer: SerializationWriter, businessExceptionResponse: Partial<BusinessExceptionResponse> | undefined | null = {}) : void {
+    if (businessExceptionResponse) {
+        writer.writeNumberValue("code", businessExceptionResponse.code);
+        writer.writeStringValue("detail", businessExceptionResponse.detail);
+        writer.writeObjectValue<BusinessExceptionResponse_errors>("errors", businessExceptionResponse.errors, serializeBusinessExceptionResponse_errors);
+        writer.writeObjectValue<BusinessExceptionResponse_extensions>("extensions", businessExceptionResponse.extensions, serializeBusinessExceptionResponse_extensions);
+        writer.writeStringValue("requestId", businessExceptionResponse.requestId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeBusinessExceptionResponse_errors(writer: SerializationWriter, businessExceptionResponse_errors: Partial<BusinessExceptionResponse_errors> | undefined | null = {}) : void {
+    if (businessExceptionResponse_errors) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeBusinessExceptionResponse_extensions(writer: SerializationWriter, businessExceptionResponse_extensions: Partial<BusinessExceptionResponse_extensions> | undefined | null = {}) : void {
+    if (businessExceptionResponse_extensions) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCancalWikiDocumentTaskCommand(writer: SerializationWriter, cancalWikiDocumentTaskCommand: Partial<CancalWikiDocumentTaskCommand> | undefined | null = {}) : void {
+    if (cancalWikiDocumentTaskCommand) {
+        writer.writeGuidValue("documentId", cancalWikiDocumentTaskCommand.documentId);
+        writer.writeGuidValue("taskId", cancalWikiDocumentTaskCommand.taskId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCitation(writer: SerializationWriter, citation: Partial<Citation> | undefined | null = {}) : void {
+    if (citation) {
+        writer.writeStringValue("documentId", citation.documentId);
+        writer.writeStringValue("fileId", citation.fileId);
+        writer.writeStringValue("index", citation.index);
+        writer.writeStringValue("link", citation.link);
+        writer.writeCollectionOfObjectValues<Citation_Partition>("partitions", citation.partitions, serializeCitation_Partition);
+        writer.writeStringValue("sourceContentType", citation.sourceContentType);
+        writer.writeStringValue("sourceName", citation.sourceName);
+        writer.writeStringValue("sourceUrl", citation.sourceUrl);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCitation_Partition(writer: SerializationWriter, citation_Partition: Partial<Citation_Partition> | undefined | null = {}) : void {
+    if (citation_Partition) {
+        writer.writeStringValue("lastUpdate", citation_Partition.lastUpdate);
+        writer.writeNumberValue("partitionNumber", citation_Partition.partitionNumber);
+        writer.writeNumberValue("relevance", citation_Partition.relevance);
+        writer.writeNumberValue("sectionNumber", citation_Partition.sectionNumber);
+        writer.writeCollectionOfObjectValues<KeyValuePairOfStringAndListOfString>("tags", citation_Partition.tags, serializeKeyValuePairOfStringAndListOfString);
+        writer.writeStringValue("text", citation_Partition.text);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeComplateFileCommandResponse(writer: SerializationWriter, complateFileCommandResponse: Partial<ComplateFileCommandResponse> | undefined | null = {}) : void {
+    if (complateFileCommandResponse) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeComplateFileUploadCommand(writer: SerializationWriter, complateFileUploadCommand: Partial<ComplateFileUploadCommand> | undefined | null = {}) : void {
+    if (complateFileUploadCommand) {
+        writer.writeGuidValue("fileId", complateFileUploadCommand.fileId);
+        writer.writeBooleanValue("isSuccess", complateFileUploadCommand.isSuccess);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeComplateUploadWikiDocumentCommand(writer: SerializationWriter, complateUploadWikiDocumentCommand: Partial<ComplateUploadWikiDocumentCommand> | undefined | null = {}) : void {
+    if (complateUploadWikiDocumentCommand) {
+        writer.writeGuidValue("fileId", complateUploadWikiDocumentCommand.fileId);
+        writer.writeBooleanValue("isSuccess", complateUploadWikiDocumentCommand.isSuccess);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCreateTeamCommand(writer: SerializationWriter, createTeamCommand: Partial<CreateTeamCommand> | undefined | null = {}) : void {
+    if (createTeamCommand) {
+        writer.writeStringValue("description", createTeamCommand.description);
+        writer.writeStringValue("name", createTeamCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCreateWikiCommand(writer: SerializationWriter, createWikiCommand: Partial<CreateWikiCommand> | undefined | null = {}) : void {
+    if (createWikiCommand) {
+        writer.writeStringValue("description", createWikiCommand.description);
+        writer.writeStringValue("name", createWikiCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeDeleteWikiCommand(writer: SerializationWriter, deleteWikiCommand: Partial<DeleteWikiCommand> | undefined | null = {}) : void {
+    if (deleteWikiCommand) {
+        writer.writeGuidValue("documentId", deleteWikiCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeDeleteWikiDocumentCommand(writer: SerializationWriter, deleteWikiDocumentCommand: Partial<DeleteWikiDocumentCommand> | undefined | null = {}) : void {
+    if (deleteWikiDocumentCommand) {
+        writer.writeGuidValue("documentId", deleteWikiDocumentCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeEmbeddingocumentCommand(writer: SerializationWriter, embeddingocumentCommand: Partial<EmbeddingocumentCommand> | undefined | null = {}) : void {
+    if (embeddingocumentCommand) {
+        writer.writeGuidValue("documentId", embeddingocumentCommand.documentId);
+        writer.writeNumberValue("maxTokensPerParagraph", embeddingocumentCommand.maxTokensPerParagraph);
+        writer.writeNumberValue("overlappingTokens", embeddingocumentCommand.overlappingTokens);
+        writer.writeStringValue("tokenizer", embeddingocumentCommand.tokenizer);
+        writer.writeGuidValue("wikiId", embeddingocumentCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeEmptyCommandResponse(writer: SerializationWriter, emptyCommandResponse: Partial<EmptyCommandResponse> | undefined | null = {}) : void {
+    if (emptyCommandResponse) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeEmptyDto(writer: SerializationWriter, emptyDto: Partial<EmptyDto> | undefined | null = {}) : void {
+    if (emptyDto) {
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeExistResponse(writer: SerializationWriter, existResponse: Partial<ExistResponse> | undefined | null = {}) : void {
+    if (existResponse) {
+        writer.writeBooleanValue("isExist", existResponse.isExist);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeIdResponse(writer: SerializationWriter, idResponse: Partial<IdResponse> | undefined | null = {}) : void {
+    if (idResponse) {
+        writer.writeGuidValue("id", idResponse.id);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeInviteUserToTeamCommand(writer: SerializationWriter, inviteUserToTeamCommand: Partial<InviteUserToTeamCommand> | undefined | null = {}) : void {
+    if (inviteUserToTeamCommand) {
+        writer.writeGuidValue("teamId", inviteUserToTeamCommand.teamId);
+        writer.writeGuidValue("userId", inviteUserToTeamCommand.userId);
+        writer.writeStringValue("userName", inviteUserToTeamCommand.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeKeyValuePairOfStringAndInt32(writer: SerializationWriter, keyValuePairOfStringAndInt32: Partial<KeyValuePairOfStringAndInt32> | undefined | null = {}) : void {
+    if (keyValuePairOfStringAndInt32) {
+        writer.writeStringValue("key", keyValuePairOfStringAndInt32.key);
+        writer.writeNumberValue("value", keyValuePairOfStringAndInt32.value);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeKeyValuePairOfStringAndListOfString(writer: SerializationWriter, keyValuePairOfStringAndListOfString: Partial<KeyValuePairOfStringAndListOfString> | undefined | null = {}) : void {
+    if (keyValuePairOfStringAndListOfString) {
+        writer.writeStringValue("key", keyValuePairOfStringAndListOfString.key);
+        writer.writeCollectionOfPrimitiveValues<string>("value", keyValuePairOfStringAndListOfString.value);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeLoginCommand(writer: SerializationWriter, loginCommand: Partial<LoginCommand> | undefined | null = {}) : void {
+    if (loginCommand) {
+        writer.writeStringValue("password", loginCommand.password);
+        writer.writeStringValue("userName", loginCommand.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeLoginCommandResponse(writer: SerializationWriter, loginCommandResponse: Partial<LoginCommandResponse> | undefined | null = {}) : void {
+    if (loginCommandResponse) {
+        writer.writeStringValue("accessToken", loginCommandResponse.accessToken);
+        writer.writeStringValue("expiresIn", loginCommandResponse.expiresIn);
+        writer.writeStringValue("refreshToken", loginCommandResponse.refreshToken);
+        writer.writeStringValue("tokenType", loginCommandResponse.tokenType);
+        writer.writeGuidValue("userId", loginCommandResponse.userId);
+        writer.writeStringValue("userName", loginCommandResponse.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePagedParamter(writer: SerializationWriter, pagedParamter: Partial<PagedParamter> | undefined | null = {}) : void {
+    if (pagedParamter) {
+        writer.writeNumberValue("pageNo", pagedParamter.pageNo);
+        writer.writeNumberValue("pageSize", pagedParamter.pageSize);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePagedResultOfQueryTeamSimpleCommandResponse(writer: SerializationWriter, pagedResultOfQueryTeamSimpleCommandResponse: Partial<PagedResultOfQueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
+    if (pagedResultOfQueryTeamSimpleCommandResponse) {
+        serializePagedParamter(writer, pagedResultOfQueryTeamSimpleCommandResponse)
+        writer.writeCollectionOfObjectValues<QueryTeamSimpleCommandResponse>("items", pagedResultOfQueryTeamSimpleCommandResponse.items, serializeQueryTeamSimpleCommandResponse);
+        writer.writeNumberValue("total", pagedResultOfQueryTeamSimpleCommandResponse.total);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePagedResultOfQueryWikiFileListItem(writer: SerializationWriter, pagedResultOfQueryWikiFileListItem: Partial<PagedResultOfQueryWikiFileListItem> | undefined | null = {}) : void {
+    if (pagedResultOfQueryWikiFileListItem) {
+        serializePagedParamter(writer, pagedResultOfQueryWikiFileListItem)
+        writer.writeCollectionOfObjectValues<QueryWikiFileListItem>("items", pagedResultOfQueryWikiFileListItem.items, serializeQueryWikiFileListItem);
+        writer.writeNumberValue("total", pagedResultOfQueryWikiFileListItem.total);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePagedResultOfTeamMemberResponse(writer: SerializationWriter, pagedResultOfTeamMemberResponse: Partial<PagedResultOfTeamMemberResponse> | undefined | null = {}) : void {
+    if (pagedResultOfTeamMemberResponse) {
+        serializePagedParamter(writer, pagedResultOfTeamMemberResponse)
+        writer.writeCollectionOfObjectValues<TeamMemberResponse>("items", pagedResultOfTeamMemberResponse.items, serializeTeamMemberResponse);
+        writer.writeNumberValue("total", pagedResultOfTeamMemberResponse.total);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreloadWikiDocumentResponse(writer: SerializationWriter, preloadWikiDocumentResponse: Partial<PreloadWikiDocumentResponse> | undefined | null = {}) : void {
+    if (preloadWikiDocumentResponse) {
+        writer.writeStringValue("expiration", preloadWikiDocumentResponse.expiration);
+        writer.writeGuidValue("fileId", preloadWikiDocumentResponse.fileId);
+        writer.writeBooleanValue("isExist", preloadWikiDocumentResponse.isExist);
+        writer.writeStringValue("uploadUrl", preloadWikiDocumentResponse.uploadUrl);
+        writer.writeEnumValue<FileVisibility>("visibility", preloadWikiDocumentResponse.visibility);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreUploadFileCommandResponse(writer: SerializationWriter, preUploadFileCommandResponse: Partial<PreUploadFileCommandResponse> | undefined | null = {}) : void {
+    if (preUploadFileCommandResponse) {
+        writer.writeStringValue("expiration", preUploadFileCommandResponse.expiration);
+        writer.writeGuidValue("fileId", preUploadFileCommandResponse.fileId);
+        writer.writeBooleanValue("isExist", preUploadFileCommandResponse.isExist);
+        writer.writeStringValue("uploadUrl", preUploadFileCommandResponse.uploadUrl);
+        writer.writeEnumValue<FileVisibility>("visibility", preUploadFileCommandResponse.visibility);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreUploadImageCommand(writer: SerializationWriter, preUploadImageCommand: Partial<PreUploadImageCommand> | undefined | null = {}) : void {
+    if (preUploadImageCommand) {
+        writer.writeStringValue("contentType", preUploadImageCommand.contentType);
+        writer.writeStringValue("fileName", preUploadImageCommand.fileName);
+        writer.writeNumberValue("fileSize", preUploadImageCommand.fileSize);
+        writer.writeEnumValue<UploadImageType>("imageType", preUploadImageCommand.imageType);
+        writer.writeStringValue("mD5", preUploadImageCommand.mD5);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreUploadWikiDocumentCommand(writer: SerializationWriter, preUploadWikiDocumentCommand: Partial<PreUploadWikiDocumentCommand> | undefined | null = {}) : void {
+    if (preUploadWikiDocumentCommand) {
+        writer.writeStringValue("contentType", preUploadWikiDocumentCommand.contentType);
+        writer.writeStringValue("fileName", preUploadWikiDocumentCommand.fileName);
+        writer.writeNumberValue("fileSize", preUploadWikiDocumentCommand.fileSize);
+        writer.writeStringValue("mD5", preUploadWikiDocumentCommand.mD5);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryAiModelFunctionListCommand(writer: SerializationWriter, queryAiModelFunctionListCommand: Partial<QueryAiModelFunctionListCommand> | undefined | null = {}) : void {
+    if (queryAiModelFunctionListCommand) {
+        writer.writeEnumValue<AiModelFunction>("aiModelFunction", queryAiModelFunctionListCommand.aiModelFunction);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryAiModelFunctionListCommandResponse(writer: SerializationWriter, queryAiModelFunctionListCommandResponse: Partial<QueryAiModelFunctionListCommandResponse> | undefined | null = {}) : void {
+    if (queryAiModelFunctionListCommandResponse) {
+        writer.writeCollectionOfObjectValues<AiNotKeyEndpoint>("aiModels", queryAiModelFunctionListCommandResponse.aiModels, serializeAiNotKeyEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryAiModelListCommand(writer: SerializationWriter, queryAiModelListCommand: Partial<QueryAiModelListCommand> | undefined | null = {}) : void {
+    if (queryAiModelListCommand) {
+        writer.writeEnumValue<AiProvider>("provider", queryAiModelListCommand.provider);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryAiModelListCommandResponse(writer: SerializationWriter, queryAiModelListCommandResponse: Partial<QueryAiModelListCommandResponse> | undefined | null = {}) : void {
+    if (queryAiModelListCommandResponse) {
+        writer.writeCollectionOfObjectValues<AiNotKeyEndpoint>("aiModels", queryAiModelListCommandResponse.aiModels, serializeAiNotKeyEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryAiModelProviderListResponse(writer: SerializationWriter, queryAiModelProviderListResponse: Partial<QueryAiModelProviderListResponse> | undefined | null = {}) : void {
+    if (queryAiModelProviderListResponse) {
+        writer.writeCollectionOfObjectValues<KeyValuePairOfStringAndInt32>("providers", queryAiModelProviderListResponse.providers, serializeKeyValuePairOfStringAndInt32);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryDefaultAiModelListResponse(writer: SerializationWriter, queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined | null = {}) : void {
+    if (queryDefaultAiModelListResponse) {
+        writer.writeCollectionOfObjectValues<AiModelDefaultConfiguration>("aiModels", queryDefaultAiModelListResponse.aiModels, serializeAiModelDefaultConfiguration);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryRepeatedUserNameCommand(writer: SerializationWriter, queryRepeatedUserNameCommand: Partial<QueryRepeatedUserNameCommand> | undefined | null = {}) : void {
+    if (queryRepeatedUserNameCommand) {
+        writer.writeStringValue("userName", queryRepeatedUserNameCommand.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryServerInfoResponse(writer: SerializationWriter, queryServerInfoResponse: Partial<QueryServerInfoResponse> | undefined | null = {}) : void {
+    if (queryServerInfoResponse) {
+        writer.writeStringValue("publicStoreUrl", queryServerInfoResponse.publicStoreUrl);
+        writer.writeStringValue("rsaPublic", queryServerInfoResponse.rsaPublic);
+        writer.writeStringValue("serviceUrl", queryServerInfoResponse.serviceUrl);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQuerySupportModelProviderCommandResponse(writer: SerializationWriter, querySupportModelProviderCommandResponse: Partial<QuerySupportModelProviderCommandResponse> | undefined | null = {}) : void {
+    if (querySupportModelProviderCommandResponse) {
+        writer.writeCollectionOfObjectValues<AiProviderInfo>("providers", querySupportModelProviderCommandResponse.providers, serializeAiProviderInfo);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryTeamDetailCommandResponse(writer: SerializationWriter, queryTeamDetailCommandResponse: Partial<QueryTeamDetailCommandResponse> | undefined | null = {}) : void {
+    if (queryTeamDetailCommandResponse) {
+        serializeAuditsInfo(writer, queryTeamDetailCommandResponse)
+        writer.writeStringValue("avatarUrl", queryTeamDetailCommandResponse.avatarUrl);
+        writer.writeStringValue("description", queryTeamDetailCommandResponse.description);
+        writer.writeGuidValue("id", queryTeamDetailCommandResponse.id);
+        writer.writeBooleanValue("isAdmin", queryTeamDetailCommandResponse.isAdmin);
+        writer.writeBooleanValue("isDisable", queryTeamDetailCommandResponse.isDisable);
+        writer.writeBooleanValue("isPublic", queryTeamDetailCommandResponse.isPublic);
+        writer.writeBooleanValue("isRoot", queryTeamDetailCommandResponse.isRoot);
+        writer.writeStringValue("markdown", queryTeamDetailCommandResponse.markdown);
+        writer.writeStringValue("name", queryTeamDetailCommandResponse.name);
+        writer.writeGuidValue("ownUserId", queryTeamDetailCommandResponse.ownUserId);
+        writer.writeStringValue("ownUserName", queryTeamDetailCommandResponse.ownUserName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryTeamMemberListCommand(writer: SerializationWriter, queryTeamMemberListCommand: Partial<QueryTeamMemberListCommand> | undefined | null = {}) : void {
+    if (queryTeamMemberListCommand) {
+        serializePagedParamter(writer, queryTeamMemberListCommand)
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryTeamNameCommand(writer: SerializationWriter, queryTeamNameCommand: Partial<QueryTeamNameCommand> | undefined | null = {}) : void {
+    if (queryTeamNameCommand) {
+        writer.writeGuidValue("id", queryTeamNameCommand.id);
+        writer.writeStringValue("name", queryTeamNameCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryTeamSimpleCommandResponse(writer: SerializationWriter, queryTeamSimpleCommandResponse: Partial<QueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
+    if (queryTeamSimpleCommandResponse) {
+        serializeAuditsInfo(writer, queryTeamSimpleCommandResponse)
+        writer.writeStringValue("avatarUrl", queryTeamSimpleCommandResponse.avatarUrl);
+        writer.writeStringValue("description", queryTeamSimpleCommandResponse.description);
+        writer.writeGuidValue("id", queryTeamSimpleCommandResponse.id);
+        writer.writeBooleanValue("isAdmin", queryTeamSimpleCommandResponse.isAdmin);
+        writer.writeBooleanValue("isDisable", queryTeamSimpleCommandResponse.isDisable);
+        writer.writeBooleanValue("isPublic", queryTeamSimpleCommandResponse.isPublic);
+        writer.writeBooleanValue("isRoot", queryTeamSimpleCommandResponse.isRoot);
+        writer.writeStringValue("name", queryTeamSimpleCommandResponse.name);
+        writer.writeGuidValue("ownUserId", queryTeamSimpleCommandResponse.ownUserId);
+        writer.writeStringValue("ownUserName", queryTeamSimpleCommandResponse.ownUserName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryUserInfoCommandResponse(writer: SerializationWriter, queryUserInfoCommandResponse: Partial<QueryUserInfoCommandResponse> | undefined | null = {}) : void {
+    if (queryUserInfoCommandResponse) {
+        writer.writeStringValue("avatar", queryUserInfoCommandResponse.avatar);
+        writer.writeStringValue("nickName", queryUserInfoCommandResponse.nickName);
+        writer.writeGuidValue("userId", queryUserInfoCommandResponse.userId);
+        writer.writeStringValue("userName", queryUserInfoCommandResponse.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryUserJoinedTeamCommand(writer: SerializationWriter, queryUserJoinedTeamCommand: Partial<QueryUserJoinedTeamCommand> | undefined | null = {}) : void {
+    if (queryUserJoinedTeamCommand) {
+        serializePagedParamter(writer, queryUserJoinedTeamCommand)
+        writer.writeBooleanValue("isAdmin", queryUserJoinedTeamCommand.isAdmin);
+        writer.writeBooleanValue("isRoot", queryUserJoinedTeamCommand.isRoot);
+        writer.writeStringValue("keyword", queryUserJoinedTeamCommand.keyword);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiConfigCommandResponse(writer: SerializationWriter, queryWikiConfigCommandResponse: Partial<QueryWikiConfigCommandResponse> | undefined | null = {}) : void {
+    if (queryWikiConfigCommandResponse) {
+        serializeAuditsInfo(writer, queryWikiConfigCommandResponse)
+        writer.writeNumberValue("embeddingBatchSize", queryWikiConfigCommandResponse.embeddingBatchSize);
+        writer.writeNumberValue("embeddingDimensions", queryWikiConfigCommandResponse.embeddingDimensions);
+        writer.writeGuidValue("embeddingModelId", queryWikiConfigCommandResponse.embeddingModelId);
+        writer.writeStringValue("embeddingModelTokenizer", queryWikiConfigCommandResponse.embeddingModelTokenizer);
+        writer.writeBooleanValue("isLock", queryWikiConfigCommandResponse.isLock);
+        writer.writeNumberValue("maxRetries", queryWikiConfigCommandResponse.maxRetries);
+        writer.writeGuidValue("wikiId", queryWikiConfigCommandResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiDetailInfoResponse(writer: SerializationWriter, queryWikiDetailInfoResponse: Partial<QueryWikiDetailInfoResponse> | undefined | null = {}) : void {
+    if (queryWikiDetailInfoResponse) {
+        writer.writeStringValue("avatarUrl", queryWikiDetailInfoResponse.avatarUrl);
+        writer.writeStringValue("description", queryWikiDetailInfoResponse.description);
+        writer.writeBooleanValue("isPublic", queryWikiDetailInfoResponse.isPublic);
+        writer.writeStringValue("markdown", queryWikiDetailInfoResponse.markdown);
+        writer.writeStringValue("name", queryWikiDetailInfoResponse.name);
+        writer.writeGuidValue("wikiId", queryWikiDetailInfoResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiDocumentTaskListCommand(writer: SerializationWriter, queryWikiDocumentTaskListCommand: Partial<QueryWikiDocumentTaskListCommand> | undefined | null = {}) : void {
+    if (queryWikiDocumentTaskListCommand) {
+        writer.writeGuidValue("documentId", queryWikiDocumentTaskListCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiDocumentTaskListCommandResponse(writer: SerializationWriter, queryWikiDocumentTaskListCommandResponse: Partial<QueryWikiDocumentTaskListCommandResponse> | undefined | null = {}) : void {
+    if (queryWikiDocumentTaskListCommandResponse) {
+        serializeAuditsInfo(writer, queryWikiDocumentTaskListCommandResponse)
+        writer.writeStringValue("contentType", queryWikiDocumentTaskListCommandResponse.contentType);
+        writer.writeGuidValue("documentId", queryWikiDocumentTaskListCommandResponse.documentId);
+        writer.writeGuidValue("fileId", queryWikiDocumentTaskListCommandResponse.fileId);
+        writer.writeStringValue("fileName", queryWikiDocumentTaskListCommandResponse.fileName);
+        writer.writeStringValue("fileSize", queryWikiDocumentTaskListCommandResponse.fileSize);
+        writer.writeGuidValue("id", queryWikiDocumentTaskListCommandResponse.id);
+        writer.writeNumberValue("maxTokensPerParagraph", queryWikiDocumentTaskListCommandResponse.maxTokensPerParagraph);
+        writer.writeStringValue("message", queryWikiDocumentTaskListCommandResponse.message);
+        writer.writeNumberValue("overlappingTokens", queryWikiDocumentTaskListCommandResponse.overlappingTokens);
+        writer.writeEnumValue<FileEmbeddingState>("state", queryWikiDocumentTaskListCommandResponse.state);
+        writer.writeStringValue("taskTag", queryWikiDocumentTaskListCommandResponse.taskTag);
+        writer.writeGuidValue("teamId", queryWikiDocumentTaskListCommandResponse.teamId);
+        writer.writeStringValue("tokenizer", queryWikiDocumentTaskListCommandResponse.tokenizer);
+        writer.writeGuidValue("wikiId", queryWikiDocumentTaskListCommandResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiFileCommand(writer: SerializationWriter, queryWikiFileCommand: Partial<QueryWikiFileCommand> | undefined | null = {}) : void {
+    if (queryWikiFileCommand) {
+        writer.writeGuidValue("documentId", queryWikiFileCommand.documentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiFileListCommand(writer: SerializationWriter, queryWikiFileListCommand: Partial<QueryWikiFileListCommand> | undefined | null = {}) : void {
+    if (queryWikiFileListCommand) {
+        serializePagedParamter(writer, queryWikiFileListCommand)
+        writer.writeStringValue("search", queryWikiFileListCommand.search);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiFileListItem(writer: SerializationWriter, queryWikiFileListItem: Partial<QueryWikiFileListItem> | undefined | null = {}) : void {
+    if (queryWikiFileListItem) {
+        serializeAuditsInfo(writer, queryWikiFileListItem)
+        writer.writeStringValue("contentType", queryWikiFileListItem.contentType);
+        writer.writeGuidValue("documentId", queryWikiFileListItem.documentId);
+        writer.writeStringValue("fileName", queryWikiFileListItem.fileName);
+        writer.writeStringValue("fileSize", queryWikiFileListItem.fileSize);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiFileListResponse(writer: SerializationWriter, queryWikiFileListResponse: Partial<QueryWikiFileListResponse> | undefined | null = {}) : void {
+    if (queryWikiFileListResponse) {
+        serializePagedResultOfQueryWikiFileListItem(writer, queryWikiFileListResponse)
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryWikiSimpleInfoResponse(writer: SerializationWriter, queryWikiSimpleInfoResponse: Partial<QueryWikiSimpleInfoResponse> | undefined | null = {}) : void {
+    if (queryWikiSimpleInfoResponse) {
+        writer.writeStringValue("avatarUrl", queryWikiSimpleInfoResponse.avatarUrl);
+        writer.writeStringValue("description", queryWikiSimpleInfoResponse.description);
+        writer.writeBooleanValue("isPublic", queryWikiSimpleInfoResponse.isPublic);
+        writer.writeStringValue("name", queryWikiSimpleInfoResponse.name);
+        writer.writeGuidValue("wikiId", queryWikiSimpleInfoResponse.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeRefreshTokenCommand(writer: SerializationWriter, refreshTokenCommand: Partial<RefreshTokenCommand> | undefined | null = {}) : void {
+    if (refreshTokenCommand) {
+        writer.writeStringValue("refreshToken", refreshTokenCommand.refreshToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeRegisterUserCommand(writer: SerializationWriter, registerUserCommand: Partial<RegisterUserCommand> | undefined | null = {}) : void {
+    if (registerUserCommand) {
+        writer.writeStringValue("email", registerUserCommand.email);
+        writer.writeStringValue("nickName", registerUserCommand.nickName);
+        writer.writeStringValue("password", registerUserCommand.password);
+        writer.writeStringValue("phone", registerUserCommand.phone);
+        writer.writeStringValue("userName", registerUserCommand.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeRemoveTeamMemberCommand(writer: SerializationWriter, removeTeamMemberCommand: Partial<RemoveTeamMemberCommand> | undefined | null = {}) : void {
+    if (removeTeamMemberCommand) {
+        writer.writeGuidValue("teamId", removeTeamMemberCommand.teamId);
+        writer.writeGuidValue("userId", removeTeamMemberCommand.userId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSearchResult(writer: SerializationWriter, searchResult: Partial<SearchResult> | undefined | null = {}) : void {
+    if (searchResult) {
+        writer.writeBooleanValue("noResult", searchResult.noResult);
+        writer.writeStringValue("query", searchResult.query);
+        writer.writeCollectionOfObjectValues<Citation>("results", searchResult.results, serializeCitation);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSearchWikiDocumentTextCommand(writer: SerializationWriter, searchWikiDocumentTextCommand: Partial<SearchWikiDocumentTextCommand> | undefined | null = {}) : void {
+    if (searchWikiDocumentTextCommand) {
+        writer.writeGuidValue("documentId", searchWikiDocumentTextCommand.documentId);
+        writer.writeStringValue("query", searchWikiDocumentTextCommand.query);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSearchWikiDocumentTextCommandResponse(writer: SerializationWriter, searchWikiDocumentTextCommandResponse: Partial<SearchWikiDocumentTextCommandResponse> | undefined | null = {}) : void {
+    if (searchWikiDocumentTextCommandResponse) {
+        writer.writeObjectValue<SearchResult>("searchResult", searchWikiDocumentTextCommandResponse.searchResult, serializeSearchResult);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSetDefaultAiModelCommand(writer: SerializationWriter, setDefaultAiModelCommand: Partial<SetDefaultAiModelCommand> | undefined | null = {}) : void {
+    if (setDefaultAiModelCommand) {
+        writer.writeEnumValue<AiModelFunction>("aiFunction", setDefaultAiModelCommand.aiFunction);
+        writer.writeGuidValue("modelId", setDefaultAiModelCommand.modelId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSetTeamAdminCommand(writer: SerializationWriter, setTeamAdminCommand: Partial<SetTeamAdminCommand> | undefined | null = {}) : void {
+    if (setTeamAdminCommand) {
+        writer.writeBooleanValue("isAdmin", setTeamAdminCommand.isAdmin);
+        writer.writeGuidValue("teamId", setTeamAdminCommand.teamId);
+        writer.writeGuidValue("userId", setTeamAdminCommand.userId);
+        writer.writeStringValue("userName", setTeamAdminCommand.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSimpleOfBoolean(writer: SerializationWriter, simpleOfBoolean: Partial<SimpleOfBoolean> | undefined | null = {}) : void {
+    if (simpleOfBoolean) {
+        writer.writeBooleanValue("data", simpleOfBoolean.data);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeSimpleOfString(writer: SerializationWriter, simpleOfString: Partial<SimpleOfString> | undefined | null = {}) : void {
+    if (simpleOfString) {
+        writer.writeStringValue("data", simpleOfString.data);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeTeamMemberResponse(writer: SerializationWriter, teamMemberResponse: Partial<TeamMemberResponse> | undefined | null = {}) : void {
+    if (teamMemberResponse) {
+        serializeAuditsInfo(writer, teamMemberResponse)
+        writer.writeBooleanValue("isAdmin", teamMemberResponse.isAdmin);
+        writer.writeBooleanValue("isOwner", teamMemberResponse.isOwner);
+        writer.writeStringValue("nickName", teamMemberResponse.nickName);
+        writer.writeStringValue("userAvatarPath", teamMemberResponse.userAvatarPath);
+        writer.writeGuidValue("userId", teamMemberResponse.userId);
+        writer.writeStringValue("userName", teamMemberResponse.userName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdateAiModelCommand(writer: SerializationWriter, updateAiModelCommand: Partial<UpdateAiModelCommand> | undefined | null = {}) : void {
+    if (updateAiModelCommand) {
+        writer.writeObjectValue<UploadAiModelEndpoint>("endpoint", updateAiModelCommand.endpoint, serializeUploadAiModelEndpoint);
+        writer.writeGuidValue("modelId", updateAiModelCommand.modelId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdateTeamInfoCommand(writer: SerializationWriter, updateTeamInfoCommand: Partial<UpdateTeamInfoCommand> | undefined | null = {}) : void {
+    if (updateTeamInfoCommand) {
+        writer.writeStringValue("description", updateTeamInfoCommand.description);
+        writer.writeBooleanValue("isDisable", updateTeamInfoCommand.isDisable);
+        writer.writeBooleanValue("isPublic", updateTeamInfoCommand.isPublic);
+        writer.writeStringValue("markdown", updateTeamInfoCommand.markdown);
+        writer.writeStringValue("name", updateTeamInfoCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdateUserPasswordCommand(writer: SerializationWriter, updateUserPasswordCommand: Partial<UpdateUserPasswordCommand> | undefined | null = {}) : void {
+    if (updateUserPasswordCommand) {
+        writer.writeStringValue("password", updateUserPasswordCommand.password);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdateWikiConfigCommand(writer: SerializationWriter, updateWikiConfigCommand: Partial<UpdateWikiConfigCommand> | undefined | null = {}) : void {
+    if (updateWikiConfigCommand) {
+        writer.writeNumberValue("embeddingBatchSize", updateWikiConfigCommand.embeddingBatchSize);
+        writer.writeNumberValue("embeddingDimensions", updateWikiConfigCommand.embeddingDimensions);
+        writer.writeGuidValue("embeddingModelId", updateWikiConfigCommand.embeddingModelId);
+        writer.writeStringValue("embeddingModelTokenizer", updateWikiConfigCommand.embeddingModelTokenizer);
+        writer.writeNumberValue("maxRetries", updateWikiConfigCommand.maxRetries);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdateWikiInfoCommand(writer: SerializationWriter, updateWikiInfoCommand: Partial<UpdateWikiInfoCommand> | undefined | null = {}) : void {
+    if (updateWikiInfoCommand) {
+        writer.writeStringValue("description", updateWikiInfoCommand.description);
+        writer.writeBooleanValue("isPublic", updateWikiInfoCommand.isPublic);
+        writer.writeStringValue("markdown", updateWikiInfoCommand.markdown);
+        writer.writeStringValue("name", updateWikiInfoCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadAiModelEndpoint(writer: SerializationWriter, uploadAiModelEndpoint: Partial<UploadAiModelEndpoint> | undefined | null = {}) : void {
+    if (uploadAiModelEndpoint) {
+        if(uploadAiModelEndpoint.aiFunction)
+        writer.writeCollectionOfEnumValues<AiModelFunction>("aiFunction", uploadAiModelEndpoint.aiFunction);
+        writer.writeStringValue("deploymentName", uploadAiModelEndpoint.deploymentName);
+        writer.writeNumberValue("embeddinMaxToken", uploadAiModelEndpoint.embeddinMaxToken);
+        writer.writeStringValue("endpoint", uploadAiModelEndpoint.endpoint);
+        writer.writeBooleanValue("isSupportFunctionCall", uploadAiModelEndpoint.isSupportFunctionCall);
+        writer.writeBooleanValue("isSupportImg", uploadAiModelEndpoint.isSupportImg);
+        writer.writeStringValue("key", uploadAiModelEndpoint.key);
+        writer.writeStringValue("modelId", uploadAiModelEndpoint.modelId);
+        writer.writeStringValue("name", uploadAiModelEndpoint.name);
+        writer.writeNumberValue("textMaxToken", uploadAiModelEndpoint.textMaxToken);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadTeamAvatarCommand(writer: SerializationWriter, uploadTeamAvatarCommand: Partial<UploadTeamAvatarCommand> | undefined | null = {}) : void {
+    if (uploadTeamAvatarCommand) {
+        writer.writeGuidValue("fileId", uploadTeamAvatarCommand.fileId);
+        writer.writeGuidValue("teamId", uploadTeamAvatarCommand.teamId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadtUserAvatarCommand(writer: SerializationWriter, uploadtUserAvatarCommand: Partial<UploadtUserAvatarCommand> | undefined | null = {}) : void {
+    if (uploadtUserAvatarCommand) {
+        writer.writeGuidValue("fileId", uploadtUserAvatarCommand.fileId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadWikiAvatarCommand(writer: SerializationWriter, uploadWikiAvatarCommand: Partial<UploadWikiAvatarCommand> | undefined | null = {}) : void {
+    if (uploadWikiAvatarCommand) {
+        writer.writeGuidValue("fileId", uploadWikiAvatarCommand.fileId);
+    }
+}
+/**
+ * 设置某个功能模型使用的 ai 模型.
+ */
+export interface SetDefaultAiModelCommand extends Parsable {
+    /**
+     * AI 模型的功能.
+     */
+    aiFunction?: AiModelFunction | null;
+    /**
+     * 模型 id.
+     */
+    modelId?: Guid | null;
+}
+/**
+ * 设置成员为管理员.
+ */
+export interface SetTeamAdminCommand extends Parsable {
+    /**
+     * 设置为管理员，或取消管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 团队ID.
+     */
+    teamId?: Guid | null;
+    /**
+     * 被邀请的用户ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名.
+     */
+    userName?: string | null;
+}
+/**
+ * 简单类型.
+ */
+export interface SimpleOfBoolean extends Parsable {
+    /**
+     * 任何类型.
+     */
+    data?: boolean | null;
+}
+/**
+ * 简单类型.
+ */
+export interface SimpleOfString extends Parsable {
+    /**
+     * 任何类型.
+     */
+    data?: string | null;
+}
+export interface TeamMemberResponse extends AuditsInfo, Parsable {
+    /**
+     * 是否为管理员.
+     */
+    isAdmin?: boolean | null;
+    /**
+     * 团队所有者.
+     */
+    isOwner?: boolean | null;
+    /**
+     * 昵称.
+     */
+    nickName?: string | null;
+    /**
+     * 用户头像.
+     */
+    userAvatarPath?: string | null;
+    /**
+     * 成员ID.
+     */
+    userId?: Guid | null;
+    /**
+     * 用户名称.
+     */
+    userName?: string | null;
+}
+/**
+ * 修改 AI 模型.
+ */
+export interface UpdateAiModelCommand extends Parsable {
+    /**
+     * AI 端点.
+     */
+    endpoint?: UploadAiModelEndpoint | null;
+    /**
+     * AI 模型 id.
+     */
+    modelId?: Guid | null;
+}
+/**
+ * 更新团队信息命令.
+ */
+export interface UpdateTeamInfoCommand extends Parsable {
+    /**
+     * 团队描述.
+     */
+    description?: string | null;
+    /**
+     * 禁用团队.
+     */
+    isDisable?: boolean | null;
+    /**
+     * 是否公开,能够被外部搜索.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 团队详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 团队名称.
+     */
+    name?: string | null;
+}
+/**
+ * 重置密码.
+ */
+export interface UpdateUserPasswordCommand extends Parsable {
+    /**
+     * 新的密码.
+     */
+    password?: string | null;
+}
+export interface UpdateWikiConfigCommand extends Parsable {
+    /**
+     * 批处理大小.
+     */
+    embeddingBatchSize?: number | null;
+    /**
+     * 维度，跟模型有关.
+     */
+    embeddingDimensions?: number | null;
+    /**
+     * 指定进行文档向量化的模型.
+     */
+    embeddingModelId?: Guid | null;
+    /**
+     * 分词器.
+     */
+    embeddingModelTokenizer?: string | null;
+    /**
+     * 最大重试次数.
+     */
+    maxRetries?: number | null;
+}
+/**
+ * 修改知识库信息.
+ */
+export interface UpdateWikiInfoCommand extends Parsable {
+    /**
+     * 知识库描述.
+     */
+    description?: string | null;
+    /**
+     * 公开使用，所有人不需要加入团队即可使用此知识库.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 知识库详细介绍.
+     */
+    markdown?: string | null;
+    /**
+     * 知识库名称.
+     */
+    name?: string | null;
+}
+export interface UploadAiModelEndpoint extends Parsable {
+    /**
+     * AI 模型的功能，判断是否多模态.
+     */
+    aiFunction?: AiModelFunction[] | null;
     /**
      * 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
      */
@@ -1751,658 +4084,8 @@ export interface MaomiAIAiModelSharedModelsUploadAiModelEndpoint extends Parsabl
      */
     textMaxToken?: number | null;
 }
-/**
- * 查询某种用途的 AI 模型列表
- */
-export interface MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand extends Parsable {
-    /**
-     * AI 模型的功能，判断是否多模态.
-     */
-    aiModelFunction?: MaomiAIAiModelSharedModelsAiModelFunction | null;
-}
-export interface MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse extends Parsable {
-    /**
-     * AI 模型列表.
-     */
-    aiModels?: MaomiAIAiModelSharedModelsAiNotKeyEndpoint[] | null;
-}
-/**
- * 查询供应商下已配置的 ai 模型列表.
- */
-export interface MaomiAIAiModelSharedQueriesQueryAiModelListCommand extends Parsable {
-    /**
-     * AI 模型类型.
-     */
-    provider?: MaomiAIAiModelSharedModelsAiProvider | null;
-}
-export interface MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse extends Parsable {
-    /**
-     * AI 模型列表.
-     */
-    aiModels?: MaomiAIAiModelSharedModelsAiNotKeyEndpoint[] | null;
-}
-export interface MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse extends Parsable {
-    /**
-     * AI 服务商列表，{ai服务提供商,模型数量}.
-     */
-    providers?: SystemCollectionsGenericKeyValuePairOfStringAndInt32[] | null;
-}
-export interface MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse extends Parsable {
-    /**
-     * The aiModels property
-     */
-    aiModels?: MaomiAIAiModelSharedModelsAiModelDefaultConfiguration[] | null;
-}
-export interface MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse extends Parsable {
-    /**
-     * 支持的模型供应商列表.
-     */
-    providers?: MaomiAIAiModelSharedModelsAiProviderInfo[] | null;
-}
-/**
- * 执行对文件的处理.
- */
-export interface MaomiAIDocumentCoreHandlersEmbeddingocumentCommand extends Parsable {
-    /**
-     * The documentId property
-     */
-    documentId?: Guid | null;
-    /**
-     * The maximum number of tokens per paragraph.When partitioning a document, each partition usually contains one paragraph.
-     */
-    maxTokensPerParagraph?: number | null;
-    /**
-     * The number of overlapping tokens between chunks.
-     */
-    overlappingTokens?: number | null;
-    /**
-     * Name of the tokenizer used to count tokens.Supported values: "p50k", "cl100k", "o200k". Leave it empty for autodetect.
-     */
-    tokenizer?: string | null;
-    /**
-     * The wikiId property
-     */
-    wikiId?: Guid | null;
-}
-/**
- * 结束上传文件.
- */
-export interface MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand extends Parsable {
-    /**
-     * 文件ID.
-     */
-    fileId?: Guid | null;
-    /**
-     * 上传成功或失败.
-     */
-    isSuccess?: boolean | null;
-}
-/**
- * 创建知识库.
- */
-export interface MaomiAIDocumentSharedCommandsCreateWikiCommand extends Parsable {
-    /**
-     * 团队描述.
-     */
-    description?: string | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-}
-/**
- * 删除 Wiki 文档.
- */
-export interface MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand extends Parsable {
-    /**
-     * 文档 id.
-     */
-    documentId?: Guid | null;
-}
-/**
- * 预上传知识库文件.
- */
-export interface MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand extends Parsable {
-    /**
-     * 文件类型.
-     */
-    contentType?: string | null;
-    /**
-     * 文件名称.
-     */
-    fileName?: string | null;
-    /**
-     * 文件大小.
-     */
-    fileSize?: number | null;
-    /**
-     * 文件 MD5.
-     */
-    mD5?: string | null;
-}
-export interface MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse extends Parsable {
-    /**
-     * 签名过期时间，当 IsExist = true 时字段为空.
-     */
-    expiration?: string | null;
-    /**
-     * 文件ID.
-     */
-    fileId?: Guid | null;
-    /**
-     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
-     */
-    isExist?: boolean | null;
-    /**
-     * 预签名上传地址，当 IsExist = true 时字段为空.
-     */
-    uploadUrl?: string | null;
-    /**
-     * 文件可见性.
-     */
-    visibility?: MaomiAIStoreEnumsFileVisibility | null;
-}
-/**
- * 修改知识库信息.
- */
-export interface MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand extends Parsable {
-    /**
-     * 知识库描述.
-     */
-    description?: string | null;
-    /**
-     * 公开使用，所有人不需要加入团队即可使用此知识库.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 知识库详细介绍.
-     */
-    markdown?: string | null;
-    /**
-     * 知识库名称.
-     */
-    name?: string | null;
-}
-/**
- * 上传知识库头像.
- */
-export interface MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand extends Parsable {
-    /**
-     * 文件 id.
-     */
-    fileId?: Guid | null;
-}
-export interface MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 批处理大小.
-     */
-    embeddingBatchSize?: number | null;
-    /**
-     * 维度，跟模型有关.
-     */
-    embeddingDimensions?: number | null;
-    /**
-     * 指定进行文档向量化的模型.
-     */
-    embeddingModelId?: Guid | null;
-    /**
-     * 分词器.
-     */
-    embeddingModelTokenizer?: string | null;
-    /**
-     * 锁定配置，锁定后不能再修改.
-     */
-    isLock?: boolean | null;
-    /**
-     * 最大重试次数.
-     */
-    maxRetries?: number | null;
-    /**
-     * 知识库id.
-     */
-    wikiId?: Guid | null;
-}
-export interface MaomiAIDocumentSharedQueriesQueryWikiFileCommand extends Parsable {
-    /**
-     * The documentId property
-     */
-    documentId?: Guid | null;
-}
-/**
- * 查询 wiki 文件列表.
- */
-export interface MaomiAIDocumentSharedQueriesQueryWikiFileListCommand extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * The search property
-     */
-    search?: string | null;
-}
-export interface MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse extends Parsable {
-    /**
-     * 团队头像路径.
-     */
-    avatarUrl?: string | null;
-    /**
-     * 知识库描述.
-     */
-    description?: string | null;
-    /**
-     * 公开使用，所有人不需要加入团队即可使用此知识库.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 知识库详细介绍.
-     */
-    markdown?: string | null;
-    /**
-     * 知识库名称.
-     */
-    name?: string | null;
-    /**
-     * 知识库 id.
-     */
-    wikiId?: Guid | null;
-}
-export interface MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * The contentType property
-     */
-    contentType?: string | null;
-    /**
-     * The documentId property
-     */
-    documentId?: Guid | null;
-    /**
-     * The fileName property
-     */
-    fileName?: string | null;
-    /**
-     * The fileSize property
-     */
-    fileSize?: string | null;
-}
-export interface MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse extends MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem, Parsable {
-}
-export interface MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse extends Parsable {
-    /**
-     * 团队头像路径.
-     */
-    avatarUrl?: string | null;
-    /**
-     * 知识库描述.
-     */
-    description?: string | null;
-    /**
-     * 公开使用，所有人不需要加入团队即可使用此知识库.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 知识库名称.
-     */
-    name?: string | null;
-    /**
-     * 知识库 id.
-     */
-    wikiId?: Guid | null;
-}
-export interface MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand extends Parsable {
-    /**
-     * 批处理大小.
-     */
-    embeddingBatchSize?: number | null;
-    /**
-     * 维度，跟模型有关.
-     */
-    embeddingDimensions?: number | null;
-    /**
-     * 指定进行文档向量化的模型.
-     */
-    embeddingModelId?: Guid | null;
-    /**
-     * 分词器.
-     */
-    embeddingModelTokenizer?: string | null;
-    /**
-     * 最大重试次数.
-     */
-    maxRetries?: number | null;
-}
-/**
- * 数据子项.
- */
-export interface MaomiAIInfraModelsAuditsInfo extends Parsable {
-    /**
-     * 创建时间.
-     */
-    createTime?: string | null;
-    /**
-     * 创建人ID.
-     */
-    createUserId?: Guid | null;
-    /**
-     * 创建者 名字.
-     */
-    createUserName?: string | null;
-    /**
-     * 更新时间.
-     */
-    updateTime?: string | null;
-    /**
-     * 更新人ID.
-     */
-    updateUserId?: Guid | null;
-    /**
-     * 更新人 名字.
-     */
-    updateUserName?: string | null;
-}
-/**
- * 错误响应模型.
- */
-export interface MaomiAIInfraModelsBusinessExceptionResponse extends ApiError, Parsable {
-    /**
-     * 错误码.
-     */
-    code?: number | null;
-    /**
-     * 错误消息.
-     */
-    detail?: string | null;
-    /**
-     * 具体错误列表.
-     */
-    errors?: MaomiAIInfraModelsBusinessExceptionResponse_errors | null;
-    /**
-     * 扩展.
-     */
-    extensions?: MaomiAIInfraModelsBusinessExceptionResponse_extensions | null;
-    /**
-     * 请求上下文 ID.
-     */
-    requestId?: string | null;
-}
-/**
- * 具体错误列表.
- */
-export interface MaomiAIInfraModelsBusinessExceptionResponse_errors extends Parsable {
-}
-/**
- * 扩展.
- */
-export interface MaomiAIInfraModelsBusinessExceptionResponse_extensions extends Parsable {
-}
-/**
- * 空数据.
- */
-export interface MaomiAIInfraModelsEmptyCommandResponse extends Parsable {
-}
-/**
- * 空数据.
- */
-export interface MaomiAIInfraModelsEmptyDto extends Parsable {
-}
-/**
- * 数据是否存在.
- */
-export interface MaomiAIInfraModelsExistResponse extends Parsable {
-    /**
-     * 数据是否存在.
-     */
-    isExist?: boolean | null;
-}
-/**
- * Guid.
- */
-export interface MaomiAIInfraModelsIdResponse extends Parsable {
-    /**
-     * Guid.
-     */
-    id?: Guid | null;
-}
-/**
- * 分页参数.
- */
-export interface MaomiAIInfraModelsPagedParamter extends Parsable {
-    /**
-     * 页码，从1开始.
-     */
-    pageNo?: number | null;
-    /**
-     * 每页大小.
-     */
-    pageSize?: number | null;
-}
-/**
- * 分页结果.
- */
-export interface MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * 项目集合.
-     */
-    items?: MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse[] | null;
-    /**
-     * 总数.
-     */
-    total?: number | null;
-}
-/**
- * 分页结果.
- */
-export interface MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * 项目集合.
-     */
-    items?: MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem[] | null;
-    /**
-     * 总数.
-     */
-    total?: number | null;
-}
-/**
- * 分页结果.
- */
-export interface MaomiAIInfraModelsPagedResultOfTeamMemberResponse extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * 项目集合.
-     */
-    items?: MaomiAITeamSharedQueriesResponsesTeamMemberResponse[] | null;
-    /**
-     * 总数.
-     */
-    total?: number | null;
-}
-/**
- * 简单类型.
- */
-export interface MaomiAIInfraModelsSimpleOfBoolean extends Parsable {
-    /**
-     * 任何类型.
-     */
-    data?: boolean | null;
-}
-/**
- * 简单类型.
- */
-export interface MaomiAIInfraModelsSimpleOfString extends Parsable {
-    /**
-     * 任何类型.
-     */
-    data?: string | null;
-}
-export interface MaomiAIPublicQueriesResponseQueryServerInfoResponse extends Parsable {
-    /**
-     * 公共存储地址，静态资源时可直接访问.
-     */
-    publicStoreUrl?: string | null;
-    /**
-     * RSA 公钥，用于加密密码等信息传输到服务器.
-     */
-    rsaPublic?: string | null;
-    /**
-     * 系统访问地址.
-     */
-    serviceUrl?: string | null;
-}
-/**
- * 结束上传文件.
- */
-export interface MaomiAIStoreCommandsComplateFileUploadCommand extends Parsable {
-    /**
-     * 文件ID.
-     */
-    fileId?: Guid | null;
-    /**
-     * 上传成功或失败.
-     */
-    isSuccess?: boolean | null;
-}
-/**
- * 完成文件上传.
- */
-export interface MaomiAIStoreCommandsResponseComplateFileCommandResponse extends Parsable {
-}
-/**
- * 预上传文件.
- */
-export interface MaomiAIStoreCommandsResponsePreUploadFileCommandResponse extends Parsable {
-    /**
-     * 签名过期时间，当 IsExist = true 时字段为空.
-     */
-    expiration?: string | null;
-    /**
-     * 文件ID.
-     */
-    fileId?: Guid | null;
-    /**
-     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
-     */
-    isExist?: boolean | null;
-    /**
-     * 预签名上传地址，当 IsExist = true 时字段为空.
-     */
-    uploadUrl?: string | null;
-    /**
-     * 文件可见性.
-     */
-    visibility?: MaomiAIStoreEnumsFileVisibility | null;
-}
-export type MaomiAIStoreEnumsFileVisibility = (typeof MaomiAIStoreEnumsFileVisibilityObject)[keyof typeof MaomiAIStoreEnumsFileVisibilityObject];
-export type MaomiAIStoreEnumsUploadImageType = (typeof MaomiAIStoreEnumsUploadImageTypeObject)[keyof typeof MaomiAIStoreEnumsUploadImageTypeObject];
-/**
- * 邀请用户加入团队命令.
- */
-export interface MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand extends Parsable {
-    /**
-     * 团队ID.
-     */
-    teamId?: Guid | null;
-    /**
-     * 被邀请的用户ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名.
-     */
-    userName?: string | null;
-}
-/**
- * 移除团队成员命令.
- */
-export interface MaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand extends Parsable {
-    /**
-     * The teamId property
-     */
-    teamId?: Guid | null;
-    /**
-     * 要移除的团队成员ID.
-     */
-    userId?: Guid | null;
-}
-/**
- * 上传图像，例如头像、公有图像等，文件公开访问，都根路径下.
- */
-export interface MaomiAITeamSharedCommandsPreUploadImageCommand extends Parsable {
-    /**
-     * 文件类型.
-     */
-    contentType?: string | null;
-    /**
-     * 文件名称.
-     */
-    fileName?: string | null;
-    /**
-     * 文件大小.
-     */
-    fileSize?: number | null;
-    /**
-     * 文件类型根据具体的功能模块决定.
-     */
-    imageType?: MaomiAIStoreEnumsUploadImageType | null;
-    /**
-     * 文件 MD5.
-     */
-    mD5?: string | null;
-}
-/**
- * 创建团队命令.
- */
-export interface MaomiAITeamSharedCommandsRootCreateTeamCommand extends Parsable {
-    /**
-     * 团队描述.
-     */
-    description?: string | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-}
-/**
- * 设置成员为管理员.
- */
-export interface MaomiAITeamSharedCommandsRootSetTeamAdminCommand extends Parsable {
-    /**
-     * 设置为管理员，或取消管理员.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 团队ID.
-     */
-    teamId?: Guid | null;
-    /**
-     * 被邀请的用户ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名.
-     */
-    userName?: string | null;
-}
-/**
- * 更新团队信息命令.
- */
-export interface MaomiAITeamSharedCommandsRootUpdateTeamInfoCommand extends Parsable {
-    /**
-     * 团队描述.
-     */
-    description?: string | null;
-    /**
-     * 禁用团队.
-     */
-    isDisable?: boolean | null;
-    /**
-     * 是否公开,能够被外部搜索.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 团队详细介绍.
-     */
-    markdown?: string | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-}
-export interface MaomiAITeamSharedCommandsRootUploadTeamAvatarCommand extends Parsable {
+export type UploadImageType = (typeof UploadImageTypeObject)[keyof typeof UploadImageTypeObject];
+export interface UploadTeamAvatarCommand extends Parsable {
     /**
      * The fileId property
      */
@@ -2413,1174 +4096,27 @@ export interface MaomiAITeamSharedCommandsRootUploadTeamAvatarCommand extends Pa
     teamId?: Guid | null;
 }
 /**
- * 查询团队成员列表.
- */
-export interface MaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand extends MaomiAIInfraModelsPagedParamter, Parsable {
-}
-/**
- * 检查团队名称是否存在.
- */
-export interface MaomiAITeamSharedQueriesQueryTeamNameCommand extends Parsable {
-    /**
-     * 团队ID.
-     */
-    id?: Guid | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-}
-/**
- * 团队详细信息.
- */
-export interface MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 团队头像路径.
-     */
-    avatarUrl?: string | null;
-    /**
-     * 团队描述.
-     */
-    description?: string | null;
-    /**
-     * 团队ID.
-     */
-    id?: Guid | null;
-    /**
-     * 是否管理员.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 团队已被禁用.
-     */
-    isDisable?: boolean | null;
-    /**
-     * 是否公开,能够被外部搜索.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 是否所有者.
-     */
-    isRoot?: boolean | null;
-    /**
-     * 团队详细介绍.
-     */
-    markdown?: string | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-    /**
-     * 所有者 id.
-     */
-    ownUserId?: Guid | null;
-    /**
-     * 所有人名字.
-     */
-    ownUserName?: string | null;
-}
-/**
- * 团队基础信息.
- */
-export interface MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 团队头像路径.
-     */
-    avatarUrl?: string | null;
-    /**
-     * 团队描述.
-     */
-    description?: string | null;
-    /**
-     * 团队ID.
-     */
-    id?: Guid | null;
-    /**
-     * 是否管理员.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 团队已被禁用.
-     */
-    isDisable?: boolean | null;
-    /**
-     * 是否公开,能够被外部搜索.
-     */
-    isPublic?: boolean | null;
-    /**
-     * 是否所有者.
-     */
-    isRoot?: boolean | null;
-    /**
-     * 团队名称.
-     */
-    name?: string | null;
-    /**
-     * 所有者 id.
-     */
-    ownUserId?: Guid | null;
-    /**
-     * 所有人名字.
-     */
-    ownUserName?: string | null;
-}
-export interface MaomiAITeamSharedQueriesResponsesTeamMemberResponse extends MaomiAIInfraModelsAuditsInfo, Parsable {
-    /**
-     * 是否为管理员.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 团队所有者.
-     */
-    isOwner?: boolean | null;
-    /**
-     * 昵称.
-     */
-    nickName?: string | null;
-    /**
-     * 用户头像.
-     */
-    userAvatarPath?: string | null;
-    /**
-     * 成员ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名称.
-     */
-    userName?: string | null;
-}
-/**
- * 分页查询用户已加入的团队列表.
- */
-export interface MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand extends MaomiAIInfraModelsPagedParamter, Parsable {
-    /**
-     * 当前用户有管理员权限的.
-     */
-    isAdmin?: boolean | null;
-    /**
-     * 当前用户所有的.
-     */
-    isRoot?: boolean | null;
-    /**
-     * 查询关键字.
-     */
-    keyword?: string | null;
-}
-/**
- * 登录.
- */
-export interface MaomiAIUserSharedCommandsLoginCommand extends Parsable {
-    /**
-     * 密码，使用 RSA 公钥加密.
-     */
-    password?: string | null;
-    /**
-     * 用户名或邮箱.
-     */
-    userName?: string | null;
-}
-/**
- * 刷新 token.
- */
-export interface MaomiAIUserSharedCommandsRefreshTokenCommand extends Parsable {
-    /**
-     * 刷新令牌.
-     */
-    refreshToken?: string | null;
-}
-/**
- * 注册用户.
- */
-export interface MaomiAIUserSharedCommandsRegisterUserCommand extends Parsable {
-    /**
-     * 邮箱.
-     */
-    email?: string | null;
-    /**
-     * 昵称.
-     */
-    nickName?: string | null;
-    /**
-     * 密码，接口请求时，使用 RSA 公钥加密密码.
-     */
-    password?: string | null;
-    /**
-     * 手机号.
-     */
-    phone?: string | null;
-    /**
-     * 用户名.
-     */
-    userName?: string | null;
-}
-/**
- * 登录结果.
- */
-export interface MaomiAIUserSharedCommandsResponsesLoginCommandResponse extends Parsable {
-    /**
-     * 访问令牌.
-     */
-    accessToken?: string | null;
-    /**
-     * 过期时间（秒）.
-     */
-    expiresIn?: string | null;
-    /**
-     * 刷新令牌.
-     */
-    refreshToken?: string | null;
-    /**
-     * 令牌类型.
-     */
-    tokenType?: string | null;
-    /**
-     * 用户ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名.
-     */
-    userName?: string | null;
-}
-/**
- * 重置密码.
- */
-export interface MaomiAIUserSharedCommandsUpdateUserPasswordCommand extends Parsable {
-    /**
-     * 新的密码.
-     */
-    password?: string | null;
-}
-/**
  * 上传用户头像.
  */
-export interface MaomiAIUserSharedCommandsUploadtUserAvatarCommand extends Parsable {
+export interface UploadtUserAvatarCommand extends Parsable {
     /**
      * 文件id.
      */
     fileId?: Guid | null;
 }
 /**
- * 检查用户名是否重复.
+ * 上传知识库头像.
  */
-export interface MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand extends Parsable {
+export interface UploadWikiAvatarCommand extends Parsable {
     /**
-     * 用户名.
+     * 文件 id.
      */
-    userName?: string | null;
-}
-/**
- * 用户基本信息响应.
- */
-export interface MaomiAIUserSharedQueriesQueryUserInfoCommandResponse extends Parsable {
-    /**
-     * 头像路径.
-     */
-    avatar?: string | null;
-    /**
-     * 昵称.
-     */
-    nickName?: string | null;
-    /**
-     * 用户 ID.
-     */
-    userId?: Guid | null;
-    /**
-     * 用户名.
-     */
-    userName?: string | null;
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedCommandsAddAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsAddAiModelCommand: Partial<MaomiAIAiModelSharedCommandsAddAiModelCommand> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedCommandsAddAiModelCommand) {
-        writer.writeObjectValue<MaomiAIAiModelSharedModelsAiEndpoint>("endpoint", maomiAIAiModelSharedCommandsAddAiModelCommand.endpoint, serializeMaomiAIAiModelSharedModelsAiEndpoint);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedCommandsSetDefaultAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsSetDefaultAiModelCommand: Partial<MaomiAIAiModelSharedCommandsSetDefaultAiModelCommand> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedCommandsSetDefaultAiModelCommand) {
-        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.aiFunction);
-        writer.writeGuidValue("modelId", maomiAIAiModelSharedCommandsSetDefaultAiModelCommand.modelId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedCommandsUpdateAiModelCommand(writer: SerializationWriter, maomiAIAiModelSharedCommandsUpdateAiModelCommand: Partial<MaomiAIAiModelSharedCommandsUpdateAiModelCommand> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedCommandsUpdateAiModelCommand) {
-        writer.writeObjectValue<MaomiAIAiModelSharedModelsUploadAiModelEndpoint>("endpoint", maomiAIAiModelSharedCommandsUpdateAiModelCommand.endpoint, serializeMaomiAIAiModelSharedModelsUploadAiModelEndpoint);
-        writer.writeGuidValue("modelId", maomiAIAiModelSharedCommandsUpdateAiModelCommand.modelId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedModelsAiEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsAiEndpoint: Partial<MaomiAIAiModelSharedModelsAiEndpoint> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedModelsAiEndpoint) {
-        if(maomiAIAiModelSharedModelsAiEndpoint.aiFunction)
-        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiEndpoint.aiFunction);
-        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiEndpoint.deploymentName);
-        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiEndpoint.embeddinMaxToken);
-        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsAiEndpoint.endpoint);
-        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiEndpoint.isSupportFunctionCall);
-        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiEndpoint.isSupportImg);
-        writer.writeStringValue("key", maomiAIAiModelSharedModelsAiEndpoint.key);
-        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiEndpoint.modelId);
-        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiEndpoint.name);
-        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedModelsAiEndpoint.provider);
-        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiEndpoint.textMaxToken);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedModelsAiModelDefaultConfiguration(writer: SerializationWriter, maomiAIAiModelSharedModelsAiModelDefaultConfiguration: Partial<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedModelsAiModelDefaultConfiguration) {
-        if(maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction)
-        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.aiFunction);
-        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.embeddinMaxToken);
-        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportFunctionCall);
-        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.isSupportImg);
-        writer.writeGuidValue("modelId", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.modelId);
-        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.name);
-        writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.provider);
-        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiModelDefaultConfiguration.textMaxToken);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsAiNotKeyEndpoint: Partial<MaomiAIAiModelSharedModelsAiNotKeyEndpoint> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedModelsAiNotKeyEndpoint) {
-        if(maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction)
-        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsAiNotKeyEndpoint.aiFunction);
-        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsAiNotKeyEndpoint.deploymentName);
-        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsAiNotKeyEndpoint.embeddinMaxToken);
-        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsAiNotKeyEndpoint.endpoint);
-        writer.writeGuidValue("id", maomiAIAiModelSharedModelsAiNotKeyEndpoint.id);
-        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportFunctionCall);
-        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsAiNotKeyEndpoint.isSupportImg);
-        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsAiNotKeyEndpoint.modelId);
-        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiNotKeyEndpoint.name);
-        writer.writeStringValue("provider", maomiAIAiModelSharedModelsAiNotKeyEndpoint.provider);
-        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsAiNotKeyEndpoint.textMaxToken);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedModelsAiProviderInfo(writer: SerializationWriter, maomiAIAiModelSharedModelsAiProviderInfo: Partial<MaomiAIAiModelSharedModelsAiProviderInfo> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedModelsAiProviderInfo) {
-        writer.writeStringValue("defaultEndpoint", maomiAIAiModelSharedModelsAiProviderInfo.defaultEndpoint);
-        writer.writeStringValue("description", maomiAIAiModelSharedModelsAiProviderInfo.description);
-        writer.writeStringValue("icon", maomiAIAiModelSharedModelsAiProviderInfo.icon);
-        writer.writeStringValue("name", maomiAIAiModelSharedModelsAiProviderInfo.name);
-        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedModelsAiProviderInfo.provider);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedModelsUploadAiModelEndpoint(writer: SerializationWriter, maomiAIAiModelSharedModelsUploadAiModelEndpoint: Partial<MaomiAIAiModelSharedModelsUploadAiModelEndpoint> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedModelsUploadAiModelEndpoint) {
-        if(maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction)
-        writer.writeCollectionOfEnumValues<MaomiAIAiModelSharedModelsAiModelFunction>("aiFunction", maomiAIAiModelSharedModelsUploadAiModelEndpoint.aiFunction);
-        writer.writeStringValue("deploymentName", maomiAIAiModelSharedModelsUploadAiModelEndpoint.deploymentName);
-        writer.writeNumberValue("embeddinMaxToken", maomiAIAiModelSharedModelsUploadAiModelEndpoint.embeddinMaxToken);
-        writer.writeStringValue("endpoint", maomiAIAiModelSharedModelsUploadAiModelEndpoint.endpoint);
-        writer.writeBooleanValue("isSupportFunctionCall", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportFunctionCall);
-        writer.writeBooleanValue("isSupportImg", maomiAIAiModelSharedModelsUploadAiModelEndpoint.isSupportImg);
-        writer.writeStringValue("key", maomiAIAiModelSharedModelsUploadAiModelEndpoint.key);
-        writer.writeStringValue("modelId", maomiAIAiModelSharedModelsUploadAiModelEndpoint.modelId);
-        writer.writeStringValue("name", maomiAIAiModelSharedModelsUploadAiModelEndpoint.name);
-        writer.writeNumberValue("textMaxToken", maomiAIAiModelSharedModelsUploadAiModelEndpoint.textMaxToken);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand) {
-        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiModelFunction>("aiModelFunction", maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand.aiModelFunction);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse: Partial<MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse) {
-        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>("aiModels", maomiAIAiModelSharedQueriesQueryAiModelFunctionListCommandResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesQueryAiModelListCommand(writer: SerializationWriter, maomiAIAiModelSharedQueriesQueryAiModelListCommand: Partial<MaomiAIAiModelSharedQueriesQueryAiModelListCommand> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesQueryAiModelListCommand) {
-        writer.writeEnumValue<MaomiAIAiModelSharedModelsAiProvider>("provider", maomiAIAiModelSharedQueriesQueryAiModelListCommand.provider);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse) {
-        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiNotKeyEndpoint>("aiModels", maomiAIAiModelSharedQueriesResponesQueryAiModelListCommandResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiNotKeyEndpoint);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse) {
-        writer.writeCollectionOfObjectValues<SystemCollectionsGenericKeyValuePairOfStringAndInt32>("providers", maomiAIAiModelSharedQueriesResponesQueryAiModelProviderListResponse.providers, serializeSystemCollectionsGenericKeyValuePairOfStringAndInt32);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse: Partial<MaomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse) {
-        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiModelDefaultConfiguration>("aiModels", maomiAIAiModelSharedQueriesResponesQueryDefaultAiModelListResponse.aiModels, serializeMaomiAIAiModelSharedModelsAiModelDefaultConfiguration);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse(writer: SerializationWriter, maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse: Partial<MaomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse) {
-        writer.writeCollectionOfObjectValues<MaomiAIAiModelSharedModelsAiProviderInfo>("providers", maomiAIAiModelSharedQueriesResponesQuerySupportModelProviderCommandResponse.providers, serializeMaomiAIAiModelSharedModelsAiProviderInfo);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentCoreHandlersEmbeddingocumentCommand(writer: SerializationWriter, maomiAIDocumentCoreHandlersEmbeddingocumentCommand: Partial<MaomiAIDocumentCoreHandlersEmbeddingocumentCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentCoreHandlersEmbeddingocumentCommand) {
-        writer.writeGuidValue("documentId", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.documentId);
-        writer.writeNumberValue("maxTokensPerParagraph", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.maxTokensPerParagraph);
-        writer.writeNumberValue("overlappingTokens", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.overlappingTokens);
-        writer.writeStringValue("tokenizer", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.tokenizer);
-        writer.writeGuidValue("wikiId", maomiAIDocumentCoreHandlersEmbeddingocumentCommand.wikiId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand) {
-        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.fileId);
-        writer.writeBooleanValue("isSuccess", maomiAIDocumentSharedCommandsComplateUploadWikiDocumentCommand.isSuccess);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsCreateWikiCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsCreateWikiCommand: Partial<MaomiAIDocumentSharedCommandsCreateWikiCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsCreateWikiCommand) {
-        writer.writeStringValue("description", maomiAIDocumentSharedCommandsCreateWikiCommand.description);
-        writer.writeStringValue("name", maomiAIDocumentSharedCommandsCreateWikiCommand.name);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsDeleteWikiDocumentCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand) {
-        writer.writeGuidValue("documentId", maomiAIDocumentSharedCommandsDeleteWikiDocumentCommand.documentId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand: Partial<MaomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand) {
-        writer.writeStringValue("contentType", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.contentType);
-        writer.writeStringValue("fileName", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileName);
-        writer.writeNumberValue("fileSize", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.fileSize);
-        writer.writeStringValue("mD5", maomiAIDocumentSharedCommandsPreUploadWikiDocumentCommand.mD5);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse(writer: SerializationWriter, maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse: Partial<MaomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse) {
-        writer.writeStringValue("expiration", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.expiration);
-        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.fileId);
-        writer.writeBooleanValue("isExist", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.isExist);
-        writer.writeStringValue("uploadUrl", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.uploadUrl);
-        writer.writeEnumValue<MaomiAIStoreEnumsFileVisibility>("visibility", maomiAIDocumentSharedCommandsResponsesPreloadWikiDocumentResponse.visibility);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsUpdateWikiInfoCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsUpdateWikiInfoCommand: Partial<MaomiAIDocumentSharedCommandsUpdateWikiInfoCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsUpdateWikiInfoCommand) {
-        writer.writeStringValue("description", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.description);
-        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.isPublic);
-        writer.writeStringValue("markdown", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.markdown);
-        writer.writeStringValue("name", maomiAIDocumentSharedCommandsUpdateWikiInfoCommand.name);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedCommandsUploadWikiAvatarCommand(writer: SerializationWriter, maomiAIDocumentSharedCommandsUploadWikiAvatarCommand: Partial<MaomiAIDocumentSharedCommandsUploadWikiAvatarCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedCommandsUploadWikiAvatarCommand) {
-        writer.writeGuidValue("fileId", maomiAIDocumentSharedCommandsUploadWikiAvatarCommand.fileId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse: Partial<MaomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse)
-        writer.writeNumberValue("embeddingBatchSize", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingBatchSize);
-        writer.writeNumberValue("embeddingDimensions", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingDimensions);
-        writer.writeGuidValue("embeddingModelId", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelId);
-        writer.writeStringValue("embeddingModelTokenizer", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.embeddingModelTokenizer);
-        writer.writeBooleanValue("isLock", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.isLock);
-        writer.writeNumberValue("maxRetries", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.maxRetries);
-        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesQueryWikiConfigCommandResponse.wikiId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesQueryWikiFileCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiFileCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesQueryWikiFileCommand) {
-        writer.writeGuidValue("documentId", maomiAIDocumentSharedQueriesQueryWikiFileCommand.documentId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesQueryWikiFileListCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesQueryWikiFileListCommand: Partial<MaomiAIDocumentSharedQueriesQueryWikiFileListCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesQueryWikiFileListCommand) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIDocumentSharedQueriesQueryWikiFileListCommand)
-        writer.writeStringValue("search", maomiAIDocumentSharedQueriesQueryWikiFileListCommand.search);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse) {
-        writer.writeStringValue("avatarUrl", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.avatarUrl);
-        writer.writeStringValue("description", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.description);
-        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.isPublic);
-        writer.writeStringValue("markdown", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.markdown);
-        writer.writeStringValue("name", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.name);
-        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesResponseQueryWikiDetailInfoResponse.wikiId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem)
-        writer.writeStringValue("contentType", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.contentType);
-        writer.writeGuidValue("documentId", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.documentId);
-        writer.writeStringValue("fileName", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileName);
-        writer.writeStringValue("fileSize", maomiAIDocumentSharedQueriesResponseQueryWikiFileListItem.fileSize);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse) {
-        serializeMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(writer, maomiAIDocumentSharedQueriesResponseQueryWikiFileListResponse)
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse(writer: SerializationWriter, maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse: Partial<MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse) {
-        writer.writeStringValue("avatarUrl", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.avatarUrl);
-        writer.writeStringValue("description", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.description);
-        writer.writeBooleanValue("isPublic", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.isPublic);
-        writer.writeStringValue("name", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.name);
-        writer.writeGuidValue("wikiId", maomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse.wikiId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIDocumentSharedQueriesUpdateWikiConfigCommand(writer: SerializationWriter, maomiAIDocumentSharedQueriesUpdateWikiConfigCommand: Partial<MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand> | undefined | null = {}) : void {
-    if (maomiAIDocumentSharedQueriesUpdateWikiConfigCommand) {
-        writer.writeNumberValue("embeddingBatchSize", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingBatchSize);
-        writer.writeNumberValue("embeddingDimensions", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingDimensions);
-        writer.writeGuidValue("embeddingModelId", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelId);
-        writer.writeStringValue("embeddingModelTokenizer", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.embeddingModelTokenizer);
-        writer.writeNumberValue("maxRetries", maomiAIDocumentSharedQueriesUpdateWikiConfigCommand.maxRetries);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsAuditsInfo(writer: SerializationWriter, maomiAIInfraModelsAuditsInfo: Partial<MaomiAIInfraModelsAuditsInfo> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsAuditsInfo) {
-        writer.writeStringValue("createTime", maomiAIInfraModelsAuditsInfo.createTime);
-        writer.writeGuidValue("createUserId", maomiAIInfraModelsAuditsInfo.createUserId);
-        writer.writeStringValue("createUserName", maomiAIInfraModelsAuditsInfo.createUserName);
-        writer.writeStringValue("updateTime", maomiAIInfraModelsAuditsInfo.updateTime);
-        writer.writeGuidValue("updateUserId", maomiAIInfraModelsAuditsInfo.updateUserId);
-        writer.writeStringValue("updateUserName", maomiAIInfraModelsAuditsInfo.updateUserName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsBusinessExceptionResponse(writer: SerializationWriter, maomiAIInfraModelsBusinessExceptionResponse: Partial<MaomiAIInfraModelsBusinessExceptionResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsBusinessExceptionResponse) {
-        writer.writeNumberValue("code", maomiAIInfraModelsBusinessExceptionResponse.code);
-        writer.writeStringValue("detail", maomiAIInfraModelsBusinessExceptionResponse.detail);
-        writer.writeObjectValue<MaomiAIInfraModelsBusinessExceptionResponse_errors>("errors", maomiAIInfraModelsBusinessExceptionResponse.errors, serializeMaomiAIInfraModelsBusinessExceptionResponse_errors);
-        writer.writeObjectValue<MaomiAIInfraModelsBusinessExceptionResponse_extensions>("extensions", maomiAIInfraModelsBusinessExceptionResponse.extensions, serializeMaomiAIInfraModelsBusinessExceptionResponse_extensions);
-        writer.writeStringValue("requestId", maomiAIInfraModelsBusinessExceptionResponse.requestId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsBusinessExceptionResponse_errors(writer: SerializationWriter, maomiAIInfraModelsBusinessExceptionResponse_errors: Partial<MaomiAIInfraModelsBusinessExceptionResponse_errors> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsBusinessExceptionResponse_errors) {
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsBusinessExceptionResponse_extensions(writer: SerializationWriter, maomiAIInfraModelsBusinessExceptionResponse_extensions: Partial<MaomiAIInfraModelsBusinessExceptionResponse_extensions> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsBusinessExceptionResponse_extensions) {
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsEmptyCommandResponse(writer: SerializationWriter, maomiAIInfraModelsEmptyCommandResponse: Partial<MaomiAIInfraModelsEmptyCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsEmptyCommandResponse) {
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsEmptyDto(writer: SerializationWriter, maomiAIInfraModelsEmptyDto: Partial<MaomiAIInfraModelsEmptyDto> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsEmptyDto) {
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsExistResponse(writer: SerializationWriter, maomiAIInfraModelsExistResponse: Partial<MaomiAIInfraModelsExistResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsExistResponse) {
-        writer.writeBooleanValue("isExist", maomiAIInfraModelsExistResponse.isExist);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsIdResponse(writer: SerializationWriter, maomiAIInfraModelsIdResponse: Partial<MaomiAIInfraModelsIdResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsIdResponse) {
-        writer.writeGuidValue("id", maomiAIInfraModelsIdResponse.id);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsPagedParamter(writer: SerializationWriter, maomiAIInfraModelsPagedParamter: Partial<MaomiAIInfraModelsPagedParamter> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedParamter) {
-        writer.writeNumberValue("pageNo", maomiAIInfraModelsPagedParamter.pageNo);
-        writer.writeNumberValue("pageSize", maomiAIInfraModelsPagedParamter.pageSize);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse: Partial<MaomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse)
-        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>("items", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.items, serializeMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse);
-        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfQueryTeamSimpleCommandResponse.total);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsPagedResultOfQueryWikiFileListItem(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfQueryWikiFileListItem: Partial<MaomiAIInfraModelsPagedResultOfQueryWikiFileListItem> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedResultOfQueryWikiFileListItem) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfQueryWikiFileListItem)
-        writer.writeCollectionOfObjectValues<MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem>("items", maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.items, serializeMaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem);
-        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfQueryWikiFileListItem.total);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsPagedResultOfTeamMemberResponse(writer: SerializationWriter, maomiAIInfraModelsPagedResultOfTeamMemberResponse: Partial<MaomiAIInfraModelsPagedResultOfTeamMemberResponse> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsPagedResultOfTeamMemberResponse) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAIInfraModelsPagedResultOfTeamMemberResponse)
-        writer.writeCollectionOfObjectValues<MaomiAITeamSharedQueriesResponsesTeamMemberResponse>("items", maomiAIInfraModelsPagedResultOfTeamMemberResponse.items, serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse);
-        writer.writeNumberValue("total", maomiAIInfraModelsPagedResultOfTeamMemberResponse.total);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsSimpleOfBoolean(writer: SerializationWriter, maomiAIInfraModelsSimpleOfBoolean: Partial<MaomiAIInfraModelsSimpleOfBoolean> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsSimpleOfBoolean) {
-        writer.writeBooleanValue("data", maomiAIInfraModelsSimpleOfBoolean.data);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIInfraModelsSimpleOfString(writer: SerializationWriter, maomiAIInfraModelsSimpleOfString: Partial<MaomiAIInfraModelsSimpleOfString> | undefined | null = {}) : void {
-    if (maomiAIInfraModelsSimpleOfString) {
-        writer.writeStringValue("data", maomiAIInfraModelsSimpleOfString.data);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIPublicQueriesResponseQueryServerInfoResponse(writer: SerializationWriter, maomiAIPublicQueriesResponseQueryServerInfoResponse: Partial<MaomiAIPublicQueriesResponseQueryServerInfoResponse> | undefined | null = {}) : void {
-    if (maomiAIPublicQueriesResponseQueryServerInfoResponse) {
-        writer.writeStringValue("publicStoreUrl", maomiAIPublicQueriesResponseQueryServerInfoResponse.publicStoreUrl);
-        writer.writeStringValue("rsaPublic", maomiAIPublicQueriesResponseQueryServerInfoResponse.rsaPublic);
-        writer.writeStringValue("serviceUrl", maomiAIPublicQueriesResponseQueryServerInfoResponse.serviceUrl);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIStoreCommandsComplateFileUploadCommand(writer: SerializationWriter, maomiAIStoreCommandsComplateFileUploadCommand: Partial<MaomiAIStoreCommandsComplateFileUploadCommand> | undefined | null = {}) : void {
-    if (maomiAIStoreCommandsComplateFileUploadCommand) {
-        writer.writeGuidValue("fileId", maomiAIStoreCommandsComplateFileUploadCommand.fileId);
-        writer.writeBooleanValue("isSuccess", maomiAIStoreCommandsComplateFileUploadCommand.isSuccess);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIStoreCommandsResponseComplateFileCommandResponse(writer: SerializationWriter, maomiAIStoreCommandsResponseComplateFileCommandResponse: Partial<MaomiAIStoreCommandsResponseComplateFileCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIStoreCommandsResponseComplateFileCommandResponse) {
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIStoreCommandsResponsePreUploadFileCommandResponse(writer: SerializationWriter, maomiAIStoreCommandsResponsePreUploadFileCommandResponse: Partial<MaomiAIStoreCommandsResponsePreUploadFileCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIStoreCommandsResponsePreUploadFileCommandResponse) {
-        writer.writeStringValue("expiration", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.expiration);
-        writer.writeGuidValue("fileId", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.fileId);
-        writer.writeBooleanValue("isExist", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.isExist);
-        writer.writeStringValue("uploadUrl", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.uploadUrl);
-        writer.writeEnumValue<MaomiAIStoreEnumsFileVisibility>("visibility", maomiAIStoreCommandsResponsePreUploadFileCommandResponse.visibility);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsAdminInviteUserToTeamCommand(writer: SerializationWriter, maomiAITeamSharedCommandsAdminInviteUserToTeamCommand: Partial<MaomiAITeamSharedCommandsAdminInviteUserToTeamCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsAdminInviteUserToTeamCommand) {
-        writer.writeGuidValue("teamId", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.teamId);
-        writer.writeGuidValue("userId", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userId);
-        writer.writeStringValue("userName", maomiAITeamSharedCommandsAdminInviteUserToTeamCommand.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand(writer: SerializationWriter, maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand: Partial<MaomiAITeamSharedCommandsAdminRemoveTeamMemberCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand) {
-        writer.writeGuidValue("teamId", maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand.teamId);
-        writer.writeGuidValue("userId", maomiAITeamSharedCommandsAdminRemoveTeamMemberCommand.userId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsPreUploadImageCommand(writer: SerializationWriter, maomiAITeamSharedCommandsPreUploadImageCommand: Partial<MaomiAITeamSharedCommandsPreUploadImageCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsPreUploadImageCommand) {
-        writer.writeStringValue("contentType", maomiAITeamSharedCommandsPreUploadImageCommand.contentType);
-        writer.writeStringValue("fileName", maomiAITeamSharedCommandsPreUploadImageCommand.fileName);
-        writer.writeNumberValue("fileSize", maomiAITeamSharedCommandsPreUploadImageCommand.fileSize);
-        writer.writeEnumValue<MaomiAIStoreEnumsUploadImageType>("imageType", maomiAITeamSharedCommandsPreUploadImageCommand.imageType);
-        writer.writeStringValue("mD5", maomiAITeamSharedCommandsPreUploadImageCommand.mD5);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsRootCreateTeamCommand(writer: SerializationWriter, maomiAITeamSharedCommandsRootCreateTeamCommand: Partial<MaomiAITeamSharedCommandsRootCreateTeamCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsRootCreateTeamCommand) {
-        writer.writeStringValue("description", maomiAITeamSharedCommandsRootCreateTeamCommand.description);
-        writer.writeStringValue("name", maomiAITeamSharedCommandsRootCreateTeamCommand.name);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsRootSetTeamAdminCommand(writer: SerializationWriter, maomiAITeamSharedCommandsRootSetTeamAdminCommand: Partial<MaomiAITeamSharedCommandsRootSetTeamAdminCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsRootSetTeamAdminCommand) {
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedCommandsRootSetTeamAdminCommand.isAdmin);
-        writer.writeGuidValue("teamId", maomiAITeamSharedCommandsRootSetTeamAdminCommand.teamId);
-        writer.writeGuidValue("userId", maomiAITeamSharedCommandsRootSetTeamAdminCommand.userId);
-        writer.writeStringValue("userName", maomiAITeamSharedCommandsRootSetTeamAdminCommand.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsRootUpdateTeamInfoCommand(writer: SerializationWriter, maomiAITeamSharedCommandsRootUpdateTeamInfoCommand: Partial<MaomiAITeamSharedCommandsRootUpdateTeamInfoCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsRootUpdateTeamInfoCommand) {
-        writer.writeStringValue("description", maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.description);
-        writer.writeBooleanValue("isDisable", maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.isDisable);
-        writer.writeBooleanValue("isPublic", maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.isPublic);
-        writer.writeStringValue("markdown", maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.markdown);
-        writer.writeStringValue("name", maomiAITeamSharedCommandsRootUpdateTeamInfoCommand.name);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedCommandsRootUploadTeamAvatarCommand(writer: SerializationWriter, maomiAITeamSharedCommandsRootUploadTeamAvatarCommand: Partial<MaomiAITeamSharedCommandsRootUploadTeamAvatarCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedCommandsRootUploadTeamAvatarCommand) {
-        writer.writeGuidValue("fileId", maomiAITeamSharedCommandsRootUploadTeamAvatarCommand.fileId);
-        writer.writeGuidValue("teamId", maomiAITeamSharedCommandsRootUploadTeamAvatarCommand.teamId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand(writer: SerializationWriter, maomiAITeamSharedQueriesAdminQueryTeamMemberListCommand: Partial<MaomiAITeamSharedQueriesAdminQueryTeamMemberListCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesAdminQueryTeamMemberListCommand) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAITeamSharedQueriesAdminQueryTeamMemberListCommand)
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesQueryTeamNameCommand(writer: SerializationWriter, maomiAITeamSharedQueriesQueryTeamNameCommand: Partial<MaomiAITeamSharedQueriesQueryTeamNameCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesQueryTeamNameCommand) {
-        writer.writeGuidValue("id", maomiAITeamSharedQueriesQueryTeamNameCommand.id);
-        writer.writeStringValue("name", maomiAITeamSharedQueriesQueryTeamNameCommand.name);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse)
-        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.avatarUrl);
-        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.description);
-        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.id);
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isAdmin);
-        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isDisable);
-        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isPublic);
-        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.isRoot);
-        writer.writeStringValue("markdown", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.markdown);
-        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.name);
-        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserId);
-        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse.ownUserName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse: Partial<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse)
-        writer.writeStringValue("avatarUrl", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.avatarUrl);
-        writer.writeStringValue("description", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.description);
-        writer.writeGuidValue("id", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.id);
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isAdmin);
-        writer.writeBooleanValue("isDisable", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isDisable);
-        writer.writeBooleanValue("isPublic", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isPublic);
-        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.isRoot);
-        writer.writeStringValue("name", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.name);
-        writer.writeGuidValue("ownUserId", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserId);
-        writer.writeStringValue("ownUserName", maomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse.ownUserName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesResponsesTeamMemberResponse(writer: SerializationWriter, maomiAITeamSharedQueriesResponsesTeamMemberResponse: Partial<MaomiAITeamSharedQueriesResponsesTeamMemberResponse> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesResponsesTeamMemberResponse) {
-        serializeMaomiAIInfraModelsAuditsInfo(writer, maomiAITeamSharedQueriesResponsesTeamMemberResponse)
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesResponsesTeamMemberResponse.isAdmin);
-        writer.writeBooleanValue("isOwner", maomiAITeamSharedQueriesResponsesTeamMemberResponse.isOwner);
-        writer.writeStringValue("nickName", maomiAITeamSharedQueriesResponsesTeamMemberResponse.nickName);
-        writer.writeStringValue("userAvatarPath", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userAvatarPath);
-        writer.writeGuidValue("userId", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userId);
-        writer.writeStringValue("userName", maomiAITeamSharedQueriesResponsesTeamMemberResponse.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand(writer: SerializationWriter, maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand: Partial<MaomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand> | undefined | null = {}) : void {
-    if (maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand) {
-        serializeMaomiAIInfraModelsPagedParamter(writer, maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand)
-        writer.writeBooleanValue("isAdmin", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isAdmin);
-        writer.writeBooleanValue("isRoot", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.isRoot);
-        writer.writeStringValue("keyword", maomiAITeamSharedQueriesUserQueryUserJoinedTeamCommand.keyword);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsLoginCommand(writer: SerializationWriter, maomiAIUserSharedCommandsLoginCommand: Partial<MaomiAIUserSharedCommandsLoginCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsLoginCommand) {
-        writer.writeStringValue("password", maomiAIUserSharedCommandsLoginCommand.password);
-        writer.writeStringValue("userName", maomiAIUserSharedCommandsLoginCommand.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsRefreshTokenCommand(writer: SerializationWriter, maomiAIUserSharedCommandsRefreshTokenCommand: Partial<MaomiAIUserSharedCommandsRefreshTokenCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsRefreshTokenCommand) {
-        writer.writeStringValue("refreshToken", maomiAIUserSharedCommandsRefreshTokenCommand.refreshToken);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsRegisterUserCommand(writer: SerializationWriter, maomiAIUserSharedCommandsRegisterUserCommand: Partial<MaomiAIUserSharedCommandsRegisterUserCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsRegisterUserCommand) {
-        writer.writeStringValue("email", maomiAIUserSharedCommandsRegisterUserCommand.email);
-        writer.writeStringValue("nickName", maomiAIUserSharedCommandsRegisterUserCommand.nickName);
-        writer.writeStringValue("password", maomiAIUserSharedCommandsRegisterUserCommand.password);
-        writer.writeStringValue("phone", maomiAIUserSharedCommandsRegisterUserCommand.phone);
-        writer.writeStringValue("userName", maomiAIUserSharedCommandsRegisterUserCommand.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsResponsesLoginCommandResponse(writer: SerializationWriter, maomiAIUserSharedCommandsResponsesLoginCommandResponse: Partial<MaomiAIUserSharedCommandsResponsesLoginCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsResponsesLoginCommandResponse) {
-        writer.writeStringValue("accessToken", maomiAIUserSharedCommandsResponsesLoginCommandResponse.accessToken);
-        writer.writeStringValue("expiresIn", maomiAIUserSharedCommandsResponsesLoginCommandResponse.expiresIn);
-        writer.writeStringValue("refreshToken", maomiAIUserSharedCommandsResponsesLoginCommandResponse.refreshToken);
-        writer.writeStringValue("tokenType", maomiAIUserSharedCommandsResponsesLoginCommandResponse.tokenType);
-        writer.writeGuidValue("userId", maomiAIUserSharedCommandsResponsesLoginCommandResponse.userId);
-        writer.writeStringValue("userName", maomiAIUserSharedCommandsResponsesLoginCommandResponse.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsUpdateUserPasswordCommand(writer: SerializationWriter, maomiAIUserSharedCommandsUpdateUserPasswordCommand: Partial<MaomiAIUserSharedCommandsUpdateUserPasswordCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsUpdateUserPasswordCommand) {
-        writer.writeStringValue("password", maomiAIUserSharedCommandsUpdateUserPasswordCommand.password);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedCommandsUploadtUserAvatarCommand(writer: SerializationWriter, maomiAIUserSharedCommandsUploadtUserAvatarCommand: Partial<MaomiAIUserSharedCommandsUploadtUserAvatarCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedCommandsUploadtUserAvatarCommand) {
-        writer.writeGuidValue("fileId", maomiAIUserSharedCommandsUploadtUserAvatarCommand.fileId);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedQueriesQueryRepeatedUserNameCommand(writer: SerializationWriter, maomiAIUserSharedQueriesQueryRepeatedUserNameCommand: Partial<MaomiAIUserSharedQueriesQueryRepeatedUserNameCommand> | undefined | null = {}) : void {
-    if (maomiAIUserSharedQueriesQueryRepeatedUserNameCommand) {
-        writer.writeStringValue("userName", maomiAIUserSharedQueriesQueryRepeatedUserNameCommand.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeMaomiAIUserSharedQueriesQueryUserInfoCommandResponse(writer: SerializationWriter, maomiAIUserSharedQueriesQueryUserInfoCommandResponse: Partial<MaomiAIUserSharedQueriesQueryUserInfoCommandResponse> | undefined | null = {}) : void {
-    if (maomiAIUserSharedQueriesQueryUserInfoCommandResponse) {
-        writer.writeStringValue("avatar", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.avatar);
-        writer.writeStringValue("nickName", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.nickName);
-        writer.writeGuidValue("userId", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userId);
-        writer.writeStringValue("userName", maomiAIUserSharedQueriesQueryUserInfoCommandResponse.userName);
-    }
-}
-/**
- * Serializes information the current object
- * @param writer Serialization writer to use to serialize this model
- */
-// @ts-ignore
-export function serializeSystemCollectionsGenericKeyValuePairOfStringAndInt32(writer: SerializationWriter, systemCollectionsGenericKeyValuePairOfStringAndInt32: Partial<SystemCollectionsGenericKeyValuePairOfStringAndInt32> | undefined | null = {}) : void {
-    if (systemCollectionsGenericKeyValuePairOfStringAndInt32) {
-        writer.writeStringValue("key", systemCollectionsGenericKeyValuePairOfStringAndInt32.key);
-        writer.writeNumberValue("value", systemCollectionsGenericKeyValuePairOfStringAndInt32.value);
-    }
-}
-export interface SystemCollectionsGenericKeyValuePairOfStringAndInt32 extends Parsable {
-    /**
-     * The key property
-     */
-    key?: string | null;
-    /**
-     * The value property
-     */
-    value?: number | null;
+    fileId?: Guid | null;
 }
 /**
  * AI 模型的功能，判断是否多模态.
  */
-export const MaomiAIAiModelSharedModelsAiModelFunctionObject = {
+export const AiModelFunctionObject = {
     None: "None",
     ChatCompletion: "ChatCompletion",
     TextGeneration: "TextGeneration",
@@ -3592,7 +4128,7 @@ export const MaomiAIAiModelSharedModelsAiModelFunctionObject = {
 /**
  * AI 服务提供商，服务商来源.
  */
-export const MaomiAIAiModelSharedModelsAiProviderObject = {
+export const AiProviderObject = {
     Custom: "Custom",
     OpenAI: "OpenAI",
     AzureOpenAI: "AzureOpenAI",
@@ -3604,16 +4140,27 @@ export const MaomiAIAiModelSharedModelsAiProviderObject = {
     HuggingFace: "HuggingFace",
 } as const;
 /**
+ * 向量化状态.
+ */
+export const FileEmbeddingStateObject = {
+    None: "None",
+    Wait: "Wait",
+    Processing: "Processing",
+    Cancal: "Cancal",
+    Successful: "Successful",
+    Failed: "Failed",
+} as const;
+/**
  * 存储类型.
  */
-export const MaomiAIStoreEnumsFileVisibilityObject = {
+export const FileVisibilityObject = {
     Public: "Public",
     Private: "Private",
 } as const;
 /**
  * 上传的图像类型.
  */
-export const MaomiAIStoreEnumsUploadImageTypeObject = {
+export const UploadImageTypeObject = {
     None: "None",
     UserAvatar: "UserAvatar",
     TeamAvatar: "TeamAvatar",

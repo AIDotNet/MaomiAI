@@ -6,6 +6,10 @@
 
 namespace MaomiAI.Store.Services;
 
+public interface IPrivateFileStore : IFileStore { }
+public interface IPublicFileStore : IFileStore { }
+
+
 /// <summary>
 /// 文件存储接口.
 /// </summary>
@@ -65,8 +69,15 @@ public interface IFileStore
     /// <summary>
     /// 生成预签名上传地址.
     /// </summary>
-    /// <param name="objectKey"></param>
-    /// <param name="expiryDuration"></param>
+    /// <param name="fileObject"></param>
     /// <returns>预签名地址.</returns>
     Task<string> GeneratePreSignedUploadUrlAsync(FileObject fileObject);
+
+    /// <summary>
+    /// 下载文件.
+    /// </summary>
+    /// <param name="objectKey"></param>
+    /// <param name="filePath"></param>
+    /// <returns></returns>
+    Task DownloadAsync(string objectKey, string filePath);
 }

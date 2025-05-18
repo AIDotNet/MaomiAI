@@ -11,15 +11,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Document.Core.Handlers;
 
+/// <summary>
+/// 更新知识库信息.
+/// </summary>
 public class UpdateWikiInfoCommandHandler : IRequestHandler<UpdateWikiInfoCommand, EmptyCommandResponse>
 {
     private readonly DatabaseContext _databaseContext;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UpdateWikiInfoCommandHandler"/> class.
+    /// </summary>
+    /// <param name="databaseContext"></param>
     public UpdateWikiInfoCommandHandler(DatabaseContext databaseContext)
     {
         _databaseContext = databaseContext;
     }
 
+    /// <inheritdoc/>
     public async Task<EmptyCommandResponse> Handle(UpdateWikiInfoCommand request, CancellationToken cancellationToken)
     {
         // 获取知识库实体

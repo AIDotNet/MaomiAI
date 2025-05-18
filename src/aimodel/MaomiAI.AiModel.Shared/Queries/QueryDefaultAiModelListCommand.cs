@@ -1,9 +1,10 @@
-﻿// <copyright file="QueryAiModelDefaultConfigurationsCommand.cs" company="MaomiAI">
+﻿// <copyright file="QueryDefaultAiModelListCommand.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.AiModel.Shared.Queries.Respones;
 using MediatR;
 
@@ -18,4 +19,9 @@ public class QueryDefaultAiModelListCommand : IRequest<QueryDefaultAiModelListRe
     /// 团队 id.
     /// </summary>
     public Guid TeamId { get; init; } = default!;
+
+    /// <summary>
+    /// 模型类型.
+    /// </summary>
+    public AiModelType AiModelType { get; init; } = default!;
 }

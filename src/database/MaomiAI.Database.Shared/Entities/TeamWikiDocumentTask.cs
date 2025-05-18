@@ -37,7 +37,7 @@ public partial class TeamWikiDocumentTaskEntity : IFullAudited
     /// <summary>
     /// 任务标识，用来判断要执行的任务是否一致.
     /// </summary>
-    public string TaskId { get; set; }  = default!;
+    public string TaskTag { get; set; }  = default!;
 
     /// <summary>
     /// 任务状态.

@@ -14,55 +14,55 @@ public class AiNotKeyEndpoint
     /// <summary>
     /// id.
     /// </summary>
-    public Guid Id { get; init; } = Guid.Empty;
+    public Guid Id { get; init; }
 
     /// <summary>
-    /// 名称.
+    /// 模型名称.
     /// </summary>
     public string Name { get; init; } = default!;
 
     /// <summary>
-    /// AI 服务商.
-    /// </summary>
-    public string Provider { get; init; }
-
-    /// <summary>
-    /// AI 模型的功能，判断是否多模态.
-    /// </summary>
-    public AiModelFunction[] AiFunction { get; init; }
-
-    /// <summary>
-    /// 支持 function call.
-    /// </summary>
-    public bool IsSupportFunctionCall { get; init; }
-
-    /// <summary>
-    /// 支持图片.
-    /// </summary>
-    public bool IsSupportImg { get; init; }
-
-    /// <summary>
-    /// 请求端点.
-    /// </summary>
-    public string endpoint { get; init; } = default!;
-
-    /// <summary>
-    /// 模型部署 id 或 name.
-    /// </summary>
-    public string ModelId { get; init; } = default!;
-
-    /// <summary>
-    /// 模型部署名称，可跟 ModelId 一样，兼容 Azure Open AI.
+    /// 部署名称，适配 Azure Open AI ，非 Azure Open AI 跟 Name 同名.
     /// </summary>
     public string DeploymentName { get; init; } = default!;
 
     /// <summary>
-    /// 文本模型最大支持上下文token.
+    /// 对用户显示名称.
     /// </summary>
-    public int TextMaxToken { get; set; }
+    public string DisplayName { get; init; } = default!;
 
     /// <summary>
-    /// 嵌入模型最大支持token数量.
+    /// 模型类型.
     /// </summary>
-    public int EmbeddinMaxToken { get; set; }
+    public AiModelType AiModelType { get; init; } = default!;
+
+    /// <summary>
+    /// AI 服务商.
+    /// </summary>
+    public AiProvider Provider { get; init; }
+
+    /// <summary>
+    /// the context window (or input + output tokens limit).
+    /// </summary>
+    public int ContextWindowTokens { get; init; }
+
+    /// <summary>
+    /// 请求端点.
+    /// </summary>
+    public string Endpoint { get; init; } = default!;
+
+    /// <summary>
+    /// additional parameters.
+    /// </summary>
+    public ModelAbilities Abilities { get; init; } = default!;
+
+    /// <summary>
+    /// 最大模型输出 tokens，TextOutput.
+    /// </summary>
+    public int TextOutput { get; init; }
+
+    /// <summary>
+    /// 向量模型的维度.
+    /// </summary>
+    public int MaxDimension { get; init; }
 }

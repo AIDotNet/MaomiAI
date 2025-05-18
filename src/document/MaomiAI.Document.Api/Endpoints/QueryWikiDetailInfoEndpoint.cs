@@ -1,20 +1,22 @@
-﻿using FastEndpoints;
-using MaomiAI.Document.Shared.Commands;
-using MaomiAI.Document.Shared.Commands.Responses;
+﻿// <copyright file="QueryWikiDetailInfoEndpoint.cs" company="MaomiAI">
+// Copyright (c) MaomiAI. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Github link: https://github.com/AIDotNet/MaomiAI
+// </copyright>
+
+using FastEndpoints;
 using MaomiAI.Document.Shared.Queries;
 using MaomiAI.Document.Shared.Queries.Response;
-using MaomiAI.Store.Commands.Response;
 using MediatR;
 using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.Document.Api.Endpoints;
 
-
 /// <summary>
 /// 知识库详细信息.
 /// </summary>
 [EndpointGroupName("wiki")]
-[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/{{teamId}}/{{wikiId}}/detail")]
+[FastEndpoints.HttpPost($"{DocumentApi.ApiPrefix}/detail")]
 public class QueryWikiDetailInfoEndpoint : Endpoint<QueryWikiDetailInfoCommand, QueryWikiDetailInfoResponse>
 {
     private readonly IMediator _mediator;

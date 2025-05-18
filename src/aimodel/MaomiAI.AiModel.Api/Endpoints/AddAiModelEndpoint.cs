@@ -15,7 +15,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 添加一个 ai 模型，key 要使用 RSA 公钥加密.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/create")]
+[HttpPost($"{AiModelApi.ApiPrefix}/add")]
 public class AddAiModelEndpoint : Endpoint<AddAiModelCommand, IdResponse>
 {
     private readonly IMediator _mediator;
@@ -41,7 +41,7 @@ public class AddAiModelEndpoint : Endpoint<AddAiModelCommand, IdResponse>
             UserId = _userContext.UserId
         });
 
-        if (!isAdmin.IsExist)
+        if (!isAdmin.IsAdmin)
         {
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }

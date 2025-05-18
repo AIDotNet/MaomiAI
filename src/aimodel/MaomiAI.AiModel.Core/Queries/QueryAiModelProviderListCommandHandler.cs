@@ -37,7 +37,7 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
         var list = await _dbContext.TeamAiModels
             .Where(x => x.TeamId == request.TeamId)
             .GroupBy(x => x.AiProvider)
-            .Select(x => new
+            .Select(x => new QueryAiModelProviderCount
             {
                 Provider = x.Key,
                 Count = x.Count()
@@ -54,7 +54,7 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
 
         return new QueryAiModelProviderListResponse
         {
-            Providers = providers
+            Providers = list
         };
     }
 }
