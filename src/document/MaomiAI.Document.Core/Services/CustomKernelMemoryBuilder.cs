@@ -1,38 +1,42 @@
-﻿// <copyright file="SetEmbeddingGenerationDocumentTaskCommandHandler.cs" company="MaomiAI">
+﻿// <copyright file="CustomKernelMemoryBuilder.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-using Azure.Core;
-using DocumentFormat.OpenXml.Office2016.Excel;
-using Maomi.MQ;
-using MaomiAI.AiModel.Shared.Helpers;
 using MaomiAI.AiModel.Shared.Models;
-using MaomiAI.Database;
-using MaomiAI.Database.Entities;
 using MaomiAI.Document.Shared.Models;
 using MaomiAI.Infra;
-using MaomiAI.Infra.Helpers;
-using MaomiAI.Infra.Service;
-using MaomiAI.Store.Clients;
-using MaomiAI.Store.Queries;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.AI;
 using Microsoft.KernelMemory;
-using Microsoft.KernelMemory.Configuration;
 
 namespace MaomiAI.Document.Core.Services;
 
+/// <summary>
+/// 构建 km.
+/// </summary>
 [InjectOnScoped]
 public class CustomKernelMemoryBuilder
 {
     private readonly SystemOptions _systemOptions;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CustomKernelMemoryBuilder"/> class.
+    /// </summary>
+    /// <param name="systemOptions"></param>
+    public CustomKernelMemoryBuilder(SystemOptions systemOptions)
+    {
+        _systemOptions = systemOptions;
+    }
+
+    /// <summary>
+    /// 配置向量模型.
+    /// </summary>
+    /// <param name="kernelMemoryBuilder"></param>
+    /// <param name="endpoint"></param>
+    /// <param name="wikiConfig"></param>
     public void ConfigEmbeddingModel(IKernelMemoryBuilder kernelMemoryBuilder, AiEndpoint endpoint, WikiConfig wikiConfig)
     {
-        if (!endpoint.AiFunction.Contains(AiModelFunction.TextEmbeddingGeneration))
+        if (endpoint.AiModelType != AiModelType.Embedding)
         {
             throw new BusinessException("{0} 不支持 TextEmbeddingGeneration.", endpoint.Name);
         }
@@ -45,15 +49,14 @@ public class CustomKernelMemoryBuilder
                 Endpoint = endpoint.Endpoint,
                 APIKey = endpoint.Key,
 
-                MaxEmbeddingBatchSize = maxEmbeddingBatchSize,
-                MaxRetries = maxRetries,
-                EmbeddingModelMaxTokenTotal = endpoint.EmbeddinMaxToken,
-                TextModelMaxTokenTotal = endpoint.TextMaxToken,
-                EmbeddingDimensions = embeddingDimensions,
-                EmbeddingModelTokenizer = tokenizer
+                MaxEmbeddingBatchSize = wikiConfig.EmbeddingBatchSize,
+                MaxRetries = wikiConfig.MaxRetries,
+                EmbeddingModelMaxTokenTotal = endpoint.TextOutput,
+                EmbeddingDimensions = wikiConfig.EmbeddingDimensions,
+                EmbeddingModelTokenizer = wikiConfig.EmbeddingModelTokenizer
             });
         }
-        else if (endpoint.Provider == AiProvider.AzureOpenAI)
+        else if (endpoint.Provider == AiProvider.AzureAI)
         {
             kernelMemoryBuilder.WithAzureOpenAITextEmbeddingGeneration(new AzureOpenAIConfig
             {
@@ -63,11 +66,11 @@ public class CustomKernelMemoryBuilder
                 APIKey = endpoint.Key,
                 APIType = AzureOpenAIConfig.APITypes.EmbeddingGeneration,
 
-                MaxEmbeddingBatchSize = maxEmbeddingBatchSize,
-                MaxRetries = maxRetries,
-                MaxTokenTotal = endpoint.EmbeddinMaxToken,
-                EmbeddingDimensions = embeddingDimensions,
-                Tokenizer = tokenizer
+                MaxEmbeddingBatchSize = wikiConfig.EmbeddingBatchSize,
+                MaxRetries = wikiConfig.MaxRetries,
+                MaxTokenTotal = endpoint.TextOutput,
+                EmbeddingDimensions = wikiConfig.EmbeddingDimensions,
+                Tokenizer = wikiConfig.EmbeddingModelTokenizer
             });
         }
         else

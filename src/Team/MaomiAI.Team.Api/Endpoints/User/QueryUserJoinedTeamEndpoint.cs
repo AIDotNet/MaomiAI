@@ -15,7 +15,7 @@ namespace MaomiAI.Team.Api.Endpoints.User;
 /// 获取团队列表.
 /// </summary>
 [EndpointGroupName("team")]
-[HttpPost($"{TeamApi.ApiPrefix}/joined_list")]
+[HttpPost("/team/joined_list")]
 public class QueryUserJoinedTeamEndpoint : Endpoint<QueryUserJoinedTeamCommand, PagedResult<QueryTeamSimpleCommandResponse>>
 {
     private readonly IMediator _mediator;

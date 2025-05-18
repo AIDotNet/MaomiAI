@@ -14,5 +14,5 @@ public static class AiModelApi
     /// <summary>
     /// Api 接口前缀.
     /// </summary>
-    public const string ApiPrefix = "{teamId}/aimodel";
+    public const string ApiPrefix = "/aimodel/{teamId}";
 }

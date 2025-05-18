@@ -2,11 +2,15 @@ import { Col, Row, Card, Form, Input, Button, message } from "antd";
 import { useNavigate } from "react-router";
 import { RsaHelper } from "../../helper/RsaHalper";
 import "./Login.css";
-import { GetAllowApiClient, GetApiClient } from "../ServiceClient";
+import { GetAllowApiClient } from "../ServiceClient";
 import { useEffect } from "react";
-import { CheckToken, GetServiceInfo, RefreshServerInfo, SetUserInfo } from "../../InitPage";
-import Parse400Error from "../../helper/FromErrors";
-
+import {
+  CheckToken,
+  GetServiceInfo,
+  RefreshServerInfo,
+  SetUserInfo,
+} from "../../InitPage";
+import { proxyFormRequestError } from "../../helper/RequestError";
 export default function Login() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
@@ -54,19 +58,8 @@ export default function Login() {
         messageApi.error("登录失败");
       }
     } catch (error) {
-      console.error("Login error:", error);
-      const typedError = error as {
-        detail?: string;
-        errors?: Record<string, string[]>;
-      };
-      if (typedError.errors && Object.keys(typedError.errors).length > 0) {
-        let errors = Parse400Error(typedError.errors);
-        form.setFields(errors);
-      } else if (typedError.detail) {
-        messageApi.error(typedError.detail);
-      } else {
-        messageApi.error("登录失败");
-      }
+      messageApi.error("登录失败");
+      proxyFormRequestError(error, messageApi, form);
     }
   };
 

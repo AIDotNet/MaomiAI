@@ -8,7 +8,7 @@ import type {
     MaomiAIDocumentSharedQueriesResponseQueryWikiFileListItem,
     MaomiAIDocumentSharedQueriesDocumentsResponsesQueryWikiDocumentTaskListCommandResponse,
     MaomiAIDocumentSharedModelsFileEmbeddingState
-} from "../../../ApiClient/models";
+} from "../../../apiClient/models";
 import { formatDateTime } from "../../../helper/DateTimeHelper";
 
 export default function WikiEmbedding() {

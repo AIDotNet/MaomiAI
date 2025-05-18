@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { GetApiClient } from "../../ServiceClient";
-import type { MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse } from "../../../ApiClient/models";
+import type { MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse } from "../../../apiClient/models";
 import {
   Input,
   Button,

@@ -13,9 +13,9 @@ import {
   Space,
 } from "antd";
 import { GetApiClient } from "../ServiceClient";
-import { MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse } from "../../ApiClient/models";
+import { QueryTeamSimpleCommandResponse } from "../../apiClient/models";
 import { TeamOutlined } from "@ant-design/icons";
-import { MaomiClient } from "../../ApiClient/maomiClient";
+import { MaomiClient } from "../../apiClient/maomiClient";
 import TeamList from "../teamlist/TeamList";
 
 const { Content } = Layout;
@@ -31,7 +31,7 @@ export default function Team() {
 
   // Current team state
   const [currentTeam, setCurrentTeam] =
-    useState<MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse>({});
+    useState<QueryTeamSimpleCommandResponse>({});
 
   // Fetch teams for the selection modal
   const fetchTeams = async (teamId: string, client?: MaomiClient) => {

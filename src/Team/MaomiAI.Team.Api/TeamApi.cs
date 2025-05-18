@@ -2,5 +2,5 @@
 
 public static class TeamApi
 {
-    public const string ApiPrefix = "/team";
+    public const string ApiPrefix = "/team/{teamId}";
 }

@@ -3,8 +3,8 @@ import { Card, Form, Input, Button, Upload, message, Switch, Avatar, Description
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import type { RcFile } from 'antd/es/upload';
 import { GetApiClient, UploadImage } from '../../ServiceClient';
-import { MaomiAIStoreEnumsUploadImageTypeObject, MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse } from '../../../ApiClient/models';
 import { useNavigate, useParams } from 'react-router';
+import { QueryTeamDetailCommandResponse } from '../../../apiClient/models';
 
 
 export default function TeamSetting() {
@@ -12,7 +12,7 @@ export default function TeamSetting() {
     const [avatarForm] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
     const apiClient = GetApiClient();
-    const [teamDetail, setTeamDetail] = useState<MaomiAITeamSharedQueriesResponsesQueryTeamDetailCommandResponse | null>(null);
+    const [teamDetail, setTeamDetail] = useState<QueryTeamDetailCommandResponse | null>(null);
     const [loading, setLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
     const { teamId } = useParams();

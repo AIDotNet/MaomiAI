@@ -31,7 +31,7 @@ public class BusinessExceptionResponse
     /// <summary>
     /// 具体错误列表.
     /// </summary>
-    public IReadOnlyDictionary<string, IReadOnlyCollection<string>>? Errors { get; init; }
+    public IReadOnlyCollection<BusinessExceptionError>? Errors { get; init; }
 
     /// <summary>
     /// 扩展.
@@ -54,6 +54,10 @@ public class BusinessExceptionResponse
     {
         // Microsoft.AspNetCore.Mvc.ValidationProblemDetails
         Code = statusCode;
-        Errors = failures.GroupBy(f => f.PropertyName).ToDictionary(e => e.Key, elementSelector: e => (IReadOnlyCollection<string>)e.Select(m => m.ErrorMessage).ToArray());
+        Errors = failures.GroupBy(f => f.PropertyName).Select(e => new BusinessExceptionError
+        {
+            Name = e.Key,
+            Errors = e.Select(m => m.ErrorMessage).ToArray()
+        }).ToArray();
     }
 }

@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "syncapi": "kiota generate --additional-data false -l typescript -d http://127.0.0.1:5000/openapi/v1.json -c MaomiClient -o ./src/ApiClient"
+    "syncapi": "kiota generate --additional-data false -l typescript -d http://127.0.0.1:5000/openapi/v1.json -c MaomiClient -o ./src/apiClient"
   },
   "dependencies": {
     "@lobehub/ui": "^1.171.0",

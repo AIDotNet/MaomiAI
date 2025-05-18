@@ -4,6 +4,7 @@ import {
   Layout,
   Menu,
   message,
+  Image,
   Modal,
   Card,
   Avatar,
@@ -27,27 +28,26 @@ import {
 } from "@ant-design/icons";
 import "./App.css";
 import { CheckToken, RefreshServerInfo } from "./InitPage";
-import { GetApiClient } from "./Components/ServiceClient";
-import { MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse } from "./ApiClient/models";
+import { GetApiClient } from "./components/ServiceClient";
 
-import TeamList from "./Components/teamlist/TeamList";
-import User from "./Components/user/User";
-import Dashboard from "./Components/dashboard/Dashboard";
-import Team from "./Components/team/Team";
-import Note from "./Components/note/Note";
-import TeamDashboard from "./Components/team/TeamDashboard";
-import AiModel from "./Components/team/aimodel/AiModel";
-import Application from "./Components/team/application/Application";
-import Wiki from "./Components/team/wiki/Wiki";
-import Plugin from "./Components/team/plugin/Plugin";
-import Setting from "./Components/team/setting/Setting";
-import TeamAdmin from "./Components/team/setting/TeamAdmin";
-import TeamSetting from "./Components/team/setting/TeamSetting";
-import TeamMember from "./Components/team/setting/TeamMember";
-import WikiList from "./Components/team/wiki/WikiList";
-import WikiDocument from "./Components/team/wiki/WikiDocument";
-import WikiSetting from "./Components/team/wiki/WikiSetting";
-import WikiEmbedding from "./Components/team/wiki/WikiEmbedding";
+import TeamList from "./components/teamlist/TeamList";
+import User from "./components/user/User";
+import Dashboard from "./components/dashboard/Dashboard";
+import Team from "./components/team/Team";
+import Note from "./components/note/Note";
+import TeamDashboard from "./components/team/TeamDashboard";
+import AiModel from "./components/team/aimodel/AiModel";
+import Application from "./components/team/application/Application";
+import Wiki from "./components/team/wiki/Wiki";
+import Plugin from "./components/team/plugin/Plugin";
+import Setting from "./components/team/setting/Setting";
+import TeamMember from "./components/team/setting/TeamMember";
+import WikiList from "./components/team/wiki/WikiList";
+import WikiDocument from "./components/team/wiki/WikiDocument";
+import WikiSetting from "./components/team/wiki/WikiSetting";
+import WikiEmbedding from "./components/team/wiki/WikiEmbedding";
+import TeamSetting from "./components/team/setting/TeamSetting";
+import TeamAdmin from "./components/team/setting/TeamAdmin";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -55,13 +55,6 @@ function App() {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isTeamSelectModalVisible, setIsTeamSelectModalVisible] =
-    useState(false);
-  const [teams, setTeams] = useState<
-    MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse[]
-  >([]);
-  const [loadingTeams, setLoadingTeams] = useState(false);
-  const [selectedTeamPath, setSelectedTeamPath] = useState("");
 
   // 获取当前选中的菜单项
   const getSelectedKeys = () => {
@@ -228,61 +221,55 @@ function App() {
   ];
 
   return (
-    <Layout className="layout">
+    <>
       {contextHolder}
-      <Header className="header">
-        <div className="logo">My App</div>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          className="menu-horizontal"
-          items={horizontalMenuItems}
-        />
-      </Header>
-      <Layout>
-        <Sider width={200} className="sider" collapsible>
-          <Menu
-            mode="inline"
-            selectedKeys={getSelectedKeys()}
-            defaultOpenKeys={getOpenKeys()}
-            className="menu-inline"
-            items={inlineMenuItems}
-          />
-        </Sider>
-        <Layout style={{ padding: "0 0px 0px" }}>
-          <Content className="content">
-            <Routes>
-              <Route index element={<Dashboard />} />
-              <Route path="index" element={<Dashboard />} />
-              <Route path="user" element={<User />} />
-              <Route path="teamlist" element={<TeamList />} />
-              <Route path="team/:teamId/*" element={<Team />}>
-                <Route path="dashboard" element={<TeamDashboard />} />
-                <Route path="aimodel" element={<AiModel />} />
-                <Route path="application" element={<Application />} />
-                <Route path="wiki/:wikiId/*" element={<Wiki />}>
-                  <Route path="setting" element={<WikiSetting />} />
-                  <Route path="document" element={<WikiDocument />} />
-                  <Route path="embedding" element={<WikiEmbedding />} />
-                  <Route path="*" element={<WikiSetting />} />
+      <Layout className="layout">
+        <Header className="header" logo={<Image src="./logo.png" width={60} height={60} />}>
+        </Header>
+        <Layout>
+          <Sider width={200} className="sider" collapsible>
+            <Menu
+              mode="inline"
+              selectedKeys={getSelectedKeys()}
+              defaultOpenKeys={getOpenKeys()}
+              className="menu-inline"
+              items={inlineMenuItems}
+            />
+          </Sider>
+          <Layout style={{ padding: "0 0px 0px" }}>
+            <Content className="content">
+              <Routes>
+                <Route index element={<Dashboard />} />
+                <Route path="index" element={<Dashboard />} />
+                <Route path="user" element={<User />} />
+                <Route path="teamlist" element={<TeamList />} />
+                <Route path="team/:teamId/*" element={<Team />}>
+                  <Route path="dashboard" element={<TeamDashboard />} />
+                  <Route path="aimodel" element={<AiModel />} />
+                  <Route path="application" element={<Application />} />
+                  <Route path="wiki/:wikiId/*" element={<Wiki />}>
+                    <Route path="setting" element={<WikiSetting />} />
+                    <Route path="document" element={<WikiDocument />} />
+                    <Route path="embedding" element={<WikiEmbedding />} />
+                    <Route path="*" element={<WikiSetting />} />
+                  </Route>
+                  <Route path="wikilist" element={<WikiList />} />
+                  <Route path="plugin" element={<Plugin />} />
+                  <Route path="setting" element={<Setting />}>
+                    <Route path="admin" element={<TeamAdmin />} />
+                    <Route path="team" element={<TeamSetting />} />
+                    <Route path="member" element={<TeamMember />} />
+                    <Route path="*" element={<TeamSetting />} />
+                  </Route>
                 </Route>
-                <Route path="wikilist" element={<WikiList />} />
-                <Route path="plugin" element={<Plugin />} />
-                <Route path="setting" element={<Setting />}>
-                  <Route path="admin" element={<TeamAdmin />} />
-                  <Route path="team" element={<TeamSetting />} />
-                  <Route path="member" element={<TeamMember />} />
-                  <Route path="*" element={<TeamSetting />} />
-                </Route>
-              </Route>
-              <Route path="note" element={<Note />} />
-            </Routes>
-          </Content>
-          <Footer className="footer">MaomiAI ©2025</Footer>
+                <Route path="note" element={<Note />} />
+              </Routes>
+            </Content>
+            <Footer className="footer">MaomiAI ©2025</Footer>
+          </Layout>
         </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 }
 

@@ -4,10 +4,10 @@
 // @ts-ignore
 import { createBusinessExceptionResponseFromDiscriminatorValue, createQueryWikiSimpleInfoResponseFromDiscriminatorValue, type BusinessExceptionResponse, type QueryWikiSimpleInfoResponse } from '../../../../models/index.js';
 // @ts-ignore
-import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type Guid, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{teamId}/wikis
+ * Builds and executes requests for operations under /api/wiki/{temaId}/wikis
  */
 export interface WikisRequestBuilder extends BaseRequestBuilder<WikisRequestBuilder> {
     /**
@@ -20,18 +20,33 @@ export interface WikisRequestBuilder extends BaseRequestBuilder<WikisRequestBuil
      * @throws {BusinessExceptionResponse} error when the service returns a 409 status code
      * @throws {BusinessExceptionResponse} error when the service returns a 500 status code
      */
-     get(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<QueryWikiSimpleInfoResponse[] | undefined>;
+     get(requestConfiguration?: RequestConfiguration<WikisRequestBuilderGetQueryParameters> | undefined) : Promise<QueryWikiSimpleInfoResponse[] | undefined>;
     /**
      * 查询团队知识库列表.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */
-     toGetRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
+     toGetRequestInformation(requestConfiguration?: RequestConfiguration<WikisRequestBuilderGetQueryParameters> | undefined) : RequestInformation;
+}
+/**
+ * 查询团队知识库列表.
+ */
+export interface WikisRequestBuilderGetQueryParameters {
+    /**
+     * 团队 id.
+     */
+    teamId?: Guid;
 }
 /**
  * Uri template for the request builder.
  */
-export const WikisRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/wikis";
+export const WikisRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/wikis?TeamId={TeamId}";
+/**
+ * Mapper for query parameters from symbol name to serialization name represented as a constant.
+ */
+const WikisRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "teamId": "TeamId",
+};
 /**
  * Metadata for all the requests in the request builder.
  */
@@ -48,6 +63,7 @@ export const WikisRequestBuilderRequestsMetadata: RequestsMetadata = {
         },
         adapterMethodName: "sendCollection",
         responseBodyFactory:  createQueryWikiSimpleInfoResponseFromDiscriminatorValue,
+        queryParametersMapper: WikisRequestBuilderGetQueryParametersMapper,
     },
 };
 /* tslint:enable */

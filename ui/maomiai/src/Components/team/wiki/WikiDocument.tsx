@@ -24,12 +24,12 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import type { UploadFile, UploadProps } from "antd/es/upload/interface";
-import { GetApiClient, UploadImage } from "../../../Components/ServiceClient";
+import { GetApiClient, UploadImage } from "../../../components/ServiceClient";
 import { GetFileMd5 } from "../../../helper/Md5Helper";
 import { RcFile } from "antd/es/upload";
 import { useParams, useNavigate } from "react-router";
-import type { MaomiAIDocumentSharedQueriesQueryWikiFileListCommand } from "../../../ApiClient/models";
-import { MaomiAIStoreEnumsUploadImageTypeObject } from "../../../ApiClient/models";
+import type { MaomiAIDocumentSharedQueriesQueryWikiFileListCommand } from "../../../apiClient/models";
+import { MaomiAIStoreEnumsUploadImageTypeObject } from "../../../apiClient/models";
 import { FileTypeHelper } from "../../../helper/FileTypeHelper";
 import { FileSizeHelper } from "../../../helper/FileSizeHelper";
 import {

@@ -1,5 +1,5 @@
-import { MaomiClient } from "./ApiClient/maomiClient";
-import { RefreshAccessToken, GetApiClient, GetAllowApiClient } from "./Components/ServiceClient";
+import { MaomiClient } from "./apiClient/maomiClient";
+import { RefreshAccessToken, GetApiClient, GetAllowApiClient } from "./components/ServiceClient";
 import { IsTokenExpired } from "./helper/TokenHelper";
 
 export interface ServerInfoModel {

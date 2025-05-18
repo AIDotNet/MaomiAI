@@ -5,24 +5,25 @@
 // </copyright>
 
 using Maomi.MQ;
-using MaomiAI.AiModel.Shared.Helpers;
 using MaomiAI.AiModel.Shared.Models;
 using MaomiAI.Database;
 using MaomiAI.Document.Core.Consumers.Events;
 using MaomiAI.Document.Core.Services;
 using MaomiAI.Document.Shared.Models;
 using MaomiAI.Infra;
-using MaomiAI.Infra.Helpers;
-using MaomiAI.Store.Clients;
 using MaomiAI.Store.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.KernelMemory;
 using Microsoft.KernelMemory.Configuration;
 
 namespace MaomiAI.Document.Core.Consumers;
 
+/// <summary>
+/// 文档向量化.
+/// </summary>
 [Consumer("embedding_document", Qos = 1)]
 public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent>
 {
@@ -30,23 +31,27 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
     private readonly SystemOptions _systemOptions;
     private readonly CustomKernelMemoryBuilder _customKernelMemoryBuilder;
     private readonly IMediator _mediator;
+    private readonly ILogger<EmbeddingDocumentCommandConsumer> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EmbeddingDocumentCommandConsumer"/> class.
     /// </summary>
     /// <param name="serviceProvider"></param>
-    public EmbeddingDocumentCommandConsumer(IServiceProvider serviceProvider)
+    /// <param name="logger"></param>
+    public EmbeddingDocumentCommandConsumer(IServiceProvider serviceProvider, ILogger<EmbeddingDocumentCommandConsumer> logger)
     {
         _databaseContext = serviceProvider.GetRequiredService<DatabaseContext>();
         _systemOptions = serviceProvider.GetRequiredService<SystemOptions>();
         _customKernelMemoryBuilder = serviceProvider.GetRequiredService<CustomKernelMemoryBuilder>();
         _mediator = serviceProvider.GetRequiredService<IMediator>();
+        _logger = logger;
     }
 
+    /// <inheritdoc/>
     public async Task ExecuteAsync(MessageHeader messageHeader, EmbeddingDocumentEvent message)
     {
         var documentTask = await _databaseContext.TeamWikiDocumentTasks
-             .FirstOrDefaultAsync(x => x.DocumentId == message.DocumentId && x.TaskTag == message.TaskI);
+             .FirstOrDefaultAsync(x => x.DocumentId == message.DocumentId && x.Id == message.TaskId);
 
         // 不需要处理
         if (documentTask == null || documentTask.State > (int)FileEmbeddingState.Processing)
@@ -88,23 +93,36 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
 
         var teamWikiConfig = await _databaseContext.TeamWikiConfigs
         .Where(x => x.TeamId == documentTask.TeamId && x.WikiId == documentTask.WikiId)
-        .Join(_databaseContext.TeamAiModels, a => a.EmbeddingModelId, b => b.Id, (a, b) => new
+        .Join(_databaseContext.TeamAiModels, a => a.EmbeddingModelId, b => b.Id, (a, x) => new
         {
-            b.Name,
-            b.DeploymentName,
-            b.Key,
-            b.IsSupportImg,
-            b.TextMaxToken,
-            b.IsSupportFunctionCall,
-            Provider = AiProviderHelper.GetProviderByName(b.AiProvider),
-            ModelId = b.ModeId,
-            AiFunction = EnumHelper.DecomposeFlags<AiModelFunction>(b.AiModelFunction),
-            b.EmbeddinMaxToken,
-            b.Endpoint,
-            a.EmbeddingDimensions,
-            a.EmbeddingModelTokenizer,
-            a.EmbeddingBatchSize,
-            a.MaxRetries
+            WikiConfig = new WikiConfig
+            {
+                EmbeddingDimensions = a.EmbeddingDimensions,
+                EmbeddingBatchSize = a.EmbeddingBatchSize,
+                MaxRetries = a.MaxRetries,
+                EmbeddingModelTokenizer = a.EmbeddingModelTokenizer,
+                EmbeddingModelId = a.EmbeddingModelId,
+            },
+            AiEndpoint = new AiEndpoint
+            {
+                Name = x.Name,
+                DeploymentName = x.DeploymentName,
+                DisplayName = x.DisplayName,
+                AiModelType = Enum.Parse<AiModelType>(x.AiModelType, true),
+                Provider = Enum.Parse<AiProvider>(x.AiProvider, true),
+                ContextWindowTokens = x.ContextWindowTokens,
+                Endpoint = x.Endpoint,
+                Abilities = new ModelAbilities
+                {
+                    Files = x.Files,
+                    FunctionCall = x.FunctionCall,
+                    ImageOutput = x.ImageOutput,
+                    Vision = x.Vision,
+                },
+                MaxDimension = x.MaxDimension,
+                TextOutput = x.TextOutput,
+                Key = x.Key,
+            }
         }).FirstOrDefaultAsync();
 
         if (teamWikiConfig == null)
@@ -115,25 +133,10 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
             return;
         }
 
-        var aiEndpoint = new AiEndpoint
-        {
-            Name = teamWikiConfig.Name,
-            DeploymentName = teamWikiConfig.DeploymentName,
-            Key = teamWikiConfig.Key,
-            IsSupportImg = teamWikiConfig.IsSupportImg,
-            TextMaxToken = teamWikiConfig.TextMaxToken,
-            IsSupportFunctionCall = teamWikiConfig.IsSupportFunctionCall,
-            Provider = teamWikiConfig.Provider,
-            ModelId = teamWikiConfig.ModelId,
-            AiFunction = teamWikiConfig.AiFunction,
-            EmbeddinMaxToken = teamWikiConfig.EmbeddinMaxToken,
-            Endpoint = teamWikiConfig.Endpoint
-        };
-
         // 构建客户端
         var memoryBuilder = new KernelMemoryBuilder().WithSimpleFileStorage(Path.GetTempPath());
 
-        _customKernelMemoryBuilder.ConfigEmbeddingModel(memoryBuilder, aiEndpoint, teamWikiConfig.EmbeddingDimensions, teamWikiConfig.EmbeddingBatchSize, teamWikiConfig.MaxRetries, teamWikiConfig.EmbeddingModelTokenizer);
+        _customKernelMemoryBuilder.ConfigEmbeddingModel(memoryBuilder, teamWikiConfig.AiEndpoint, teamWikiConfig.WikiConfig);
 
         var memoryClient = memoryBuilder.WithoutTextGenerator()
 
@@ -181,13 +184,17 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
         await _databaseContext.SaveChangesAsync();
     }
 
+    /// <inheritdoc/>
     public Task FaildAsync(MessageHeader messageHeader, Exception ex, int retryCount, EmbeddingDocumentEvent message)
     {
+        _logger.LogError(ex, message: "Document processing failed.{@Message}", message);
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<ConsumerState> FallbackAsync(MessageHeader messageHeader, EmbeddingDocumentEvent? message, Exception? ex)
     {
+        _logger.LogError(ex, message: "Document processing failed.{@Message}", message);
         return Task.FromResult(ConsumerState.Ack);
     }
 }

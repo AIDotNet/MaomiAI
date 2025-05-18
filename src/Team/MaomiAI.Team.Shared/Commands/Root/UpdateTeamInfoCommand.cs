@@ -18,7 +18,7 @@ public class UpdateTeamInfoCommand : IRequest
     /// 团队ID.
     /// </summary>
     [Required]
-    public Guid Id { get; set; }
+    public Guid TeamId { get; set; }
 
     /// <summary>
     /// 团队名称.

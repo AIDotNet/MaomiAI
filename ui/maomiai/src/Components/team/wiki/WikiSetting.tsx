@@ -7,7 +7,7 @@ import type {
     MaomiAIDocumentSharedQueriesUpdateWikiConfigCommand,
     MaomiAIAiModelSharedQueriesQueryAiModelFunctionListCommand,
     MaomiAIAiModelSharedModelsAiNotKeyEndpoint
-} from "../../../ApiClient/models";
+} from "../../../apiClient/models";
 
 export default function WikiSetting() {
     const [form] = Form.useForm();

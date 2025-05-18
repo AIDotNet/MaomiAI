@@ -22,32 +22,27 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// 模型类型，AiModelType.
     /// </summary>
-    public string AiModelType { get; set; }
+    public string AiModelType { get; set; } = default!;
 
     /// <summary>
     /// ai供应商AiProvider.
     /// </summary>
-    public string AiProvider { get; set; }  = default!;
+    public string AiProvider { get; set; } = default!;
 
     /// <summary>
     /// api服务端点.
     /// </summary>
-    public string Endpoint { get; set; }  = default!;
-
-    /// <summary>
-    /// 模型id.
-    /// </summary>
-    public string ModeId { get; set; }  = default!;
+    public string Endpoint { get; set; } = default!;
 
     /// <summary>
     /// 部署名称.
     /// </summary>
-    public string DeploymentName { get; set; }  = default!;
+    public string DeploymentName { get; set; } = default!;
 
     /// <summary>
     /// key.
     /// </summary>
-    public string Key { get; set; }  = default!;
+    public string Key { get; set; } = default!;
 
     /// <summary>
     /// 是否删除.
@@ -82,7 +77,7 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// 名字.
     /// </summary>
-    public string Name { get; set; }  = default!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 最大文本输出token.
@@ -97,7 +92,7 @@ public partial class TeamAiModelEntity : IFullAudited
     /// <summary>
     /// 显示名称.
     /// </summary>
-    public string DisplayName { get; set; }  = default!;
+    public string DisplayName { get; set; } = default!;
 
     /// <summary>
     /// 上下文最大token数量.

@@ -17,13 +17,11 @@ public class InviteUserToTeamCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// 团队ID.
     /// </summary>
-    [Required]
     public Guid TeamId { get; init; }
 
     /// <summary>
     /// 被邀请的用户ID.
     /// </summary>
-    [Required]
     public Guid? UserId { get; init; }
 
     /// <summary>

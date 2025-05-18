@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createTeamMember
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/team/{-id}/adminlist
+ * Builds and executes requests for operations under /api/team/{teamId}/adminlist
  */
 export interface AdminlistRequestBuilder extends BaseRequestBuilder<AdminlistRequestBuilder> {
     /**
@@ -31,7 +31,7 @@ export interface AdminlistRequestBuilder extends BaseRequestBuilder<AdminlistReq
 /**
  * Uri template for the request builder.
  */
-export const AdminlistRequestBuilderUriTemplate = "{+baseurl}/api/team/{%2Did}/adminlist";
+export const AdminlistRequestBuilderUriTemplate = "{+baseurl}/api/team/{teamId}/adminlist";
 /**
  * Metadata for all the requests in the request builder.
  */

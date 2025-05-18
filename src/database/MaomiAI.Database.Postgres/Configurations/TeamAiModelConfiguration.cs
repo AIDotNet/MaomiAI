@@ -24,6 +24,8 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasComment("id")
             .HasColumnName("id");
         entity.Property(e => e.AiModelType)
+            .HasMaxLength(20)
+            .HasDefaultValueSql("'custom'::character varying")
             .HasComment("模型类型，AiModelType")
             .HasColumnName("ai_model_type");
         entity.Property(e => e.AiProvider)
@@ -76,10 +78,6 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasDefaultValue(8191)
             .HasComment("向量的维度")
             .HasColumnName("max_dimension");
-        entity.Property(e => e.ModeId)
-            .HasMaxLength(50)
-            .HasComment("模型id")
-            .HasColumnName("mode_id");
         entity.Property(e => e.Name)
             .HasMaxLength(20)
             .HasComment("名字")

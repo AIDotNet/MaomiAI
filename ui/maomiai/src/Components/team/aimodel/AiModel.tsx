@@ -9,7 +9,7 @@ import {
     MaomiAIAiModelSharedModelsAiEndpoint,
     MaomiAIAiModelSharedModelsAiModelFunction,
     MaomiAIAiModelSharedModelsAiModelFunctionObject
-} from "../../../ApiClient/models";
+} from "../../../apiClient/models";
 import { RsaHelper } from "../../../helper/RsaHalper";
 import { GetServiceInfo } from "../../../InitPage";
 

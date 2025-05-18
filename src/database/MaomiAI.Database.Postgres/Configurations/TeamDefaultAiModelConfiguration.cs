@@ -19,7 +19,7 @@ public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<
 
         entity.ToTable("team_default_ai_model", tb => tb.HasComment("默认模型配置"));
 
-        entity.HasIndex(e => new { e.ModelId, e.Function }, "team_default_ai_model_model_id_function_uindex").IsUnique();
+        entity.HasIndex(e => new { e.ModelId, e.AiModelType }, "team_default_ai_model_model_id_ai_model_type_uindex").IsUnique();
 
         entity.HasIndex(e => e.TeamId, "team_default_ai_model_team_id_index");
 
@@ -27,6 +27,10 @@ public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<
             .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
+        entity.Property(e => e.AiModelType)
+            .HasMaxLength(20)
+            .HasComment("功能")
+            .HasColumnName("ai_model_type");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("创建时间")
@@ -34,9 +38,6 @@ public partial class TeamDefaultAiModelConfiguration : IEntityTypeConfiguration<
         entity.Property(e => e.CreateUserId)
             .HasComment("创建人ID")
             .HasColumnName("create_user_id");
-        entity.Property(e => e.Function)
-            .HasComment("功能")
-            .HasColumnName("function");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("是否删除")

@@ -19,7 +19,7 @@ import {
 import { SearchOutlined, TeamOutlined, PlusOutlined } from "@ant-design/icons";
 import { GetApiClient } from "../ServiceClient";
 import { useNavigate } from "react-router";
-import { MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse } from "../../ApiClient/models";
+import { QueryTeamSimpleCommandResponse } from "../../apiClient/models";
 
 const { TabPane } = Tabs;
 const { Search } = Input;
@@ -30,10 +30,8 @@ export default function TeamList() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("1");
   const [loading, setLoading] = useState(false);
-  const [teams, setTeams] = useState<
-    MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse[]
-    >([]);
-  
+  const [teams, setTeams] = useState<QueryTeamSimpleCommandResponse[]>([]);
+
   const [total, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -128,16 +126,13 @@ export default function TeamList() {
     }
   };
 
-  const renderTeamCard = (
-    team: MaomiAITeamSharedQueriesResponsesQueryTeamSimpleCommandResponse
-  ) => (
+  const renderTeamCard = (team: QueryTeamSimpleCommandResponse) => (
     <>
       {contextHolder}
       <Card
         key={team.id}
         hoverable
         style={{ height: "100%" }}
-        bodyStyle={{ padding: "12px" }}
         onClick={() => navigate(`/app/team/${team.id}/dashboard`)}
       >
         <Space direction="vertical" size="small" style={{ width: "100%" }}>
@@ -226,80 +221,78 @@ export default function TeamList() {
   return (
     <>
       {contextHolder}
-      <div style={{ padding: "24px" }}>
-        <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <Tabs activeKey={activeTab} onChange={handleTabChange}>
-              <TabPane tab="我的团队" key="1">
-                {renderFilters()}
-                <Spin spinning={loading}>
-                  <Row gutter={[16, 16]}>
-                    {teams.map((team) => (
-                      <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
-                        {renderTeamCard(team)}
-                      </Col>
-                    ))}
-                  </Row>
-                </Spin>
-                <div style={{ marginTop: 16, textAlign: "right" }}>
-                  <Pagination
-                    current={currentPage}
-                    pageSize={pageSize}
-                    total={total}
-                    onChange={handlePageChange}
-                    showSizeChanger
-                    showQuickJumper
-                  />
-                </div>
-              </TabPane>
-              <TabPane tab="我管理的" key="2">
-                {renderFilters()}
-                <Spin spinning={loading}>
-                  <Row gutter={[16, 16]}>
-                    {teams.map((team) => (
-                      <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
-                        {renderTeamCard(team)}
-                      </Col>
-                    ))}
-                  </Row>
-                </Spin>
-                <div style={{ marginTop: 16, textAlign: "right" }}>
-                  <Pagination
-                    current={currentPage}
-                    pageSize={pageSize}
-                    total={total}
-                    onChange={handlePageChange}
-                    showSizeChanger
-                    showQuickJumper
-                  />
-                </div>
-              </TabPane>
-              <TabPane tab="我创建的" key="3">
-                {renderFilters()}
-                <Spin spinning={loading}>
-                  <Row gutter={[16, 16]}>
-                    {teams.map((team) => (
-                      <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
-                        {renderTeamCard(team)}
-                      </Col>
-                    ))}
-                  </Row>
-                </Spin>
-                <div style={{ marginTop: 16, textAlign: "right" }}>
-                  <Pagination
-                    current={currentPage}
-                    pageSize={pageSize}
-                    total={total}
-                    onChange={handlePageChange}
-                    showSizeChanger
-                    showQuickJumper
-                  />
-                </div>
-              </TabPane>
-            </Tabs>
-          </Col>
-        </Row>
-      </div>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Tabs activeKey={activeTab} onChange={handleTabChange}>
+            <TabPane tab="我的团队" key="1">
+              {renderFilters()}
+              <Spin spinning={loading}>
+                <Row gutter={[16, 16]}>
+                  {teams.map((team) => (
+                    <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
+                      {renderTeamCard(team)}
+                    </Col>
+                  ))}
+                </Row>
+              </Spin>
+              <div style={{ marginTop: 16, textAlign: "right" }}>
+                <Pagination
+                  current={currentPage}
+                  pageSize={pageSize}
+                  total={total}
+                  onChange={handlePageChange}
+                  showSizeChanger
+                  showQuickJumper
+                />
+              </div>
+            </TabPane>
+            <TabPane tab="我管理的" key="2">
+              {renderFilters()}
+              <Spin spinning={loading}>
+                <Row gutter={[16, 16]}>
+                  {teams.map((team) => (
+                    <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
+                      {renderTeamCard(team)}
+                    </Col>
+                  ))}
+                </Row>
+              </Spin>
+              <div style={{ marginTop: 16, textAlign: "right" }}>
+                <Pagination
+                  current={currentPage}
+                  pageSize={pageSize}
+                  total={total}
+                  onChange={handlePageChange}
+                  showSizeChanger
+                  showQuickJumper
+                />
+              </div>
+            </TabPane>
+            <TabPane tab="我创建的" key="3">
+              {renderFilters()}
+              <Spin spinning={loading}>
+                <Row gutter={[16, 16]}>
+                  {teams.map((team) => (
+                    <Col xs={24} sm={12} md={8} lg={6} key={team.id}>
+                      {renderTeamCard(team)}
+                    </Col>
+                  ))}
+                </Row>
+              </Spin>
+              <div style={{ marginTop: 16, textAlign: "right" }}>
+                <Pagination
+                  current={currentPage}
+                  pageSize={pageSize}
+                  total={total}
+                  onChange={handlePageChange}
+                  showSizeChanger
+                  showQuickJumper
+                />
+              </div>
+            </TabPane>
+          </Tabs>
+        </Col>
+      </Row>
       <Modal
         title="创建团队"
         open={isCreateModalVisible}

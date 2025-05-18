@@ -14,7 +14,7 @@ namespace MaomiAI.Team.Api.Endpoints;
 /// 检查团队名称是否存在.
 /// </summary>
 [EndpointGroupName("team")]
-[FastEndpoints.HttpPost($"{TeamApi.ApiPrefix}/check_name")]
+[FastEndpoints.HttpPost("/team/check_name")]
 public class QueryTeamNameEndpoint : Endpoint<QueryTeamNameCommand, ExistResponse>
 {
     private readonly IMediator _mediator;

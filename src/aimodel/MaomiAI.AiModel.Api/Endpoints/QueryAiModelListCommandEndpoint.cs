@@ -1,4 +1,4 @@
-﻿// <copyright file="QueryAiModelEndpointListEndpoint.cs" company="MaomiAI">
+﻿// <copyright file="QueryAiModelListCommandEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -16,7 +16,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询模型列表.
 /// </summary>
 [EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/{{teamId}}/modellist")]
+[HttpPost($"{AiModelApi.ApiPrefix}/modellist")]
 public class QueryAiModelListCommandEndpoint : Endpoint<QueryAiModelListCommand, QueryAiModelListCommandResponse>
 {
     private readonly IMediator _mediator;

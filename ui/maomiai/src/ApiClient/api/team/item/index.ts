@@ -4,34 +4,62 @@
 // @ts-ignore
 import { AdminlistRequestBuilderRequestsMetadata, type AdminlistRequestBuilder } from './adminlist/index.js';
 // @ts-ignore
+import { ConfigRequestBuilderNavigationMetadata, type ConfigRequestBuilder } from './config/index.js';
+// @ts-ignore
+import { CreateRequestBuilderRequestsMetadata, type CreateRequestBuilder } from './create/index.js';
+// @ts-ignore
 import { DeleteRequestBuilderRequestsMetadata, type DeleteRequestBuilder } from './delete/index.js';
 // @ts-ignore
+import { InfoRequestBuilderRequestsMetadata, type InfoRequestBuilder } from './info/index.js';
+// @ts-ignore
+import { MemberRequestBuilderNavigationMetadata, type MemberRequestBuilder } from './member/index.js';
+// @ts-ignore
 import { MemberlistRequestBuilderRequestsMetadata, type MemberlistRequestBuilder } from './memberlist/index.js';
+// @ts-ignore
+import { SetadminRequestBuilderRequestsMetadata, type SetadminRequestBuilder } from './setadmin/index.js';
 // @ts-ignore
 import { TeamdetailRequestBuilderRequestsMetadata, type TeamdetailRequestBuilder } from './teamdetail/index.js';
 // @ts-ignore
 import { TeamitemRequestBuilderRequestsMetadata, type TeamitemRequestBuilder } from './teamitem/index.js';
 // @ts-ignore
-import { type UpdateRequestBuilder, UpdateRequestBuilderRequestsMetadata } from './update/index.js';
-// @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/team/{-id}
+ * Builds and executes requests for operations under /api/team/{teamId}
  */
-export interface ItemRequestBuilder extends BaseRequestBuilder<ItemRequestBuilder> {
+export interface WithTeamItemRequestBuilder extends BaseRequestBuilder<WithTeamItemRequestBuilder> {
     /**
      * The adminlist property
      */
     get adminlist(): AdminlistRequestBuilder;
     /**
+     * The config property
+     */
+    get config(): ConfigRequestBuilder;
+    /**
+     * The create property
+     */
+    get create(): CreateRequestBuilder;
+    /**
      * The deletePath property
      */
     get deletePath(): DeleteRequestBuilder;
     /**
+     * The info property
+     */
+    get info(): InfoRequestBuilder;
+    /**
+     * The member property
+     */
+    get member(): MemberRequestBuilder;
+    /**
      * The memberlist property
      */
     get memberlist(): MemberlistRequestBuilder;
+    /**
+     * The setadmin property
+     */
+    get setadmin(): SetadminRequestBuilder;
     /**
      * The teamdetail property
      */
@@ -40,36 +68,44 @@ export interface ItemRequestBuilder extends BaseRequestBuilder<ItemRequestBuilde
      * The teamitem property
      */
     get teamitem(): TeamitemRequestBuilder;
-    /**
-     * The update property
-     */
-    get update(): UpdateRequestBuilder;
 }
 /**
  * Uri template for the request builder.
  */
-export const ItemRequestBuilderUriTemplate = "{+baseurl}/api/team/{%2Did}";
+export const WithTeamItemRequestBuilderUriTemplate = "{+baseurl}/api/team/{teamId}";
 /**
  * Metadata for all the navigation properties in the request builder.
  */
-export const ItemRequestBuilderNavigationMetadata: Record<Exclude<keyof ItemRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
+export const WithTeamItemRequestBuilderNavigationMetadata: Record<Exclude<keyof WithTeamItemRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     adminlist: {
         requestsMetadata: AdminlistRequestBuilderRequestsMetadata,
+    },
+    config: {
+        navigationMetadata: ConfigRequestBuilderNavigationMetadata,
+    },
+    create: {
+        requestsMetadata: CreateRequestBuilderRequestsMetadata,
     },
     deletePath: {
         requestsMetadata: DeleteRequestBuilderRequestsMetadata,
     },
+    info: {
+        requestsMetadata: InfoRequestBuilderRequestsMetadata,
+    },
+    member: {
+        navigationMetadata: MemberRequestBuilderNavigationMetadata,
+    },
     memberlist: {
         requestsMetadata: MemberlistRequestBuilderRequestsMetadata,
+    },
+    setadmin: {
+        requestsMetadata: SetadminRequestBuilderRequestsMetadata,
     },
     teamdetail: {
         requestsMetadata: TeamdetailRequestBuilderRequestsMetadata,
     },
     teamitem: {
         requestsMetadata: TeamitemRequestBuilderRequestsMetadata,
-    },
-    update: {
-        requestsMetadata: UpdateRequestBuilderRequestsMetadata,
     },
 };
 /* tslint:enable */

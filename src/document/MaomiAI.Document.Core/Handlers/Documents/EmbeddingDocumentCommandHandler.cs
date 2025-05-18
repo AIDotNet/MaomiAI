@@ -88,6 +88,7 @@ public class EmbeddingDocumentCommandHandler : IRequestHandler<EmbeddingocumentC
         };
 
         await _databaseContext.TeamWikiDocumentTasks.AddAsync(documentTaskEntity, cancellationToken);
+        await _databaseContext.TeamWikiConfigs.ExecuteUpdateAsync(x => x.SetProperty(x => x.IsLock, true), cancellationToken: cancellationToken);
         await _databaseContext.SaveChangesAsync(cancellationToken);
 
         // 后台处理

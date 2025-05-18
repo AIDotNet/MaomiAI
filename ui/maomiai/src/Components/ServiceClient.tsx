@@ -1,4 +1,4 @@
-import { MaomiClient, createMaomiClient } from "../ApiClient/maomiClient";
+import { MaomiClient, createMaomiClient } from "../apiClient/maomiClient";
 import {
   AnonymousAuthenticationProvider,
   BaseBearerTokenAuthenticationProvider,
@@ -19,13 +19,15 @@ import {
   JsonParseNodeFactory,
   JsonSerializationWriterFactory,
 } from "@microsoft/kiota-serialization-json";
-import { message } from "antd";
+import { FormInstance, message } from "antd";
 import { IsTokenExpired } from "../helper/TokenHelper";
-import {
-  MaomiAIStoreCommandsResponsePreUploadFileCommandResponse,
-  MaomiAIStoreEnumsUploadImageType,
-} from "../ApiClient/models";
 import { GetFileMd5 } from "../helper/Md5Helper";
+import {
+  BusinessExceptionResponse,
+  PreUploadFileCommandResponse,
+  UploadImageType,
+} from "../apiClient/models";
+import { MessageInstance } from "antd/es/message/interface";
 
 // 中间件请求
 class FilterRequestHandler implements Middleware {
@@ -120,8 +122,8 @@ export const RefreshAccessToken = async function (refreshToken: string) {
 export const UploadImage = async (
   client: MaomiClient,
   file: File,
-  imageType: MaomiAIStoreEnumsUploadImageType
-): Promise<MaomiAIStoreCommandsResponsePreUploadFileCommandResponse> => {
+  imageType: UploadImageType
+): Promise<PreUploadFileCommandResponse> => {
   const md5 = await GetFileMd5(file);
   const preUploadResponse = await client.api.store.pre_upload_image.post({
     contentType: file.type,

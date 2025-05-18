@@ -2,10 +2,10 @@ import { Col, Row, Card, Form, Input, Button, message } from "antd";
 import { useNavigate } from "react-router";
 import { RsaHelper } from "../../helper/RsaHalper";
 import "./Register.css";
-import { GetAllowApiClient, GetApiClient } from "../ServiceClient";
+import { GetAllowApiClient } from "../ServiceClient";
 import { useEffect } from "react";
 import { CheckToken, GetServiceInfo, RefreshServerInfo } from "../../InitPage";
-import Parse400Error from "../../helper/FromErrors";
+import { proxyFormRequestError } from "../../helper/RequestError";
 export default function Register() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
@@ -39,7 +39,7 @@ export default function Register() {
 
       const client = GetAllowApiClient();
       await client.api.user.register.post({
-        userName: values.username,
+        userName: values.userName,
         password: encryptedPassword,
         email: values.email,
         nickName: values.nickName,
@@ -51,18 +51,14 @@ export default function Register() {
         navigate("/login");
       }, 1000);
     } catch (error) {
-      console.log("Register error:",error);
+      console.log("Register error:", error);
       const typedError = error as {
         detail?: string;
         errors?: Record<string, string[]>;
       };
       if (typedError.errors && Object.keys(typedError.errors).length > 0) {
-        let errors = Parse400Error(typedError.errors);
-        form.setFields(errors);
-      } else if (typedError.detail) {
-        messageApi.error(typedError.detail);
-      } else {
         messageApi.error("注册失败");
+        proxyFormRequestError(error, messageApi, form);
       }
     }
   };
@@ -107,7 +103,7 @@ export default function Register() {
               size="large"
             >
               <Form.Item
-                name="username"
+                name="userName"
                 label="用户名"
                 rules={[{ required: true, message: "请输入用户名" }]}
               >

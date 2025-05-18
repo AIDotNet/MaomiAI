@@ -37,7 +37,7 @@ public partial class TeamWikiDocumentTaskEntity : IFullAudited
     /// <summary>
     /// 任务标识，用来判断要执行的任务是否一致.
     /// </summary>
-    public string TaskTag { get; set; }  = default!;
+    public string TaskTag { get; set; } = default!;
 
     /// <summary>
     /// 任务状态.
@@ -52,7 +52,7 @@ public partial class TeamWikiDocumentTaskEntity : IFullAudited
     /// <summary>
     /// 执行信息.
     /// </summary>
-    public string Message { get; set; }  = default!;
+    public string Message { get; set; } = default!;
 
     /// <summary>
     /// 软删除.
@@ -92,5 +92,5 @@ public partial class TeamWikiDocumentTaskEntity : IFullAudited
     /// <summary>
     /// 分词器.
     /// </summary>
-    public string Tokenizer { get; set; }  = default!;
+    public string Tokenizer { get; set; } = default!;
 }

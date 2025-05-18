@@ -44,7 +44,7 @@ public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamInfoCommand>
     /// <inheritdoc/>
     public async Task Handle(UpdateTeamInfoCommand request, CancellationToken cancellationToken)
     {
-        var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+        var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == request.TeamId, cancellationToken);
         if (team == null)
         {
             throw new BusinessException("团队不存在") { StatusCode = 404 };
@@ -55,7 +55,7 @@ public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamInfoCommand>
             throw new BusinessException("没有权限修改该团队") { StatusCode = 403 };
         }
 
-        var anySameName = await _dbContext.Teams.Where(x => x.Id != request.Id && x.Name == request.Name).AnyAsync();
+        var anySameName = await _dbContext.Teams.Where(x => x.Id != request.TeamId && x.Name == request.Name).AnyAsync();
         if (anySameName)
         {
             throw new BusinessException("已存在相同名称的团队") { StatusCode = 400 }; ;

@@ -11,8 +11,8 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
  */
 export interface ModellistRequestBuilder extends BaseRequestBuilder<ModellistRequestBuilder> {
     /**
-     * 查询团队在某个供应商下的模型列表.
-     * @param body 查询供应商下已配置的 ai 模型列表.
+     * 查询模型列表.
+     * @param body 查询模型列表.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<QueryAiModelListCommandResponse>}
      * @throws {BusinessExceptionResponse} error when the service returns a 400 status code
@@ -23,8 +23,8 @@ export interface ModellistRequestBuilder extends BaseRequestBuilder<ModellistReq
      */
      post(body: QueryAiModelListCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<QueryAiModelListCommandResponse | undefined>;
     /**
-     * 查询团队在某个供应商下的模型列表.
-     * @param body 查询供应商下已配置的 ai 模型列表.
+     * 查询模型列表.
+     * @param body 查询模型列表.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */

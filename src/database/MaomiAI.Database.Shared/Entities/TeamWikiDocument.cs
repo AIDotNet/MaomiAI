@@ -57,5 +57,5 @@ public partial class TeamWikiDocumentEntity : IFullAudited
     /// <summary>
     /// 冗余列，文件名.
     /// </summary>
-    public string FileName { get; set; }  = default!;
+    public string FileName { get; set; } = default!;
 }

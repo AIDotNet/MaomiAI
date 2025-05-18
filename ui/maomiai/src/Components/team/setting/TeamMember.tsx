@@ -3,12 +3,12 @@ import { Button, Input, Table, Modal, message, Space, Avatar, Popconfirm } from 
 import { PlusOutlined, UserOutlined, DeleteOutlined, CrownOutlined } from "@ant-design/icons";
 import { useParams } from "react-router";
 import { GetApiClient } from "../../ServiceClient";
-import type { MaomiAITeamSharedQueriesResponsesTeamMemberResponse } from "../../../ApiClient/models";
+import type { TeamMemberResponse } from "../../../apiClient/models";
 
 export default function TeamMember() {
   const { teamId } = useParams();
   const [members, setMembers] = useState<
-    MaomiAITeamSharedQueriesResponsesTeamMemberResponse[]
+    TeamMemberResponse[]
   >([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
@@ -149,7 +149,7 @@ export default function TeamMember() {
       key: "userName",
       render: (
         text: string,
-        record: MaomiAITeamSharedQueriesResponsesTeamMemberResponse
+        record: TeamMemberResponse
       ) => (
         <Space>
           <Avatar src={record.userAvatarPath} icon={<UserOutlined />} />
@@ -165,7 +165,7 @@ export default function TeamMember() {
     {
       title: "角色",
       key: "role",
-      render: (record: MaomiAITeamSharedQueriesResponsesTeamMemberResponse) => (
+      render: (record: TeamMemberResponse) => (
         <span>
           {record.isOwner ? "所有者" : record.isAdmin ? "管理员" : "成员"}
         </span>
@@ -174,7 +174,7 @@ export default function TeamMember() {
     {
       title: "操作",
       key: "action",
-      render: (record: MaomiAITeamSharedQueriesResponsesTeamMemberResponse) => (
+      render: (record: TeamMemberResponse) => (
         <Space>
           {!record.isOwner && (
             <>

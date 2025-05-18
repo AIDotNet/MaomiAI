@@ -17,12 +17,12 @@ public partial class SettingEntity : IFullAudited
     /// <summary>
     /// 配置项值.
     /// </summary>
-    public string Value { get; set; }  = default!;
+    public string Value { get; set; } = default!;
 
     /// <summary>
     /// 配置名称.
     /// </summary>
-    public string Name { get; set; }  = default!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
     /// 创建者id.

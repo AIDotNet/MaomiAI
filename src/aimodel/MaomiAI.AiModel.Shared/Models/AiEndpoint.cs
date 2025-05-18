@@ -57,7 +57,7 @@ public class AiEndpoint
     public ModelAbilities Abilities { get; init; } = default!;
 
     /// <summary>
-    /// 最大模型输出 tokens.
+    /// 最大模型输出 tokens，也可表示嵌入向量等最大输出数量.
     /// </summary>
     public int TextOutput { get; init; }
 

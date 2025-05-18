@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, Input, Button, List, Avatar, message, Modal, Table, Space } from "antd";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
-import { MaomiAITeamSharedQueriesResponsesTeamMemberResponse } from "../../../ApiClient/models";
+import { TeamMemberResponse } from "../../../apiClient/models";
 import { GetApiClient } from "../../ServiceClient";
 import { useNavigate, useParams } from "react-router";
 
@@ -9,10 +9,10 @@ export default function TeamAdmin() {
   const { teamId } = useParams();
   const navigate = useNavigate();
   const [admins, setAdmins] = useState<
-    MaomiAITeamSharedQueriesResponsesTeamMemberResponse[]
+    TeamMemberResponse[]
   >([]);
   const [members, setMembers] = useState<
-    MaomiAITeamSharedQueriesResponsesTeamMemberResponse[]
+    TeamMemberResponse[]
   >([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSelectModalVisible, setIsSelectModalVisible] = useState(false);
@@ -112,7 +112,7 @@ export default function TeamAdmin() {
       title: "用户",
       dataIndex: "userName",
       key: "userName",
-      render: (text: string, record: MaomiAITeamSharedQueriesResponsesTeamMemberResponse) => (
+      render: (text: string, record: TeamMemberResponse) => (
         <Space>
           <Avatar src={record.userAvatarPath} />
           <span>{text}</span>
@@ -127,7 +127,7 @@ export default function TeamAdmin() {
     {
       title: "操作",
       key: "action",
-      render: (record: MaomiAITeamSharedQueriesResponsesTeamMemberResponse) => (
+      render: (record: TeamMemberResponse) => (
         <Button
           type="link"
           onClick={() => setSelectedMember(record.userId)}

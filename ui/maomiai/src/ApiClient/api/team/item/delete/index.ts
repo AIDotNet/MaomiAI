@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/team/{-id}/delete
+ * Builds and executes requests for operations under /api/team/{teamId}/delete
  */
 export interface DeleteRequestBuilder extends BaseRequestBuilder<DeleteRequestBuilder> {
     /**
@@ -31,7 +31,7 @@ export interface DeleteRequestBuilder extends BaseRequestBuilder<DeleteRequestBu
 /**
  * Uri template for the request builder.
  */
-export const DeleteRequestBuilderUriTemplate = "{+baseurl}/api/team/{%2Did}/delete";
+export const DeleteRequestBuilderUriTemplate = "{+baseurl}/api/team/{teamId}/delete";
 /**
  * Metadata for all the requests in the request builder.
  */
