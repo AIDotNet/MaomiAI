@@ -52,7 +52,7 @@ public class PreUploadWikiDocumentCommandHandler : IRequestHandler<PreUploadWiki
 
         var objectKey = FileStoreHelper.GetObjectKey(md5: request.MD5, fileName: request.FileName, prefix: $"wiki/{request.WikiId}");
 
-        var result = await _mediator.Send(new PreuploadFileCommand
+        var result = await _mediator.Send(new PreUploadFileCommand
         {
             MD5 = request.MD5,
             FileName = request.FileName,

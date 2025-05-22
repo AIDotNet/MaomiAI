@@ -20,6 +20,7 @@ import { SearchOutlined, TeamOutlined, PlusOutlined } from "@ant-design/icons";
 import { GetApiClient } from "../ServiceClient";
 import { useNavigate } from "react-router";
 import { QueryTeamSimpleCommandResponse } from "../../apiClient/models";
+import { proxyFormRequestError } from "../../helper/RequestError";
 
 const { TabPane } = Tabs;
 const { Search } = Input;
@@ -112,15 +113,8 @@ export default function TeamList() {
         navigate(`/app/team/${response.id}/`);
       }
     } catch (error) {
-      console.error("upload file error:", error);
-      const typedError = error as {
-        detail?: string;
-      };
-      if (typedError.detail) {
-        messageApi.error(typedError.detail || "创建团队失败");
-      } else {
-        messageApi.error("创建团队失败");
-      }
+      messageApi.error("创建团队失败");
+      proxyFormRequestError(error, messageApi, createForm);
     } finally {
       setCreating(false);
     }
@@ -182,40 +176,48 @@ export default function TeamList() {
         placeholder="搜索团队"
         allowClear
         onSearch={handleSearch}
-        style={{ width: 200 }}
+        style={{ width: 400 }}
+        
       />
-      {activeTab === "1" && (
-        <>
-          <Select
-            placeholder="团队角色"
-            allowClear
-            style={{ width: 120 }}
-            onChange={(value) => setIsOwner(value)}
-          >
-            <Option value={true}>所有者</Option>
-            <Option value={false}>成员</Option>
-          </Select>
-          <Select
-            placeholder="管理员"
-            allowClear
-            style={{ width: 120 }}
-            onChange={(value) => setIsAdmin(value)}
-          >
-            <Option value={true}>是</Option>
-            <Option value={false}>否</Option>
-          </Select>
-        </>
-      )}
-      {activeTab === "3" && (
-        <Button
-          type="primary"
-          icon={<PlusOutlined />}
-          onClick={() => setIsCreateModalVisible(true)}
-        >
-          创建团队
-        </Button>
-      )}
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => setIsCreateModalVisible(true)}
+      >
+        创建团队
+      </Button>
     </Space>
+  );
+
+  const renderCreateTeamModal = () => (
+    <Modal
+    title="创建团队"
+    open={isCreateModalVisible}
+    onCancel={() => setIsCreateModalVisible(false)}
+    footer={null}
+  >
+    <Form form={createForm} onFinish={handleCreateTeam}>
+      <Form.Item
+        name="name"
+        label="团队名称"
+        rules={[{ required: true, message: "请输入团队名称" }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="description"
+        label="团队描述"
+        rules={[{ required: true, message: "请输入团队描述" }]}
+      >
+        <Input.TextArea />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit" loading={creating}>
+          创建
+        </Button>
+      </Form.Item>
+    </Form>
+  </Modal>
   );
 
   return (
@@ -293,34 +295,7 @@ export default function TeamList() {
           </Tabs>
         </Col>
       </Row>
-      <Modal
-        title="创建团队"
-        open={isCreateModalVisible}
-        onCancel={() => setIsCreateModalVisible(false)}
-        footer={null}
-      >
-        <Form form={createForm} onFinish={handleCreateTeam}>
-          <Form.Item
-            name="name"
-            label="团队名称"
-            rules={[{ required: true, message: "请输入团队名称" }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="description"
-            label="团队描述"
-            rules={[{ required: true, message: "请输入团队描述" }]}
-          >
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" loading={creating}>
-              创建
-            </Button>
-          </Form.Item>
-        </Form>
-      </Modal>
+      {renderCreateTeamModal()}
     </>
   );
 }

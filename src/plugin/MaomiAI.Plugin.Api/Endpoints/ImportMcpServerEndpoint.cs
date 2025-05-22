@@ -1,45 +1,48 @@
-﻿// <copyright file="QueryAiModelListCommandEndpoint.cs" company="MaomiAI">
+﻿// <copyright file="ImportMcpServerEndpoint.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
 using FastEndpoints;
-using MaomiAI.AiModel.Shared.Queries;
-using MaomiAI.AiModel.Shared.Queries.Respones;
+using MaomiAI.Infra.Exceptions;
+using MaomiAI.Infra.Models;
+using MaomiAI.Plugin.Shared.Commands;
+using MaomiAI.Plugin.Shared.Commands.Responses;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Routing;
 
-namespace MaomiAI.AiModel.Api.Endpoints;
+namespace MaomiAI.Plugin.Api.Endpoints;
 
 /// <summary>
-/// 查询模型列表.
+/// 导入 mcp 服务.
 /// </summary>
-[EndpointGroupName("aimodel")]
-[HttpPost($"{AiModelApi.ApiPrefix}/modellist")]
-public class QueryAiModelListCommandEndpoint : Endpoint<QueryAiModelListCommand, QueryAiModelListCommandResponse>
+[EndpointGroupName("store")]
+[FastEndpoints.HttpPost($"{PluginApi.ApiPrefix}/import_mcp")]
+public class ImportMcpServerEndpoint : Endpoint<ImportMcpServerCommand, IdResponse>
 {
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueryAiModelListCommandEndpoint"/> class.
+    /// Initializes a new instance of the <see cref="ImportMcpServerEndpoint"/> class.
     /// </summary>
     /// <param name="mediator"></param>
     /// <param name="userContext"></param>
-    public QueryAiModelListCommandEndpoint(IMediator mediator, UserContext userContext)
+    public ImportMcpServerEndpoint(IMediator mediator, UserContext userContext)
     {
         _mediator = mediator;
         _userContext = userContext;
     }
 
     /// <inheritdoc/>
-    public override async Task<QueryAiModelListCommandResponse> ExecuteAsync(QueryAiModelListCommand req, CancellationToken ct)
+    public override async Task<IdResponse> ExecuteAsync(ImportMcpServerCommand req, CancellationToken ct)
     {
         var isAdmin = await _mediator.Send(new QueryUserIsTeamAdminCommand
         {
             TeamId = req.TeamId,
-            UserId = _userContext.UserId
+            UserId = _userContext.UserId,
         });
 
         if (!isAdmin.IsAdmin)
@@ -47,6 +50,6 @@ public class QueryAiModelListCommandEndpoint : Endpoint<QueryAiModelListCommand,
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }
 
-        return await _mediator.Send(req);
+        return await _mediator.Send(req, ct);
     }
 }

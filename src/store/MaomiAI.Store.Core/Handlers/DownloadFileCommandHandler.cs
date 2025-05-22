@@ -24,7 +24,7 @@ public class DownloadFileCommandHandler : IRequestHandler<DownloadFileCommand, E
     {
         var fileStore = _serviceProvider.GetRequiredKeyedService<IFileStore>(request.Visibility);
 
-        await fileStore.DownloadAsync(request.ObjectKey, request.FilePath);
+        await fileStore.DownloadAsync(request.ObjectKey, request.StoreFilePath);
 
         return EmptyCommandResponse.Default;
     }

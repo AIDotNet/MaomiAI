@@ -1,4 +1,4 @@
-import { AIChatModelCard } from '@/types/aiModel';
+import { AIChatModelCard } from '../aiModel';
 
 const search1apiChatModels: AIChatModelCard[] = [
   {

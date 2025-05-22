@@ -5,7 +5,7 @@ import {
   AISTTModelCard,
   AITTSModelCard,
   AIText2ImageModelCard,
-} from '@/types/aiModel';
+} from '../aiModel';
 
 export const openaiChatModels: AIChatModelCard[] = [
   {

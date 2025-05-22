@@ -45,10 +45,26 @@ public partial class DatabaseContext : DbContext
         };
     }
 
+
     /// <summary>
     /// 文件列表.
     /// </summary>
     public virtual DbSet<FileEntity> Files { get; set; }
+
+    /// <summary>
+    /// 站内信.
+    /// </summary>
+    public virtual DbSet<MessageEntity> Messages { get; set; }
+
+    /// <summary>
+    /// 笔记.
+    /// </summary>
+    public virtual DbSet<NoteEntity> Notes { get; set; }
+
+    /// <summary>
+    /// 提示词.
+    /// </summary>
+    public virtual DbSet<PromptEntity> Prompts { get; set; }
 
     /// <summary>
     /// 系统配置.
@@ -76,6 +92,16 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<TeamMemberEntity> TeamMembers { get; set; }
 
     /// <summary>
+    /// 插件.
+    /// </summary>
+    public virtual DbSet<TeamPluginEntity> TeamPlugins { get; set; }
+
+    /// <summary>
+    /// 插件分组.
+    /// </summary>
+    public virtual DbSet<TeamPluginGroupEntity> TeamPluginGroups { get; set; }
+
+    /// <summary>
     /// 知识库.
     /// </summary>
     public virtual DbSet<TeamWikiEntity> TeamWikis { get; set; }
@@ -96,7 +122,7 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<TeamWikiDocumentTaskEntity> TeamWikiDocumentTasks { get; set; }
 
     /// <summary>
-    /// 用户.
+    /// 用户表.
     /// </summary>
     public virtual DbSet<UserEntity> Users { get; set; }
 

@@ -36,7 +36,7 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasComment("创建时间")
             .HasColumnName("create_time");
         entity.Property(e => e.CreateUserId)
-            .HasComment("创建人ID")
+            .HasComment("创建人")
             .HasColumnName("create_user_id");
         entity.Property(e => e.Description)
             .HasMaxLength(255)
@@ -45,7 +45,7 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasColumnName("description");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
-            .HasComment("是否删除")
+            .HasComment("软删除")
             .HasColumnName("is_deleted");
         entity.Property(e => e.IsPublic)
             .HasDefaultValue(false)
@@ -68,7 +68,7 @@ public partial class TeamWikiConfiguration : IEntityTypeConfiguration<TeamWikiEn
             .HasComment("更新时间")
             .HasColumnName("update_time");
         entity.Property(e => e.UpdateUserId)
-            .HasComment("更新人ID")
+            .HasComment("更新人")
             .HasColumnName("update_user_id");
 
         OnConfigurePartial(entity);

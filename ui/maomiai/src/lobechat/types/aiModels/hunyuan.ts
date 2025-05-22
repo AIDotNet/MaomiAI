@@ -1,4 +1,4 @@
-import { AIChatModelCard } from '@/types/aiModel';
+import { AIChatModelCard } from '../aiModel';
 
 // https://cloud.tencent.com/document/product/1729/104753
 

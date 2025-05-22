@@ -6,8 +6,6 @@ import { AddRequestBuilderRequestsMetadata, type AddRequestBuilder } from './add
 // @ts-ignore
 import { Default_aimodelRequestBuilderRequestsMetadata, type Default_aimodelRequestBuilder } from './default_aimodel/index.js';
 // @ts-ignore
-import { ModellistRequestBuilderRequestsMetadata, type ModellistRequestBuilder } from './modellist/index.js';
-// @ts-ignore
 import { ProviderlistRequestBuilderRequestsMetadata, type ProviderlistRequestBuilder } from './providerlist/index.js';
 // @ts-ignore
 import { SetdefaultRequestBuilderRequestsMetadata, type SetdefaultRequestBuilder } from './setdefault/index.js';
@@ -30,10 +28,6 @@ export interface WithTeamItemRequestBuilder extends BaseRequestBuilder<WithTeamI
      * The default_aimodel property
      */
     get default_aimodel(): Default_aimodelRequestBuilder;
-    /**
-     * The modellist property
-     */
-    get modellist(): ModellistRequestBuilder;
     /**
      * The providerlist property
      */
@@ -64,9 +58,6 @@ export const WithTeamItemRequestBuilderNavigationMetadata: Record<Exclude<keyof 
     },
     default_aimodel: {
         requestsMetadata: Default_aimodelRequestBuilderRequestsMetadata,
-    },
-    modellist: {
-        requestsMetadata: ModellistRequestBuilderRequestsMetadata,
     },
     providerlist: {
         requestsMetadata: ProviderlistRequestBuilderRequestsMetadata,

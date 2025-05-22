@@ -27,5 +27,5 @@ public class DownloadFileCommand : IRequest<EmptyCommandResponse>
     /// <summary>
     /// 本地路径.
     /// </summary>
-    public string FilePath { get; init; } = default!;
+    public string StoreFilePath { get; init; } = default!;
 }

@@ -5,9 +5,9 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 知识库.
+/// 团队.
 /// </summary>
-public partial class TeamWikiEntity : IFullAudited
+public partial class TeamEntity : IFullAudited
 {
     /// <summary>
     /// id.
@@ -15,22 +15,17 @@ public partial class TeamWikiEntity : IFullAudited
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 团队id.
-    /// </summary>
-    public Guid TeamId { get; set; }
-
-    /// <summary>
-    /// 知识库名称.
-    /// </summary>
-    public string Name { get; set; } = default!;
-
-    /// <summary>
-    /// 知识库描述.
+    /// 团队描述.
     /// </summary>
     public string Description { get; set; } = default!;
 
     /// <summary>
-    /// 是否删除.
+    /// 团队名称.
+    /// </summary>
+    public string Name { get; set; } = default!;
+
+    /// <summary>
+    /// 软删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
@@ -45,27 +40,37 @@ public partial class TeamWikiEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建人.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
 
     /// <summary>
-    /// 知识库详细介绍.
+    /// 禁用团队.
+    /// </summary>
+    public bool IsDisable { get; set; }
+
+    /// <summary>
+    /// 团队详细介绍.
     /// </summary>
     public string Markdown { get; set; } = default!;
 
     /// <summary>
-    /// 公开使用，所有人不需要加入团队即可使用此知识库.
+    /// 是否公开,能够被外部搜索.
     /// </summary>
     public bool IsPublic { get; set; }
 
     /// <summary>
-    /// 头像id.
+    /// 所有者id.
+    /// </summary>
+    public Guid OwnerId { get; set; }
+
+    /// <summary>
+    /// 团队头像.
     /// </summary>
     public Guid AvatarId { get; set; }
 

@@ -88,7 +88,7 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
         {
             Visibility = Store.Enums.FileVisibility.Private,
             ObjectKey = documentFile.FilePath,
-            FilePath = filePath
+            StoreFilePath = filePath
         });
 
         var teamWikiConfig = await _databaseContext.TeamWikiConfigs

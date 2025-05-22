@@ -6,6 +6,8 @@
 
 #pragma warning disable CA1054 // 类 URI 参数不应为字符串
 
+using MimeKit;
+
 namespace MaomiAI.Team.Shared.Helpers;
 
 /// <summary>
@@ -64,6 +66,16 @@ public static class FileStoreHelper
         ".gdoc",   // Google Docs
         ".gsheet", // Google Sheets
         ".gslides" // Google Slides
+    };
+
+    /// <summary>
+    /// 常用的 OpenAPI 格式.
+    /// </summary>
+    public static readonly IReadOnlyCollection<string> OpenApiFormats = new string[]
+    {
+        ".json",
+        ".yaml",
+        ".yml"
     };
 
     /// <summary>
@@ -126,5 +138,36 @@ public static class FileStoreHelper
         }
 
         return new Uri($"{baseUrl.TrimEnd('/')}/{relativePath.TrimStart('/')}");
+    }
+
+    /// <summary>
+    /// 自定义后缀名称，生成随机文件名，存储到系统临时目录下.
+    /// </summary>
+    /// <param name="suffix"></param>
+    /// <returns></returns>
+    public static string GetTempFilePath(string? suffix = null)
+    {
+        var tempPath = Path.GetTempPath();
+        var tempFileName = $"{Guid.NewGuid()}{(string.IsNullOrEmpty(suffix) ? string.Empty : $".{suffix}")}";
+        return Path.Combine(tempPath, tempFileName);
+    }
+
+    /// <summary>
+    /// 计算文件 SHA256 哈希值.
+    /// </summary>
+    /// <param name="filePath">文件路径.</param>
+    /// <returns>文件的 SHA256 哈希值.</returns>
+    public static string CalculateFileMd5(string filePath)
+    {
+#pragma warning disable CA5351 // 不要使用损坏的加密算法
+        using var md5 = System.Security.Cryptography.MD5.Create();
+        using var stream = File.OpenRead(filePath);
+        var hash = md5.ComputeHash(stream);
+        return Convert.ToHexStringLower(hash);
+    }
+
+    public static string GetMimeType(string filePath)
+    {
+        return MimeTypes.GetMimeType(filePath);
     }
 }

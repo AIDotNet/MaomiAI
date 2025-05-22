@@ -19,7 +19,7 @@ namespace MaomiAI.Store.Commands;
 /// <summary>
 /// 预上传文件.
 /// </summary>
-public class PreuploadFileCommandHandler : IRequestHandler<PreuploadFileCommand, PreUploadFileCommandResponse>
+public class PreuploadFileCommandHandler : IRequestHandler<PreUploadFileCommand, PreUploadFileCommandResponse>
 {
     private readonly DatabaseContext _dbContext;
     private readonly IServiceProvider _serviceProvider;
@@ -36,7 +36,7 @@ public class PreuploadFileCommandHandler : IRequestHandler<PreuploadFileCommand,
     }
 
     /// <inheritdoc/>
-    public async Task<PreUploadFileCommandResponse> Handle(PreuploadFileCommand request, CancellationToken cancellationToken)
+    public async Task<PreUploadFileCommandResponse> Handle(PreUploadFileCommand request, CancellationToken cancellationToken)
     {
         var isPublic = request.Visibility == FileVisibility.Public ? true : false;
 

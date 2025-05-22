@@ -29,7 +29,7 @@ public partial class SettingConfiguration : IEntityTypeConfiguration<SettingEnti
             .HasComment("创建时间")
             .HasColumnName("create_time");
         entity.Property(e => e.CreateUserId)
-            .HasComment("创建人ID")
+            .HasComment("创建人")
             .HasColumnName("create_user_id");
         entity.Property(e => e.CreatorId)
             .HasDefaultValue(0)
@@ -37,7 +37,7 @@ public partial class SettingConfiguration : IEntityTypeConfiguration<SettingEnti
             .HasColumnName("creator_id");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
-            .HasComment("是否删除")
+            .HasComment("软删除")
             .HasColumnName("is_deleted");
         entity.Property(e => e.Name)
             .HasMaxLength(20)
@@ -48,7 +48,7 @@ public partial class SettingConfiguration : IEntityTypeConfiguration<SettingEnti
             .HasComment("更新时间")
             .HasColumnName("update_time");
         entity.Property(e => e.UpdateUserId)
-            .HasComment("更新人ID")
+            .HasComment("更新人")
             .HasColumnName("update_user_id");
         entity.Property(e => e.Value)
             .HasDefaultValueSql("''::text")

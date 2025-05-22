@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 const Search1API: ModelProviderCard = {
   chatModels: [

@@ -5,52 +5,32 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 用户表.
+/// 知识库.
 /// </summary>
-public partial class UserEntity : IFullAudited
+public partial class TeamWikiEntity : IFullAudited
 {
     /// <summary>
-    /// 用户ID.
+    /// id.
     /// </summary>
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 用户名.
+    /// 团队id.
     /// </summary>
-    public string UserName { get; set; } = default!;
+    public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 邮箱.
+    /// 知识库名称.
     /// </summary>
-    public string Email { get; set; } = default!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
-    /// 密码.
+    /// 知识库描述.
     /// </summary>
-    public string Password { get; set; } = default!;
+    public string Description { get; set; } = default!;
 
     /// <summary>
-    /// 昵称.
-    /// </summary>
-    public string NickName { get; set; } = default!;
-
-    /// <summary>
-    /// 头像路径.
-    /// </summary>
-    public string AvatarPath { get; set; } = default!;
-
-    /// <summary>
-    /// 手机号.
-    /// </summary>
-    public string Phone { get; set; } = default!;
-
-    /// <summary>
-    /// 是否启用.
-    /// </summary>
-    public bool IsEnable { get; set; }
-
-    /// <summary>
-    /// 是否删除.
+    /// 软删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
@@ -65,22 +45,32 @@ public partial class UserEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建人.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
 
     /// <summary>
-    /// 计算密码值的salt.
+    /// 知识库详细介绍.
     /// </summary>
-    public string PasswordHalt { get; set; } = default!;
+    public string Markdown { get; set; } = default!;
+
+    /// <summary>
+    /// 公开使用，所有人不需要加入团队即可使用此知识库.
+    /// </summary>
+    public bool IsPublic { get; set; }
 
     /// <summary>
     /// 头像id.
     /// </summary>
     public Guid AvatarId { get; set; }
+
+    /// <summary>
+    /// 头像路径.
+    /// </summary>
+    public string AvatarPath { get; set; } = default!;
 }

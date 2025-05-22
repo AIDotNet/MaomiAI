@@ -1,4 +1,4 @@
-import { AIChatModelCard } from '@/types/aiModel';
+import { AIChatModelCard } from '../aiModel';
 
 // https://siliconflow.cn/zh-cn/models
 

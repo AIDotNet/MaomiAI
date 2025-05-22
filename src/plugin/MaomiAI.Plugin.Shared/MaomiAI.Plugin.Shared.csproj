@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+    <ProjectReference Include="..\..\public\MaomiAI.Public.Shared\MaomiAI.Public.Shared.csproj" />
+    <ProjectReference Include="..\..\team\MaomiAI.Team.Shared\MaomiAI.Team.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

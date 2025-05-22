@@ -4,14 +4,7 @@
 // @ts-ignore
 import { type ApiError, type Guid, type Parsable, type ParseNode, type SerializationWriter } from '@microsoft/kiota-abstractions';
 
-/**
- * 添加 AI 模型.
- */
-export interface AddAiModelCommand extends Parsable {
-    /**
-     * AI 模型.
-     */
-    endpoint?: AiEndpoint | null;
+export interface AddAiEndpointRequest extends AiEndpoint, Parsable {
 }
 /**
  * AI 模型.
@@ -308,11 +301,11 @@ export interface ComplateUploadWikiDocumentCommand extends Parsable {
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {AddAiModelCommand}
+ * @returns {AddAiEndpointRequest}
  */
 // @ts-ignore
-export function createAddAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoAddAiModelCommand;
+export function createAddAiEndpointRequestFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAddAiEndpointRequest;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -951,11 +944,11 @@ export function createTeamMemberResponseFromDiscriminatorValue(parseNode: ParseN
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns {UpdateAiModelCommand}
+ * @returns {UpdateAiEndpointRequest}
  */
 // @ts-ignore
-export function createUpdateAiModelCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
-    return deserializeIntoUpdateAiModelCommand;
+export function createUpdateAiEndpointRequestFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateAiEndpointRequest;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -1090,9 +1083,9 @@ export interface DeleteWikiDocumentCommand extends Parsable {
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoAddAiModelCommand(addAiModelCommand: Partial<AddAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoAddAiEndpointRequest(addAiEndpointRequest: Partial<AddAiEndpointRequest> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "endpoint": n => { addAiModelCommand.endpoint = n.getObjectValue<AiEndpoint>(createAiEndpointFromDiscriminatorValue); },
+        ...deserializeIntoAiEndpoint(addAiEndpointRequest),
     }
 }
 /**
@@ -1964,10 +1957,10 @@ export function deserializeIntoTeamMemberResponse(teamMemberResponse: Partial<Te
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoUpdateAiModelCommand(updateAiModelCommand: Partial<UpdateAiModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoUpdateAiEndpointRequest(updateAiEndpointRequest: Partial<UpdateAiEndpointRequest> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "endpoint": n => { updateAiModelCommand.endpoint = n.getObjectValue<AiEndpoint>(createAiEndpointFromDiscriminatorValue); },
-        "modelId": n => { updateAiModelCommand.modelId = n.getGuidValue(); },
+        ...deserializeIntoAiEndpoint(updateAiEndpointRequest),
+        "modelId": n => { updateAiEndpointRequest.modelId = n.getGuidValue(); },
     }
 }
 /**
@@ -2879,9 +2872,9 @@ export interface SearchWikiDocumentTextCommandResponse extends Parsable {
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeAddAiModelCommand(writer: SerializationWriter, addAiModelCommand: Partial<AddAiModelCommand> | undefined | null = {}) : void {
-    if (addAiModelCommand) {
-        writer.writeObjectValue<AiEndpoint>("endpoint", addAiModelCommand.endpoint, serializeAiEndpoint);
+export function serializeAddAiEndpointRequest(writer: SerializationWriter, addAiEndpointRequest: Partial<AddAiEndpointRequest> | undefined | null = {}) : void {
+    if (addAiEndpointRequest) {
+        serializeAiEndpoint(writer, addAiEndpointRequest)
     }
 }
 /**
@@ -3753,10 +3746,10 @@ export function serializeTeamMemberResponse(writer: SerializationWriter, teamMem
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeUpdateAiModelCommand(writer: SerializationWriter, updateAiModelCommand: Partial<UpdateAiModelCommand> | undefined | null = {}) : void {
-    if (updateAiModelCommand) {
-        writer.writeObjectValue<AiEndpoint>("endpoint", updateAiModelCommand.endpoint, serializeAiEndpoint);
-        writer.writeGuidValue("modelId", updateAiModelCommand.modelId);
+export function serializeUpdateAiEndpointRequest(writer: SerializationWriter, updateAiEndpointRequest: Partial<UpdateAiEndpointRequest> | undefined | null = {}) : void {
+    if (updateAiEndpointRequest) {
+        serializeAiEndpoint(writer, updateAiEndpointRequest)
+        writer.writeGuidValue("modelId", updateAiEndpointRequest.modelId);
     }
 }
 /**
@@ -3969,14 +3962,7 @@ export interface TeamMemberResponse extends AuditsInfo, Parsable {
      */
     userName?: string | null;
 }
-/**
- * 修改 AI 模型.
- */
-export interface UpdateAiModelCommand extends Parsable {
-    /**
-     * AI 端点.
-     */
-    endpoint?: AiEndpoint | null;
+export interface UpdateAiEndpointRequest extends AiEndpoint, Parsable {
     /**
      * AI 模型 id.
      */

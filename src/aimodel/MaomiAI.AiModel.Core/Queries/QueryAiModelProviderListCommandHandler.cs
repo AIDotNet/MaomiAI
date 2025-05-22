@@ -32,7 +32,7 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
     /// <inheritdoc/>
     public async Task<QueryAiModelProviderListResponse> Handle(QueryAiModelProviderListCommand request, CancellationToken cancellationToken)
     {
-        Dictionary<string, int> providers = new();
+        var providers = new List<QueryAiModelProviderCount>();
 
         var list = await _dbContext.TeamAiModels
             .Where(x => x.TeamId == request.TeamId)
@@ -44,17 +44,18 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
             })
             .ToListAsync(cancellationToken);
 
-        if (list.Count > 0)
+        foreach (var item in Enum.GetNames<AiProvider>())
         {
-            foreach (var item in Enum.GetNames<AiProvider>())
+            providers.Add(new QueryAiModelProviderCount
             {
-                providers[item] = list.FirstOrDefault(x => x.Provider == item)?.Count ?? 0;
-            }
+                Provider = item,
+                Count = list.FirstOrDefault(x => x.Provider == item)?.Count ?? 0
+            });
         }
 
         return new QueryAiModelProviderListResponse
         {
-            Providers = list
+            Providers = providers
         };
     }
 }

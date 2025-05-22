@@ -5,9 +5,9 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 默认模型配置.
+/// 插件.
 /// </summary>
-public partial class TeamDefaultAiModelEntity : IFullAudited
+public partial class TeamPluginEntity : IFullAudited
 {
     /// <summary>
     /// id.
@@ -15,17 +15,22 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 模型id.
+    /// 团队id.
     /// </summary>
-    public Guid ModelId { get; set; }
+    public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 功能.
+    /// 名称，接口名称或mcp名称.
     /// </summary>
-    public string AiModelType { get; set; } = default!;
+    public string Name { get; set; } = default!;
 
     /// <summary>
-    /// 是否删除.
+    /// 注释.
+    /// </summary>
+    public string Summary { get; set; } = default!;
+
+    /// <summary>
+    /// 软删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
@@ -40,17 +45,22 @@ public partial class TeamDefaultAiModelEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建人.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
 
     /// <summary>
-    /// 团队id.
+    /// 分组id.
     /// </summary>
-    public Guid TeamId { get; set; }
+    public Guid GroupId { get; set; }
+
+    /// <summary>
+    /// 路径.
+    /// </summary>
+    public string Path { get; set; } = default!;
 }

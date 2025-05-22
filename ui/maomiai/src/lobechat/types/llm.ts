@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { AiProviderSettings } from './aiProvider';
+import { ChatModelPricing } from './aiModel';
 
 export interface ChatModelCard {
   /**
@@ -53,6 +54,8 @@ export interface ChatModelCard {
    *  whether model supports vision
    */
   vision?: boolean;
+
+  pricing?: ChatModelPricing;
 }
 
 export interface SmoothingParams {

@@ -29,9 +29,10 @@ public partial class TeamWikiConfigConfiguration : IEntityTypeConfiguration<Team
             .HasColumnName("id");
         entity.Property(e => e.CreateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .HasComment("创建时间")
             .HasColumnName("create_time");
         entity.Property(e => e.CreateUserId)
-            .HasComment("创建者id")
+            .HasComment("创建人")
             .HasColumnName("create_user_id");
         entity.Property(e => e.EmbeddingBatchSize)
             .HasDefaultValue(100)
@@ -50,7 +51,7 @@ public partial class TeamWikiConfigConfiguration : IEntityTypeConfiguration<Team
             .HasColumnName("embedding_model_tokenizer");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
-            .HasComment("是否删除")
+            .HasComment("软删除")
             .HasColumnName("is_deleted");
         entity.Property(e => e.IsLock)
             .HasDefaultValue(false)
@@ -65,9 +66,10 @@ public partial class TeamWikiConfigConfiguration : IEntityTypeConfiguration<Team
             .HasColumnName("team_id");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .HasComment("更新时间")
             .HasColumnName("update_time");
         entity.Property(e => e.UpdateUserId)
-            .HasComment("更新人id")
+            .HasComment("更新人")
             .HasColumnName("update_user_id");
         entity.Property(e => e.WikiId)
             .HasComment("知识库id")

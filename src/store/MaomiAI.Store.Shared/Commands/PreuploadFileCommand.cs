@@ -13,7 +13,7 @@ namespace MaomiAI.Store.Commands;
 /// <summary>
 /// 预上传文件，该命令只允许内部调用.
 /// </summary>
-public class PreuploadFileCommand : IRequest<PreUploadFileCommandResponse>
+public class PreUploadFileCommand : IRequest<PreUploadFileCommandResponse>
 {
     /// <summary>
     /// 文件可见性.

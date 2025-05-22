@@ -45,7 +45,7 @@ public partial class TeamAiModelEntity : IFullAudited
     public string Key { get; set; } = default!;
 
     /// <summary>
-    /// 是否删除.
+    /// 软删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
@@ -60,12 +60,12 @@ public partial class TeamAiModelEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建人.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
 

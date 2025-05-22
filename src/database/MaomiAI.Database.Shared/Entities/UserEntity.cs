@@ -5,39 +5,49 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 文件列表.
+/// 用户表.
 /// </summary>
-public partial class FileEntity : IFullAudited
+public partial class UserEntity : IFullAudited
 {
     /// <summary>
-    /// id.
+    /// 用户ID.
     /// </summary>
     public Guid Id { get; set; }
 
     /// <summary>
-    /// 文件名称.
+    /// 用户名.
     /// </summary>
-    public string FileName { get; set; } = default!;
+    public string UserName { get; set; } = default!;
 
     /// <summary>
-    /// 文件路径.
+    /// 邮箱.
     /// </summary>
-    public string ObjectKey { get; set; } = default!;
+    public string Email { get; set; } = default!;
 
     /// <summary>
-    /// 允许公开访问，公有文件不带路径.
+    /// 密码.
     /// </summary>
-    public bool IsPublic { get; set; }
+    public string Password { get; set; } = default!;
 
     /// <summary>
-    /// 文件md5值.
+    /// 昵称.
     /// </summary>
-    public string FileMd5 { get; set; } = default!;
+    public string NickName { get; set; } = default!;
 
     /// <summary>
-    /// 文件大小.
+    /// 头像路径.
     /// </summary>
-    public long FileSize { get; set; }
+    public string AvatarPath { get; set; } = default!;
+
+    /// <summary>
+    /// 手机号.
+    /// </summary>
+    public string Phone { get; set; } = default!;
+
+    /// <summary>
+    /// 是否启用.
+    /// </summary>
+    public bool IsEnable { get; set; }
 
     /// <summary>
     /// 软删除.
@@ -60,17 +70,17 @@ public partial class FileEntity : IFullAudited
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新用户id.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
 
     /// <summary>
-    /// 已上传文件.
+    /// 计算密码值的salt.
     /// </summary>
-    public bool IsUpload { get; set; }
+    public string PasswordHalt { get; set; } = default!;
 
     /// <summary>
-    /// 文件类型.
+    /// 头像id.
     /// </summary>
-    public string ContentType { get; set; } = default!;
+    public Guid AvatarId { get; set; }
 }

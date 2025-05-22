@@ -5,6 +5,31 @@ export const AiModelSourceEnum = {
 } as const;
 export type AiModelSourceType = (typeof AiModelSourceEnum)[keyof typeof AiModelSourceEnum];
 
+export type ModelPriceCurrency = 'CNY' | 'USD';
+
+export interface BasicModelPricing {
+  /**
+   * the currency of the pricing
+   * @default USD
+   */
+  currency?: ModelPriceCurrency;
+  /**
+   * the input pricing, e.g. $1 / 1M tokens
+   */
+  input?: number;
+}
+
+export interface ChatModelPricing extends BasicModelPricing {
+  audioInput?: number;
+  audioOutput?: number;
+  cachedAudioInput?: number;
+  cachedInput?: number;
+  /**
+   * the output pricing, e.g. $2 / 1M tokens
+   */
+  output?: number;
+  writeCacheInput?: number;
+}
 export type AiModelType =
   | 'chat'
   | 'embedding'

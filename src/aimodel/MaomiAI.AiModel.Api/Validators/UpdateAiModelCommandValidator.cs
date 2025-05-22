@@ -6,6 +6,7 @@
 
 using FastEndpoints;
 using FluentValidation;
+using MaomiAI.AiModel.Api.Models;
 using MaomiAI.AiModel.Shared.Commands;
 
 namespace MaomiAI.AiModel.Api.Validators;
@@ -13,23 +14,34 @@ namespace MaomiAI.AiModel.Api.Validators;
 /// <summary>
 /// UpdateAiModelCommandValidator.
 /// </summary>
-public class UpdateAiModelCommandValidator : Validator<UpdateAiModelCommand>
+public class UpdateAiEndpointRequestValidator : Validator<UpdateAiEndpointRequest>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="UpdateAiModelCommandValidator"/> class.
+    /// Initializes a new instance of the <see cref="UpdateAiEndpointRequestValidator"/> class.
     /// </summary>
-    public UpdateAiModelCommandValidator()
+    public UpdateAiEndpointRequestValidator()
     {
         RuleFor(x => x.TeamId)
             .NotEmpty()
             .WithMessage("团队 ID 不能为空.");
 
-        RuleFor(x => x.ModelId)
-            .NotEmpty()
-            .WithMessage("模型 ID 不能为空.");
+        RuleFor(x => x.Endpoint)
+            .NotNull()
+            .WithMessage("模型信息不能为空.");
 
-        RuleFor(x => x.Endpoint.DeploymentName)
-            .NotEmpty().MaximumLength(50)
-            .WithMessage("长度 50 内.");
+        RuleFor(x => x.DeploymentName)
+            .NotEmpty().MaximumLength(20);
+
+        RuleFor(x => x.DisplayName)
+            .NotEmpty().MaximumLength(20);
+
+        RuleFor(x => x.ContextWindowTokens)
+            .GreaterThan(0);
+
+        RuleFor(x => x.Endpoint)
+            .NotEmpty().MaximumLength(20);
+
+        RuleFor(x => x.Key)
+            .NotEmpty().MaximumLength(1000);
     }
 }

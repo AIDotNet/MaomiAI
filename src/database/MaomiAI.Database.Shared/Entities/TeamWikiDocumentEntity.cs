@@ -5,14 +5,14 @@ using MaomiAI.Database.Audits;
 namespace MaomiAI.Database.Entities;
 
 /// <summary>
-/// 团队成员.
+/// 知识库文档.
 /// </summary>
-public partial class TeamMemberEntity : IFullAudited
+public partial class TeamWikiDocumentEntity : IFullAudited
 {
     /// <summary>
     /// id.
     /// </summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// 团队id.
@@ -20,17 +20,17 @@ public partial class TeamMemberEntity : IFullAudited
     public Guid TeamId { get; set; }
 
     /// <summary>
-    /// 用户id.
+    /// 知识库id.
     /// </summary>
-    public Guid UserId { get; set; }
+    public Guid WikiId { get; set; }
 
     /// <summary>
-    /// 是否为管理员.
+    /// 文件id.
     /// </summary>
-    public bool IsAdmin { get; set; }
+    public Guid FileId { get; set; }
 
     /// <summary>
-    /// 是否删除.
+    /// 软删除.
     /// </summary>
     public bool IsDeleted { get; set; }
 
@@ -45,12 +45,17 @@ public partial class TeamMemberEntity : IFullAudited
     public DateTimeOffset UpdateTime { get; set; }
 
     /// <summary>
-    /// 创建人ID.
+    /// 创建人.
     /// </summary>
     public Guid CreateUserId { get; set; }
 
     /// <summary>
-    /// 更新人ID.
+    /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 冗余列，文件名.
+    /// </summary>
+    public string FileName { get; set; } = default!;
 }

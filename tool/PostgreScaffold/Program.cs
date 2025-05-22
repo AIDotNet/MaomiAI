@@ -34,6 +34,16 @@ public class Program
         Directory.SetCurrentDirectory(projectDirectory);
         Console.WriteLine("当前工作目录: " + projectDirectory);
 
+        if (Directory.Exists(Path.Combine(projectDirectory, "Data")))
+        {
+            Directory.Delete(Path.Combine(projectDirectory, "Data"), true);
+        }
+
+        if (Directory.Exists(Path.Combine(projectDirectory, "Entities")))
+        {
+            Directory.Delete(Path.Combine(projectDirectory, "Entities"), true);
+        }
+
         WebApplicationBuilder? builder = WebApplication.CreateBuilder();
         builder.Services.AddSingleton<IConfigurationManager>(builder.Configuration);
         builder.Services.AddLogging();
@@ -76,31 +86,40 @@ public class Program
         string? command = $"{processStartInfo.FileName} {processStartInfo.Arguments}";
         Console.WriteLine($"启动命令: {command}");
 
-        using (Process? process = new() { StartInfo = processStartInfo })
+        using Process? process = new() { StartInfo = processStartInfo };
+
+        process.OutputDataReceived += (sender, e) =>
         {
-            process.OutputDataReceived += (sender, e) =>
+            if (!string.IsNullOrEmpty(e.Data))
             {
-                if (!string.IsNullOrEmpty(e.Data))
-                {
-                    Console.WriteLine(e.Data);
-                }
-            };
+                Console.WriteLine(e.Data);
+            }
+        };
 
-            process.ErrorDataReceived += (sender, e) =>
+        process.ErrorDataReceived += (sender, e) =>
+        {
+            if (!string.IsNullOrEmpty(e.Data))
             {
-                if (!string.IsNullOrEmpty(e.Data))
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Data);
-                    Console.ResetColor();
-                }
-            };
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine(e.Data);
+                Console.ResetColor();
+            }
+        };
 
-            process.Start();
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
+        process.Start();
+        process.BeginOutputReadLine();
+        process.BeginErrorReadLine();
 
-            await process.WaitForExitAsync();
+        await process.WaitForExitAsync();
+
+        if (process.ExitCode == 0)
+        {
+            var entities = Directory.GetFiles(Path.Combine(projectDirectory, "Entities"), "*.cs", SearchOption.AllDirectories);
+            foreach (var entity in entities)
+            {
+                var newFileNamee = Path.Combine(Directory.GetParent(entity)!.FullName, Path.GetFileNameWithoutExtension(entity) + "Entity.cs");
+                File.Move(entity, newFileNamee);
+            }
         }
     }
 }

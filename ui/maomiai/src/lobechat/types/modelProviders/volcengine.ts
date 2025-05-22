@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref https://www.volcengine.com/docs/82379/1330310
 const Doubao: ModelProviderCard = {

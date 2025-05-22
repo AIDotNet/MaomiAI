@@ -32,7 +32,7 @@ public class PreUploadImageCommandHandler : IRequestHandler<PreUploadImageComman
 
         // todo: 通过系统设置限制头像文件大小.
 
-        var preu = new PreuploadFileCommand
+        var preu = new PreUploadFileCommand
         {
             FileName = request.FileName,
             ContentType = request.ContentType,

@@ -48,8 +48,8 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasComment("文件md5值")
             .HasColumnName("file_md5");
         entity.Property(e => e.FileName)
-            .HasMaxLength(100)
-            .HasComment("文件名称")
+            .HasMaxLength(50)
+            .HasComment("文件名称，共用文件不带名称，直接使用md5+文件后缀")
             .HasColumnName("file_name");
         entity.Property(e => e.FileSize)
             .HasComment("文件大小")
@@ -75,7 +75,7 @@ public partial class FileConfiguration : IEntityTypeConfiguration<FileEntity>
             .HasComment("更新时间")
             .HasColumnName("update_time");
         entity.Property(e => e.UpdateUserId)
-            .HasComment("更新用户id")
+            .HasComment("更新人")
             .HasColumnName("update_user_id");
 
         OnConfigurePartial(entity);

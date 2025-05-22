@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref: https://platform.baichuan-ai.com/price
 const Baichuan: ModelProviderCard = {

@@ -68,10 +68,10 @@ public class AddAiModelCommandHandler : IRequestHandler<AddAiModelCommand, IdRes
             Key = skKey,
             MaxDimension = request.Endpoint.MaxDimension,
             TextOutput = request.Endpoint.TextOutput,
-            FunctionCall = request.Endpoint.Abilities.FunctionCall ?? false,
-            Files = request.Endpoint.Abilities.Files ?? false,
-            ImageOutput = request.Endpoint.Abilities.ImageOutput ?? false,
-            Vision = request.Endpoint.Abilities.Vision ?? false,
+            FunctionCall = request.Endpoint.Abilities?.FunctionCall ?? false,
+            Files = request.Endpoint.Abilities?.Files ?? false,
+            ImageOutput = request.Endpoint.Abilities?.ImageOutput ?? false,
+            Vision = request.Endpoint.Abilities?.Vision ?? false,
         };
 
         await _dbContext.AddAsync(aiModel, cancellationToken);

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ModelContextProtocol" Version="0.2.0-preview.1" />
+		<PackageReference Include="ModelContextProtocol-SemanticKernel" Version="0.0.1-preview-15" />
+		<PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.24" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
+		<ProjectReference Include="..\MaomiAI.Plugin.Api\MaomiAI.Plugin.Api.csproj" />
+	</ItemGroup>
+
+</Project>

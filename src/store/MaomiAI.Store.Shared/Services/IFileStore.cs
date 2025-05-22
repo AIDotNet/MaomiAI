@@ -9,7 +9,6 @@ namespace MaomiAI.Store.Services;
 public interface IPrivateFileStore : IFileStore { }
 public interface IPublicFileStore : IFileStore { }
 
-
 /// <summary>
 /// 文件存储接口.
 /// </summary>

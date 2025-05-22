@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref: https://platform.moonshot.cn/docs/intro#模型列表
 const Moonshot: ModelProviderCard = {

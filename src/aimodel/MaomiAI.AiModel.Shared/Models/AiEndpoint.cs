@@ -54,7 +54,7 @@ public class AiEndpoint
     /// <summary>
     /// additional parameters.
     /// </summary>
-    public ModelAbilities Abilities { get; init; } = default!;
+    public ModelAbilities? Abilities { get; init; } = new ModelAbilities();
 
     /// <summary>
     /// 最大模型输出 tokens，也可表示嵌入向量等最大输出数量.

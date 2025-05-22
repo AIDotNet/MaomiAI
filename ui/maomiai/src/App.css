@@ -6,11 +6,12 @@
 }
 
 .header {
-  background: #001529;
   padding: 0 20px;
   display: flex;
   height: 60px;
   align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #f0f2f5;
 }
 
 .logo {

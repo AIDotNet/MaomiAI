@@ -5,6 +5,7 @@
 // </copyright>
 
 using FastEndpoints;
+using MaomiAI.AiModel.Api.Models;
 using MaomiAI.AiModel.Shared.Commands;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
@@ -16,7 +17,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// </summary>
 [EndpointGroupName("aimodel")]
 [HttpPost($"{AiModelApi.ApiPrefix}/update")]
-public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommandResponse>
+public class UpdateAiModelEndpoint : Endpoint<UpdateAiEndpointRequest, EmptyCommandResponse>
 {
     private readonly IMediator _mediator;
     private readonly UserContext _userContext;
@@ -33,7 +34,7 @@ public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommand
     }
 
     /// <inheritdoc/>
-    public override async Task<EmptyCommandResponse> ExecuteAsync(UpdateAiModelCommand req, CancellationToken ct)
+    public override async Task<EmptyCommandResponse> ExecuteAsync(UpdateAiEndpointRequest req, CancellationToken ct)
     {
         var isAdmin = await _mediator.Send(new QueryUserIsTeamAdminCommand
         {
@@ -46,6 +47,11 @@ public class UpdateAiModelEndpoint : Endpoint<UpdateAiModelCommand, EmptyCommand
             throw new BusinessException("没有操作权限.") { StatusCode = 403 };
         }
 
-        return await _mediator.Send(req);
+        return await _mediator.Send(new UpdateAiModelCommand
+        {
+            Endpoint = req,
+            TeamId = req.TeamId,
+            ModelId = req.ModelId,
+        });
     }
 }

@@ -1,5 +1,6 @@
 import { MessageInstance } from "antd/es/message/interface";
 import { BusinessExceptionResponse } from "../apiClient/models";
+import { FormInstance } from "antd";
 
 // 代理请求处理错误
 export const proxyRequestError = (error: any, messageApi: MessageInstance) => {

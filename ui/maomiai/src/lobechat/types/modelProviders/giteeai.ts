@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref: https://ai.gitee.com/serverless-api/packages/1910
 const GiteeAI: ModelProviderCard = {

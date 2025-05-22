@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref https://console.groq.com/docs/tool-use
 const Groq: ModelProviderCard = {

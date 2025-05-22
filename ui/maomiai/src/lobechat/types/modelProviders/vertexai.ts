@@ -1,4 +1,4 @@
-import { ModelProviderCard } from '@/types/llm';
+import { ModelProviderCard } from '../llm';
 
 // ref: https://ai.google.dev/gemini-api/docs/models/gemini
 const VertexAI: ModelProviderCard = {
