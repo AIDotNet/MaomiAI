@@ -10,6 +10,8 @@ using MaomiAI.AiModel.Shared.Queries.Respones;
 using MaomiAI.Database;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace MaomiAI.AiModel.Core.Queries;
 
@@ -44,12 +46,19 @@ public class QueryAiModelProviderListCommandHandler : IRequestHandler<QueryAiMod
             })
             .ToListAsync(cancellationToken);
 
-        foreach (var item in Enum.GetNames<AiProvider>())
+        foreach (var item in typeof(AiProvider).GetFields(BindingFlags.Public | BindingFlags.Static))
         {
+            string name = item.Name;
+            var jsonName = item.GetCustomAttribute<JsonPropertyNameAttribute>();
+            if (jsonName != null)
+            {
+                name = jsonName.Name;
+            }
+
             providers.Add(new QueryAiModelProviderCount
             {
-                Provider = item,
-                Count = list.FirstOrDefault(x => x.Provider == item)?.Count ?? 0
+                Provider = name,
+                Count = list.FirstOrDefault(x => x.Provider.Equals(name, StringComparison.OrdinalIgnoreCase))?.Count ?? 0
             });
         }
 

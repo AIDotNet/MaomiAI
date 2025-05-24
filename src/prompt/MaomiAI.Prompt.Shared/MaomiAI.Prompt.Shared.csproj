@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>MaomiAI.Prompt</RootNamespace>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\infra\MaomiAI.Infra.Shared\MaomiAI.Infra.Shared.csproj" />
+		<ProjectReference Include="..\..\team\MaomiAI.Team.Shared\MaomiAI.Team.Shared.csproj" />
+	</ItemGroup>
+</Project>

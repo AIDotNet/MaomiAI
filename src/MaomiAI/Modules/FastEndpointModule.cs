@@ -12,6 +12,7 @@ using MaomiAI.Swaggers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
+using Newtonsoft.Json.Serialization;
 using NJsonSchema;
 using NJsonSchema.Generation.TypeMappers;
 using NSwag;
@@ -101,7 +102,7 @@ public class FastEndpointModule : IModule
 
                     // 这里配置的转换器不会起效，只能用于生成文档，需要 UseFastEndpoints 配置请求和响应序列化
                     // https://maomi.whuanle.cn/10.web.html#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86
-                    s.Converters.Add(new JsonStringEnumConverter());
+                    s.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
                     //s.Converters.Add(new DateTimeOffsetConverter());
                     s.Converters.Add(JsonMetadataServices.DecimalConverter);
                 };
@@ -109,7 +110,7 @@ public class FastEndpointModule : IModule
                 // NSWAG 只能使用 Newtonsoft
                 options.NewtonsoftSettings = s =>
                 {
-                    s.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                    s.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter() { NamingStrategy = new CamelCaseNamingStrategy() });
                 };
             });
     }

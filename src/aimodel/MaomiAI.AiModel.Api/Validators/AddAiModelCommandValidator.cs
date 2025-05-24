@@ -31,16 +31,16 @@ public class AddAiEndpointRequestValidator : Validator<AddAiEndpointRequest>
             .WithMessage("模型信息不能为空.");
 
         RuleFor(x => x.DeploymentName)
-            .NotEmpty().MaximumLength(20);
+            .NotEmpty().MaximumLength(50);
 
         RuleFor(x => x.DisplayName)
-            .NotEmpty().MaximumLength(20);
+            .NotEmpty().MaximumLength(50);
 
         RuleFor(x => x.ContextWindowTokens)
             .GreaterThan(0);
 
         RuleFor(x => x.Endpoint)
-            .NotEmpty().MaximumLength(20);
+            .NotEmpty().MaximumLength(50);
 
         RuleFor(x => x.Key)
             .NotEmpty().MaximumLength(1000);

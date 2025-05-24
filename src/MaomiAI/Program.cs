@@ -9,6 +9,7 @@ using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 using System;
 using System.Linq;
+using System.Text.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -57,7 +58,7 @@ app.UseFastEndpoints((Action<Config>?)(c =>
             RequestId = ctx.TraceIdentifier,
         };
     };
-    c.Serializer.Options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    c.Serializer.Options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
     c.Serializer.Options.Converters.Add(new System.Text.Json.LongStringConverter());
 }));
 

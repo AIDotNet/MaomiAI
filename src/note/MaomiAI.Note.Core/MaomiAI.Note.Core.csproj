@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>Library</OutputType>
+	  <TargetFramework>net9.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <RootNamespace>MaomiAI.Note</RootNamespace>
+	  <LangVersion>12.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\database\MaomiAI.Database.Shared\MaomiAI.Database.Shared.csproj" />
+    <ProjectReference Include="..\MaomiAI.Note.Api\MaomiAI.Note.Api.csproj" />
+  </ItemGroup>
+
+</Project>

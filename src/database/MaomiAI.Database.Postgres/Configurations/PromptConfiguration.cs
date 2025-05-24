@@ -28,12 +28,6 @@ public partial class PromptConfiguration : IEntityTypeConfiguration<PromptEntity
             .HasDefaultValueSql("''::character varying")
             .HasComment("头像路径")
             .HasColumnName("avatar_path");
-        entity.Property(e => e.BindObjectId)
-            .HasComment("绑定对象id")
-            .HasColumnName("bind_object_id");
-        entity.Property(e => e.BindObjectType)
-            .HasComment("绑定对象类型，枚举")
-            .HasColumnName("bind_object_type");
         entity.Property(e => e.Content)
             .HasDefaultValueSql("''::text")
             .HasComment("助手设定,markdown")
@@ -62,6 +56,9 @@ public partial class PromptConfiguration : IEntityTypeConfiguration<PromptEntity
             .HasDefaultValueSql("''::text")
             .HasComment("标签，使用逗号\",\"分割多个标签值")
             .HasColumnName("tags");
+        entity.Property(e => e.TeamId)
+            .HasComment("团队id")
+            .HasColumnName("team_id");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

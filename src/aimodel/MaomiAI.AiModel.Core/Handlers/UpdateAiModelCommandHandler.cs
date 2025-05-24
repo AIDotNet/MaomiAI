@@ -85,10 +85,10 @@ public class UpdateAiModelCommandHandler : IRequestHandler<UpdateAiModelCommand,
         aiModel.Endpoint = request.Endpoint.Endpoint;
         aiModel.MaxDimension = request.Endpoint.MaxDimension;
         aiModel.TextOutput = request.Endpoint.TextOutput;
-        aiModel.FunctionCall = request.Endpoint.Abilities.FunctionCall ?? false;
-        aiModel.Files = request.Endpoint.Abilities.Files ?? false;
-        aiModel.ImageOutput = request.Endpoint.Abilities.ImageOutput ?? false;
-        aiModel.Vision = request.Endpoint.Abilities.Vision ?? false;
+        aiModel.FunctionCall = request.Endpoint.Abilities?.FunctionCall ?? false;
+        aiModel.Files = request.Endpoint.Abilities?.Files ?? false;
+        aiModel.ImageOutput = request.Endpoint.Abilities?.ImageOutput ?? false;
+        aiModel.Vision = request.Endpoint.Abilities?.Vision ?? false;
 
         _dbContext.TeamAiModels.Update(aiModel);
         await _dbContext.SaveChangesAsync(cancellationToken);

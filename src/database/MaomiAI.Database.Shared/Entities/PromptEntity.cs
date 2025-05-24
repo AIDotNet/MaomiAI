@@ -39,15 +39,7 @@ public partial class PromptEntity : IFullAudited
     /// </summary>
     public string AvatarPath { get; set; } = default!;
 
-    /// <summary>
-    /// 绑定对象类型，枚举.
-    /// </summary>
-    public int BindObjectType { get; set; }
-
-    /// <summary>
-    /// 绑定对象id.
-    /// </summary>
-    public Guid BindObjectId { get; set; }
+    public bool IsPublic { get; set; } = false;
 
     /// <summary>
     /// 软删除.
@@ -73,4 +65,9 @@ public partial class PromptEntity : IFullAudited
     /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 团队id.
+    /// </summary>
+    public Guid TeamId { get; set; }
 }

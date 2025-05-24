@@ -20,11 +20,6 @@ public partial class NoteEntity : IFullAudited
     public int NoteId { get; set; }
 
     /// <summary>
-    /// 所属用户id.
-    /// </summary>
-    public Guid UserId { get; set; }
-
-    /// <summary>
     /// 笔记标题.
     /// </summary>
     public string Title { get; set; } = default!;

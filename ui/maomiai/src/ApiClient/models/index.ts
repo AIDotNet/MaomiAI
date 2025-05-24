@@ -4233,28 +4233,28 @@ export const AiProviderObject = {
  * 向量化状态.
  */
 export const FileEmbeddingStateObject = {
-    None: "None",
-    Wait: "Wait",
-    Processing: "Processing",
-    Cancal: "Cancal",
-    Successful: "Successful",
-    Failed: "Failed",
+    None: "none",
+    Wait: "wait",
+    Processing: "processing",
+    Cancal: "cancal",
+    Successful: "successful",
+    Failed: "failed",
 } as const;
 /**
  * 存储类型.
  */
 export const FileVisibilityObject = {
-    Public: "Public",
-    Private: "Private",
+    Public: "public",
+    Private: "private",
 } as const;
 /**
  * 上传的图像类型.
  */
 export const UploadImageTypeObject = {
-    None: "None",
-    UserAvatar: "UserAvatar",
-    TeamAvatar: "TeamAvatar",
-    DocumentFile: "DocumentFile",
+    None: "none",
+    UserAvatar: "userAvatar",
+    TeamAvatar: "teamAvatar",
+    DocumentFile: "documentFile",
 } as const;
 /* tslint:enable */
 /* eslint-enable */

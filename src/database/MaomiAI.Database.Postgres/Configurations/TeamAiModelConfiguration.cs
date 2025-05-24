@@ -49,7 +49,7 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasComment("部署名称")
             .HasColumnName("deployment_name");
         entity.Property(e => e.DisplayName)
-            .HasMaxLength(20)
+            .HasMaxLength(50)
             .HasComment("显示名称")
             .HasColumnName("display_name");
         entity.Property(e => e.Endpoint)
@@ -79,7 +79,7 @@ public partial class TeamAiModelConfiguration : IEntityTypeConfiguration<TeamAiM
             .HasComment("向量的维度")
             .HasColumnName("max_dimension");
         entity.Property(e => e.Name)
-            .HasMaxLength(20)
+            .HasMaxLength(50)
             .HasComment("名字")
             .HasColumnName("name");
         entity.Property(e => e.TeamId)

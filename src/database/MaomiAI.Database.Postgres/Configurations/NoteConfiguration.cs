@@ -84,9 +84,6 @@ public partial class NoteConfiguration : IEntityTypeConfiguration<NoteEntity>
         entity.Property(e => e.UpdateUserId)
             .HasComment("更新人")
             .HasColumnName("update_user_id");
-        entity.Property(e => e.UserId)
-            .HasComment("所属用户id")
-            .HasColumnName("user_id");
 
         OnConfigurePartial(entity);
     }
