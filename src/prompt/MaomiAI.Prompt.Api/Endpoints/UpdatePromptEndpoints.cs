@@ -9,8 +9,6 @@ using MaomiAI.Infra.Exceptions;
 using MaomiAI.Infra.Models;
 using MaomiAI.Prompt.Api;
 using MaomiAI.Prompt.Commands;
-using MaomiAI.Prompt.Commands.Responses;
-using MaomiAI.Prompt.Queries;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Routing;

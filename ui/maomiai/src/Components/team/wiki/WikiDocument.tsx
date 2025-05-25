@@ -28,8 +28,10 @@ import { GetApiClient, UploadImage } from "../../../components/ServiceClient";
 import { GetFileMd5 } from "../../../helper/Md5Helper";
 import { RcFile } from "antd/es/upload";
 import { useParams, useNavigate } from "react-router";
-import type { MaomiAIDocumentSharedQueriesQueryWikiFileListCommand } from "../../../apiClient/models";
-import { MaomiAIStoreEnumsUploadImageTypeObject } from "../../../apiClient/models";
+import {
+  QueryWikiDocumentListCommand,
+  UploadImageTypeObject,
+} from "../../../apiClient/models";
 import { FileTypeHelper } from "../../../helper/FileTypeHelper";
 import { FileSizeHelper } from "../../../helper/FileSizeHelper";
 import {
@@ -54,17 +56,6 @@ interface TeamItem {
   createTime: string;
 }
 
-interface DocumentItem {
-  documentId: string;
-  fileName: string;
-  fileSize: string;
-  contentType: string;
-  createTime: string;
-  createUserName: string;
-  updateTime: string;
-  updateUserName: string;
-}
-
 interface UploadStatus {
   file: File;
   status:
@@ -83,7 +74,7 @@ interface UploadStatus {
 export default function WikiDocument() {
   const params = useParams();
   const navigate = useNavigate();
-  const [documents, setDocuments] = useState<DocumentItem[]>([]);
+  const [documents, setDocuments] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [pagination, setPagination] = useState({
@@ -104,20 +95,19 @@ export default function WikiDocument() {
     try {
       setLoading(true);
       const client = GetApiClient();
-      const requestBody: MaomiAIDocumentSharedQueriesQueryWikiFileListCommand =
-        {
-          pageNo: page,
-          pageSize,
-          search,
-        };
+      const requestBody = {
+        wikiId: params.wikiId,
+        pageNo: page,
+        pageSize,
+        query: search,
+      };
 
       const response = await client.api.wiki
         .byTeamId(params.teamId)
-        .byWikiId(params.wikiId)
-        .documents.post(requestBody);
+        .document.list.post(requestBody);
 
       if (response?.items) {
-        const formattedDocuments: DocumentItem[] = response.items.map(
+        const formattedDocuments = response.items.map(
           (item) => ({
             documentId: item.documentId || "",
             fileName: item.fileName || "",
@@ -132,6 +122,7 @@ export default function WikiDocument() {
             createUserName: item.createUserName || "",
             updateTime: parseJsonDateTime(item.updateTime || ""),
             updateUserName: item.updateUserName || "",
+            embedding: item.embedding || false
           })
         );
 
@@ -212,8 +203,8 @@ export default function WikiDocument() {
       // 预上传
       const preUploadResponse = await client.api.wiki
         .byTeamId(params.teamId)
-        .byWikiId(params.wikiId)
-        .preupload.post({
+        .document.preupload.post({
+          wikiId: params.wikiId,
           fileName: file.name,
           fileSize: file.size,
           contentType: fileType,
@@ -305,8 +296,8 @@ export default function WikiDocument() {
       const client = GetApiClient();
       await client.api.wiki
         .byTeamId(params.teamId)
-        .byWikiId(params.wikiId)
-        .complate_upload.post({
+        .document.complate_upload.post({
+          wikiId: params.wikiId,
           fileId: fileId,
           isSuccess: true,
         });
@@ -442,14 +433,25 @@ export default function WikiDocument() {
       width: 120,
     },
     {
+      title: "已量化",
+      dataIndex: "embedding",
+      key: "embedding",
+      width: 120,
+      render: (text: any) => text === "true" || text === true ? "是" : "否",
+    },
+    {
       title: "操作",
       key: "action",
       width: 120,
-      render: (_: unknown, record: DocumentItem) => (
+      render: (_: unknown, record: any) => (
         <Space>
           <Button
             type="link"
-            onClick={() => navigate(`/app/team/${params.teamId}/wiki/${params.wikiId}/embedding?fileId=${record.documentId}`)}
+            onClick={() =>
+              navigate(
+                `/app/team/${params.teamId}/wiki/${params.wikiId}/embedding?fileId=${record.documentId}`
+              )
+            }
           >
             量化
           </Button>
@@ -459,11 +461,18 @@ export default function WikiDocument() {
             onClick={async () => {
               try {
                 const client = GetApiClient();
-                await client.api.wiki.byTeamId(params.teamId!).byWikiId(params.wikiId!).delete_document.delete({
-                  documentId: record.documentId
-                });
+                await client.api.wiki
+                  .byTeamId(params.teamId!)
+                  .document.deletePath.delete({
+                    wikiId: params.wikiId,
+                    documentId: record.documentId,
+                  });
                 message.success("删除成功");
-                fetchDocuments(pagination.current, pagination.pageSize, searchText);
+                fetchDocuments(
+                  pagination.current,
+                  pagination.pageSize,
+                  searchText
+                );
               } catch (error) {
                 message.error("删除失败");
                 console.error("Delete document error:", error);

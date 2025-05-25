@@ -39,6 +39,7 @@ public class UpdatePromptCommandHandler : IRequestHandler<UpdatePromptCommand, E
         prompt.Name = request.Name;
         prompt.Description = request.Description;
         prompt.Tags = string.Join(',', request.Tags);
+        prompt.Type = request.PromptType.ToString();
 
         _databaseContext.Prompts.Update(prompt);
         await _databaseContext.SaveChangesAsync(cancellationToken);

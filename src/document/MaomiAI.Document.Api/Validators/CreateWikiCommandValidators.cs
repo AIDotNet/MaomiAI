@@ -6,6 +6,7 @@
 
 using FastEndpoints;
 using FluentValidation;
+using MaomiAI.Document.Core.Handlers.Documents;
 using MaomiAI.Document.Shared.Commands;
 using MaomiAI.Document.Shared.Commands.Documents;
 

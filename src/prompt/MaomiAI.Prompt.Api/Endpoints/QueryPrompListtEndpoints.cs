@@ -1,4 +1,4 @@
-﻿// <copyright file="CreatePromptEndpoints.cs" company="MaomiAI">
+﻿// <copyright file="QueryPrompListtEndpoints.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -21,7 +21,7 @@ namespace MaomiAI.AiModel.Api.Endpoints;
 /// 查询提示词.
 /// </summary>
 [EndpointGroupName("prompt")]
-[HttpPost($"{ApiPrompt.ApiPrefix}/list")]
+[HttpPost("/prompt/list")]
 public class QueryPrompListtEndpoints : Endpoint<QueryPromptListCommand, QueryPromptListCommandResponse>
 {
     private readonly IMediator _mediator;

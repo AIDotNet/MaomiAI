@@ -18,14 +18,16 @@ import { SettingsRequestBuilderNavigationMetadata, type SettingsRequestBuilder }
 // @ts-ignore
 import { Simple_infoRequestBuilderRequestsMetadata, type Simple_infoRequestBuilder } from './simple_info/index.js';
 // @ts-ignore
+import { type WikiRequestBuilder, WikiRequestBuilderNavigationMetadata } from './wiki/index.js';
+// @ts-ignore
 import { type WikisRequestBuilder, WikisRequestBuilderRequestsMetadata } from './wikis/index.js';
 // @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}
+ * Builds and executes requests for operations under /api/wiki/{teamId}
  */
-export interface WithTemaItemRequestBuilder extends BaseRequestBuilder<WithTemaItemRequestBuilder> {
+export interface WithTeamItemRequestBuilder extends BaseRequestBuilder<WithTeamItemRequestBuilder> {
     /**
      * The config property
      */
@@ -59,6 +61,10 @@ export interface WithTemaItemRequestBuilder extends BaseRequestBuilder<WithTemaI
      */
     get simple_info(): Simple_infoRequestBuilder;
     /**
+     * The wiki property
+     */
+    get wiki(): WikiRequestBuilder;
+    /**
      * The wikis property
      */
     get wikis(): WikisRequestBuilder;
@@ -66,11 +72,11 @@ export interface WithTemaItemRequestBuilder extends BaseRequestBuilder<WithTemaI
 /**
  * Uri template for the request builder.
  */
-export const WithTemaItemRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}";
+export const WithTeamItemRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}";
 /**
  * Metadata for all the navigation properties in the request builder.
  */
-export const WithTemaItemRequestBuilderNavigationMetadata: Record<Exclude<keyof WithTemaItemRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
+export const WithTeamItemRequestBuilderNavigationMetadata: Record<Exclude<keyof WithTeamItemRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     config: {
         requestsMetadata: ConfigRequestBuilderRequestsMetadata,
     },
@@ -94,6 +100,9 @@ export const WithTemaItemRequestBuilderNavigationMetadata: Record<Exclude<keyof 
     },
     simple_info: {
         requestsMetadata: Simple_infoRequestBuilderRequestsMetadata,
+    },
+    wiki: {
+        navigationMetadata: WikiRequestBuilderNavigationMetadata,
     },
     wikis: {
         requestsMetadata: WikisRequestBuilderRequestsMetadata,

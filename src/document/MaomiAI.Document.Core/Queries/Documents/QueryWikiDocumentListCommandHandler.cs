@@ -6,6 +6,7 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Queries;
+using MaomiAI.Document.Shared.Models;
 using MaomiAI.Document.Shared.Queries;
 using MaomiAI.Document.Shared.Queries.Response;
 using MediatR;
@@ -53,7 +54,8 @@ public class QueryWikiDocumentListCommandHandler : IRequestHandler<QueryWikiDocu
             CreateTime = a.CreateTime,
             CreateUserId = a.CreateUserId,
             UpdateTime = a.UpdateTime,
-            UpdateUserId = a.UpdateUserId
+            UpdateUserId = a.UpdateUserId,
+            Embedding = _databaseContext.TeamWikiDocumentTasks.Any(x => x.DocumentId == a.Id && x.State == (int)FileEmbeddingState.Successful)
         }).Take(request.Take).Skip(request.Skip).ToArrayAsync();
 
         await _mediator.Send(new FillUserInfoCommand

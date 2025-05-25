@@ -1,7 +1,7 @@
 import { message, Layout, Menu } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { Outlet, useLocation, useNavigate, useParams, Link } from "react-router";
-import { FileTextOutlined, SettingOutlined } from "@ant-design/icons";
+import { FileSearchOutlined, FileTextOutlined, SendOutlined, SettingOutlined } from "@ant-design/icons";
 
 const { Sider } = Layout;
 
@@ -15,6 +15,8 @@ export default function Wiki() {
   const getSelectedKey = () => {
     const path = location.pathname;
     if (path.includes("/setting")) return "setting";
+    if (path.includes("/embeddingtest")) return "embeddingtest";
+    if (path.includes("/embedding")) return "embedding";
     return "document"; // default
   };
 
@@ -26,8 +28,13 @@ export default function Wiki() {
     },
     {
       key: "embedding",
-      icon: <FileTextOutlined />,
+      icon: <SendOutlined />,
       label: <Link to={`/app/team/${teamId}/wiki/${wikiId}/embedding`}>向量化</Link>,
+    },
+    {
+      key: "embeddingtest",
+      icon: <FileSearchOutlined />,
+      label: <Link to={`/app/team/${teamId}/wiki/${wikiId}/embeddingtest`}>向量化测试</Link>,
     },
     {
       key: "setting",

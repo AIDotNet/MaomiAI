@@ -15,9 +15,8 @@ using Microsoft.AspNetCore.Routing;
 
 namespace MaomiAI.AiModel.Api.Endpoints;
 
-
 /// <summary>
-/// 创建提示词.
+/// 删除提示词.
 /// </summary>
 [EndpointGroupName("prompt")]
 [HttpDelete($"{ApiPrompt.ApiPrefix}/delete")]

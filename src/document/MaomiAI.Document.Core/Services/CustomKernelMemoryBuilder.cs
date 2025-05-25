@@ -56,6 +56,23 @@ public class CustomKernelMemoryBuilder
                 EmbeddingModelTokenizer = wikiConfig.EmbeddingModelTokenizer
             });
         }
+        else if (endpoint.Provider == AiProvider.Azure)
+        {
+            kernelMemoryBuilder.WithAzureOpenAITextEmbeddingGeneration(new AzureOpenAIConfig
+            {
+                Deployment = endpoint.DeploymentName,
+                Endpoint = endpoint.Endpoint,
+                Auth = AzureOpenAIConfig.AuthTypes.APIKey,
+                APIKey = endpoint.Key,
+                APIType = AzureOpenAIConfig.APITypes.EmbeddingGeneration,
+
+                MaxEmbeddingBatchSize = wikiConfig.EmbeddingBatchSize,
+                MaxRetries = wikiConfig.MaxRetries,
+                MaxTokenTotal = endpoint.TextOutput,
+                EmbeddingDimensions = wikiConfig.EmbeddingDimensions,
+                Tokenizer = wikiConfig.EmbeddingModelTokenizer
+            });
+        }
         else if (endpoint.Provider == AiProvider.AzureAI)
         {
             kernelMemoryBuilder.WithAzureOpenAITextEmbeddingGeneration(new AzureOpenAIConfig

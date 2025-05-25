@@ -1,4 +1,4 @@
-import { MaomiClient, createMaomiClient } from "../apiClient/maomiClient";
+import { createMaomiClient, MaomiClient } from "../apiClient/maomiClient";
 import {
   AnonymousAuthenticationProvider,
   BaseBearerTokenAuthenticationProvider,

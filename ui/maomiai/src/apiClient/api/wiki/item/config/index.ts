@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createQueryWikiC
 import { type BaseRequestBuilder, type Guid, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/config
+ * Builds and executes requests for operations under /api/wiki/{teamId}/config
  */
 export interface ConfigRequestBuilder extends BaseRequestBuilder<ConfigRequestBuilder> {
     /**
@@ -33,10 +33,6 @@ export interface ConfigRequestBuilder extends BaseRequestBuilder<ConfigRequestBu
  */
 export interface ConfigRequestBuilderGetQueryParameters {
     /**
-     * 团队 id.
-     */
-    teamId?: Guid;
-    /**
      * 知识库 id.
      */
     wikiId?: Guid;
@@ -44,12 +40,11 @@ export interface ConfigRequestBuilderGetQueryParameters {
 /**
  * Uri template for the request builder.
  */
-export const ConfigRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/config?TeamId={TeamId}&WikiId={WikiId}";
+export const ConfigRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/config?WikiId={WikiId}";
 /**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
  */
 const ConfigRequestBuilderGetQueryParametersMapper: Record<string, string> = {
-    "teamId": "TeamId",
     "wikiId": "WikiId",
 };
 /**

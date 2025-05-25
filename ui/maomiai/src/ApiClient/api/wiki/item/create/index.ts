@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createIdResponse
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/create
+ * Builds and executes requests for operations under /api/wiki/{teamId}/create
  */
 export interface CreateRequestBuilder extends BaseRequestBuilder<CreateRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface CreateRequestBuilder extends BaseRequestBuilder<CreateRequestBu
 /**
  * Uri template for the request builder.
  */
-export const CreateRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/create";
+export const CreateRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/create";
 /**
  * Metadata for all the requests in the request builder.
  */

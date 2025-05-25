@@ -10,11 +10,6 @@ namespace MaomiAI.Database.Entities;
 public partial class TeamMemberEntity : IFullAudited
 {
     /// <summary>
-    /// id.
-    /// </summary>
-    public int Id { get; set; }
-
-    /// <summary>
     /// 团队id.
     /// </summary>
     public Guid TeamId { get; set; }
@@ -53,4 +48,9 @@ public partial class TeamMemberEntity : IFullAudited
     /// 更新人.
     /// </summary>
     public Guid UpdateUserId { get; set; }
+
+    /// <summary>
+    /// id.
+    /// </summary>
+    public Guid Id { get; set; }
 }

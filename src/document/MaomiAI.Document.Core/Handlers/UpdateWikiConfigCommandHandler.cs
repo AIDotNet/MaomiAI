@@ -45,11 +45,11 @@ public class UpdateWikiConfigCommandHandler : IRequestHandler<UpdateWikiConfigCo
             throw new BusinessException("知识库已进行文档处理，禁止改动配置") { StatusCode = 409 };
         }
 
-        result.EmbeddingDimensions = request.Config.EmbeddingDimensions;
-        result.EmbeddingModelId = request.Config.EmbeddingModelId;
-        result.EmbeddingModelTokenizer = request.Config.EmbeddingModelTokenizer;
-        result.EmbeddingBatchSize = request.Config.EmbeddingBatchSize;
-        result.MaxRetries = request.Config.MaxRetries;
+        result.EmbeddingDimensions = request.EmbeddingDimensions;
+        result.EmbeddingModelId = request.EmbeddingModelId;
+        result.EmbeddingModelTokenizer = request.EmbeddingModelTokenizer;
+        result.EmbeddingBatchSize = request.EmbeddingBatchSize;
+        result.MaxRetries = request.MaxRetries;
 
         _databaseContext.TeamWikiConfigs.Update(result);
         await _databaseContext.SaveChangesAsync(cancellationToken);

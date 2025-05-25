@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createSearchWiki
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document/search
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document/search
  */
 export interface SearchRequestBuilder extends BaseRequestBuilder<SearchRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface SearchRequestBuilder extends BaseRequestBuilder<SearchRequestBu
 /**
  * Uri template for the request builder.
  */
-export const SearchRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document/search";
+export const SearchRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document/search";
 /**
  * Metadata for all the requests in the request builder.
  */

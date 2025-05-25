@@ -191,10 +191,6 @@ export interface CancalWikiDocumentTaskCommand extends Parsable {
      */
     taskId?: Guid | null;
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库id.
      */
     wikiId?: Guid | null;
@@ -260,6 +256,19 @@ export interface Citation_Partition extends Parsable {
     text?: string | null;
 }
 /**
+ * 清空知识库文档向量.
+ */
+export interface ClearWikiDocumentEmbeddingCommand extends Parsable {
+    /**
+     * 不填写时清空整个知识库的文档向量.
+     */
+    documentId?: Guid | null;
+    /**
+     * 知识库 id.
+     */
+    wikiId?: Guid | null;
+}
+/**
  * 完成文件上传.
  */
 export interface ComplateFileCommandResponse extends Parsable {
@@ -289,10 +298,6 @@ export interface ComplateUploadWikiDocumentCommand extends Parsable {
      * 上传成功或失败.
      */
     isSuccess?: boolean | null;
-    /**
-     * 团队ID.
-     */
-    teamId?: Guid | null;
     /**
      * 知识库ID.
      */
@@ -391,6 +396,15 @@ export function createCitationFromDiscriminatorValue(parseNode: ParseNode | unde
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ClearWikiDocumentEmbeddingCommand}
+ */
+// @ts-ignore
+export function createClearWikiDocumentEmbeddingCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoClearWikiDocumentEmbeddingCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ComplateFileCommandResponse}
  */
 // @ts-ignore
@@ -418,6 +432,15 @@ export function createComplateUploadWikiDocumentCommandFromDiscriminatorValue(pa
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {CreatePromptCommand}
+ */
+// @ts-ignore
+export function createCreatePromptCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCreatePromptCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {CreateTeamCommand}
  */
 // @ts-ignore
@@ -432,6 +455,15 @@ export function createCreateTeamCommandFromDiscriminatorValue(parseNode: ParseNo
 // @ts-ignore
 export function createCreateWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoCreateWikiCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {DeletePromptCommand}
+ */
+// @ts-ignore
+export function createDeletePromptCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoDeletePromptCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -605,6 +637,49 @@ export function createPreUploadWikiDocumentCommandFromDiscriminatorValue(parseNo
     return deserializeIntoPreUploadWikiDocumentCommand;
 }
 /**
+ * 创建提示词.
+ */
+export interface CreatePromptCommand extends Parsable {
+    /**
+     * 助手设定,markdown.
+     */
+    content?: string | null;
+    /**
+     * 描述.
+     */
+    description?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * 分类.
+     */
+    promptType?: PromptType | null;
+    /**
+     * 标签.
+     */
+    tags?: string[] | null;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PromptItem}
+ */
+// @ts-ignore
+export function createPromptItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPromptItem;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PublishPromptCommand}
+ */
+// @ts-ignore
+export function createPublishPromptCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPublishPromptCommand;
+}
+/**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {QueryAiModelListCommand}
@@ -657,6 +732,24 @@ export function createQueryDefaultAiModelListCommandFromDiscriminatorValue(parse
 // @ts-ignore
 export function createQueryDefaultAiModelListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoQueryDefaultAiModelListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPromptListCommand}
+ */
+// @ts-ignore
+export function createQueryPromptListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPromptListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPromptListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryPromptListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPromptListCommandResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -953,6 +1046,15 @@ export function createUpdateAiEndpointRequestFromDiscriminatorValue(parseNode: P
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdatePromptCommand}
+ */
+// @ts-ignore
+export function createUpdatePromptCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdatePromptCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {UpdateTeamInfoCommand}
  */
 // @ts-ignore
@@ -985,6 +1087,15 @@ export function createUpdateWikiConfigCommandFromDiscriminatorValue(parseNode: P
 // @ts-ignore
 export function createUpdateWikiInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoUpdateWikiInfoCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadPromptAvatarCommand}
+ */
+// @ts-ignore
+export function createUploadPromptAvatarCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadPromptAvatarCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -1025,10 +1136,6 @@ export interface CreateWikiCommand extends Parsable {
      * 团队名称.
      */
     name?: string | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -1049,13 +1156,18 @@ export function createWikiDocumentTaskItemFromDiscriminatorValue(parseNode: Pars
     return deserializeIntoWikiDocumentTaskItem;
 }
 /**
+ * 删除提示词.
+ */
+export interface DeletePromptCommand extends Parsable {
+    /**
+     * 提示词 id.
+     */
+    promptId?: Guid | null;
+}
+/**
  * 删除 Wiki.
  */
 export interface DeleteWikiCommand extends Parsable {
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 团队id.
      */
@@ -1069,10 +1181,6 @@ export interface DeleteWikiDocumentCommand extends Parsable {
      * 文档 id.
      */
     documentId?: Guid | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 知识库 id.
      */
@@ -1186,7 +1294,6 @@ export function deserializeIntoCancalWikiDocumentTaskCommand(cancalWikiDocumentT
     return {
         "documentId": n => { cancalWikiDocumentTaskCommand.documentId = n.getGuidValue(); },
         "taskId": n => { cancalWikiDocumentTaskCommand.taskId = n.getGuidValue(); },
-        "teamId": n => { cancalWikiDocumentTaskCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { cancalWikiDocumentTaskCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1227,6 +1334,17 @@ export function deserializeIntoCitation_Partition(citation_Partition: Partial<Ci
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoClearWikiDocumentEmbeddingCommand(clearWikiDocumentEmbeddingCommand: Partial<ClearWikiDocumentEmbeddingCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "documentId": n => { clearWikiDocumentEmbeddingCommand.documentId = n.getGuidValue(); },
+        "wikiId": n => { clearWikiDocumentEmbeddingCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoComplateFileCommandResponse(complateFileCommandResponse: Partial<ComplateFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
     }
@@ -1251,8 +1369,21 @@ export function deserializeIntoComplateUploadWikiDocumentCommand(complateUploadW
     return {
         "fileId": n => { complateUploadWikiDocumentCommand.fileId = n.getGuidValue(); },
         "isSuccess": n => { complateUploadWikiDocumentCommand.isSuccess = n.getBooleanValue(); },
-        "teamId": n => { complateUploadWikiDocumentCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { complateUploadWikiDocumentCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCreatePromptCommand(createPromptCommand: Partial<CreatePromptCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "content": n => { createPromptCommand.content = n.getStringValue(); },
+        "description": n => { createPromptCommand.description = n.getStringValue(); },
+        "name": n => { createPromptCommand.name = n.getStringValue(); },
+        "promptType": n => { createPromptCommand.promptType = n.getEnumValue<PromptType>(PromptTypeObject); },
+        "tags": n => { createPromptCommand.tags = n.getCollectionOfPrimitiveValues<string>(); },
     }
 }
 /**
@@ -1275,7 +1406,16 @@ export function deserializeIntoCreateWikiCommand(createWikiCommand: Partial<Crea
     return {
         "description": n => { createWikiCommand.description = n.getStringValue(); },
         "name": n => { createWikiCommand.name = n.getStringValue(); },
-        "teamId": n => { createWikiCommand.teamId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoDeletePromptCommand(deletePromptCommand: Partial<DeletePromptCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "promptId": n => { deletePromptCommand.promptId = n.getGuidValue(); },
     }
 }
 /**
@@ -1285,7 +1425,6 @@ export function deserializeIntoCreateWikiCommand(createWikiCommand: Partial<Crea
 // @ts-ignore
 export function deserializeIntoDeleteWikiCommand(deleteWikiCommand: Partial<DeleteWikiCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "teamId": n => { deleteWikiCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { deleteWikiCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1297,7 +1436,6 @@ export function deserializeIntoDeleteWikiCommand(deleteWikiCommand: Partial<Dele
 export function deserializeIntoDeleteWikiDocumentCommand(deleteWikiDocumentCommand: Partial<DeleteWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "documentId": n => { deleteWikiDocumentCommand.documentId = n.getGuidValue(); },
-        "teamId": n => { deleteWikiDocumentCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { deleteWikiDocumentCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1312,7 +1450,6 @@ export function deserializeIntoEmbeddingocumentCommand(embeddingocumentCommand: 
         "maxTokensPerParagraph": n => { embeddingocumentCommand.maxTokensPerParagraph = n.getNumberValue(); },
         "overlappingTokens": n => { embeddingocumentCommand.overlappingTokens = n.getNumberValue(); },
         "splitMethod": n => { embeddingocumentCommand.splitMethod = n.getStringValue(); },
-        "teamId": n => { embeddingocumentCommand.teamId = n.getGuidValue(); },
         "tokenizer": n => { embeddingocumentCommand.tokenizer = n.getStringValue(); },
         "wikiId": n => { embeddingocumentCommand.wikiId = n.getGuidValue(); },
     }
@@ -1507,8 +1644,37 @@ export function deserializeIntoPreUploadWikiDocumentCommand(preUploadWikiDocumen
         "fileName": n => { preUploadWikiDocumentCommand.fileName = n.getStringValue(); },
         "fileSize": n => { preUploadWikiDocumentCommand.fileSize = n.getNumberValue(); },
         "mD5": n => { preUploadWikiDocumentCommand.mD5 = n.getStringValue(); },
-        "teamId": n => { preUploadWikiDocumentCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { preUploadWikiDocumentCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPromptItem(promptItem: Partial<PromptItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(promptItem),
+        "avatarPath": n => { promptItem.avatarPath = n.getStringValue(); },
+        "content": n => { promptItem.content = n.getStringValue(); },
+        "description": n => { promptItem.description = n.getStringValue(); },
+        "id": n => { promptItem.id = n.getGuidValue(); },
+        "name": n => { promptItem.name = n.getStringValue(); },
+        "promptType": n => { promptItem.promptType = n.getEnumValue<PromptType>(PromptTypeObject); },
+        "tags": n => { promptItem.tags = n.getCollectionOfPrimitiveValues<string>(); },
+        "teamId": n => { promptItem.teamId = n.getGuidValue(); },
+        "teamName": n => { promptItem.teamName = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPublishPromptCommand(publishPromptCommand: Partial<PublishPromptCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "isPublic": n => { publishPromptCommand.isPublic = n.getBooleanValue(); },
+        "promptId": n => { publishPromptCommand.promptId = n.getGuidValue(); },
     }
 }
 /**
@@ -1571,6 +1737,29 @@ export function deserializeIntoQueryDefaultAiModelListCommand(queryDefaultAiMode
 export function deserializeIntoQueryDefaultAiModelListResponse(queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "aiModels": n => { queryDefaultAiModelListResponse.aiModels = n.getCollectionOfObjectValues<AiNotKeyEndpoint>(createAiNotKeyEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPromptListCommand(queryPromptListCommand: Partial<QueryPromptListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "promptId": n => { queryPromptListCommand.promptId = n.getGuidValue(); },
+        "promptType": n => { queryPromptListCommand.promptType = n.getEnumValue<PromptType>(PromptTypeObject); },
+        "teamId": n => { queryPromptListCommand.teamId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPromptListCommandResponse(queryPromptListCommandResponse: Partial<QueryPromptListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "count": n => { queryPromptListCommandResponse.count = n.getNumberValue(); },
+        "items": n => { queryPromptListCommandResponse.items = n.getCollectionOfObjectValues<PromptItem>(createPromptItemFromDiscriminatorValue); },
     }
 }
 /**
@@ -1707,7 +1896,6 @@ export function deserializeIntoQueryWikiConfigCommandResponse(queryWikiConfigCom
 // @ts-ignore
 export function deserializeIntoQueryWikiDetailInfoCommand(queryWikiDetailInfoCommand: Partial<QueryWikiDetailInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "teamId": n => { queryWikiDetailInfoCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { queryWikiDetailInfoCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1734,7 +1922,6 @@ export function deserializeIntoQueryWikiDetailInfoResponse(queryWikiDetailInfoRe
 export function deserializeIntoQueryWikiDocumentInfoCommand(queryWikiDocumentInfoCommand: Partial<QueryWikiDocumentInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "documentId": n => { queryWikiDocumentInfoCommand.documentId = n.getGuidValue(); },
-        "teamId": n => { queryWikiDocumentInfoCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { queryWikiDocumentInfoCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1747,7 +1934,6 @@ export function deserializeIntoQueryWikiDocumentListCommand(queryWikiDocumentLis
     return {
         ...deserializeIntoPagedParamter(queryWikiDocumentListCommand),
         "query": n => { queryWikiDocumentListCommand.query = n.getStringValue(); },
-        "teamId": n => { queryWikiDocumentListCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { queryWikiDocumentListCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1761,6 +1947,7 @@ export function deserializeIntoQueryWikiDocumentListItem(queryWikiDocumentListIt
         ...deserializeIntoAuditsInfo(queryWikiDocumentListItem),
         "contentType": n => { queryWikiDocumentListItem.contentType = n.getStringValue(); },
         "documentId": n => { queryWikiDocumentListItem.documentId = n.getGuidValue(); },
+        "embedding": n => { queryWikiDocumentListItem.embedding = n.getBooleanValue(); },
         "fileName": n => { queryWikiDocumentListItem.fileName = n.getStringValue(); },
         "fileSize": n => { queryWikiDocumentListItem.fileSize = n.getStringValue(); },
     }
@@ -1783,7 +1970,6 @@ export function deserializeIntoQueryWikiDocumentListResponse(queryWikiDocumentLi
 export function deserializeIntoQueryWikiDocumentTaskListCommand(queryWikiDocumentTaskListCommand: Partial<QueryWikiDocumentTaskListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "documentId": n => { queryWikiDocumentTaskListCommand.documentId = n.getGuidValue(); },
-        "teamId": n => { queryWikiDocumentTaskListCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { queryWikiDocumentTaskListCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1794,7 +1980,6 @@ export function deserializeIntoQueryWikiDocumentTaskListCommand(queryWikiDocumen
 // @ts-ignore
 export function deserializeIntoQueryWikiSimpleInfoCommand(queryWikiSimpleInfoCommand: Partial<QueryWikiSimpleInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "teamId": n => { queryWikiSimpleInfoCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { queryWikiSimpleInfoCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1867,7 +2052,6 @@ export function deserializeIntoSearchWikiDocumentTextCommand(searchWikiDocumentT
     return {
         "documentId": n => { searchWikiDocumentTextCommand.documentId = n.getGuidValue(); },
         "query": n => { searchWikiDocumentTextCommand.query = n.getStringValue(); },
-        "teamId": n => { searchWikiDocumentTextCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { searchWikiDocumentTextCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1912,7 +2096,6 @@ export function deserializeIntoSetTeamAdminCommand(setTeamAdminCommand: Partial<
 export function deserializeIntoSetWikiDefaultModelCommand(setWikiDefaultModelCommand: Partial<SetWikiDefaultModelCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "modelId": n => { setWikiDefaultModelCommand.modelId = n.getGuidValue(); },
-        "teamId": n => { setWikiDefaultModelCommand.teamId = n.getGuidValue(); },
         "wikiId": n => { setWikiDefaultModelCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -1968,6 +2151,21 @@ export function deserializeIntoUpdateAiEndpointRequest(updateAiEndpointRequest: 
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoUpdatePromptCommand(updatePromptCommand: Partial<UpdatePromptCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "content": n => { updatePromptCommand.content = n.getStringValue(); },
+        "description": n => { updatePromptCommand.description = n.getStringValue(); },
+        "name": n => { updatePromptCommand.name = n.getStringValue(); },
+        "promptId": n => { updatePromptCommand.promptId = n.getGuidValue(); },
+        "promptType": n => { updatePromptCommand.promptType = n.getEnumValue<PromptType>(PromptTypeObject); },
+        "tags": n => { updatePromptCommand.tags = n.getCollectionOfPrimitiveValues<string>(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoUpdateTeamInfoCommand(updateTeamInfoCommand: Partial<UpdateTeamInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "description": n => { updateTeamInfoCommand.description = n.getStringValue(); },
@@ -1994,8 +2192,7 @@ export function deserializeIntoUpdateUserPasswordCommand(updateUserPasswordComma
 // @ts-ignore
 export function deserializeIntoUpdateWikiConfigCommand(updateWikiConfigCommand: Partial<UpdateWikiConfigCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "config": n => { updateWikiConfigCommand.config = n.getObjectValue<WikiConfig>(createWikiConfigFromDiscriminatorValue); },
-        "teamId": n => { updateWikiConfigCommand.teamId = n.getGuidValue(); },
+        ...deserializeIntoWikiConfig(updateWikiConfigCommand),
         "wikiId": n => { updateWikiConfigCommand.wikiId = n.getGuidValue(); },
     }
 }
@@ -2011,6 +2208,17 @@ export function deserializeIntoUpdateWikiInfoCommand(updateWikiInfoCommand: Part
         "markdown": n => { updateWikiInfoCommand.markdown = n.getStringValue(); },
         "name": n => { updateWikiInfoCommand.name = n.getStringValue(); },
         "wikiId": n => { updateWikiInfoCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadPromptAvatarCommand(uploadPromptAvatarCommand: Partial<UploadPromptAvatarCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { uploadPromptAvatarCommand.fileId = n.getGuidValue(); },
+        "promptId": n => { uploadPromptAvatarCommand.promptId = n.getGuidValue(); },
     }
 }
 /**
@@ -2102,10 +2310,6 @@ export interface EmbeddingocumentCommand extends Parsable {
      * 文本分割方法，暂时不支持使用.
      */
     splitMethod?: string | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 统计 tokens 数量的算法 支持: "p50k", "cl100k", "o200k".
      */
@@ -2368,13 +2572,64 @@ export interface PreUploadWikiDocumentCommand extends Parsable {
      */
     mD5?: string | null;
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库 id.            
      */
     wikiId?: Guid | null;
+}
+/**
+ * 查询提示词详细信息.
+ */
+export interface PromptItem extends AuditsInfo, Parsable {
+    /**
+     * 头像路径.
+     */
+    avatarPath?: string | null;
+    /**
+     * 助手设定,markdown.
+     */
+    content?: string | null;
+    /**
+     * 描述.
+     */
+    description?: string | null;
+    /**
+     * id.
+     */
+    id?: Guid | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * 提示词类型.
+     */
+    promptType?: PromptType | null;
+    /**
+     * 标签，使用逗号","分割多个标签值.
+     */
+    tags?: string[] | null;
+    /**
+     * 团队id.
+     */
+    teamId?: Guid | null;
+    /**
+     * 团队名称.
+     */
+    teamName?: string | null;
+}
+export type PromptType = (typeof PromptTypeObject)[keyof typeof PromptTypeObject];
+/**
+ * 公开提示词.
+ */
+export interface PublishPromptCommand extends Parsable {
+    /**
+     * 是否公开.
+     */
+    isPublic?: boolean | null;
+    /**
+     * 提示词 id.
+     */
+    promptId?: Guid | null;
 }
 /**
  * 查询模型列表.
@@ -2434,6 +2689,33 @@ export interface QueryDefaultAiModelListResponse extends Parsable {
      * The aiModels property
      */
     aiModels?: AiNotKeyEndpoint[] | null;
+}
+/**
+ * 查询能看到的提示词列表.
+ */
+export interface QueryPromptListCommand extends Parsable {
+    /**
+     * 指定获取提示词，填写 PromptId 后，返回的提示词才会带上 Content.
+     */
+    promptId?: Guid | null;
+    /**
+     * 筛选分类.
+     */
+    promptType?: PromptType | null;
+    /**
+     * 团队 id，如果不填写，则返回所有公开的提示词.
+     */
+    teamId?: Guid | null;
+}
+export interface QueryPromptListCommandResponse extends Parsable {
+    /**
+     * 数量.
+     */
+    count?: number | null;
+    /**
+     * The items property
+     */
+    items?: PromptItem[] | null;
 }
 /**
  * 检查用户名是否重复.
@@ -2643,10 +2925,6 @@ export interface QueryWikiConfigCommandResponse extends AuditsInfo, Parsable {
  */
 export interface QueryWikiDetailInfoCommand extends Parsable {
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库 id.
      */
     wikiId?: Guid | null;
@@ -2686,10 +2964,6 @@ export interface QueryWikiDocumentInfoCommand extends Parsable {
      */
     documentId?: Guid | null;
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库 id.
      */
     wikiId?: Guid | null;
@@ -2702,10 +2976,6 @@ export interface QueryWikiDocumentListCommand extends PagedParamter, Parsable {
      * 筛选文件名称.
      */
     query?: string | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 知识库 id.
      */
@@ -2720,6 +2990,10 @@ export interface QueryWikiDocumentListItem extends AuditsInfo, Parsable {
      * The documentId property
      */
     documentId?: Guid | null;
+    /**
+     * 是否有向量化内容.
+     */
+    embedding?: boolean | null;
     /**
      * The fileName property
      */
@@ -2740,10 +3014,6 @@ export interface QueryWikiDocumentTaskListCommand extends Parsable {
      */
     documentId?: Guid | null;
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库id.
      */
     wikiId?: Guid | null;
@@ -2752,10 +3022,6 @@ export interface QueryWikiDocumentTaskListCommand extends Parsable {
  * 获取知识库简单信息.
  */
 export interface QueryWikiSimpleInfoCommand extends Parsable {
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 知识库 id.
      */
@@ -2852,10 +3118,6 @@ export interface SearchWikiDocumentTextCommand extends Parsable {
      * 搜索文本，区配文本.
      */
     query?: string | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
     /**
      * 知识库 id.            
      */
@@ -2975,7 +3237,6 @@ export function serializeCancalWikiDocumentTaskCommand(writer: SerializationWrit
     if (cancalWikiDocumentTaskCommand) {
         writer.writeGuidValue("documentId", cancalWikiDocumentTaskCommand.documentId);
         writer.writeGuidValue("taskId", cancalWikiDocumentTaskCommand.taskId);
-        writer.writeGuidValue("teamId", cancalWikiDocumentTaskCommand.teamId);
         writer.writeGuidValue("wikiId", cancalWikiDocumentTaskCommand.wikiId);
     }
 }
@@ -3016,6 +3277,17 @@ export function serializeCitation_Partition(writer: SerializationWriter, citatio
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeClearWikiDocumentEmbeddingCommand(writer: SerializationWriter, clearWikiDocumentEmbeddingCommand: Partial<ClearWikiDocumentEmbeddingCommand> | undefined | null = {}) : void {
+    if (clearWikiDocumentEmbeddingCommand) {
+        writer.writeGuidValue("documentId", clearWikiDocumentEmbeddingCommand.documentId);
+        writer.writeGuidValue("wikiId", clearWikiDocumentEmbeddingCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeComplateFileCommandResponse(writer: SerializationWriter, complateFileCommandResponse: Partial<ComplateFileCommandResponse> | undefined | null = {}) : void {
     if (complateFileCommandResponse) {
     }
@@ -3040,8 +3312,21 @@ export function serializeComplateUploadWikiDocumentCommand(writer: Serialization
     if (complateUploadWikiDocumentCommand) {
         writer.writeGuidValue("fileId", complateUploadWikiDocumentCommand.fileId);
         writer.writeBooleanValue("isSuccess", complateUploadWikiDocumentCommand.isSuccess);
-        writer.writeGuidValue("teamId", complateUploadWikiDocumentCommand.teamId);
         writer.writeGuidValue("wikiId", complateUploadWikiDocumentCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCreatePromptCommand(writer: SerializationWriter, createPromptCommand: Partial<CreatePromptCommand> | undefined | null = {}) : void {
+    if (createPromptCommand) {
+        writer.writeStringValue("content", createPromptCommand.content);
+        writer.writeStringValue("description", createPromptCommand.description);
+        writer.writeStringValue("name", createPromptCommand.name);
+        writer.writeEnumValue<PromptType>("promptType", createPromptCommand.promptType);
+        writer.writeCollectionOfPrimitiveValues<string>("tags", createPromptCommand.tags);
     }
 }
 /**
@@ -3064,7 +3349,16 @@ export function serializeCreateWikiCommand(writer: SerializationWriter, createWi
     if (createWikiCommand) {
         writer.writeStringValue("description", createWikiCommand.description);
         writer.writeStringValue("name", createWikiCommand.name);
-        writer.writeGuidValue("teamId", createWikiCommand.teamId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeDeletePromptCommand(writer: SerializationWriter, deletePromptCommand: Partial<DeletePromptCommand> | undefined | null = {}) : void {
+    if (deletePromptCommand) {
+        writer.writeGuidValue("promptId", deletePromptCommand.promptId);
     }
 }
 /**
@@ -3074,7 +3368,6 @@ export function serializeCreateWikiCommand(writer: SerializationWriter, createWi
 // @ts-ignore
 export function serializeDeleteWikiCommand(writer: SerializationWriter, deleteWikiCommand: Partial<DeleteWikiCommand> | undefined | null = {}) : void {
     if (deleteWikiCommand) {
-        writer.writeGuidValue("teamId", deleteWikiCommand.teamId);
         writer.writeGuidValue("wikiId", deleteWikiCommand.wikiId);
     }
 }
@@ -3086,7 +3379,6 @@ export function serializeDeleteWikiCommand(writer: SerializationWriter, deleteWi
 export function serializeDeleteWikiDocumentCommand(writer: SerializationWriter, deleteWikiDocumentCommand: Partial<DeleteWikiDocumentCommand> | undefined | null = {}) : void {
     if (deleteWikiDocumentCommand) {
         writer.writeGuidValue("documentId", deleteWikiDocumentCommand.documentId);
-        writer.writeGuidValue("teamId", deleteWikiDocumentCommand.teamId);
         writer.writeGuidValue("wikiId", deleteWikiDocumentCommand.wikiId);
     }
 }
@@ -3101,7 +3393,6 @@ export function serializeEmbeddingocumentCommand(writer: SerializationWriter, em
         writer.writeNumberValue("maxTokensPerParagraph", embeddingocumentCommand.maxTokensPerParagraph);
         writer.writeNumberValue("overlappingTokens", embeddingocumentCommand.overlappingTokens);
         writer.writeStringValue("splitMethod", embeddingocumentCommand.splitMethod);
-        writer.writeGuidValue("teamId", embeddingocumentCommand.teamId);
         writer.writeStringValue("tokenizer", embeddingocumentCommand.tokenizer);
         writer.writeGuidValue("wikiId", embeddingocumentCommand.wikiId);
     }
@@ -3296,8 +3587,37 @@ export function serializePreUploadWikiDocumentCommand(writer: SerializationWrite
         writer.writeStringValue("fileName", preUploadWikiDocumentCommand.fileName);
         writer.writeNumberValue("fileSize", preUploadWikiDocumentCommand.fileSize);
         writer.writeStringValue("mD5", preUploadWikiDocumentCommand.mD5);
-        writer.writeGuidValue("teamId", preUploadWikiDocumentCommand.teamId);
         writer.writeGuidValue("wikiId", preUploadWikiDocumentCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePromptItem(writer: SerializationWriter, promptItem: Partial<PromptItem> | undefined | null = {}) : void {
+    if (promptItem) {
+        serializeAuditsInfo(writer, promptItem)
+        writer.writeStringValue("avatarPath", promptItem.avatarPath);
+        writer.writeStringValue("content", promptItem.content);
+        writer.writeStringValue("description", promptItem.description);
+        writer.writeGuidValue("id", promptItem.id);
+        writer.writeStringValue("name", promptItem.name);
+        writer.writeEnumValue<PromptType>("promptType", promptItem.promptType);
+        writer.writeCollectionOfPrimitiveValues<string>("tags", promptItem.tags);
+        writer.writeGuidValue("teamId", promptItem.teamId);
+        writer.writeStringValue("teamName", promptItem.teamName);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePublishPromptCommand(writer: SerializationWriter, publishPromptCommand: Partial<PublishPromptCommand> | undefined | null = {}) : void {
+    if (publishPromptCommand) {
+        writer.writeBooleanValue("isPublic", publishPromptCommand.isPublic);
+        writer.writeGuidValue("promptId", publishPromptCommand.promptId);
     }
 }
 /**
@@ -3360,6 +3680,29 @@ export function serializeQueryDefaultAiModelListCommand(writer: SerializationWri
 export function serializeQueryDefaultAiModelListResponse(writer: SerializationWriter, queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined | null = {}) : void {
     if (queryDefaultAiModelListResponse) {
         writer.writeCollectionOfObjectValues<AiNotKeyEndpoint>("aiModels", queryDefaultAiModelListResponse.aiModels, serializeAiNotKeyEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPromptListCommand(writer: SerializationWriter, queryPromptListCommand: Partial<QueryPromptListCommand> | undefined | null = {}) : void {
+    if (queryPromptListCommand) {
+        writer.writeGuidValue("promptId", queryPromptListCommand.promptId);
+        writer.writeEnumValue<PromptType>("promptType", queryPromptListCommand.promptType);
+        writer.writeGuidValue("teamId", queryPromptListCommand.teamId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPromptListCommandResponse(writer: SerializationWriter, queryPromptListCommandResponse: Partial<QueryPromptListCommandResponse> | undefined | null = {}) : void {
+    if (queryPromptListCommandResponse) {
+        writer.writeNumberValue("count", queryPromptListCommandResponse.count);
+        writer.writeCollectionOfObjectValues<PromptItem>("items", queryPromptListCommandResponse.items, serializePromptItem);
     }
 }
 /**
@@ -3496,7 +3839,6 @@ export function serializeQueryWikiConfigCommandResponse(writer: SerializationWri
 // @ts-ignore
 export function serializeQueryWikiDetailInfoCommand(writer: SerializationWriter, queryWikiDetailInfoCommand: Partial<QueryWikiDetailInfoCommand> | undefined | null = {}) : void {
     if (queryWikiDetailInfoCommand) {
-        writer.writeGuidValue("teamId", queryWikiDetailInfoCommand.teamId);
         writer.writeGuidValue("wikiId", queryWikiDetailInfoCommand.wikiId);
     }
 }
@@ -3523,7 +3865,6 @@ export function serializeQueryWikiDetailInfoResponse(writer: SerializationWriter
 export function serializeQueryWikiDocumentInfoCommand(writer: SerializationWriter, queryWikiDocumentInfoCommand: Partial<QueryWikiDocumentInfoCommand> | undefined | null = {}) : void {
     if (queryWikiDocumentInfoCommand) {
         writer.writeGuidValue("documentId", queryWikiDocumentInfoCommand.documentId);
-        writer.writeGuidValue("teamId", queryWikiDocumentInfoCommand.teamId);
         writer.writeGuidValue("wikiId", queryWikiDocumentInfoCommand.wikiId);
     }
 }
@@ -3536,7 +3877,6 @@ export function serializeQueryWikiDocumentListCommand(writer: SerializationWrite
     if (queryWikiDocumentListCommand) {
         serializePagedParamter(writer, queryWikiDocumentListCommand)
         writer.writeStringValue("query", queryWikiDocumentListCommand.query);
-        writer.writeGuidValue("teamId", queryWikiDocumentListCommand.teamId);
         writer.writeGuidValue("wikiId", queryWikiDocumentListCommand.wikiId);
     }
 }
@@ -3550,6 +3890,7 @@ export function serializeQueryWikiDocumentListItem(writer: SerializationWriter, 
         serializeAuditsInfo(writer, queryWikiDocumentListItem)
         writer.writeStringValue("contentType", queryWikiDocumentListItem.contentType);
         writer.writeGuidValue("documentId", queryWikiDocumentListItem.documentId);
+        writer.writeBooleanValue("embedding", queryWikiDocumentListItem.embedding);
         writer.writeStringValue("fileName", queryWikiDocumentListItem.fileName);
         writer.writeStringValue("fileSize", queryWikiDocumentListItem.fileSize);
     }
@@ -3572,7 +3913,6 @@ export function serializeQueryWikiDocumentListResponse(writer: SerializationWrit
 export function serializeQueryWikiDocumentTaskListCommand(writer: SerializationWriter, queryWikiDocumentTaskListCommand: Partial<QueryWikiDocumentTaskListCommand> | undefined | null = {}) : void {
     if (queryWikiDocumentTaskListCommand) {
         writer.writeGuidValue("documentId", queryWikiDocumentTaskListCommand.documentId);
-        writer.writeGuidValue("teamId", queryWikiDocumentTaskListCommand.teamId);
         writer.writeGuidValue("wikiId", queryWikiDocumentTaskListCommand.wikiId);
     }
 }
@@ -3583,7 +3923,6 @@ export function serializeQueryWikiDocumentTaskListCommand(writer: SerializationW
 // @ts-ignore
 export function serializeQueryWikiSimpleInfoCommand(writer: SerializationWriter, queryWikiSimpleInfoCommand: Partial<QueryWikiSimpleInfoCommand> | undefined | null = {}) : void {
     if (queryWikiSimpleInfoCommand) {
-        writer.writeGuidValue("teamId", queryWikiSimpleInfoCommand.teamId);
         writer.writeGuidValue("wikiId", queryWikiSimpleInfoCommand.wikiId);
     }
 }
@@ -3656,7 +3995,6 @@ export function serializeSearchWikiDocumentTextCommand(writer: SerializationWrit
     if (searchWikiDocumentTextCommand) {
         writer.writeGuidValue("documentId", searchWikiDocumentTextCommand.documentId);
         writer.writeStringValue("query", searchWikiDocumentTextCommand.query);
-        writer.writeGuidValue("teamId", searchWikiDocumentTextCommand.teamId);
         writer.writeGuidValue("wikiId", searchWikiDocumentTextCommand.wikiId);
     }
 }
@@ -3701,7 +4039,6 @@ export function serializeSetTeamAdminCommand(writer: SerializationWriter, setTea
 export function serializeSetWikiDefaultModelCommand(writer: SerializationWriter, setWikiDefaultModelCommand: Partial<SetWikiDefaultModelCommand> | undefined | null = {}) : void {
     if (setWikiDefaultModelCommand) {
         writer.writeGuidValue("modelId", setWikiDefaultModelCommand.modelId);
-        writer.writeGuidValue("teamId", setWikiDefaultModelCommand.teamId);
         writer.writeGuidValue("wikiId", setWikiDefaultModelCommand.wikiId);
     }
 }
@@ -3757,6 +4094,21 @@ export function serializeUpdateAiEndpointRequest(writer: SerializationWriter, up
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeUpdatePromptCommand(writer: SerializationWriter, updatePromptCommand: Partial<UpdatePromptCommand> | undefined | null = {}) : void {
+    if (updatePromptCommand) {
+        writer.writeStringValue("content", updatePromptCommand.content);
+        writer.writeStringValue("description", updatePromptCommand.description);
+        writer.writeStringValue("name", updatePromptCommand.name);
+        writer.writeGuidValue("promptId", updatePromptCommand.promptId);
+        writer.writeEnumValue<PromptType>("promptType", updatePromptCommand.promptType);
+        writer.writeCollectionOfPrimitiveValues<string>("tags", updatePromptCommand.tags);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeUpdateTeamInfoCommand(writer: SerializationWriter, updateTeamInfoCommand: Partial<UpdateTeamInfoCommand> | undefined | null = {}) : void {
     if (updateTeamInfoCommand) {
         writer.writeStringValue("description", updateTeamInfoCommand.description);
@@ -3783,8 +4135,7 @@ export function serializeUpdateUserPasswordCommand(writer: SerializationWriter, 
 // @ts-ignore
 export function serializeUpdateWikiConfigCommand(writer: SerializationWriter, updateWikiConfigCommand: Partial<UpdateWikiConfigCommand> | undefined | null = {}) : void {
     if (updateWikiConfigCommand) {
-        writer.writeObjectValue<WikiConfig>("config", updateWikiConfigCommand.config, serializeWikiConfig);
-        writer.writeGuidValue("teamId", updateWikiConfigCommand.teamId);
+        serializeWikiConfig(writer, updateWikiConfigCommand)
         writer.writeGuidValue("wikiId", updateWikiConfigCommand.wikiId);
     }
 }
@@ -3800,6 +4151,17 @@ export function serializeUpdateWikiInfoCommand(writer: SerializationWriter, upda
         writer.writeStringValue("markdown", updateWikiInfoCommand.markdown);
         writer.writeStringValue("name", updateWikiInfoCommand.name);
         writer.writeGuidValue("wikiId", updateWikiInfoCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadPromptAvatarCommand(writer: SerializationWriter, uploadPromptAvatarCommand: Partial<UploadPromptAvatarCommand> | undefined | null = {}) : void {
+    if (uploadPromptAvatarCommand) {
+        writer.writeGuidValue("fileId", uploadPromptAvatarCommand.fileId);
+        writer.writeGuidValue("promptId", uploadPromptAvatarCommand.promptId);
     }
 }
 /**
@@ -3910,10 +4272,6 @@ export interface SetWikiDefaultModelCommand extends Parsable {
      */
     modelId?: Guid | null;
     /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
-    /**
      * 知识库 id.
      */
     wikiId?: Guid | null;
@@ -3969,6 +4327,35 @@ export interface UpdateAiEndpointRequest extends AiEndpoint, Parsable {
     modelId?: Guid | null;
 }
 /**
+ * 更新提示词.
+ */
+export interface UpdatePromptCommand extends Parsable {
+    /**
+     * 助手设定,markdown.
+     */
+    content?: string | null;
+    /**
+     * 描述.
+     */
+    description?: string | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * 提示词 id.
+     */
+    promptId?: Guid | null;
+    /**
+     * 分类.
+     */
+    promptType?: PromptType | null;
+    /**
+     * 标签.
+     */
+    tags?: string[] | null;
+}
+/**
  * 更新团队信息命令.
  */
 export interface UpdateTeamInfoCommand extends Parsable {
@@ -4005,15 +4392,7 @@ export interface UpdateUserPasswordCommand extends Parsable {
 /**
  * 更新知识库设置信息.
  */
-export interface UpdateWikiConfigCommand extends Parsable {
-    /**
-     * 知识库配置.
-     */
-    config?: WikiConfig | null;
-    /**
-     * 团队 id.
-     */
-    teamId?: Guid | null;
+export interface UpdateWikiConfigCommand extends Parsable, WikiConfig {
     /**
      * 知识库 id.
      */
@@ -4045,6 +4424,16 @@ export interface UpdateWikiInfoCommand extends Parsable {
     wikiId?: Guid | null;
 }
 export type UploadImageType = (typeof UploadImageTypeObject)[keyof typeof UploadImageTypeObject];
+export interface UploadPromptAvatarCommand extends Parsable {
+    /**
+     * The fileId property
+     */
+    fileId?: Guid | null;
+    /**
+     * The promptId property
+     */
+    promptId?: Guid | null;
+}
 export interface UploadTeamAvatarCommand extends Parsable {
     /**
      * The fileId property
@@ -4248,13 +4637,33 @@ export const FileVisibilityObject = {
     Private: "private",
 } as const;
 /**
+ * 提示词类型.
+ */
+export const PromptTypeObject = {
+    Academic: "academic",
+    Career: "career",
+    Copywriting: "copywriting",
+    Design: "design",
+    Education: "education",
+    Emotion: "emotion",
+    Entertainment: "entertainment",
+    Gaming: "gaming",
+    Generic: "generic",
+    Lifestyle: "lifestyle",
+    Business: "business",
+    Office: "office",
+    Programming: "programming",
+    Translation: "translation",
+} as const;
+/**
  * 上传的图像类型.
  */
 export const UploadImageTypeObject = {
     None: "none",
     UserAvatar: "userAvatar",
     TeamAvatar: "teamAvatar",
-    DocumentFile: "documentFile",
+    WikiAvatar: "wikiAvatar",
+    PromptAvatar: "promptAvatar",
 } as const;
 /* tslint:enable */
 /* eslint-enable */

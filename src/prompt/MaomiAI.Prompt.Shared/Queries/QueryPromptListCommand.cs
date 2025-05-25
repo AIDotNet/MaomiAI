@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI.Infra.Models;
+using MaomiAI.Prompt.Models;
 using MaomiAI.Prompt.Queries.Responses;
 using MediatR;
 
@@ -16,7 +17,17 @@ namespace MaomiAI.Prompt.Queries;
 public class QueryPromptListCommand : IRequest<QueryPromptListCommandResponse>
 {
     /// <summary>
-    /// 团队 id.
+    /// 团队 id，如果不填写，则返回所有公开的提示词.
     /// </summary>
     public Guid? TeamId { get; init; }
+
+    /// <summary>
+    /// 指定获取提示词，填写 PromptId 后，返回的提示词才会带上 Content.
+    /// </summary>
+    public Guid? PromptId { get; init; }
+
+    /// <summary>
+    /// 筛选分类.
+    /// </summary>
+    public PromptType? PromptType { get; init; }
 }

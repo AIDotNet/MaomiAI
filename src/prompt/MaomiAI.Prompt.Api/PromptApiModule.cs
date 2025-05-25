@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maomi;
 
 namespace MaomiAI.Prompt.Api;
 
-class PromptApiModule
+public class PromptApiModule : IModule
 {
+    public void ConfigureServices(ServiceContext context)
+    {
+    }
 }

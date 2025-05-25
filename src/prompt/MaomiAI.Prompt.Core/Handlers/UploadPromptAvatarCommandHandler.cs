@@ -46,10 +46,10 @@ public class UploadPromptAvatarCommandHandler : IRequestHandler<UploadPromptAvat
             throw new BusinessException("头像文件尚未上传完毕") { StatusCode = 400 };
         }
 
-        var prompt = await _dbContext.Prompts.FirstOrDefaultAsync(x => x.Id == request.TeamId, cancellationToken);
+        var prompt = await _dbContext.Prompts.FirstOrDefaultAsync(x => x.Id == request.PromptId, cancellationToken);
         if (prompt == null)
         {
-            throw new BusinessException("团队不存在") { StatusCode = 400 };
+            throw new BusinessException("提示词不存在") { StatusCode = 400 };
         }
 
         prompt.AvatarPath = file.ObjectKey;

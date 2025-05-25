@@ -5,6 +5,7 @@
 // </copyright>
 
 using FastEndpoints;
+using MaomiAI.Document.Core.Handlers.Documents;
 using MaomiAI.Document.Shared.Commands;
 using MaomiAI.Team.Shared.Queries;
 using MediatR;

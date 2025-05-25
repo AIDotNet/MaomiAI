@@ -27,7 +27,12 @@ public enum UploadImageType
     TeamAvatar = 2,
 
     /// <summary>
-    /// 知识库中的
+    /// 知识库的头像.
     /// </summary>
-    DocumentFile = 3,
+    WikiAvatar = 3,
+
+    /// <summary>
+    /// 知识库头像头像.
+    /// </summary>
+    PromptAvatar = 4
 }

@@ -79,7 +79,7 @@ public class QueryWikiDocumentTaskListCommandHandler : IRequestHandler<QueryWiki
                 OverlappingTokens = b.OverlappingTokens,
                 TeamId = a.TeamId,
                 Tokenizer = b.Tokenizer,
-            }).ToListAsync(cancellationToken);
+            }).OrderByDescending(x => x.CreateTime).ToListAsync(cancellationToken);
 
         await _mediator.Send(new FillUserInfoCommand { Items = result });
 

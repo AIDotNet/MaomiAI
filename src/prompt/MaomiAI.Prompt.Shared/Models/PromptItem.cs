@@ -1,4 +1,4 @@
-﻿// <copyright file="CreatePromptCommand.cs" company="MaomiAI">
+﻿// <copyright file="PromptItem.cs" company="MaomiAI">
 // Copyright (c) MaomiAI. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Github link: https://github.com/AIDotNet/MaomiAI
@@ -53,4 +53,9 @@ public class PromptItem : AuditsInfo
     /// 团队名称.
     /// </summary>
     public string TeamName { get; init; } = default!;
+
+    /// <summary>
+    /// 提示词类型.
+    /// </summary>
+    public PromptType PromptType { get; set; }
 }

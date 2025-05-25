@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document/embedding
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document/embedding
  */
 export interface EmbeddingRequestBuilder extends BaseRequestBuilder<EmbeddingRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface EmbeddingRequestBuilder extends BaseRequestBuilder<EmbeddingReq
 /**
  * Uri template for the request builder.
  */
-export const EmbeddingRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document/embedding";
+export const EmbeddingRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document/embedding";
 /**
  * Metadata for all the requests in the request builder.
  */

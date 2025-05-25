@@ -6,6 +6,7 @@ import { WikiListPageRouter, WikiPageRouter } from "./wiki/PageRouter";
 import { PluginPageRouter } from "./plugin/PageRouter";
 import { SettingPageRouter } from "./setting/PageRouter";
 import TeamDashboard from "./TeamDashboard";
+import { PromptPageRouter } from "./prompt/PageRouter";
 
 export const TeamPageRouter: RouteObject = {
   path: "team/:teamId/*",
@@ -38,6 +39,10 @@ export const TeamPageRouter: RouteObject = {
     {
       path: "setting/*",
       ...SettingPageRouter,
+    },
+    {
+      path: "prompt/*",
+      ...PromptPageRouter,
     },
   ],
 };

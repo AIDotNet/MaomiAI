@@ -32,7 +32,7 @@ export default function Setting() {
     }
 
     try {
-      const response = await apiClient.api.team.byId(teamId).teamdetail.get();
+      const response = await apiClient.api.team.byTeamId(teamId).teamdetail.get();
       if (response) {
         setTeamInfo(response);
       }

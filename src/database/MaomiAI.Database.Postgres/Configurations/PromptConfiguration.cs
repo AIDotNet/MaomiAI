@@ -48,6 +48,10 @@ public partial class PromptConfiguration : IEntityTypeConfiguration<PromptEntity
             .HasDefaultValue(false)
             .HasComment("软删除")
             .HasColumnName("is_deleted");
+        entity.Property(e => e.IsPublic)
+            .HasDefaultValue(false)
+            .HasComment("是否公开")
+            .HasColumnName("is_public");
         entity.Property(e => e.Name)
             .HasMaxLength(20)
             .HasComment("名称")
@@ -59,6 +63,11 @@ public partial class PromptConfiguration : IEntityTypeConfiguration<PromptEntity
         entity.Property(e => e.TeamId)
             .HasComment("团队id")
             .HasColumnName("team_id");
+        entity.Property(e => e.Type)
+            .HasMaxLength(20)
+            .HasDefaultValueSql("''::character varying")
+            .HasComment("分类")
+            .HasColumnName("type");
         entity.Property(e => e.UpdateTime)
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .HasComment("更新时间")

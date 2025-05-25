@@ -39,8 +39,6 @@ public partial class PromptEntity : IFullAudited
     /// </summary>
     public string AvatarPath { get; set; } = default!;
 
-    public bool IsPublic { get; set; } = false;
-
     /// <summary>
     /// 软删除.
     /// </summary>
@@ -70,4 +68,14 @@ public partial class PromptEntity : IFullAudited
     /// 团队id.
     /// </summary>
     public Guid TeamId { get; set; }
+
+    /// <summary>
+    /// 是否公开.
+    /// </summary>
+    public bool IsPublic { get; set; }
+
+    /// <summary>
+    /// 分类.
+    /// </summary>
+    public string Type { get; set; } = default!;
 }

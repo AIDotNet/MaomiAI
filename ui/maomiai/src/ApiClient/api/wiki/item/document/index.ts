@@ -23,7 +23,7 @@ import { TasksRequestBuilderRequestsMetadata, type TasksRequestBuilder } from '.
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document
  */
 export interface DocumentRequestBuilder extends BaseRequestBuilder<DocumentRequestBuilder> {
     /**
@@ -66,7 +66,7 @@ export interface DocumentRequestBuilder extends BaseRequestBuilder<DocumentReque
 /**
  * Uri template for the request builder.
  */
-export const DocumentRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document";
+export const DocumentRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document";
 /**
  * Metadata for all the navigation properties in the request builder.
  */

@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/settings/default_model
+ * Builds and executes requests for operations under /api/wiki/{teamId}/settings/default_model
  */
 export interface Default_modelRequestBuilder extends BaseRequestBuilder<Default_modelRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface Default_modelRequestBuilder extends BaseRequestBuilder<Default_
 /**
  * Uri template for the request builder.
  */
-export const Default_modelRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/settings/default_model";
+export const Default_modelRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/settings/default_model";
 /**
  * Metadata for all the requests in the request builder.
  */

@@ -43,6 +43,7 @@ public class CreatePromptCommandHandler : IRequestHandler<CreatePromptCommand, I
             Tags = string.Join(',', request.Tags),
             TeamId = request.TeamId,
             AvatarPath = string.Empty,
+            Type = request.PromptType.ToString(),
         };
 
         await _databaseContext.Prompts.AddAsync(prompt, cancellationToken);

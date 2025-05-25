@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document/canal_tasks
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document/canal_tasks
  */
 export interface Canal_tasksRequestBuilder extends BaseRequestBuilder<Canal_tasksRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface Canal_tasksRequestBuilder extends BaseRequestBuilder<Canal_task
 /**
  * Uri template for the request builder.
  */
-export const Canal_tasksRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document/canal_tasks";
+export const Canal_tasksRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document/canal_tasks";
 /**
  * Metadata for all the requests in the request builder.
  */

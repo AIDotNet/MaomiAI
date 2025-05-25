@@ -67,7 +67,7 @@ public class EmbeddingDocumentCommandHandler : IRequestHandler<EmbeddingocumentC
                 b.AiModelType,
             }).FirstOrDefaultAsync();
 
-        if (teamWikiConfig == null || AiModelType.Embedding.ToString().Equals(teamWikiConfig.AiModelType, StringComparison.OrdinalIgnoreCase))
+        if (teamWikiConfig == null || !AiModelType.Embedding.ToString().Equals(teamWikiConfig.AiModelType, StringComparison.OrdinalIgnoreCase))
         {
             throw new BusinessException("知识库未配置向量化模型") { StatusCode = 409 };
         }

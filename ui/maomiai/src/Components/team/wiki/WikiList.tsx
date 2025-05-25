@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { GetApiClient } from "../../ServiceClient";
-import type { MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse } from "../../../apiClient/models";
 import {
   Input,
   Button,
@@ -21,12 +20,12 @@ import {
   LockOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
+import { QueryWikiSimpleInfoResponse } from "@/apiClient/models";
 
 export default function WikiList() {
   const { teamId } = useParams();
   const navigate = useNavigate();
-  const [wikiList, setWikiList] = useState<
-    MaomiAIDocumentSharedQueriesResponseQueryWikiSimpleInfoResponse[]
+  const [wikiList, setWikiList] = useState<QueryWikiSimpleInfoResponse[]
   >([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

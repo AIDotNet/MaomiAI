@@ -42,14 +42,8 @@ public class SearchWikiDocumentTextCommandHandler : IRequestHandler<SearchWikiDo
     /// <inheritdoc/>
     public async Task<SearchWikiDocumentTextCommandResponse> Handle(SearchWikiDocumentTextCommand request, CancellationToken cancellationToken)
     {
-        var document = await _databaseContext.TeamWikiDocuments.FirstOrDefaultAsync(x => x.Id == request.DocumentId);
-        if (document == null)
-        {
-            throw new BusinessException("文档不存在") { StatusCode = 404 };
-        }
-
         var teamWikiAiConfig = await _databaseContext.TeamWikiConfigs
-        .Where(x => x.TeamId == document.TeamId && x.WikiId == document.WikiId)
+        .Where(x => x.TeamId == request.TeamId && x.WikiId == request.WikiId)
         .Join(_databaseContext.TeamAiModels, a => a.EmbeddingModelId, b => b.Id, (a, x) => new
         {
             WikiConfig = new WikiConfig
@@ -98,11 +92,23 @@ public class SearchWikiDocumentTextCommandHandler : IRequestHandler<SearchWikiDo
             })
             .Build();
 
-        var query = string.IsNullOrEmpty(request.Query) ? string.Empty : request.Query;
-        var searchResult = await memoryClient.SearchAsync(query: query, index: "n" + document.WikiId, limit: 5, filter: new MemoryFilter
+        MemoryFilter filter = new MemoryFilter();
+        if (request.DocumentId != null)
+        {
+            var document = await _databaseContext.TeamWikiDocuments.FirstOrDefaultAsync(x => x.Id == request.DocumentId);
+            if (document == null)
+            {
+                throw new BusinessException("文档不存在") { StatusCode = 404 };
+            }
+
+            filter = new MemoryFilter
             {
                 { "fileId", document.FileId.ToString() },
-            });
+            };
+        }
+
+        var query = string.IsNullOrEmpty(request.Query) ? string.Empty : request.Query;
+        var searchResult = await memoryClient.SearchAsync(query: query, index: request.WikiId.ToString(), limit: 5, filter: filter);
 
         if (searchResult == null)
         {

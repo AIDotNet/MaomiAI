@@ -14,5 +14,5 @@ public static class DocumentApi
     /// <summary>
     /// 知识库 API 路由前缀.
     /// </summary>
-    public const string ApiPrefix = "/wiki/{temaId}";
+    public const string ApiPrefix = "/wiki/{teamId}";
 }

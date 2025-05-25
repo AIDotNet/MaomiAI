@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createQueryWikiS
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/simple_info
+ * Builds and executes requests for operations under /api/wiki/{teamId}/simple_info
  */
 export interface Simple_infoRequestBuilder extends BaseRequestBuilder<Simple_infoRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface Simple_infoRequestBuilder extends BaseRequestBuilder<Simple_inf
 /**
  * Uri template for the request builder.
  */
-export const Simple_infoRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/simple_info";
+export const Simple_infoRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/simple_info";
 /**
  * Metadata for all the requests in the request builder.
  */

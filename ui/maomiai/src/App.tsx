@@ -48,6 +48,8 @@ import WikiSetting from "./components/team/wiki/WikiSetting";
 import WikiEmbedding from "./components/team/wiki/WikiEmbedding";
 import TeamSetting from "./components/team/setting/TeamSetting";
 import TeamAdmin from "./components/team/setting/TeamAdmin";
+import WikiEmbeddingTest from "./components/team/wiki/WikiEmbeddingTest";
+import TeamPrompt from "./components/team/prompt/TeamPrompt";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -88,8 +90,10 @@ function App() {
         return "3";
       case "plugin":
         return "4";
-      case "setting":
+      case "prompt":
         return "5";
+      case "setting":
+        return "10";
       default:
         return "1";
     }
@@ -199,6 +203,15 @@ function App() {
         },
         {
           key: "3-5",
+          icon: <ApiOutlined />,
+          label: (
+            <Link to={`/app/team/${location.pathname.split("/")[3]}/prompt`}>
+              提示词
+            </Link>
+          ),
+        },
+        {
+          key: "3-10",
           icon: <SettingOutlined />,
           label: (
             <Link to={`/app/team/${location.pathname.split("/")[3]}/setting`}>
@@ -224,8 +237,10 @@ function App() {
     <>
       {contextHolder}
       <Layout className="layout">
-        <Header className="header" logo={<Image src="./logo.png" width={60} height={60} />}>
-        </Header>
+        <Header
+          className="header"
+          logo={<Image src="./logo.png" width={60} height={60} />}
+        ></Header>
         <Layout>
           <Sider width={200} className="sider" collapsible>
             <Menu
@@ -247,10 +262,15 @@ function App() {
                   <Route path="dashboard" element={<TeamDashboard />} />
                   <Route path="aimodel" element={<AiModel />} />
                   <Route path="application" element={<Application />} />
+                  <Route path="prompt" element={<TeamPrompt />} />
                   <Route path="wiki/:wikiId/*" element={<Wiki />}>
                     <Route path="setting" element={<WikiSetting />} />
                     <Route path="document" element={<WikiDocument />} />
                     <Route path="embedding" element={<WikiEmbedding />} />
+                    <Route
+                      path="embeddingtest"
+                      element={<WikiEmbeddingTest />}
+                    />
                     <Route path="*" element={<WikiSetting />} />
                   </Route>
                   <Route path="wikilist" element={<WikiList />} />

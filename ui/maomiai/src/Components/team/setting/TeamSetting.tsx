@@ -4,7 +4,7 @@ import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import type { RcFile } from 'antd/es/upload';
 import { GetApiClient, UploadImage } from '../../ServiceClient';
 import { useNavigate, useParams } from 'react-router';
-import { QueryTeamDetailCommandResponse } from '../../../apiClient/models';
+import { QueryTeamDetailCommandResponse, UploadImageTypeObject } from '../../../apiClient/models';
 
 
 export default function TeamSetting() {
@@ -25,7 +25,7 @@ export default function TeamSetting() {
           }
         try {
             setLoading(true);
-            const response = await apiClient.api.team.byId(teamId).teamdetail.get();
+            const response = await apiClient.api.team.byTeamId(teamId).teamdetail.get();
             if (response) {
                 setTeamDetail(response);
                 // Update form with team details
@@ -56,7 +56,7 @@ export default function TeamSetting() {
             return;
           }
         try {
-            await apiClient.api.team.byId(teamId).update.post({
+            await apiClient.api.team.byTeamId(teamId).info.post({
                 name: values.name,
                 description: values.description,
                 isPublic: values.isPublic,
@@ -87,16 +87,18 @@ export default function TeamSetting() {
             messageApi.error('请选择一个文件');
             return;
         }
-
+        if (!teamId) {
+            messageApi.error("团队ID不存在");
+            return;
+          }
         try {
             setUploading(true);
             // 上传头像
-            const preUploadResponse = await UploadImage(apiClient, file, MaomiAIStoreEnumsUploadImageTypeObject.TeamAvatar);
+            const preUploadResponse = await UploadImage(apiClient, file, UploadImageTypeObject.TeamAvatar);
 
             // 更新头像
-            await apiClient.api.team.config.uploadavatar.post({
+            await apiClient.api.team.byTeamId(teamId).config.uploadavatar.post({
                 fileId: preUploadResponse.fileId,
-                teamId: teamId
             });
 
             messageApi.success('头像更新成功');

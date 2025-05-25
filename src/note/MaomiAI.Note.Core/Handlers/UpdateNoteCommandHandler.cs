@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Note.Handlers;
 
-public class QueryNoteTreeCommandHandlerUpdateNoteCommandHandler : IRequestHandler<UpdateNoteCommand, EmptyCommandResponse>
+public class UpdateNoteCommandHandler : IRequestHandler<UpdateNoteCommand, EmptyCommandResponse>
 {
     private readonly DatabaseContext _databaseContext;
     private readonly UserContext _userContext;
@@ -59,6 +59,11 @@ public class QueryNoteTreeCommandHandlerUpdateNoteCommandHandler : IRequestHandl
         if (!string.IsNullOrWhiteSpace(request.Content))
         {
             note.Content = request.Content;
+        }
+
+        if (request.IsShared != null)
+        {
+            note.IsShared = request.IsShared.Value;
         }
 
         _databaseContext.Notes.Update(note);

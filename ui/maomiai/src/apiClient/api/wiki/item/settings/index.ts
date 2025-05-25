@@ -11,7 +11,7 @@ import { type Upload_avatarRequestBuilder, Upload_avatarRequestBuilderRequestsMe
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/settings
+ * Builds and executes requests for operations under /api/wiki/{teamId}/settings
  */
 export interface SettingsRequestBuilder extends BaseRequestBuilder<SettingsRequestBuilder> {
     /**
@@ -30,7 +30,7 @@ export interface SettingsRequestBuilder extends BaseRequestBuilder<SettingsReque
 /**
  * Uri template for the request builder.
  */
-export const SettingsRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/settings";
+export const SettingsRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/settings";
 /**
  * Metadata for all the navigation properties in the request builder.
  */

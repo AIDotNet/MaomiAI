@@ -14,4 +14,9 @@ public class QueryWikiDocumentListItem : AuditsInfo
     public string FileName { get; init; }
     public long FileSize { get; init; }
     public string ContentType { get; init; }
+
+    /// <summary>
+    /// 是否有向量化内容.
+    /// </summary>
+    public bool Embedding { get; init; }
 }

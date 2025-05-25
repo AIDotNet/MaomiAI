@@ -4,6 +4,8 @@
 // @ts-ignore
 import { AimodelRequestBuilderNavigationMetadata, type AimodelRequestBuilder } from './aimodel/index.js';
 // @ts-ignore
+import { PromptRequestBuilderNavigationMetadata, type PromptRequestBuilder } from './prompt/index.js';
+// @ts-ignore
 import { PublicRequestBuilderNavigationMetadata, type PublicRequestBuilder } from './public/index.js';
 // @ts-ignore
 import { StoreRequestBuilderNavigationMetadata, type StoreRequestBuilder } from './store/index.js';
@@ -24,6 +26,10 @@ export interface ApiRequestBuilder extends BaseRequestBuilder<ApiRequestBuilder>
      * The aimodel property
      */
     get aimodel(): AimodelRequestBuilder;
+    /**
+     * The prompt property
+     */
+    get prompt(): PromptRequestBuilder;
     /**
      * The public property
      */
@@ -55,6 +61,9 @@ export const ApiRequestBuilderUriTemplate = "{+baseurl}/api";
 export const ApiRequestBuilderNavigationMetadata: Record<Exclude<keyof ApiRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     aimodel: {
         navigationMetadata: AimodelRequestBuilderNavigationMetadata,
+    },
+    prompt: {
+        navigationMetadata: PromptRequestBuilderNavigationMetadata,
     },
     public: {
         navigationMetadata: PublicRequestBuilderNavigationMetadata,

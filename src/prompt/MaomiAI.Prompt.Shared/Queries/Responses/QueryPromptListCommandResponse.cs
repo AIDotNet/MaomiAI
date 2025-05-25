@@ -12,5 +12,9 @@ namespace MaomiAI.Prompt.Queries.Responses;
 
 public class QueryPromptListCommandResponse
 {
+    /// <summary>
+    /// 数量.
+    /// </summary>
+    public int Count { get; init; }
     public IReadOnlyCollection<PromptItem> Items { get; init; } = new List<PromptItem>();
 }

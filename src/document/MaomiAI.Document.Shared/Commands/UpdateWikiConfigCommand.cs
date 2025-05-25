@@ -13,7 +13,7 @@ namespace MaomiAI.Document.Shared.Commands;
 /// <summary>
 /// 更新知识库设置信息.
 /// </summary>
-public class UpdateWikiConfigCommand : IRequest<EmptyCommandResponse>
+public class UpdateWikiConfigCommand : WikiConfig, IRequest<EmptyCommandResponse>
 {
     /// <summary>
     /// 团队 id.
@@ -24,9 +24,4 @@ public class UpdateWikiConfigCommand : IRequest<EmptyCommandResponse>
     /// 知识库 id.
     /// </summary>
     public Guid WikiId { get; init; }
-
-    /// <summary>
-    /// 知识库配置.
-    /// </summary>
-    public WikiConfig Config { get; init; } = default!;
 }

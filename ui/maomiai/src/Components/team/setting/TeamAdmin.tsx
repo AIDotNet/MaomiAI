@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import { Card, Input, Button, List, Avatar, message, Modal, Table, Space } from "antd";
+import {
+  Card,
+  Input,
+  Button,
+  List,
+  Avatar,
+  message,
+  Modal,
+  Table,
+  Space,
+} from "antd";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
 import { TeamMemberResponse } from "../../../apiClient/models";
 import { GetApiClient } from "../../ServiceClient";
@@ -8,12 +18,8 @@ import { useNavigate, useParams } from "react-router";
 export default function TeamAdmin() {
   const { teamId } = useParams();
   const navigate = useNavigate();
-  const [admins, setAdmins] = useState<
-    TeamMemberResponse[]
-  >([]);
-  const [members, setMembers] = useState<
-    TeamMemberResponse[]
-  >([]);
+  const [admins, setAdmins] = useState<TeamMemberResponse[]>([]);
+  const [members, setMembers] = useState<TeamMemberResponse[]>([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isSelectModalVisible, setIsSelectModalVisible] = useState(false);
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
@@ -27,7 +33,9 @@ export default function TeamAdmin() {
       return;
     }
     try {
-      const response = await apiClient.api.team.byId(teamId).adminlist.get();
+      const response = await apiClient.api.team
+        .byTeamId(teamId)
+        .adminlist.get();
       if (response) {
         setAdmins(response);
       }
@@ -44,10 +52,12 @@ export default function TeamAdmin() {
       return;
     }
     try {
-      const response = await apiClient.api.team.byId(teamId).memberlist.post({
-        pageNo: 1,
-        pageSize: 100,
-      });
+      const response = await apiClient.api.team
+        .byTeamId(teamId)
+        .memberlist.post({
+          pageNo: 1,
+          pageSize: 100,
+        });
       if (response) {
         setMembers(response.items || []);
       }
@@ -62,10 +72,17 @@ export default function TeamAdmin() {
   }, [teamId]);
 
   // Handle admin status change
-  const handleAdminStatusChange = async (userId: string, isAdmin: boolean) => {
+  const handleAdminStatusChange = async (
+    userId: string,
+    isAdmin: boolean
+  ) => {
+    if (!teamId) {
+      messageApi.error("团队ID不存在");
+      return;
+    }
+
     try {
-      await apiClient.api.team.setadmin.post({
-        teamId: teamId,
+      await apiClient.api.team.byTeamId(teamId).setadmin.post({
         userId: userId,
         isAdmin: isAdmin,
       });
@@ -83,10 +100,14 @@ export default function TeamAdmin() {
       messageApi.warning("请选择要设置为管理员的成员");
       return;
     }
+    
+    if (!teamId) {
+      messageApi.error("团队ID不存在");
+      return;
+    }
 
     try {
-      await apiClient.api.team.setadmin.post({
-        teamId: teamId,
+      await apiClient.api.team.byTeamId(teamId).setadmin.post({
         userId: selectedMember,
         isAdmin: true,
       });
@@ -151,8 +172,8 @@ export default function TeamAdmin() {
             onChange={(e) => setSearchKeyword(e.target.value)}
             style={{ width: 200, marginRight: 16 }}
           />
-          <Button 
-            type="primary" 
+          <Button
+            type="primary"
             icon={<PlusOutlined />}
             onClick={() => {
               setIsSelectModalVisible(true);
@@ -201,7 +222,7 @@ export default function TeamAdmin() {
             dataSource={members}
             rowKey="userId"
             rowSelection={{
-              type: 'radio',
+              type: "radio",
               selectedRowKeys: selectedMember ? [selectedMember] : [],
               onChange: (selectedRowKeys) => {
                 if (selectedRowKeys.length > 0) {

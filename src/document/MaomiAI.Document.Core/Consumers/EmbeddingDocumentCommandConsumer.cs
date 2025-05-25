@@ -81,8 +81,14 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
             return;
         }
 
+        var tempDir = Path.Combine(Path.GetTempPath(), DateTimeOffset.Now.Ticks.ToString());
+        if (!Directory.Exists(tempDir))
+        {
+            Directory.CreateDirectory(tempDir);
+        }
+
         // 下载文件
-        var filePath = Path.Combine(Path.GetTempPath(), Path.GetTempFileName() + Path.GetExtension(documentFile.FileName));
+        var filePath = Path.Combine(tempDir, documentFile.FileName);
 
         await _mediator.Send(new DownloadFileCommand
         {
@@ -153,7 +159,7 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
             .Build();
 
         // 先删除
-        await memoryClient.DeleteDocumentAsync(documentTask.DocumentId.ToString(), index: "n" + documentTask.WikiId);
+        await memoryClient.DeleteDocumentAsync(documentTask.DocumentId.ToString(), index: documentTask.WikiId.ToString());
 
         var docs = new Microsoft.KernelMemory.Document()
         {
@@ -168,7 +174,7 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
 
         try
         {
-            var taskId = await memoryClient.ImportDocumentAsync(docs, index: "n" + documentTask.WikiId);
+            var taskId = await memoryClient.ImportDocumentAsync(docs, index: documentTask.WikiId.ToString());
         }
         catch (Exception ex)
         {
@@ -185,10 +191,24 @@ public class EmbeddingDocumentCommandConsumer : IConsumer<EmbeddingDocumentEvent
     }
 
     /// <inheritdoc/>
-    public Task FaildAsync(MessageHeader messageHeader, Exception ex, int retryCount, EmbeddingDocumentEvent message)
+    public async Task FaildAsync(MessageHeader messageHeader, Exception ex, int retryCount, EmbeddingDocumentEvent message)
     {
+        var documentTask = await _databaseContext.TeamWikiDocumentTasks
+             .FirstOrDefaultAsync(x => x.DocumentId == message.DocumentId && x.Id == message.TaskId);
+
+        // 不需要处理
+        if (documentTask == null || documentTask.State > (int)FileEmbeddingState.Processing)
+        {
+            return;
+        }
+
+        documentTask.State = (int)FileEmbeddingState.Failed;
+        documentTask.Message = ex.Message;
+
+        _databaseContext.TeamWikiDocumentTasks.Update(documentTask);
+        await _databaseContext.SaveChangesAsync();
+
         _logger.LogError(ex, message: "Document processing failed.{@Message}", message);
-        return Task.CompletedTask;
     }
 
     /// <inheritdoc/>

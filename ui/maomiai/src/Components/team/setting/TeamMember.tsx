@@ -27,7 +27,7 @@ export default function TeamMember() {
     try {
       const client = GetApiClient();
 
-      const response = await client.api.team.byId(teamId).memberlist.post({
+      const response = await client.api.team.byTeamId(teamId).memberlist.post({
         pageNo: page,
         pageSize: size,
       });
@@ -51,11 +51,14 @@ export default function TeamMember() {
       messageApi.warning("请输入用户名");
       return;
     }
+    if (!teamId) {
+      messageApi.error("团队ID不存在");
+      return;
+    }
 
     try {
       const client = GetApiClient();
-      await client.api.team.member.invite.post({
-        teamId: teamId,
+      await client.api.team.byTeamId(teamId).member.invite.post({
         userName: inviteUsername,
       });
       messageApi.success("邀请成功");
@@ -90,8 +93,7 @@ export default function TeamMember() {
 
     try {
       const client = GetApiClient();
-      await client.api.team.member.remove.post({
-        teamId: teamId,
+      await client.api.team.byTeamId(teamId).member.remove.post({
         userId: userId as string,
       });
       messageApi.success("移除成员成功");
@@ -122,8 +124,7 @@ export default function TeamMember() {
 
     try {
       const client = GetApiClient();
-      await client.api.team.setadmin.post({
-        teamId: teamId,
+      await client.api.team.byTeamId(teamId).setadmin.post({
         userId: userId,
         isAdmin: isAdmin,
       });

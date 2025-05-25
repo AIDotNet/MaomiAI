@@ -5,6 +5,7 @@
 // </copyright>
 
 using MaomiAI.Infra.Models;
+using MaomiAI.Prompt.Models;
 using MediatR;
 
 namespace MaomiAI.Prompt.Commands;
@@ -43,4 +44,9 @@ public class UpdatePromptCommand : IRequest<EmptyCommandResponse>
     /// 团队id.
     /// </summary>
     public Guid TeamId { get; init; }
+
+    /// <summary>
+    /// 分类.
+    /// </summary>
+    public PromptType PromptType { get; init; }
 }

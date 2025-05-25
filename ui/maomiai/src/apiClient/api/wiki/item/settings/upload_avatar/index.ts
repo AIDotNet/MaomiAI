@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/settings/upload_avatar
+ * Builds and executes requests for operations under /api/wiki/{teamId}/settings/upload_avatar
  */
 export interface Upload_avatarRequestBuilder extends BaseRequestBuilder<Upload_avatarRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface Upload_avatarRequestBuilder extends BaseRequestBuilder<Upload_a
 /**
  * Uri template for the request builder.
  */
-export const Upload_avatarRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/settings/upload_avatar";
+export const Upload_avatarRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/settings/upload_avatar";
 /**
  * Metadata for all the requests in the request builder.
  */

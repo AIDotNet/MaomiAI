@@ -248,7 +248,7 @@ export default function AiModel() {
   // 当新建弹窗打开时清空key字段
   useEffect(() => {
     if (createModalVisible) {
-      form.setFieldValue('key', '');
+      form.setFieldValue("key", "");
     }
   }, [createModalVisible, form]);
 
@@ -526,6 +526,7 @@ export default function AiModel() {
             rules={[{ required: true, message: "请选择供应商" }]}
           >
             <Select
+              showSearch
               placeholder="请选择供应商"
               options={providers.map((p) => ({
                 label: p.provider,
@@ -604,6 +605,7 @@ export default function AiModel() {
             rules={[{ required: true, message: "请选择供应商" }]}
           >
             <Select
+              showSearch
               placeholder="请选择供应商"
               options={providers.map((p) => ({
                 label: p.provider,

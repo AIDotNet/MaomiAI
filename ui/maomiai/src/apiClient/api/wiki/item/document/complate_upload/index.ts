@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createComplateFi
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document/complate_upload
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document/complate_upload
  */
 export interface Complate_uploadRequestBuilder extends BaseRequestBuilder<Complate_uploadRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface Complate_uploadRequestBuilder extends BaseRequestBuilder<Compla
 /**
  * Uri template for the request builder.
  */
-export const Complate_uploadRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document/complate_upload";
+export const Complate_uploadRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document/complate_upload";
 /**
  * Metadata for all the requests in the request builder.
  */

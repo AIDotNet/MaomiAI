@@ -38,4 +38,9 @@ public class UpdateNoteCommand : IRequest<EmptyCommandResponse>
     /// 内容.
     /// </summary>
     public string? Content { get; init; } = default!;
+
+    /// <summary>
+    /// 是否共享.
+    /// </summary>
+    public bool? IsShared { get; init; } = default!;
 }

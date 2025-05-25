@@ -22,6 +22,7 @@ public partial class TeamMemberConfiguration : IEntityTypeConfiguration<TeamMemb
         entity.HasIndex(e => new { e.TeamId, e.UserId }, "team_member_pk2");
 
         entity.Property(e => e.Id)
+            .HasDefaultValueSql("uuid_generate_v4()")
             .HasComment("id")
             .HasColumnName("id");
         entity.Property(e => e.CreateTime)

@@ -63,10 +63,16 @@ public class DeleteWikiDocumentCommandHandler : IRequestHandler<DeleteWikiDocume
             })
             .Build();
 
-        await memoryClient.DeleteDocumentAsync(documentId: document.Id.ToString(), index: "n" + document.WikiId.ToString());
+        await memoryClient.DeleteDocumentAsync(documentId: document.Id.ToString(), index: document.WikiId.ToString());
 
         // 删除 oss 文件
         await _mediator.Send(new DeleteFileCommand { FileId = document.FileId });
+
+        var documentCount = await _databaseContext.TeamWikiDocuments.Where(x => x.WikiId == request.WikiId).CountAsync();
+        if (documentCount == 0)
+        {
+            await _databaseContext.TeamWikiConfigs.ExecuteUpdateAsync(x => x.SetProperty(a => a.IsLock, false));
+        }
 
         return EmptyCommandResponse.Default;
     }

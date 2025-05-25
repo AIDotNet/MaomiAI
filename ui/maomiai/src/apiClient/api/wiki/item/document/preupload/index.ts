@@ -7,7 +7,7 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createPreloadWik
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/document/preupload
+ * Builds and executes requests for operations under /api/wiki/{teamId}/document/preupload
  */
 export interface PreuploadRequestBuilder extends BaseRequestBuilder<PreuploadRequestBuilder> {
     /**
@@ -33,7 +33,7 @@ export interface PreuploadRequestBuilder extends BaseRequestBuilder<PreuploadReq
 /**
  * Uri template for the request builder.
  */
-export const PreuploadRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/document/preupload";
+export const PreuploadRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/document/preupload";
 /**
  * Metadata for all the requests in the request builder.
  */

@@ -7,12 +7,12 @@ import { createBusinessExceptionResponseFromDiscriminatorValue, createEmptyComma
 import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
- * Builds and executes requests for operations under /api/wiki/{temaId}/settings/config
+ * Builds and executes requests for operations under /api/wiki/{teamId}/settings/config
  */
 export interface ConfigRequestBuilder extends BaseRequestBuilder<ConfigRequestBuilder> {
     /**
      * 更新知识库的配置.
-     * @param body 更新知识库设置信息.
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<EmptyCommandResponse>}
      * @throws {BusinessExceptionResponse} error when the service returns a 400 status code
@@ -24,7 +24,7 @@ export interface ConfigRequestBuilder extends BaseRequestBuilder<ConfigRequestBu
      post(body: UpdateWikiConfigCommand, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<EmptyCommandResponse | undefined>;
     /**
      * 更新知识库的配置.
-     * @param body 更新知识库设置信息.
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {RequestInformation}
      */
@@ -33,7 +33,7 @@ export interface ConfigRequestBuilder extends BaseRequestBuilder<ConfigRequestBu
 /**
  * Uri template for the request builder.
  */
-export const ConfigRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{temaId}/settings/config";
+export const ConfigRequestBuilderUriTemplate = "{+baseurl}/api/wiki/{teamId}/settings/config";
 /**
  * Metadata for all the requests in the request builder.
  */
