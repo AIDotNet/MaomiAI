@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\aimodel\MaomiAI.AiModel.Shared\MaomiAI.AiModel.Shared.csproj" />
+    <ProjectReference Include="..\..\ai\MaomiAI.AI.Shared\MaomiAI.AI.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
