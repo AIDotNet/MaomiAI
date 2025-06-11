@@ -8,5 +8,5 @@ namespace MaomiAI.Plugin.Api;
 
 public static class PluginApi
 {
-    public const string ApiPrefix = "/{teamId}/plugin";
+    public const string ApiPrefix = "/plugin/{teamId}";
 }

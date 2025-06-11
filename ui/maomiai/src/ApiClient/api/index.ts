@@ -4,6 +4,10 @@
 // @ts-ignore
 import { AimodelRequestBuilderNavigationMetadata, type AimodelRequestBuilder } from './aimodel/index.js';
 // @ts-ignore
+import { NoteRequestBuilderNavigationMetadata, type NoteRequestBuilder } from './note/index.js';
+// @ts-ignore
+import { PluginRequestBuilderNavigationMetadata, type PluginRequestBuilder } from './plugin/index.js';
+// @ts-ignore
 import { PromptRequestBuilderNavigationMetadata, type PromptRequestBuilder } from './prompt/index.js';
 // @ts-ignore
 import { PublicRequestBuilderNavigationMetadata, type PublicRequestBuilder } from './public/index.js';
@@ -26,6 +30,14 @@ export interface ApiRequestBuilder extends BaseRequestBuilder<ApiRequestBuilder>
      * The aimodel property
      */
     get aimodel(): AimodelRequestBuilder;
+    /**
+     * The note property
+     */
+    get note(): NoteRequestBuilder;
+    /**
+     * The plugin property
+     */
+    get plugin(): PluginRequestBuilder;
     /**
      * The prompt property
      */
@@ -61,6 +73,12 @@ export const ApiRequestBuilderUriTemplate = "{+baseurl}/api";
 export const ApiRequestBuilderNavigationMetadata: Record<Exclude<keyof ApiRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     aimodel: {
         navigationMetadata: AimodelRequestBuilderNavigationMetadata,
+    },
+    note: {
+        navigationMetadata: NoteRequestBuilderNavigationMetadata,
+    },
+    plugin: {
+        navigationMetadata: PluginRequestBuilderNavigationMetadata,
     },
     prompt: {
         navigationMetadata: PromptRequestBuilderNavigationMetadata,

@@ -39,6 +39,7 @@ public class QueryPluginGroupListCommandHandler : IRequestHandler<QueryPluginGro
                 Name = x.Name,
                 Server = x.Server,
                 Header = x.Header,
+                Query = x.Query,
                 Type = x.Type,
                 TeamId = x.TeamId,
                 Description = x.Description,

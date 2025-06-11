@@ -4,6 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
+using MaomiAI.Note.Queries.Models;
 using MediatR;
 
 namespace MaomiAI.Note.Queries;

@@ -88,14 +88,14 @@ namespace MaomiAI.Database.Postgres
 
             try
             {
-                DbContextOptionsBuilder<DatabaseContext> options = new();
+                DbContextOptionsBuilder<PostgresDatabaseContext> options = new();
                 contextOptionsBuilder.Invoke(options);
 
-                using DatabaseContext? dbContext = new(options.Options, ioc, dbContextOptions);
+                using PostgresDatabaseContext? dbContext = new PostgresDatabaseContext(options.Options, ioc, dbContextOptions);
 
                 // 如果数据库不存在，则会创建数据库及其所有表。
-                dbContext.Database.EnsureCreated();
                 dbContext.Database.Migrate();
+                dbContext.Database.EnsureCreated();
             }
             catch (Exception ex)
             {

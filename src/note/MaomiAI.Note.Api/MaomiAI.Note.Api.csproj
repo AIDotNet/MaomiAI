@@ -13,4 +13,8 @@
     <ProjectReference Include="..\MaomiAI.Note.Shared\MaomiAI.Note.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 </Project>

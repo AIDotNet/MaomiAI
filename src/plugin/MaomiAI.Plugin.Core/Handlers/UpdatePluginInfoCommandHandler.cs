@@ -11,10 +11,7 @@ using MaomiAI.Infra.Models;
 using MaomiAI.Plugin.Shared.Commands;
 using MaomiAI.Plugin.Shared.Models;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using ModelContextProtocol.Client;
-using System.Data.Entity;
-using System.Transactions;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaomiAI.Plugin.Core.Handlers;
 
@@ -29,6 +26,17 @@ public class UpdatePluginInfoCommandHandler : IRequestHandler<UpdatePluginInfoCo
 
     public async Task<EmptyCommandResponse> Handle(UpdatePluginInfoCommand request, CancellationToken cancellationToken)
     {
+        try
+        {
+            _ = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(request.Header);
+            _ = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(request.Query);
+        }
+        catch (Exception ex)
+        {
+            _ = ex;
+            throw new BusinessException("Header 或 Query 格式不正确");
+        }
+
         var pluginGroup = await _databaseContext.TeamPluginGroups
             .FirstOrDefaultAsync(x => x.Id == request.GroupId, cancellationToken);
         if (pluginGroup == null)
@@ -39,6 +47,7 @@ public class UpdatePluginInfoCommandHandler : IRequestHandler<UpdatePluginInfoCo
         pluginGroup.Name = request.Name;
         pluginGroup.Server = request.ServerUrl;
         pluginGroup.Header = request.Header;
+        pluginGroup.Query = request.Query;
         pluginGroup.Description = request.Description;
         _databaseContext.TeamPluginGroups.Update(pluginGroup);
         await _databaseContext.SaveChangesAsync(cancellationToken);

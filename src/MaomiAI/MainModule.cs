@@ -10,6 +10,8 @@ using MaomiAI.Database;
 using MaomiAI.Filters;
 using MaomiAI.Infra;
 using MaomiAI.Modules;
+using MaomiAI.Note;
+using MaomiAI.Plugin.Core;
 using MaomiAI.Prompt.Core;
 using MaomiAI.Public;
 using MaomiAI.Store;
@@ -30,6 +32,8 @@ namespace MaomiAI;
 [InjectModule<AiModelCoreModule>]
 [InjectModule<PublicCoreModule>]
 [InjectModule<PromptCoreModule>]
+[InjectModule<PluginCoreModule>]
+[InjectModule<NoteCoreModule>]
 [InjectModule<ApiModule>]
 public partial class MainModule : IModule
 {

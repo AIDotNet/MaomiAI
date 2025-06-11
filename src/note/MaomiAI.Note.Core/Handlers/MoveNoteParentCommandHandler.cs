@@ -28,7 +28,7 @@ public class MoveNoteParentCommandHandler : IRequestHandler<MoveNoteParentComman
             .Where(x => x.CreateUserId == _userContext.UserId && x.Id == _databaseContext.Notes.Where(a => a.Id == request.NoteId).Select(a => a.ParentId).First())
             .Select(x => new
             {
-                x.Id,
+                x.NoteId,
                 x.CurrentPath,
             })
             .FirstOrDefaultAsync(cancellationToken);
@@ -58,7 +58,7 @@ public class MoveNoteParentCommandHandler : IRequestHandler<MoveNoteParentComman
             .ExecuteUpdateAsync(x => x
                 .SetProperty(a => a.ParentId, newParentPath.Id)
                 .SetProperty(a => a.ParentPath, newParentPath.CurrentPath)
-                .SetProperty(a => a.CurrentPath, a => newParentPath.CurrentPath + "/" + a.NoteId.ToString()));
+                .SetProperty(a => a.CurrentPath, a => newParentPath.CurrentPath + "/" + a.Id.ToString()));
 
         await _databaseContext.Notes
             .Where(x => x.CurrentPath.StartsWith(oldParentPath.CurrentPath))

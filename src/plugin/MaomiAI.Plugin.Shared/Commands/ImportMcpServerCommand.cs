@@ -27,6 +27,16 @@ public class ImportMcpServerCommand : IRequest<IdResponse>
     /// 服务地址.
     /// </summary>
     public string ServerUrl { get; init; }
+
+    /// <summary>
+    /// json 字典.
+    /// </summary>
+    public string Header { get; init; }
+
+    /// <summary>
+    /// Query 字典.
+    /// </summary>
+    public string Query { get; init; }
 }
 
 /// <summary>
@@ -46,7 +56,15 @@ public class UpdatePluginInfoCommand : IRequest<EmptyCommandResponse>
     public string ServerUrl { get; init; }
     public string Description { get; init; }
 
+    /// <summary>
+    /// json 字典.
+    /// </summary>
     public string Header { get; init; }
+
+    /// <summary>
+    /// Query 字典.
+    /// </summary>
+    public string Query { get; init; }
 }
 
 /// <summary>

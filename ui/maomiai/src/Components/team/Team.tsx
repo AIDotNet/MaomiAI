@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Outlet } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Spin,
   Layout,
@@ -21,6 +22,7 @@ import TeamList from "../teamlist/TeamList";
 import { proxyRequestError } from "../../helper/RequestError";
 import { Header } from "antd/es/layout/layout";
 import Meta from "antd/es/card/Meta";
+import { setCurrentTeam as setCurrentTeamAction } from "../../stateshare/actions";
 import "./Team.css";
 
 const { Content } = Layout;
@@ -31,7 +33,11 @@ const { Option } = Select;
 export default function Team() {
   const { teamId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
+
+  // Get current team from global state
+  const globalCurrentTeam = useSelector((state: any) => state.currentTeam);
 
   const [loadingTeams, setLoadingTeams] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -42,6 +48,9 @@ export default function Team() {
   const [currentTeam, setCurrentTeam] =
     useState<QueryTeamSimpleCommandResponse>({});
 
+  // Check if team fetch resulted in 404 error
+  const [teamNotFound, setTeamNotFound] = useState(false);
+
   // Fetch teams for the selection modal
   const fetchTeams = async (teamId: string, client?: MaomiClient) => {
     if (!client) {
@@ -50,13 +59,25 @@ export default function Team() {
 
     try {
       setLoadingTeams(true);
+      setTeamNotFound(false);
       const response = await client.api.team.byTeamId(teamId).teamitem.get();
       if (response) {
         setCurrentTeam(response);
+        dispatch(setCurrentTeamAction(response));
       }
-    } catch (error) {
-      messageApi.error("获取团队列表失败");
-      proxyRequestError(error, messageApi);
+    } catch (error: any) {
+      // Check if it's a 404 error
+      if (error?.status === 404 || error?.response?.status === 404) {
+        setTeamNotFound(true);
+        messageApi.error("团队不存在或您没有访问权限，请重新选择团队");
+        // Clear the invalid team from global state
+        dispatch(setCurrentTeamAction(null));
+        setIsModalVisible(true);
+        fetchTeamsForSelection();
+      } else {
+        messageApi.error("获取团队信息失败");
+        proxyRequestError(error, messageApi);
+      }
     } finally {
       setLoadingTeams(false);
     }
@@ -91,6 +112,7 @@ export default function Team() {
   const handleModalConfirm = () => {
     if (selectedTeamId) {
       navigate(`/app/team/${selectedTeamId}/dashboard`);
+      setIsModalVisible(false);
     } else {
       messageApi.warning("请选择一个团队");
     }
@@ -98,20 +120,46 @@ export default function Team() {
 
   // Handle team loading and search
   useEffect(() => {
+    // Case 1: No teamId in URL or teamId is "undefined"
     if (!teamId || teamId === "undefined") {
+      // If we have a global team, redirect to it
+      if (globalCurrentTeam && globalCurrentTeam.id) {
+        navigate(`/app/team/${globalCurrentTeam.id}/dashboard`);
+        return;
+      }
+      // Otherwise, show team selection modal
       setIsModalVisible(true);
       fetchTeamsForSelection();
-    } else {
-      const client = GetApiClient();
-      const fetchData = async () => {
-        await fetchTeams(teamId, client);
-      };
-      fetchData();
+      return;
     }
-  }, [teamId]);
 
-  // If no valid team is selected, show TeamList
-  if (!teamId || teamId === "undefined") {
+    // Case 2: We have a teamId in URL
+    // If global team exists and matches URL teamId, use it directly
+    if (globalCurrentTeam && globalCurrentTeam.id === teamId) {
+      setCurrentTeam(globalCurrentTeam);
+      return;
+    }
+
+    // Case 3: No global team or global team doesn't match URL teamId
+    // Fetch team info from API
+    const client = GetApiClient();
+    const fetchData = async () => {
+      await fetchTeams(teamId, client);
+    };
+    fetchData();
+  }, [teamId]); // Remove globalCurrentTeam from dependencies to avoid infinite loop
+
+  // Handle global team state changes
+  useEffect(() => {
+    if (globalCurrentTeam && globalCurrentTeam.id && teamId && teamId === globalCurrentTeam.id) {
+      setCurrentTeam(globalCurrentTeam);
+      setIsModalVisible(false);
+      setTeamNotFound(false);
+    }
+  }, [globalCurrentTeam, teamId]);
+
+  // If team was not found (404), or no valid team is selected, show selection modal
+  if (teamNotFound || !teamId || teamId === "undefined") {
     return (
       <>
         {contextHolder}
@@ -119,7 +167,13 @@ export default function Team() {
           title="选择团队"
           open={isModalVisible}
           onOk={handleModalConfirm}
-          onCancel={() => setIsModalVisible(false)}
+          onCancel={() => {
+            setIsModalVisible(false);
+            // If user cancels and there's no valid team, go back to team list
+            if (!globalCurrentTeam || !globalCurrentTeam.id) {
+              navigate('/app/teamlist');
+            }
+          }}
           okText="确认"
           cancelText="取消"
         >
@@ -151,22 +205,7 @@ export default function Team() {
     <>
       {contextHolder}
       <Layout style={{ minHeight: "100vh", padding: "0 0px 0px" }}>
-        <Header className="header">
-          <Flex gap="middle" justify="flex-start" align="center" vertical={false}>
-            <Avatar size={40} src={currentTeam.avatarUrl} />
-            <Title level={4} style={{ margin: 0 }}>
-              {currentTeam.name}
-            </Title>
-            <div style={{ display: "flex", gap: "8px" }}>
-              {currentTeam.isRoot && <Tag color="gold">所有者</Tag>}
-              {currentTeam.isAdmin && <Tag color="blue">管理员</Tag>}
-              {currentTeam.isPublic && <Tag color="green">公开</Tag>}
-            </div>
-          </Flex>
-        </Header>
-        <Content style={{ padding: "12px 24px", backgroundColor: "#fff" }}>
-          <Outlet />
-        </Content>
+        <Outlet />
       </Layout>
     </>
   );

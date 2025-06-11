@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate, Link, useLocation } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Layout,
   Menu,
@@ -11,8 +12,11 @@ import {
   Space,
   Tag,
   Spin,
+  Flex,
+  Typography,
+  Dropdown,
+  Button,
 } from "antd";
-import { Header } from "@lobehub/ui";
 import {
   TeamOutlined,
   HomeOutlined,
@@ -25,16 +29,19 @@ import {
   SettingOutlined,
   FileTextOutlined,
   UserOutlined,
+  DownOutlined,
 } from "@ant-design/icons";
 import "./App.css";
 import { CheckToken, RefreshServerInfo } from "./InitPage";
 import { GetApiClient } from "./components/ServiceClient";
+import { setCurrentTeam } from "./stateshare/actions";
+import { QueryTeamSimpleCommandResponse } from "./apiClient/models";
 
 import TeamList from "./components/teamlist/TeamList";
 import User from "./components/user/User";
 import Dashboard from "./components/dashboard/Dashboard";
 import Team from "./components/team/Team";
-import Note from "./components/note/Note";
+import Note from "./components/userapplication/note/Note";
 import TeamDashboard from "./components/team/TeamDashboard";
 import AiModel from "./components/team/aimodel/AiModel";
 import Application from "./components/team/application/Application";
@@ -50,8 +57,110 @@ import TeamSetting from "./components/team/setting/TeamSetting";
 import TeamAdmin from "./components/team/setting/TeamAdmin";
 import WikiEmbeddingTest from "./components/team/wiki/WikiEmbeddingTest";
 import TeamPrompt from "./components/team/prompt/TeamPrompt";
+import  UserChat  from "./components/userapplication/chat/Chat";
 
 const { Sider, Content, Footer } = Layout;
+const { Title } = Typography;
+
+// 团队显示组件
+function TeamDisplay() {
+  const currentTeam = useSelector((state: any) => state.currentTeam);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [teams, setTeams] = useState<QueryTeamSimpleCommandResponse[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // 获取团队列表
+  const fetchTeams = async () => {
+    try {
+      setLoading(true);
+      const client = GetApiClient();
+      const response = await client.api.team.joined_list.post({
+        pageNo: 1,
+        pageSize: 100,
+      });
+      if (response) {
+        setTeams(response.items || []);
+      }
+    } catch (error) {
+      console.error("获取团队列表失败:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 切换团队
+  const handleTeamSwitch = async (teamId: string) => {
+    try {
+      const client = GetApiClient();
+      const response = await client.api.team.byTeamId(teamId).teamitem.get();
+      if (response) {
+        dispatch(setCurrentTeam(response));
+        navigate(`/app/team/${teamId}/dashboard`);
+      }
+    } catch (error) {
+      console.error("切换团队失败:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (currentTeam) {
+      fetchTeams();
+    }
+  }, [currentTeam]);
+
+  if (!currentTeam) {
+    return null;
+  }
+
+  const menuItems = teams
+    .filter((team) => team.id) // 过滤掉没有ID的团队
+    .map((team) => ({
+      key: team.id!,
+      label: (
+        <Space>
+          <Avatar size="small" src={team.avatarUrl} />
+          <span>{team.name}</span>
+          <div style={{ display: "flex", gap: "4px" }}>
+            {team.isRoot && <Tag color="gold">所有者</Tag>}
+            {team.isAdmin && <Tag color="blue">管理员</Tag>}
+            {team.isPublic && <Tag color="green">公开</Tag>}
+          </div>
+        </Space>
+      ),
+    }));
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    handleTeamSwitch(key);
+  };
+
+  return (
+    <Dropdown
+      menu={{ items: menuItems, onClick: handleMenuClick }}
+      placement="bottomRight"
+      trigger={["click"]}
+      disabled={loading}
+    >
+      <Button
+        type="text"
+        style={{ color: "inherit", height: "auto", padding: "4px 8px" }}
+      >
+        <Flex gap="small" justify="flex-start" align="center" vertical={false}>
+          <Avatar size={32} src={currentTeam.avatarUrl} />
+          <Title level={5} style={{ margin: 0 }}>
+            {currentTeam.name}
+          </Title>
+          <div style={{ display: "flex", gap: "4px" }}>
+            {currentTeam.isRoot && <Tag color="gold">所有者</Tag>}
+            {currentTeam.isAdmin && <Tag color="blue">管理员</Tag>}
+            {currentTeam.isPublic && <Tag color="green">公开</Tag>}
+          </div>
+          <DownOutlined style={{ fontSize: "12px", marginLeft: "4px" }} />
+        </Flex>
+      </Button>
+    </Dropdown>
+  );
+}
 
 function App() {
   const [messageApi, contextHolder] = message.useMessage();
@@ -224,7 +333,31 @@ function App() {
     {
       key: "4",
       icon: <FileTextOutlined />,
-      label: <Link to="/app/note">笔记系统</Link>,
+      label: <>个人应用</>,
+      children: [
+        {
+          key: "4-0",
+          icon: <FileTextOutlined />,
+          label: <Link to="/app/userapp/note">笔记</Link>,
+        },
+        {
+          key: "4-1",
+          icon: <FileTextOutlined />,
+          label: <Link to="/app/userapp/chat">AI助手</Link>,
+        },
+      ],
+    },
+    {
+      key: "5",
+      icon: <FileTextOutlined />,
+      label: <>系统应用</>,
+      children: [
+        {
+          key: "5-0",
+          icon: <FileTextOutlined />,
+          label: <Link to="/app/systemapp/note">笔记</Link>,
+        },
+      ],
     },
     {
       key: "8",
@@ -237,10 +370,18 @@ function App() {
     <>
       {contextHolder}
       <Layout className="layout">
-        <Header
+        <Layout.Header
           className="header"
-          logo={<Image src="./logo.png" width={60} height={60} />}
-        ></Header>
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "white",
+          }}
+        >
+          <Image src="/logo.png" width={60} height={60} />
+          <TeamDisplay />
+        </Layout.Header>
         <Layout>
           <Sider width={200} className="sider" collapsible>
             <Menu
@@ -282,7 +423,10 @@ function App() {
                     <Route path="*" element={<TeamSetting />} />
                   </Route>
                 </Route>
-                <Route path="note" element={<Note />} />
+                <Route path="userapp">
+                  <Route path="note" element={<Note />} />
+                  <Route path="chat" element={<UserChat />} />
+                </Route>
               </Routes>
             </Content>
             <Footer className="footer">MaomiAI ©2025</Footer>

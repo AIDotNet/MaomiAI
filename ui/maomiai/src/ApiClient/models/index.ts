@@ -287,6 +287,19 @@ export interface ComplateFileUploadCommand extends Parsable {
     isSuccess?: boolean | null;
 }
 /**
+ * 预上传 openapi 文件，支持 json、yaml.
+ */
+export interface ComplateOpenApiFileCommand extends Parsable {
+    /**
+     * 上传的 id.
+     */
+    fileId?: Guid | null;
+    /**
+     * 分组名称.
+     */
+    name?: string | null;
+}
+/**
  * 结束上传文件.
  */
 export interface ComplateUploadWikiDocumentCommand extends Parsable {
@@ -423,11 +436,29 @@ export function createComplateFileUploadCommandFromDiscriminatorValue(parseNode:
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ComplateOpenApiFileCommand}
+ */
+// @ts-ignore
+export function createComplateOpenApiFileCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoComplateOpenApiFileCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ComplateUploadWikiDocumentCommand}
  */
 // @ts-ignore
 export function createComplateUploadWikiDocumentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoComplateUploadWikiDocumentCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {CreateNoteCommand}
+ */
+// @ts-ignore
+export function createCreateNoteCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoCreateNoteCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -455,6 +486,24 @@ export function createCreateTeamCommandFromDiscriminatorValue(parseNode: ParseNo
 // @ts-ignore
 export function createCreateWikiCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoCreateWikiCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {DeleteNoteCommand}
+ */
+// @ts-ignore
+export function createDeleteNoteCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoDeleteNoteCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {DeletePluginGroupCommand}
+ */
+// @ts-ignore
+export function createDeletePluginGroupCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoDeletePluginGroupCommand;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -522,6 +571,15 @@ export function createIdResponseFromDiscriminatorValue(parseNode: ParseNode | un
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {ImportMcpServerCommand}
+ */
+// @ts-ignore
+export function createImportMcpServerCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoImportMcpServerCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {InviteUserToTeamCommand}
  */
 // @ts-ignore
@@ -563,6 +621,42 @@ export function createLoginCommandResponseFromDiscriminatorValue(parseNode: Pars
 // @ts-ignore
 export function createModelAbilitiesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoModelAbilities;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {MoveNoteParentCommand}
+ */
+// @ts-ignore
+export function createMoveNoteParentCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoMoveNoteParentCommand;
+}
+export interface CreateNoteCommand extends Parsable {
+    /**
+     * 内容.
+     */
+    content?: string | null;
+    /**
+     * 父级笔记ID.
+     */
+    parentNoteId?: Guid | null;
+    /**
+     * 标题.
+     */
+    title?: string | null;
+    /**
+     * 图标.
+     */
+    titleEmoji?: string | null;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {NoteTreeItem}
+ */
+// @ts-ignore
+export function createNoteTreeItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoNoteTreeItem;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -626,6 +720,24 @@ export function createPreUploadFileCommandResponseFromDiscriminatorValue(parseNo
 // @ts-ignore
 export function createPreUploadImageCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoPreUploadImageCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreUploadOpenApiFileCommand}
+ */
+// @ts-ignore
+export function createPreUploadOpenApiFileCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreUploadOpenApiFileCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {PreUploadOpenApiFileCommandResponse}
+ */
+// @ts-ignore
+export function createPreUploadOpenApiFileCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoPreUploadOpenApiFileCommandResponse;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -732,6 +844,87 @@ export function createQueryDefaultAiModelListCommandFromDiscriminatorValue(parse
 // @ts-ignore
 export function createQueryDefaultAiModelListResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoQueryDefaultAiModelListResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryNoteCommandResponse}
+ */
+// @ts-ignore
+export function createQueryNoteCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryNoteCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryNoteTreeCommand}
+ */
+// @ts-ignore
+export function createQueryNoteTreeCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryNoteTreeCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryNoteTreeCommandResponse}
+ */
+// @ts-ignore
+export function createQueryNoteTreeCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryNoteTreeCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginGroupListCommand}
+ */
+// @ts-ignore
+export function createQueryPluginGroupListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginGroupListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginGroupListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryPluginGroupListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginGroupListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginGroupListItem}
+ */
+// @ts-ignore
+export function createQueryPluginGroupListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginGroupListItem;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginListCommand}
+ */
+// @ts-ignore
+export function createQueryPluginListCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginListCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginListCommandResponse}
+ */
+// @ts-ignore
+export function createQueryPluginListCommandResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginListCommandResponse;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {QueryPluginListItem}
+ */
+// @ts-ignore
+export function createQueryPluginListItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoQueryPluginListItem;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -1046,6 +1239,24 @@ export function createUpdateAiEndpointRequestFromDiscriminatorValue(parseNode: P
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdateNoteCommand}
+ */
+// @ts-ignore
+export function createUpdateNoteCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdateNoteCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UpdatePluginInfoCommand}
+ */
+// @ts-ignore
+export function createUpdatePluginInfoCommandFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUpdatePluginInfoCommand;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {UpdatePromptCommand}
  */
 // @ts-ignore
@@ -1154,6 +1365,21 @@ export function createWikiConfigFromDiscriminatorValue(parseNode: ParseNode | un
 // @ts-ignore
 export function createWikiDocumentTaskItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWikiDocumentTaskItem;
+}
+export interface DeleteNoteCommand extends Parsable {
+    /**
+     * The noteId property
+     */
+    noteId?: Guid | null;
+}
+/**
+ * 删除分组.
+ */
+export interface DeletePluginGroupCommand extends Parsable {
+    /**
+     * The groupId property
+     */
+    groupId?: Guid | null;
 }
 /**
  * 删除提示词.
@@ -1365,11 +1591,35 @@ export function deserializeIntoComplateFileUploadCommand(complateFileUploadComma
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoComplateOpenApiFileCommand(complateOpenApiFileCommand: Partial<ComplateOpenApiFileCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "fileId": n => { complateOpenApiFileCommand.fileId = n.getGuidValue(); },
+        "name": n => { complateOpenApiFileCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoComplateUploadWikiDocumentCommand(complateUploadWikiDocumentCommand: Partial<ComplateUploadWikiDocumentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "fileId": n => { complateUploadWikiDocumentCommand.fileId = n.getGuidValue(); },
         "isSuccess": n => { complateUploadWikiDocumentCommand.isSuccess = n.getBooleanValue(); },
         "wikiId": n => { complateUploadWikiDocumentCommand.wikiId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoCreateNoteCommand(createNoteCommand: Partial<CreateNoteCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "content": n => { createNoteCommand.content = n.getStringValue(); },
+        "parentNoteId": n => { createNoteCommand.parentNoteId = n.getGuidValue(); },
+        "title": n => { createNoteCommand.title = n.getStringValue(); },
+        "titleEmoji": n => { createNoteCommand.titleEmoji = n.getStringValue(); },
     }
 }
 /**
@@ -1406,6 +1656,26 @@ export function deserializeIntoCreateWikiCommand(createWikiCommand: Partial<Crea
     return {
         "description": n => { createWikiCommand.description = n.getStringValue(); },
         "name": n => { createWikiCommand.name = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoDeleteNoteCommand(deleteNoteCommand: Partial<DeleteNoteCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "noteId": n => { deleteNoteCommand.noteId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoDeletePluginGroupCommand(deletePluginGroupCommand: Partial<DeletePluginGroupCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "groupId": n => { deletePluginGroupCommand.groupId = n.getGuidValue(); },
     }
 }
 /**
@@ -1488,6 +1758,20 @@ export function deserializeIntoIdResponse(idResponse: Partial<IdResponse> | unde
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoImportMcpServerCommand(importMcpServerCommand: Partial<ImportMcpServerCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { importMcpServerCommand.description = n.getStringValue(); },
+        "header": n => { importMcpServerCommand.header = n.getStringValue(); },
+        "name": n => { importMcpServerCommand.name = n.getStringValue(); },
+        "query": n => { importMcpServerCommand.query = n.getStringValue(); },
+        "serverUrl": n => { importMcpServerCommand.serverUrl = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoInviteUserToTeamCommand(inviteUserToTeamCommand: Partial<InviteUserToTeamCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "userId": n => { inviteUserToTeamCommand.userId = n.getGuidValue(); },
@@ -1542,6 +1826,32 @@ export function deserializeIntoModelAbilities(modelAbilities: Partial<ModelAbili
         "functionCall": n => { modelAbilities.functionCall = n.getBooleanValue(); },
         "imageOutput": n => { modelAbilities.imageOutput = n.getBooleanValue(); },
         "vision": n => { modelAbilities.vision = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoMoveNoteParentCommand(moveNoteParentCommand: Partial<MoveNoteParentCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "noteId": n => { moveNoteParentCommand.noteId = n.getGuidValue(); },
+        "parentId": n => { moveNoteParentCommand.parentId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoNoteTreeItem(noteTreeItem: Partial<NoteTreeItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "children": n => { noteTreeItem.children = n.getCollectionOfObjectValues<NoteTreeItem>(createNoteTreeItemFromDiscriminatorValue); },
+        "noteId": n => { noteTreeItem.noteId = n.getGuidValue(); },
+        "parentId": n => { noteTreeItem.parentId = n.getGuidValue(); },
+        "summary": n => { noteTreeItem.summary = n.getStringValue(); },
+        "title": n => { noteTreeItem.title = n.getStringValue(); },
+        "titleEmoji": n => { noteTreeItem.titleEmoji = n.getStringValue(); },
     }
 }
 /**
@@ -1631,6 +1941,33 @@ export function deserializeIntoPreUploadImageCommand(preUploadImageCommand: Part
         "fileSize": n => { preUploadImageCommand.fileSize = n.getNumberValue(); },
         "imageType": n => { preUploadImageCommand.imageType = n.getEnumValue<UploadImageType>(UploadImageTypeObject); },
         "mD5": n => { preUploadImageCommand.mD5 = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreUploadOpenApiFileCommand(preUploadOpenApiFileCommand: Partial<PreUploadOpenApiFileCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "contentType": n => { preUploadOpenApiFileCommand.contentType = n.getStringValue(); },
+        "fileName": n => { preUploadOpenApiFileCommand.fileName = n.getStringValue(); },
+        "fileSize": n => { preUploadOpenApiFileCommand.fileSize = n.getNumberValue(); },
+        "mD5": n => { preUploadOpenApiFileCommand.mD5 = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoPreUploadOpenApiFileCommandResponse(preUploadOpenApiFileCommandResponse: Partial<PreUploadOpenApiFileCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "expiration": n => { preUploadOpenApiFileCommandResponse.expiration = n.getStringValue(); },
+        "fileId": n => { preUploadOpenApiFileCommandResponse.fileId = n.getGuidValue(); },
+        "isExist": n => { preUploadOpenApiFileCommandResponse.isExist = n.getBooleanValue(); },
+        "uploadUrl": n => { preUploadOpenApiFileCommandResponse.uploadUrl = n.getStringValue(); },
+        "visibility": n => { preUploadOpenApiFileCommandResponse.visibility = n.getEnumValue<FileVisibility>(FileVisibilityObject); },
     }
 }
 /**
@@ -1737,6 +2074,124 @@ export function deserializeIntoQueryDefaultAiModelListCommand(queryDefaultAiMode
 export function deserializeIntoQueryDefaultAiModelListResponse(queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "aiModels": n => { queryDefaultAiModelListResponse.aiModels = n.getCollectionOfObjectValues<AiNotKeyEndpoint>(createAiNotKeyEndpointFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryNoteCommandResponse(queryNoteCommandResponse: Partial<QueryNoteCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "content": n => { queryNoteCommandResponse.content = n.getStringValue(); },
+        "createTime": n => { queryNoteCommandResponse.createTime = n.getStringValue(); },
+        "currentPath": n => { queryNoteCommandResponse.currentPath = n.getStringValue(); },
+        "id": n => { queryNoteCommandResponse.id = n.getGuidValue(); },
+        "isShared": n => { queryNoteCommandResponse.isShared = n.getBooleanValue(); },
+        "noteId": n => { queryNoteCommandResponse.noteId = n.getNumberValue(); },
+        "parentId": n => { queryNoteCommandResponse.parentId = n.getGuidValue(); },
+        "parentPath": n => { queryNoteCommandResponse.parentPath = n.getStringValue(); },
+        "summary": n => { queryNoteCommandResponse.summary = n.getStringValue(); },
+        "title": n => { queryNoteCommandResponse.title = n.getStringValue(); },
+        "titleEmoji": n => { queryNoteCommandResponse.titleEmoji = n.getStringValue(); },
+        "updateTime": n => { queryNoteCommandResponse.updateTime = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryNoteTreeCommand(queryNoteTreeCommand: Partial<QueryNoteTreeCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "includeSummary": n => { queryNoteTreeCommand.includeSummary = n.getBooleanValue(); },
+        "parantId": n => { queryNoteTreeCommand.parantId = n.getGuidValue(); },
+        "search": n => { queryNoteTreeCommand.search = n.getStringValue(); },
+        "searchContent": n => { queryNoteTreeCommand.searchContent = n.getBooleanValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryNoteTreeCommandResponse(queryNoteTreeCommandResponse: Partial<QueryNoteTreeCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "notes": n => { queryNoteTreeCommandResponse.notes = n.getCollectionOfObjectValues<NoteTreeItem>(createNoteTreeItemFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginGroupListCommand(queryPluginGroupListCommand: Partial<QueryPluginGroupListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "groupId": n => { queryPluginGroupListCommand.groupId = n.getGuidValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginGroupListCommandResponse(queryPluginGroupListCommandResponse: Partial<QueryPluginGroupListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "items": n => { queryPluginGroupListCommandResponse.items = n.getCollectionOfObjectValues<QueryPluginGroupListItem>(createQueryPluginGroupListItemFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginGroupListItem(queryPluginGroupListItem: Partial<QueryPluginGroupListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoAuditsInfo(queryPluginGroupListItem),
+        "description": n => { queryPluginGroupListItem.description = n.getStringValue(); },
+        "header": n => { queryPluginGroupListItem.header = n.getStringValue(); },
+        "id": n => { queryPluginGroupListItem.id = n.getGuidValue(); },
+        "name": n => { queryPluginGroupListItem.name = n.getStringValue(); },
+        "query": n => { queryPluginGroupListItem.query = n.getStringValue(); },
+        "server": n => { queryPluginGroupListItem.server = n.getStringValue(); },
+        "teamId": n => { queryPluginGroupListItem.teamId = n.getGuidValue(); },
+        "type": n => { queryPluginGroupListItem.type = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginListCommand(queryPluginListCommand: Partial<QueryPluginListCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "groupId": n => { queryPluginListCommand.groupId = n.getGuidValue(); },
+        "pluginIds": n => { queryPluginListCommand.pluginIds = n.getCollectionOfPrimitiveValues<Guid>(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginListCommandResponse(queryPluginListCommandResponse: Partial<QueryPluginListCommandResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "items": n => { queryPluginListCommandResponse.items = n.getCollectionOfObjectValues<QueryPluginListItem>(createQueryPluginListItemFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoQueryPluginListItem(queryPluginListItem: Partial<QueryPluginListItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "groupId": n => { queryPluginListItem.groupId = n.getGuidValue(); },
+        "groupName": n => { queryPluginListItem.groupName = n.getStringValue(); },
+        "id": n => { queryPluginListItem.id = n.getGuidValue(); },
+        "name": n => { queryPluginListItem.name = n.getStringValue(); },
+        "path": n => { queryPluginListItem.path = n.getStringValue(); },
+        "summary": n => { queryPluginListItem.summary = n.getStringValue(); },
     }
 }
 /**
@@ -2151,6 +2606,36 @@ export function deserializeIntoUpdateAiEndpointRequest(updateAiEndpointRequest: 
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoUpdateNoteCommand(updateNoteCommand: Partial<UpdateNoteCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "content": n => { updateNoteCommand.content = n.getStringValue(); },
+        "isShared": n => { updateNoteCommand.isShared = n.getBooleanValue(); },
+        "noteId": n => { updateNoteCommand.noteId = n.getGuidValue(); },
+        "summary": n => { updateNoteCommand.summary = n.getStringValue(); },
+        "title": n => { updateNoteCommand.title = n.getStringValue(); },
+        "titleEmoji": n => { updateNoteCommand.titleEmoji = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUpdatePluginInfoCommand(updatePluginInfoCommand: Partial<UpdatePluginInfoCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "description": n => { updatePluginInfoCommand.description = n.getStringValue(); },
+        "groupId": n => { updatePluginInfoCommand.groupId = n.getGuidValue(); },
+        "header": n => { updatePluginInfoCommand.header = n.getStringValue(); },
+        "name": n => { updatePluginInfoCommand.name = n.getStringValue(); },
+        "query": n => { updatePluginInfoCommand.query = n.getStringValue(); },
+        "serverUrl": n => { updatePluginInfoCommand.serverUrl = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoUpdatePromptCommand(updatePromptCommand: Partial<UpdatePromptCommand> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "content": n => { updatePromptCommand.content = n.getStringValue(); },
@@ -2345,6 +2830,31 @@ export interface IdResponse extends Parsable {
     id?: Guid | null;
 }
 /**
+ * 导入 mcp 服务.
+ */
+export interface ImportMcpServerCommand extends Parsable {
+    /**
+     * The description property
+     */
+    description?: string | null;
+    /**
+     * json 字典.
+     */
+    header?: string | null;
+    /**
+     * The name property
+     */
+    name?: string | null;
+    /**
+     * Query 字典.
+     */
+    query?: string | null;
+    /**
+     * 服务地址.
+     */
+    serverUrl?: string | null;
+}
+/**
  * 邀请用户加入团队命令.
  */
 export interface InviteUserToTeamCommand extends Parsable {
@@ -2426,6 +2936,45 @@ export interface ModelAbilities extends Parsable {
      * Whether model supports vision
      */
     vision?: boolean | null;
+}
+/**
+ * 移动笔记到其他父级.
+ */
+export interface MoveNoteParentCommand extends Parsable {
+    /**
+     * The noteId property
+     */
+    noteId?: Guid | null;
+    /**
+     * The parentId property
+     */
+    parentId?: Guid | null;
+}
+export interface NoteTreeItem extends Parsable {
+    /**
+     * The children property
+     */
+    children?: NoteTreeItem[] | null;
+    /**
+     * The noteId property
+     */
+    noteId?: Guid | null;
+    /**
+     * The parentId property
+     */
+    parentId?: Guid | null;
+    /**
+     * The summary property
+     */
+    summary?: string | null;
+    /**
+     * The title property
+     */
+    title?: string | null;
+    /**
+     * The titleEmoji property
+     */
+    titleEmoji?: string | null;
 }
 /**
  * 分页参数.
@@ -2550,6 +3099,49 @@ export interface PreUploadImageCommand extends Parsable {
      * 文件 MD5.
      */
     mD5?: string | null;
+}
+/**
+ * 预上传 openapi 文件，支持 json、yaml.
+ */
+export interface PreUploadOpenApiFileCommand extends Parsable {
+    /**
+     * 文件类型.
+     */
+    contentType?: string | null;
+    /**
+     * 文件名称.
+     */
+    fileName?: string | null;
+    /**
+     * 文件大小.
+     */
+    fileSize?: number | null;
+    /**
+     * 文件 MD5.
+     */
+    mD5?: string | null;
+}
+export interface PreUploadOpenApiFileCommandResponse extends Parsable {
+    /**
+     * 签名过期时间，当 IsExist = true 时字段为空.
+     */
+    expiration?: string | null;
+    /**
+     * 文件ID.
+     */
+    fileId?: Guid | null;
+    /**
+     * 文件已存在,如果文件已存在则直接使用 FileId，无需再次上传.
+     */
+    isExist?: boolean | null;
+    /**
+     * 预签名上传地址，当 IsExist = true 时字段为空.
+     */
+    uploadUrl?: string | null;
+    /**
+     * 文件可见性.
+     */
+    visibility?: FileVisibility | null;
 }
 /**
  * 预上传知识库文件.
@@ -2689,6 +3281,174 @@ export interface QueryDefaultAiModelListResponse extends Parsable {
      * The aiModels property
      */
     aiModels?: AiNotKeyEndpoint[] | null;
+}
+export interface QueryNoteCommandResponse extends Parsable {
+    /**
+     * 笔记内容.
+     */
+    content?: string | null;
+    /**
+     * 创建时间.
+     */
+    createTime?: string | null;
+    /**
+     * 当前路径，等于父级路径加上自己的note_id.
+     */
+    currentPath?: string | null;
+    /**
+     * id.
+     */
+    id?: Guid | null;
+    /**
+     * 开启共享.
+     */
+    isShared?: boolean | null;
+    /**
+     * 自增id，用于标识父级等.
+     */
+    noteId?: number | null;
+    /**
+     * 父级id.
+     */
+    parentId?: Guid | null;
+    /**
+     * 父级路径.
+     */
+    parentPath?: string | null;
+    /**
+     * 总结.
+     */
+    summary?: string | null;
+    /**
+     * 笔记标题.
+     */
+    title?: string | null;
+    /**
+     * 图标.
+     */
+    titleEmoji?: string | null;
+    /**
+     * 更新时间.
+     */
+    updateTime?: string | null;
+}
+export interface QueryNoteTreeCommand extends Parsable {
+    /**
+     * 是否包括摘要.
+     */
+    includeSummary?: boolean | null;
+    /**
+     * 指定父级.
+     */
+    parantId?: Guid | null;
+    /**
+     * 指定搜索词，默认只搜索标题.
+     */
+    search?: string | null;
+    /**
+     * 是否搜索笔记内容.
+     */
+    searchContent?: boolean | null;
+}
+export interface QueryNoteTreeCommandResponse extends Parsable {
+    /**
+     * The notes property
+     */
+    notes?: NoteTreeItem[] | null;
+}
+/**
+ * 获取插件分组列表.
+ */
+export interface QueryPluginGroupListCommand extends Parsable {
+    /**
+     * 分组id，如果筛选 分组id，则只会返回一个结果.
+     */
+    groupId?: Guid | null;
+}
+export interface QueryPluginGroupListCommandResponse extends Parsable {
+    /**
+     * The items property
+     */
+    items?: QueryPluginGroupListItem[] | null;
+}
+export interface QueryPluginGroupListItem extends AuditsInfo, Parsable {
+    /**
+     * 描述.
+     */
+    description?: string | null;
+    /**
+     * 自定义header头.
+     */
+    header?: string | null;
+    /**
+     * id.
+     */
+    id?: Guid | null;
+    /**
+     * 分组名称.
+     */
+    name?: string | null;
+    /**
+     * The query property
+     */
+    query?: string | null;
+    /**
+     * 自定义服务器地址，mcp导入后无法修改.
+     */
+    server?: string | null;
+    /**
+     * 团队id.
+     */
+    teamId?: Guid | null;
+    /**
+     * 类型，mcp或openapi或system.
+     */
+    type?: number | null;
+}
+/**
+ * 获取插件列表.
+ */
+export interface QueryPluginListCommand extends Parsable {
+    /**
+     * The groupId property
+     */
+    groupId?: Guid | null;
+    /**
+     * The pluginIds property
+     */
+    pluginIds?: Guid[] | null;
+}
+export interface QueryPluginListCommandResponse extends Parsable {
+    /**
+     * The items property
+     */
+    items?: QueryPluginListItem[] | null;
+}
+export interface QueryPluginListItem extends Parsable {
+    /**
+     * The groupId property
+     */
+    groupId?: Guid | null;
+    /**
+     * The groupName property
+     */
+    groupName?: string | null;
+    /**
+     * The id property
+     */
+    id?: Guid | null;
+    /**
+     * 名称.
+     */
+    name?: string | null;
+    /**
+     * 路径.
+     */
+    path?: string | null;
+    /**
+     * 描述.
+     */
+    summary?: string | null;
 }
 /**
  * 查询能看到的提示词列表.
@@ -3308,11 +4068,35 @@ export function serializeComplateFileUploadCommand(writer: SerializationWriter, 
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeComplateOpenApiFileCommand(writer: SerializationWriter, complateOpenApiFileCommand: Partial<ComplateOpenApiFileCommand> | undefined | null = {}) : void {
+    if (complateOpenApiFileCommand) {
+        writer.writeGuidValue("fileId", complateOpenApiFileCommand.fileId);
+        writer.writeStringValue("name", complateOpenApiFileCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeComplateUploadWikiDocumentCommand(writer: SerializationWriter, complateUploadWikiDocumentCommand: Partial<ComplateUploadWikiDocumentCommand> | undefined | null = {}) : void {
     if (complateUploadWikiDocumentCommand) {
         writer.writeGuidValue("fileId", complateUploadWikiDocumentCommand.fileId);
         writer.writeBooleanValue("isSuccess", complateUploadWikiDocumentCommand.isSuccess);
         writer.writeGuidValue("wikiId", complateUploadWikiDocumentCommand.wikiId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeCreateNoteCommand(writer: SerializationWriter, createNoteCommand: Partial<CreateNoteCommand> | undefined | null = {}) : void {
+    if (createNoteCommand) {
+        writer.writeStringValue("content", createNoteCommand.content);
+        writer.writeGuidValue("parentNoteId", createNoteCommand.parentNoteId);
+        writer.writeStringValue("title", createNoteCommand.title);
+        writer.writeStringValue("titleEmoji", createNoteCommand.titleEmoji);
     }
 }
 /**
@@ -3349,6 +4133,26 @@ export function serializeCreateWikiCommand(writer: SerializationWriter, createWi
     if (createWikiCommand) {
         writer.writeStringValue("description", createWikiCommand.description);
         writer.writeStringValue("name", createWikiCommand.name);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeDeleteNoteCommand(writer: SerializationWriter, deleteNoteCommand: Partial<DeleteNoteCommand> | undefined | null = {}) : void {
+    if (deleteNoteCommand) {
+        writer.writeGuidValue("noteId", deleteNoteCommand.noteId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeDeletePluginGroupCommand(writer: SerializationWriter, deletePluginGroupCommand: Partial<DeletePluginGroupCommand> | undefined | null = {}) : void {
+    if (deletePluginGroupCommand) {
+        writer.writeGuidValue("groupId", deletePluginGroupCommand.groupId);
     }
 }
 /**
@@ -3431,6 +4235,20 @@ export function serializeIdResponse(writer: SerializationWriter, idResponse: Par
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeImportMcpServerCommand(writer: SerializationWriter, importMcpServerCommand: Partial<ImportMcpServerCommand> | undefined | null = {}) : void {
+    if (importMcpServerCommand) {
+        writer.writeStringValue("description", importMcpServerCommand.description);
+        writer.writeStringValue("header", importMcpServerCommand.header);
+        writer.writeStringValue("name", importMcpServerCommand.name);
+        writer.writeStringValue("query", importMcpServerCommand.query);
+        writer.writeStringValue("serverUrl", importMcpServerCommand.serverUrl);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeInviteUserToTeamCommand(writer: SerializationWriter, inviteUserToTeamCommand: Partial<InviteUserToTeamCommand> | undefined | null = {}) : void {
     if (inviteUserToTeamCommand) {
         writer.writeGuidValue("userId", inviteUserToTeamCommand.userId);
@@ -3485,6 +4303,32 @@ export function serializeModelAbilities(writer: SerializationWriter, modelAbilit
         writer.writeBooleanValue("functionCall", modelAbilities.functionCall);
         writer.writeBooleanValue("imageOutput", modelAbilities.imageOutput);
         writer.writeBooleanValue("vision", modelAbilities.vision);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeMoveNoteParentCommand(writer: SerializationWriter, moveNoteParentCommand: Partial<MoveNoteParentCommand> | undefined | null = {}) : void {
+    if (moveNoteParentCommand) {
+        writer.writeGuidValue("noteId", moveNoteParentCommand.noteId);
+        writer.writeGuidValue("parentId", moveNoteParentCommand.parentId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeNoteTreeItem(writer: SerializationWriter, noteTreeItem: Partial<NoteTreeItem> | undefined | null = {}) : void {
+    if (noteTreeItem) {
+        writer.writeCollectionOfObjectValues<NoteTreeItem>("children", noteTreeItem.children, serializeNoteTreeItem);
+        writer.writeGuidValue("noteId", noteTreeItem.noteId);
+        writer.writeGuidValue("parentId", noteTreeItem.parentId);
+        writer.writeStringValue("summary", noteTreeItem.summary);
+        writer.writeStringValue("title", noteTreeItem.title);
+        writer.writeStringValue("titleEmoji", noteTreeItem.titleEmoji);
     }
 }
 /**
@@ -3574,6 +4418,33 @@ export function serializePreUploadImageCommand(writer: SerializationWriter, preU
         writer.writeNumberValue("fileSize", preUploadImageCommand.fileSize);
         writer.writeEnumValue<UploadImageType>("imageType", preUploadImageCommand.imageType);
         writer.writeStringValue("mD5", preUploadImageCommand.mD5);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreUploadOpenApiFileCommand(writer: SerializationWriter, preUploadOpenApiFileCommand: Partial<PreUploadOpenApiFileCommand> | undefined | null = {}) : void {
+    if (preUploadOpenApiFileCommand) {
+        writer.writeStringValue("contentType", preUploadOpenApiFileCommand.contentType);
+        writer.writeStringValue("fileName", preUploadOpenApiFileCommand.fileName);
+        writer.writeNumberValue("fileSize", preUploadOpenApiFileCommand.fileSize);
+        writer.writeStringValue("mD5", preUploadOpenApiFileCommand.mD5);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializePreUploadOpenApiFileCommandResponse(writer: SerializationWriter, preUploadOpenApiFileCommandResponse: Partial<PreUploadOpenApiFileCommandResponse> | undefined | null = {}) : void {
+    if (preUploadOpenApiFileCommandResponse) {
+        writer.writeStringValue("expiration", preUploadOpenApiFileCommandResponse.expiration);
+        writer.writeGuidValue("fileId", preUploadOpenApiFileCommandResponse.fileId);
+        writer.writeBooleanValue("isExist", preUploadOpenApiFileCommandResponse.isExist);
+        writer.writeStringValue("uploadUrl", preUploadOpenApiFileCommandResponse.uploadUrl);
+        writer.writeEnumValue<FileVisibility>("visibility", preUploadOpenApiFileCommandResponse.visibility);
     }
 }
 /**
@@ -3680,6 +4551,124 @@ export function serializeQueryDefaultAiModelListCommand(writer: SerializationWri
 export function serializeQueryDefaultAiModelListResponse(writer: SerializationWriter, queryDefaultAiModelListResponse: Partial<QueryDefaultAiModelListResponse> | undefined | null = {}) : void {
     if (queryDefaultAiModelListResponse) {
         writer.writeCollectionOfObjectValues<AiNotKeyEndpoint>("aiModels", queryDefaultAiModelListResponse.aiModels, serializeAiNotKeyEndpoint);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryNoteCommandResponse(writer: SerializationWriter, queryNoteCommandResponse: Partial<QueryNoteCommandResponse> | undefined | null = {}) : void {
+    if (queryNoteCommandResponse) {
+        writer.writeStringValue("content", queryNoteCommandResponse.content);
+        writer.writeStringValue("createTime", queryNoteCommandResponse.createTime);
+        writer.writeStringValue("currentPath", queryNoteCommandResponse.currentPath);
+        writer.writeGuidValue("id", queryNoteCommandResponse.id);
+        writer.writeBooleanValue("isShared", queryNoteCommandResponse.isShared);
+        writer.writeNumberValue("noteId", queryNoteCommandResponse.noteId);
+        writer.writeGuidValue("parentId", queryNoteCommandResponse.parentId);
+        writer.writeStringValue("parentPath", queryNoteCommandResponse.parentPath);
+        writer.writeStringValue("summary", queryNoteCommandResponse.summary);
+        writer.writeStringValue("title", queryNoteCommandResponse.title);
+        writer.writeStringValue("titleEmoji", queryNoteCommandResponse.titleEmoji);
+        writer.writeStringValue("updateTime", queryNoteCommandResponse.updateTime);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryNoteTreeCommand(writer: SerializationWriter, queryNoteTreeCommand: Partial<QueryNoteTreeCommand> | undefined | null = {}) : void {
+    if (queryNoteTreeCommand) {
+        writer.writeBooleanValue("includeSummary", queryNoteTreeCommand.includeSummary);
+        writer.writeGuidValue("parantId", queryNoteTreeCommand.parantId);
+        writer.writeStringValue("search", queryNoteTreeCommand.search);
+        writer.writeBooleanValue("searchContent", queryNoteTreeCommand.searchContent);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryNoteTreeCommandResponse(writer: SerializationWriter, queryNoteTreeCommandResponse: Partial<QueryNoteTreeCommandResponse> | undefined | null = {}) : void {
+    if (queryNoteTreeCommandResponse) {
+        writer.writeCollectionOfObjectValues<NoteTreeItem>("notes", queryNoteTreeCommandResponse.notes, serializeNoteTreeItem);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginGroupListCommand(writer: SerializationWriter, queryPluginGroupListCommand: Partial<QueryPluginGroupListCommand> | undefined | null = {}) : void {
+    if (queryPluginGroupListCommand) {
+        writer.writeGuidValue("groupId", queryPluginGroupListCommand.groupId);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginGroupListCommandResponse(writer: SerializationWriter, queryPluginGroupListCommandResponse: Partial<QueryPluginGroupListCommandResponse> | undefined | null = {}) : void {
+    if (queryPluginGroupListCommandResponse) {
+        writer.writeCollectionOfObjectValues<QueryPluginGroupListItem>("items", queryPluginGroupListCommandResponse.items, serializeQueryPluginGroupListItem);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginGroupListItem(writer: SerializationWriter, queryPluginGroupListItem: Partial<QueryPluginGroupListItem> | undefined | null = {}) : void {
+    if (queryPluginGroupListItem) {
+        serializeAuditsInfo(writer, queryPluginGroupListItem)
+        writer.writeStringValue("description", queryPluginGroupListItem.description);
+        writer.writeStringValue("header", queryPluginGroupListItem.header);
+        writer.writeGuidValue("id", queryPluginGroupListItem.id);
+        writer.writeStringValue("name", queryPluginGroupListItem.name);
+        writer.writeStringValue("query", queryPluginGroupListItem.query);
+        writer.writeStringValue("server", queryPluginGroupListItem.server);
+        writer.writeGuidValue("teamId", queryPluginGroupListItem.teamId);
+        writer.writeNumberValue("type", queryPluginGroupListItem.type);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginListCommand(writer: SerializationWriter, queryPluginListCommand: Partial<QueryPluginListCommand> | undefined | null = {}) : void {
+    if (queryPluginListCommand) {
+        writer.writeGuidValue("groupId", queryPluginListCommand.groupId);
+        writer.writeCollectionOfPrimitiveValues<Guid>("pluginIds", queryPluginListCommand.pluginIds);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginListCommandResponse(writer: SerializationWriter, queryPluginListCommandResponse: Partial<QueryPluginListCommandResponse> | undefined | null = {}) : void {
+    if (queryPluginListCommandResponse) {
+        writer.writeCollectionOfObjectValues<QueryPluginListItem>("items", queryPluginListCommandResponse.items, serializeQueryPluginListItem);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeQueryPluginListItem(writer: SerializationWriter, queryPluginListItem: Partial<QueryPluginListItem> | undefined | null = {}) : void {
+    if (queryPluginListItem) {
+        writer.writeGuidValue("groupId", queryPluginListItem.groupId);
+        writer.writeStringValue("groupName", queryPluginListItem.groupName);
+        writer.writeGuidValue("id", queryPluginListItem.id);
+        writer.writeStringValue("name", queryPluginListItem.name);
+        writer.writeStringValue("path", queryPluginListItem.path);
+        writer.writeStringValue("summary", queryPluginListItem.summary);
     }
 }
 /**
@@ -4094,6 +5083,36 @@ export function serializeUpdateAiEndpointRequest(writer: SerializationWriter, up
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeUpdateNoteCommand(writer: SerializationWriter, updateNoteCommand: Partial<UpdateNoteCommand> | undefined | null = {}) : void {
+    if (updateNoteCommand) {
+        writer.writeStringValue("content", updateNoteCommand.content);
+        writer.writeBooleanValue("isShared", updateNoteCommand.isShared);
+        writer.writeGuidValue("noteId", updateNoteCommand.noteId);
+        writer.writeStringValue("summary", updateNoteCommand.summary);
+        writer.writeStringValue("title", updateNoteCommand.title);
+        writer.writeStringValue("titleEmoji", updateNoteCommand.titleEmoji);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUpdatePluginInfoCommand(writer: SerializationWriter, updatePluginInfoCommand: Partial<UpdatePluginInfoCommand> | undefined | null = {}) : void {
+    if (updatePluginInfoCommand) {
+        writer.writeStringValue("description", updatePluginInfoCommand.description);
+        writer.writeGuidValue("groupId", updatePluginInfoCommand.groupId);
+        writer.writeStringValue("header", updatePluginInfoCommand.header);
+        writer.writeStringValue("name", updatePluginInfoCommand.name);
+        writer.writeStringValue("query", updatePluginInfoCommand.query);
+        writer.writeStringValue("serverUrl", updatePluginInfoCommand.serverUrl);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeUpdatePromptCommand(writer: SerializationWriter, updatePromptCommand: Partial<UpdatePromptCommand> | undefined | null = {}) : void {
     if (updatePromptCommand) {
         writer.writeStringValue("content", updatePromptCommand.content);
@@ -4325,6 +5344,64 @@ export interface UpdateAiEndpointRequest extends AiEndpoint, Parsable {
      * AI 模型 id.
      */
     modelId?: Guid | null;
+}
+/**
+ * 更新笔记标题.
+ */
+export interface UpdateNoteCommand extends Parsable {
+    /**
+     * 内容.
+     */
+    content?: string | null;
+    /**
+     * 是否共享.
+     */
+    isShared?: boolean | null;
+    /**
+     * 笔记ID.
+     */
+    noteId?: Guid | null;
+    /**
+     * 摘要.
+     */
+    summary?: string | null;
+    /**
+     * 标题.
+     */
+    title?: string | null;
+    /**
+     * 图标.
+     */
+    titleEmoji?: string | null;
+}
+/**
+ * 修改分组信息.
+ */
+export interface UpdatePluginInfoCommand extends Parsable {
+    /**
+     * The description property
+     */
+    description?: string | null;
+    /**
+     * The groupId property
+     */
+    groupId?: Guid | null;
+    /**
+     * json 字典.
+     */
+    header?: string | null;
+    /**
+     * The name property
+     */
+    name?: string | null;
+    /**
+     * Query 字典.
+     */
+    query?: string | null;
+    /**
+     * The serverUrl property
+     */
+    serverUrl?: string | null;
 }
 /**
  * 更新提示词.

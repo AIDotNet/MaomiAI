@@ -63,3 +63,14 @@
 .menu-inline .ant-menu-submenu-active > .ant-menu-submenu-title {
   color: #1890ff !important;
 }
+
+/* 侧边栏折叠按钮样式 */
+.sider .ant-layout-sider-trigger {
+  background: #fff !important;
+  color: #001529 !important;
+  border-top: 1px solid #f0f2f5;
+}
+
+.sider .ant-layout-sider-trigger:hover {
+  background: #f5f5f5 !important;
+}

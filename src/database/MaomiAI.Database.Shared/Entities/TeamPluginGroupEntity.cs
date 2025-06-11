@@ -30,6 +30,11 @@ public partial class TeamPluginGroupEntity : IFullAudited
     public string Header { get; set; } = default!;
 
     /// <summary>
+    /// 自定义header头.
+    /// </summary>
+    public string Query { get; set; } = default!;
+
+    /// <summary>
     /// 类型，mcp或openapi或system.
     /// </summary>
     public int Type { get; set; }

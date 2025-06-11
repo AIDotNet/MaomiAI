@@ -7,6 +7,7 @@
 using MaomiAI.Database;
 using MaomiAI.Infra.Exceptions;
 using MaomiAI.Infra.Models;
+using MaomiAI.Note.Queries.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,12 @@ public class QueryNoteCommandHandler : IRequestHandler<QueryNoteCommand, QueryNo
 {
     public readonly DatabaseContext _databaseContext;
     public readonly UserContext _userContext;
+
+    public QueryNoteCommandHandler(DatabaseContext databaseContext, UserContext userContext)
+    {
+        _databaseContext = databaseContext;
+        _userContext = userContext;
+    }
 
     /// <inheritdoc/>
     public async Task<QueryNoteCommandResponse> Handle(QueryNoteCommand request, CancellationToken cancellationToken)

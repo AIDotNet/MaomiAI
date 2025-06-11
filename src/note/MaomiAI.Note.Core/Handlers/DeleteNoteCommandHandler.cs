@@ -29,7 +29,7 @@ public class DeleteNoteCommandHandler : IRequestHandler<DeleteNoteCommand, Empty
     {
         var note = await _databaseContext.Notes.Where(x => x.CreateUserId == _userContext.UserId && x.Id == request.NoteId).Select(x => new
         {
-            x.Id,
+            x.NoteId,
             x.CurrentPath,
         }).FirstOrDefaultAsync();
 

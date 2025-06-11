@@ -8,7 +8,8 @@ import { UserPageRouter } from "./components/user/PageRouter";
 import { LoginPageRouter } from "./components/login/PageRouter";
 import { RegisterPageRouter } from "./components/register/PageRouter";
 import { TeamListPageRouter } from "./components/teamlist/PageRouter";
-import { NotePageRouter } from "./components/note/PageRouter";
+import { UserApplicationPageRouter } from "./components/userapplication/PageRouter";
+import { SystemApplicationPageRouter } from "./components/systemapplication/PageRouter";
 
 // 在此集合所有页面的路由，每个子模块的路由从模块下的 PageRouter 导出
 
@@ -24,7 +25,8 @@ export const PageRouterProvider = createBrowserRouter([
       DashboardPageRouter,
       TeamListPageRouter,
       TeamPageRouter,
-      NotePageRouter,
+      ...UserApplicationPageRouter,
+      ...SystemApplicationPageRouter,
       UserPageRouter,
     ],
   },

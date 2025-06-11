@@ -39,6 +39,10 @@ public partial class TeamPluginGroupConfiguration : IEntityTypeConfiguration<Tea
             .HasDefaultValueSql("''::text")
             .HasComment("自定义header头")
             .HasColumnName("header");
+        entity.Property(e => e.Query)
+            .HasDefaultValueSql("''::text")
+            .HasComment("自定义header头")
+            .HasColumnName("query");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("软删除")

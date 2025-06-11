@@ -31,6 +31,8 @@ public class QueryPluginGroupListItem : AuditsInfo
     /// </summary>
     public string Header { get; set; } = default!;
 
+    public string Query { get; set; } = default!;
+
     /// <summary>
     /// 类型，mcp或openapi或system.
     /// </summary>

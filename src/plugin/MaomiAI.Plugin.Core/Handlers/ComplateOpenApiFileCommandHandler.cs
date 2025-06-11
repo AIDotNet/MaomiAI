@@ -81,7 +81,8 @@ public class ComplateOpenApiFileCommandHandler : IRequestHandler<ComplateOpenApi
             {
                 Name = operationId,
                 Summary = summary,
-                TeamId = request.TeamId
+                TeamId = request.TeamId,
+                Path = pathEntry.Key
             });
         }
 
@@ -94,13 +95,14 @@ public class ComplateOpenApiFileCommandHandler : IRequestHandler<ComplateOpenApi
         var pluginGroup = new TeamPluginGroupEntity
         {
             Server = apiReaderResult.OpenApiDocument.Servers.FirstOrDefault()?.Url ?? string.Empty,
-            Name = DateTimeOffset.Now.Ticks.ToString(),
+            Name = request.Name,
             Type = (int)PluginType.OpenApi,
             TeamId = request.TeamId,
-            Description = apiReaderResult.OpenApiDocument.Info.Description,
+            Description = TruncateString(apiReaderResult.OpenApiDocument.Info.Description, 255),
             OpenapiFileId = fileEntity.Id,
             OpenapiFileName = fileEntity.FileName,
             Header = "{}",
+            Query = "{}"
         };
 
         await _databaseContext.TeamPluginGroups.AddAsync(pluginGroup, cancellationToken);
@@ -118,4 +120,11 @@ public class ComplateOpenApiFileCommandHandler : IRequestHandler<ComplateOpenApi
 
         return new IdResponse { Id = pluginGroup.Id };
     }
+
+    public static string TruncateString(string value, int maxLength)
+    {
+        if (string.IsNullOrEmpty(value)) return value;
+        return value.Length <= maxLength ? value : value.Substring(0, maxLength);
+    }
+
 }

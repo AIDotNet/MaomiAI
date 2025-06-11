@@ -34,6 +34,10 @@ public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, IdRes
     /// <inheritdoc/>
     public async Task<IdResponse> Handle(CreateNoteCommand request, CancellationToken cancellationToken)
     {
+        using TransactionScope transactionScope = new TransactionScope(
+            scopeOption: TransactionScopeOption.Required,
+            asyncFlowOption: TransactionScopeAsyncFlowOption.Enabled,
+            transactionOptions: new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted });
         var note = new NoteEntity
         {
             Title = request.Title,
@@ -42,10 +46,10 @@ public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, IdRes
             Content = request.Content ?? string.Empty,
         };
 
-        if (request.ParentNoteId != null)
+        if (request.ParentNoteId != null && request.ParentNoteId != Guid.Empty)
         {
             var parentNote = await _databaseContext.Notes
-                .Where(x => x.ParentId == request.ParentNoteId && x.CreateUserId == _userContext.UserId)
+                .Where(x => x.Id == request.ParentNoteId && x.CreateUserId == _userContext.UserId)
                 .Select(x => new { x.Id, x.CurrentPath })
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -62,11 +66,6 @@ public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, IdRes
             note.ParentId = Guid.Empty;
             note.ParentPath = "/root";
         }
-
-        using TransactionScope transactionScope = new TransactionScope(
-            scopeOption: TransactionScopeOption.Required,
-            asyncFlowOption: TransactionScopeAsyncFlowOption.Enabled,
-            transactionOptions: new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted });
 
         await _databaseContext.Notes.AddAsync(note, cancellationToken);
         await _databaseContext.SaveChangesAsync(cancellationToken);

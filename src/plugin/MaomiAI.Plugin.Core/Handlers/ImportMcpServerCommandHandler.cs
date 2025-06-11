@@ -6,6 +6,7 @@
 
 using MaomiAI.Database;
 using MaomiAI.Database.Entities;
+using MaomiAI.Infra.Exceptions;
 using MaomiAI.Infra.Models;
 using MaomiAI.Plugin.Shared.Commands;
 using MaomiAI.Plugin.Shared.Models;
@@ -27,17 +28,46 @@ public class ImportMcpServerCommandHandler : IRequestHandler<ImportMcpServerComm
         _databaseContext = databaseContext;
     }
 
+    /// <inheritdoc/>
     public async Task<IdResponse> Handle(ImportMcpServerCommand request, CancellationToken cancellationToken)
     {
+        // 后续抽到一个方法命令中
+        Dictionary<string, string> headers = default!;
+        Dictionary<string, string> queries = default!;
+        try
+        {
+            headers = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(request.Header);
+            queries = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(request.Query);
+        }
+        catch (Exception ex)
+        {
+            _ = ex;
+            throw new BusinessException("Header 或 Query 格式不正确");
+        }
+
         var defaultOptions = new McpClientOptions
         {
             ClientInfo = new() { Name = "MaomiAI", Version = "1.0.0" }
         };
 
+        var uriBuilder = new UriBuilder(request.ServerUrl);
+        if (queries != null && queries.Count > 0)
+        {
+            var query = System.Web.HttpUtility.ParseQueryString(uriBuilder.Query);
+            foreach (var kv in queries)
+            {
+                query[kv.Key] = kv.Value;
+            }
+
+            uriBuilder.Query = query.ToString();
+        }
+
+        var serverUrl = uriBuilder.Uri;
         var defaultConfig = new SseClientTransportOptions
         {
-            Endpoint = new Uri(request.ServerUrl),
+            Endpoint = serverUrl,
             Name = request.Name,
+            AdditionalHeaders = headers ?? new Dictionary<string, string>(),
         };
 
         await using var sseTransport = new SseClientTransport(defaultConfig);
@@ -67,15 +97,15 @@ public class ImportMcpServerCommandHandler : IRequestHandler<ImportMcpServerComm
             asyncFlowOption: TransactionScopeAsyncFlowOption.Enabled,
             transactionOptions: new TransactionOptions { IsolationLevel = IsolationLevel.RepeatableRead });
 
-        // 自动生成新的分组
         var pluginGroup = new TeamPluginGroupEntity
         {
             Server = request.ServerUrl,
-            Name = DateTimeOffset.Now.Ticks.ToString(),
+            Name = request.Name,
             Type = (int)PluginType.Mcp,
             TeamId = request.TeamId,
-            Header = "{}",
-            Description = request.Description
+            Header = request.Header,
+            Query = request.Query,
+            Description = request.Description,
         };
 
         await _databaseContext.TeamPluginGroups.AddAsync(pluginGroup, cancellationToken);
@@ -84,6 +114,7 @@ public class ImportMcpServerCommandHandler : IRequestHandler<ImportMcpServerComm
         foreach (var item in teamPluginEntities)
         {
             item.GroupId = pluginGroup.Id;
+            item.Path = string.Empty;
         }
 
         await _databaseContext.TeamPlugins.AddRangeAsync(teamPluginEntities, cancellationToken);

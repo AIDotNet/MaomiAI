@@ -220,7 +220,7 @@ export default function WikiSetting() {
 
           <Form.Item name="isLock" label="是否锁定" valuePropName="checked">
             <Space>
-              <Switch disabled={true} />
+              <Switch disabled={form.getFieldValue("isLock")} checked={form.getFieldValue("isLock")}  checkedChildren="锁定" />
               {form.getFieldValue("isLock")
                 ? "知识库已生成数据，禁止修改，如必须修改可点击："
                 : "第一次向量化文档后自动锁定"}

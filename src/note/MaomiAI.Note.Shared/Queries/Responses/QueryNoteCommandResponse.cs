@@ -4,7 +4,7 @@
 // Github link: https://github.com/AIDotNet/MaomiAI
 // </copyright>
 
-namespace MaomiAI.Note.Queries;
+namespace MaomiAI.Note.Queries.Models;
 
 public class QueryNoteCommandResponse
 {

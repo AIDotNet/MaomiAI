@@ -24,4 +24,10 @@ public class ComplateOpenApiFileCommand : IRequest<IdResponse>
     /// 上传的 id.
     /// </summary>
     public Guid FileId { get; set; }
+
+    /// <summary>
+    /// 分组名称.
+    /// </summary>
+    public string Name { get; init; } = default!;
+
 }

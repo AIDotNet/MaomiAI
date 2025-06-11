@@ -34,5 +34,10 @@ public enum UploadImageType
     /// <summary>
     /// 知识库头像头像.
     /// </summary>
-    PromptAvatar = 4
+    PromptAvatar = 4,
+
+    /// <summary>
+    /// 笔记的图像.
+    /// </summary>
+    NoteImage = 5
 }
