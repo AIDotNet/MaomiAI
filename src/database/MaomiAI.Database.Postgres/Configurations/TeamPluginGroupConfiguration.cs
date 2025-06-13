@@ -39,10 +39,6 @@ public partial class TeamPluginGroupConfiguration : IEntityTypeConfiguration<Tea
             .HasDefaultValueSql("''::text")
             .HasComment("自定义header头")
             .HasColumnName("header");
-        entity.Property(e => e.Query)
-            .HasDefaultValueSql("''::text")
-            .HasComment("自定义header头")
-            .HasColumnName("query");
         entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false)
             .HasComment("软删除")
@@ -59,6 +55,10 @@ public partial class TeamPluginGroupConfiguration : IEntityTypeConfiguration<Tea
             .HasDefaultValueSql("''::character varying")
             .HasComment("openapi文件名称")
             .HasColumnName("openapi_file_name");
+        entity.Property(e => e.Query)
+            .HasDefaultValueSql("''::text")
+            .HasComment("query")
+            .HasColumnName("query");
         entity.Property(e => e.Server)
             .HasMaxLength(255)
             .HasComment("自定义服务器地址，mcp导入后无法修改")

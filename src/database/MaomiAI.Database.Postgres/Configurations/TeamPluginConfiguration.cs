@@ -44,6 +44,7 @@ public partial class TeamPluginConfiguration : IEntityTypeConfiguration<TeamPlug
             .HasColumnName("name");
         entity.Property(e => e.Path)
             .HasMaxLength(255)
+            .HasDefaultValueSql("''::character varying")
             .HasComment("路径")
             .HasColumnName("path");
         entity.Property(e => e.Summary)

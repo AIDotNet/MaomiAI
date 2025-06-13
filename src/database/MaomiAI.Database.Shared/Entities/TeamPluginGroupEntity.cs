@@ -30,11 +30,6 @@ public partial class TeamPluginGroupEntity : IFullAudited
     public string Header { get; set; } = default!;
 
     /// <summary>
-    /// 自定义header头.
-    /// </summary>
-    public string Query { get; set; } = default!;
-
-    /// <summary>
     /// 类型，mcp或openapi或system.
     /// </summary>
     public int Type { get; set; }
@@ -83,4 +78,9 @@ public partial class TeamPluginGroupEntity : IFullAudited
     /// openapi文件名称.
     /// </summary>
     public string OpenapiFileName { get; set; } = default!;
+
+    /// <summary>
+    /// query,openapi 不能设置.
+    /// </summary>
+    public string Query { get; set; } = default!;
 }

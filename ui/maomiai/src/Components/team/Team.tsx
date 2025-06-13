@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Outlet } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Spin,
   Layout,
@@ -22,7 +21,7 @@ import TeamList from "../teamlist/TeamList";
 import { proxyRequestError } from "../../helper/RequestError";
 import { Header } from "antd/es/layout/layout";
 import Meta from "antd/es/card/Meta";
-import { setCurrentTeam as setCurrentTeamAction } from "../../stateshare/actions";
+import useAppStore from "../../stateshare/store";
 import "./Team.css";
 
 const { Content } = Layout;
@@ -33,11 +32,10 @@ const { Option } = Select;
 export default function Team() {
   const { teamId } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
 
   // Get current team from global state
-  const globalCurrentTeam = useSelector((state: any) => state.currentTeam);
+  const { currentTeam: globalCurrentTeam, setCurrentTeam: setCurrentTeamAction } = useAppStore();
 
   const [loadingTeams, setLoadingTeams] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -63,7 +61,7 @@ export default function Team() {
       const response = await client.api.team.byTeamId(teamId).teamitem.get();
       if (response) {
         setCurrentTeam(response);
-        dispatch(setCurrentTeamAction(response));
+        setCurrentTeamAction(response);
       }
     } catch (error: any) {
       // Check if it's a 404 error
@@ -71,7 +69,7 @@ export default function Team() {
         setTeamNotFound(true);
         messageApi.error("团队不存在或您没有访问权限，请重新选择团队");
         // Clear the invalid team from global state
-        dispatch(setCurrentTeamAction(null));
+        setCurrentTeamAction(null);
         setIsModalVisible(true);
         fetchTeamsForSelection();
       } else {

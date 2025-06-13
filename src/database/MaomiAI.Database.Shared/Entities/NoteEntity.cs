@@ -10,14 +10,9 @@ namespace MaomiAI.Database.Entities;
 public partial class NoteEntity : IFullAudited
 {
     /// <summary>
-    /// id.
+    /// uuid.
     /// </summary>
     public Guid Id { get; set; }
-
-    /// <summary>
-    /// 自增id，用于标识父级等.
-    /// </summary>
-    public int NoteId { get; set; }
 
     /// <summary>
     /// 笔记标题.
@@ -83,4 +78,9 @@ public partial class NoteEntity : IFullAudited
     /// 开启共享.
     /// </summary>
     public bool IsShared { get; set; }
+
+    /// <summary>
+    /// 自增id，用于缩短path.
+    /// </summary>
+    public int NoteId { get; set; }
 }

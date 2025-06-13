@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate, Link, useLocation } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
 import {
   Layout,
   Menu,
@@ -34,7 +33,7 @@ import {
 import "./App.css";
 import { CheckToken, RefreshServerInfo } from "./InitPage";
 import { GetApiClient } from "./components/ServiceClient";
-import { setCurrentTeam } from "./stateshare/actions";
+import useAppStore from "./stateshare/store";
 import { QueryTeamSimpleCommandResponse } from "./apiClient/models";
 
 import TeamList from "./components/teamlist/TeamList";
@@ -64,8 +63,7 @@ const { Title } = Typography;
 
 // 团队显示组件
 function TeamDisplay() {
-  const currentTeam = useSelector((state: any) => state.currentTeam);
-  const dispatch = useDispatch();
+  const { currentTeam, setCurrentTeam } = useAppStore();
   const navigate = useNavigate();
   const [teams, setTeams] = useState<QueryTeamSimpleCommandResponse[]>([]);
   const [loading, setLoading] = useState(false);
@@ -95,7 +93,7 @@ function TeamDisplay() {
       const client = GetApiClient();
       const response = await client.api.team.byTeamId(teamId).teamitem.get();
       if (response) {
-        dispatch(setCurrentTeam(response));
+        setCurrentTeam(response);
         navigate(`/app/team/${teamId}/dashboard`);
       }
     } catch (error) {

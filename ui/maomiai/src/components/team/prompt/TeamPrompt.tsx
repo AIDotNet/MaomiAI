@@ -39,7 +39,6 @@ import {
   UploadPromptAvatarCommand,
   UploadImageTypeObject,
 } from "../../../apiClient/models";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { CodeEditor, Markdown } from "@lobehub/ui";
 

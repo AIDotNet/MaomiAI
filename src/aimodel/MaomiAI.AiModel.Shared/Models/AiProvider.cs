@@ -44,14 +44,14 @@ public enum AiProvider
     Anthropic,
 
     /// <summary>
-    /// Azure.
+    /// Azure, Azure == AzureAI.
     /// </summary>
     [JsonPropertyName("azure")]
     [EnumMember(Value = "azure")]
     Azure,
 
     /// <summary>
-    /// AzureAI.
+    /// AzureAI, AzureAI == Azure.
     /// </summary>
     [JsonPropertyName("azureai")]
     [EnumMember(Value = "azureai")]

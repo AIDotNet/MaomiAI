@@ -17,4 +17,8 @@ public class EmptyCommandResponse
     /// 默认实例.
     /// </summary>
     public static readonly EmptyCommandResponse Default = new EmptyCommandResponse();
+
+    private EmptyCommandResponse()
+    {
+    }
 }

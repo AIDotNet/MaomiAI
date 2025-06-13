@@ -125,6 +125,16 @@ public partial class DatabaseContext : DbContext
     /// </summary>
     public virtual DbSet<UserEntity> Users { get; set; }
 
+    /// <summary>
+    /// 用户助手设置.
+    /// </summary>
+    public virtual DbSet<UserAssistantConfigEntity> UserAssistantConfigs { get; set; }
+
+    /// <summary>
+    /// 用户对话.
+    /// </summary>
+    public virtual DbSet<UserChatEntity> UserChats { get; set; }
+
     /// <inheritdoc/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

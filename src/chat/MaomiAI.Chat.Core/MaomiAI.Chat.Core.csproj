@@ -1,13 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MaomiAI.Chat.Shared\MaomiAI.Chat.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.KernelMemory.SemanticKernelPlugin" Version="0.98.250508.3" />
+		<PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi" Version="1.56.0" />
+		<PackageReference Include="ModelContextProtocol" Version="0.2.0-preview.1" />
+		<PackageReference Include="ModelContextProtocol-SemanticKernel" Version="0.0.1-preview-15" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\document\MaomiAI.Document.Core\MaomiAI.Document.Core.csproj" />
+		<ProjectReference Include="..\..\plugin\MaomiAI.Plugin.Shared\MaomiAI.Plugin.Shared.csproj" />
+		<ProjectReference Include="..\..\store\MaomiAI.Store.Shared\MaomiAI.Store.Shared.csproj" />
+		<ProjectReference Include="..\..\team\MaomiAI.Team.Shared\MaomiAI.Team.Shared.csproj" />
+		<ProjectReference Include="..\MaomiAI.Chat.Shared\MaomiAI.Chat.Shared.csproj" />
+	</ItemGroup>
 
 </Project>

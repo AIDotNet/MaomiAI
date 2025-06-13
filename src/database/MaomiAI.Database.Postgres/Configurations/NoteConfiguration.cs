@@ -25,9 +25,11 @@ public partial class NoteConfiguration : IEntityTypeConfiguration<NoteEntity>
 
         entity.HasIndex(e => e.NoteId, "note_pk_2").IsUnique();
 
+        entity.HasIndex(e => e.Title, "note_title_index");
+
         entity.Property(e => e.Id)
             .HasDefaultValueSql("uuid_generate_v4()")
-            .HasComment("id")
+            .HasComment("uuid")
             .HasColumnName("id");
         entity.Property(e => e.Content)
             .HasDefaultValueSql("''::text")
@@ -54,8 +56,8 @@ public partial class NoteConfiguration : IEntityTypeConfiguration<NoteEntity>
             .HasComment("开启共享")
             .HasColumnName("is_shared");
         entity.Property(e => e.NoteId)
-            .HasDefaultValue(0)
-            .HasComment("自增id，用于标识父级等")
+            .ValueGeneratedOnAdd()
+            .HasComment("自增id，用于缩短path")
             .HasColumnName("note_id");
         entity.Property(e => e.ParentId)
             .HasComment("父级id")

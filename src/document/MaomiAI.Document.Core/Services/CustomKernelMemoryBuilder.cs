@@ -11,6 +11,7 @@ using Microsoft.KernelMemory;
 
 namespace MaomiAI.Document.Core.Services;
 
+// todo: 后续重构
 /// <summary>
 /// 构建 km.
 /// </summary>
